@@ -1,4 +1,7 @@
-//變數
+// ================== 變數 ============================
+
+// 內容寬度
+$wrapRwd:90%;
 
 
 // map 數值型態
@@ -22,10 +25,10 @@ $fontSize:(
 );
 
 // 字型
-$fontFamily:(
-  'chinese': 'Noto Sans TC', sans-serif,
-  'japan': 'Noto Sans JP', sans-serif,
-);
+// $fontFamily:(
+//   'chinese': 'Noto Sans TC', sans-serif
+//   'japan': 'Noto Sans JP', sans-serif,
+// );
 
 //path
 $path:dist/images;

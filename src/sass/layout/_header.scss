@@ -1,23 +1,80 @@
-header {
-  // code
-  background-color: green;
-  .login {
-    font-size: 20px;
-    color: #f20;
+#header_menu_switch:checked ~ header .header_main_nav{
+  display: block;
+}
 
+header{
+  width: 100%;
+  height: 100px;
+  background-image: url(../../images/nav_cloud.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-color: orange;
+  position: relative;
 
-  }
-  nav {
+  .header_wrap{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    width: 100%;
-    ul {
-        list-style: none;
+    .header_main_nav{
+      position: absolute;
+      background-color: cornflowerblue;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      display: none;
+
+      a{
+        display: block;
+        text-decoration: none;
+        padding: 10px 30px;
+        color: white;
+      }
+    }
+    .header_hb{
+      margin-left: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: chartreuse;
+      position: relative;
+
+      span{
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 32px;
+        height: 2px;
+        background-color: blue;
+        margin: auto;
+      }
+      span:first-child{
+        top: 11px;
+      }
+      span:nth-child(2){
+        top: 0;
+        bottom: 0;
+      }
+      span:last-child{
+        bottom: 11px;
+      }
+    }
+
+    .header_logo{
+      width: 30%;
+  
+      img{
+        width: 100%;
+      }
+    }
+    .header_login_money{
+      display: flex;
+
+      .header_money{
         display: flex;
-        li {
-          width: 100px;
-
-        }
+      }
     }
   }
-
 }
+
