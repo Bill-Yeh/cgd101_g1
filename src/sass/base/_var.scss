@@ -1,33 +1,37 @@
 //變數
-$color : #333;
-$bgc : #eee;
-$margin : 10px auto;
-$fontSize : 20px;
-$layout : 1920px;
-/*==css== */
+
+
 // map 數值型態
 
-$map : (
-    'red' : #f20,
-    'black' : #333);
-
-// images url
-$path  :  dist/images;
-
-
-//map
-$title : (
-  "h1" : 50px,
-  "h2" : 40px, 
-  "h3" : 30px,
-  "h4" : 20px,
-  "h5" : 16px,
-  ".small" : 10px,
-  ".large" : 3rem
+$color: (
+    'bgc_y' : #FAE6B8,
+    'primary' : #F9BB4D,
+    'bgc_b':#A2EBE8,
+    'backstage_h':#F37420
 );
 
+// 文字大小
+$fontSize:(
+  'h1':36px,
+  'h2':32px,
+  'h3':28px,
+  'h4':24px,
+  'h5':20px,
+  'h6':18px,
+  'p':16px
+);
+
+// 字型
+$fontFamily:(
+  'chinese': 'Noto Sans TC', sans-serif,
+  'japan': 'Noto Sans JP', sans-serif,
+);
+
+//path
+$path:dist/images;
 
 //斷點
 
-$m_breakpoint : 720px;
-$t_breakpoint : 1024px;
+$md_breakpoint : 768px;
+$lg_breakpoint : 992px;
+$xl_breakpoint : 1200px;

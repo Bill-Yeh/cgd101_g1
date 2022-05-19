@@ -1,6 +1,20 @@
-// ================== 函式 ============================ 
+// ================== 函式 ============================ 　
+@mixin btn() {
+    font-size: 20px;
+    background-color: #F9BB4D;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    @content;
+    //hover效果
+    &:hover{
+        background-color: #F37420;
+    }
+}
 
-//$minHeight 區域變數 只在作用域內可以取得　
 @mixin center($minHeight:null) {
     margin-left: auto;
     margin-right: auto;
