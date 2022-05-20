@@ -105,13 +105,13 @@
 
 // // title
 
-// @mixin title($title){
-//     @each $key , $val in $title {
-//         #{$key} {
-//            font-size: $val;
-//         }
-//      }
-// }
+@mixin title($title){
+    @each $key , $val in $title {
+        #{$key} {
+           font-size: $val;
+        }
+     }
+}
 
 
 // //rwd 斷點
