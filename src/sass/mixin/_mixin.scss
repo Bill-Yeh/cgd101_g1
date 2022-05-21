@@ -1,10 +1,10 @@
 // ================== 函式 ============================ 　
 @mixin btn() {
-    font-size: 20px;
+    font-size: 16px;
+    border-radius: 20px;
     background-color: #F9BB4D;
     color: white;
     padding: 10px 20px;
-    border-radius: 30px;
     border: none;
     cursor: pointer;
     transition: .3s;
@@ -13,7 +13,43 @@
     &:hover{
         background-color: #F37420;
     }
+
+    @include md(){
+        font-size: 20px;
+        border-radius: 30px;
+    }
 }
+
+@mixin smallBtn() {
+    font-size: 16px;
+    background-color: #F9BB4D;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    @content;
+    //hover效果
+    &:hover{
+        background-color: #F37420;
+    }
+    @include md(){
+        font-size: 20px;
+        border-radius: 30px;
+    }
+}
+
+
+
+//title
+// @mixin title($title) {
+//     @each $key , $val in $title {
+//         #{$key}{
+//             font-size: $val;
+//         }
+//     }
+// }
 
 //rwd斷點
 @mixin md(){
@@ -105,13 +141,13 @@
 
 // // title
 
-// @mixin title($title){
-//     @each $key , $val in $title {
-//         #{$key} {
-//            font-size: $val;
-//         }
-//      }
-// }
+@mixin title($title){
+    @each $key , $val in $title {
+        #{$key} {
+           font-size: $val;
+        }
+     }
+}
 
 
 // //rwd 斷點

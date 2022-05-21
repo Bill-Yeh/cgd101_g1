@@ -1,30 +1,38 @@
+#header_menu_switch{
+  position: absolute;
+  left: -1000px;
+}
 #header_menu_switch:checked ~ header .header_main_nav{
-  display: block;
+  top: 40px;
 }
 
 header{
   width: 100%;
-  height: 100px;
   background-image: url(../../images/nav_cloud.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: bottom;
-  background-color: orange;
+  // background-color: orange;
   position: relative;
 
   .header_wrap{
     width: 90%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 
     .header_main_nav{
       position: absolute;
       background-color: cornflowerblue;
-      top: 80px;
+      top: -150px;
       left: 0;
       width: 100%;
-      display: none;
+      box-sizing: border-box;
+      transition: top .6s;
+      z-index: -1;
+      // height: 100px;
 
       a{
         display: block;
@@ -34,7 +42,6 @@ header{
       }
     }
     .header_hb{
-      margin-left: 20px;
       width: 40px;
       height: 40px;
       background-color: chartreuse;

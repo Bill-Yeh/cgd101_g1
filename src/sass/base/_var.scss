@@ -1,7 +1,8 @@
 // ================== 變數 ============================
 
 // 內容寬度
-$wrapRwd:90%;
+$wrapRwd:90%;  //rwd
+$wrapDesktop:1200px; //電腦版
 
 
 // map 數值型態
@@ -21,14 +22,15 @@ $fontSize:(
   'h4':24px,
   'h5':20px,
   'h6':18px,
-  'p':16px
+  '.box':20px   //對話框
 );
 
 // 字型
-// $fontFamily:(
-//   'chinese': 'Noto Sans TC', sans-serif
-//   'japan': 'Noto Sans JP', sans-serif,
-// );
+$fontCh:Noto Sans TC, sans-serif;
+$fontJpan:Noto Sans JP, sans-serif;
+
+
+
 
 //path
 $path:dist/images;
