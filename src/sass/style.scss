@@ -10,20 +10,6 @@
 @import "page/about";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 
-<<<<<<< HEAD
-
-
-
-body {
-    $bgc: #aaa;
-    $a: 10px; //  區域變數
-    background-color: $bgc; //取到區域變數值
-    color: $color;
-    padding: null; // 屬性刪除
-    margin: $margin;
-    border-color: map-get($map, 'red');
-}
-=======
 // body {
 //     $bgc: #aaa;
 //     $a: 10px; //  區域變數
@@ -33,7 +19,6 @@ body {
 //     margin: $margin;
 //     border-color: map-get($map, 'red');
 // }
->>>>>>> yun
 
 // 取不到區域變數的值
 // a {
@@ -52,21 +37,10 @@ body {
 //         }
 //     }
 
-<<<<<<< HEAD
-    span {
-        font-size: 20px;
-    } 
-}
-
-
-
-//about 
-=======
 //     span {
 //         font-size: 20px;
 //     }
 // }
->>>>>>> yun
 
 //about
 
