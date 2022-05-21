@@ -8,51 +8,11 @@
 @import 'layout/footer';
 @import 'page/index';
 @import 'page/about';
+@import 'page/faq';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 
 
-<<<<<<< HEAD
-
-body {
-    $bgc: #aaa;
-    $a: 10px; //  區域變數
-    background-color: $bgc; //取到區域變數值
-    color: $color;
-    padding: null; // 屬性刪除
-    margin: $margin;
-    border-color: map-get($map, 'red');
-}
-
-// 取不到區域變數的值
-a {
-    //font-size: $a;
-    font-size: $fontSize;
-}
-
-.wrapper {
-
-    h1 {
-        font-size: 30px;
-
-        .title {
-            font-size: 12px;
-            display: inline-block;
-        }
-    }
-
-    span {
-        font-size: 20px;
-    } 
-}
-=======
-//title
-// @include title($title);
->>>>>>> 50f15c3bdbcbbf9763538bd28d2ab54e2be5cb2d
-
-
-
-//about 
 
 
 //偽元素
