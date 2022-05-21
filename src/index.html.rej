@@ -1,0 +1,9 @@
+diff a/src/index.html b/src/index.html	(rejected hunks)
+@@ -9,7 +9,6 @@
+     <!-- header -->
+     <!-- @@include('layout/header.html') -->
+     <!-- header end -->
+-<<<<<<< HEAD
+     <div class="wrapper index">
+        <section class="w100"></section> 
+        <div class="w1200 small"></div>
