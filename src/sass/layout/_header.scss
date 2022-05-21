@@ -1,51 +1,127 @@
 #header_menu_switch{
   position: absolute;
   left: -1000px;
+  @include lg(){
+    display: none;
+  }
 }
 #header_menu_switch:checked ~ header .header_main_nav{
-  top: 40px;
+  top: 100%;
 }
+
+#header_menu_switch:checked ~ header .header_hb span:first-child{
+  top: 19px;
+  transform: rotate(45deg);
+  transition:top .3s, transform .3s .1s;
+}
+#header_menu_switch:checked ~ header .header_hb span:nth-child(2){
+  display: none;
+}
+#header_menu_switch:checked ~ header .header_hb span:last-child{
+  bottom: 19px;
+  transform: rotate(-45deg);
+  transition:bottom .3s, transform .3s .1s;
+}
+
+// -----------------------------------------------
 
 header{
   width: 100%;
-  background-image: url(../../images/nav_cloud.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: bottom;
-  // background-color: orange;
+  background-color: white;
   position: relative;
 
   .header_wrap{
-    width: 90%;
+    width: $wrapRwd;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 20px;
     box-sizing: border-box;
+    @include lg(){
+      width: $navRwd;
+    }
+    
 
     .header_main_nav{
       position: absolute;
-      background-color: cornflowerblue;
-      top: -150px;
+      background-color: map-get($color , bgc_y );
+      top: -2000px;
       left: 0;
       width: 100%;
       box-sizing: border-box;
       transition: top .6s;
       z-index: -1;
-      // height: 100px;
+      padding: 80px 0 30px 0;
+      height: 100vh;
+      @include lg(){
+        position: relative;
+        top: 0;
+        height: 0;
+        padding: 0;
+        z-index: 0;
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      ul{
+        @include lg(){
+          display: flex;
+          justify-content: space-evenly;
+          flex-grow: 1;
+        }
+      }
+      // 代幣區
+      .header_money{
+        width: 100px;
+        margin: auto;
+        padding: 5px 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 1px solid black;
+        border-radius: 30px;
+        background-color: #fff;
+        @include lg(){
+          order: 1;
+          margin: 0;
+        }
 
+        .header_coin{
+          img{
+            width: 20px;
+          }
+        }
+      }
+      // nav裡的連結
       a{
         display: block;
+        text-align: center;
         text-decoration: none;
-        padding: 10px 30px;
-        color: white;
+        padding: 30px 0;
+        color: #F37420;
+        font-size: 1.25rem;
+        font-family: $fontCh;
+        font-weight: 500;
+        @include lg(){
+          padding: 0;
+          color: black;
+          transition: .3s;
+          &:hover{
+            color: map-get($color , primary );
+          }
+        }
       }
     }
+    // 漢堡
     .header_hb{
       width: 40px;
       height: 40px;
-      background-color: chartreuse;
       position: relative;
+      @include lg(){
+        display: none;
+      }
 
       span{
         position: absolute;
@@ -53,7 +129,7 @@ header{
         right: 0;
         width: 32px;
         height: 2px;
-        background-color: blue;
+        background-color: map-get($color , backstage_h );
         margin: auto;
       }
       span:first-child{
@@ -70,18 +146,36 @@ header{
 
     .header_logo{
       width: 30%;
+      @include lg(){
+        width: 20%;
+      }
   
       img{
         width: 100%;
       }
     }
-    .header_login_money{
-      display: flex;
-
-      .header_money{
-        display: flex;
+    // 登入
+    .header_login_box{
+      @include lg(){
+        padding-left: 30px;
+      }
+      .header_login{
+        width: 100%;
+        svg{
+          width: 30px;
+          height: 30px;
+          color: black;
+        }
       }
     }
+  }
+}
+// 雲朵
+.header_nav_cloud{
+  width: 100%;
+  img{
+    vertical-align: top;
+    width: 100%;
   }
 }
 
