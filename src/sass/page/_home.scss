@@ -1,0 +1,53 @@
+body {
+  background-color: #a2ebe8;
+  box-sizing: border-box;
+}
+
+.first_island {
+  width: 100%;
+  margin: 50px 0;
+}
+
+.first_island_pic {
+  width: 100%;
+  text-align: center;
+}
+
+.cloud_1_pic {
+  width: 100%;
+}
+
+.cloud_1_pic img {
+  position: absolute;
+  width: 30%;
+  left: -10%;
+}
+
+.cloud_2_pic {
+  width: 100%;
+}
+
+.cloud_2_pic img {
+  width: 20%;
+  position: absolute;
+  right: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .first_island_pic {
+    height: 500px;
+  }
+
+  .first_island_pic img {
+    height: 100%;
+  }
+
+  .cloud_1_pic img {
+    left: 10%;
+  }
+
+  .cloud_2_pic img {
+    bottom: 35%;
+    right: 8%;
+  }
+}
