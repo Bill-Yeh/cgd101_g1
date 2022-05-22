@@ -1,0 +1,131 @@
+
+.wapper{
+    width: auto;
+    height:100vh ; 
+    .content{
+        position: relative;
+        max-width: 1200px;
+        height: 100%;
+        margin: auto;
+    }
+}
+
+
+
+.wall{
+    width: auto;
+    height: 35%; 
+    @include bg('map_mem_30.jpg',bottom);
+    .map{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(150px,'',45px,70px,'');
+        @include md{
+            @include mem_item(150px,'',300px,70px,'')
+        }
+        @include lg{
+            @include mem_item(150px,'',400px,70px,'')
+        }
+    }
+    .closet{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(210px,'','',-50px,15px);
+    }
+    .clock{
+        @include m{display: none;}
+        @include md{
+            @include mem_item(80px,'','',100px,220px)
+        }
+    }
+    .flower{
+        @include m{display: none;};
+        @include md{
+            @include mem_item(150px,'',150px,-70px,'')
+        }
+    };
+    .window{
+        @include l{display: none;};
+        @include md{
+            @include mem_item(150px,'',150px,70px,'')
+        }
+    };
+
+}
+
+.floor{
+    width: auto;
+    height: 65%;
+    @include bg('map_mem_31.jpg',top);
+    .bed{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(180px,-30px,15px,'','');
+    };
+    .box1{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(120px,'','',0,30px);
+    };
+    .phone{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(100px,'',5px,5px,'');
+    };
+    .desk{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(200px,'',50px,120px,'');
+        @include lg{
+            @include mem_item(200px,'',200px,80px,'')
+        }
+    };
+    .mat{
+        cursor: pointer;
+        @include mem_item(300px,'','',100px,30px);
+        @include md{
+            @include mem_item(300px,'','',100px,150px)
+        }
+        @include lg{
+            @include mem_item(300px,'','',100px,250px)
+        }
+    };
+    
+    .chair{
+        @include m{display: none;};
+        @include md{
+            @include mem_item(100px,'',250px,150px,'')
+        }
+        @include lg{
+            @include mem_item(100px,'',400px,110px,'')
+        }
+    }
+    
+    .box2{display: none};
+
+}
+
+.message{
+    cursor: pointer;
+    color: #fff;
+
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    background-color:#F37420;
+    @include mem_item(150px,'',100px,10px,'');
+    
+}
