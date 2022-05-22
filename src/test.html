@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "升級測驗",
+        })
+
+    <script src="js/test.js"></script>
+</head>
+<body>
+    @@include('layout/header.html')
+
+    <main class="test_wrap">
+        <section class="test_section">
+            <div class="test_pic">
+                <img src="images/test_NPC1.png" id="test_50_pic" alt="五十音測驗">
+            </div>
+            <div class="test_section_content">
+                <input type="checkbox" id="test_50">
+                <div class="test_tab">
+                    <label class="test_tab_label" for="test_50">
+                        <h2>五十音測驗</h2>
+                    </label>
+                    <div class="test_tab_content">
+                        <div class="test_50">あ</div>
+                        <div class="test_50">い</div>
+                        <div class="test_50">う</div>
+                        <div class="test_50">え</div>
+                        <div class="test_50">お</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
