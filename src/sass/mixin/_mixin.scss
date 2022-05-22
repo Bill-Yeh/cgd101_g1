@@ -1,6 +1,7 @@
 // ================== 函式 ============================ 　
 @mixin btn() {
     font-size: 16px;
+    font-family: $fontCh;
     border-radius: 20px;
     background-color: #F9BB4D;
     color: white;
@@ -22,6 +23,7 @@
 
 @mixin smallBtn() {
     font-size: 16px;
+    font-family: $fontCh;
     background-color: #F9BB4D;
     color: white;
     padding: 10px 30px;

@@ -1,3 +1,486 @@
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+[class*="col-"]{
+    padding-left: 15px; 
+    padding-right: 15px; 
+    box-sizing: border-box;
+    margin-bottom: 0;   //原本是30px
+}
+.col-1{ width: 8.333333%;}
+.col-2{ width: 16.666666%;}
+.col-3{ width: 25%;}
+.col-4{ width: 33.333333%;}
+.col-5{ width: 41.666666%;}
+.col-6{ width: 50%;}
+.col-7{ width: 58.333333%;}
+.col-8{ width: 66.666666%;}
+.col-9{ width: 75%;}
+.col-10{ width: 83.333333%;}
+.col-11{ width: 91.666666%;}
+.col-12{ width: 100%;}
+
+@media screen and (min-width:768px) {
+    .col-md-1{ width: 8.333333%;}
+    .col-md-2{ width: 16.666666%;}
+    .col-md-3{ width: 25%;}
+    .col-md-4{ width: 33.333333%;}
+    .col-md-5{ width: 41.666666%;}
+    .col-md-6{ width: 50%;}
+    .col-md-7{ width: 58.333333%;}
+    .col-md-8{ width: 66.666666%;}
+    .col-md-9{ width: 75%;}
+    .col-md-10{ width: 83.333333%;}
+    .col-md-11{ width: 91.666666%;}
+    .col-md-12{ width: 100%;}
+}
+
+@media screen and (min-width:992px) {
+    .col-lg-1{ width: 8.333333%;}
+    .col-lg-2{ width: 16.666666%;}
+    .col-lg-3{ width: 25%;}
+    .col-lg-4{ width: 33.333333%;}
+    .col-lg-5{ width: 41.666666%;}
+    .col-lg-6{ width: 50%;}
+    .col-lg-7{ width: 58.333333%;}
+    .col-lg-8{ width: 66.666666%;}
+    .col-lg-9{ width: 75%;}
+    .col-lg-10{ width: 83.333333%;}
+    .col-lg-11{ width: 91.666666%;}
+    .col-lg-12{ width: 100%;}
+}
+
+@media screen and (min-width:1200px) {
+    .col-xl-1{ width: 8.333333%;}
+    .col-xl-2{ width: 16.666666%;}
+    .col-xl-3{ width: 25%;}
+    .col-xl-4{ width: 33.333333%;}
+    .col-xl-5{ width: 41.666666%;}
+    .col-xl-6{ width: 50%;}
+    .col-xl-7{ width: 58.333333%;}
+    .col-xl-8{ width: 66.666666%;}
+    .col-xl-9{ width: 75%;}
+    .col-xl-10{ width: 83.333333%;}
+    .col-xl-11{ width: 91.666666%;}
+    .col-xl-12{ width: 100%;}
+}
+
+[class*="row-cols"] > .col{
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 30px;
+}
+.row-cols-1 > .col{ width: 100%; }
+.row-cols-2 > .col{ width: 50%; }
+.row-cols-3 > .col{ width: 33.333333%; }
+.row-cols-4 > .col{ width: 25%; }
+.row-cols-5 > .col{ width: 20%; }
+.row-cols-6 > .col{ width: 16.666666%; }
+@media screen and (min-width:768px) {
+    .row-cols-md-1 > .col{ width: 100%; }
+    .row-cols-md-2 > .col{ width: 50%; }
+    .row-cols-md-3 > .col{ width: 33.333333%; }
+    .row-cols-md-4 > .col{ width: 25%; }
+    .row-cols-md-5 > .col{ width: 20%; }
+    .row-cols-md-6 > .col{ width: 16.666666%; }
+}
+
+@media screen and (min-width:992px) {
+    .row-cols-lg-1 > .col{ width: 100%; }
+    .row-cols-lg-2 > .col{ width: 50%; }
+    .row-cols-lg-3 > .col{ width: 33.333333%; }
+    .row-cols-lg-4 > .col{ width: 25%; }
+    .row-cols-lg-5 > .col{ width: 20%; }
+    .row-cols-lg-6 > .col{ width: 16.666666%; }
+}
+@media screen and (min-width:1200px) {
+    .row-cols-xl-1 > .col{ width: 100%; }
+    .row-cols-xl-2 > .col{ width: 50%; }
+    .row-cols-xl-3 > .col{ width: 33.333333%; }
+    .row-cols-xl-4 > .col{ width: 25%; }
+    .row-cols-xl-5 > .col{ width: 20%; }
+    .row-cols-xl-6 > .col{ width: 16.666666%; }
+}
+
+
+
 body{
     background-color: map-get($color , bgc_y );
+}
+
+// section
+.faq{
+    h1{
+        text-align: center;
+        font-size: 28px;
+        font-family: $fontCh;
+        color: map-get($color , backstage_h );
+        margin-top: 20px;
+        @include md(){
+            font-size: map-get($fontSize , h1 );
+        }
+    }
+    .faq_wrap{
+        width: $wrapRwd;
+        @include md(){
+            position: relative;
+        }
+
+        // 課程選項
+        .faq_main_content{
+            margin: 20px auto;
+            @include md(){
+                flex-wrap: nowrap;
+                margin: 10% -15px 10% -15px;
+            }
+            .faq_course{
+                @include md(){
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 2%;
+                    justify-content: flex-start;
+                    background-color: #ffd895;
+                    border-radius: 30px;
+                    margin-right: 20px;
+                }
+                .faq_selection{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    margin: auto;
+                    @include md(){
+                        order: 1;
+                        flex-direction: column;
+                        margin: 0 auto;
+                    }
+                    .faq_jap{
+                        margin: 20px 20px;
+                        padding: 10px 20px;
+                        border-radius: 30px;
+                        background-color: map-get($color , primary );
+                        color: #fff;
+                        font-family: $fontCh;
+                        cursor: pointer;
+                        
+                        @include md(){
+                            margin: 50px 0;
+                            padding: 0;
+                            background-color: #ffd895;
+                            color: map-get($color , backstage_h );
+                            font-size: 1.2rem;
+                            transition: .3s;
+                            &:hover{
+                                color: #fff;
+                            }
+                        }
+                        @include xl(){
+                            font-size: 1.5rem;
+                        }
+                        
+                    }
+                }
+                // 篩選和我要發文
+                .faq_filter_section{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 30px 0;
+        
+                    // 文章熱度篩選
+                    .faq_filter{
+                        @include md(){
+                            position: absolute;
+                            top: -5%;
+                        }
+                        #faq_option{
+                            cursor: pointer;
+                            border: none;
+                            outline: none;
+                            background-color: map-get($color , bgc_y );
+                            color: map-get($color , backstage_h );
+                            font-size: 1rem;
+                            font-family: $fontCh;
+                        }
+                    }
+                    // 我要發文
+                    .faq_desktop_writing{
+                        @include md(){
+                            position: absolute;
+                            top: -6%;
+                            right: 3%;
+                        }
+                        button{
+                            @include btn;
+                            display: none;
+                            @include md(){
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+            // 文章list
+            .faq_article{
+                background-color: #fff;
+                border-radius: 30px;
+                @include md(){
+                    margin-top: 2%;
+                }
+                .faq_article_list{
+                    padding: 20px 10px;
+                    @include md(){
+                        padding: 20px 0;
+                    }
+                    // 會員
+                    .faq_mem{
+                        display: flex;
+                        justify-content: space-around;
+                        border-bottom: 1px solid #c4c4c4;
+                        padding: 10px 0;
+                        @include md(){
+                            align-items: center;
+                        }
+                        .faq_mem_npc{
+                            @include md(){
+                                width: 80px;
+                            }
+                            img{
+                                width: 100%;
+                            }
+                        }
+                        .faq_article_content{
+                            width: 70%;
+                            // margin-left: 20px;
+                            span,h3,p{
+                                line-height: 1.8;
+                                font-family: $fontCh;
+                                overflow:hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+                            h3{
+                                font-size: 1.2rem;
+                                font-weight: 500;
+                                cursor: pointer;
+                            }
+                            .faq_icon_function{
+                                display: flex;
+                                justify-content: space-between;
+                                // 按讚和留言
+                                .faq_heart_info{
+                                    display: flex;
+                                    align-items: center;
+                                    // 按讚
+                                    .faq_heart{
+                                        margin-right: 20px;
+                                        svg{
+                                            color: map-get($color , primary );
+                                            cursor: pointer;
+                                        }
+                                    }
+                                    // 留言
+                                    .faq_info{
+                                        svg{
+                                            width: 17px;
+                                            height: 17px;
+                                            color: map-get($color , primary );
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+                                // 檢舉
+                                .faq_report{
+                                    font-size: 0.8125rem;
+                                    color: map-get($color , primary );
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 我要發文RWD
+        .faq_rwd_writing{
+            position: fixed;
+            right: 5%;
+            bottom: 5%;
+            .faq_rwd_writing_icon{
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: map-get($color , primary );
+                border-radius: 50%;
+                cursor: pointer;
+                svg{
+                    width: 25px;
+                    height: 25px;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+
+// 檢舉燈箱
+
+// 燈箱外面的黑色區塊
+#faq_report{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.607);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    // 燈箱box
+    .faq_report_box{
+        width: 80%;
+        max-width: 500px;
+        padding: 30px;
+        background-color: map-get($color , bgc_y );
+        border-radius: 20px;
+
+        // 燈箱內容
+        .faq_report_content{
+            position: relative;
+            h3{
+                text-align: center;
+                font-size: map-get($fontSize , h3 );
+                font-family: $fontCh;
+                color: map-get($color , backstage_h );
+            }
+            // 關閉icon
+            .faq_report_close{
+                svg{
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    cursor: pointer;
+                }
+            }
+            // 檢舉項目
+            .faq_report_option{
+                margin-top: 30px;
+                font-family: $fontCh;
+                line-height: 3;
+                p{
+                    font-size: 1.2rem;
+                }
+                label{
+                    padding-left: 30px;
+                }
+            }
+            // 檢舉按鈕
+            .faq_report_btn{
+                margin-top: 20px;
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    @include smallBtn;
+                }
+            }
+        }
+    }
+}
+
+
+// 發文燈箱
+
+// 燈箱外面的黑色區塊
+#faq_post{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.607);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    // 燈箱box
+    .faq_post_box{
+        width: 80%;
+        max-width: 500px;
+        padding: 30px;
+        background-color: map-get($color , bgc_y );
+        border-radius: 20px;
+
+        // 燈箱內容
+        .faq_post_content{
+            position: relative;
+            h3{
+                text-align: center;
+                font-size: map-get($fontSize , h3 );
+                font-family: $fontCh;
+                color: map-get($color , backstage_h );
+            }
+
+            // 關閉icon
+            .faq_post_close{
+                svg{
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    cursor: pointer;
+                }
+            }
+
+            .faq_post_article{
+                margin-top: 30px;
+                font-family: $fontCh;
+
+                // 標題區塊
+                .faq_post_title,.faq_post_paragragh{
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 30px;
+
+                    label{
+                        font-size: 1.2rem;
+                        margin-bottom: 10px;
+                    }
+                    input,textarea{
+                        padding: 5px;
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            // 發文按鈕
+            .faq_post_btn{
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    @include smallBtn;
+                }
+            }
+        }
+    }
 }
