@@ -9,6 +9,319 @@
     <style>
         body {
             background-color: #A2EBE8;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* 首頁第一島 */
+        .home_first_island {
+            width: 100%;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .home_first_island_pic {
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .home_first_island_pic img {
+            width: 80%;
+        }
+
+        .home_first_npc1 {
+            position: absolute;
+        }
+
+
+        /* 首頁第一島的雲 */
+        .home_cloud_1_pic,
+        .home_cloud_2_pic,
+        .home_cloud_3_pic,
+        .home_cloud_4_pic,
+        .home_cloud_5_pic,
+        .home_first_npc1 {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .home_cloud_1_pic img,
+        .home_cloud_2_pic img,
+        .home_cloud_3_pic img,
+        .home_cloud_4_pic img,
+        .home_cloud_5_pic img {
+            position: absolute;
+        }
+
+        .home_cloud_1_pic img {
+            width: 30%;
+            top: 20%;
+        }
+
+        .home_cloud_2_pic img {
+            width: 20%;
+            right: 0;
+            top: 5%;
+        }
+
+        .home_cloud_3_pic img {
+            width: 20%;
+            right: 5%;
+            top: 10%;
+        }
+
+        .home_cloud_4_pic img {
+            width: 30%;
+            bottom: 50%;
+            right: 10%;
+        }
+
+        .home_cloud_5_pic img {
+            width: 30%;
+            bottom: 50%;
+            right: 10%;
+        }
+
+        /* 首頁各島介紹框 */
+        .home_first_info,
+        .home_lesson_info,
+        .home_topic_info {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+        }
+
+        /* 首頁各島介紹內容 */
+        .home_first_info_text,
+        .home_lesson_info_text,
+        .home_topic_info_text {
+            position: relative;
+            display: flex;
+            width: 300px;
+            height: 50px;
+            padding: 20px;
+            background-color: #FAE6B8;
+            border: 5px solid #F9BB4D;
+            border-radius: 5px;
+            align-items: center;
+        }
+
+
+        /* 首頁各島介紹NPC-右 */
+        .home_first_info_pic img,
+        .home_topic_info_pic img {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            right: 2%;
+            bottom: 20%;
+        }
+
+
+
+        /* 船 */
+        .home_boat_pic {
+            display: flex;
+            justify-content: center;
+        }
+
+        .home_boat_pic img {
+            display: none;
+        }
+
+        /* 首頁學習地圖 */
+        .home_lesson_island {
+            width: 100%;
+            margin: 200px 0;
+        }
+
+        .home_lesson_island img {
+            width: 300px;
+            height: 200px;
+        }
+
+        /* 首頁島與水中裝飾的間隔 */
+        .home_lesson_island_pic,
+        .home_topic_island_pic {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+
+        .home_lesson_info_pic img {
+            width: 70px;
+            height: 70px;
+        }
+
+        /* 手機版水中裝飾none */
+        .lesson_inwater img,
+        .topic_inwater img {
+            display: none;
+        }
+
+
+        /* 學習地圖的雲 */
+        .lesson_cloud_1 img {
+            position: absolute;
+            width: 30%;
+            right: 5%;
+        }
+
+        .lesson_cloud_2 img {
+            position: absolute;
+            width: 30%;
+            right: 10%;
+            bottom: 10%;
+        }
+
+        .home_lesson_road_sign {
+            position: absolute;
+            bottom: 80%;
+            right: 0;
+        }
+
+        /* 測驗島 */
+        .home_topic_island {}
+
+        .home_topic_island img {
+            width: 80%;
+        }
+
+        /* @keyframes move_cloud {
+            from {
+                transform: translateX(-500%);
+            }
+
+            to {
+                transform: translateX(500%);
+            }
+        } */
+
+
+        /* 平板以上 */
+        @media screen and (min-width:992px) {
+
+            /* 第一島 */
+            .home_first_island_pic {
+                height: 650px;
+            }
+
+            .home_first_island_pic img {
+                width: 60%;
+                height: 100%;
+            }
+
+            /* 第一島雲 */
+            .home_cloud_1_pic img {
+                width: 30%;
+                left: 8%;
+                top: 5%;
+            }
+
+            .home_cloud_2_pic img {
+                width: 20%;
+                right: 10%;
+                top: 20%;
+            }
+
+            .home_cloud_3_pic img {
+                top: 50%;
+                left: -10%;
+            }
+
+            .home_cloud_4_pic img {
+                width: 30%;
+                right: -15%;
+                top: 5%;
+            }
+
+            .home_cloud_5_pic img {
+                width: 30%;
+                right: -15%;
+                top: 50%;
+            }
+
+            /* 首頁介紹框 */
+            .home_first_info_text,
+            .home_lesson_info_text,
+            .home_topic_info_text {
+                font-size: 20px;
+                width: 400px;
+                height: 80px;
+            }
+
+            /* 首頁介紹內容 */
+            .home_first_info,
+            .home_topic_info {
+                width: 50%;
+                transform: translateX(90%);
+            }
+
+            /* 首頁介紹NPC-右 */
+            .home_first_info_pic img,
+            .home_topic_info_pic img {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                right: 3%;
+            }
+
+            .home_topic_info_pic img {
+                bottom: 5%;
+            }
+
+            /* 船 */
+            .home_boat_pic img {
+                width: 100px;
+                height: 100px;
+                display: block;
+            }
+
+            /* 首頁各個島的大小 */
+            .home_lesson_island img,
+            .home_topic_island_pic img {
+                width: 500px;
+                height: 350px;
+            }
+
+            /* 首頁學習地圖內容靠左 */
+            .home_lesson_info {
+                width: 40%;
+                text-align: left;
+            }
+
+            /* 首頁學習地圖介紹框NPC大小 */
+            .home_lesson_info_pic img {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* 首頁水中裝飾 */
+            .lesson_inwater img,
+            .topic_inwater img {
+                display: block;
+                width: 250px;
+                height: 250px;
+            }
+
+
+
+            /* 學習地圖的雲 */
+            .lesson_cloud_1 img {
+                position: absolute;
+                width: 30%;
+                right: 5%;
+            }
+
+            .lesson_cloud_2 img {
+                position: absolute;
+                width: 20%;
+                right: 20%;
+                bottom: -70%;
+            }
         }
     </style>
 </head>
@@ -18,9 +331,112 @@
     @@include('layout/header.html')
     <!-- header end -->
 
-    <div class="first_island">
-        <div class="first_island_pic">
-            <img src="../src/images/index_first_island1.png" alt="">
+    <!-- 首頁第一島 -->
+    <div class="home_first_island">
+
+        <!-- 島 -->
+        <div class="home_first_island_pic">
+            <img src="./images/home_first_island.png" alt="">
+        </div>
+
+        <!-- 雲 -->
+        <div class="home_cloud_1_pic">
+            <img src="./images/cloud_1.png">
+        </div>
+
+        <div class="home_cloud_2_pic">
+            <img src="./images/cloud_transparent_2.png">
+        </div>
+
+        <div class="home_cloud_3_pic">
+            <img src="./images/cloud_2.png" alt="">
+        </div>
+
+        <div class="home_cloud_4_pic">
+            <img src="./images/cloud_3.png" alt="">
+        </div>
+
+        <div class="home_cloud_5_pic">
+            <img src="./images/cloud_5.png" alt="">
+        </div>
+
+        <!-- 第一島介紹 -->
+        <div class="home_first_info">
+            <div class="home_first_info_text">
+                歡迎來到語實巨進,<br>
+                讓我們在這個世界一起學習日文吧
+                <div class="home_first_info_pic">
+                    <img src="./images/home_info_npc.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 船 -->
+    <div class="home_boat_pic">
+        <img src="./images/home_boat.png" alt="">
+    </div>
+
+    <!-- 雲 -->
+    <div class="lesson_cloud">
+        <div class="lesson_cloud_1">
+            <img src="./images/cloud_5.png" alt="">
+        </div>
+        <div class="lesson_cloud_2">
+            <img src="./images/cloud_transparent_2.png" alt="">
+        </div>
+    </div>
+
+    <!-- 第二島--學習地圖 -->
+    <div class="home_lesson_island">
+        <!-- 學習島 -->
+        <div class="home_lesson_island_pic">
+            <div class="home_lesson_island_pic">
+                <img src="./images/home_lesson_island.png" alt="">
+            </div>
+
+            <!-- 學習島水中裝飾 -->
+            <div class="lesson_inwater">
+                <img src="./images/home_island_inwater_5.png" alt="">
+            </div>
+        </div>
+
+        <!-- 學習地圖島介紹 -->
+        <div class="home_lesson_info">
+            <div class="home_lesson_info_text">
+                <div class="home_lesson_info_pic">
+                    <img src="./images/home_info_npc2.png" alt="">
+                    <!-- 學習地圖路標 -->
+                    <div class="home_lesson_road_sign">
+                        <img src="./images/home_lesson_road_sign.png" alt="">
+                    </div>
+                </div>
+                在地圖上和不同的人進行對話，<br>學習日文的基本文法與單字。
+            </div>
+        </div>
+    </div>
+
+    <!-- 第三島--升級測驗 -->
+    <div class="home_topic_island">
+        <div class="home_topic_island_pic">
+            <!-- 測驗島水中裝飾 -->
+            <div class="topic_inwater">
+                <img src="./images/home_island_inwater_4.png" alt="">
+            </div>
+            <div class="home_topic_island_pic">
+                <img src="./images/home_topic_island.png" alt="">
+            </div>
+        </div>
+
+        <!-- 測驗島介紹 -->
+        <div class="home_topic_info">
+            <div class="home_topic_info_text">
+                透過升級測驗，測試自己的實力！
+                <div class="home_topic_info_pic">
+                    <img src="./images/home_info_npc.png" alt="">
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
