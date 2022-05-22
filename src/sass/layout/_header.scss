@@ -6,7 +6,9 @@
   }
 }
 #header_menu_switch:checked ~ header .header_main_nav{
-  top: 100%;
+  top: 70px;
+  opacity: 1;
+  transition: opacity .5s;
 }
 
 #header_menu_switch:checked ~ header .header_hb span:first-child{
@@ -46,12 +48,13 @@ header{
     .header_main_nav{
       position: absolute;
       background-color: map-get($color , bgc_y );
-      top: -2000px;
+      top: -1000px;
       left: 0;
       width: 100%;
       box-sizing: border-box;
-      transition: top .6s;
-      z-index: -1;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity .5s, top 0s .5s;
       padding: 80px 0 30px 0;
       height: 100vh;
       @include lg(){
@@ -59,7 +62,7 @@ header{
         top: 0;
         height: 0;
         padding: 0;
-        z-index: 0;
+        opacity: 1;
         background-color: white;
         display: flex;
         justify-content: space-around;
@@ -173,9 +176,11 @@ header{
 // 雲朵
 .header_nav_cloud{
   width: 100%;
+  z-index: 5;
   img{
     vertical-align: top;
     width: 100%;
+    z-index: 5;
   }
 }
 
