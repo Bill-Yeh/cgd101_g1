@@ -121,9 +121,12 @@ body{
 
 // section
 .faq{
-    margin-top: 40%;
+    margin-top: 25%;
     @include md(){
-        margin-top: 20%;
+        margin-top: 15%;
+    }
+    @include xl(){
+        margin-top: 10%;
     }
     h1{
         text-align: center;
@@ -277,6 +280,10 @@ body{
                                 font-size: 1.2rem;
                                 font-weight: 500;
                                 cursor: pointer;
+                                transition: .3s;
+                                &:hover{
+                                    color: map-get($color , primary );
+                                }
                             }
                             .faq_icon_function{
                                 display: flex;
@@ -320,6 +327,9 @@ body{
             position: fixed;
             right: 5%;
             bottom: 5%;
+            @include md(){
+                display: none;
+            }
             .faq_rwd_writing_icon{
                 width: 50px;
                 height: 50px;
@@ -483,6 +493,163 @@ body{
                 justify-content: flex-end;
                 button{
                     @include smallBtn;
+                }
+            }
+        }
+    }
+}
+
+
+// 學員留言介面
+// 燈箱外面的黑色區塊
+#faq_message{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.607);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    // box frame
+    .faq_message_frame{
+        width: 100%;
+        height: 100%;
+        background-color: #FAE6B8;
+        position: relative;
+        overflow-y: auto;
+
+        @include xl(){
+            width: 80%;
+        }
+
+        // 燈箱box
+        .faq_message_box{
+            padding: 30px;
+            background-color: #fff;
+    
+            // 文章區
+            .faq_message_content{
+                position: relative;
+    
+                // 關閉icon
+                .faq_message_close{
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        cursor: pointer;
+                    }
+                }
+
+                .faq_message_article{
+                    .faq_student{
+                        display: flex;
+                        align-items: center;
+
+                        .faq_npc{
+                            padding-right: 20px;
+                            img{
+                                width: 100%;
+                            }
+                        }
+
+                        // 名子和時間
+                        .name_time{
+                            display: flex;
+                            flex-direction: column;
+                            span:last-child{
+                                line-height: 1.5;
+                                color: #c4c4c4;
+                            }
+                        }
+                    }
+                    // 文章標題和段落
+                    .faq_message_title_paragragh{
+                        font-family: $fontCh;
+                        line-height: 1.5;
+                        h3{
+                            font-size: 1.5rem;
+                        }
+                    }
+                    // 愛心
+                    .faq_article_heart{
+                        display: flex;
+                        justify-content: flex-end;
+                        cursor: pointer;
+                        svg{
+                            width: 20px;
+                            height: 20px;
+                            color: map-get($color , primary );
+                        }
+                    }
+                }
+            }
+        }
+
+        .faq_student_message{
+            padding: 30px;
+
+            // 學員留言
+            .student{
+                display: flex;
+                padding: 10px 0;
+                border-bottom: 1px solid rgb(174, 174, 174);
+
+                .faq_student_text{
+                    padding-left: 20px;
+                    font-family: $fontCh;
+                    line-height: 2;
+
+                    .post_date,.student_code,.post_time{
+                        font-size: 12px;
+                        color: #737373;
+                    }
+                }
+            }
+        }
+
+        // user留言欄位
+        .faq_user_input{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+
+            .user_npc{
+                margin-left: 10px;
+            }
+
+            form{
+                flex-grow: 1;
+                margin-left: 10px;
+                #user_message{
+                    border: none;
+                    outline: none;
+                    width: 90%;
+                }
+            }
+            // 送出btn
+            .user_message_submit{
+                margin-right: 10px;
+                .message_submit_btn{
+                    border: none;
+                    outline: none;
+                    background-color: #fff;
+                    cursor: pointer;
+                    svg{
+                        width: 25px;
+                        height: 25px;
+                        color: map-get($color , primary );
+                    }
                 }
             }
         }
