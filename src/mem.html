@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html',{"title" : "會員專區"})
+    
 </head>
 <body>
     @@include('layout/header.html')
     <!-- @@include('layout/login.html') -->
-    
+    <div class="black">
+        <div class="xl_lightBox"></div>
+        <div class="lg_lightBox"></div>
+        <div class="md_lightBox"></div>
+    </div>
 
     
     <div class="wapper">
@@ -23,34 +28,16 @@
         </div>
     </div>
 
-    <div class="black">
-        <div class="bigBox"></div>
-    </div>
+    
 
     @@include('layout/footer.html')
 
 
 
 
-    <script>
-        new Vue({
-            el:'.wall',
-            data:{
-                img: ['map','closet','clock','flower','window']
-            },
-        },
-        )
-        new Vue({
-            el:'.floor',
-            data:{
-                img: ['bed','box1','phone','mat','desk','chair','box2'] 
-            },
-           
-        })
-
-    </script>
     
     
+    <script src="js/mem.js"></script>
 
 
 </body>
