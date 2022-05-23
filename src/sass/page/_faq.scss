@@ -121,6 +121,10 @@ body{
 
 // section
 .faq{
+    margin-top: 40%;
+    @include md(){
+        margin-top: 20%;
+    }
     h1{
         text-align: center;
         font-size: 28px;
