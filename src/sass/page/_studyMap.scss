@@ -1,3 +1,196 @@
+section{
+    width: 100%;
+    background-color: #fa0;
+}
 .studyMap_map{
-    background-image: url(../../images/studyMap_50village.jpg);
+    width: 100%; 
+    height:1200px;
+    background-image: url("../../images/studyMap_50village.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.studyMap_map:first-child{
+    width: 100%;
+}
+.studyMap_npc_a{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: scale(1.7);
+    animation-name: npc_a;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    cursor: pointer;
+}
+.studyMap_npc_i{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: scale(1.7);
+    animation-name: npc_i;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    cursor: pointer;
+}
+.studyMap_npc_u{
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: scale(1.7);
+    animation-name: npc_u;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    cursor: pointer;
+}
+.studyMap_npc_e{
+    position: absolute;
+    top: 50%;
+    right:35%;
+    transform: scale(1.7);
+    animation-name: npc_e;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    cursor: pointer;
+}
+.studyMap_npc_o{
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: scale(1.7);
+    animation-name: npc_o;
+    animation-duration: 10s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+    cursor: pointer;
+}
+.studyMap_main{
+    content: "";
+    font-size: 40px;
+    width: 500px;
+    height: 500px;
+    background-color: #FAE6B8;
+    border: 10px solid #F9BB4D;
+    border-radius: 20px;
+    padding: 30px;
+    position: absolute;
+    bottom: 30%;
+    left: 36%;
+    box-sizing: border-box;
+    z-index: 51;
+    display: none;
+}
+.studyMap_main img{
+    margin: 45% 45%;
+    transform: scale(3);
+}
+.studyMap_con{
+    content: "";
+    font-size: 40px;
+    width: 90%;
+    height: 150px;
+    background-color: #FAE6B8;
+    border: 10px solid #F9BB4D;
+    border-radius: 20px;
+    padding: 30px;
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    // display: flex;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 51; 
+}
+.studyMap_con{
+    content: "";
+    font-size: 40px;
+    width: 90%;
+    height: 150px;
+    background-color: #FAE6B8;
+    border: 10px solid #F9BB4D;
+    border-radius: 30px;
+    padding: 30px;
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    // display: flex;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 51;
+    
+}
+.studyMap_con p{
+    font-size: 40px;
+}
+.studyMap_con img{
+    transform: scale(2);
+    padding-right: 50px;
+}
+.sound{
+    cursor: pointer;
+}
+.studyMap_fliter{
+    content: "";
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    display: none;
+}
+@keyframes npc_a{
+      0%{ left: 20%; top: 50%;}
+     25%{ left: 15%; top: 60%;}
+     50%{ left: 10%; top: 40%;}
+     75%{ left: 15%; top: 50%;}
+    100%{ left: 20%; top: 50%;}
+}
+@keyframes npc_i{
+      0%{ left: 40%; top: 50%;}
+     25%{ left: 35%; top: 55%;}
+     50%{ left: 45%; top: 48%;}
+     75%{ left: 30%; top: 40%;}
+    100%{ left: 40%; top: 50%;}
+}
+@keyframes npc_u{
+      0%{ left: 47%; top: 50%;}
+     25%{ left: 80%; top: 60%;}
+     50%{ left: 30%; top: 40%;}
+     75%{ left: 60%; top: 50%;}
+    100%{ left: 48%; top: 50%;}
+}
+@keyframes npc_e{
+      0%{ right: 40%; top: 50%;}
+     25%{ right: 15%; top: 60%;}
+     50%{ right: 10%; top: 40%;}
+     75%{ right: 15%; top: 50%;}
+    100%{ right: 40%; top: 50%;}
+}
+@keyframes npc_o{
+      0%{ right: 20%; top: 50%;}
+     25%{ right: 10%; top: 40%;}
+     50%{ right: 19%; top: 70%;}
+     75%{ right: 25%; top: 60%;}
+    100%{ right: 20%; top: 50%;}
 }

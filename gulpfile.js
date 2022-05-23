@@ -27,6 +27,11 @@ function moveImg() {
   return src('src/images/*.*').pipe(dest('dist/images'))
 }
 
+//sound move
+function moveSound() {
+  return src('src/sound/*.*').pipe(dest('dist/sound'))
+}
+exports.sound =  moveSound;
 
 
 const sass = require('gulp-sass')(require('sass'));
@@ -47,6 +52,7 @@ function watchfile() {
   watch(['src/*.html' , 'src/**/*.html'], includeHTML)    // 監看html
   watch('js/*.js' , moveJs)  // 監看js
   watch(['src/images/*.*', 'src/images/**/*.*'] , moveImg)  // 監看img
+  watch('sound/*.*' , moveSound)  // 監看mp3檔
   watch(['./src/sass/*.scss' ,'./src/sass/**/*.scss'], styleSass) // 監看sass
 }
 
@@ -66,16 +72,17 @@ function browser(done) {
     watch(['src/*.html' , 'src/**/*.html'], includeHTML).on('change' , reload)    // 監看html
     watch('src/js/*.js' , moveJs).on('change' , reload)  // 監看js
     watch(['src/images/*.*', 'src/images/**/*.*'], moveImg).on('change' , reload)  // 監看 img
+    watch('src/sound/*.*' , moveSound).on('change' , reload)  // 監看sound
     watch(['./src/sass/*.scss' ,'./src/sass/**/*.scss'], styleSass).on('change' , reload) // 監看sass
     done();
 }
 
 
 // 監看
-exports.w =  series(parallel(moveJs,moveImg,includeHTML,styleSass), watchfile)  
+exports.w =  series(parallel(moveJs,moveImg,includeHTML,styleSass,moveSound), watchfile)  
 
 //瀏覽器同步
-exports.default =  series(parallel(moveJs,includeHTML,styleSass,moveImg), browser)  
+exports.default =  series(parallel(moveJs,includeHTML,styleSass,moveImg,moveSound), browser)  
 
 
 

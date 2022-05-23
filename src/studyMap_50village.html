@@ -5,146 +5,280 @@
         "title" : "50音新手村"
     })
     <link rel="stylesheet" href="./css/style.css">
-    <style>
-        section{
-            width: 100%;
-        }
-        .studyMap_map{
-            width: 100%; 
-            height:1000px;
-            background-image: url("./images/studyMap_50village.jpg");
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .studyMap_map:first-child{
-            width: 100%;
-        }
-        .studyMap_npc_a{
-            position: absolute;
-            top: 50%;
-            left: 20%;
-            transform: scale(1.7);
-            animation-name: npc_a;
-            animation-duration: 10s;
-            animation-delay: 0s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: reverse;
-            cursor: pointer;
-        }
-        .studyMap_npc_i{
-            position: absolute;
-            top: 50%;
-            left: 35%;
-            transform: scale(1.7);
-            animation-name: npc_i;
-            animation-duration: 10s;
-            animation-delay: 0s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: reverse;
-            cursor: pointer;
-        }
-        .studyMap_npc_u{
-            position: absolute;
-            top: 50%;
-            left: 48%;
-            transform: scale(1.7);
-            animation-name: npc_u;
-            animation-duration: 10s;
-            animation-delay: 0s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: reverse;
-            cursor: pointer;
-        }
-        .studyMap_npc_e{
-            position: absolute;
-            top: 50%;
-            right:35%;
-            transform: scale(1.7);
-            animation-name: npc_e;
-            animation-duration: 10s;
-            animation-delay: 0s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: reverse;
-            cursor: pointer;
-        }
-        .studyMap_npc_o{
-            position: absolute;
-            top: 50%;
-            right: 20%;
-            transform: scale(1.7);
-            animation-name: npc_o;
-            animation-duration: 10s;
-            animation-delay: 0s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: reverse;
-            cursor: pointer;
-        }
-        @keyframes npc_a{
-              0%{ left: 20%; top: 50%;}
-             25%{ left: 15%; top: 60%;}
-             50%{ left: 10%; top: 40%;}
-             75%{ left: 15%; top: 50%;}
-            100%{ left: 20%; top: 50%;}
-        }
-        @keyframes npc_i{
-              0%{ left: 40%; top: 50%;}
-             25%{ left: 35%; top: 55%;}
-             50%{ left: 45%; top: 48%;}
-             75%{ left: 30%; top: 40%;}
-            100%{ left: 40%; top: 50%;}
-        }
-        @keyframes npc_u{
-              0%{ left: 47%; top: 50%;}
-             25%{ left: 80%; top: 60%;}
-             50%{ left: 30%; top: 40%;}
-             75%{ left: 60%; top: 50%;}
-            100%{ left: 48%; top: 50%;}
-        }
-        @keyframes npc_e{
-              0%{ right: 40%; top: 50%;}
-             25%{ right: 15%; top: 60%;}
-             50%{ right: 10%; top: 40%;}
-             75%{ right: 15%; top: 50%;}
-            100%{ right: 40%; top: 50%;}
-        }
-        @keyframes npc_o{
-              0%{ right: 20%; top: 50%;}
-             25%{ right: 10%; top: 40%;}
-             50%{ right: 19%; top: 70%;}
-             75%{ right: 25%; top: 60%;}
-            100%{ right: 20%; top: 50%;}
-        }
-    </style>
 </head>
 <body>
     <!-- header -->
     @@include('layout/header.html')
     <!-- header end -->
-    <section>
+    <section>  
         <div class="studyMap_map">
-            <!-- <img src="./images/studyMap_50village.jpg"> -->
-            <div class="studyMap_npc_a">
+            <!-- 人物角色 -->
+            <div class="studyMap_npc_a" id="asan">
                 <img src="./images/studyMap_NPC_a.png">
             </div>
-            <div class="studyMap_npc_i">
+            <div class="studyMap_npc_i" id="isan">
                 <img src="./images/studyMap_NPC_i.png">
             </div>
-            <div class="studyMap_npc_u">
+            <div class="studyMap_npc_u" id="usan">
                 <img src="./images/studyMap_NPC_u.png">
             </div>
-            <div class="studyMap_npc_e">
+            <div class="studyMap_npc_e" id="esan">
                 <img src="./images/studyMap_NPC_e.png">
             </div>
-            <div class="studyMap_npc_o">
+            <div class="studyMap_npc_o" id="osan">
                 <img src="./images/studyMap_NPC_o.png">
-            </div>  
+            </div>
+            <!-- あ的圖像框 -->
+            <div class="studyMap_main" id="mapMain-A">
+                <img id="main_A" src="./images/studyMap_a.svg">
+            </div>
+            <!-- あ的對話框 -->
+            <div class="studyMap_con" id="mapConA">
+                <p id="cona">你好，我是あさん，今天一起來學習50音的母音，あ段
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con A" id="mapCon-A">
+                <p id="con_A">首先教學的是「あ」發音為「a」
+                </p>
+                <div class="sound A">
+                    <img id="soundA" src="./images/studyMap_NPC_a.png">
+                </div>
+                <img src="./images/studyMap_NPC_a.png"><audio src="./sound/a.mp3" controls></audio>
+            </div>
+            <div class="studyMap_con KA" id="mapCon-KA">
+                <p id="con_kA">再來是「か，發音為「ka」
+
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con SA" id="mapCon-SA">
+                <p id="con_SA">再來是「さ」，發音為「sa」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con TA" id="mapCon-TA">
+                <p id="con_TA">再來是「た」，發音為「ta」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con NA" id="mapCon-NA">
+                <p id="con_A">再來是「な」，發音為「na」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con HA" id="mapCon-HA">
+                <p id="con_HA">再來是「は」，發音為「ha」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con MA" id="mapCon-MA">
+                <p id="con_MA">再來是「ま」，發音為「ma」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con YA" id="mapCon-YA">
+                <p id="con_YA">再來是「や」，發音為「ya」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con RA" id="mapCon-RA">
+                <p id="con_RA">再來是「ら」，發音為「ra」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <div class="studyMap_con WA" id="mapCon-WA">
+                <p id="con_WA">再來是「わ」，發音為「wa」
+                </p>
+                <img src="./images/studyMap_NPC_a.png">
+            </div>
+            <!-- い的圖像框 -->
+            <div class="studyMap_main" id="mapMain-I">
+                <img id="main_I" src="./images/studyMap_a.svg">
+            </div>
+            <!-- い的對話框 -->
+            <div class="studyMap_con" id="mapConI">
+                <p id="coni">你好，我是いさん，今天一起來學習50音的母音，い段
+                </p>
+                <img src="./images/studyMap_NPC_i.png">
+            </div>
+            <!-- 背景暗掉 -->
+            <div class="studyMap_fliter" id="mapFliter"></div>
         </div>
+        <script>
+            // 點選角色
+            let startconA = document.getElementById
+            ('asan')
+            let startconI = document.getElementById
+            ('isan')
+            let startconU = document.getElementById
+            ('usan')
+            let startconE = document.getElementById
+            ('esan')
+            let startconO = document.getElementById
+            ('osan')
+            //第一個對話框
+            let concontenta = document.getElementById('mapConA')
+            let concontenti = document.getElementById('mapConI')
+            let concontentu = document.getElementById('mapConU')
+            let concontente = document.getElementById('mapConE')
+            let concontento = document.getElementById('mapConO')
+            //a段對話框
+            let concontentA = document.getElementById('mapCon-A')
+            let concontentKA = document.getElementById('mapCon-KA')
+            let concontentSA = document.getElementById('mapCon-SA')
+            let concontentTA = document.getElementById('mapCon-TA')
+            let concontentNA = document.getElementById('mapCon-NA')
+            let concontentHA = document.getElementById('mapCon-HA')
+            let concontentMA = document.getElementById('mapCon-MA')
+            let concontentYA = document.getElementById('mapCon-YA')
+            let concontentRA = document.getElementById('mapCon-RA')
+            let concontentWA = document.getElementById('mapCon-WA')
+            //i段對話框
+            let concontentI = document.getElementById('mapCon-I')
+            //a段聲音
+            let sounda = document.getElementById('soundA')
+            //
+            // let pcon = document.getElementById('con_A')
+            //a-o段的圖像
+            let mainconA = document.getElementById('main_A')
+            let mainconI = document.getElementById('main_I')
+            let mainconU = document.getElementById('main_U')
+            let mainconE = document.getElementById('main_E')
+            let mainconO = document.getElementById('main_O')
+            //a-o段的圖像外框
+            let conmainA = document.getElementById('mapMain-A')
+            let conmainI = document.getElementById('mapMain-I')
+            let conmainU = document.getElementById('mapMain-U')
+            let conmainE = document.getElementById('mapMain-E')
+            let conmainO = document.getElementById('mapMain-O')
+            //背景變暗
+            let mapfliter = document.getElementById('mapFliter')
+            //a段會話函式
+            function startConA(){
+                mapfliter.style.display="block";
+                concontenta.style.display="flex";
+            }
+            function next_A(){
+                conmainA.style.display="block";
+                concontenta.style.display="none";
+                concontentA.style.display="flex";
+                
+            }
+            function next_KA(){
+                concontentA.style.display="none";
+                concontentKA.style.display="flex";
+                mainconA.src="./images/studyMap_ka.svg";
+            }
+            function next_SA(){
+                concontentKA.style.display="none";
+                concontentSA.style.display="flex";
+                mainconA.src="./images/studyMap_sa.svg";
+            }
+            function next_TA(){
+                concontentSA.style.display="none";
+                concontentTA.style.display="flex";
+                mainconA.src="./images/studyMap_ta.svg";
+            }
+            function next_NA(){
+                concontentTA.style.display="none";
+                concontentNA.style.display="flex";
+                mainconA.src="./images/studyMap_na.svg";
+            }
+            function next_HA(){
+                concontentNA.style.display="none";
+                concontentHA.style.display="flex";
+                mainconA.src="./images/studyMap_ha.svg";
+            }
+            function next_MA(){
+                concontentHA.style.display="none";
+                concontentMA.style.display="flex";
+                mainconA.src="./images/studyMap_ma.svg";
+            }
+            function next_YA(){
+                concontentMA.style.display="none";
+                concontentYA.style.display="flex";
+                mainconA.src="./images/studyMap_ya.svg";
+            }
+            function next_RA(){
+                concontentYA.style.display="none";
+                concontentRA.style.display="flex";
+                mainconA.src="./images/studyMap_ra.svg";
+            }
+            function next_WA(){
+                concontentRA.style.display="none";
+                concontentWA.style.display="flex";
+                mainconA.src="./images/studyMap_wa.svg";
+            }
+            //i段對話框
+            function startConI(){
+                mapfliter.style.display="block";
+                concontenti.style.display="flex";
+            }
+            //結束對話框
+            function closeConA(){
+                concontentWA.style.display="none";
+                mapfliter.style.display="none";
+                conmainA.style.display="none";
+                mainconA.src="./images/studyMap_a.svg";
+            }
+            function closeConI(){
+                concontenti.style.display="none";
+                mapfliter.style.display="none";
+                conmainI.style.display="none";
+                mainconI.src="./images/studyMap_a.svg";
+            }
+            function closeConU(){
+                concontentWA.style.display="none";
+                mapfliter.style.display="none";
+                conmainA.style.display="none";
+                mainconA.src="./images/studyMap_a.svg";
+            }
+            function closeConE(){
+                concontentWA.style.display="none";
+                mapfliter.style.display="none";
+                conmainA.style.display="none";
+                mainconA.src="./images/studyMap_a.svg";
+            }
+            function closeConO(){
+                concontentWA.style.display="none";
+                mapfliter.style.display="none";
+                conmainA.style.display="none";
+                mainconA.src="./images/studyMap_a.svg";
+            }
+            function soundA(){
+                alert('aaaaa')
+            }
+            function init(){
+                //開啟對話框
+                startconA.onclick = startConA
+                startconI.onclick = startConI
+                // startconU.onclick = startConU
+                // startconE.onclick = startConE
+                // startconO.onclick = startConO
+                //a段會話
+                concontenta.onclick = next_A
+                concontentA.onclick = next_KA
+                concontentKA.onclick = next_SA
+                concontentSA.onclick = next_TA
+                concontentTA.onclick = next_NA
+                concontentNA.onclick = next_HA
+                concontentHA.onclick = next_MA
+                concontentMA.onclick = next_YA
+                concontentYA.onclick = next_RA
+                concontentRA.onclick = next_WA
+                //結束對話框
+                concontentWA.onclick = closeConA
+                concontenti.onclick = closeConI
+                concontentRU.onclick = closeConU
+                concontentRE.onclick = closeConE
+                concontentWO.onclick = closeConO
+                //聲音
+                sounda.onclick= soundA
+            }
+            window.addEventListener('load',init,false)
+        </script>
     </section>
 </body>
 </html>
+alert("hi")
