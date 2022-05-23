@@ -20,14 +20,244 @@
             position: relative;
         }
 
+        /* 首頁第一島npc */
+        .home_first_island_npc1,
+        .home_first_island_npc2,
+        .home_first_island_npc3,
+        .home_first_island_npc4 {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+
+        }
+
+        /* 首頁第一島npc1 */
+        .home_first_island_npc1 {
+            top: 20%;
+            left: 20%;
+        }
+
+        /* 首頁第一島npc2 */
+        .home_first_island_npc2 {
+            top: 30%;
+            right: 40%;
+        }
+
+        /* 首頁第一島npc3 */
+        .home_first_island_npc3 {
+            top: 35%;
+            right: 20%;
+        }
+
+        /* 首頁第一島npc4 */
+        .home_first_island_npc4 {
+            top: 55%;
+            left: 30%;
+        }
+
+        .home_first_island_npc1 img {
+            position: absolute;
+            animation: npcw_walk_right 4s linear .5s infinite;
+        }
+
+        .home_first_island_npc3 img {
+            position: absolute;
+            animation: npcw_walk_right 5s linear .5s infinite;
+        }
+
+        .home_first_island_npc2 img {
+            position: absolute;
+            animation: npc_walk_left 4s linear .5s infinite;
+        }
+
+        .home_first_island_npc4 img {
+            position: absolute;
+            animation: npc_walk_left 5s linear .4s infinite;
+        }
+
+        /* 首頁第一島npc走動-向右 */
+        @keyframes npcw_walk_right {
+            0% {
+                transform: translate3d(0%, 0%, 0) scaleX(1);
+            }
+
+            5% {
+                transform: translate3d(10%, 10%, 0) scaleX(1);
+            }
+
+            10% {
+                transform: translate3d(15%, 0%, 0) scaleX(1);
+            }
+
+            15% {
+                transform: translate3d(20%, 10%, 0) scaleX(1);
+            }
+
+            20% {
+                transform: translate3d(35%, 0%, 0) scaleX(1);
+            }
+
+            25% {
+                transform: translate3d(40%, 10%, 0) scaleX(1);
+            }
+
+            30% {
+                transform: translate3d(45%, 0%, 0) scaleX(1);
+            }
+
+            35% {
+                transform: translate3d(50%, 10%, 0) scaleX(1);
+            }
+
+            40% {
+                transform: translate3d(55%, 0%, 0) scaleX(1);
+            }
+
+            45% {
+                transform: translate3d(60%, 10%, 0) scaleX(1);
+            }
+
+            50% {
+                transform: translate3d(65%, 0%, 0) scaleX(1);
+            }
+
+            50.01% {
+                transform: translate3d(60%, 10%, 0) scaleX(-1);
+            }
+
+            60% {
+                transform: translate3d(55%, 0%, 0) scaleX(-1);
+            }
+
+            65% {
+                transform: translate3d(50%, 10%, 0) scaleX(-1);
+            }
+
+            70% {
+                transform: translate3d(45%, 0%, 0) scaleX(-1);
+            }
+
+            75% {
+                transform: translate3d(40%, 10%, 0) scaleX(-1);
+            }
+
+            80% {
+                transform: translate3d(35%, 0%, 0) scaleX(-1);
+            }
+
+            85% {
+                transform: translate3d(20%, 10%, 0) scaleX(-1);
+            }
+
+            90% {
+                transform: translate3d(15%, 0%, 0) scaleX(-1);
+            }
+
+            95% {
+                transform: translate3d(10%, 10%, 0) scaleX(-1);
+            }
+
+            100% {
+                transform: translate3d(0%, 0%, 0) scaleX(-1);
+            }
+        }
+
+        /* 首頁第一島npc走動-向左 */
+        @keyframes npc_walk_left {
+            0% {
+                transform: translate3d(0%, 0%, 0) scaleX(1);
+            }
+
+            5% {
+                transform: translate3d(-20%, 10%, 0) scaleX(1);
+            }
+
+            10% {
+                transform: translate3d(-40%, 0%, 0) scaleX(1);
+            }
+
+            15% {
+                transform: translate3d(-60%, 10%, 0) scaleX(1);
+            }
+
+            20% {
+                transform: translate3d(-80%, 0%, 0) scaleX(1);
+            }
+
+            25% {
+                transform: translate3d(-100%, 10%, 0) scaleX(1);
+            }
+
+            30% {
+                transform: translate3d(-120%, 0%, 0) scaleX(1);
+            }
+
+            35% {
+                transform: translate3d(-140%, 10%, 0) scaleX(1);
+            }
+
+            40% {
+                transform: translate3d(-160%, 0%, 0) scaleX(1);
+            }
+
+            45% {
+                transform: translate3d(-180%, 10%, 0) scaleX(1);
+            }
+
+            50% {
+                transform: translate3d(-200%, 0%, 0) scaleX(1);
+            }
+
+            50.01% {
+                transform: translate3d(-180%, 10%, 0) scaleX(-1);
+            }
+
+            60% {
+                transform: translate3d(-160%, 0%, 0) scaleX(-1);
+            }
+
+            65% {
+                transform: translate3d(-140%, 10%, 0) scaleX(-1);
+            }
+
+            70% {
+                transform: translate3d(-120%, 0%, 0) scaleX(-1);
+            }
+
+            75% {
+                transform: translate3d(-100%, 10%, 0) scaleX(-1);
+            }
+
+            80% {
+                transform: translate3d(-80%, 0%, 0) scaleX(-1);
+            }
+
+            85% {
+                transform: translate3d(-60%, 10%, 0) scaleX(-1);
+            }
+
+            90% {
+                transform: translate3d(-40%, 0%, 0) scaleX(-1);
+            }
+
+            95% {
+                transform: translate3d(-20%, 10%, 0) scaleX(-1);
+            }
+
+            100% {
+                transform: translate3d(0%, 0%, 0) scaleX(-1);
+            }
+        }
+
         .home_first_island_pic {
+            position: relative;
             width: 100%;
             text-align: center;
             z-index: 100;
         }
 
         .home_first_island_pic img {
-            width: 80%;
+            width: 100%;
         }
 
         .home_first_npc1 {
@@ -50,7 +280,9 @@
         .home_cloud_2_pic img,
         .home_cloud_3_pic img,
         .home_cloud_4_pic img,
-        .home_cloud_5_pic img {
+        .home_cloud_5_pic img,
+        .topic_cloud_1 img,
+        .topic_cloud_2 img {
             position: absolute;
         }
 
@@ -108,6 +340,14 @@
             align-items: center;
         }
 
+        /* 首頁各島介紹內容靠右 */
+        .home_topic_info {
+            display: flex;
+            justify-content: center;
+        }
+
+
+
 
         /* 首頁各島介紹NPC-右 */
         .home_first_info_pic img,
@@ -120,6 +360,13 @@
         }
 
 
+        /* 首頁各島與水中裝飾的間隔 */
+        .home_lesson_island_pic,
+        .home_topic_island_pic {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
 
         /* 船 */
         .home_boat_pic {
@@ -137,23 +384,46 @@
             margin: 200px 0;
         }
 
+
         .home_lesson_island img {
             width: 300px;
             height: 200px;
         }
 
-        /* 首頁島與水中裝飾的間隔 */
-        .home_lesson_island_pic,
-        .home_topic_island_pic {
+        .home_lesson_info_text {
             display: flex;
-            justify-content: space-between;
-            position: relative;
+            justify-content: flex-end;
         }
 
+        .home_lesson_info_pic {
+            position: absolute;
+            left: 2%;
+            bottom: 20%;
+        }
 
+        /* 學習島介紹內容NPC */
         .home_lesson_info_pic img {
             width: 70px;
             height: 70px;
+        }
+
+        /* 學習島NPC */
+        .lesson_island_npc1 img,
+        .lesson_island_npc2 img {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 30%;
+        }
+
+        /* 學習島NPC1的位子 */
+        .lesson_island_npc1 img {
+            left: 40%;
+        }
+
+        /* 學習島NPC2的位子 */
+        .lesson_island_npc2 img {
+            right: 20%;
         }
 
         /* 手機版水中裝飾none */
@@ -174,20 +444,67 @@
             position: absolute;
             width: 30%;
             right: 10%;
-            bottom: 10%;
+            bottom: 5%;
         }
 
-        .home_lesson_road_sign {
+
+        /* 學習地圖的路標 */
+        .home_lesson_road_sign img {
             position: absolute;
+            width: 80px;
+            height: 80px;
             bottom: 80%;
             right: 0;
         }
 
         /* 測驗島 */
-        .home_topic_island {}
+        /* 測驗島npc */
+        .home_topic_island_npc img {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 40%;
+            left: 25%;
+        }
 
-        .home_topic_island img {
-            width: 80%;
+        /* 測驗島雲 */
+        .topic_cloud {
+            position: relative;
+        }
+
+        .topic_cloud_1 img {
+            position: absolute;
+            width: 30%;
+            left: 5%;
+            bottom: 0;
+        }
+
+        .topic_cloud_2 img {
+            position: absolute;
+            width: 20%;
+            left: -10%;
+            top: 50%;
+        }
+
+        .topic_cloud_3 img {
+            position: absolute;
+            width: 20%;
+            left: 20%;
+            bottom: -10%;
+        }
+
+        .topic_cloud_4 img,
+        .topic_cloud_5 img {
+            display: none;
+        }
+
+        /* 測驗島的路標 */
+        .home_topic_road_sign img {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            bottom: 80%;
+            left: 0;
         }
 
         /* @keyframes move_cloud {
@@ -212,6 +529,33 @@
             .home_first_island_pic img {
                 width: 60%;
                 height: 100%;
+            }
+
+            /* 首頁第一島npc */
+            .home_first_island_npc1,
+            .home_first_island_npc2,
+            .home_first_island_npc3,
+            .home_first_island_npc4 {
+                width: 100px;
+                height: 70px;
+
+            }
+
+            /* 首頁第一島npc1 */
+            .home_first_island_npc1 {
+                top: 20%;
+                left: 35%;
+            }
+
+            /* 首頁第一島npc3 */
+
+            .home_first_island_npc3 {
+                left: 62%;
+            }
+
+            /* 首頁第一島npc4 */
+            .home_first_island_npc4 {
+                left: 40%;
             }
 
             /* 第一島雲 */
@@ -269,6 +613,9 @@
                 right: 3%;
             }
 
+
+
+
             .home_topic_info_pic img {
                 bottom: 5%;
             }
@@ -294,33 +641,91 @@
             }
 
             /* 首頁學習地圖介紹框NPC大小 */
+            .home_lesson_info_pic {
+                position: absolute;
+                left: 2%;
+                bottom: 5%;
+            }
+
             .home_lesson_info_pic img {
                 width: 100px;
                 height: 100px;
+
             }
 
             /* 首頁水中裝飾 */
-            .lesson_inwater img,
-            .topic_inwater img {
+            .lesson_inwater img {
                 display: block;
                 width: 250px;
                 height: 250px;
             }
 
-
+            .topic_inwater img {
+                display: block;
+                width: 200px;
+                height: 200px;
+                margin: 100px 0;
+            }
 
             /* 學習地圖的雲 */
             .lesson_cloud_1 img {
-                position: absolute;
                 width: 30%;
                 right: 5%;
             }
 
             .lesson_cloud_2 img {
-                position: absolute;
                 width: 20%;
                 right: 20%;
                 bottom: -70%;
+            }
+
+            /* 學習島NPC大小 */
+            .lesson_island_npc1 img,
+            .lesson_island_npc2 img {
+                width: 70px;
+                height: 70px;
+            }
+
+            /* 各島路標大小 */
+            .home_lesson_road_sign img,
+            .home_topic_road_sign img {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* 測驗地圖的雲 */
+            .home_topic_island_npc img {
+                width: 60px;
+                height: 60px;
+                top: 45%;
+            }
+
+            .home_topic_island_pic {
+                margin: 50px 0 0 0;
+            }
+
+            .topic_cloud_1 img {
+                width: 25%;
+                left: 0;
+                bottom: 0;
+            }
+
+            .topic_cloud_1 img {
+                left: 0;
+            }
+
+            .topic_cloud_4 img {
+                position: absolute;
+                display: block;
+                right: -5%;
+                bottom: 0;
+            }
+
+            .topic_cloud_5 img {
+                position: absolute;
+                display: block;
+                right: -8%;
+                top: 0;
             }
         }
     </style>
@@ -333,13 +738,25 @@
 
     <!-- 首頁第一島 -->
     <div class="home_first_island">
-
         <!-- 島 -->
         <div class="home_first_island_pic">
             <img src="./images/home_first_island.png" alt="">
+            <!-- 島的NPC -->
+            <div class="home_first_island_npc1">
+                <img src="./images/home_first_island_npc1.png" alt="">
+            </div>
+            <div class="home_first_island_npc2">
+                <img src="./images/test_NPC3.png" alt="">
+            </div>
+            <div class="home_first_island_npc3">
+                <img src="./images/home_first_island_npc3.png" alt="">
+            </div>
+            <div class="home_first_island_npc4">
+                <img src="./images/home_first_island_npc4.png" alt="">
+            </div>
         </div>
 
-        <!-- 雲 -->
+        <!-- 第一島的雲 -->
         <div class="home_cloud_1_pic">
             <img src="./images/cloud_1.png">
         </div>
@@ -377,7 +794,7 @@
         <img src="./images/home_boat.png" alt="">
     </div>
 
-    <!-- 雲 -->
+    <!-- 學習島的雲 -->
     <div class="lesson_cloud">
         <div class="lesson_cloud_1">
             <img src="./images/cloud_5.png" alt="">
@@ -392,6 +809,12 @@
         <!-- 學習島 -->
         <div class="home_lesson_island_pic">
             <div class="home_lesson_island_pic">
+                <div class="lesson_island_npc1">
+                    <img src="./images/home_lesson_island_npc1.png" alt="">
+                </div>
+                <div class="lesson_island_npc2">
+                    <img src="./images/test_NPC1.png" alt="">
+                </div>
                 <img src="./images/home_lesson_island.png" alt="">
             </div>
 
@@ -406,13 +829,32 @@
             <div class="home_lesson_info_text">
                 <div class="home_lesson_info_pic">
                     <img src="./images/home_info_npc2.png" alt="">
-                    <!-- 學習地圖路標 -->
-                    <div class="home_lesson_road_sign">
-                        <img src="./images/home_lesson_road_sign.png" alt="">
-                    </div>
+                </div>
+                <!-- 學習地圖路標 -->
+                <div class="home_lesson_road_sign">
+                    <img src="./images/home_lesson_road_sign.png" alt="">
                 </div>
                 在地圖上和不同的人進行對話，<br>學習日文的基本文法與單字。
             </div>
+        </div>
+    </div>
+
+    <!-- 測驗島的雲 -->
+    <div class="topic_cloud">
+        <div class="topic_cloud_1">
+            <img src="./images/cloud_1.png" alt="">
+        </div>
+        <div class="topic_cloud_2">
+            <img src="./images/cloud_transparent_1.png" alt="">
+        </div>
+        <div class="topic_cloud_3">
+            <img src="./images/cloud_transparent_2.png" alt="">
+        </div>
+        <div class="topic_cloud_4">
+            <img src="./images/cloud_3.png" alt="">
+        </div>
+        <div class="topic_cloud_5">
+            <img src="./images/cloud_transparent_2.png" alt="">
         </div>
     </div>
 
@@ -423,20 +865,29 @@
             <div class="topic_inwater">
                 <img src="./images/home_island_inwater_4.png" alt="">
             </div>
+
+            <!-- 測驗島 -->
             <div class="home_topic_island_pic">
+                <div class="home_topic_island_npc">
+                    <img src="./images/home_topic_island_npc.png" alt="">
+                </div>
                 <img src="./images/home_topic_island.png" alt="">
             </div>
         </div>
 
         <!-- 測驗島介紹 -->
         <div class="home_topic_info">
+
             <div class="home_topic_info_text">
-                透過升級測驗，測試自己的實力！
+                <div class="home_topic_road_sign">
+                    <img src="./images/home_topic_road_sign.png" alt="">
+                </div>
+                透過升級測驗，
+                測試自己的實力！
                 <div class="home_topic_info_pic">
                     <img src="./images/home_info_npc.png" alt="">
                 </div>
             </div>
-
         </div>
     </div>
 </body>
