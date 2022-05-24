@@ -1,0 +1,135 @@
+<div class="login_register_full" id="login_register">
+    <!-- 含登入註冊切換按鈕的容器 -->
+    <div class="login_register_container">
+        <!-- 登入註冊切換 -->
+        <div class="login_register_switch">
+            <!-- 登入切換 -->
+            <div class="login_register_login_option" id="loginSwitch">
+                <span>登入</span>
+            </div>
+            <!-- 註冊切換 -->
+            <div class="login_register_register_option" id="registerSwitch">
+                <span>註冊</span>
+            </div>
+        </div>
+        <!-- 登入註冊主要容器 -->
+        <div class="login_register_main_box">
+            <!-- 登入註冊主要內容 -->
+            <div class="login_register_main_content">
+                <!-- 關閉icon -->
+                <div class="login_register_close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="login_close">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                </div>
+                <!-- 登入內容 -->
+                <div class="login_form_content" id="login">
+                    <!-- 帳號密碼輸入區塊 -->
+                    <form action="" method="post">
+                        <div class="login_block">
+                            <label for="login_account">帳號</label>
+                            <input type="text" id="login_account">
+                        </div>
+                        <div class="password_block">
+                            <label for="login_password">密碼</label>
+                            <input type="text" id="login_password">
+                        </div>
+                    </form>
+                    <!-- 記住帳號和忘記密碼 -->
+                    <div class="remember_forget">
+                        <form action="" method="post">
+                            <input type="checkbox" name="" id="rem_password">
+                            <label for="rem_password">記住帳號</label>
+                        </form>
+                        <a href="#">忘記密碼?</a>
+                    </div>
+                    <div class="login_btn">
+                        <button type="submit" id="user_login">登入</button>
+                    </div>
+                </div>
+                <!-- 註冊內容 -->
+                <div class="register_form_content" id="register">
+                    <form action="" method="post">
+                        <div class="member_name">
+                            <label for="member_name_id">會員名稱</label>
+                            <input type="text" id="member_name_id">
+                        </div>
+                        <div class="member_account">
+                            <label for="member_account_id">會員帳號</label>
+                            <input type="text" id="member_account_id" placeholder="請輸入信箱">
+                        </div>
+                        <div class="member_password">
+                            <label for="member_password_id">會員密碼</label>
+                            <input type="text" name="" id="member_password_id" placeholder="請輸入8-12字元">
+                        </div>
+                        <div class="confirm_password">
+                            <label for="confirm_password_id">確認密碼</label>
+                            <input type="text" name="" id="confirm_password_id">
+                        </div>
+                        <div class="register_btn">
+                            <button type="submit" id="user_register">註冊</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+window.addEventListener('load', function(){
+    // header 會員專區icon
+    let member = document.getElementById('for_member_section');
+
+    // 登入/註冊燈箱
+    let loginRegister = document.getElementById('login_register');
+
+    // 關閉icon
+    let loginRegisterClose = document.getElementById('login_close');
+
+    // 登入欄位
+    let loginColumn = document.getElementById('login');
+
+    // 登入切換鍵
+    let loginSwitch = document.getElementById('loginSwitch');
+
+    // 註冊欄位
+    let registerColumn = document.getElementById('register');
+
+    // 註冊切換鍵
+    let registerSwitch = document.getElementById('registerSwitch');
+
+    // =====================================================
+
+    // 燈箱開
+    member.addEventListener('click',function(){
+        loginRegister.style.display = 'flex';
+    })
+
+    // 燈箱關
+    loginRegisterClose.addEventListener('click',function(){
+        loginRegister.style.display = 'none';
+
+    })
+
+    // 切換到註冊
+    registerSwitch.addEventListener('click',function(){
+        loginColumn.style.display = 'none';
+        loginSwitch.style.backgroundColor = '#F9BB4D';
+        registerColumn.style.display = 'block';
+        registerSwitch.style.backgroundColor = '#FAE6B8';
+    })
+
+    // 切換到登入
+    loginSwitch.addEventListener('click',function(){
+        registerColumn.style.display = 'none';
+        registerSwitch.style.backgroundColor = '#F9BB4D';
+        loginColumn.style.display = 'block';
+        loginSwitch.style.backgroundColor = '#FAE6B8';
+    })
+})
+
+
+</script>

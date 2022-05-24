@@ -618,14 +618,20 @@ body{
         // user留言欄位
         .faq_user_input{
             width: 100%;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             display: flex;
             align-items: center;
             background-color: #fff;
+            @include xl(){
+                width: 80%;
+            }
 
             .user_npc{
                 margin-left: 10px;
+                img{
+                    width: 80%;
+                }
             }
 
             form{
