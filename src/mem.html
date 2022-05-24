@@ -8,13 +8,14 @@
     @@include('layout/header.html')
     <!-- @@include('layout/login.html') -->
     <div class="black">
-        <div class="xl_lightBox"></div>
-        <div class="lg_lightBox"></div>
-        <div class="md_lightBox"></div>
+        <div id="lightBox">
+            <button class="back"><</button>
+        </div>
     </div>
 
     
     <div class="wapper">
+        <img id="me" src="./images/char_00.png" alt="char_00"></img>
         <div class="wall">
             <div class="content">
                 <img v-for="(data,key) in img" :src="`./images/map_mem_${img[key]}.png`" :alt="img[key]" :class="img[key]">
