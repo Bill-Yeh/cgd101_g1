@@ -1,5 +1,6 @@
 
 .wapper{
+    position: relative;
     overflow: hidden;
     width: auto;
     height:100vh ; 
@@ -8,6 +9,13 @@
         max-width: 1200px;
         height: 100%;
         margin: auto;
+    }
+    #me{
+        width: 150px;
+        z-index: 30;
+        position: absolute;
+        top:calc((100% - 150px)*0.5);
+        left: calc((100% - 150px)*0.5);
     }
 }
 
@@ -143,27 +151,42 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
+
+    #lightBox{
+        position: relative;
+    }
+    
     
     .xl_lightBox{ //學習紀錄 //學員換裝
-        display: none;
         @include lightboxSize($xl_lightbox_width,$xl_lightbox_height);
-        background-color: antiquewhite;
+        background-color: #FAE6B8
     };
 
     .lg_lightBox{
-        display: none;
         @include lightboxSize($lg_lightbox_width,$lg_lightbox_height);
-        background-color: rgb(136, 88, 26);
+        background-color: #FAE6B8
 
     }
 
     .md_lightBox{
-        display: none;
         @include lightboxSize($md_lightbox_width,$md_lightbox_height);
-        background-color: rgb(26, 75, 136);
+        background-color: #FAE6B8
 
     }
 
+    .back{
+        cursor: pointer;
+        text-align: center;
+        position: absolute;
+        left: -20px;
+        top:20px;
+        width: 70px;
+        font-size: 24px;
+        color: #fff;
+        border: #fff solid 3px;
+        border-radius: 5px;
+        background-color: #F9BB4D
+    }
 
 }
 

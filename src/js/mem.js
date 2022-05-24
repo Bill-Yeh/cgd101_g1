@@ -16,50 +16,72 @@ new Vue({
 
 
 
-function openXlLightBox(){
+// 確認開啟燈箱大小
+function openLightBox(){
     let black=document.querySelector(".black");
-    let xl=document.querySelector(".xl_lightBox");
     black.style.display='block';
-    xl.style.display='block';
+
+    let vw=window.innerWidth
+    let lightBox=document.querySelector("#lightBox").classList;
+    let target=String(this.className)
+    if(vw>1200){
+        if(target=="map"||target=="desk"){
+            lightBox.add("xl_lightBox")
+        }
+        else if(target=="closet"||target=="box1" ){
+            lightBox.add("lg_lightBox")
+        }
+        else if(target=="bed"){
+            lightBox.add("md_lightBox")
+        }
+    }
+    else if(vw>992){
+        if(target=="map"||target=="desk" ){
+            lightBox.add("xl_lightBox")
+        }
+        else if(target=="closet"||target=="box1"){
+            lightBox.add("lg_lightBox")
+        }
+        else if(target=="bed"){
+            lightBox.add("md_lightBox")
+        }
+    }
+    else if(vw>768){
+        if(target=="map"||target=="desk"){
+            lightBox.add("xl_lightBox")
+        }
+        else if(target=="bed"||target=="closet"||target=="box1"){
+            lightBox.add("lg_lightBox")
+        }
+    }
+    else{
+        lightBox.add("xl_lightBox")
+    }
 }
 
 
-function openLgLightBox(){
-    let black=document.querySelector(".black");
-    let lg=document.querySelector(".lg_lightBox");
-    black.style.display='block';
-    lg.style.display='block';
-}
-
-
-function openMdLightBox(){
-    let black=document.querySelector(".black");
-    let md=document.querySelector(".md_lightBox");
-    black.style.display='block';
-    md.style.display='block';
-}
-
-
+//關閉燈箱
 function cancelLightBox(){
     let black=document.querySelector(".black");
-    // let box=document.querySelector(".md_lightBox");
     black.style.display='none';
-    document.querySelector(".xl_lightBox").style.display='none';
-    document.querySelector(".lg_lightBox").style.display='none';
-    document.querySelector(".md_lightBox").style.display='none';
-    
+    let lightBox=document.querySelector("#lightBox");
+    lightBox.className="";
 }
 
 
 
-
-document.querySelector(".desk").addEventListener("click",openXlLightBox);
-document.querySelector(".map").addEventListener("click",openLgLightBox);
-document.querySelector(".bed").addEventListener("click",openMdLightBox);
-document.querySelector(".closet").addEventListener("click",openLgLightBox);
-document.querySelector(".box1").addEventListener("click",openMdLightBox);
-
 document.querySelector(".black").addEventListener("click",cancelLightBox);
-document.querySelector(".xl_lightBox").addEventListener("click", function(e){e.stopPropagation()});
-document.querySelector(".lg_lightBox").addEventListener("click", function(e){e.stopPropagation()});
-document.querySelector(".md_lightBox").addEventListener("click", function(e){e.stopPropagation()});
+document.querySelector(".back").addEventListener("click",cancelLightBox);
+document.querySelector("#lightBox").addEventListener("click", function(e){e.stopPropagation()});
+
+
+//設定可點選物件事件聆聽
+window.onload=function(){
+    let items=new Array(".desk",".map",".bed",".closet",".box1")
+    for(let i=0;i<items.length;i++){
+    document.querySelector(items[i]).addEventListener("click",openLightBox);
+    }
+}
+
+
+
