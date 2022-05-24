@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="faq_desktop_writing">
-                            <button>我要發文</button>
+                            <button id="faq_desktop_btn">我要發文</button>
                         </div>
                     </div>
                 </div>
@@ -268,94 +268,164 @@
 
     <!-- 學員留言介面 -->
     <section id="faq_message">
-        <div class="faq_message_box">
-            <div class="faq_message_content">
-                <div class="faq_message_close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                    </svg>
-                </div>
-                <div class="faq_message_article">
-                    <div class="faq_student">
-                        <div class="faq_npc">
-                            <img src="images/studyMap_NPC_a.png" alt="學員A">
-                        </div>
-                        <span>AAA</span>
-                    </div>
-                    <div class="faq_message_title_paragragh">
-                        <h3>日文50音要怎麼背???</h3>
-                        <p>嗨嗨，想請問大家都怎麼背50音嗎?</p>
-                    </div>
-                    <div class="faq_article_heart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+        <div class="faq_message_frame">
+            <div class="faq_message_box">
+                <div class="faq_message_content">
+                    <div class="faq_message_close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                         </svg>
                     </div>
-                </div>
-                <div class="faq_student_message">
-                    <div class="faq_student1 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_e.png" alt="學員1">
+                    <div class="faq_message_article">
+                        <div class="faq_student">
+                            <div class="faq_npc">
+                                <img src="images/studyMap_NPC_a.png" alt="學員A">
+                            </div>
+                            <div class="name_time">
+                                <span>AAA</span>
+                                <span>2小時前</span>
+                            </div>
                         </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">BBB</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">1小時前</span>
+                        <div class="faq_message_title_paragragh">
+                            <h3>日文50音要怎麼背???</h3>
+                            <p>嗨嗨，想請問大家都怎麼背50音嗎?</p>
                         </div>
-                    </div>
-                    <div class="faq_student2 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_o.png" alt="學員2">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">BBB</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">1小時前</span>
-                        </div>
-                    </div>
-                    <div class="faq_student3 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_i.png" alt="學員3">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">BBB</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">1小時前</span>
-                        </div>
-                    </div>
-                    <div class="faq_student4 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_u.png" alt="學員4">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">BBB</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">1小時前</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_user_input">
-                    <div class="user_npc">
-                        <img src="images/studyMap_NPC_i.png" alt="學員C">
-                    </div>
-                    <form action="" method="post">
-                        <input type="text" id="user_message" placeholder="我要留言">
-                    </form>
-                    <div class="user_message_submit">
-                        <button type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        <div class="faq_article_heart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                             </svg>
-                        </button>
+                        </div>
                     </div>
+                    <!-- <div class="faq_student_message">
+                        <div class="faq_student1 student">
+                            <div class="faq_student_npc">
+                                <img src="images/studyMap_NPC_e.png" alt="學員1">
+                            </div>
+                            <div class="faq_student_text">
+                                <span class="student_name">BBB</span>
+                                <span class="post_date">2022/05/23</span>
+                                <p>背就對了!加油</p>
+                                <span class="student_code">B1</span>
+                                <span class="post_time">1小時前</span>
+                            </div>
+                        </div>
+                        <div class="faq_student2 student">
+                            <div class="faq_student_npc">
+                                <img src="images/studyMap_NPC_o.png" alt="學員2">
+                            </div>
+                            <div class="faq_student_text">
+                                <span class="student_name">BBB</span>
+                                <span class="post_date">2022/05/23</span>
+                                <p>背就對了!加油</p>
+                                <span class="student_code">B1</span>
+                                <span class="post_time">1小時前</span>
+                            </div>
+                        </div>
+                        <div class="faq_student3 student">
+                            <div class="faq_student_npc">
+                                <img src="images/studyMap_NPC_i.png" alt="學員3">
+                            </div>
+                            <div class="faq_student_text">
+                                <span class="student_name">BBB</span>
+                                <span class="post_date">2022/05/23</span>
+                                <p>背就對了!加油</p>
+                                <span class="student_code">B1</span>
+                                <span class="post_time">1小時前</span>
+                            </div>
+                        </div>
+                        <div class="faq_student4 student">
+                            <div class="faq_student_npc">
+                                <img src="images/studyMap_NPC_u.png" alt="學員4">
+                            </div>
+                            <div class="faq_student_text">
+                                <span class="student_name">BBB</span>
+                                <span class="post_date">2022/05/23</span>
+                                <p>背就對了!加油</p>
+                                <span class="student_code">B1</span>
+                                <span class="post_time">1小時前</span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="faq_user_input">
+                        <div class="user_npc">
+                            <img src="images/studyMap_NPC_i.png" alt="學員C">
+                        </div>
+                        <form action="" method="post">
+                            <input type="text" id="user_message" placeholder="我要留言">
+                        </form>
+                        <div class="user_message_submit">
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="faq_student_message">
+                <div class="faq_student1 student">
+                    <div class="faq_student_npc">
+                        <img src="images/studyMap_NPC_e.png" alt="學員1">
+                    </div>
+                    <div class="faq_student_text">
+                        <span class="student_name">BBB</span>
+                        <span class="post_date">2022/05/23</span>
+                        <p>背就對了!加油</p>
+                        <span class="student_code">B1</span>
+                        <span class="post_time">1小時前</span>
+                    </div>
+                </div>
+                <div class="faq_student2 student">
+                    <div class="faq_student_npc">
+                        <img src="images/studyMap_NPC_o.png" alt="學員2">
+                    </div>
+                    <div class="faq_student_text">
+                        <span class="student_name">CCC</span>
+                        <span class="post_date">2022/05/23</span>
+                        <p>背就對了!加油</p>
+                        <span class="student_code">B1</span>
+                        <span class="post_time">1小時前</span>
+                    </div>
+                </div>
+                <div class="faq_student3 student">
+                    <div class="faq_student_npc">
+                        <img src="images/studyMap_NPC_i.png" alt="學員3">
+                    </div>
+                    <div class="faq_student_text">
+                        <span class="student_name">DDD</span>
+                        <span class="post_date">2022/05/23</span>
+                        <p>背就對了!加油</p>
+                        <span class="student_code">B1</span>
+                        <span class="post_time">1小時前</span>
+                    </div>
+                </div>
+                <div class="faq_student4 student">
+                    <div class="faq_student_npc">
+                        <img src="images/studyMap_NPC_u.png" alt="學員4">
+                    </div>
+                    <div class="faq_student_text">
+                        <span class="student_name">EEE</span>
+                        <span class="post_date">2022/05/23</span>
+                        <p>背就對了!加油</p>
+                        <span class="student_code">B1</span>
+                        <span class="post_time">1小時前</span>
+                    </div>
+                </div>
+            </div>
+            <div class="faq_user_input">
+                <div class="user_npc">
+                    <img src="images/studyMap_NPC_a.png" alt="學員C">
+                </div>
+                <form action="" method="post">
+                    <input type="text" id="user_message" placeholder="我要留言">
+                </form>
+                <div class="user_message_submit">
+                    <button class="message_submit_btn" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
