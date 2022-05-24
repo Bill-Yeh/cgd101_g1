@@ -1,0 +1,795 @@
+/* 首頁第一島 */
+.home_first_island {
+  width: 100%;
+  margin: 50px 0 0 0;
+  position: relative;
+}
+
+/* 首頁第一島npc */
+.home_first_island_npc1,
+.home_first_island_npc2,
+.home_first_island_npc3,
+.home_first_island_npc4 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
+/* 首頁第一島npc1 */
+.home_first_island_npc1 {
+  top: 10%;
+  left: 25%;
+}
+
+/* 首頁第一島npc2 */
+.home_first_island_npc2 {
+  top: 15%;
+  right: 40%;
+}
+
+/* 首頁第一島npc3 */
+.home_first_island_npc3 {
+  top: 20%;
+  right: 20%;
+}
+
+/* 首頁第一島npc4 */
+.home_first_island_npc4 {
+  top: 28%;
+  left: 30%;
+}
+
+.home_first_island_npc1 img {
+  position: absolute;
+  animation: npcw_walk_right 4s linear 0.5s infinite;
+}
+
+.home_first_island_npc3 img {
+  position: absolute;
+  animation: npcw_walk_right 5s linear 0.5s infinite;
+}
+
+.home_first_island_npc2 img {
+  position: absolute;
+  animation: npc_walk_left 4s linear 0.5s infinite;
+}
+
+.home_first_island_npc4 img {
+  position: absolute;
+  animation: npc_walk_left 5s linear 0.4s infinite;
+}
+
+/* 首頁第一島npc走動-向右 */
+@keyframes npcw_walk_right {
+  0% {
+    transform: translate3d(0%, 0%, 0) scaleX(1);
+  }
+
+  5% {
+    transform: translate3d(10%, 10%, 0) scaleX(1);
+  }
+
+  10% {
+    transform: translate3d(15%, 0%, 0) scaleX(1);
+  }
+
+  15% {
+    transform: translate3d(20%, 10%, 0) scaleX(1);
+  }
+
+  20% {
+    transform: translate3d(35%, 0%, 0) scaleX(1);
+  }
+
+  25% {
+    transform: translate3d(40%, 10%, 0) scaleX(1);
+  }
+
+  30% {
+    transform: translate3d(45%, 0%, 0) scaleX(1);
+  }
+
+  35% {
+    transform: translate3d(50%, 10%, 0) scaleX(1);
+  }
+
+  40% {
+    transform: translate3d(55%, 0%, 0) scaleX(1);
+  }
+
+  45% {
+    transform: translate3d(60%, 10%, 0) scaleX(1);
+  }
+
+  50% {
+    transform: translate3d(65%, 0%, 0) scaleX(1);
+  }
+
+  50.01% {
+    transform: translate3d(60%, 10%, 0) scaleX(-1);
+  }
+
+  60% {
+    transform: translate3d(55%, 0%, 0) scaleX(-1);
+  }
+
+  65% {
+    transform: translate3d(50%, 10%, 0) scaleX(-1);
+  }
+
+  70% {
+    transform: translate3d(45%, 0%, 0) scaleX(-1);
+  }
+
+  75% {
+    transform: translate3d(40%, 10%, 0) scaleX(-1);
+  }
+
+  80% {
+    transform: translate3d(35%, 0%, 0) scaleX(-1);
+  }
+
+  85% {
+    transform: translate3d(20%, 10%, 0) scaleX(-1);
+  }
+
+  90% {
+    transform: translate3d(15%, 0%, 0) scaleX(-1);
+  }
+
+  95% {
+    transform: translate3d(10%, 10%, 0) scaleX(-1);
+  }
+
+  100% {
+    transform: translate3d(0%, 0%, 0) scaleX(-1);
+  }
+}
+
+/* 首頁第一島npc走動-向左 */
+@keyframes npc_walk_left {
+  0% {
+    transform: translate3d(0%, 0%, 0) scaleX(1);
+  }
+
+  5% {
+    transform: translate3d(-20%, 10%, 0) scaleX(1);
+  }
+
+  10% {
+    transform: translate3d(-40%, 0%, 0) scaleX(1);
+  }
+
+  15% {
+    transform: translate3d(-60%, 10%, 0) scaleX(1);
+  }
+
+  20% {
+    transform: translate3d(-80%, 0%, 0) scaleX(1);
+  }
+
+  25% {
+    transform: translate3d(-100%, 10%, 0) scaleX(1);
+  }
+
+  30% {
+    transform: translate3d(-120%, 0%, 0) scaleX(1);
+  }
+
+  35% {
+    transform: translate3d(-140%, 10%, 0) scaleX(1);
+  }
+
+  40% {
+    transform: translate3d(-160%, 0%, 0) scaleX(1);
+  }
+
+  45% {
+    transform: translate3d(-180%, 10%, 0) scaleX(1);
+  }
+
+  50% {
+    transform: translate3d(-200%, 0%, 0) scaleX(1);
+  }
+
+  50.01% {
+    transform: translate3d(-180%, 10%, 0) scaleX(-1);
+  }
+
+  60% {
+    transform: translate3d(-160%, 0%, 0) scaleX(-1);
+  }
+
+  65% {
+    transform: translate3d(-140%, 10%, 0) scaleX(-1);
+  }
+
+  70% {
+    transform: translate3d(-120%, 0%, 0) scaleX(-1);
+  }
+
+  75% {
+    transform: translate3d(-100%, 10%, 0) scaleX(-1);
+  }
+
+  80% {
+    transform: translate3d(-80%, 0%, 0) scaleX(-1);
+  }
+
+  85% {
+    transform: translate3d(-60%, 10%, 0) scaleX(-1);
+  }
+
+  90% {
+    transform: translate3d(-40%, 0%, 0) scaleX(-1);
+  }
+
+  95% {
+    transform: translate3d(-20%, 10%, 0) scaleX(-1);
+  }
+
+  100% {
+    transform: translate3d(0%, 0%, 0) scaleX(-1);
+  }
+}
+
+.home_first_island_pic {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.home_first_island_pic img {
+  margin: 100px 0;
+  width: 100%;
+}
+
+.home_first_npc1 {
+  position: absolute;
+}
+
+/* 首頁第一島的雲 */
+.home_cloud_1_pic,
+.home_cloud_2_pic,
+.home_cloud_3_pic,
+.home_cloud_4_pic,
+.home_cloud_5_pic,
+.home_first_npc1 {
+  width: 100%;
+  overflow: hidden;
+}
+
+.home_cloud_1_pic img,
+.home_cloud_2_pic img,
+.home_cloud_3_pic img,
+.home_cloud_4_pic img,
+.home_cloud_5_pic img,
+.topic_cloud_1 img,
+.topic_cloud_2 img {
+  position: absolute;
+}
+
+.home_cloud_1_pic img {
+  width: 30%;
+  top: 10%;
+  animation: move_cloud 50s linear 1s infinite;
+}
+
+.home_cloud_2_pic img {
+  width: 20%;
+  right: 0;
+  top: 5%;
+  animation: move_cloud 50s linear 1s infinite;
+}
+
+.home_cloud_3_pic img {
+  width: 20%;
+  right: 5%;
+  top: 10%;
+  z-index: -1;
+  animation: move_cloud 50s linear 1s infinite;
+}
+
+.home_cloud_4_pic img {
+  width: 30%;
+  bottom: 50%;
+  right: 10%;
+  animation: move_cloud 50s linear 1s infinite;
+}
+
+.home_cloud_5_pic img {
+  width: 30%;
+  bottom: 50%;
+  right: 10%;
+  z-index: -1;
+  animation: move_cloud 15s linear 1s infinite;
+}
+
+/* 首頁各島介紹框 */
+.home_first_info,
+.home_lesson_info,
+.home_topic_info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 首頁各島介紹內容 */
+.home_first_info_text,
+.home_lesson_info_text,
+.home_topic_info_text {
+  position: relative;
+  display: flex;
+  width: 300px;
+  height: 50px;
+  padding: 20px;
+  background-color: #fae6b8;
+  border: 5px solid #f9bb4d;
+  border-radius: 5px;
+  align-items: center;
+}
+
+/* 首頁各島介紹內容靠右 */
+.home_topic_info {
+  display: flex;
+  justify-content: center;
+}
+
+/* 首頁各島介紹NPC-右 */
+.home_first_info_pic img,
+.home_topic_info_pic img {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  right: 2%;
+  bottom: 20%;
+}
+
+/* 首頁各島與水中裝飾的間隔 */
+.home_lesson_island_pic,
+.home_topic_island_pic,
+.home_mall_island_pic {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.home_mall_island_pic {
+  width: 100%;
+  margin: 100px 0;
+}
+
+/* 船 */
+.home_boat_pic {
+  display: flex;
+  justify-content: center;
+}
+
+.home_boat_pic img {
+  display: none;
+}
+
+/* 首頁學習地圖 */
+.home_lesson_island {
+  width: 100%;
+  margin: 200px 0;
+}
+
+.home_lesson_island img {
+  width: 300px;
+  height: 200px;
+}
+
+.home_lesson_info_text {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home_lesson_info_pic {
+  position: absolute;
+  left: 2%;
+  bottom: 20%;
+}
+
+/* 學習島介紹內容NPC */
+.home_lesson_info_pic img {
+  width: 70px;
+  height: 70px;
+}
+
+/* 學習島NPC */
+.lesson_island_npc1 img,
+.lesson_island_npc2 img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 30%;
+}
+
+/* 學習島NPC1的位子 */
+.lesson_island_npc1 img {
+  left: 40%;
+}
+
+/* 學習島NPC2的位子 */
+.lesson_island_npc2 img {
+  right: 20%;
+}
+
+/* 手機版水中裝飾none */
+.lesson_inwater img,
+.topic_inwater img,
+.mall_inwater img {
+  display: none;
+}
+
+/* 學習地圖的雲 */
+.lesson_cloud {
+  position: relative;
+}
+.lesson_cloud_1 img {
+  position: absolute;
+  width: 30%;
+  right: 5%;
+}
+
+.lesson_cloud_2 img {
+  position: absolute;
+  width: 30%;
+  right: 10%;
+  top: 0;
+}
+
+/* 學習地圖的路標 */
+.home_lesson_road_sign img {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 80%;
+  right: 0;
+}
+
+/* 測驗島 */
+/* 測驗島npc */
+.home_topic_island_npc img {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 40%;
+  left: 25%;
+}
+
+/* 測驗島雲 */
+.topic_cloud {
+  position: relative;
+}
+
+.topic_cloud_1 img {
+  position: absolute;
+  width: 30%;
+  left: 5%;
+  bottom: 0;
+}
+
+.topic_cloud_2 img {
+  position: absolute;
+  width: 20%;
+  left: -10%;
+  top: 50%;
+}
+
+.topic_cloud_3 img {
+  position: absolute;
+  width: 20%;
+  left: 20%;
+  bottom: -10%;
+}
+
+.topic_cloud_4 img,
+.topic_cloud_5 img {
+  display: none;
+}
+
+/* 測驗島的路標 */
+.home_topic_road_sign img {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 80%;
+  left: 0;
+}
+
+.mall_island_npc1 {
+  position: absolute;
+  top: 40%;
+  left: 20%;
+}
+
+.mall_island_npc1 img {
+  width: 50px;
+  height: 50px;
+}
+.mall_island_npc2 {
+  position: absolute;
+  top: 40%;
+  right: 2%;
+}
+.mall_island_npc2 img {
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes move_cloud {
+  from {
+    transform: translateX(-500%);
+  }
+
+  to {
+    transform: translateX(500%);
+  }
+}
+
+@include md() {
+  .home_first_island_npc1 {
+    top: 20%;
+    left: 30%;
+  }
+
+  /* 首頁第一島npc2 */
+  .home_first_island_npc2 {
+    top: 25%;
+  }
+
+  /* 首頁第一島npc3 */
+  .home_first_island_npc3 {
+    top: 30%;
+    left: 80%;
+  }
+
+  /* 首頁第一島npc4 */
+  .home_first_island_npc4 {
+    top: 40%;
+    left: 35%;
+  }
+}
+
+/* 平板以上 */
+@include lg() {
+  .home_lesson_island_pic,
+  .home_topic_island_pic,
+  .home_mall_island_pic {
+    justify-content: space-around;
+  }
+  /* 第一島 */
+  .home_first_island_pic {
+    height: 650px;
+  }
+
+  .home_first_island_pic img {
+    width: 60%;
+    height: 100%;
+  }
+
+  /* 首頁第一島npc */
+  .home_first_island_npc1,
+  .home_first_island_npc2,
+  .home_first_island_npc3,
+  .home_first_island_npc4 {
+    width: 100px;
+    height: 70px;
+  }
+
+  /* 首頁第一島npc1 */
+  .home_first_island_npc1 {
+    top: 20%;
+    left: 35%;
+  }
+
+  /* 首頁第一島npc2 */
+  .home_first_island_npc2 {
+    top: 30%;
+  }
+
+  /* 首頁第一島npc3 */
+  .home_first_island_npc3 {
+    top: 38%;
+    left: 65%;
+  }
+
+  /* 首頁第一島npc4 */
+  .home_first_island_npc4 {
+    top: 50%;
+    left: 40%;
+  }
+
+  /* 第一島雲 */
+  .home_cloud_1_pic img {
+    width: 30%;
+    left: 8%;
+    top: 5%;
+  }
+
+  .home_cloud_2_pic img {
+    width: 20%;
+    right: 10%;
+    top: 20%;
+  }
+
+  .home_cloud_3_pic img {
+    top: 50%;
+    left: -10%;
+  }
+
+  .home_cloud_4_pic img {
+    width: 30%;
+    right: -15%;
+    top: 5%;
+  }
+
+  .home_cloud_5_pic img {
+    width: 30%;
+    right: -15%;
+    top: 50%;
+  }
+
+  .home_first_info_text {
+    margin: 80px 0;
+  }
+
+  /* 首頁介紹框 */
+  .home_first_info_text,
+  .home_lesson_info_text,
+  .home_topic_info_text {
+    font-size: 20px;
+    width: 400px;
+    height: 80px;
+  }
+
+  /* 首頁介紹內容 */
+  .home_first_info,
+  .home_topic_info {
+    width: 50%;
+    transform: translateX(90%);
+  }
+
+  /* 首頁介紹NPC-右 */
+  .home_first_info_pic img,
+  .home_topic_info_pic img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 3%;
+  }
+
+  .home_topic_info_pic img {
+    bottom: 5%;
+  }
+
+  /* 船 */
+  .home_boat_pic img {
+    width: 90px;
+    height: 80px;
+    display: block;
+  }
+
+  /* 首頁各個島的大小 */
+  .home_lesson_island img,
+  .home_topic_island_pic img,
+  .home_mall_island_pic img {
+    width: 500px;
+    height: 350px;
+  }
+
+  /* 首頁學習地圖內容靠左 */
+  .home_lesson_info {
+    width: 50%;
+    text-align: center;
+  }
+
+  /* 首頁學習地圖介紹框NPC大小 */
+  .home_lesson_info_pic {
+    position: absolute;
+    left: 2%;
+    bottom: 5%;
+  }
+
+  .home_lesson_info_pic img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* 首頁水中裝飾 */
+  .lesson_inwater img {
+    display: block;
+    width: 250px;
+    height: 250px;
+  }
+
+  .topic_inwater img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 100px 0;
+  }
+
+  .mall_inwater img {
+    display: block;
+    width: 150px;
+    height: 150px;
+  }
+
+  /* 學習地圖的雲 */
+  .lesson_cloud_1 img {
+    width: 30%;
+    right: 5%;
+  }
+
+  .lesson_cloud_2 img {
+    width: 20%;
+    right: 20%;
+    bottom: 0;
+  }
+
+  /* 學習島NPC大小 */
+  .lesson_island_npc1 img,
+  .lesson_island_npc2 img {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* 各島路標大小 */
+  .home_lesson_road_sign img,
+  .home_topic_road_sign img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* 測驗地圖的雲 */
+  .home_topic_island_npc img {
+    width: 60px;
+    height: 60px;
+    top: 45%;
+  }
+
+  .home_topic_island_pic {
+    margin: 50px 0 0 0;
+  }
+
+  .topic_cloud_1 img {
+    width: 25%;
+    left: 0;
+    bottom: 0;
+  }
+
+  .topic_cloud_1 img {
+    left: 0;
+  }
+
+  .topic_cloud_4 img {
+    position: absolute;
+    display: block;
+    right: -5%;
+    bottom: 0;
+  }
+
+  .topic_cloud_5 img {
+    position: absolute;
+    display: block;
+    right: -8%;
+    top: 0;
+  }
+  .mall_island_npc1 {
+    left: 15%;
+    top: 45%;
+  }
+
+  .mall_island_npc2 {
+    top: 50%;
+    right: 15%;
+  }
+  .mall_island_npc1 img,
+  .mall_island_npc2 img {
+    width: 70px;
+    height: 70px;
+  }
+}

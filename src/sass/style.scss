@@ -4,23 +4,20 @@
 @import "base/reset";
 @import "mixin/mixin";
 //@import '../node_modules/bootstrap/scss/bootstrap.scss';
-@import 'layout/header';
-@import 'layout/footer';
-@import 'page/index';
-@import 'page/about';
-@import 'page/test';
-@import 'page/mem';
-@import 'page/faq';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-@import 'page/studyMap';
-
-
-
-
+@import "layout/header";
+@import "layout/footer";
+@import "page/home";
+@import "page/index";
+@import "page/about";
+@import "page/test";
+@import "page/mem";
+@import "page/faq";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+@import "page/studyMap";
 
 //偽元素
 // a {
-//     color: #333; 
+//     color: #333;
 
 //     &:hover {
 //         color: #eee
@@ -31,13 +28,13 @@
 //     }
 // }
 
-// 運算 
+// 運算
 // 單位相同才能運算
 // .test {
 //     width: 1 + 100px;
-//     height: 10 - 100px; // 負值 
+//     height: 10 - 100px; // 負值
 //     margin: 10 * 10px; //單位
-//     font: calc(100 / 10) + px // 要注意的是 unit and () 
+//     font: calc(100 / 10) + px // 要注意的是 unit and ()
 // }
 
 // // 運算的函式
@@ -55,7 +52,6 @@
 
 // //顏色函式範例運用
 // $a_color : #f20;
-
 
 // a {
 //     color: $a_color;
@@ -110,9 +106,7 @@
 //     font-size: round($body_font * 1)
 // }
 
-
 // // 判斷式 if else
-
 
 // $con : false;
 
@@ -128,12 +122,8 @@
 //     }
 // }
 
-
-
-
-
 // .center {
-//     //引用  
+//     //引用
 //     @include center(200px)
 // }
 
@@ -142,8 +132,6 @@
 //     width: 1200px;
 //     @include center(100px);
 // }
-
-
 
 // .w100 {
 //     @include layout(100, #f29);
@@ -157,20 +145,12 @@
 
 // }
 
-
-
 // @include btn(xxl, #f20, 250px) {
 //     border-radius: 10px
 // }
 
 // ;
 // @include btn(xl, #333, 200px);
-
-
-
-
-
-
 
 // @include font(30, padding, dist/images);
 
@@ -182,12 +162,7 @@
 //     background-image: url('./#{$path}/a2.jpg');
 // }
 
-
-
-
 // @include pull(10, right);
-
-
 
 // //grid
 
@@ -200,7 +175,6 @@
 //         }
 //     }
 // }
-
 
 // @include grid(12);
 
@@ -220,7 +194,7 @@
 //           background-size: cover;
 //           object-fit: cover;
 //           @content;
-//           } 
+//           }
 //         }
 // }
 
@@ -231,15 +205,7 @@
 //     height: 500px
 // };
 
-
-
-
-
 // @include title($title);
-
-
-
-
 
 // .r {
 //    color: #000000;
@@ -253,13 +219,12 @@
 //     }
 //  }
 
-
 // @include m(){
 //     //手機板
 //     .r {
-//         color: #f20; 
+//         color: #f20;
 //     }
-// } 
+// }
 
 // @include rwd(414px){
 //     .r {
@@ -277,7 +242,6 @@
 
 // );
 
-
 // //each 迴圈
 // @each $key , $val in $basic {
 //   .#{$key} {
@@ -285,14 +249,11 @@
 //   }
 // }
 
-
 // $space : (
 //    "large" : 56px,
 //    "medium" : 32px,
-//    "small" : 16px  
+//    "small" : 16px
 // );
-
-
 
 // @each $key , $val in $space {
 //     .#{$key} {
@@ -300,11 +261,9 @@
 //     }
 //   }
 
-
 // $font_size : (
 //   "t1" : 16px,
 //   "t2" : 24px
-
 
 // );
 
@@ -314,24 +273,3 @@
 //       font-size : $val
 //     }
 //   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
