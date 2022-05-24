@@ -16,7 +16,7 @@
         /* 首頁第一島 */
         .home_first_island {
             width: 100%;
-            margin: 50px 0;
+            margin: 50px 0 0 0;
             position: relative;
         }
 
@@ -33,25 +33,25 @@
 
         /* 首頁第一島npc1 */
         .home_first_island_npc1 {
-            top: 20%;
-            left: 20%;
+            top: 10%;
+            left: 25%;
         }
 
         /* 首頁第一島npc2 */
         .home_first_island_npc2 {
-            top: 30%;
+            top: 15%;
             right: 40%;
         }
 
         /* 首頁第一島npc3 */
         .home_first_island_npc3 {
-            top: 35%;
+            top: 20%;
             right: 20%;
         }
 
         /* 首頁第一島npc4 */
         .home_first_island_npc4 {
-            top: 55%;
+            top: 28%;
             left: 30%;
         }
 
@@ -253,10 +253,10 @@
             position: relative;
             width: 100%;
             text-align: center;
-            z-index: 100;
         }
 
         .home_first_island_pic img {
+            margin: 100px 0;
             width: 100%;
         }
 
@@ -362,10 +362,16 @@
 
         /* 首頁各島與水中裝飾的間隔 */
         .home_lesson_island_pic,
-        .home_topic_island_pic {
+        .home_topic_island_pic,
+        .home_mall_island_pic {
             display: flex;
             justify-content: space-between;
             position: relative;
+
+        }
+
+        .home_mall_island_pic {
+            margin: 100px 0;
         }
 
         /* 船 */
@@ -428,7 +434,8 @@
 
         /* 手機版水中裝飾none */
         .lesson_inwater img,
-        .topic_inwater img {
+        .topic_inwater img,
+        .mall_inwater img {
             display: none;
         }
 
@@ -507,6 +514,18 @@
             left: 0;
         }
 
+
+        .mall_island_npc1 {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+        }
+
+        .mall_island_npc1 img {
+            width: 50px;
+            height: 50px;
+        }
+
         /* @keyframes move_cloud {
             from {
                 transform: translateX(-500%);
@@ -517,6 +536,31 @@
             }
         } */
 
+
+
+        @media screen and (min-width:768px) {
+            .home_first_island_npc1 {
+                top: 20%;
+                left: 30%;
+            }
+
+            /* 首頁第一島npc2 */
+            .home_first_island_npc2 {
+                top: 25%;
+            }
+
+            /* 首頁第一島npc3 */
+            .home_first_island_npc3 {
+                top: 30%;
+                left: 80%;
+            }
+
+            /* 首頁第一島npc4 */
+            .home_first_island_npc4 {
+                top: 40%;
+                left: 35%;
+            }
+        }
 
         /* 平板以上 */
         @media screen and (min-width:992px) {
@@ -538,7 +582,6 @@
             .home_first_island_npc4 {
                 width: 100px;
                 height: 70px;
-
             }
 
             /* 首頁第一島npc1 */
@@ -547,14 +590,20 @@
                 left: 35%;
             }
 
-            /* 首頁第一島npc3 */
+            /* 首頁第一島npc2 */
+            .home_first_island_npc2 {
+                top: 30%;
+            }
 
+            /* 首頁第一島npc3 */
             .home_first_island_npc3 {
-                left: 62%;
+                top: 38%;
+                left: 65%;
             }
 
             /* 首頁第一島npc4 */
             .home_first_island_npc4 {
+                top: 50%;
                 left: 40%;
             }
 
@@ -586,6 +635,10 @@
                 width: 30%;
                 right: -15%;
                 top: 50%;
+            }
+
+            .home_first_info_text {
+                margin: 80px 0;
             }
 
             /* 首頁介紹框 */
@@ -629,7 +682,8 @@
 
             /* 首頁各個島的大小 */
             .home_lesson_island img,
-            .home_topic_island_pic img {
+            .home_topic_island_pic img,
+            .home_mall_island_pic img {
                 width: 500px;
                 height: 350px;
             }
@@ -665,6 +719,13 @@
                 width: 200px;
                 height: 200px;
                 margin: 100px 0;
+            }
+
+            .mall_inwater img {
+                display: block;
+                width: 150px;
+                height: 150px;
+
             }
 
             /* 學習地圖的雲 */
@@ -726,6 +787,11 @@
                 display: block;
                 right: -8%;
                 top: 0;
+            }
+
+            .mall_island_npc1 img {
+                width: 70px;
+                height: 70px;
             }
         }
     </style>
@@ -889,6 +955,38 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- 第四島--寶物商城 -->
+    <div class="home_mall_island">
+        <!-- 商城島 -->
+        <div class="home_mall_island_pic">
+            <div class="home_mall_island_pic">
+                <img src="./images/home_mall_island_2.png" alt="">
+                <div class="mall_island_npc1">
+                    <img src="./images/mall_npc.png" alt="">
+                </div>
+            </div>
+
+            <!-- 商城島水中裝飾 -->
+            <div class="mall_inwater">
+                <img src="./images/home_island_inwater_2.png" alt="">
+            </div>
+        </div>
+
+        <!-- 商城島介紹 -->
+        <!-- <div class="home_mall_info">
+            <div class="home_mall_info_text">
+                <div class="home_mall_info_pic">
+                    <img src="./images/home_info_npc2.png" alt="">
+                </div> -->
+        <!-- 商城島路標 -->
+        <!-- <div class="home_mall_road_sign">
+                    <img src="./images/home_lesson_road_sign.png" alt="">
+                </div>
+                在地圖上和不同的人進行對話，<br>學習日文的基本文法與單字。
+            </div> -->
+    </div>
     </div>
 </body>
 
