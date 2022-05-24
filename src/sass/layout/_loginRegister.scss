@@ -1,0 +1,160 @@
+.login_register_full{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.607);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    // 含登入註冊切換按鈕的容器
+    .login_register_container{
+        width: 80%;
+        max-width: 500px;
+
+        // 登入註冊切換
+        .login_register_switch{
+            display: flex;
+            justify-content: space-evenly;
+
+            @include md(){
+                justify-content: flex-start;
+            }
+
+            // 登入切換
+            .login_register_login_option,.login_register_register_option{
+                padding: 8px 30px;
+                border-radius: 20px 20px 0 0;
+                font-family: $fontCh;
+                font-size: 1.2rem;
+                cursor: pointer;
+                @include md(){
+                    padding: 8px 50px;
+                }
+            }
+            .login_register_login_option{
+                background-color:map-get($color , bgc_y );
+            }
+            .login_register_register_option{
+                background-color: map-get($color , primary );
+            }
+        }
+
+        // 登入註冊主要容器
+        .login_register_main_box{
+            background-color: map-get($color , bgc_y );
+            border-radius: 30px;
+            padding: 30px;
+            position: relative;
+
+            @include md(){
+                border-radius: 0 30px 30px 30px;
+            }
+
+            // 登入註冊主要內容
+            .login_register_main_content{
+
+                // 關閉icon
+                .login_register_close{
+                    position: absolute;
+                    top: 15px;
+                    right: 20px;
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+                    }
+                }
+                // 帳號密碼輸入區塊
+                .login_block,.password_block{
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 20px;
+
+                    label{
+                        font-family: $fontCh;
+                        line-height: 1.7;
+                    }
+
+                    // input欄位
+                    #login_account,#login_password{
+                        border: none;
+                        outline: none;
+                        background-color: map-get($color , primary );
+                        padding: 7px 0 7px 8px;
+                    }
+                }
+
+                // 記住帳號和忘記密碼
+                .remember_forget{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-top: 30px;
+                    font-size: 0.8125rem;
+                    font-family: $fontCh;
+                    form{
+                        display: flex;
+                        align-items: center;
+                        // 記住帳號
+                        #rem_password{
+                            margin-bottom: 0;
+                        }
+                    }
+                    a{
+                        text-decoration: none;
+                        color: #000;
+                    }
+                }
+                // 登入和註冊按鈕
+                .login_btn,.register_btn{
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 30px;
+
+                    #user_login,#user_register{
+                        font-size: 16px;
+                        font-family: $fontCh;
+                        background-color: #F9BB4D;
+                        color: white;
+                        padding: 8px 30px;
+                        border-radius: 20px;
+                        border: none;
+                        cursor: pointer;
+                        transition: .3s;
+                        &:hover{
+                            background-color: #F37420;
+                        }
+                    }
+                }
+
+                // 註冊內容
+                .register_form_content{
+                    display: none;
+                    .member_name,.member_account,.member_password,.confirm_password{
+                        display: flex;
+                        flex-direction: column;
+                        padding-top: 20px;
+
+                        label{
+                            font-family: $fontCh;
+                            line-height: 1.7;
+                        }
+
+                        // input欄位
+                        #member_name_id,#member_account_id,#member_password_id,#confirm_password_id{
+                            border: none;
+                            outline: none;
+                            background-color: map-get($color ,  primary );
+                            padding: 7px 0 7px 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
