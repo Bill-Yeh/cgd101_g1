@@ -8,7 +8,8 @@
 /* 手機版水中裝飾none */
 .home_lesson_inwater img,
 .home_topic_inwater img,
-.home_mall_inwater img {
+.home_mall_inwater img,
+.home_decorate_island_inwater img {
   display: none;
 }
 
@@ -548,7 +549,9 @@
   top: 40%;
   left: 20%;
 }
-
+.home_mall_island_2 {
+  display: none;
+}
 .home_mall_island_npc1 img {
   width: 50px;
   height: 50px;
@@ -596,6 +599,14 @@
 .home_decorate_island {
   justify-content: flex-start;
 }
+.home_decorate_island_cloud img {
+  width: 30%;
+}
+.home_decorate_island_pic {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
 .home_decorate_island_2_pic {
   justify-content: flex-end;
 }
@@ -610,7 +621,7 @@
 }
 .home_decorate_info_pic {
   position: absolute;
-  left: 2%;
+  left: 0;
   bottom: 20%;
 }
 .home_decorate_info_pic img {
@@ -618,6 +629,83 @@
   height: 70px;
 }
 
+.home_decorate_island_npc1 img,
+.home_decorate_island_npc2 img,
+.home_decorate_island_2_npc1 img,
+.home_decorate_island_2_npc2 img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+}
+.home_decorate_island_npc1 img {
+  top: 25%;
+  left: 50%;
+}
+.home_decorate_island_npc2 img {
+  top: 25%;
+  left: 70%;
+}
+
+.home_decorate_island_2 {
+  position: relative;
+  display: none;
+}
+.home_decorate_island_2_cloud {
+  position: absolute;
+}
+.home_decorate_island_2_npc1 img {
+  top: 30%;
+  left: 50%;
+}
+.home_decorate_island_2_npc2 img {
+  top: 30%;
+  left: 70%;
+}
+.last_island {
+  width: 100vw;
+}
+.last_island_pic {
+  width: 100%;
+}
+.last_island_pic img {
+  width: 100%;
+}
+.last_island {
+  position: relative;
+}
+.last_island_npc img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.last_island_info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  padding: 20px;
+  background-color: #fae6b8;
+  border: 5px solid #f9bb4d;
+  top: 60%;
+  left: 20%;
+}
+.last_island_info_text {
+  padding: 15px;
+}
+.sign_up {
+  display: block;
+  padding: 10px 20px;
+  background-color: #f9bb4d;
+  border-radius: 30px;
+  color: #fff;
+}
 @include md() {
   .home_first_island_npc1 {
     top: 20%;
@@ -878,7 +966,9 @@
   }
 
   /*商城島*/
-
+  .home_mall_island_2 {
+    display: block;
+  }
   /*商城島雲*/
   .home_mall_cloud_2 img,
   .home_mall_cloud_3 img {
@@ -929,21 +1019,77 @@
     height: 100px;
   }
 
-  .home_decorate_island,
-  .home_decorate_island_2_pic {
-    margin: 150px 100px;
+  .home_decorate_island_pic {
+    justify-content: space-around;
+  }
+
+  .home_decorate_island_cloud img {
+    width: 20%;
+  }
+  .home_decorate_island_inwater img {
+    display: block;
+    width: 250px;
+    height: 250px;
+  }
+
+  .home_decorate_island_2 {
+    display: block;
+    margin: 0 10%;
+  }
+  .home_decorate_island_2_cloud1 {
+    position: absolute;
+    left: 0;
+    bottom: 80%;
+  }
+  .home_decorate_island_2_cloud2 {
+    position: absolute;
+    right: 0;
   }
   .home_decorate_info {
-    width: 50%;
-    text-align: center;
+    width: 60%;
   }
   .home_decorate_info_pic {
     position: absolute;
-    left: 2%;
+    left: 0;
     bottom: 5%;
   }
   .home_decorate_info_pic img {
     width: 100px;
     height: 100px;
+  }
+
+  .home_decorate_island_npc1 img,
+  .home_decorate_island_npc2 img,
+  .home_decorate_island_2_npc1 img,
+  .home_decorate_island_2_npc2 img {
+    width: 70px;
+    height: 70px;
+  }
+  .home_decorate_island_npc1 img {
+    top: 40%;
+    left: 15%;
+  }
+  .home_decorate_island_npc2 img {
+    top: 35%;
+    left: 25%;
+  }
+  .home_decorate_island_2_npc1 img {
+    top: 30%;
+    left: 75%;
+  }
+  .home_decorate_island_2_npc2 img {
+    top: 30%;
+    left: 85%;
+  }
+  .last_island_npc img {
+    width: 150px;
+    height: 150px;
+  }
+  .last_island_info {
+    font-size: 20px;
+    justify-content: center;
+    width: 450px;
+    height: 80px;
+    padding: 20px;
   }
 }
