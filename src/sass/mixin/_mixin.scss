@@ -67,6 +67,8 @@
 
 //控制燈箱大小
 @mixin lightboxSize($width,$height){
+    z-index: 20;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
     width: $width;
     height: $height;
     position: absolute;
