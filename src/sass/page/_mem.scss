@@ -1,4 +1,5 @@
 
+
 .wapper{
     position: relative;
     overflow: hidden;
@@ -11,8 +12,8 @@
         margin: auto;
     }
     #me{
+        z-index:1 ;
         width: 150px;
-        z-index: 30;
         position: absolute;
         top:calc((100% - 150px)*0.5);
         left: calc((100% - 150px)*0.5);
@@ -84,6 +85,13 @@
         };
         @include mem_item(100px,'','',15px,30px);
     };
+    .teacher{
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1)
+        };
+        @include mem_item(70px,'',100px,5px,'');
+    };
     .phone{
         cursor: pointer;
         &:hover{
@@ -126,22 +134,108 @@
 
 }
 
-.message{
-    cursor: pointer;
-    color: #fff;
-    font-size: 20px;
-    padding: 15px;
-    padding-right: 25px;
-    border-radius: 20px;
-    text-align: center;
-    background-color:#F37420;
-    @include mem_item(50px,'',-15px,80px,'');
+.chetbox{
+    display: none;
+    z-index: 30;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    background-color:#ffffff;
+    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    @include mem_item(320px,'',5%,0px,'');
     @include md{
-        padding-right: 15px;
-        @include mem_item(130px,'',100px,10px,'');
+        height: 60%
     }
+    @include m{
+        height: 80%
+    }
+    .info{
+        width: 320px;
+        padding:8px;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top:0;
+        left: 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        
+        .headshot{
+            width:40px;
+            height: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.4);
+            img{
+                width: 120%;
+                height: 120%;
+                align-self: baseline;
+            }
+        }
+        .teacher-name{
+            padding: 5px;
+        }
+        .cancel{
+            cursor: pointer;
+            display: flex;
+            span{
+                position: absolute;
+                right: 10px;
+                top:18px;
+                display: inline-block;
+                width: 20px;
+                height: 3px;
+                border-radius: 1px;
+                background-color: #F9BB4D;
+            };
+            :nth-child(1){
+                transform:  rotate(45deg);
+            }
+            :nth-child(2){
+                transform:  rotate(-45deg);
+            }
+        }
+
+    }
+    .input{
+        display: flex;
+        justify-content: space-between;
+        width: 320px;
+        padding: 8px 8px 15px 8px;
+        position: absolute;
+        bottom:0;
+        left: 0;
+        
+        input{
+            flex-grow: 3;
+            padding: 8px 15px 8px 15px;
+            font-size: 16px;
+            border: 3px solid #FAE6B8;
+            outline: none;
+            border-radius: 20px;
+            &:focus{
+                background-color: #FAE6B8;
+                border: 3px solid #F9BB4D
+            }
+        }
+        .sent{
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            padding: 0px 10px;
+            
+        }
+        
+    }
+
     
 }
+
+
+
 
 
 .black{

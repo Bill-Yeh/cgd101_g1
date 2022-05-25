@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html',{"title" : "會員專區"})
+
+  
     
 </head>
 <body>
     @@include('layout/header.html')
+    
     <!-- @@include('layout/login.html') -->
     <div class="black">
         <div id="lightBox">
             <button class="back"><</button>
         </div>
     </div>
+
+    
+    <!-- <div id="dialog" title="基本的对话框">
+        <p>这是一个默认的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
+    </div> -->
+
 
     
     <div class="wapper">
@@ -24,14 +33,29 @@
         <div class="floor">
             <div class="content">
                 <img v-for="(data,key) in img" :src="`./images/map_mem_${img[key]}.png`" :alt="img[key]" :class="img[key]">
-                <div class="message">我要發問</div>
+            </div>
+        </div>
+        <div class="chetbox">
+            <div class="info">
+                <div class="headshot">
+                    <img src="./images/char_00.png">
+                </div>
+                <span class="teacher-name">語實巨進老師</span>
+                <div class="cancel">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="input">
+                <input  type="text" name="ask" placeholder="請輸入想問的問題...">
+                <img class="sent" src="./images/map_mem_icon.png" alt="傳送">
             </div>
         </div>
     </div>
 
-    
-
     @@include('layout/footer.html')
+
+    
 
 
 
