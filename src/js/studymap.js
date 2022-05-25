@@ -1,62 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    @@include('layout/meta.html', {
-        "title" : "50音新手村"
-    })
-    <!-- <script src="js/studymap.js"></script> -->
-</head>
-<body>
-    <!-- header -->
 
-    @@include('layout/header.html')
-    <!-- header end -->
-    <section class="bigMap">  
-        <div class="studyMap_map">
-            <!-- 人物角色 -->
-            <div class="studyMap_npc_a" >
-                <img src="./images/studyMap_NPC_a.png" id="asan" class="npc-img">
-            </div>
-            <div class="studyMap_npc_i" >
-                <img src="./images/studyMap_NPC_i.png" id="isan" class="npc-img">
-            </div>
-            <div class="studyMap_npc_u" >
-                <img src="./images/studyMap_NPC_u.png" id="usan" class="npc-img">
-            </div>
-            <div class="studyMap_npc_e" >
-                <img src="./images/studyMap_NPC_e.png" id="esan" class="npc-img">
-            </div>
-            <div class="studyMap_npc_o" >
-                <img src="./images/studyMap_NPC_o.png" id="osan" class="npc-img">
-            </div>
-            <!-- 圖像框 -->
-            <div class="studyMap_main" id="mapMain">
-                <img id="main_pic" src="">
-            </div>
-            <!-- 對話框 -->
-            <div class="studyMap_con" id="mapCon">
-                <p id="con"></p>
-                <div id="sound">
-                    <img  src="./images/icon_speaker.png">
-                </div>
-                <img src="">
-                <audio id="voice">
-                    <source = src="" type="audio/mp3">
-                </audio>
-                <div class="npc-pic">
-                    <img id="pic" src="">
-                </div>
-            </div>
-            <div class="studyMap_con " id="mapCon">
-                <p id="con">
-                </p>
-                
-            </div>
-            <!-- 背景濾鏡 -->
-            <div class="studyMap_fliter" id="mapFliter"></div>
-            <div class="quit" id="close"></div>
-        </div>
-        <script>
             // let npcId =new Array('asan','isan','usan','esan','osan')
             let startCon = new Array('你好，我是あ，今天一起來學習50音的母音あ段吧!','本大爺是い，學習母音い段的事，就交給我吧!','初次見面，我是う，快來學習50音的母音う段，GO!!','嘿嘿嘿，我是え...一起來學...50音え段...','我是お~今天一起來學習50音的母音お段~~' );
             let npcSrc = new Array('./images/studyMap_NPC_a.png','./images/studyMap_NPC_i.png','./images/studyMap_NPC_u.png','./images/studyMap_NPC_e.png','./images/studyMap_NPC_o.png' );
@@ -79,7 +21,6 @@
             //背景變暗
             document.getElementById('mapFliter').style.display='block';
             document.getElementById('mapCon').style.display ='flex';
-            document.getElementById('close').style.display='block'
             //====法1抓陣列ID======================
             // let id = String(e.target.id)
             // let index = npcId.indexOf(id)
@@ -167,7 +108,6 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
             }
             //い
             else if(cat.innerText==startCon[1]){
@@ -210,7 +150,6 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
             }
             //う
             else if(cat.innerText==startCon[2]){
@@ -257,7 +196,6 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
             }
             //え
             else if(cat.innerText==startCon[3]){
@@ -301,7 +239,6 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
             }
             //お
             else if(cat.innerText==startCon[4]){
@@ -356,7 +293,6 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
             }
         }
         // sound.onclick = function justPlay(e){
@@ -367,28 +303,14 @@
             sound.play();
             e.stopPropagation();
         }
-        function shutDown(){
-            //console.log("qq")
-            document.getElementById('mapFliter').style.display='none';
-            document.getElementById('mapCon').style.display ='none';
-            document.getElementById('sound').style.display='none';
-            document.getElementById('mapMain').style.display='none';
-            document.getElementById('close').style.display='none';
-        }
         let cat = document.getElementById('mapCon')
         function init(){
             let imgs = document.getElementsByClassName('npc-img');
-            let closeBox = document.getElementById('close')
             for(let i=0;i<imgs.length; i++){
                 imgs[i].onclick = showLightBox ;
             };
             cat.onclick = conversation;
             sound.onclick = justPlay;
-            closeBox.onclick = shutDown;
         };
         //window.addEventListener("mouseover",justPlay)
         window.addEventListener("load", init, false);
-        </script>
-    </section>
-</body>
-</html>
