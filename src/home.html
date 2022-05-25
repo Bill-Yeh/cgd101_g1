@@ -5,7 +5,7 @@
     @@include('layout/meta.html', {
     "title" : "語實巨進"
     })
-
+    <script src="./js/home.js"></script>
     <style>
         body {
             background-color: #A2EBE8;
@@ -200,9 +200,14 @@
                 <div class="home_mall_island_npc1">
                     <img src="./images/mall_npc.png" alt="">
                 </div>
-                <!-- 商城島水中裝飾 -->
-                <div class="home_mall_inwater">
-                    <img src="./images/home_island_inwater_2.png" alt="">
+                <!-- 商城島2 -->
+                <div class="home_mall_island_2_pic">
+                    <div class="home_mall_island_2_pic">
+                        <img src="./images/home_mall_island_1.png" alt="">
+                        <div class="home_mall_island_npc2" id="change">
+                            <img src="./images/home_mall_npc_1.png" alt="" name="mall_npc">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -218,21 +223,11 @@
                 </div>
                 在寶物商城兌換新的地圖與裝備！
             </div>
+
         </div>
 
-        <!-- 商城島2 -->
-        <div class="home_mall_island_2_pic">
-            <div class="home_mall_island_2_pic">
-                <!-- 商城島2水中裝飾 -->
-                <div class="home_mall_inwater">
-                    <img src="./images/home_island_inwater_1.png" alt="">
-                </div>
-                <img src="./images/home_mall_island_1.png" alt="">
-                <div class="home_mall_island_npc2">
-                    <img src="./images/home_mall_npc_1.png" alt="">
-                </div>
-            </div>
-        </div>
+
+
 
         <!-- 第五島--裝飾島 -->
         <div class="home_decorate_island">
@@ -254,7 +249,32 @@
             <img src="./images/home_lesson_island3.png" alt="">
         </div>
     </div>
+    <img src="./images/footer_2.png" alt="" width="100%">
     @@include('layout/login_register.html')
+    <script>
+
+
+        let img = document.getElementsByName("mall_npc")[0];
+
+        let imgArr = ["./images/home_mall_npc_1.png", "./images/home_mall_npc_2.png", "./images/home_mall_npc_3.png", "./images/home_mall_npc_4.png"];
+
+        let npc = 0;
+
+        function change() {
+            npc--;
+            if (npc < 0) {
+                npc = imgArr.length - 1;
+            }
+            img.src = imgArr[npc];
+        };
+
+        function init() {
+            document.getElementById("change").click = change;
+            setInterval("change()", 1000);
+        };
+        window.addEventListener("load", init, false)
+    </script>
+    @@include('layout/footer.html')
 </body>
 
 </html>
