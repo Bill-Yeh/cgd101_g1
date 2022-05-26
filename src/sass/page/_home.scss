@@ -70,173 +70,175 @@
 /* 首頁第一島npc走動-向右 */
 @keyframes npcw_walk_right {
   0% {
-    transform: translate3d(0%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(0%, 0%, 0) scaleX(1);
   }
 
   5% {
-    transform: translate3d(10%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(10%, 10%, 0) scaleX(1);
   }
 
   10% {
-    transform: translate3d(15%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(15%, 0%, 0) scaleX(1);
   }
 
   15% {
-    transform: translate3d(20%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(20%, 10%, 0) scaleX(1);
   }
 
   20% {
-    transform: translate3d(35%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(35%, 0%, 0) scaleX(1);
   }
 
   25% {
-    transform: translate3d(40%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(40%, 10%, 0) scaleX(1);
   }
 
   30% {
-    transform: translate3d(45%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(45%, 0%, 0) scaleX(1);
   }
 
   35% {
-    transform: translate3d(50%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(50%, 10%, 0) scaleX(1);
   }
 
   40% {
-    transform: translate3d(55%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(55%, 0%, 0) scaleX(1);
   }
 
   45% {
-    transform: translate3d(60%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(60%, 10%, 0) scaleX(1);
   }
 
   50% {
-    transform: translate3d(65%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(65%, 0%, 0) scaleX(1);
   }
 
   50.01% {
-    transform: translate3d(60%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(60%, 10%, 0) scaleX(-1);
   }
 
   60% {
-    transform: translate3d(55%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(55%, 0%, 0) scaleX(-1);
   }
 
   65% {
-    transform: translate3d(50%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(50%, 10%, 0) scaleX(-1);
   }
 
   70% {
-    transform: translate3d(45%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(45%, 0%, 0) scaleX(-1);
   }
 
   75% {
-    transform: translate3d(40%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(40%, 10%, 0) scaleX(-1);
   }
 
   80% {
-    transform: translate3d(35%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(35%, 0%, 0) scaleX(-1);
   }
 
   85% {
-    transform: translate3d(20%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(20%, 10%, 0) scaleX(-1);
   }
 
   90% {
-    transform: translate3d(15%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(15%, 0%, 0) scaleX(-1);
   }
 
   95% {
-    transform: translate3d(10%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(10%, 10%, 0) scaleX(-1);
   }
 
   100% {
-    transform: translate3d(0%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(0%, 0%, 0) scaleX(-1);
   }
 }
 
 /* 首頁第一島npc走動-向左 */
+
 @keyframes npc_walk_left {
   0% {
-    transform: translate3d(0%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(0%, 0%, 0) scaleX(1);
   }
 
   5% {
-    transform: translate3d(-20%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(-20%, 10%, 0) scaleX(1);
   }
 
   10% {
-    transform: translate3d(-40%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(-40%, 0%, 0) scaleX(1);
   }
 
   15% {
-    transform: translate3d(-60%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(-60%, 10%, 0) scaleX(1);
   }
 
   20% {
-    transform: translate3d(-80%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(-80%, 0%, 0) scaleX(1);
   }
 
   25% {
-    transform: translate3d(-100%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(-100%, 10%, 0) scaleX(1);
   }
 
   30% {
-    transform: translate3d(-120%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(-120%, 0%, 0) scaleX(1);
   }
 
   35% {
-    transform: translate3d(-140%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(-140%, 10%, 0) scaleX(1);
   }
 
   40% {
-    transform: translate3d(-160%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(-160%, 0%, 0) scaleX(1);
   }
 
   45% {
-    transform: translate3d(-180%, 10%, 0) scaleX(1);
+    -webkit-transform: translate3d(-180%, 10%, 0) scaleX(1);
   }
 
   50% {
-    transform: translate3d(-200%, 0%, 0) scaleX(1);
+    -webkit-transform: translate3d(-200%, 0%, 0) scaleX(1);
   }
 
   50.01% {
-    transform: translate3d(-180%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-180%, 10%, 0) scaleX(-1);
   }
 
   60% {
-    transform: translate3d(-160%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-160%, 0%, 0) scaleX(-1);
   }
 
   65% {
-    transform: translate3d(-140%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-140%, 10%, 0) scaleX(-1);
   }
 
   70% {
-    transform: translate3d(-120%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-120%, 0%, 0) scaleX(-1);
   }
 
   75% {
-    transform: translate3d(-100%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-100%, 10%, 0) scaleX(-1);
   }
 
   80% {
-    transform: translate3d(-80%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-80%, 0%, 0) scaleX(-1);
   }
 
   85% {
-    transform: translate3d(-60%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-60%, 10%, 0) scaleX(-1);
   }
 
   90% {
-    transform: translate3d(-40%, 0%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-40%, 0%, 0) scaleX(-1);
   }
 
   95% {
-    transform: translate3d(-20%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(-20%, 10%, 0) scaleX(-1);
   }
 
   100% {
+    -webkit-transform: translate3d(0%, 0%, 0) scaleX(-1);
     transform: translate3d(0%, 0%, 0) scaleX(-1);
   }
 }
@@ -314,13 +316,14 @@
 }
 
 /*第一島雲飄*/
+
 @keyframes move_cloud {
   from {
-    transform: translateX(-500%);
+    -webkit-transform: translateX(-500%);
   }
 
   to {
-    transform: translateX(500%);
+    -webkit-transform: translateX(500%);
   }
 }
 
@@ -348,7 +351,7 @@
   padding: 20px;
   background-color: #fae6b8;
   border: 5px solid #f9bb4d;
-  border-radius: 5px;
+  border-radius: 20px;
   align-items: center;
 }
 
@@ -662,7 +665,8 @@
   left: 70%;
 }
 .last_island {
-  width: 100vw;
+  width: 100%;
+  position: relative;
 }
 .last_island_pic {
   width: 100%;
@@ -670,41 +674,45 @@
 .last_island_pic img {
   width: 100%;
 }
-.last_island {
-  position: relative;
+.last_island_npc {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .last_island_npc img {
-  position: absolute;
   width: 50px;
   height: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 .last_island_info {
   position: absolute;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+.last_island_info_text {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  width: 200px;
+  width: 100px;
   height: 50px;
   padding: 20px;
   background-color: #fae6b8;
   border: 5px solid #f9bb4d;
-  top: 60%;
-  left: 20%;
+  border-radius: 20px;
 }
-.last_island_info_text {
-  padding: 15px;
-}
+
 .sign_up {
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 10px 20px;
   background-color: #f9bb4d;
   border-radius: 30px;
   color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: #f37420;
+  }
 }
 @include md() {
   .home_first_island_npc1 {
@@ -1081,6 +1089,10 @@
     top: 30%;
     left: 85%;
   }
+  .last_island_npc {
+    position: absolute;
+    bottom: 100%;
+  }
   .last_island_npc img {
     width: 150px;
     height: 150px;
@@ -1091,5 +1103,16 @@
     width: 450px;
     height: 80px;
     padding: 20px;
+  }
+  .last_island_info_text {
+    position: absolute;
+    width: 400px;
+    height: 80px;
+    padding: 20px;
+    bottom: 0;
+    left: 50%;
+  }
+  .last_island_info_text p {
+    display: block;
   }
 }
