@@ -14,19 +14,19 @@
     <section class="bigMap">  
         <div class="studyMap_map">
             <!-- 人物角色 -->
-            <div class="studyMap_npc_a" >
+            <div class="studyMap_npc asan left" >
                 <img src="./images/studyMap_NPC_a.png" id="asan" class="npc-img">
             </div>
-            <div class="studyMap_npc_i" >
+            <div class="studyMap_npc isan right" >
                 <img src="./images/studyMap_NPC_i.png" id="isan" class="npc-img">
             </div>
-            <div class="studyMap_npc_u" >
+            <div class="studyMap_npc usan right" >
                 <img src="./images/studyMap_NPC_u.png" id="usan" class="npc-img">
             </div>
-            <div class="studyMap_npc_e" >
+            <div class="studyMap_npc esan left" >
                 <img src="./images/studyMap_NPC_e.png" id="esan" class="npc-img">
             </div>
-            <div class="studyMap_npc_o" >
+            <div class="studyMap_npc osan right" >
                 <img src="./images/studyMap_NPC_o.png" id="osan" class="npc-img">
             </div>
             <!-- 圖像框 -->
@@ -55,6 +55,18 @@
             <!-- 背景濾鏡 -->
             <div class="studyMap_fliter" id="mapFliter"></div>
             <div class="quit" id="close"></div>
+            <!-- 前往測驗對話框 -->
+            <div class="go-to-test" id="toTest">
+                <div class="ask">
+                    <p>前往測驗</p>
+                </div>
+                <div class="yes" id="Yes">
+                    <button>確認</button>
+                </div>
+                <div class="no" id="No">
+                    <button>先不要</button>
+                </div>
+            </div>
         </div>
         <script>
             // let npcId =new Array('asan','isan','usan','esan','osan')
@@ -79,7 +91,12 @@
             //背景變暗
             document.getElementById('mapFliter').style.display='block';
             document.getElementById('mapCon').style.display ='flex';
-            document.getElementById('close').style.display='block'
+            document.getElementById('close').style.display='block';
+            document.getElementById('asan').style.display="none";
+            document.getElementById('isan').style.display="none";
+            document.getElementById('usan').style.display="none";
+            document.getElementById('esan').style.display="none";
+            document.getElementById('osan').style.display="none";
             //====法1抓陣列ID======================
             // let id = String(e.target.id)
             // let index = npcId.indexOf(id)
@@ -116,6 +133,7 @@
             let fifty = document.getElementById('main_pic')
             let con = document.getElementById('con');
             let sound = document.getElementById('voice')
+            let test = document.getElementById('toTest')
             speaker.style.display='flex';
             photo.style.display='flex';
             //あ
@@ -167,7 +185,8 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
+                document.getElementById('close').style.display='none';
+                toTest.style.display='flex';
             }
             //い
             else if(cat.innerText==startCon[1]){
@@ -210,7 +229,8 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
+                document.getElementById('close').style.display='none';
+                test.style.display='flex';
             }
             //う
             else if(cat.innerText==startCon[2]){
@@ -257,7 +277,8 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
+                document.getElementById('close').style.display='none';
+                test.style.display='flex';;
             }
             //え
             else if(cat.innerText==startCon[3]){
@@ -301,7 +322,8 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
+                document.getElementById('close').style.display='none';
+                test.style.display='flex';;
             }
             //お
             else if(cat.innerText==startCon[4]){
@@ -356,16 +378,14 @@
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none'
+                document.getElementById('close').style.display='none';
+                test.style.display='flex';
             }
-        }
-        // sound.onclick = function justPlay(e){
-        //     e.stopPropagation();//阻止事件冒泡
-        // }   
+        }  
         function justPlay(e){
             let sound = document.getElementById('voice')
             sound.play();
-            e.stopPropagation();
+            e.stopPropagation();//阻止冒泡事件
         }
         function shutDown(){
             //console.log("qq")
@@ -374,17 +394,38 @@
             document.getElementById('sound').style.display='none';
             document.getElementById('mapMain').style.display='none';
             document.getElementById('close').style.display='none';
+            document.getElementById('asan').style.display="block";
+            document.getElementById('isan').style.display="block";
+            document.getElementById('usan').style.display="block";
+            document.getElementById('esan').style.display="block";
+            document.getElementById('osan').style.display="block";
+        }
+        function goToTest(e){
+            let target = e.target.getAttribute('id');
+            window.location.href="https://www.google.com.tw/";
+        }
+        function cancelBox(){
+            document.getElementById('toTest').style.display='none';
+            document.getElementById('asan').style.display="block";
+            document.getElementById('isan').style.display="block";
+            document.getElementById('usan').style.display="block";
+            document.getElementById('esan').style.display="block";
+            document.getElementById('osan').style.display="block";
         }
         let cat = document.getElementById('mapCon')
         function init(){
             let imgs = document.getElementsByClassName('npc-img');
-            let closeBox = document.getElementById('close')
+            let closeBox = document.getElementById('close');
+            let goto =document.getElementById('Yes');
+            let cancel =document.getElementById('No');
             for(let i=0;i<imgs.length; i++){
                 imgs[i].onclick = showLightBox ;
             };
             cat.onclick = conversation;
             sound.onclick = justPlay;
             closeBox.onclick = shutDown;
+            goto.onclick = goToTest;
+            cancel.onclick = cancelBox;
         };
         //window.addEventListener("mouseover",justPlay)
         window.addEventListener("load", init, false);
