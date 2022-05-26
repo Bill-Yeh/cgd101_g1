@@ -5,7 +5,7 @@
     @@include('layout/meta.html', {
     "title" : "語實巨進"
     })
-    <script src="./js/home.js"></script>
+
     <style>
         body {
             background-color: #A2EBE8;
@@ -195,18 +195,18 @@
             </div>
         </div>
         <!-- 商城島1 -->
-        <div class="home_mall_island_pic">
+        <div class="home_mall_island">
             <div class="home_mall_island_pic">
-                <img src="./images/home_mall_island_2.png" alt="" class="home_mall_island_2">
-                <div class="home_mall_island_npc1">
-                    <img src="./images/mall_npc.png" alt="">
+                <img src="./images/home_mall_island_1.png" alt="">
+                <div class="home_mall_island_npc1" id="change">
+                    <img src="./images/home_mall_npc_1.png" alt="" name="mall_npc">
                 </div>
                 <!-- 商城島2 -->
-                <div class="home_mall_island_2_pic">
+                <div class="home_mall_island_2">
                     <div class="home_mall_island_2_pic">
-                        <img src="./images/home_mall_island_1.png" alt="">
-                        <div class="home_mall_island_npc2" id="change">
-                            <img src="./images/home_mall_npc_1.png" alt="" name="mall_npc">
+                        <img src="./images/home_mall_island_2.png" alt="">
+                        <div class="home_mall_island_npc2">
+                            <img src="./images/mall_npc2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -279,19 +279,16 @@
     </div>
 
 
-    <div class="last_island">
-        <div class="last_island_pic">
-            <img src="./images/footer_4.png" alt="">
+    <div class="home_last_island">
+        <div class="home_last_island_pic">
+            <img src="./images/home_footer_4.png" alt="">
         </div>
-        <div class="last_island_info">
-
-            <div class="last_island_info_text">
-                <div class="last_island_npc">
-                    <img src="./images/home_info_npc2.png" alt="">
-                </div>
-                <div class="island_info">現在就加入會員，和學伴一起學習日文吧！</div>
+        <div class="home_last_island_info">
+            <img src="./images/home_info_npc2.png" alt="">
+            <div class="home_last_island_info_text">
+                <div class="text">現在就加入會員，</div>和學伴一起學習日文吧！
                 <div class="sign_up">
-                    <p>立即註冊</p>
+                    <div class="btn_sign_up">立即註冊</div>
                 </div>
             </div>
         </div>
@@ -299,7 +296,7 @@
 
 
 
-    </div>
+
     @@include('layout/login_register.html')
     <script>
 

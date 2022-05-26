@@ -547,27 +547,21 @@
 }
 
 /* 商城島npc */
+
 .home_mall_island_npc1 {
   position: absolute;
   top: 40%;
-  left: 20%;
+  left: 30%;
 }
 .home_mall_island_2 {
   display: none;
 }
 .home_mall_island_npc1 img {
-  width: 50px;
-  height: 50px;
-}
-.home_mall_island_npc2 {
   position: absolute;
-  top: 40%;
-  right: 35%;
-}
-.home_mall_island_npc2 img {
-  height: 50px;
   width: 50px;
+  height: 50px;
 }
+
 .home_mall_info_text {
   display: flex;
   justify-content: flex-end;
@@ -664,56 +658,47 @@
   top: 30%;
   left: 70%;
 }
-.last_island {
+.home_last_island {
   width: 100%;
   position: relative;
 }
-.last_island_pic {
+.home_last_island_pic {
   width: 100%;
 }
-.last_island_pic img {
+
+.home_last_island_pic img {
   width: 100%;
 }
-.last_island_npc {
+
+.home_last_island_info {
   position: absolute;
-  left: 0;
   top: 0;
+  right: 25%;
 }
-.last_island_npc img {
-  width: 50px;
-  height: 50px;
+
+.home_last_island_info img {
+  width: 70px;
+  height: 70px;
 }
-.last_island_info {
-  position: absolute;
+
+.home_last_island_info_text {
   display: flex;
   flex-direction: column;
-  top: 20%;
-  right: 20%;
-}
-.last_island_info_text {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100px;
-  height: 50px;
-  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
   background-color: #fae6b8;
   border: 5px solid #f9bb4d;
   border-radius: 20px;
+  padding: 20px;
+  .text {
+    display: none;
+  }
 }
 
 .sign_up {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f9bb4d;
-  border-radius: 30px;
-  color: #fff;
-  cursor: pointer;
-  &:hover {
-    background-color: #f37420;
-  }
+  @include btn();
 }
+
 @include md() {
   .home_first_island_npc1 {
     top: 20%;
@@ -974,6 +959,9 @@
   }
 
   /*商城島*/
+  .home_mall_island {
+    margin: 200px 0 0 0;
+  }
   .home_mall_island_2 {
     display: block;
   }
@@ -985,7 +973,8 @@
 
   .home_mall_cloud_1 img {
     width: 20%;
-    right: 20%;
+
+    right: 0;
   }
   .home_mall_cloud_2 img {
     right: 0;
@@ -1003,8 +992,9 @@
   }
 
   .home_mall_island_npc2 {
+    position: absolute;
     top: 50%;
-    right: 30%;
+    right: 50%;
   }
   .home_mall_island_npc1 img,
   .home_mall_island_npc2 img {
@@ -1089,30 +1079,13 @@
     top: 30%;
     left: 85%;
   }
-  .last_island_npc {
-    position: absolute;
-    bottom: 100%;
-  }
-  .last_island_npc img {
-    width: 150px;
-    height: 150px;
-  }
-  .last_island_info {
+  .home_last_island_info_text {
     font-size: 20px;
-    justify-content: center;
-    width: 450px;
-    height: 80px;
-    padding: 20px;
-  }
-  .last_island_info_text {
-    position: absolute;
-    width: 400px;
-    height: 80px;
-    padding: 20px;
-    bottom: 0;
-    left: 50%;
-  }
-  .last_island_info_text p {
-    display: block;
+    width: 300px;
+    height: 100px;
+    left: 60%;
+    .text {
+      display: block;
+    }
   }
 }
