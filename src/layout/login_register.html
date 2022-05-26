@@ -191,9 +191,10 @@ window.addEventListener('load', function(){
 
     //註冊帳號過
     let accountValid2 = userEmail.test(memberAccount.value);
+    // console.log("帳號:",accountValid2);
 
     //註冊密碼過
-    let passwordValid2 = userEmail.test(memberPassword.value);
+    let passwordValid2 = passwordCheck.test(memberPassword.value);
     
 
     loginBtn.addEventListener('click',function(e){
@@ -218,14 +219,9 @@ window.addEventListener('load', function(){
             loginPassword.select();
             e.preventDefault();
             return;
-        }
-
-    // 如果帳號和密碼都驗證通過，就跳轉到會員專區
-        if (accountValid && passwordValid){
-            alert('登入成功');
-            return window.location.replace('../src/mem.html');
-        } 
-            
+        }else{
+            return window.location.replace('mem.html');
+        }   
 
     })
     
@@ -262,13 +258,12 @@ window.addEventListener('load', function(){
             alert('確認密碼錯誤');
             confirmPassword.select();
             // e.preventDefault();
-        } 
-
-        // 如果帳號、密碼、確認密碼都驗證通過，就跳轉到會員專區
-        if (accountValid2 && passwordValid2 && confirmPassword.value == memberPassword.value) {
+        } else{
             alert('恭喜註冊成功!!!');
-            return window.location.replace('../src/mem.html');
-        };
+            return window.location.replace('mem.html');
+        }
+
+        
     })
 
 
