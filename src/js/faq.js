@@ -15,8 +15,11 @@ window.addEventListener('load', function() {
 
     // ================我要發文燈箱===================
 
-    // 我要發文btn
+    // 我要發文btn(平版以上)
     let postBtn = document.getElementById('faq_desktop_btn');
+
+    // 我要發文btn(手機版)
+    let postBtnRwd = document.getElementById('postRwdBtn');
 
     // 關閉按鈕
     let postClose = document.getElementById('post_close_id');
@@ -25,6 +28,10 @@ window.addEventListener('load', function() {
     let postLightBox = document.getElementById('faq_post');
 
     postBtn.addEventListener('click',function(){
+        postLightBox.style.display = 'flex';
+    })
+
+    postBtnRwd.addEventListener('click',function(){
         postLightBox.style.display = 'flex';
     })
     
