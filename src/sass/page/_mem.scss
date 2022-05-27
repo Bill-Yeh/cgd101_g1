@@ -110,7 +110,6 @@
         }
     };
     .mat{
-        cursor: pointer;
         @include mem_item(300px,'','',100px,30px);
         @include md{
             @include mem_item(300px,'','',100px,150px);
@@ -133,6 +132,20 @@
     .box2{display: none};
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .chetbox{
     display: none;
@@ -245,28 +258,58 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
+    
 
     #lightBox{
-        position: relative;
+        @include lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+        
+        .map_lightBox{
+            @include lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+            overflow:overlay;
+            &::-webkit-scrollbar-button{
+                background-color: rgb(0, 176, 15);
+            }
+        }
+
+        .closet_lightBox{
+            // @include lightboxContent(px,300px);
+
+        }
+
+
+        .bed_lightBox{
+
+        }
+
+        .box1_lightBox{
+
+        }
+
+
+        .desk_lightBox{
+
+        }
+
+
     }
     
     
-    .xl_lightBox{ //學習紀錄 //學員換裝
-        @include lightboxSize($xl_lightbox_width,$xl_lightbox_height);
-        background-color: #FAE6B8
-    };
+    // .xl_lightBox{ //學習紀錄 //學員換裝
+    //     @include lightboxSize($xl_lightbox_width,$xl_lightbox_height);
+    //     background-color: #FAE6B8
+    // };
 
-    .lg_lightBox{
-        @include lightboxSize($lg_lightbox_width,$lg_lightbox_height);
-        background-color: #FAE6B8
+    // .lg_lightBox{
+    //     @include lightboxSize($lg_lightbox_width,$lg_lightbox_height);
+    //     background-color: #FAE6B8
 
-    }
+    // }
 
-    .md_lightBox{
-        @include lightboxSize($md_lightbox_width,$md_lightbox_height);
-        background-color: #FAE6B8
+    // .md_lightBox{
+    //     @include lightboxSize($md_lightbox_width,$md_lightbox_height);
+    //     background-color: #FAE6B8
 
-    }
+    // }
 
     .back{
         cursor: pointer;

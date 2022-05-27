@@ -37,45 +37,12 @@ function openLightBox(){
     black.style.display='block';
 
     let vw=window.innerWidth
-    let lightBox=document.querySelector("#lightBox").classList;
-    let target=String(this.className);
+    let targetClass=`.${String(this.className)}_lightBox`
+    let lightBox=document.querySelector(targetClass);
 
-    // return function checkSize(){
-        lightBox.className=""
-        if(vw>1200){
-            if(target=="map"||target=="desk"){
-                lightBox.add("xl_lightBox")
-            }
-            else if(target=="closet"||target=="box1" ){
-                lightBox.add("lg_lightBox")
-            }
-            else if(target=="bed"){
-                lightBox.add("md_lightBox")
-            }
-        }
-        else if(vw>992){
-            if(target=="map"||target=="desk" ){
-                lightBox.add("xl_lightBox")
-            }
-            else if(target=="closet"||target=="box1"){
-                lightBox.add("lg_lightBox")
-            }
-            else if(target=="bed"){
-                lightBox.add("md_lightBox")
-            }
-        }
-        else if(vw>768){
-            if(target=="map"||target=="desk"){
-                lightBox.add("xl_lightBox")
-            }
-            else if(target=="bed"||target=="closet"||target=="box1"){
-                lightBox.add("lg_lightBox")
-            }
-        }
-        else{
-            lightBox.add("xl_lightBox")
-        }
-    // }
+    lightBox.style.display='block';
+
+
 }
 
 
@@ -85,8 +52,11 @@ function openLightBox(){
 function cancelLightBox(){
     let black=document.querySelector(".black");
     black.style.display='none';
-    let lightBox=document.querySelector("#lightBox");
-    lightBox.className="";
+    let lightBox=document.querySelectorAll("div#lightBox > div");
+    for(i=0;i<lightBox.length;i++){
+        lightBox[i].style.display='none';
+    }
+    
 }
 
 
@@ -126,3 +96,39 @@ document.querySelector(".teacher").addEventListener("click",openChetbox);
 document.querySelector(".cancel").addEventListener("click",closeChetbox);
 
 
+
+
+// lightBox.className=""
+//         if(vw>1200){
+//             if(target=="map"||target=="desk"){
+//                 lightBox.add("xl_lightBox")
+//             }
+//             else if(target=="closet"||target=="box1" ){
+//                 lightBox.add("lg_lightBox")
+//             }
+//             else if(target=="bed"){
+//                 lightBox.add("md_lightBox")
+//             }
+//         }
+//         else if(vw>992){
+//             if(target=="map"||target=="desk" ){
+//                 lightBox.add("xl_lightBox")
+//             }
+//             else if(target=="closet"||target=="box1"){
+//                 lightBox.add("lg_lightBox")
+//             }
+//             else if(target=="bed"){
+//                 lightBox.add("md_lightBox")
+//             }
+//         }
+//         else if(vw>768){
+//             if(target=="map"||target=="desk"){
+//                 lightBox.add("xl_lightBox")
+//             }
+//             else if(target=="bed"||target=="closet"||target=="box1"){
+//                 lightBox.add("lg_lightBox")
+//             }
+//         }
+//         else{
+//             lightBox.add("xl_lightBox")
+//         }
