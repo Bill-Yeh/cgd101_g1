@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "付款明細"
+    })
+
+</head>
+<body>
+    <!-- header -->
+    @@include('layout/header.html')
+    <!-- header end -->
+
+    <section class="payment" id="payment">
+        <div class="payment_container">
+            <div class="payment_content_part">
+                <h1>付款明細</h1>
+                <div class="payment_main_content">
+                    <div class="payment_table_header">
+                        <span class="product_pic">商品圖片</span>
+                        <span class="product_title">商品名稱</span>
+                        <span class="product_price">單價</span>
+                        <span class="product_total">總計</span>
+                    </div>
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="https://picsum.photos/80/80/?random=10">
+                        </div>
+                        <div class="product_text">
+                            <span class="product_title_value">
+                                N5單字地圖
+                            </span>
+                            <span class="product_price_value">
+                                NT$300元
+                            </span>
+                            <span class="product_total_value">
+                                NT$300元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment_button_part"></div> 
+        </div>
+    </section>
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="item">
+                    <img src="https://picsum.photos/300/200/?random=10">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="item">
+                    <img src="https://picsum.photos/300/200/?random=10">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="item">
+                    <img src="https://picsum.photos/300/200/?random=10">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="item">
+                    <img src="https://picsum.photos/300/200/?random=10">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+    @@include('layout/login_register.html')
+
+    <!-- footer -->
+    <!-- @@include('layout/footer.html') -->
+
+    
+</body>
+</html>
