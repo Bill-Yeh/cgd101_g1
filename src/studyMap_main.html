@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "學習大地圖"
+    })
+</head>
+<body>
+    <!-- header -->
+    @@include('layout/header.html')
+    <!-- header end -->
+<section class="bigMap">
+    <div class="scroller">  
+        <div class="study_big_map">
+            <div class="village">
+                <img v-for="(data,key) in img" :src="`./images/studyMap_${img[key]}.png`" :alt="img[key]" :class="img[key]">
+            </div>
+            <div class="cloud">
+                <img v-for="(data,key) in img" :src="`./images/cloud_${img[key]}.png`" :alt="img[key]" :class="img[key]">
+            </div>
+        </div>
+    </div>
+</section>
+    @@include('layout/footer.html')
+
+
+
+    <script src="js/studymap.js"></script>
+</body>
+</html>
