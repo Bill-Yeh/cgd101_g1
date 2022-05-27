@@ -34,7 +34,7 @@ header{
   top: 0;
   z-index: 5;
   .header_white-bg{
-    width: 100%;
+    // width: 100%;
     background-color: white;
   }
   .header_wrap{
@@ -182,10 +182,10 @@ header{
 // 雲朵
 .header_nav_cloud{
   width: 100%;
-  z-index: 5;
+  z-index: 10;
   img{
     width: 100%;
-    z-index: 5;
+    z-index: 10;
   }
 }
 
