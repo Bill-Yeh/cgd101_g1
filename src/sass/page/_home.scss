@@ -114,7 +114,7 @@
   }
 
   50.01% {
-    -webkit-transform: translate3d(60%, 10%, 0) scaleX(-1);
+    -webkit-transform: translate3d(60%, 10%, 0) scaleX(1);
   }
 
   60% {
@@ -733,7 +733,7 @@
   }
   /* 第一島 */
   .home_first_island_pic {
-    height: 650px;
+    height: 700px;
   }
 
   .home_first_island_pic img {
@@ -777,13 +777,13 @@
   .home_cloud_1_pic img {
     width: 30%;
     left: 8%;
-    top: 5%;
+    top: 2%;
   }
 
   .home_cloud_2_pic img {
     width: 20%;
     right: 10%;
-    top: 20%;
+    top: 10%;
   }
 
   .home_cloud_3_pic img {
