@@ -25,20 +25,20 @@ window.addEventListener('load', function() {
     let heartQuantity = document.querySelectorAll('.heart_quantity');
 
 
-        for(let i = 0; i<emptyHeart.length; i++){
-            emptyHeart[i].addEventListener('click',function(){
-                emptyHeart[i].style.display = 'none';
-                fillHeart[i].style.display = 'block';
-                heartQuantity[i].style.display = 'block';
-            })
-        }
-        for(let j = 0; j<fillHeart.length; j++){
-            fillHeart[j].addEventListener('click',function(){
-                fillHeart[j].style.display = 'none';
-                emptyHeart[j].style.display = 'block';
-                heartQuantity[j].style.display = 'none';
-            })
-        }
+        // for(let i = 0; i<emptyHeart.length; i++){
+        //     emptyHeart[i].addEventListener('click',function(){
+        //         emptyHeart[i].style.display = 'none';
+        //         fillHeart[i].style.display = 'block';
+        //         heartQuantity[i].style.display = 'block';
+        //     })
+        // }
+        // for(let j = 0; j<fillHeart.length; j++){
+        //     fillHeart[j].addEventListener('click',function(){
+        //         fillHeart[j].style.display = 'none';
+        //         emptyHeart[j].style.display = 'block';
+        //         heartQuantity[j].style.display = 'none';
+        //     })
+        // }
 
 
 
