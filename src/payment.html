@@ -13,73 +13,171 @@
 
     <section class="payment" id="payment">
         <div class="payment_container">
-            <div class="payment_content_part">
-                <h1>付款明細</h1>
-                <div class="payment_main_content">
-                    <div class="payment_table_header">
-                        <span class="product_pic">商品圖片</span>
-                        <span class="product_title">商品名稱</span>
-                        <span class="product_price">單價</span>
-                        <span class="product_total">總計</span>
-                    </div>
-                    <div class="product_detail">
-                        <div class="product_img">
-                            <img src="https://picsum.photos/80/80/?random=10">
+            <h1>付款明細</h1>
+            <div class="container payment_main_form">
+                <div class="row table_header">
+                    <div class="col-md-3 table_col">
+                        <div class="product_type">
+                            <span>商品圖片</span>
                         </div>
-                        <div class="product_text">
-                            <span class="product_title_value">
-                                N5單字地圖
-                            </span>
-                            <span class="product_price_value">
-                                NT$300元
-                            </span>
-                            <span class="product_total_value">
-                                NT$300元
-                            </span>
+                    </div>
+                    <div class="col-md-3 table_col">
+                        <div class="product_title">
+                            <span>商品名稱</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 table_col">
+                        <div class="product_price">
+                            <span>單價</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 table_col">
+                        <div class="product_total">
+                            <span>總計</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row table_data">
+                    <div class="col-6 col-md-3">
+                        <div class="product_img">
+                            <img src="./images/payement_map.png" alt="N5單字地圖">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-9">
+                        <div class="row product_detail">
+                            <div class="col-12 col-md-3 data_col">
+                                <div class="product_title_value">
+                                    <span>N5單字</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 data_col">
+                                <div class="product_price_value">
+                                    <span>NT$300元</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 data_col">
+                                <div class="product_total_value">
+                                    <span>NT$300元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row credit_card_section">
+                    <div class="col-12 credit_card_col">
+                        <div class="credit_card">
+                            <h2>請輸入信用卡資訊</h2>
+                        </div>
+                        <form action="" class="credit_card_info">
+                            <div class="card_num">
+                                <label for="card_id">信用卡卡號</label>
+                                <div class="card_id_input">
+                                    <input type="tel" name="card_number" id="card_id" class="customer_input" maxlength="4"> –
+                                    <input type="tel" name="card_number" class="customer_input" max="4" > –
+                                    <input type="tel" name="card_number" class="customer_input" max="4" > –
+                                    <input type="tel" name="card_number" class="customer_input" max="4" >
+                                </div>
+                            </div>
+                            <div class="card_expire">
+                                <label for="expire">有效期限</label>
+                                <input type="month" name="card_expire" id="expire">
+                            </div>
+                            <div class="security_num">
+                                <label for="security">安全碼</label>
+                                <input type="tel" name="security_number" id="security" minlength="3" maxlength="3">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row order_customer_section">
+                    <div class="col-12 order_info_col">
+                        <div class="customer">
+                            <h2>請輸入訂購人資訊</h2>
+                        </div>
+                        <form action="" class="order_form">
+                            <div class="order_name">
+                                <label for="customer_name">姓名</label>
+                                <input type="text" id="customer_name">
+                            </div>
+                            <div class="order_phone">
+                                <label for="customer_phone">電話</label>
+                                <input type="tel" name="" id="customer_phone">
+                            </div>
+                            <div class="order_email">
+                                <label for="customer_email">信箱</label>
+                                <input type="email" name="" id="customer_email">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row payment_button">
+                    <div class="col-12 payment_btn_col">
+                        <div class="payment_btn_group">
+                            <a href="mall.html">
+                                <button class="go_back">回上一頁</button>
+                            </a>
+                            <button class="confirm_payment" id="confirmPayment">
+                                確認結帳
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="payment_button_part"></div> 
         </div>
     </section>
 
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-3">
-                <div class="item">
-                    <img src="https://picsum.photos/300/200/?random=10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+
+    <!-- 確認結帳燈箱 -->
+    <section id="payment_confirm_check">
+        <div class="payment_confirm_check_box">
+            <div class="payment_confirm_check_content">
+                <div class="confirm_check_close">
+                    <i class="bi bi-x-lg" id="confirm_check_close"></i>
                 </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="item">
-                    <img src="https://picsum.photos/300/200/?random=10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                <div class="payment_detail_title">
+                    <h3>結帳明細</h3>
                 </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="item">
-                    <img src="https://picsum.photos/300/200/?random=10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                <div class="payment_detail_info">
+                    <div class="confirm_check_creditCard">
+                        <span>商品資訊</span>
+                        <ul>
+                            <li class="confirm_check_product_name">商品名稱:&nbsp;單字</li>
+                            <li class="confirm_check_product_price">總價:&nbsp;NT$300元</li>
+                        </ul>
+                    </div>
+                    <div class="confirm_check_creditCard">
+                        <span>信用卡資訊</span>
+                        <ul>
+                            <li class="confirm_check_creditCard_id">卡號:&nbsp;0000&nbsp;1111&nbsp;2222&nbsp;3333</li>
+                            <li class="confirm_check_creditCard_expire">有效期限:&nbsp;2030年5月</li>
+                            <li class="confirm_check_creditCard_security_num">安全碼:&nbsp;000</li>
+                        </ul>
+                    </div>
+                    <div class="confirm_check_order_customer">
+                        <span>訂購人資訊</span>
+                        <ul>
+                            <li class="confirm_check_name">姓名:&nbsp;陳小明</li>
+                            <li class="confirm_check_contact">電話:&nbsp;0912345678</li>
+                            <li class="confirm_check_email">信箱:&nbsp;abc@gmail.com</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="item">
-                    <img src="https://picsum.photos/300/200/?random=10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam placeat incidunt ex consequatur eligendi reprehenderit explicabo, asperiores cupiditate perferendis eum nobis voluptate dignissimos alias eaque! Aperiam asperiores officiis voluptate eligendi.</p>
+                <div class="final_check_btn">
+                    <button id="cancel_trade">取消付款</button>
+                    <button id="confirm_payment_btn">確認結帳</button>
                 </div>
             </div>
         </div>
-    </div> -->
+    </section>
+    
 
 
 
     @@include('layout/login_register.html')
 
     <!-- footer -->
-    <!-- @@include('layout/footer.html') -->
+    @@include('layout/footer.html')
 
-    
+    <script src="js/payment.js"></script>
 </body>
 </html>

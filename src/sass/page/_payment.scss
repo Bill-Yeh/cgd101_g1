@@ -1,51 +1,330 @@
 .payment{
     width: 100%;
     margin-top: 120px;
-
-    .payment_container{
+    @include xl(){
+        margin-top: 200px;
+    }
+    .payment_main_form{
         width: $wrapRwd;
-        margin: auto;
+        margin-top: 30px;
+        @include xl(){
+            max-width: 1200px;
+        }
+    }
+    h1{
+        text-align: center;
+        font-size: 28px;
+        font-family: $fontCh;
+        color: map-get($color , backstage_h );
+    }
+    .table_header{
+        display: none;
+        @include md(){
+            display: flex;
+            margin-top: 30px;
+            background-color: map-get($color , primary );
+            border-radius: 30px 30px 0 0;
+            .table_col:first-child{
+                border-right: 1px solid rgb(148, 148, 148);
+                padding: 20px 0;
+            }
+            .table_col:nth-child(2){
+                border-right: 1px solid rgb(148, 148, 148);
+                padding: 20px 0;
+            }
+            .table_col:nth-child(3){
+                border-right: 1px solid rgb(148, 148, 148);
+                padding: 20px 0;
+            }
+            .table_col:last-child{
+                padding: 20px 0;
+            }
+            .product_type,.product_title,.product_price,.product_total{
+                display: flex;
+                justify-content: center;
+                span{
+                    font-size: 1.3rem;
+                    font-family: $fontCh;
+                }
+            }
+        }
+    }
+    .table_data{
+        align-items: center;
+        padding: 20px 0;
+        background-color: #fff;
+        border-bottom: 1px solid #c4c4c4;
+        border-radius: 30px 30px 0 0;
+        @include md(){
+            border-radius:0;
+        }
+        .product_img{
+            display: flex;
+            justify-content: center;
+            img{
+                width: 30%;
+            }
+        }
 
-        .payment_content_part{
-            h1{
+        .product_detail{
+            justify-content: space-around;
+
+            .product_title_value,.product_price_value,.product_total_value{
+                display: flex;
+                @include md(){
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                // 商品資訊
+                span{
+                    line-height: 2;
+                    font-size: 1.2rem;
+                    font-family: $fontCh;
+                    @include md(){
+                        line-height: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // 信用卡資訊
+    .credit_card_section{
+        padding: 30px 0;
+        background-color: #fff;
+        border-bottom: 1px solid #c4c4c4;
+
+        .credit_card_col{
+            h2{
                 text-align: center;
-                font-size: 28px;
+                font-size: 1.2rem;
                 font-family: $fontCh;
-                color: map-get($color , backstage_h );
+                @include md(){
+                    font-size: 1.5rem;
+                }
             }
 
-            .payment_main_content{
-                .payment_table_header{
-                    display: none;
+            // 信用卡表單內容
+            .credit_card_info{
+                // 下方的input欄位共用屬性
+                input{
+                    border: 1px solid #c4c4c4;
+                    border-radius: 20px;
+                }
+                // 下方的label共用屬性
+                label{
+                    font-size: 1rem;
+                    @include md(){
+                        font-size: 1.2rem;
+                    }
+                }
+                .card_num,.card_expire,.security_num{
+                    margin: 30px 0;
+                    font-family: $fontCh;
+                }
+
+                // 信用卡卡號+有效期限+安全碼
+                .card_num,.card_expire,.security_num{
+                    display: flex;
+                    flex-direction: column;
                     @include xl(){
-                        display: flex;
-                        justify-content: space-around;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+
+                    // 信用卡卡號
+                    label{
+                        margin-bottom: 10px;
+                        @include xl(){
+                            margin: 0 10px 0 0;
+                        }
+                    }
+                    .card_id_input{
+                        max-width: 440px;
+                    }
+                    input[type="tel"]{
+                        width: 16%;
+                        max-width: 100px;
+                        padding: 8px 0;
+                        text-align: center;
                     }
                 }
 
-                .product_detail{
-                    display: flex;
-                    justify-content: space-around;
-                    @include xl(){
-                        justify-content: flex-start;
-                        
-                    }
-
-                    .product_text{
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-around;
+                // 有效期限
+                .card_expire{
+                    label{
+                        margin-bottom: 10px;
                         @include xl(){
-                            flex-direction: row;
-                            
+                            margin: 0 25px 0 0;
                         }
                     }
+                    input[type="month"]{
+                        max-width: 350px;
+                        padding: 8px;
+                    }
+                }
+
+                // 安全碼
+                .security_num{
+                    label{
+                        margin-bottom: 10px;
+                        @include xl(){
+                            margin: 0 40px 0 0;
+                        }
+                    }
+                    input[type="tel"]{
+                        width: 50px;
+                        padding: 8px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // 訂購人資訊
+    .order_customer_section{
+        padding: 30px 0;
+        background-color: #fff;
+        border-radius: 0 0 30px 30px;
+
+        .order_info_col{
+            h2{
+                text-align: center;
+                font-size: 1.2rem;
+                font-family: $fontCh;
+                @include md(){
+                    font-size: 1.5rem;
+                }
+            }
+
+            // 下方的input欄位共用屬性
+            input{
+                border: 1px solid #c4c4c4;
+                border-radius: 20px;
+                padding: 8px;
+            }
+            // 下方的label共用屬性
+            label{
+                margin-bottom: 10px;
+                font-size: 1rem;
+                @include md(){
+                    margin: 0 10px 10px 0;
+                    font-size: 1.2rem;
+                }
+            }
+
+            // 訂購人表單資訊
+            .order_form{
+                .order_name,.order_phone,.order_email{
+                    display: flex;
+                    flex-direction: column;
+                    margin: 30px 0;
+                    font-family: $fontCh;
+                    @include xl(){
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                }
+
+                
+            }
+        }
+    }
+
+    // 按鈕
+    .payment_button{
+        padding: 50px 0;
+        .payment_btn_col{
+
+            .payment_btn_group{
+                display: flex;
+                justify-content: space-evenly;
+
+                // 回上一頁
+                a{
+                    text-decoration: none;
+                }
+                button{
+                    @include btn();
                 }
             }
         }
     }
 }
 
-img{
+
+
+// 確認結帳燈箱
+#payment_confirm_check{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.607);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    // 燈箱box
+    .payment_confirm_check_box{
+        width: 80%;
+        max-width: 500px;
+        padding: 30px;
+        background-color: map-get($color , bgc_y );
+        border-radius: 20px;
+
+        .payment_confirm_check_content{
+            position: relative;
+            // 關閉icon
+            #confirm_check_close{
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            // 結帳明細標題
+            .payment_detail_title{
+                text-align: center;
+                font-size: map-get($fontSize , h3 );
+                font-family: $fontCh;
+                color: map-get($color , backstage_h );
+            }
+
+            // 主要訊息
+            .confirm_check_creditCard,.confirm_check_creditCard,.confirm_check_order_customer{
+                margin: 20px 0;
+            }
+            .payment_detail_info{
+                span{
+                    font-family: $fontCh;
+                    font-size: 1.2rem;
+                    line-height: 1.5;
+                }
+                li{
+                    line-height: 1.5;
+                }
+            }
+
+            // 按鈕
+            .final_check_btn{
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    @include btn();
+                }
+                #cancel_trade{
+                    margin-right: 20px;
+                }
+            }
+        }
+
+    }
 }
