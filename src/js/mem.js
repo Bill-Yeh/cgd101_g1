@@ -30,20 +30,38 @@ new Vue({
 
 
 
-// 確認開啟燈箱大小
+// 開啟燈箱
 function openLightBox(){
 
     let black=document.querySelector(".black");
     black.style.display='block';
 
-    let vw=window.innerWidth
+
+    // let vw=window.innerWidth;
+    // let vh=window.innerHeight;
+    let lightBox=document.querySelector("#lightBox")
+    lightBox.style.marginTop=`-${lightBox.offsetHeight/2}px`;
+    lightBox.style.marginLeft=`-${lightBox.offsetWidth/2}px`;
+
+    console.log(`-${lightBox.offsetWidth/2} px`)
+
+    // lightBox.style.marginTop=top;
+    // lightBox.style.marginLeft=left;
+
+    
     let targetClass=`.${String(this.className)}_lightBox`
-    let lightBox=document.querySelector(targetClass);
-
-    lightBox.style.display='block';
-
+    let lightBoxContent=document.querySelector(targetClass);
+    lightBoxContent.style.display='block';
 
 }
+
+function resize (){
+    let lightBox=document.querySelector("#lightBox")
+    lightBox.style.marginTop=`-${lightBox.offsetHeight/2}px`;
+    lightBox.style.marginLeft=`-${lightBox.offsetWidth/2}px`;
+
+}
+
 
 
 
@@ -54,7 +72,7 @@ function cancelLightBox(){
     black.style.display='none';
     let lightBox=document.querySelectorAll("div#lightBox > div");
     for(i=0;i<lightBox.length;i++){
-        lightBox[i].style.display='none';
+        lightBox[i].className.style.display='none';
     }
     
 }
@@ -63,9 +81,14 @@ function cancelLightBox(){
 
 
 
+
+
 document.querySelector(".black").addEventListener("click",cancelLightBox);
 document.querySelector(".back").addEventListener("click",cancelLightBox);
 document.querySelector("#lightBox").addEventListener("click", function(e){e.stopPropagation()});
+
+
+window.onresize=resize;
 
 
 //設定可點選物件事件聆聽
@@ -98,37 +121,3 @@ document.querySelector(".cancel").addEventListener("click",closeChetbox);
 
 
 
-// lightBox.className=""
-//         if(vw>1200){
-//             if(target=="map"||target=="desk"){
-//                 lightBox.add("xl_lightBox")
-//             }
-//             else if(target=="closet"||target=="box1" ){
-//                 lightBox.add("lg_lightBox")
-//             }
-//             else if(target=="bed"){
-//                 lightBox.add("md_lightBox")
-//             }
-//         }
-//         else if(vw>992){
-//             if(target=="map"||target=="desk" ){
-//                 lightBox.add("xl_lightBox")
-//             }
-//             else if(target=="closet"||target=="box1"){
-//                 lightBox.add("lg_lightBox")
-//             }
-//             else if(target=="bed"){
-//                 lightBox.add("md_lightBox")
-//             }
-//         }
-//         else if(vw>768){
-//             if(target=="map"||target=="desk"){
-//                 lightBox.add("xl_lightBox")
-//             }
-//             else if(target=="bed"||target=="closet"||target=="box1"){
-//                 lightBox.add("lg_lightBox")
-//             }
-//         }
-//         else{
-//             lightBox.add("xl_lightBox")
-//         }

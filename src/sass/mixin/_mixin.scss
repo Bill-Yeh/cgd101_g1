@@ -65,63 +65,35 @@
 };
 
 
+// margin-left: -($W3+100)/2;
+// margin-top: -($H3+100)/2;
+
 //控制燈箱位置
-@mixin lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4){
-    border-radius: 20px;
-    padding: 50px;
-    background-color: #FAE6B8;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
-    display: inline-block;
-    position: absolute;
-    top:50%;
-    left: 50%;
+@mixin lightboxSize($sm_W,$sm_H,$md_W,$md_H,$lg_W,$lg_H,$xl_W,$xl_H){
     @include m{
-        margin-left: -($W4+100)/2;
-        margin-top: -($H4+100)/2;
+        width: $sm_W;
+        height: $sm_H;
     }
     
     @include md{
-        margin-left: -($W3+100)/2;
-        margin-top: -($H3+100)/2;
+        width: $md_W;
+        height: $md_H;
     }
 
     @include lg{
-        margin-left: -($W2+100)/2;
-        margin-top: -($H2+100)/2;
+        width: $lg_W;
+        height: $lg_H;
     }
 
     @include xl{
-        margin-left: -($W+100)/2;
-        margin-top: -($H+100)/2;
+        width: $xl_W;
+        height: $xl_H;
     }      
 }
 
 
 
 
-
-@mixin lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4){
-    display: none;
-    
-    @include m{
-        width: $W4;
-        height: $H4;
-    }
-    @include md{
-        width: $W3;
-        height: $H3;
-    }
-
-    @include lg{
-        width: $W2;
-        height: $H2;
-    }
-    @include xl{
-        width: $W;
-        height: $H;
-    }
-    @content ;
-}
 
 
 

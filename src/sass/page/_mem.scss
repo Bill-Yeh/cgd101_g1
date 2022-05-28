@@ -261,10 +261,20 @@
     
 
     #lightBox{
-        @include lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+        @include lightboxSize($W4,$H4,$W3,$H3,$W2,$H2,$W,$H);
+        top:50%;
+        left: 50%;
+        display: none;
+        border-radius: 20px;
+        padding: 50px;
+        background-color: #FAE6B8;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
+        display: inline-block;
+        position: absolute;
         
         .map_lightBox{
-            @include lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+            display: none;
+            // @include lightboxSize($W4,$H4,$W3,$H3,$W2,$H2,$W,$H);
             overflow:overlay;
             &::-webkit-scrollbar-button{
                 background-color: rgb(0, 176, 15);
@@ -272,21 +282,39 @@
         }
 
         .closet_lightBox{
-            // @include lightboxContent(px,300px);
-
+            // @include lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+            overflow:overlay;
+            &::-webkit-scrollbar-button{
+                background-color: rgb(0, 176, 15);
+            }
         }
 
 
         .bed_lightBox{
+            // @include lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+            overflow:overlay;
+            &::-webkit-scrollbar-button{
+                background-color: rgb(0, 176, 15);
+            }
 
         }
 
         .box1_lightBox{
+            // @include lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+            overflow:overlay;
+            &::-webkit-scrollbar-button{
+                background-color: rgb(0, 176, 15);
+            }
 
         }
 
 
         .desk_lightBox{
+            //  @include lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
+            overflow:overlay;
+            &::-webkit-scrollbar-button{
+                background-color: rgb(0, 176, 15);
+            }
 
         }
 
