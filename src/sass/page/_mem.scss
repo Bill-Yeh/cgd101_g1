@@ -1,6 +1,6 @@
 
 
-.wapper{
+.wrapper{
     position: relative;
     overflow: hidden;
     width: auto;
@@ -28,6 +28,7 @@
     @include bg('map_mem_30.jpg',bottom);
     .map{
         cursor: pointer;
+        z-index: 3;
         &:hover{
             transform: scale(1.1)
         };
@@ -41,6 +42,7 @@
     }
     .closet{
         cursor: pointer;
+        z-index: 3;
         &:hover{
             transform: scale(1.1)
         };
@@ -72,6 +74,7 @@
     height: 55%;
     @include bg('map_mem_31.jpg',top);
     .bed{
+        z-index: 3;
         cursor: pointer;
         &:hover{
             transform: scale(1.1)
@@ -79,6 +82,7 @@
         @include mem_item(180px,-30px,15px,'','');
     };
     .box1{
+        z-index: 3;
         cursor: pointer;
         &:hover{
             transform: scale(1.1)
@@ -86,6 +90,7 @@
         @include mem_item(100px,'','',15px,30px);
     };
     .teacher{
+        z-index: 3;
         cursor: pointer;
         &:hover{
             transform: scale(1.1)
@@ -93,6 +98,7 @@
         @include mem_item(70px,'',100px,5px,'');
     };
     .phone{
+        z-index: 3;
         cursor: pointer;
         &:hover{
             transform: scale(1.1)
@@ -100,6 +106,7 @@
         @include mem_item(70px,'',5px,5px,'');
     };
     .desk{
+        z-index: 3;
         cursor: pointer;
         &:hover{
             transform: scale(1.1)
@@ -261,85 +268,234 @@
     
 
     #lightBox{
-        @include lightboxSize($W4,$H4,$W3,$H3,$W2,$H2,$W,$H);
+        // @include lightboxSize($W4,$H4,$W3,$H3,$W2,$H2,$W,$H);
         top:50%;
         left: 50%;
         display: none;
         border-radius: 20px;
-        padding: 50px;
+        
+        padding: 20px;
         background-color: #FAE6B8;
         box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
         display: inline-block;
         position: absolute;
+        @include md{padding: 30px;}
         
-        .map_lightBox{
-            display: none;
-            // @include lightboxSize($W4,$H4,$W3,$H3,$W2,$H2,$W,$H);
-            overflow:overlay;
-            &::-webkit-scrollbar-button{
-                background-color: rgb(0, 176, 15);
-            }
-        }
 
-        .closet_lightBox{
-            // @include lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
-            overflow:overlay;
-            &::-webkit-scrollbar-button{
-                background-color: rgb(0, 176, 15);
-            }
-        }
+        // .lightBoxContent{
+        
+            .map_lightBox{
+                overflow:auto;
+                display: none;
+                @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+               
+                &::-webkit-scrollbar-button{
+                    background-color: rgb(0, 176, 15);
+                }
 
-
-        .bed_lightBox{
-            // @include lightboxSize($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
-            overflow:overlay;
-            &::-webkit-scrollbar-button{
-                background-color: rgb(0, 176, 15);
+                img{
+                    display: block;
+                    margin: auto;
+                    vertical-align:bottom;
+                    width: auto;
+                    height: 100%;
+                }
             }
 
-        }
+            .closet_lightBox{
+                overflow:auto;
+                display: none;
+                @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+                
+                &::-webkit-scrollbar-button{
+                    background-color: rgb(0, 176, 15);
+                }
+                img{
+                    vertical-align:bottom;
+                }
 
-        .box1_lightBox{
-            // @include lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
-            overflow:overlay;
-            &::-webkit-scrollbar-button{
-                background-color: rgb(0, 176, 15);
+                .char{
+                    height: 70%;
+                    display: flex;
+                    img{
+                        display: block;
+                        margin: auto;
+                        height: 50%;
+                        width: auto;
+                        
+                    }
+                }
+
+                .cloth{
+                    height: 30%;
+                    // background-color:#fff;
+                    
+
+                    .page{
+                        display: flex;
+                        // background-color:rgb(172, 38, 38);
+                        height: 30%;
+                        position: relative;
+                        align-items:flex-end;
+
+                        & div:nth-child(n){
+                            position: relative;
+                            cursor: pointer;
+                            border-top-left-radius: 10px;
+                            border-top-right-radius: 10px;
+                            overflow: hidden;
+                            // border: #F9BB4D 3px solid;
+                            background-color: #F37420;
+                            border-bottom: none;
+                            box-sizing: border-box;
+                            height:70%;
+                            padding: 0.5% 5%;
+                            // border: #F9BB4D 3px solid;
+                            img{
+                                border: none;
+                                width: auto;
+                                height: 100%;
+                            } 
+                        }
+                        & div:nth-child(1){
+                            // box-shadow: 10px 0px 0px  rgba(51, 51, 51, 0.263);
+                            position: relative;
+                            left: 0px;
+                            z-index: 10;
+                           
+                        }
+                        & div:nth-child(2){
+                            // box-shadow: 10px 0px 0px rgba(51, 51, 51, 0.253);
+                            position: relative;
+                            left: -10px;
+                            z-index: 9;
+                        }
+                        & div:nth-child(3){
+                            position: relative;
+                            left: -20px;
+                            z-index: 8;
+                        }
+                        #target{
+                            padding:0.5% 7%;
+                            background-color: #F9BB4D;
+                        }
+                        
+                    }
+
+                    .item{
+                        vertical-align: center;
+                        display: flex;
+                        height: 70%;
+                        box-sizing: border-box;
+                        border: #F9BB4D 3px solid;
+                        background-color: #F9BB4D;
+                        border-top-right-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                        border-bottom-right-radius: 10px;
+
+                        .itemFront{
+                            margin: auto;
+                            width: 20px;
+                            
+                            text-align: center;
+                            img{
+                                
+                                width: 100%;
+                            }
+                        }
+                        .itemBack{
+                            margin: auto;
+                            width: 20px;
+                            
+                            text-align: center;
+                            img{
+                                width: 100%;
+                            }
+
+                        }
+
+
+
+                        .item-wrapper{
+                            display: flex;
+                            flex-wrap:nowrap;
+                            background-color: #FAE6B8;
+                            margin: auto;
+                            width: 84%;
+                            height: 100%;
+                            box-sizing: border-box;
+                            align-items: center;
+                            overflow: hidden;
+                            
+                        
+                            & :nth-child(n){
+                                cursor: pointer;
+                                flex-shrink:0;
+                                background-color: #fff;
+                                margin: 1%;
+                                height: 80%;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                &:hover{
+                                    box-shadow: inset 0px 0px 50px #F9BB4D;
+                                }
+                                
+                                img{
+                                    width: auto;
+                                    height: 100%;
+                                
+                                }
+                            }
+                        }   
+                    }
+
+                }
             }
 
-        }
+
+            
 
 
-        .desk_lightBox{
-            //  @include lightboxContent($W,$H,$W2,$H2,$W3,$H3,$W4,$H4);
-            overflow:overlay;
-            &::-webkit-scrollbar-button{
-                background-color: rgb(0, 176, 15);
+            .bed_lightBox{
+                overflow:auto;
+                display: none;
+                @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$md_boxW,$md_boxH,$md_boxW,$md_boxH);
+                
+                &::-webkit-scrollbar-button{
+                    background-color: rgb(0, 176, 15);
+                }
+
             }
 
-        }
+            .box1_lightBox{
+                overflow:auto;
+                display: none;
+                @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+                
+                &::-webkit-scrollbar-button{
+                    background-color: rgb(0, 176, 15);
+                }
+
+            }
+
+
+            .desk_lightBox{
+                overflow:auto;
+                display: none;
+                @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$xl_boxW,$xl_boxH);
+                
+                &::-webkit-scrollbar-button{
+                    background-color: rgb(0, 176, 15);
+                }
+
+            }
+
+        // }
 
 
     }
     
-    
-    // .xl_lightBox{ //學習紀錄 //學員換裝
-    //     @include lightboxSize($xl_lightbox_width,$xl_lightbox_height);
-    //     background-color: #FAE6B8
-    // };
-
-    // .lg_lightBox{
-    //     @include lightboxSize($lg_lightbox_width,$lg_lightbox_height);
-    //     background-color: #FAE6B8
-
-    // }
-
-    // .md_lightBox{
-    //     @include lightboxSize($md_lightbox_width,$md_lightbox_height);
-    //     background-color: #FAE6B8
-
-    // }
-
-    .back{
+    .backTo{
         cursor: pointer;
         text-align: center;
         position: absolute;
