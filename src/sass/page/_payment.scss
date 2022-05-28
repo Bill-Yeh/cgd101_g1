@@ -1,0 +1,51 @@
+.payment{
+    width: 100%;
+    margin-top: 120px;
+
+    .payment_container{
+        width: $wrapRwd;
+        margin: auto;
+
+        .payment_content_part{
+            h1{
+                text-align: center;
+                font-size: 28px;
+                font-family: $fontCh;
+                color: map-get($color , backstage_h );
+            }
+
+            .payment_main_content{
+                .payment_table_header{
+                    display: none;
+                    @include xl(){
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                }
+
+                .product_detail{
+                    display: flex;
+                    justify-content: space-around;
+                    @include xl(){
+                        justify-content: flex-start;
+                        
+                    }
+
+                    .product_text{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        @include xl(){
+                            flex-direction: row;
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+img{
+    width: 100%;
+}

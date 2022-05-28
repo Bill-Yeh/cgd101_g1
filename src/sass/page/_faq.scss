@@ -115,9 +115,6 @@
 
 
 
-body{
-    background-color: map-get($color , bgc_y );
-}
 
 // section
 .faq{
@@ -126,7 +123,7 @@ body{
         margin-top: 15%;
     }
     @include xl(){
-        margin-top: 10%;
+        margin-top: 12%;
     }
     h1{
         text-align: center;
@@ -271,7 +268,7 @@ body{
                         .faq_article_content{
                             width: 70%;
                             // margin-left: 20px;
-                            span,h3,p{
+                            span,h3,.article_paragragh{
                                 line-height: 1.8;
                                 font-family: $fontCh;
                                 overflow:hidden;
@@ -297,10 +294,29 @@ body{
                                     // 按讚
                                     .faq_heart{
                                         margin-right: 20px;
-                                        svg{
+                                        height: 16px;
+                                        .bi-heart{
                                             color: map-get($color , primary );
                                             cursor: pointer;
                                         }
+                                        &.show {
+                                            .bi-heart{
+                                                display: none;
+                                            }
+                                            .bi-heart-fill {
+                                                display: block;
+                                            }
+                                        }
+                                        .bi-heart-fill{
+                                            color: red;
+                                            cursor: pointer;
+                                            display: none;
+                                        }
+                                    }
+                                    // 按讚數量
+                                    .heart_quantity{
+                                        margin: 0 20px 0 0;
+                                        display: none;
                                     }
                                     // 留言
                                     .faq_info{
@@ -585,10 +601,24 @@ body{
                         display: flex;
                         justify-content: flex-end;
                         cursor: pointer;
-                        svg{
+                        .bi-heart{
                             width: 20px;
                             height: 20px;
                             color: map-get($color , primary );
+                        }
+                        &.show {
+                            .bi-heart{
+                                display: none;
+                            }
+                            .bi-heart-fill {
+                                display: block;
+                            }
+                        }
+                        .bi-heart-fill{
+                            width: 20px;
+                            height: 20px;
+                            color: red;
+                            display: none;
                         }
                     }
                 }
@@ -601,7 +631,7 @@ body{
             // 學員留言
             .student{
                 display: flex;
-                padding: 10px 0 20px 0;
+                padding: 10px 0 45px 0;
                 border-bottom: 1px solid rgb(174, 174, 174);
 
                 .faq_student_text{

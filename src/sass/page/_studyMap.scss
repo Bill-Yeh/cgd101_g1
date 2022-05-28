@@ -1,17 +1,191 @@
+//大地圖
 .bigMap{
     width: 100%;
-    background-color: #fa0;
+    background-color: #A2EBE8;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
+.scroller{
+  width: 240%;
+  // padding: 0;
+  // margin: 0;
+  // overflow: scroll;
+  
+  // -webkit-overflow-scrolling: touch; 
+  // white-space: nowrap;
+}
+.study_big_map{
+  background-image: url("/images/studyMap_main_island.png");
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+  transform:translate( -40px, 0)
+}
+.big_island img{
+  width: 100%;
+  vertical-align: top;
+}
+//村莊
+.village{
+  // width: 30px;
+  // height: 20%;
+  .firstVillage{
+      cursor: pointer;
+      z-index: 10;
+      &:hover{
+          transform: scale(1.1)
+      };
+      @include mem_item(45px,78%,'','',10.5%);
+      @include md{ //768
+        @include mem_item(50px,79%,'','',12%);
+      }
+      @include lg{ //992
+        @include mem_item(50px,80%,'','',13%);
+      }
+      @include xl{ //1200
+        @include mem_item(50px,81.5%,'','',14.5%);
+      }
+  };
+  .secondVillage{
+      cursor: pointer;
+      z-index: 10;
+      &:hover{
+          transform: scale(1.1)
+      };
+      @include mem_item(55px,55.4%,'','',24%);
+      @include md{ //768
+        @include mem_item(50px,55%,'','',25%);
+      }
+      @include lg{ //992
+        @include mem_item(50px,55%,'','',26%);
+      }
+      @include xl{ //1200
+        @include mem_item(70px,55%,'','',27%);
+      }
+  };
+  .thirdVillage{
+      cursor: pointer;
+      z-index: 10;
+      &:hover{
+          transform: scale(1.1)
+      };
+      @include mem_item(45px,40%,'','',30%);
+      @include md{ //768
+        @include mem_item(50px,39%,'','',31%);
+      }
+      @include lg{ //992
+        @include mem_item(50px,39%,'','',32%);
+      }
+      @include xl{ //1200
+        @include mem_item(50px,38.5%,'','',33%);
+      }
+  };
+  .fourthvillage{
+      cursor: pointer;
+      z-index: 10;
+      &:hover{
+          transform: scale(1.1)
+      };
+      @include mem_item(50px,36%,30.7%,'','');
+      @include md{ //768
+        @include mem_item(50px,35%,31%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(50px,34%,32%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(60px,33%,32.5%,'','');
+      }
+  };
+  .fifthVillage{
+      cursor: pointer;
+      z-index: 10;
+      &:hover{
+          transform: scale(1.1)
+      };
+      @include mem_item(50px,64%,37%,'','');
+      @include md{ //768
+        @include mem_item(50px,64%,40%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(55px,65%,40%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(60px,65%,38.5%,'','');
+      }
+  };
+  .sixthVillage{
+      @include mem_item(110%,2%,-5%,'','');
+      @include md{ //768
+        @include mem_item(50px,64%,40%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(55px,65%,40%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(100%,-7%,0.5%,'','');
+      }
+  };
+  .seventhVillage{
+    @include mem_item(110%,1.5%,-4%,'','');
+    @include md{ //768
+      @include mem_item(50px,64%,40%,'','');
+    }
+    @include lg{ //992
+      @include mem_item(55px,65%,40%,'','');
+    }
+    @include xl{ //1200
+      @include mem_item(100%,-7%,0.5%,'','');
+    }
+  }
+}
+//雲
+.cloud{
+  // width: 100%;
+  .cloud_background{
+      @include mem_item(100%,-5%,'','',6%);
+      @include md{ //768
+        @include mem_item(100%,-15%,'','',0%);
+      }
+      @include lg{ //992
+        @include mem_item(100%,-15%,'','',0%);
+      }
+      @include xl{ //1200
+        @include mem_item(100%,0%,'','',0%);
+      }
+  };
+  .cloud_1{
+    z-index: 30;
+      &:hover{
+          transform: scale(1.1)
+      };
+      @include mem_item(55px,55.4%,'','',24%);
+      @include md{ //768
+        @include mem_item(50px,55%,'','',25%);
+      }
+      @include lg{ //992
+        @include mem_item(50px,55%,'','',26%);
+      }
+      @include xl{ //1200
+        @include mem_item(100%,0%,'','',20%);
+      }
+  };
+}
+
+//單元地圖
 .studyMap_map{
-    width: 100%; 
-    height:100vh;
-    background-image: url("../../images/studyMap_50village.png");
-    background-size: cover;
-    background-position: center;
-    position: relative;
+  width: 100%; 
+  height:100vh;
+  background-image: url("../../images/studyMap_50village.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 .studyMap_map:first-child{
-    width: 100%;
+  width: 100%;
 }
 .studyMap_npc{
     position: absolute;
@@ -35,20 +209,6 @@
     transform: scale(1.2);
     //vertical-align: top;
 }
-// .front{
-//   width: 70px;
-//   height: 20px;
-//   position: absolute;
-//   top: -60px;
-//   left: -50px;
-//   display: none;
-// }
-// .front img{
-//   width: 100%;
-// }
-// .front:hover{
-//   display: block;
-// }
 .asan{
     top: 40%;
     left: 20%;
@@ -141,6 +301,8 @@
     margin: 45% 45%;
     transform: scale(3);
     vertical-align: top;
+    z-index: 999999;
+    position: relative;
 }
 .studyMap_con{
     content: "";
@@ -162,6 +324,8 @@
 }
 .studyMap_con p{
     font-size: 20px;
+    z-index: 9999;
+    position: relative;
 }
 .studyMap_con img{
     transform: scale(1.5);
@@ -264,6 +428,8 @@
 .go-to-test button:hover{
   background-color: #F37420;
 }
+
+//CSS動畫
 @keyframes  npc_walk_right {
     0% {
       transform: translate3d(0%, 0%, 0) scaleX(1);
@@ -328,8 +494,6 @@
     100% {
       transform: translate3d(0%, 0%, 0) scaleX(-1);
     }
-  
-   
   }
 @keyframes npc_walk_left{
     0% {
@@ -413,10 +577,15 @@
         transform: translate3d(0%, 0%, 0) scaleX(1);
       }
 }
+
+
+//RWD配置
+
 //768以上
 @include md() {
   .studyMap_npc img{
     transform: scale(1.4);
+  }
   .studyMap_main{
       font-size: 30px;
       width: 500px;
@@ -432,10 +601,14 @@
   }
   .studyMap_con p{
     font-size: 30px;
+  }
+  .study_big_map{
+    width: 700px;
+  }
+  .scroller{
+    width: 100%;
+  }
 }
-}
-}
-
 /* 992以上 */
 @include lg() {
   .studyMap_npc img{
@@ -468,17 +641,75 @@
   .studyMap_con img{
     transform: scale(2);
     padding-right: 50px;
-}
+  }
   .studyMap_con p{
     font-size: 40px;
   }
-#sound img{
-  transform: scale(0.7);
+  #sound img{
+    transform: scale(0.7);
+  }
+  .npc-pic::after{
+    width: 30px;
+    height: 30px;
+    bottom: -40%;
+    left: 80%;
+  }
+  .study_big_map{
+    width: 950px;
+  }
+  .scroller{
+    width: 100%;
+  }
 }
-.npc-pic::after{
-  width: 30px;
-  height: 30px;
-  bottom: -40%;
-  left: 80%;
-}
+//1200以上
+@include xl() {
+  // .studyMap_npc img{
+  //     transform: scale(1.7);
+  // }
+  // .studyMap_main{
+  //   font-size: 40px;
+  //   width: 500px;
+  //   height: 500px;
+  //   border: 10px solid #F9BB4D;
+  //   border-radius: 20px;
+  //   padding: 30px;
+  //   bottom: 30%;
+  //   left: 36%;
+  //   box-sizing: border-box;
+  //   z-index: 51;
+  //   display: none;
+  // }
+  // .studyMap_con{
+  //   content: "";
+  //   font-size: 40px;
+  //   width: 90%;
+  //   height: 150px;
+  //   border: 10px solid #F9BB4D;
+  //   border-radius: 20px;
+  //   padding: 30px;
+  //   bottom: 5%;
+  //   left: 5%;
+  // }
+  // .studyMap_con img{
+  //   transform: scale(2);
+  //   padding-right: 50px;
+  // }
+  // .studyMap_con p{
+  //   font-size: 40px;
+  // }
+  // #sound img{
+  //   transform: scale(0.7);
+  // }
+  // .npc-pic::after{
+  //   width: 30px;
+  //   height: 30px;
+  //   bottom: -40%;
+  //   left: 80%;
+  // }
+  .study_big_map{
+    width: 1200px;
+  }
+  .scroller{
+    width: 100%;
+  }
 }

@@ -13,6 +13,35 @@ window.addEventListener('load', function() {
         });
     };
 
+    // ================文章按讚===================
+
+    // 空心愛心
+    let emptyHeart = document.querySelectorAll('.bi-heart');
+
+    // // 實心愛心
+    let fillHeart = document.querySelectorAll('.bi-heart-fill');
+
+    // // 按讚數量
+    let heartQuantity = document.querySelectorAll('.heart_quantity');
+
+
+        // for(let i = 0; i<emptyHeart.length; i++){
+        //     emptyHeart[i].addEventListener('click',function(){
+        //         emptyHeart[i].style.display = 'none';
+        //         fillHeart[i].style.display = 'block';
+        //         heartQuantity[i].style.display = 'block';
+        //     })
+        // }
+        // for(let j = 0; j<fillHeart.length; j++){
+        //     fillHeart[j].addEventListener('click',function(){
+        //         fillHeart[j].style.display = 'none';
+        //         emptyHeart[j].style.display = 'block';
+        //         heartQuantity[j].style.display = 'none';
+        //     })
+        // }
+
+
+
     // ================我要發文燈箱===================
 
     // 我要發文btn(平版以上)
@@ -68,15 +97,26 @@ window.addEventListener('load', function() {
     // 文章標題
     let faqTitle = document.querySelectorAll('.article_title');
 
+    // 留言icon
+    let messageIcon = document.querySelectorAll('.bi-chat');
+
     // 留言燈箱
     let messageLightBox = document.getElementById('faq_message');
 
     // 燈箱關閉icon
     let messageClose = document.getElementById('message_close_id');
 
-    // 開啟燈箱
+    // 點標題開啟燈箱
     for(let i = 0; i<faqTitle.length; i++){
-        faqTitle[i].addEventListener('click',function(){
+        faqTitle[i].addEventListener('click',function(e){
+            messageLightBox.style.display = 'flex';
+            e.stopPropagation();
+        })
+    }
+
+    // 點留言icon開啟燈箱
+    for(let i = 0; i<messageIcon.length; i++){
+        messageIcon[i].addEventListener('click',function(){
             messageLightBox.style.display = 'flex';
         })
     }
@@ -118,20 +158,3 @@ window.addEventListener('load', function() {
     // // 檢舉送出btn
     // let reportBtn = document.getElementById('report_submit');
 });
-
-
-// //綁定class:
-// //1. 傳回字串
-// //2. 傳回物件
-// //3. 傳回物件(簡易)
-// new Vue({
-//     el: '.faq',
-//     data: {     // 變數放這裡!
-//         message: 'Hello',
-//     },
-//     methods: { // 函數大部分放這裡!
-//     },
-//     computed:{  //函數也可以放這裡，但是放在這裡的函數不能傳參數，一定要有傳回值(return)
-        
-//     },
-// });
