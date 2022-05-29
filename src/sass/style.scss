@@ -6,6 +6,9 @@
 //@import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import "layout/header";
 @import "layout/footer";
+@import "layout/backStage_header";
+@import "layout/backStage_nav";
+@import "layout/backStage_footer";
 @import "page/home";
 @import "page/index";
 @import "page/about";
@@ -14,6 +17,7 @@
 @import "page/faq";
 @import "page/mall";
 @import "page/payment";
+@import "page/backStage_account";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
 @import "page/studyMap";
 @import "layout/loginRegister";

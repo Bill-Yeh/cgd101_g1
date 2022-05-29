@@ -1,0 +1,77 @@
+<div class="backStage_nav">
+    <ul class="backStage_nav_list">
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">帳號管理</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">會員管理</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">題庫管理</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">課程管理</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">裝備管理</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">交易列表</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">文章管理</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">異常通報</a>
+            <div class="triangle"></div>
+        </li>
+        <li class="nav_list">
+            <a class="nav_link" href="javascript:void(0)">諮詢管理</a>
+            <div class="triangle"></div>
+        </li>
+    </ul>
+</div>
+
+<script>
+    window.addEventListener('load',function(){
+
+        // 三角形
+        let triangle = document.querySelectorAll('.triangle');
+
+        // 導覽列的a連結
+        let navLink = document.querySelectorAll('.nav_link');
+
+        // 導覽列list標籤
+        let navList = document.querySelectorAll('.nav_list');
+
+        for(let i = 0; i<navLink.length; i++){
+
+            // 一開始帳號管理是橘色
+            navList[0].style.backgroundColor = '#F9BB4D';
+
+            // 一開始帳號管理有三角形
+            triangle[0].style.display = 'block';
+
+            // 點擊a連結後，list變顏色，三角形換位置
+            navLink[i].addEventListener('click',function(){
+                navList[i].style.backgroundColor = '#F9BB4D';
+                triangle[i].style.display = 'block';
+                for(let j=0; j<navLink.length; j++){
+                    if(i != j){
+                        navList[j].style.backgroundColor = '#FAE6B8';
+                        triangle[j].style.display = 'none';
+                    }
+                }
+            })
+        }
+    })
+
+
+</script>
