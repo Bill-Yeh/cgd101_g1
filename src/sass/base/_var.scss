@@ -44,35 +44,23 @@ $xl_breakpoint : 1200px;
 
 
 
-//燈箱寬、高度佔比
+//燈箱寬、高度
+$xl_boxW:1000px;
+$xl_boxH:75vh;
 
-$W:1000px;
-$H:600px;
+$lg_boxW:800px;
+$lg_boxH:75vh;
 
-$W2:800px;
-$H2:600px;
+$md_boxW:500px;
+$md_boxH:75vh;
 
-$W3:500px;
-$H3:600px;
-
-$W4:350px;
-$H4:600px;
-
+$sm_boxW:350px;
+$sm_boxH:80vh;
 
 
 
 
-//大燈箱
-$xl_lightbox_width: 85%;
-$xl_lightbox_height: 90%;
 
-//中燈箱
-$lg_lightbox_width: 60%;
-$lg_lightbox_height: 80%;
-
-//小燈箱
-$md_lightbox_width: 40%;
-$md_lightbox_height: 80%;
 
 
 

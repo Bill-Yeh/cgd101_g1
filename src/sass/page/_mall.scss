@@ -1,12 +1,14 @@
 body {
   background-color: rgba(250, 230, 184, 0.5);
+  font-family: $fontCh;
 }
 
 .mall_wrap {
   width: auto;
-  overflow: hidden;
   height: 100vh;
+  overflow: hidden;
   display: flex;
+  box-sizing: border-box;
   .mall_floor {
     width: 100%;
     height: 100%;
@@ -20,18 +22,32 @@ body {
   }
   .mall_floor_pic img {
     display: none;
-    @include xl() {
+    width: 100%;
+    @include md() {
       display: block;
-      width: 100%;
+      height: 80%;
+      margin-top: 30%;
+    }
+    @include lg() {
+      display: block;
       height: 100%;
       margin-top: 20%;
     }
   }
   .mall_floor_item_pic {
     top: 30%;
+    left: 5%;
+    @include lg() {
+      left: 3%;
+    }
   }
   .mall_floor_item_pic img {
     display: none;
+    @include lg() {
+      display: block;
+      width: 40%;
+      height: 35%;
+    }
     @include xl() {
       display: block;
       width: 40%;
@@ -39,30 +55,132 @@ body {
     }
   }
   .mall_item_wrap {
-    width: $wrapRwd;
+    width: 100%;
+    display: flex;
+    margin-top: 180px;
+    @include lg() {
+      width: 100%;
+      margin-top: 20px;
+    }
     @include xl() {
       width: 100%;
-      position: absolute;
+      margin-top: 0px;
     }
     .mall_item {
-      width: 100%;
+      width: $wrapRwd;
       margin: auto;
-      @include xl() {
+      display: flex;
+      @include md() {
+        justify-content: center;
+        align-items: center;
+      }
+      @include lg() {
         margin-top: 10%;
-        position: relative;
-        width: 100%;
+        width: 70%;
+        justify-content: flex-end;
       }
 
       .item {
+        position: relative;
+        width: 100%;
         width: 500px;
-        height: 500px;
+        height: 400px;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
         background-color: #fae6b8;
-        @include xl() {
+        .tab {
+          display: flex;
           position: absolute;
-          right: 15%;
-          width: 500px;
+          top: -10%;
+          left: 0;
+          z-index: 50;
+          @include md() {
+            top: -7%;
+          }
+          .lesson,
+          .tool {
+            cursor: pointer;
+            border: 3px solid #fae6b8;
+            background-color: #fae6b8;
+            border-bottom: none;
+            padding: 10px 30px;
+            border-radius: 10px 10px 0 0;
+            margin: 5px;
+          }
+        }
+
+        @include md() {
           height: 550px;
-          background-color: #fae6b8;
+        }
+        .item_info {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+        .item_1,
+        .item_2,
+        .item_3,
+        .item_4 {
+          display: flex;
+          justify-content: space-around;
+          width: 300px;
+          height: 90px;
+          border-radius: 5px;
+          background-color: #fff;
+          margin: 5px;
+          z-index: 2;
+          @include md() {
+            width: 400px;
+            height: 120px;
+            margin: 10px;
+          }
+          .item_pic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #fae6b8;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            @include md() {
+              width: 50px;
+              height: 50px;
+            }
+          }
+          .item_pic img {
+            width: 30px;
+            height: 30px;
+            @include md() {
+              width: 35px;
+              height: 35px;
+            }
+          }
+          .item_price {
+            cursor: pointer;
+            display: flex;
+            width: 40px;
+            @include md() {
+              width: 50px;
+              padding: 5px;
+              border-radius: 20px;
+              border: 1px solid #ccc;
+            }
+          }
+          .item_price_pic img {
+            width: 15px;
+            height: 15px;
+          }
+          .item_price_text {
+            font-size: 15px;
+          }
         }
       }
     }
