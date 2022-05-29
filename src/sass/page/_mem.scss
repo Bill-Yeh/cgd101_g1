@@ -11,6 +11,17 @@
         height: 100%;
         margin: auto;
     }
+    .say{
+        padding: 10px 30px;
+        border:#F9BB4D 3px solid;
+        border-radius: 10px;
+        z-index:2 ;
+        display: inline-block;
+        background-color: #FAE6B8;
+        position: absolute;
+        top:calc(100%*0.5 - 120px);
+        left: calc(100% *0.5);
+    }
     #me{
         z-index:1 ;
         width: 150px;
@@ -18,6 +29,7 @@
         top:calc((100% - 150px)*0.5);
         left: calc((100% - 150px)*0.5);
     }
+
 }
 
 
@@ -156,16 +168,16 @@
 
 .chetbox{
     display: none;
-    z-index: 30;
+    z-index: 6;
     color: rgba(0, 0, 0, 0.8);
     font-weight: 600;
     font-size: 16px;
     padding: 8px;
     border-top-left-radius:10px;
     border-top-right-radius:10px;
-    background-color:#ffffff;
+    background-color:#fff;
     box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
-    position: relative;
+    // position: relative;
     @include mem_item(320px,'',5%,0px,'');
     @include md{
         height: 60%
@@ -178,10 +190,9 @@
         padding:8px;
         display: flex;
         align-items: center;
-        position: absolute;
-        top:0;
-        left: 0;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        height: 10%;
+        // border-bottom: 2px solid rgba(0, 0, 0, 0.2);
         
         .headshot{
             width:40px;
@@ -220,14 +231,118 @@
         }
 
     }
+
+    .conv{
+        height: 80%;
+        box-sizing: border-box;
+        border: 3px solid #FAE6B8;
+        border-radius: 10px;
+        justify-content: end;
+        overflow: overlay;
+        ::-webkit-scrollbar{
+            background-color: #fff;
+        }
+
+        .tr{
+            width: 100%;
+            padding: 5px 5px 18px 5px;
+            box-sizing: border-box;
+            display: flex;
+            position: relative;
+
+            .tr-name{
+                position: absolute;
+                left: 50px;
+                font-size: 13px;
+                color:rgba(0, 0, 0, 0.65); 
+            }
+            .trHead{
+                width:36px;
+                height: 36px;
+                border-radius: 18px;
+                background-color: #FAE6B8;
+                
+                img{
+                    height: 100%;
+                    width: auto;
+                }
+            }
+
+            
+            p{  
+                position: relative;
+                bottom: -15px;
+                margin: 0px 10px;
+                padding: 5px;
+                display: inline-block;
+                max-width: 60%;
+                background-color: #F9BB4D;
+                word-wrap:break-word; 
+                line-height: 26px;
+                border-radius: 10px;
+                font-size: 14px;
+                
+                
+            }
+            
+        }
+        .user{
+            width: 100%;
+            padding: 5px 5px 18px 5px;
+            box-sizing: border-box;
+            
+            display: flex;
+            flex-direction: row-reverse;
+            position: relative;
+
+            .user-name{
+                position: absolute;
+                right: 50px;
+                font-size: 13px;
+                color:rgba(0, 0, 0, 0.65); 
+            }
+            .userHead{
+                width:36px;
+                height: 36px;
+                border-radius: 18px;
+                background-color: #FAE6B8;
+                img{
+                    height: 100%;
+                    width: auto;
+                }
+
+            }
+            
+            p{
+                margin: 0px 10px;
+                position: relative;
+                bottom: -15px;
+                padding: 5px;
+                display: inline-block;
+                max-width: 60%;
+                background-color: #F9BB4D;
+                word-wrap:break-word;
+                line-height: 26px;
+                border-radius: 10px;
+                font-size: 14px;
+                
+                
+               
+            }
+            
+            
+        }
+
+
+
+    }
     .input{
         display: flex;
         justify-content: space-between;
         width: 320px;
-        padding: 8px 8px 15px 8px;
-        position: absolute;
-        bottom:0;
-        left: 0;
+        padding: 8px;
+        height: 10%;
+        box-sizing: border-box;
         
         input{
             flex-grow: 3;
@@ -243,8 +358,8 @@
         }
         .sent{
             cursor: pointer;
-            width: 40px;
-            height: 40px;
+            width: auto;
+            height: 100%;
             padding: 0px 10px;
             
         }
