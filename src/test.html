@@ -11,15 +11,55 @@
     @@include('layout/header.html')
 
     <main class="test_wrap">
-        <section class="test_section">
-            <div class="test_pic">
-                <img src="images/test_NPC1.png" id="test_50_pic" alt="五十音測驗">
+
+        <h2 class="test_h2">升級測驗</h2>
+
+        <section class="test_lightBox_bg">
+            <div class="test_lightBox">
+                <div class="test_lightBox_close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="post_close_id">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                </div>
+                
+                <div class="test_progress">
+                    <div class="test_progress_title">
+                        progress
+                    </div>
+
+                    <div class="test_progress_bar">
+                        <div class="test_progress_now"></div>
+                        <div class="test_progress_chara">
+                            <img src="images/test_NPC1.png" alt="進度條_人物">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test_question">
+                    <div class="test_question_title">ああ</div>
+                    <div class="test_question_options">
+                        <button class="test_option">aki</button>
+                        <button class="test_option test_qurstionAns">aa</button>
+                        <button class="test_option">sata</button>
+                        <button class="test_option">naha</button>
+                    </div>
+                </div>
             </div>
+        </section>
+        
+
+        <section class="test_section">
+
+            <div class="test_pic">
+                <img src="images/test_NPC1.png" id="test_50_pic_s" alt="五十音測驗">
+                <img src="images/test_topic1.png" id="test_50_pic_l" alt="五十音測驗">
+            </div>
+
             <div class="test_section_content">
                 <input type="checkbox" id="test_50">
                 <div class="test_tab">
                     <label class="test_tab_label" for="test_50">
-                        <h2>五十音測驗</h2>
+                        <h3>五十音測驗</h3>
                     </label>
                     <div class="test_tab_content">
                         <div class="test_50">あ</div>
@@ -30,7 +70,9 @@
                     </div>
                 </div>
             </div>
+
         </section>
+
     </main>
 </body>
 </html>
