@@ -1,0 +1,48 @@
+#backStage{
+    background-color: map-get($color , backstage_h );
+    padding: 20px 10px;
+    .backStage_content{
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+
+        .backStage_logo{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            img{
+                width: 12%;
+            }
+            h1{
+                padding-left: 30px;
+                font-size: 2rem;
+                color: #fff;
+                font-family: $fontCh;
+                font-weight: 500;
+            }
+        }
+
+        .backStage_administrator{
+            width: 200px;
+            display: flex;
+            .administrator{
+                padding-right: 30px;
+            }
+            span,a{
+                font-size: 1.2rem;
+                font-family: $fontCh;
+                color: #fff;
+            }
+            a{
+                text-decoration: none;
+                transition: .2s;
+                &:hover{
+                    color: yellow;
+                }
+            }
+        }
+    }
+}
+

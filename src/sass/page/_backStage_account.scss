@@ -1,0 +1,85 @@
+.backStage_main_content{
+    display: flex;
+    position: relative;
+
+    .backStage_right_part{
+        width: 85%;
+
+        .backStage_right_content{
+            width: 95%;
+            margin: auto;
+
+            .backStage_right_title_part{
+                margin-top: 30px;
+
+                .backStage_right_title{
+                    position: relative;
+
+                    h1{
+                        font-size: map-get($fontSize , h2 );
+                        font-family: $fontCh;
+                        color: map-get($color , backstage_h );
+                        position: relative;
+                        &::after{
+                            content: '';
+                            width: 130px;
+                            position: absolute;
+                            bottom: -20%;
+                            left: 0;
+                            border-bottom: 3px solid map-get($color , backstage_h );
+                        }
+                    }
+                }
+
+                .backStage_filter{
+                    button{
+                        border: none;
+                        border-radius: 5px;
+                        background-color: map-get($color , primary );
+                        color: #fff;
+                        padding: 8px;
+                        margin-top: 40px;
+                        font-size: 1.2rem;
+                        font-family: $fontCh;
+                        cursor: pointer;
+                    }
+                }
+
+                .backStage_input_filter{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+
+                    .input_filter{
+                        position: relative;
+                        input{
+                            outline: none;
+                            border: 1px solid map-get($color , primary );
+                            border-radius: 20px;
+                            padding: 8px;
+                            margin-right: 20px;
+                        }
+                        i{
+                            position: absolute;
+                            top: 20%;
+                            right: 15%;
+                        }
+                    }
+
+                    .backStage_search{
+                        .backStage_search_btn{
+                            border: none;
+                            border-radius: 5px;
+                            background-color: map-get($color ,  primary );
+                            color: #fff;
+                            padding: 5px 15px;
+                            font-size: 1rem;
+                            font-family: $fontCh;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

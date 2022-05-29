@@ -1,0 +1,34 @@
+.backStage_footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    .footer_list{
+        display: flex;
+        align-items: center;
+        margin-right: 50px;
+
+        li{
+            cursor: pointer;
+        }
+
+        .arrow{
+            margin: 30px 10px 30px 0;
+            border: 1px solid map-get($color , backstage_h );
+            i{
+                color: map-get($color , backstage_h );
+                font-size: 1.3rem;
+            }
+        }
+        .arrow_left{
+            margin-right: 5px;
+        }
+
+        .page_num{
+            margin: 30px 5px 30px 0;
+            font-size: 1.3rem;
+        }
+    }
+}

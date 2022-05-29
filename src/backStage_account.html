@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "後台帳號管理"
+    })
+</head>
+<body style="background-color: #fff;">
+    <!-- header -->
+    @@include('layout/backStage_header.html')
+    <!-- header end -->
+
+    <!-- 後台左方選單 -->
+    <div class="backStage_main_container">
+        <div class="backStage_main_content">
+            @@include('layout/backStage_nav.html')
+
+            <div class="backStage_right_part">
+                <div class="backStage_right_content">
+                    <div class="backStage_right_title_part">
+                        <div class="backStage_right_title">
+                            <h1>帳號管理</h1>
+                        </div>
+                        <div class="backStage_filter">
+                            <button><i class="bi bi-funnel-fill"></i>條件篩選</button>
+                        </div>
+                        <div class="backStage_input_filter">
+                            <div class="input_filter">
+                                <input type="text" placeholder="以會員編號查詢">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div class="backStage_search">
+                                <button class="backStage_search_btn">
+                                    查詢
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            @@include('layout/backStage_footer.html')
+        </div>
+    </div>
+
+
+</body>
+</html>
