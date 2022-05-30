@@ -12,11 +12,58 @@
 <section class="bigMap">
     <div class="scroller">  
         <div class="study_big_map">
-            <div class="village">
-                <img v-for="(data,key) in img" :src="`./images/studyMap_${img[key]}.png`" :alt="img[key]" :class="img[key]">
+            <div class="village" >
+                <div class="first-village" @click="nextTo50()">
+                    <img src="./images/studyMap_firstvillage.png" class="firstVillage" id="firstVil">
+                </div>
+                <div class="second-village" @click="nextToFirst()">
+                    <img src="./images/studyMap_secondvillage.png" class="secondVillage" id="secondVil">
+                </div>
+                <div class="third-village" 
+                @click="nextToSecond()">
+                    <img src="./images/studyMap_thirdvillage.png" class="thirdVillage" id="thirdVil">
+                </div>
+                <div class="fourth-village" @click="nextToThird()">
+                    <img src="./images/studyMap_fourthvillage.png" class="fourthVillage" id="fourthVil">
+                </div>
+                <div class="fifth-village">
+                    <img src="./images/studyMap_fifthvillage.png" class="fifthVillage" id="fifthVil">
+                </div>
+                <div class="sixth-village">
+                    <img src="./images/studyMap_sixthvillage.png" class="sixthVillage" id="sixthVil">
+                </div>
+                <div class="seventh-village">
+                    <img src="./images/studyMap_seventhvillage.png" class="seventhVillage" id="seventhVil">
+                </div>
             </div>
             <div class="cloud">
-                <img v-for="(data,key) in img" :src="`./images/cloud_${img[key]}.png`" :alt="img[key]" :class="img[key]">
+                <div class="cloudBackground">
+                    <img src="./images/cloud_background.png" class="cloud_background" id="cloudBg">
+                </div>
+                <div class="cloud1">
+                    <img src="./images/cloud_1.png" class="cloud_1" id="cloudFirst">
+                </div>
+                <div class="cloud2">
+                    <img src="./images/cloud_2.png" class="cloud_2" id="cloudSecond">
+                </div>
+                <div class="cloud3">
+                    <img src="./images/cloud_3.png" class="cloud_3" id="cloudSecond">
+                </div>
+                <div class="cloud4">
+                    <img src="./images/cloud_4.png" class="cloud_4" id="cloudFourth">
+                </div>
+                <div class="cloud5">
+                    <img src="./images/cloud_5.png" class="cloud_5" id="cloudFifth">
+                </div>
+                <!-- v-for寫法 -->
+                <!-- <div class="village" >
+                    <img v-for="(data,key) in img" :src="`./images/studyMap_${img[key]}.png`" :alt="img[key]" :class="img[key]">
+                </div>
+                <div class="cloud">
+                    <div v-for="(data,key) in img" :class="`cloud-${img[key]} `">
+                        <img v-for="(data,key) in img" :src="`./images/cloud_${img[key]}.png`" :alt="img[key]" :class="`cloud_${img[key]} `" :id="`cloud${img[key]}`" @click="lock()">
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
