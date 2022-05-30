@@ -1,10 +1,11 @@
 
 
+
 .wrapper{
     position: relative;
     overflow: hidden;
     width: auto;
-    height:100vh ; 
+    
     .content{
         position: relative;
         max-width: 1200px;
@@ -23,7 +24,7 @@
         left: calc(100% *0.5);
     }
     #me{
-        z-index:1 ;
+        z-index:6 ;
         width: 150px;
         position: absolute;
         top:calc((100% - 150px)*0.5);
@@ -44,7 +45,7 @@
         &:hover{
             transform: scale(1.1)
         };
-        @include mem_item(150px,'',85px,70px,'');
+        @include mem_item(150px,'',65px,70px,'');
         @include md{
             @include mem_item(150px,'',300px,70px,'')
         }
@@ -107,7 +108,11 @@
         &:hover{
             transform: scale(1.1)
         };
-        @include mem_item(70px,'',100px,5px,'');
+        @include mem_item(70px,'',80px,5px,'');
+        @include md{
+            @include mem_item(70px,'',100px,5px,'');
+        }
+       
     };
     .phone{
         z-index: 3;
@@ -123,7 +128,7 @@
         &:hover{
             transform: scale(1.1)
         };
-        @include mem_item(170px,'',140px,80px,'');
+        @include mem_item(170px,'',120px,90px,'');
         @include md{
             @include mem_item(170px,'',200px,80px,'');
         }
@@ -170,7 +175,6 @@
     display: none;
     z-index: 6;
     color: rgba(0, 0, 0, 0.8);
-    font-weight: 600;
     font-size: 16px;
     padding: 8px;
     border-top-left-radius:10px;
@@ -207,6 +211,7 @@
             }
         }
         .teacher-name{
+            font-weight: 600;
             padding: 5px;
         }
         .cancel{
@@ -369,6 +374,157 @@
     
 }
 
+.error{
+    display: none;
+    z-index: 6;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 16px;
+    padding: 8px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    background-color:#fff;
+    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+    // position: relative;
+    @include mem_item(320px,'',5%,0px,'');
+    @include md{
+        height: 60%;
+    }
+    @include m{
+        height: 80%;
+    }
+
+
+    .info{
+        font-weight: 600;
+        width: 320px;
+        padding:8px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        border-top-left-radius:7px;
+        border-top-right-radius:7px;
+        background-color: #FAE6B8;
+
+        height: 10%;
+        // border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        
+        .error_title{
+            margin: auto;
+            padding: 5px;
+            
+        }
+        .cancel{
+            cursor: pointer;
+            display: flex;
+            span{
+                position: absolute;
+                right: 10px;
+                top:18px;
+                display: inline-block;
+                width: 20px;
+                height: 3px;
+                border-radius: 1px;
+                background-color: #F9BB4D;
+            };
+            :nth-child(1){
+                transform:  rotate(45deg);
+            }
+            :nth-child(2){
+                transform:  rotate(-45deg);
+            }
+        }
+
+    }
+
+    .error_content{
+        height: 80%;
+        padding: 10px 0px;
+        box-sizing: border-box;
+        font-size: 14px;
+        overflow: overlay;
+
+        :nth-child(n){
+            padding: 0px 0px 5px 0px;
+            box-sizing: border-box;
+            
+        }
+        form{
+            height:100% ;
+            input{
+                outline: none;
+            }
+            .msg{
+                color: rgba(0, 0, 0, 0.6);
+            }
+            .error_txt{
+                padding: 10px 0px 5px 0px;
+                box-sizing: border-box;
+                color: rgba(0, 0, 0, 0.6);
+            }
+    
+            .error_h{
+                border-radius: 3px;
+                box-sizing: border-box;
+                padding: 3px;
+                width: 100%;
+                border: 3px solid #FAE6B8;
+                &:focus{
+                    border: 3px solid #F9BB4D
+                }
+            }
+    
+            .error_msg{
+                border-radius: 5px;
+                box-sizing: border-box;
+                padding: 3px;
+                width: 100%;
+                border: 3px solid #FAE6B8;
+                outline: none;
+                resize: none;
+                overflow-y: hidden;
+                min-height: 20%;
+                &:focus{
+                    border: 3px solid #F9BB4D
+                }
+            }
+    
+            .label{
+                width: 100%;
+                .error_img{
+                    width: 100%;
+                    height: auto;
+                    img{
+                       max-width: 100%;
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    .check{
+        height: 10%;
+        display: flex;
+        align-items: center;
+        #error_submit{
+            
+            cursor: pointer;
+            background-color:#F9BB4D;
+            border-radius: 7px;
+            color: #fff;
+            border: none;
+            width: 100%;
+            height: 80%;
+            &:hover{
+                background-color:#F37420;
+
+            }
+        }
+    }
+}
+
+
 
 
 
@@ -383,7 +539,7 @@
     
 
     #lightBox{
-        // @include lightboxSize($W4,$H4,$W3,$H3,$W2,$H2,$W,$H);
+        
         top:50%;
         left: 50%;
         display: none;
@@ -397,16 +553,16 @@
         @include md{padding: 30px;}
         
 
-        // .lightBoxContent{
-        
+            //地圖
             .map_lightBox{
                 overflow:auto;
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+                background-color: #A2EBE8;
+                border-radius: 10px;
+                border: #fff 10px solid ;
+                box-sizing: border-box;
                
-                &::-webkit-scrollbar-button{
-                    background-color: rgb(0, 176, 15);
-                }
 
                 img{
                     display: block;
@@ -417,6 +573,9 @@
                 }
             }
 
+
+
+            //換裝
             .closet_lightBox{
                 overflow:auto;
                 display: none;
@@ -443,7 +602,6 @@
 
                 .cloth{
                     height: 30%;
-                    // background-color:#fff;
                     
 
                     .page{
@@ -570,15 +728,55 @@
 
             
 
-
+            //變更密碼
             .bed_lightBox{
                 overflow:auto;
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$md_boxW,$md_boxH,$md_boxW,$md_boxH);
+                width: 100%;
+
                 
-                &::-webkit-scrollbar-button{
-                    background-color: rgb(0, 176, 15);
+                .bed_title{
+                    font-size: 20px;
+                    padding: 20px;
+                    text-align: center;
+                    margin: auto;
                 }
+
+                .bed_content{
+                    width: 100%;
+                    
+                    padding: 10px 20px 15px 20px;
+                    box-sizing: border-box;
+                    p{
+                        padding: 10px 0px;
+                    }
+                    input{
+                        width: 100%;
+                        padding: 7px;
+                        box-sizing: border-box;
+                        background-color: #F9BB4D;
+                        border:none;
+                        &:focus{
+                            outline: none;
+                        }
+                    }
+                }
+
+                .check_button{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    button{
+                        @include btn;
+                        margin: 10px;
+                        padding: 6px 15px;
+                        font-size: 13px;
+                    }
+                }
+
+                
+            
 
             }
 
@@ -587,25 +785,131 @@
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
                 
-                &::-webkit-scrollbar-button{
-                    background-color: rgb(0, 176, 15);
-                }
+                
 
             }
 
-
+            //學習紀錄
             .desk_lightBox{
                 overflow:auto;
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$xl_boxW,$xl_boxH);
-                
-                &::-webkit-scrollbar-button{
-                    background-color: rgb(0, 176, 15);
-                }
+                padding: 15px;
 
+                .desk_lightBox_content{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    .menu{
+                        min-width: 16%;
+                        flex-grow: 0.5;
+                        overflow: overlay;
+                        // border-right:2px solid rgba(0, 0, 0, 0.3);
+                        .menu_title{
+                            font-size: 22px;
+                            padding: 30px 10px;
+                            text-align: center;
+                            color:  #F37420;
+                            font-weight: 600;
+                        }
+                        .learn_item{
+                            
+                            .alphabet{
+                                padding: 7px 0px;
+                                
+                                .alphabet_title{
+                                    @include learnItem
+                                }
+                                .alphabet_item{
+                                    width: 50%;
+                                    padding: 5px;
+                                    margin: auto;
+                                    text-align: center;
+                                    box-sizing: border-box;
+                                    border: 3px solid #FAE6B8;
+                                    &:hover{
+                                        border-bottom : 3px solid #F9BB4D;
+                                    }
+
+                                }
+
+                            }
+                            .word{
+                                padding: 7px 0px;
+                                
+                                .word_title{
+                                    @include learnItem
+                                }
+                                .word_item{
+                                    width: 50%;
+                                    padding: 5px;
+                                    margin: auto;
+                                    text-align: center;
+                                    box-sizing: border-box;
+                                    border: 3px solid #FAE6B8;
+                                    &:hover{
+                                        border-bottom : 3px solid #F9BB4D;
+                                    }
+                                }
+                            }
+                            .talk{
+                                padding: 7px 0px;
+                                
+                                .talk_title{
+                                    @include learnItem
+                                }
+                                .talk_item{
+                                    width: 50%;
+                                    padding: 5px;
+                                    margin: auto;
+                                    text-align: center;
+                                    box-sizing: border-box;
+                                    border: 3px solid #FAE6B8;
+                                    &:hover{
+                                        border-bottom : 3px solid #F9BB4D;
+                                    }
+                                }
+                            }
+
+                        }
+
+                    }
+                    
+                    .page{
+                        overflow: overlay;
+                        box-sizing: border-box;
+                        padding: 0px 10px 10px 10px;
+                        flex-grow: 2;
+                        max-width: 42%;
+                        position: relative;
+                        border-left:2px solid rgb(175, 175, 175);
+
+                        .page_title{
+                            background-color: rgb(175, 175, 175);
+                           
+                            padding: 0px 5px 20px 5px;
+                            position: sticky;
+                            top:0;
+                            display: flex;
+                            vertical-align: middle;
+                        }
+                        .item_title{
+                            padding: 5px;
+                        }
+                        .txt{
+                            padding: 0px 5px 13px 5px;
+                        }
+                    }
+
+
+
+                }
             }
 
-        // }
+
+            
+
+
 
 
     }

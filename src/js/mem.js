@@ -29,27 +29,20 @@ new Vue({
 
 
 
-//人物上下動
-
-// function charmove(){
-//     setInterval(()=>{
-//             $("#me").animate({
-//                 top:'-=10px',
-//             },'easeInQuad');
-
-//             $("#me").animate({
-//                 top:'+=10px',
-//             },'easeInQuad');
-//     },2000)
-// }
+// 人物上下動
 
 
 
 
-window.onload=charmove()
 
+function checkWindow(){
+    let vh = window.innerHeight;
+    document.querySelector('.wrapper').style.height=`${vh-1}px`
+}
 
+window.addEventListener('load',checkWindow);
 
+window.addEventListener('resize',checkWindow);
 
 // 開啟燈箱
 
@@ -195,10 +188,10 @@ document.querySelector('.closet').addEventListener("click",reStartCloset);
 
 
 
-
-
-
+//==================================================
 //諮詢老師
+
+//開啟談話視窗
 function openChetbox(){
     let chetbox=document.querySelector(".chetbox");
     chetbox.style.display='block';
@@ -303,21 +296,20 @@ function sentMessage(){
         trArr[trArr.length-1].appendChild(p);
 
     },800)
-
-
 }
 
 
 
-
+//關閉對話視窗
 function closeChetbox(){
     let chetbox=document.querySelector(".chetbox");
     chetbox.style.display='none';
+
 }
 
 
 document.querySelector(".teacher").addEventListener("click",openChetbox);
-document.querySelector(".cancel").addEventListener("click",closeChetbox);
+document.querySelector(".chetbox .cancel").addEventListener("click",closeChetbox);
 
 document.querySelector(".sent").addEventListener("click",sentMessage);
 
@@ -329,6 +321,62 @@ document.querySelector("#inputTxt").addEventListener('keydown',function(e){
 
 
 
+
+
+
+
+//===================================================
+
+//開啟異常通報
+function openError(){
+    let chetbox=document.querySelector(".error");
+    chetbox.style.display='block';
+}
+
+document.querySelector('.phone').addEventListener('click',openError)
+
+
+
+
+//textarea高度自適應
+function textareaSize(){
+    let input=document.querySelector('.error_msg')
+
+    input.style.height='auto';
+    input.style.height=`${this.scrollHeight}px`
+}
+
+document.querySelector('.error_msg').addEventListener('input',textareaSize)
+
+
+
+
+
+
+
+//異常通報上傳檔案預覽
+window.addEventListener("load", function(){
+    document.getElementById("upFile").onchange = function(e){
+        let file = e.target.files[0];  //取得所選物件file的參考
+        let reader = new FileReader();
+        reader.onload = function(e){
+            document.getElementById("myImage").src=e.target.result;
+        }
+        reader.readAsDataURL(file);
+
+    document.querySelector("#upFile").style.display='none';
+    }
+})
+
+
+
+//關閉異常通報
+function closeError(){
+    document.querySelector(".error").style.display='none'
+
+}
+
+document.querySelector(".error .cancel").addEventListener('click',closeError)
 
 
 
