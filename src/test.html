@@ -7,49 +7,16 @@
 
     <script src="js/test.js"></script>
 </head>
-<body>
+<body style="background-color: #A2EBE8;">
     @@include('layout/header.html')
 
     <main class="test_wrap">
+        <!-- <h2 class="test_h2">升級測驗</h2> -->
 
-        <h2 class="test_h2">升級測驗</h2>
+        @@include('layout/test_lightBox.html')
 
-        <section class="test_lightBox_bg">
-            <div class="test_lightBox">
-                <div class="test_lightBox_close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="post_close_id">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                    </svg>
-                </div>
-                
-                <div class="test_progress">
-                    <div class="test_progress_title">
-                        progress
-                    </div>
-
-                    <div class="test_progress_bar">
-                        <div class="test_progress_now"></div>
-                        <div class="test_progress_chara">
-                            <img src="images/test_NPC1.png" alt="進度條_人物">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="test_question">
-                    <div class="test_question_title">ああ</div>
-                    <div class="test_question_options">
-                        <button class="test_option">aki</button>
-                        <button class="test_option test_qurstionAns">aa</button>
-                        <button class="test_option">sata</button>
-                        <button class="test_option">naha</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-
+        <!-- 三個測驗區塊：五十音開始 -->
         <section class="test_section">
-
             <div class="test_pic">
                 <img src="images/test_NPC1.png" id="test_50_pic_s" alt="五十音測驗">
                 <img src="images/test_topic1.png" id="test_50_pic_l" alt="五十音測驗">
@@ -62,17 +29,62 @@
                         <h3>五十音測驗</h3>
                     </label>
                     <div class="test_tab_content">
-                        <div class="test_50">あ</div>
-                        <div class="test_50">い</div>
-                        <div class="test_50">う</div>
-                        <div class="test_50">え</div>
-                        <div class="test_50">お</div>
+                        <div class="test_option">あ</div>
+                        <div class="test_option">い</div>
+                        <div class="test_option">う</div>
+                        <div class="test_option">え</div>
+                        <div class="test_option">お</div>
                     </div>
                 </div>
             </div>
-
         </section>
+         <!-- 三個測驗區塊：五十音結束 -->
+
+        <!-- 三個測驗區塊：單字開始 -->
+        <section class="test_section">
+            <div class="test_pic">
+                <img src="images/test_NPC2.png" id="test_50_pic_s" alt="單字測驗">
+                <img src="images/test_topic2.png" id="test_50_pic_l" alt="單字測驗">
+            </div>
+
+            <div class="test_section_content">
+                <input type="checkbox" id="test_tango">
+                <div class="test_tab">
+                    <label class="test_tab_label" for="test_tango">
+                        <h3>單字測驗</h3>
+                    </label>
+                    <div class="test_tab_content">
+                        <div class="test_option">美食</div>
+                        <div class="test_option">旅行</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- 三個測驗區塊：單字結束 -->
+
+         <!-- 三個測驗區塊：會話開始 -->
+        <section class="test_section">
+            <div class="test_pic">
+                <img src="images/test_NPC3.png" id="test_50_pic_s" alt="會話測驗">
+                <img src="images/test_topic3.png" id="test_50_pic_l" alt="會話測驗">
+            </div>
+
+            <div class="test_section_content">
+                <input type="checkbox" id="test_kaiwa">
+                <div class="test_tab">
+                    <label class="test_tab_label" for="test_kaiwa">
+                        <h3>會話測驗</h3>
+                    </label>
+                    <div class="test_tab_content">
+                        <div class="test_option">日常對話</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- 三個測驗區塊：會話結束 -->
 
     </main>
+
+    @@include('layout/footer.html')
 </body>
 </html>

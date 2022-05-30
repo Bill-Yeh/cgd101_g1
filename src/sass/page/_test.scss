@@ -2,7 +2,7 @@
     width: $wrapRwd;
     margin: auto;
     margin-top: 10%;
-    padding: 50px 0px;
+    padding: 30px 0px;
     display: flex;
     flex-direction: column;
 }
@@ -21,14 +21,16 @@
 
 .test_section{
     width: 100%;
-    padding-top: 60px;
+    padding-top: 100px;
+    padding-bottom: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; 
     gap: 30px;
     position: relative;
 
-    @include md{
-        justify-content: flex-start;
+    @include md{  
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
 }
 
@@ -64,25 +66,30 @@
 
 .test_section_content{
     width: 60%;
-    position: relative;
-    left: 30px;
+    padding-left: 10px;
+    position: absolute;
+    right: 30px;
     border-radius: 20px;
     background-color: map-get($color, 'primary');
+    // background-color: #FFF;
+    z-index: 1;
 
     @include md{
         width: 40%;
         position: absolute;
         left: auto;
-        right: 10%;
-        top: 40%;
+        right: 8%;
+        top: 35%;
+        
     }
 
     @include lg{
+        width: 30%;
+        right: 20%;
     }
 
     @include xl{
-        width: 25%;
-        right: 25%;
+        right: 23%;
     }
     
     &::before{
@@ -91,6 +98,7 @@
         left: -30px;
         top: 35px;
         border-right: 30px solid  map-get($color, 'primary');
+        // border-right: 30px solid #FFF;
         border-top: 10px solid  transparent;
         border-bottom: 10px solid  transparent;
     }
@@ -117,7 +125,7 @@
         padding-bottom: 18px;
         display: flex;
         font-size: map-get($fontSize, 'h2');
-        font-weight: bold;
+        // font-weight: bold;
         cursor: pointer;
     }
 
@@ -145,7 +153,7 @@
     transform-origin: 20px 10px;
 }
 
-//checked
+// checked：打開對話選項 //
 .test_section_content{
 
     &>input:checked+.test_tab>.test_tab_label::after{
@@ -165,24 +173,67 @@
     }
 }
 
-.test_50{
+.test_option{
     padding: 10px 0px 10px 10px;
 
     &::before{
         content: '\25B6';
         font-size: 10px;
         padding-right: 5px;
-        // position: absolute;
-        // left: -30px;
-        // top: 35px;
-        // border-right: 30px solid  map-get($color, 'primary');
-        // border-top: 10px solid  transparent;
-        // border-bottom: 10px solid  transparent;
     }
 
     &:hover{
         cursor: pointer;
         background-color: map-get($color, 'bgc_y');
+    }
+}
+
+// 調整版面位置 //
+
+.test_section{
+    @include md{
+        &:nth-child(odd)>.test_pic img{
+            transform: scale(1,1);
+        }
+
+        &:nth-child(odd){
+            justify-content: flex-end;
+            right: 80px;
+        }
+
+        &:nth-child(odd)>.test_section_content{
+            right: auto;
+            top: 40%;
+            left: 100px;
+        }
+
+        &:nth-child(odd)>.test_section_content::before{
+            left: auto;
+            right: -30px;
+            transform: rotate(180deg);
+        }
+
+        &:last-child>.test_section_content{
+            top: 45%;
+            right: 10%;
+        }
+    }
+
+    @include lg{
+        &:last-child>.test_section_content{
+            right: 25%;
+        }
+    }
+
+    @include xl{
+        &:nth-child(odd)>.test_section_content{
+            top: 45%;
+            left: 25%;
+        }
+
+        &:last-child>.test_section_content{
+            right: 27%;
+        }
     }
 }
 
@@ -195,6 +246,7 @@
 .test_lightBox_bg{
     display: none;
     position: fixed;
+
     top: 0;
     left: 0;
     width: 100%;
@@ -227,18 +279,19 @@
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 20px;
     
     &:hover{
         cursor: pointer;
     }
 }
 
-.test_progress{
+#test_progress{
     padding-left: 5px;
     padding-right: 5px;
     display: flex;
+    transition: all ease .3s;
 
     &_title{
         font-weight: bold;
@@ -269,9 +322,15 @@
         left: -10%;
         // left: 90%;
     }
+
+    &_chara img{
+        width: 100%;
+        vertical-align: bottom;
+    }
 }
 
 .test_question{
+    display: none;
     padding: 20px;
     padding-top: 60px;
     flex-grow: 1;
@@ -284,6 +343,7 @@
     &_title{ 
     font-size: 36px;
     color: map-get($color, 'backstage_h');
+    text-align: center;
     }
 
     &_options{
@@ -294,18 +354,68 @@
         justify-content: center;
         gap: 10px;
     }
+
+    &_option{
+        width: 40%;
+        padding: 15px;
+        font-size: 28px;
+        border: none;
+        background-color: map-get($color, 'primary');
+        border-radius: 20px;
+
+        &:hover{
+            cursor: pointer;
+            background: darken(map-get($color, 'primary'), 10%);
+        }
+    }
 }
 
-.test_option{
-    width: 40%;
-    padding: 20px;
-    font-size: 28px;
-    border: none;
-    background-color: map-get($color, 'primary');
-    border-radius: 20px;
+// ----- 測驗結果 -----//
+#test_lightBox_question{
+    // display: none;
+}
 
-    &:hover{
-        cursor: pointer;
-        background: darken(map-get($color, 'primary'), 10%);
+#test_lightBox_result{
+    display: none;
+    text-align: center;
+}
+
+.test_result{
+
+    &_title{
+        font-size: 36px;
+        color: map-get($color, 'backstage_h');
     }
+    
+    &_wrap{
+        padding-top: 80px;
+    }
+
+    &_row{
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    &_row:first-child{
+        padding-bottom: 20px;
+        font-size: 28px;
+    }
+
+    &_row:last-child{
+        padding-bottom: 80px;
+    }
+}
+
+#test_result_save{
+    width: 100%;
+        padding: 10px;
+        font-size: 24px;
+        border: none;
+        background-color: map-get($color, 'primary');
+        border-radius: 20px;
+
+        &:hover{
+            cursor: pointer;
+            background: darken(map-get($color, 'primary'), 10%);
+        }
 }

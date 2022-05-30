@@ -1,0 +1,47 @@
+<section class="test_lightBox_bg">
+    <div class="test_lightBox">
+        <div class="test_lightBox_close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="post_close_id">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+        </div>
+
+        <!------- 測驗正式開始 ------->
+        <div id="test_progress">
+            <div id="test_progress_title">
+                progress
+            </div>
+
+            <div id="test_progress_bar">
+                <div id="test_progress_now"></div>
+                <div id="test_progress_chara">
+                    <img src="images/test_NPC1.png" alt="進度條_人物">
+                </div>
+            </div>
+        </div>
+
+        <div class="test_question">
+            <!-- 測驗問題出現區域 -->
+            <div id="test_lightBox_question">
+                <div class="test_question_title" id="test_title"></div>
+                <div class="test_question_options">
+                    <button class="test_question_option"></button>
+                    <button class="test_question_option test_qurstionAns"></button>
+                    <button class="test_question_option"></button>
+                    <button class="test_question_option"></button>
+                </div>
+            </div>
+            <!-- 測驗結果 -->
+            <div id="test_lightBox_result">
+                <div class="test_result_title">試驗終了</div>
+                <div class="test_result_wrap">
+                    <div class="test_result_row" id="test_ifPass">通過</div>
+                    <div class="test_result_row">測驗分數：<span id="test_score">100</span>分</div>
+                    <div class="test_result_row">獲得代幣：<span id="test_getCoin">100</span>元</div>
+                </div>
+                
+                <button id="test_result_save">儲存紀錄</button>
+            </div>
+        </div>
+    </div>
+</section>
