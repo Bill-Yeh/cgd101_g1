@@ -211,7 +211,7 @@
                             cursor: pointer;
                             border: none;
                             outline: none;
-                            background-color: map-get($color , bgc_y );
+                            background-color: rgba(250,230,184,.5);
                             color: map-get($color , backstage_h );
                             font-size: 1rem;
                             font-family: $fontCh;

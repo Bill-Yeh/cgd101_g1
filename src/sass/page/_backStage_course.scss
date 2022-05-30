@@ -6,3 +6,15 @@
         width: 30%;
     }
 }
+
+// 新增課程燈箱
+.course_sm_block,.course_img_block,.course_title_block,.course_price_block,.course_state_block{
+    padding-bottom: 20px;
+    
+    display: flex;
+    align-items: center;
+
+    label{
+        padding-right: 6%;
+    }
+}
