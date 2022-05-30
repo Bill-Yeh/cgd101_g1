@@ -8,12 +8,16 @@
 </head>
 <body>
     @@include('layout/header.html')
+
+    <!-- 燈箱 -->
     <div class="black">
         <div id="lightBox">
             <button class="backTo"><</button>
+            <!-- 地圖 -->
             <div class="map_lightBox">
                 <img src="./images/studyMap_main_island.png" alt="">
             </div>
+            <!-- 衣櫃 -->
             <div class="closet_lightBox">
                 <div class="char">
                     <img src="./images/char_00.png" alt="">
@@ -52,22 +56,94 @@
                         <div class="itemBack"><img src="./images/map_mem_button.png" alt=""></div>
                     </div>
                 </div>
+
+            <!-- 改密碼(床) -->
             </div>
             <div class="bed_lightBox">
-
+                <form class="bed_form" action="">
+                    <h3 class="bed_title">變更密碼</h3>
+                    <div class="bed_content">
+                        <p>原密碼</p>
+                        <input id="psw" type="text" name="psw" >
+                    </div>
+                    <div class="bed_content">
+                        <p>新密碼</p>
+                        <input id="new_psw" type="text" name="new_psw">
+                    </div>
+                    <div class="bed_content">
+                        <p>確認新密碼</p>
+                        <input id="new_psw_check" type="text" name="new_psw_check" >
+                    </div>
+                    <div class="check_button">
+                        <button type="reset">清除</button>
+                        <button type="submit">變更密碼</button>
+                    </div>
+                </form>
             </div>
+            <!-- 交易紀錄 -->
             <div class="box1_lightBox">
+                
+                
+
 
             </div>
+             <!-- 學習紀錄 -->
             <div class="desk_lightBox">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti illum adipisci in ipsa eligendi dolorem libero! Corporis nostrum dicta illum eligendi vitae totam, aspernatur atque, fugiat mollitia in voluptatum natus.
+                <div class="desk_lightBox_content">
+                    <div class="menu">
+                        <h2 class="menu_title">學習紀錄</h2>
+                        <div class="learn_item">
+                            <div class="alphabet">
+                                <h3 class="alphabet_title">五十音</h3>
+                                <h4 class="alphabet_item">A</h4>
+                                <h4 class="alphabet_item">E</h4>
+
+                            </div>
+                            <div class="word">
+                                <h3 class="word_title">單字</h3>
+                                <h4 class="word_item">單字一</h4>
+                                <h4 class="word_item">單字二</h4>
+                            </div>
+                            <div class="talk">
+                                <h3 class="talk_title">會話</h3>
+                                <h4 class="talk_item">對話一</h4>
+                                <h4 class="talk_item">對話二</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <h3 class="page_title">對話一</h3>
+                        <div class="learn_item">
+                            <div class="item_title">fff</div>
+                            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, amet? Eveniet sint provident, sed ut voluptas quas reprehenderit repellat earum harum! Tenetur rerum nostrum, enim animi iure mollitia itaque delectus?</p>
+                            <div class="item_title">ffff</div>
+                            <p class="txt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, soluta commodi nihil officiis odio optio! Suscipit sequi voluptatum id expedita laboriosam, saepe tenetur similique blanditiis, officia quidem magni, consequatur minus!</p>
+                            <div class="item_title">ffff</div>
+                            <p class="txt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint neque enim odit officia commodi aliquid, beatae expedita aspernatur cupiditate culpa voluptatibus deleniti eligendi, eaque libero voluptates, explicabo sequi quaerat et?</p>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <h3 class="page_title">單字二</h3>
+                        <div class="item_title">fff</div>
+                            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, amet? Eveniet sint provident, sed ut voluptas quas reprehenderit repellat earum harum! Tenetur rerum nostrum, enim animi iure mollitia itaque delectus?</p>
+                            <div class="item_title">ffff</div>
+                            <p class="txt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, soluta commodi nihil officiis odio optio! Suscipit sequi voluptatum id expedita laboriosam, saepe tenetur similique blanditiis, officia quidem magni, consequatur minus!</p>
+                            <div class="item_title">ffff</div>
+                            <p class="txt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint neque enim odit officia commodi aliquid, beatae expedita aspernatur cupiditate culpa voluptatibus deleniti eligendi, eaque libero voluptates, explicabo sequi quaerat et?</p>
+                            <div class="item_title">ffff</div>
+                            <p class="txt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint neque enim odit officia commodi aliquid, beatae expedita aspernatur cupiditate culpa voluptatibus deleniti eligendi, eaque libero voluptates, explicabo sequi quaerat et?</p>
+                            <div class="item_title">ffff</div>
+                            <p class="txt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint neque enim odit officia commodi aliquid, beatae expedita aspernatur cupiditate culpa voluptatibus deleniti eligendi, eaque libero voluptates, explicabo sequi quaerat et?</p>
+                            
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     
 
-    
+    <!-- 頁面物件 -->
     <div class="wrapper">
         <div class="say">你好~</div>
         <img id="me" src="./images/char_00.png" alt="char_00"></img>
@@ -81,6 +157,9 @@
                 <img v-for="(data,key) in img" :src="`./images/map_mem_${img[key]}.png`" :alt="img[key]" :class="img[key]">
             </div>
         </div>
+
+
+        <!-- 老師對話視窗 -->
         <div class="chetbox">
             <div class="info">
                 <div class="headshot">
@@ -117,7 +196,55 @@
                 <img class="sent" src="./images/map_mem_icon.png" alt="傳送">
             </div>
         </div>
-    </div>
+
+        <!-- 異常通報 -->
+        <div class="error">
+            <div class="info">
+                <span class="error_title">異常通報</span>
+                <div class="cancel">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="error_content">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <p class="msg">請填寫下方資訊，人員將盡快與您聯繫!</p>
+                        
+                    <div class="error_txt">標題</div>
+                    <input type="text" name="error_h" class="error_h">
+
+                    <div class="error_txt">問題描述</div>
+                    <textarea type="text" name="error_msg" class="error_msg"></textarea>
+
+                    <div class="error_txt">附件</div>
+                    <input type="file" name="upFile" id="upFile">
+                    <label for="upFile" class="label">
+                        <div class="error_img">
+                            <img src="" id="myImage">
+                        </div>
+                    </label>
+                </form> 
+            </div>
+            <div class="check">
+                <input type="submit" value="提交" id="error_submit">
+            </div>  
+
+        </div>
+        
+        <script>
+            
+        </script>
+
+        
+
+
+                
+
+        
+        
+
+
+    
 
     @@include('layout/footer.html')
 
