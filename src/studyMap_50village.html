@@ -4,7 +4,6 @@
     @@include('layout/meta.html', {
         "title" : "50音新手村"
     })
-    <!-- <script src="js/studymap.js"></script> -->
 </head>
 <body>
     <!-- header -->
@@ -12,7 +11,7 @@
     @@include('layout/header.html')
     <!-- header end -->
     <section class="bigMap">  
-        <div class="studyMap_map">
+        <div class="studyMap_map 50village">
             <!-- 人物角色 -->
             <div class="studyMap_npc asan left" >
                 <img src="./images/studyMap_NPC_a.png" id="asan" class="npc-img">
@@ -36,15 +35,16 @@
             <!-- 對話框 -->
             <div class="studyMap_con" id="mapCon">
                 <p id="con"></p>
-                <div id="sound">
-                    <img  src="./images/icon_speaker.png">
-                </div>
-                <img src="">
-                <audio id="voice">
+                <div class="fix-item">
+                    <div id="sound">
+                        <img  src="./images/icon_speaker.png">
+                    </div>
+                    <audio id="voice">
                     <source = src="" type="audio/mp3">
-                </audio>
-                <div class="npc-pic">
-                    <img id="pic" src="">
+                    </audio>
+                    <div class="npc-pic">
+                        <img id="pic" src="">
+                    </div>
                 </div>
             </div>
             <div class="studyMap_con " id="mapCon">
@@ -72,9 +72,9 @@
             // let npcId =new Array('asan','isan','usan','esan','osan')
             let startCon = new Array('你好，我是あ，今天一起來學習50音的母音あ段吧!','本大爺是い，學習母音い段的事，就交給我吧!','初次見面，我是う，快來學習50音的母音う段，GO!!','嘿嘿嘿，我是え...一起來學...50音え段...','我是お~今天一起來學習50音的母音お段~~' );
             let npcSrc = new Array('./images/studyMap_NPC_a.png','./images/studyMap_NPC_i.png','./images/studyMap_NPC_u.png','./images/studyMap_NPC_e.png','./images/studyMap_NPC_o.png' );
-            let aCon = new Array("首先教學的是「あ」發音為「a」","再來是「か，發音為「ka」","再來是「さ」，發音為「sa」","再來是「た」，發音為「ta」","再來是「な」，發音為「na」","再來是「は」，發音為「ha」","再來是「ま」，發音為「ma」","再來是「や」，發音為「ya」","再來是「ら」，發音為「ra」","再來是「わ」，發音為「wa」");
+            let aCon = new Array("首先教學的是「あ」發音為「a」","再來是「か」，發音為「ka」","再來是「さ」，發音為「sa」","再來是「た」，發音為「ta」","再來是「な」，發音為「na」","再來是「は」，發音為「ha」","再來是「ま」，發音為「ma」","再來是「や」，發音為「ya」","再來是「ら」，發音為「ra」","再來是「わ」，發音為「wa」");
             let iCon = new Array("首先教學的是「い」發音為「i」","再來是「き」，發音為「ki」","再來是「し」，發音為「shi」","再來是「ち」，發音為「chi」","再來是「に」，發音為「ni」","再來是「ひ」，發音為「hi」","再來是「み」，發音為「mi」","再來是「り」，發音為「ri」");
-            let uCon = new Array("首先教學的是「う」發音為「u」","再來是「く，發音為「ku」","再來是「す」，發音為「su」","再來是「つ」，發音為「tsu」","再來是「ぬ」，發音為「nu」","再來是「ふ」，發音為「fu」","再來是「む」，發音為「mu」","再來是「ゆ」，發音為「yu」","再來是「る」，發音為「ru」");
+            let uCon = new Array("首先教學的是「う」發音為「u」","再來是「く」，發音為「ku」","再來是「す」，發音為「su」","再來是「つ」，發音為「tsu」","再來是「ぬ」，發音為「nu」","再來是「ふ」，發音為「fu」","再來是「む」，發音為「mu」","再來是「ゆ」，發音為「yu」","再來是「る」，發音為「ru」");
             let eCon = new Array("首先...「え」發音為「e」...","...「け」，發音為「ke」...","...「せ」，發音為「se」...","...「て」，發音為「te」...","...「ね」，發音為「ne」...","...「へ」，發音為「he」...","...「め」，發音為「me」...","...「れ」，發音為「re」...");
             let oCon = new Array("首先教學的是「お」發音為「o」","再來是「こ，發音為「ko」","再來是「そ」，發音為「so」","再來是「と」，發音為「to」","再來是「の」，發音為「no」","再來是「ほ」，發音為「ho」","再來是「も」，發音為「mo」","再來是「よ」，發音為「yo」","再來是「ろ」，發音為「ro」","再來是「を」，發音為「wo」","最後一個是鼻音「ん」，發音為「n」");
             let soundSrcA = new Array("./sound/a.mp3","./sound/ka.mp3","./sound/sa.mp3","./sound/ta.mp3","./sound/na.mp3","./sound/ha.mp3","./sound/ma.mp3","./sound/ya.mp3","./sound/ra.mp3","./sound/wa.mp3");
@@ -182,7 +182,7 @@
                 con.innerText = aCon[0];
                 sound.src = soundSrcA[0];
                 fifty.src = fifityPicA[0];
-                document.getElementById('mapFliter').style.display='none';
+                // document.getElementById('mapFliter').style.display='none';
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -226,7 +226,7 @@
                 con.innerText = iCon[0];
                 sound.src = soundSrcI[0];
                 fifty.src = fifityPicI[0];
-                document.getElementById('mapFliter').style.display='none';
+                // document.getElementById('mapFliter').style.display='none';
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -274,7 +274,7 @@
                 con.innerText = uCon[0];
                 sound.src = soundSrcU[0];
                 fifty.src = fifityPicU[0];
-                document.getElementById('mapFliter').style.display='none';
+                // document.getElementById('mapFliter').style.display='none';
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -319,7 +319,7 @@
                 con.innerText = eCon[0];
                 sound.src = soundSrcE[0];
                 fifty.src = fifityPicE[0];
-                document.getElementById('mapFliter').style.display='none';
+                // document.getElementById('mapFliter').style.display='none';
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -375,7 +375,7 @@
                 con.innerText = oCon[0];
                 sound.src = soundSrcO[0];
                 fifty.src = fifityPicO[0];
-                document.getElementById('mapFliter').style.display='none';
+                // document.getElementById('mapFliter').style.display='none';
                 document.getElementById('mapCon').style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -389,7 +389,6 @@
             e.stopPropagation();//阻止冒泡事件
         }
         function shutDown(){
-            //console.log("qq")
             document.getElementById('mapFliter').style.display='none';
             document.getElementById('mapCon').style.display ='none';
             document.getElementById('sound').style.display='none';
@@ -403,9 +402,10 @@
         }
         function goToTest(e){
             let target = e.target.getAttribute('id');
-            window.location.href="https://www.google.com.tw/";
+            window.location.href="test.html";
         }
         function cancelBox(){
+            document.getElementById('mapFliter').style.display='none';
             document.getElementById('toTest').style.display='none';
             document.getElementById('asan').style.display="block";
             document.getElementById('isan').style.display="block";
@@ -437,5 +437,7 @@
         window.addEventListener("load", init, false);
         </script>
     </section>
+     @@include('layout/footer.html')
+     
 </body>
 </html>
