@@ -179,15 +179,6 @@
                     padding-bottom: 20px;
                     display: flex;
                     align-items: center;
-                    select{
-                        background-color: #F9BB4D;
-                        color: #fff;
-                        border: none;
-                        border-radius: 5px;
-                        outline: none;
-                        font-size: 1rem;
-                        font-family: $fontCh;
-                    }
                 }
                 .administrator_sm_block{
                     label{
@@ -238,6 +229,18 @@
         }
     }
     input{
+        outline: none;
+    }
+    select{
+        background-color: #F9BB4D;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1rem;
+        font-family: $fontCh;
+    }
+    textarea{
         outline: none;
     }
 }

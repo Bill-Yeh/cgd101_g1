@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html', {
-        "title" : "後台課程管理"
+        "title" : "後台裝備管理"
     })
 </head>
-<body class="backCourse" style="background-color: #fff;">
+<body class="backItem" style="background-color: #fff;">
     <!-- header -->
     @@include('layout/backStage_header.html')
     <!-- header end -->
@@ -20,10 +20,10 @@
                 <div class="backStage_right_content">
                     <div class="backStage_right_title_part">
                         <div class="backStage_right_title">
-                            <h1>課程管理</h1>
+                            <h1>裝備管理</h1>
                         </div>
                         <div class="backStage_filter backStage_addAccount">
-                            <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i></i>新增課程</button>
+                            <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i>新增裝備</button>
                         </div>
                         <div class="backStage_input_filter">
                             <div class="on_stock">
@@ -31,7 +31,7 @@
                                 <span>回收桶(0)</span>
                             </div>
                             <div class="input_filter">
-                                <input type="text" placeholder="以課程編號查詢">
+                                <input type="text" placeholder="以裝備編號查詢">
                                 <i class="bi bi-search"></i>
                             </div>
                             <div class="backStage_search">
@@ -44,27 +44,27 @@
                     <div class="backStage_right_table_part">
                         <table class="account_table_title table_title">
                             <tr class="table_header_row">
-                                <th>課程編號</th>
-                                <th>課程圖片</th>
-                                <th>課程名稱</th>
-                                <th>課程價格</th>
-                                <th>課程狀態</th>
+                                <th>裝備編號</th>
+                                <th>裝備圖片</th>
+                                <th>裝備名稱</th>
+                                <th>裝備價格</th>
+                                <th>裝備狀態</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                             <tr class="table_data_row odd">
                                 <td>001</td>
-                                <td><img src="./images/payement_map.png" alt=""></td>
-                                <td>N3單字</td>
-                                <td>NT$150元</td>
+                                <td><img src="./images/char_tool_4.png" alt=""></td>
+                                <td>寶劍</td>
+                                <td>代幣150</td>
                                 <td>
                                     <select name="" id="">
                                         <option value="active">上架中</option>
                                         <option value="stop">下架</option>
                                     </select>
                                 </td>
-                                <td><button class="lightBox_btn edit_btn" @click="show">編輯課程</button></td>
-                                <td><button class="lightBox_btn cancel_course edit_btn">刪除課程</button></td>
+                                <td><button class="lightBox_btn edit_btn" @click="show">編輯裝備</button></td>
+                                <td><button class="lightBox_btn cancel_course edit_btn">刪除裝備</button></td>
                             </tr>
                         </table>
                     </div>
@@ -76,32 +76,32 @@
                 <div class="backStage_lightBox_container">
                     <div class="backStage_lightBox_content">
                         <div class="backStage_lightBox_title">
-                            <h3>新增課程</h3>
+                            <h3>新增裝備</h3>
                         </div>
                         <div class="backStage_lightBox_close" @click="hide">
                             <i class="bi bi-x-lg"></i>
                         </div>
                         <div class="backStage_lightBox_main_content">
                             <form action="">
-                                <div class="course_sm_block">
-                                    <label for="course_sm">課程編號</label>
-                                    <input type="text" id="course_sm">
+                                <div class="course_sm_block item_sm_block">
+                                    <label for="item_sm">裝備編號</label>
+                                    <input type="text" id="item_sm">
                                 </div>
-                                <div class="course_img_block">
-                                    <label for="course_img">課程圖片</label>
-                                    <input type="file" id="course_img">
+                                <div class="course_img_block item_img_block">
+                                    <label for="item_img">裝備圖片</label>
+                                    <input type="file" id="item_img">
                                 </div>
-                                <div class="course_title_block">
-                                    <label for="course_title">課程名稱</label>
-                                    <input type="text" id="course_title">
+                                <div class="course_title_block item_title_block">
+                                    <label for="item_title">裝備名稱</label>
+                                    <input type="text" id="item_title">
                                 </div>
-                                <div class="course_price_block">
-                                    <label for="course_price">課程價格</label>
-                                    <input type="text" id="course_price">
+                                <div class="course_price_block item_price_block">
+                                    <label for="item_price">裝備價格</label>
+                                    <input type="text" id="item_price">
                                 </div>
-                                <div class="course_state_block">
-                                    <label for="course_state">課程狀態</label>
-                                    <select name="" id="course_state">
+                                <div class="course_state_block item_state_block">
+                                    <label for="item_state">裝備狀態</label>
+                                    <select name="" id="item_state">
                                         <option value="active">上架</option>
                                         <option value="stop">下架</option>
                                     </select>

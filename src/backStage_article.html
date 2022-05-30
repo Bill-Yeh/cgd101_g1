@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "後台文章管理"
+    })
+</head>
+<body class="backArticle" style="background-color: #fff;">
+    <!-- header -->
+    @@include('layout/backStage_header.html')
+    <!-- header end -->
+
+    <!-- 後台左右邊內容 -->
+    <div id="backStageID" class="backStage_main_container">
+        <div class="backStage_main_content">
+            <!-- 後台左方選單 -->
+            @@include('layout/backStage_nav.html')
+
+            <div class="backStage_right_part">
+                <div class="backStage_right_content">
+                    <div class="backStage_right_title_part">
+                        <div class="backStage_right_title">
+                            <h1>文章管理</h1>
+                        </div>
+                        <div class="backStage_filter backStage_addAccount">
+                            <button class="lightBox_btn" @click="show"><i class="bi bi-funnel-fill"></i>條件篩選</button>
+                        </div>
+                        <div class="backStage_input_filter">
+                            <div class="on_stock">
+                                <span>線上商品(2)</span>
+                                <span>回收桶(0)</span>
+                            </div>
+                            <div class="input_filter">
+                                <input type="text" placeholder="以文章編號查詢">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div class="backStage_search">
+                                <button class="backStage_search_btn">
+                                    查詢
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backStage_right_table_part">
+                        <table class="account_table_title table_title">
+                            <tr class="table_header_row">
+                                <th>文章編號</th>
+                                <th>會員編號</th>
+                                <th>會員名稱</th>
+                                <th>文章類別</th>
+                                <th>文章標題</th>
+                                <th>按讚人數</th>
+                                <th>回應人數</th>
+                                <th>檢舉人數</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr class="table_data_row odd">
+                                <td>01</td>
+                                <td>01</td>
+                                <td>周阿倫</td>
+                                <td>50音</td>
+                                <td>要如何被50音?</td>
+                                <td>8</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td><button class="lightBox_btn edit_btn" @click="show">檢視文章</button></td>
+                                <td><button class="lightBox_btn cancel_course edit_btn">刪除文章</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新增帳號燈箱 -->
+            <div class="backStage_lightBox">
+                <div class="backStage_lightBox_container">
+                    <div class="backStage_lightBox_content">
+                        <div class="backStage_lightBox_title">
+                            <h3>檢視文章</h3>
+                        </div>
+                        <div class="backStage_lightBox_close" @click="hide">
+                            <i class="bi bi-x-lg"></i>
+                        </div>
+                        <div class="backStage_lightBox_main_content">
+                            <form action="">
+                                <div class="course_sm_block item_sm_block article_sm_block">
+                                    <label for="article_sm">文章編號</label>
+                                    <input type="text" id="article_sm" value="01" readonly>
+                                </div>
+                                <div class="course_img_block item_img_block member_sm_block">
+                                    <label for="member_sm">會員編號</label>
+                                    <input type="text" id="member_sm" value="01" readonly>
+                                </div>
+                                <div class="course_title_block item_title_block member_title_block">
+                                    <label for="member_title">會員名稱</label>
+                                    <input type="text" id="member_title" value="周阿倫" readonly>
+                                </div>
+                                <div class="course_price_block item_price_block article_type_block">
+                                    <label for="article_type">文章類別</label>
+                                    <input type="text" id="article_type" value="50音單字" readonly>
+                                </div>
+                                <div class="course_state_block item_state_block article_title_block">
+                                    <label for="article_title">文章標題</label>
+                                    <input type="text" id="article_title" value="要如何背50音?" readonly>
+                                </div>
+                                <div class="course_state_block item_state_block article_content_block">
+                                    <label for="article_content">文章內容</label>
+                                    <textarea name="" id="article_content" cols="30" rows="10" style="resize:none;width:300px;height:150px;"    readonly>請問各位大大知道怎麼快速背好五十音嗎QQ</textarea>
+                                </div>
+                                <div class="course_state_block item_state_block article_like_block">
+                                    <label for="article_like">按讚人數</label>
+                                    <input type="text" id="article_like" value="8" readonly>
+                                </div>
+                                <div class="course_state_block item_state_block article_respond_block">
+                                    <label for="article_respond">回應人數</label>
+                                    <input type="text" id="article_respond" value="1" readonly>
+                                </div>
+                                <div class="course_state_block item_state_block article_report_block">
+                                    <label for="article_report">檢舉人數</label>
+                                    <input type="text" id="article_report" value="0" readonly>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="backStage_lightBox_saveBtn">
+                            <button type="submit" class="data_save">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @@include('layout/backStage_footer.html')
+        </div>
+    </div>
+
+    <script src="./js/backStage.js"></script>
+
+</body>
+</html>
