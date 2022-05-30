@@ -1,0 +1,22 @@
+.edit_btn{
+    border: none;
+    border-radius: 5px;
+    background-color: map-get($color ,primary);
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 1rem;
+    font-family: $fontCh;
+    cursor: pointer;
+}
+
+.member_sm_block{
+    padding-bottom: 20px;
+    label{
+        padding-right: 5.5%;
+    }
+}
+.member_nickname_block{
+    label{
+        padding-right: 5.5%;
+    }
+}
