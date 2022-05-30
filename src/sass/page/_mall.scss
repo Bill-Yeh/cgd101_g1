@@ -2,6 +2,57 @@ body {
   background-color: rgba(250, 230, 184, 0.5);
   font-family: $fontCh;
 }
+.pay_box,
+.level_box,
+.tool_box {
+  display: none;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  .text_box,
+  .level_text_box,
+  .tool_text_box {
+    display: none;
+    position: absolute;
+    width: 250px;
+    height: 100px;
+    background-color: #fae6b8;
+    border: 5px solid #f9bb4d;
+    margin: auto;
+    border-radius: 20px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    .text,
+    .tool_text {
+      line-height: 1;
+      font-size: 20px;
+      margin: 10px;
+    }
+  }
+
+  .choice {
+    display: flex;
+    .yes_btn,
+    .no_btn,
+    .level_btn,
+    .tool_yes_btn,
+    .tool_no_btn {
+      cursor: pointer;
+      margin: 10px;
+      @include btn();
+    }
+  }
+}
 
 .mall_wrap {
   width: auto;
@@ -15,10 +66,32 @@ body {
     position: relative;
   }
   .mall_floor_pic,
-  .mall_floor_item_pic {
+  .mall_floor_item_pic,
+  .mall_npc_pic {
     width: 100%;
     height: 100%;
     position: absolute;
+  }
+
+  .mall_npc_pic {
+    display: none;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+    @include md() {
+      display: block;
+      top: 65%;
+      left: 20%;
+    }
+    &::after {
+      content: url(/images/home_lesson_island_talk1.png);
+      position: absolute;
+      top: -110px;
+      left: 30px;
+      z-index: 50;
+    }
   }
   .mall_floor_pic img {
     display: none;
@@ -67,23 +140,25 @@ body {
       margin-top: 0px;
     }
     .mall_item {
-      width: $wrapRwd;
-      margin: auto;
+      width: 100%;
       display: flex;
+      justify-content: center;
       @include md() {
         justify-content: center;
         align-items: center;
+        margin: auto;
       }
       @include lg() {
-        margin-top: 10%;
+        margin: auto;
+        margin-top: 12%;
         width: 70%;
         justify-content: flex-end;
       }
 
       .item {
+        margin-top: 20px;
         position: relative;
-        width: 100%;
-        width: 500px;
+        width: 85%;
         height: 400px;
         padding: 10px;
         border-radius: 5px;
@@ -93,31 +168,14 @@ body {
         justify-content: center;
         z-index: 1;
         background-color: #fae6b8;
-        .tab {
-          display: flex;
-          position: absolute;
-          top: -10%;
-          left: 0;
-          z-index: 50;
-          @include md() {
-            top: -7%;
-          }
-          .lesson,
-          .tool {
-            cursor: pointer;
-            border: 3px solid #fae6b8;
-            background-color: #fae6b8;
-            border-bottom: none;
-            padding: 10px 30px;
-            border-radius: 10px 10px 0 0;
-            margin: 5px;
-          }
-        }
 
         @include md() {
-          height: 550px;
+          width: 550px;
+          height: 450px;
         }
-        .item_info {
+        .item_info,
+        .item_info_lock,
+        .item_info_tool {
           display: flex;
           align-items: center;
           flex-direction: column;
@@ -130,13 +188,13 @@ body {
           display: flex;
           justify-content: space-around;
           width: 300px;
-          height: 90px;
+          height: 100px;
           border-radius: 5px;
           background-color: #fff;
-          margin: 5px;
+          margin: 20px;
           z-index: 2;
           @include md() {
-            width: 400px;
+            width: 500px;
             height: 120px;
             margin: 10px;
           }
@@ -159,8 +217,8 @@ body {
             width: 30px;
             height: 30px;
             @include md() {
-              width: 35px;
-              height: 35px;
+              width: 45px;
+              height: 45px;
             }
           }
           .item_price {
@@ -177,6 +235,7 @@ body {
           .item_price_pic img {
             width: 15px;
             height: 15px;
+            margin: 0 3px;
           }
           .item_price_text {
             font-size: 15px;
@@ -185,4 +244,40 @@ body {
       }
     }
   }
+}
+
+//商品切換
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tabs label {
+  position: absolute;
+  top: -10%;
+  left: 3%;
+  display: block;
+  padding: 16px 30px;
+  cursor: pointer;
+}
+.tabtwo {
+  margin: 0 100px;
+}
+
+.tabs .tab {
+  order: 1;
+  width: 100%;
+  display: none;
+  padding: 16px;
+}
+
+.tabs input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.tabs input[type="radio"]:checked + label {
+  border-radius: 10px 10px 0 0;
+  background: #fae6b8;
+}
+.tabs input[type="radio"]:checked + label + .tab {
+  display: block;
 }

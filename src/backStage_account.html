@@ -5,14 +5,15 @@
         "title" : "後台帳號管理"
     })
 </head>
-<body style="background-color: #fff;">
+<body class="backAccount" style="background-color: #fff;">
     <!-- header -->
     @@include('layout/backStage_header.html')
     <!-- header end -->
 
-    <!-- 後台左方選單 -->
-    <div class="backStage_main_container">
+    <!-- 後台左右邊內容 -->
+    <div id="backStageID" class="backStage_main_container">
         <div class="backStage_main_content">
+            <!-- 後台左方選單 -->
             @@include('layout/backStage_nav.html')
 
             <div class="backStage_right_part">
@@ -21,12 +22,12 @@
                         <div class="backStage_right_title">
                             <h1>帳號管理</h1>
                         </div>
-                        <div class="backStage_filter">
-                            <button><i class="bi bi-funnel-fill"></i>條件篩選</button>
+                        <div class="backStage_filter backStage_addAccount">
+                            <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i>新增帳號</button>
                         </div>
                         <div class="backStage_input_filter">
                             <div class="input_filter">
-                                <input type="text" placeholder="以會員編號查詢">
+                                <input type="text" placeholder="以管理員編號查詢">
                                 <i class="bi bi-search"></i>
                             </div>
                             <div class="backStage_search">
@@ -36,13 +37,102 @@
                             </div>
                         </div>
                     </div>
+                    <div class="backStage_right_table_part">
+                        <table class="account_table_title table_title">
+                            <tr class="table_header_row">
+                                <th>管理員編號</th>
+                                <th>帳號</th>
+                                <th>帳號名稱</th>
+                                <th>手機</th>
+                                <th>帳號狀態</th>
+                                <th>使用者角色</th>
+                            </tr>
+                            <tr class="table_data_row odd">
+                                <td>001</td>
+                                <td>abc@gmail.com</td>
+                                <td>周阿倫</td>
+                                <td>0912345678</td>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="active">啟用</option>
+                                        <option value="stop">停用</option>
+                                    </select>
+                                </td>
+                                <td>管理員</td>
+                            </tr>
+                            <tr class="table_data_row even">
+                                <td>002</td>
+                                <td>def@gmail.com</td>
+                                <td>劉小華</td>
+                                <td>0912345677</td>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="active">啟用</option>
+                                        <option value="stop">停用</option>
+                                    </select>
+                                </td>
+                                <td>教師</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
             
+            <!-- 新增帳號燈箱 -->
+            <div class="backStage_lightBox">
+                <div class="backStage_lightBox_container">
+                    <div class="backStage_lightBox_content">
+                        <div class="backStage_lightBox_title">
+                            <h3>新增帳號</h3>
+                        </div>
+                        <div class="backStage_lightBox_close" @click="hide">
+                            <i class="bi bi-x-lg"></i>
+                        </div>
+                        <div class="backStage_lightBox_main_content">
+                            <form action="">
+                                <div class="administrator_sm_block">
+                                    <label for="administrator_sm">管理員編號</label>
+                                    <input type="text" id="administrator_sm">
+                                </div>
+                                <div class="account_block">
+                                    <label for="account">帳號</label>
+                                    <input type="text" id="account">
+                                </div>
+                                <div class="account_title_block">
+                                    <label for="account_title">帳號名稱</label>
+                                    <input type="text" id="account_title">
+                                </div>
+                                <div class="phone_block">
+                                    <label for="cellphone">手機</label>
+                                    <input type="text" id="cellphone">
+                                </div>
+                                <div class="account_state_block">
+                                    <label for="account_state">帳號狀態</label>
+                                    <select name="" id="account_state">
+                                        <option value="active">啟用</option>
+                                        <option value="stop">停用</option>
+                                    </select>
+                                </div>
+                                <div class="user_block">
+                                    <label for="user">使用者角色</label>
+                                    <select name="" id="user">
+                                        <option value="administrator">管理員</option>
+                                        <option value="teacher">教師</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="backStage_lightBox_saveBtn">
+                            <button type="submit" class="data_save">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @@include('layout/backStage_footer.html')
         </div>
     </div>
 
+    <script src="./js/backStage.js"></script>
 
 </body>
 </html>

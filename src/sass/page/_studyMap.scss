@@ -30,11 +30,21 @@
 }
 //村莊
 .village{
-  // width: 30px;
-  // height: 20%;
+  .first-village:hover::before{
+    content: url(/images/studyMap_info_1.png);
+    position: absolute;
+    top: 72%;
+    left: 2%;
+    z-index: 50;
+  };
   .firstVillage{
-      cursor: pointer;
-      z-index: 10;
+    cursor: pointer;
+    z-index: 10;
+    animation-name: village;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
       &:hover{
           transform: scale(1.1)
       };
@@ -49,9 +59,21 @@
         @include mem_item(50px,81.5%,'','',14.5%);
       }
   };
+  .second-village:hover::before{
+    content: url(/images/studyMap_info_2.png);
+    position: absolute;
+    top: 45%;
+    left: 13%;
+    z-index: 50;
+  };
   .secondVillage{
-      cursor: pointer;
-      z-index: 10;
+    cursor: pointer;
+    z-index: 10;
+    animation-name: village;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: reverse;
       &:hover{
           transform: scale(1.1)
       };
@@ -66,9 +88,21 @@
         @include mem_item(70px,55%,'','',27%);
       }
   };
+  .third-village:hover::before{
+    content: url(/images/studyMap_info_3.png);
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    z-index: 50;
+  };
   .thirdVillage{
-      cursor: pointer;
-      z-index: 10;
+    cursor: pointer;
+    z-index: 10;
+    animation-name: village;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
       &:hover{
           transform: scale(1.1)
       };
@@ -83,9 +117,21 @@
         @include mem_item(50px,38.5%,'','',33%);
       }
   };
-  .fourthvillage{
-      cursor: pointer;
-      z-index: 10;
+  .fourth-village:hover::before{
+    content: url(/images/studyMap_info_4.png);
+    position: absolute;
+    top: 22%;
+    right: 19%;
+    z-index: 50;
+  };
+  .fourthVillage{
+    cursor: pointer;
+    z-index: 10;
+    animation-name: village;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: reverse;
       &:hover{
           transform: scale(1.1)
       };
@@ -100,9 +146,21 @@
         @include mem_item(60px,33%,32.5%,'','');
       }
   };
+  .fifth-village:hover::before{
+    content: url(/images/studyMap_info_5.png);
+    position: absolute;
+    top: 55%;
+    right: 27%;
+    z-index: 50;
+  };
   .fifthVillage{
-      cursor: pointer;
-      z-index: 10;
+    cursor: pointer;
+    z-index: 10;
+    animation-name: village;
+    animation-duration: 6s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
       &:hover{
           transform: scale(1.1)
       };
@@ -140,42 +198,173 @@
     @include xl{ //1200
       @include mem_item(100%,-7%,0.5%,'','');
     }
-  }
+  };
 }
 //雲
 .cloud{
-  // width: 100%;
+  // display: none;
   .cloud_background{
-      @include mem_item(100%,-5%,'','',6%);
+      @include mem_item(110%,-5%,'','',0%);
       @include md{ //768
-        @include mem_item(100%,-15%,'','',0%);
+        @include mem_item(110%,-15%,'','',-2%);
       }
       @include lg{ //992
-        @include mem_item(100%,-15%,'','',0%);
+        @include mem_item(110%,-15%,'','',-4%);
       }
       @include xl{ //1200
-        @include mem_item(100%,0%,'','',0%);
+        @include mem_item(110%,-15%,'','',-5%);
       }
-  };
+    };
+  .cloud1:hover::before{
+      content: url(/images/studyMap_lock_1.png);
+      position: absolute;
+      top: 40%;
+      left: 10%;
+      z-index: 50;
+      };
   .cloud_1{
     z-index: 30;
+    cursor: pointer;
+    animation-name: cloud-left;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
       &:hover{
-          transform: scale(1.1)
+        transform: scale(1.1)
       };
-      @include mem_item(55px,55.4%,'','',24%);
+      @include mem_item(20%,55%,'','',20%);
       @include md{ //768
-        @include mem_item(50px,55%,'','',25%);
+        @include mem_item(20%,55%,'','',21%);
       }
       @include lg{ //992
-        @include mem_item(50px,55%,'','',26%);
+        @include mem_item(20%,55%,'','',22%);
       }
       @include xl{ //1200
-        @include mem_item(100%,0%,'','',20%);
+        @include mem_item(20%,55%,'','',23%);
       }
-  };
+    };
+    .cloud2:hover::before{
+      content: url(/images/studyMap_lock_2.png);
+      position: absolute;
+      top: 22%;
+      left: 15%;
+      z-index: 50;
+      };
+  .cloud_2{
+    z-index: 30;
+    cursor: pointer;
+    z-index: 30;
+    cursor: pointer;
+    animation-name: cloud-right;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+      &:hover{
+        transform: scale(1.1)
+      };
+      @include mem_item(20%,40%,'','',25%);
+      @include md{ //768
+        @include mem_item(21%,38%,'','',26%);
+      }
+      @include lg{ //992
+        @include mem_item(21%,38.5%,'','',27%);
+      }
+      @include xl{ //1200
+        @include mem_item(21%,38.5%,'','',27%);
+      }
+    };
+    .cloud3:hover::before{
+      content: url(/images/studyMap_lock_3.png);
+      position: absolute;
+      top: 46%;
+      left: 59%;
+      z-index: 50;
+      };
+  .cloud_3{
+    z-index: 30;
+    cursor: pointer;
+    animation-name: cloud-left;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+      &:hover{
+        transform: scale(1.1)
+      };
+      @include mem_item(30%,65%,22%,'','');
+      @include md{ //768
+        @include mem_item(31%,65%,23%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(31%,65%,23%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(31%,65%,23%,'','');
+      }
+    };
+    .cloud4:hover::before{
+      content: url(/images/studyMap_lock_4.png);
+      position: absolute;
+      top: 15%;
+      right: 15%;
+      z-index: 50;
+      };
+  .cloud_4{
+    z-index: 30;
+    cursor: pointer;
+    animation-name: cloud-right;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+      &:hover{
+        transform: scale(1.1)
+      };
+      @include mem_item(30%,32%,17%,'','');
+      @include md{ //768
+        @include mem_item(30%,32%,19%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(26%,30%,20%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(25%,30%,20%,'','');
+      }
+    };
+  .cloud5:hover::before{
+      content: url(/images/studyMap_lock_5.png);
+      position: absolute;
+      top: 55%;
+      left: 85%;
+      };
+  .cloud_5{
+    z-index: 30;
+    cursor: pointer;
+    animation-name: cloud-right;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+      &:hover{
+        transform: scale(1.1);
+      };
+      @include mem_item(35%,69%,2%,'','');
+      @include md{ //768
+        @include mem_item(35%,71%,2%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(35%,72%,2%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(35%,72%,2%,'','');
+      }
+    };
 }
 
 //單元地圖
+//背景圖==========================
 .studyMap_map{
   width: 100%; 
   height:100vh;
@@ -184,20 +373,20 @@
   background-position: center;
   position: relative;
 }
+.wordlv1{
+  background-image: url("../../images/studyMap_dialolv1.png");
+}
+.dialoguelv1{
+  background-image: url("../../images/studyMap_dialolv1.png");
+}
 .studyMap_map:first-child{
   width: 100%;
 }
+//========================================
 .studyMap_npc{
     position: absolute;
     cursor: pointer;
 }
-// .studyMap_npc:hover::before{
-//   width: 20px;
-//   height: 50px;
-//   position: absolute;
-//   top: -60px;
-//   left: 50px;
-// }
 .studyMap_npc:hover::after{
   width: 20px;
   height: 50px;
@@ -207,18 +396,15 @@
 }
 .studyMap_npc img{
     transform: scale(1.2);
-    //vertical-align: top;
 }
+
+//50音
 .asan{
     top: 40%;
     left: 20%;
-    // animation: 5s 0.5s;
     animation-delay: 0.5s;
     animation-duration:5s;
 }
-// .asan:hover::before{
-//   content:url(/images/1.png);
-// }
 .asan:hover::after{
   content:url(/images/npc_border_a.png);
 }
@@ -228,9 +414,6 @@
     animation-delay: 0.3s;
     animation-duration: 3s;
 }
-// .isan:hover::before{
-//   content:url(/images/1.png);
-// }
 .isan:hover::after{
   content:url(/images/npc_border_i.png);
 }
@@ -240,9 +423,6 @@
     animation-delay: 0.8s;
     animation-duration: 7s;
 }
-// .usan:hover::before{
-//   content:url(/images/1.png);
-// }
 .usan:hover::after{
   content:url(/images/npc_border_u.png);
 }
@@ -252,9 +432,6 @@
     animation-delay: 0.5s;
     animation-duration: 4s;
 }
-// .esan:hover::before{
-//   content:url(/images/1.png);
-// }
 .esan:hover::after{
   content:url(/images/npc_border_e.png);
 }
@@ -263,11 +440,98 @@
     right: 20%;
     animation-duration: 5s;
 }
-// .osan:hover::before{
-//   content:url(/images/1.png);
-// }
 .osan:hover::after{
   content:url(/images/npc_border_o.png);
+}
+//單字篇
+.number{
+  top: 40%;
+  left: 20%;
+  animation-delay: 0.5s;
+  animation-duration:5s;
+}
+.number:hover::after{
+content:url(/images/npc_border_number.png);
+}
+.time{
+  top: 80%;
+  left: 30%;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
+.time:hover::after{
+content:url(/images/npc_border_time.png);
+}
+.color{
+  top: 30%;
+  left: 40%;
+  animation-delay: 0.8s;
+  animation-duration: 7s;
+}
+.color:hover::after{
+content:url(/images/npc_border_color.png);
+}
+.food{
+  top: 40%;
+  right:38%;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+.food:hover::after{
+content:url(/images/npc_border_food.png);
+}
+.trafic{
+  top: 30%;
+  right: 15%;
+  animation-duration: 5s;
+}
+.trafic:hover::after{
+content:url(/images/npc_border_trafic.png);
+}
+//會話篇
+.hello{
+  top: 40%;
+  left: 20%;
+  animation-delay: 0.5s;
+  animation-duration:5s;
+}
+.hello:hover::after{
+content:url(/images/npc_border_hello.png);
+}
+.hi{
+  top: 60%;
+  left: 35%;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
+.hi:hover::after{
+content:url(/images/npc_border_hello.png);
+}
+.fine{
+  top: 50%;
+  left: 48%;
+  animation-delay: 0.8s;
+  animation-duration: 7s;
+}
+.fine:hover::after{
+content:url(/images/npc_border_hello.png);
+}
+.nice{
+  top: 40%;
+  right:35%;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+.nice:hover::after{
+content:url(/images/npc_border_hello.png);
+}
+.great{
+  top: 60%;
+  right: 20%;
+  animation-duration: 5s;
+}
+.great:hover::after{
+content:url(/images/npc_border_hello.png);
 }
 .right{
     animation-name: npc_walk_right;
@@ -298,7 +562,8 @@
     display: none;
 }
 .studyMap_main img{
-    margin: 45% 45%;
+    // margin: 45% 45%;
+    margin: auto;
     transform: scale(3);
     vertical-align: top;
     z-index: 999999;
@@ -331,6 +596,9 @@
     transform: scale(1.5);
     padding-right: 0px;
 }
+.fix-item{
+  display: flex;
+}
 .npc-pic{
     position: relative;
 }
@@ -350,6 +618,7 @@
 #sound{
     cursor: pointer;
     display: none;
+    margin-right:8% ;
 }
 #sound img{
     transform: scale(0.3);
@@ -429,7 +698,44 @@
   background-color: #F37420;
 }
 
-//CSS動畫
+//CSS
+//村莊擺動
+@keyframes village{
+  0% {
+      transform: translate3d(0%, 0%, 0) scaleX(1);
+    }
+  50% {
+      transform: translate3d(0%, 1%, 0) scaleX(1.1);
+    }
+  100% {
+      transform: translate3d(0%, 0%, 0) scaleX(1);
+    }
+}
+//雲飄左
+@keyframes cloud-left{
+  0% {
+      transform: translate3d(-10%, 0%, 0) scaleX(1);
+    }
+  50% {
+      transform: translate3d(10%, 0%, 0) scaleX(1);
+    }
+  100% {
+      transform: translate3d(-10%, 0%, 0) scaleX(1);
+    }
+}
+//雲飄右
+@keyframes cloud-right{
+  0% {
+      transform: translate3d(10%, 0%, 0) scaleX(1);
+    }
+  50% {
+      transform: translate3d(-10%, 0%, 0) scaleX(1);
+    }
+  100% {
+      transform: translate3d(10%, 0%, 0) scaleX(1);
+    }
+}
+//人物走路右
 @keyframes  npc_walk_right {
     0% {
       transform: translate3d(0%, 0%, 0) scaleX(1);
@@ -495,6 +801,7 @@
       transform: translate3d(0%, 0%, 0) scaleX(-1);
     }
   }
+  //人物走路左
 @keyframes npc_walk_left{
     0% {
         transform: translate3d(0%, 0%, 0) scaleX(-1);
@@ -560,6 +867,7 @@
         transform: translate3d(0%, 0%, 0) scaleX(1);
       }
 }
+//對話框三角形
 @keyframes jump{
     0% {
         transform: translate3d(0%, 0%, 0) scaleX(1);
@@ -663,49 +971,6 @@
 }
 //1200以上
 @include xl() {
-  // .studyMap_npc img{
-  //     transform: scale(1.7);
-  // }
-  // .studyMap_main{
-  //   font-size: 40px;
-  //   width: 500px;
-  //   height: 500px;
-  //   border: 10px solid #F9BB4D;
-  //   border-radius: 20px;
-  //   padding: 30px;
-  //   bottom: 30%;
-  //   left: 36%;
-  //   box-sizing: border-box;
-  //   z-index: 51;
-  //   display: none;
-  // }
-  // .studyMap_con{
-  //   content: "";
-  //   font-size: 40px;
-  //   width: 90%;
-  //   height: 150px;
-  //   border: 10px solid #F9BB4D;
-  //   border-radius: 20px;
-  //   padding: 30px;
-  //   bottom: 5%;
-  //   left: 5%;
-  // }
-  // .studyMap_con img{
-  //   transform: scale(2);
-  //   padding-right: 50px;
-  // }
-  // .studyMap_con p{
-  //   font-size: 40px;
-  // }
-  // #sound img{
-  //   transform: scale(0.7);
-  // }
-  // .npc-pic::after{
-  //   width: 30px;
-  //   height: 30px;
-  //   bottom: -40%;
-  //   left: 80%;
-  // }
   .study_big_map{
     width: 1200px;
   }

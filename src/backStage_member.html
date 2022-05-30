@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "後台會員管理"
+    })
+</head>
+<body class="backMem" style="background-color: #fff;">
+    <!-- header -->
+    @@include('layout/backStage_header.html')
+    <!-- header end -->
+
+    <!-- 後台左右邊內容 -->
+    <div id="backStageID" class="backStage_main_container">
+        <div class="backStage_main_content">
+            <!-- 後台左方選單 -->
+            @@include('layout/backStage_nav.html')
+
+            <div class="backStage_right_part">
+                <div class="backStage_right_content">
+                    <div class="backStage_right_title_part">
+                        <div class="backStage_right_title">
+                            <h1>會員管理</h1>
+                        </div>
+                        <div class="backStage_filter backStage_addAccount">
+                            <button class="lightBox_btn" @click="show"><i class="bi bi-funnel-fill"></i>條件篩選</button>
+                        </div>
+                        <div class="backStage_input_filter">
+                            <div class="input_filter">
+                                <input type="text" placeholder="以會員編號查詢">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div class="backStage_search">
+                                <button class="backStage_search_btn">
+                                    查詢
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backStage_right_table_part">
+                        <table class="account_table_title table_title">
+                            <tr class="table_header_row">
+                                <th>會員編號</th>
+                                <th>帳號</th>
+                                <th>會員名稱</th>
+                                <th>手機</th>
+                                <th>會員狀態</th>
+                                <th>會員稱號</th>
+                                <th>加入時間</th>
+                                <th></th>
+                            </tr>
+                            <tr class="table_data_row odd">
+                                <td>001</td>
+                                <td>abc@gmail.com</td>
+                                <td>周阿倫</td>
+                                <td>0912345678</td>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="active">啟用</option>
+                                        <option value="stop">停用</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="" id="">
+                                        <option value="">初心者</option>
+                                        <option value="">冒險者</option>
+                                        <option value="">探險者</option>
+                                        <option value="">大探險者</option>
+                                        <option value="">超探險者</option>
+                                        <option value="">究極探險者</option>
+                                        <option value="">無敵探險者</option>
+                                        <option value="">神探險者</option>
+                                        <option value="">極醒探險者</option>
+                                        <option value="">超銀河探險者</option>
+                                    </select>
+                                </td>
+                                <td>2022/05/30</td>
+                                <td><button class="lightBox_btn edit_btn" @click="show">編輯會員</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新增帳號燈箱 -->
+            <div class="backStage_lightBox">
+                <div class="backStage_lightBox_container">
+                    <div class="backStage_lightBox_content">
+                        <div class="backStage_lightBox_title">
+                            <h3>編輯會員</h3>
+                        </div>
+                        <div class="backStage_lightBox_close" @click="hide">
+                            <i class="bi bi-x-lg"></i>
+                        </div>
+                        <div class="backStage_lightBox_main_content">
+                            <form action="">
+                                <div class="member_sm_block">
+                                    <label for="member_sm">會員編號</label>
+                                    <input type="text" id="member_sm">
+                                </div>
+                                <div class="account_block">
+                                    <label for="account">帳號</label>
+                                    <input type="text" id="account">
+                                </div>
+                                <div class="account_title_block member_title_block">
+                                    <label for="member_title">會員名稱</label>
+                                    <input type="text" id="member_title">
+                                </div>
+                                <div class="phone_block">
+                                    <label for="cellphone">手機</label>
+                                    <input type="text" id="cellphone">
+                                </div>
+                                <div class="account_state_block member_state_block">
+                                    <label for="member_state">會員狀態</label>
+                                    <select name="" id="member_state">
+                                        <option value="active">啟用</option>
+                                        <option value="stop">停用</option>
+                                    </select>
+                                </div>
+                                <div class="member_nickname_block">
+                                    <label for="member_nickname">會員稱號</label>
+                                    <select name="" id="member_nickname">
+                                        <option value="">初心者</option>
+                                        <option value="">冒險者</option>
+                                        <option value="">探險者</option>
+                                        <option value="">大探險者</option>
+                                        <option value="">超探險者</option>
+                                        <option value="">究極探險者</option>
+                                        <option value="">無敵探險者</option>
+                                        <option value="">神探險者</option>
+                                        <option value="">極醒探險者</option>
+                                        <option value="">超銀河探險者</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="backStage_lightBox_saveBtn">
+                            <button type="submit" class="data_save">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @@include('layout/backStage_footer.html')
+        </div>
+    </div>
+
+    <script src="js/backStage.js"></script>
+
+</body>
+</html>
