@@ -1,0 +1,258 @@
+.backAsk{
+    .backStage_right_part{
+        width: 85%;
+    
+        .backStage_right_content{
+            width: 95%;
+            margin: auto;
+    
+            .backStage_right_title_part{
+                margin-top: 30px;
+    
+                .backStage_right_title{
+                    position: relative;
+    
+                    h1{
+                        font-size: map-get($fontSize , h2 );
+                        font-family: $fontCh;
+                        color: map-get($color , backstage_h );
+                        position: relative;
+                        &::after{
+                            content: '';
+                            width: 130px;
+                            position: absolute;
+                            bottom: -20%;
+                            left: 0;
+                            border-bottom: 3px solid map-get($color , backstage_h );
+                        }
+                    }
+                }
+    
+                .backStage_filter{
+                    button{
+                        border: none;
+                        border-radius: 5px;
+                        background-color: map-get($color , primary );
+                        color: #fff;
+                        padding: 8px;
+                        margin-top: 40px;
+                        font-size: 1rem;
+                        font-family: $fontCh;
+                        cursor: pointer;
+                    }
+                }
+    
+                .backStage_input_filter{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+    
+                    // 架上商品和回收桶
+                    .on_stock{
+                        flex-grow: 1;
+                        padding-top: 20px;
+                        span{
+                            cursor: pointer;
+                        }
+                        span:first-child,span:nth-child(2){
+                            padding-right: 20px;
+                        }
+                    }
+                    .input_filter{
+                        position: relative;
+                        input{
+                            outline: none;
+                            border: 1px solid map-get($color , primary );
+                            border-radius: 20px;
+                            padding: 8px;
+                            margin-right: 20px;
+                        }
+                        i{
+                            position: absolute;
+                            top: 20%;
+                            right: 15%;
+                        }
+                    }
+    
+                    .backStage_search{
+                        .backStage_search_btn{
+                            border: none;
+                            border-radius: 5px;
+                            background-color: map-get($color ,  primary );
+                            color: #fff;
+                            padding: 5px 15px;
+                            font-size: 1rem;
+                            font-family: $fontCh;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+    
+            .backStage_right_table_part{
+                margin-top: 30px;
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                
+                .table_title{
+                    width: 30%;
+                    table-layout: fixed;
+                    border-collapse: collapse;
+                    border: 0.8px solid #000;
+                    
+                    .table_header_row{
+                        border-bottom: 0.8px solid #000;
+                        background-color: #ff954f;
+                        th{
+                            padding: 10px;
+                        }
+                    }
+                    .table_data_row{
+                        cursor: pointer;
+                        &:hover{
+                            background-color: #FAE6B8;
+                        }
+                    }
+                    td{
+                        padding: 10px;
+                        text-align: center;
+                    }
+                }
+
+                // 聊天part
+                .backStage_chat_part{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 65%;
+                    height: 60vh;
+                    max-height: 60vh;
+                    margin-left: 3%;
+                    border: 1px solid #000;
+
+                    // 學員名稱和頭像
+                    .backStage_student_name{
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+                        background-color: #F9BB4D;
+                        border-bottom: 1px solid #000;
+                        .student_name_level{
+                            display: flex;
+                            flex-direction: column;
+                            padding-left: 10px;
+                            span{
+                                line-height: 1.2;
+                            }
+                            span:nth-child(1){
+                                font-size: 1.2rem;
+                            }
+                            span:nth-child(2){
+                                font-size: 13px;
+                            }
+                        }
+                    }
+
+                    // 學員老師聊天區
+                    // .chat_message_block{
+                    //     overflow-y: auto;
+                    // }
+
+                    .backStage_chat_student{
+                        display: flex;
+                        align-items: center;
+
+                        // 學員NPC
+                        .student_img{
+                            width: 10%;
+                            height: 10%;
+                            margin: 10px 15px 10px 10px;
+                            img{
+                                width: 80%;
+                            }
+                        }
+
+                        // 學員訊息
+                        .student_chat{
+                            background-color: #FAE6B8;
+                            padding: 10px;
+                            p{
+                                position: relative;
+                                &::before{
+                                    content: '';
+                                    position: absolute;
+                                    top: -57%;
+                                    left: -24%;
+                                    width: 50px;
+                                    height: 50px;
+                                    clip-path: polygon(58% 48%, 100% 71%, 100% 23%);
+                                    background-color: #FAE6B8;
+                                }
+                            }
+                        }
+                    }
+
+                    // 老師回覆
+                    .backStage_chat_teacher{
+                        display: flex;
+                        justify-content: flex-end;
+
+                        .teacher_chat{
+                            background-color: #FAE6B8;
+                            padding: 10px;
+                            margin-right: 5%;
+
+                            p{
+                                position: relative;
+                                &::before{
+                                    content: '';
+                                    position: absolute;
+                                    top: -35%;
+                                    right: -16%;
+                                    width: 50px;
+                                    height: 50px;
+                                    clip-path: polygon(0 64%, 34% 48%, 0 32%);
+                                    background-color: #FAE6B8;
+                                }
+                            }
+                        }
+                    }
+
+                    // 輸入欄位
+                    .backStage_chat_input{
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        border-top: 1px solid #c4c4c4;
+                        
+                        form{
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            padding: 10px;
+
+                            input{
+                                width: 90%;
+                                outline: none;
+                                padding: 5px 0;
+                            }
+
+                            #info_send{
+                                border: none;
+                                border-radius: 5px;
+                                background-color: map-get($color , primary );
+                                color: #fff;
+                                padding: 5px 10px;
+                                font-size: 1rem;
+                                font-family: $fontCh;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

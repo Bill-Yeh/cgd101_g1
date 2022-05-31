@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html', {
-        "title" : "後台帳號管理"
+        "title" : "後台諮詢管理-教師用"
     })
 </head>
-<body class="backAccount backStyle" style="background-color: #fff;">
+<body class="backAsk_Teacher" style="background-color: #fff;">
     <!-- header -->
     @@include('layout/backStage_header.html')
     <!-- header end -->
@@ -14,20 +14,20 @@
     <div id="backStageID" class="backStage_main_container">
         <div class="backStage_main_content">
             <!-- 後台左方選單 -->
-            @@include('layout/backStage_nav.html')
+            @@include('layout/backStage_nav_teacher.html')
 
             <div class="backStage_right_part">
                 <div class="backStage_right_content">
                     <div class="backStage_right_title_part">
                         <div class="backStage_right_title">
-                            <h1>帳號管理</h1>
+                            <h1>諮詢管理</h1>
                         </div>
                         <div class="backStage_filter backStage_addAccount">
-                            <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i>新增帳號</button>
+                            <button class="lightBox_btn" @click="show"><i class="bi bi-funnel-fill"></i>條件篩選</button>
                         </div>
                         <div class="backStage_input_filter">
                             <div class="input_filter">
-                                <input type="text" placeholder="以管理員編號查詢">
+                                <input type="text" placeholder="以會員編號查詢">
                                 <i class="bi bi-search"></i>
                             </div>
                             <div class="backStage_search">
@@ -37,43 +37,68 @@
                             </div>
                         </div>
                     </div>
-                    <div class="backStage_right_table_part">
-                        <table class="account_table_title table_title">
-                            <tr class="table_header_row">
-                                <th>管理員編號</th>
-                                <th>帳號</th>
-                                <th>帳號名稱</th>
-                                <th>手機</th>
-                                <th>帳號狀態</th>
-                                <th>使用者角色</th>
-                            </tr>
-                            <tr class="table_data_row odd">
-                                <td>001</td>
-                                <td>abc@gmail.com</td>
-                                <td>周阿倫</td>
-                                <td>0912345678</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">啟用</option>
-                                        <option value="stop">停用</option>
-                                    </select>
-                                </td>
-                                <td>管理員</td>
-                            </tr>
-                            <tr class="table_data_row even">
-                                <td>002</td>
-                                <td>def@gmail.com</td>
-                                <td>劉小華</td>
-                                <td>0912345677</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">啟用</option>
-                                        <option value="stop">停用</option>
-                                    </select>
-                                </td>
-                                <td>教師</td>
-                            </tr>
-                        </table>
+                    <div class="backStage_right_student_list">
+                        <div class="student_list_content">
+                            <div class="list_title">
+                                <div class="list_title_content">
+                                    <h3>對話記錄</h3>
+                                </div>
+                            </div>
+                            <div class="message_list">
+                                <div class="message_list_content">
+                                    <div class="message_list_info">
+                                        <div class="message_list_img_name">
+                                            <div class="list_img">
+                                                <img src="./images/studyMap_NPC_o.png" alt="">
+                                            </div>
+                                            <div class="list_name">
+                                                <span>周阿倫</span>
+                                                <span>初心者</span>
+                                            </div>
+                                            <div class="new_message">
+                                                <span>1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backStage_chat_part">
+                            <div class="backStage_chat_content">
+                                <div class="backStage_student_block">
+                                    <div class="backStage_student_name">
+                                        <div class="backStage_student_head">
+                                            <img src="./images/studyMap_NPC_o.png" alt="">
+                                        </div>
+                                        <div class="student_name_level">
+                                            <span>周阿倫</span>
+                                            <span>初心者</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat_message_block">
+                                    <div class="backStage_chat_student">
+                                        <div class="student_img">
+                                            <img src="./images/studyMap_NPC_o.png" alt="">
+                                        </div>
+                                        <div class="student_chat">
+                                            <p>您好，我想請教N5會話的第10題?</p>
+                                        </div>
+                                    </div>
+                                    <div class="backStage_chat_teacher">
+                                        <div class="teacher_chat">
+                                            <p>您好，我是語實巨進的老師木村，很高興為您服務。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="backStage_chat_input">
+                                    <form action="" method="post">
+                                        <input type="text">
+                                        <button id="info_send" type="submit">送出</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,7 +153,7 @@
                     </div>
                 </div>
             </div>
-            @@include('layout/backStage_footer.html')
+            <!-- @@include('layout/backStage_footer.html') -->
         </div>
     </div>
 
