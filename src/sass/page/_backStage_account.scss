@@ -113,9 +113,6 @@
                         text-align: center;
                     }
 
-                    .odd{
-                        background-color: map-get($color , bgc_y );
-                    }
                 }
             }
         }
@@ -126,6 +123,9 @@
 }
 
 
+.backStyle .odd{
+    background-color: map-get($color , bgc_y );
+}
 
 // 新增帳號燈箱
 .backStage_lightBox{
