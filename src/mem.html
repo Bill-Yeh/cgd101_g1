@@ -17,39 +17,30 @@
             <div class="map_lightBox">
                 <img src="./images/studyMap_main_island.png" alt="">
             </div>
+
+
             <!-- 衣櫃 -->
             <div class="closet_lightBox">
-                <div class="char">
-                    <img src="./images/char_00.png" alt="">
-                </div>
+                <!-- <div class="char">
+                    <img class="closet_char_img" src="./images/char_00.png" alt="">
+                </div> -->
+                <canvas class="char"></canvas>
                 <div class="cloth">
                     <div class="page">
                         <div class="tab_hat">
-                            <img src="./images/char_dress_1.png" alt="">
+                            <img src="./images/char_hat_0.png" alt="">
                         </div>
                         <div class="tab_dress">
-                            <img src="./images/char_hat_1.png" alt="">
+                            <img src="./images/char_dress_0.png" alt="">
                         </div>
                         <div class="tab_tool">
-                            <img src="./images/char_dress_1.png" alt="">
+                            <img src="./images/char_tool_0.png" alt="">
                         </div>
                     </div>
                     <div class="item">
                         <div class="itemFront"><img src="./images/map_mem_button2.png" alt=""></div>
                         <div class="item-wrapper">
-                            <div class="1">
-                                <img src="./images/char_dress_2.png" alt="">
-                            </div>
-                            <div class="2">
-                                <img src="./images/char_hat_1.png" alt="">
-                            </div>
-                            <div class="3">
-                                <img src="./images/char_dress_2.png" alt="">
-                            </div>
-                            <div class="3">
-                                <img src="./images/char_dress_2.png" alt="">
-                            </div>
-                            <div class="3">
+                            <div class="closet_item">
                                 <img src="./images/char_dress_2.png" alt="">
                             </div>
                         </div>
@@ -82,32 +73,145 @@
             </div>
             <!-- 交易紀錄 -->
             <div class="box1_lightBox">
-                <h2 class="box_title">交易列表</h2>
+                <h2 class="box_title">購買紀錄</h2>
                 <table class="buy_list">
-                    <thead>
+                    <thead class="buy_list_title">
                         <tr>
-                            <th>訂單編號</th>
-                            <th>購買時間</th>
-                            <th>購買品項</th>
-                            <th>購買金額</th>
-                            <th>付款方式</th>
+                            <th class="buy_list_title_item">訂單編號</th>
+                            <th class="buy_list_title_item">購買時間</th>
+                            <th class="buy_list_title_item">購買品項</th>
+                            <th class="buy_list_title_item">購買金額</th>
+                            <th class="buy_list_title_item">付款方式</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="buy_list_content">
                         <tr>
-                            <td>111111</td>
-                            <td>2022/5/31 12:34:55</td>
-                            <td>N3會話</td>
-                            <td>30</td>
-                            <td>信用卡</td>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
                         </tr>
                         <tr>
                             <td>111112</td>
                             <td>2022/5/31 12:38:55</td>
                             <td>裝備01</td>
                             <td>10</td>
-                            <td>信用卡</td>
+                            <td>代幣</td>
                         </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+                        <tr>
+                            <td>111112</td>
+                            <td>2022/5/31 12:38:55</td>
+                            <td>裝備01</td>
+                            <td>10</td>
+                            <td>代幣</td>
+                        </tr>
+
                     </tbody>
                 </table>
                 

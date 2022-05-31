@@ -534,6 +534,8 @@
     position: fixed;
     width: 100%;
     height: 100%;
+    
+    
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
     
@@ -577,36 +579,39 @@
 
             //換裝
             .closet_lightBox{
-                overflow:auto;
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
                 
-                &::-webkit-scrollbar-button{
-                    background-color: rgb(0, 176, 15);
-                }
-                img{
-                    vertical-align:bottom;
-                }
 
                 .char{
-                    height: 70%;
+                    width: 100%;
+                    height: 75%;
                     display: flex;
-                    img{
+                    background-color: #F37420;
+                    @include md{
+                        height: 70%;
+                    }
+                    
+                    .closet_char_img{
                         display: block;
                         margin: auto;
-                        height: 50%;
+                        height: 40%;
                         width: auto;
-                        
+                        vertical-align: bottom;
+                        @include md{
+                            height: 50%;
+                        }
                     }
                 }
 
                 .cloth{
-                    height: 30%;
-                    
+                    height: 25%;
+                    @include md{
+                        height: 30%;
+                    }
 
                     .page{
                         display: flex;
-                        // background-color:rgb(172, 38, 38);
                         height: 30%;
                         position: relative;
                         align-items:flex-end;
@@ -617,39 +622,43 @@
                             border-top-left-radius: 10px;
                             border-top-right-radius: 10px;
                             overflow: hidden;
-                            // border: #F9BB4D 3px solid;
                             background-color: #F37420;
                             border-bottom: none;
                             box-sizing: border-box;
                             height:70%;
-                            padding: 0.5% 5%;
-                            // border: #F9BB4D 3px solid;
+                            padding: 0.5% 10%;
+                            @include md{
+                                padding:0.5% 5%;
+                            }
                             img{
                                 border: none;
                                 width: auto;
                                 height: 100%;
                             } 
                         }
-                        & div:nth-child(1){
+                        .tab_hat{
                             // box-shadow: 10px 0px 0px  rgba(51, 51, 51, 0.263);
                             position: relative;
                             left: 0px;
                             z-index: 10;
                            
                         }
-                        & div:nth-child(2){
+                        .tab_dress{
                             // box-shadow: 10px 0px 0px rgba(51, 51, 51, 0.253);
                             position: relative;
                             left: -10px;
                             z-index: 9;
                         }
-                        & div:nth-child(3){
+                        .tab_tool{
                             position: relative;
                             left: -20px;
                             z-index: 8;
                         }
                         #target{
-                            padding:0.5% 7%;
+                            padding:0.5% 13%;
+                            @include md{
+                                padding:0.5% 7%;
+                            }
                             background-color: #F9BB4D;
                         }
                         
@@ -784,16 +793,47 @@
                 overflow:auto;
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+                position: relative;
 
                 .box_title{
+                    position: sticky;
+                    top:0;
                     text-align: center;
                     padding: 15px;
                     font-size: 22px;
+                    font-weight: 600;
+                    color: #F37420;
+                    background-color: #FAE6B8;
                 }
                 .buy_list{
                     overflow:auto;
                     width: 100%;
-                    background-color: aqua;
+
+                    thead{
+                        background-color: #F9BB4D;
+                        position: sticky;
+                        top:52px;
+                        th{
+                            padding:15px 3px;
+                            box-sizing: border-box;
+    
+                        }
+
+                    }
+
+                    tbody{
+                        tr{
+                            box-sizing: border-box;
+                            border-bottom: #F9BB4D 1px solid;
+                            td{
+                                text-align: center;
+                                padding: 10px 3px;
+                                box-sizing: border-box;
+
+                            }
+                    }
+                }
+
                 }
 
                 
@@ -927,6 +967,7 @@
     }
     
     .backTo{
+        z-index: 1;
         cursor: pointer;
         text-align: center;
         position: absolute;
