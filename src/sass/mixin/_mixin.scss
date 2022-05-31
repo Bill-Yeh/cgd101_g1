@@ -46,7 +46,7 @@
 //控制背景
 @mixin bg($img,$position){
     background: {
-    image: url('./images/#{$img}') ;
+    image: url('../images/#{$img}') ;
     position:$position;
     repeat:none;
     };
