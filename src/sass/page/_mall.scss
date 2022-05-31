@@ -87,10 +87,33 @@ body {
     }
     .npc_talk {
       p {
+        display: none;
         position: absolute;
-        top: -10%;
-        left: -10%;
-        z-index: 21;
+
+        @include xl() {
+          display: block;
+          top: -10%;
+          left: -10%;
+          z-index: 21;
+        }
+      }
+    }
+    .talk_content {
+      width: 32ch;
+      animation: typing 2s steps(22), blink 0.8s step-end alternate;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
       }
     }
     .npc_talk img {
