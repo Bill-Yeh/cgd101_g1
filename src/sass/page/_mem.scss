@@ -784,6 +784,18 @@
                 overflow:auto;
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+
+                .box_title{
+                    text-align: center;
+                    padding: 15px;
+                    font-size: 22px;
+                }
+                .buy_list{
+                    overflow:auto;
+                    width: 100%;
+                    background-color: aqua;
+                }
+
                 
                 
 
