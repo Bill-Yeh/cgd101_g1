@@ -116,3 +116,51 @@
     bottom: 18%;
     right: 0;
 }
+
+// --------------------------------------------------
+
+// 交易列表
+.backTradeList ul .nav_list:nth-child(6){
+    background-color: #F9BB4D;
+}
+.backTradeList ul li:nth-of-type(6) .triangle{
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    clip-path: polygon(100% 10%, 70% 40%, 100% 76%);
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+}
+
+// --------------------------------------------------
+
+// 異常通報
+.backReport ul .nav_list:nth-child(8){
+    background-color: #F9BB4D;
+}
+.backReport ul li:nth-of-type(8) .triangle{
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    clip-path: polygon(100% 10%, 70% 40%, 100% 76%);
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+}
+
+// --------------------------------------------------
+
+// 題目清單(管理員)
+.backOption ul .nav_list:nth-child(3){
+    background-color: #F9BB4D;
+}
+.backOption ul li:nth-of-type(3) .triangle{
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    clip-path: polygon(100% 10%, 70% 40%, 100% 76%);
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+}

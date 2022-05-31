@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "後台題目清單-教師用"
+    })
+</head>
+<body class="backOption_Teacher" style="background-color: #fff;">
+    <!-- header -->
+    @@include('layout/backStage_header.html')
+    <!-- header end -->
+
+    <!-- 後台左右邊內容 -->
+    <div id="backStageID" class="backStage_main_container">
+        <div class="backStage_main_content">
+            <!-- 後台左方選單 -->
+            @@include('layout/backStage_nav_teacher.html')
+
+            <div class="backStage_right_part">
+                <div class="backStage_right_content">
+                    <div class="backStage_right_title_part">
+                        <div class="backStage_right_title">
+                            <h1>題庫管理</h1>
+                        </div>
+                        <div class="backStage_filter backStage_addAccount">
+                            <button class="lightBox_btn"><i class="bi bi-plus-lg"></i>新增題目</button>
+                        </div>
+                        <div class="backStage_input_filter">
+                            <div class="on_stock">
+                                <span>單字(2)</span>
+                                <span>會話(2)</span>
+                                <span>聽力測驗(2)</span>
+                            </div>
+                            <div class="input_filter">
+                                <input type="text" placeholder="以題目編號查詢">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div class="backStage_search">
+                                <button class="backStage_search_btn">
+                                    查詢
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backStage_right_table_part">
+                        <table class="account_table_title table_title">
+                            <tr class="table_header_row">
+                                <th>題目編號</th>
+                                <th>題目內容</th>
+                                <th>目前狀態</th>
+                                <th>題目分類</th>
+                                <th></th>
+                            </tr>
+                            <tr class="table_data_row odd">
+                                <td>01</td>
+                                <td>日常單字</td>
+                                <td>上架商品</td>
+                                <td>日常</td>
+                                <td><button class="lightBox_btn edit_btn" @click="show">編輯</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新增帳號燈箱 -->
+            <div class="backStage_lightBox">
+                <div class="backStage_lightBox_container">
+                    <div class="backStage_lightBox_content">
+                        <div class="backStage_lightBox_title">
+                            <h3>新增題目</h3>
+                        </div>
+                        <div class="backStage_lightBox_close" @click="hide">
+                            <i class="bi bi-x-lg"></i>
+                        </div>
+                        <div class="backStage_lightBox_main_content">
+                            <form action="">
+                                <div class="course_sm_block item_sm_block article_sm_block report_sm_block">
+                                    <label for="report_sm">通報編號</label>
+                                    <input type="text" id="report_sm" value="01" readonly>
+                                </div>
+                                <div class="course_sm_block item_sm_block article_sm_block report_time_block">
+                                    <label for="report_time">通報時間</label>
+                                    <input type="text" id="report_time" value="2022/05/17 18:32:50" readonly>
+                                </div>
+                                <div class="course_img_block item_img_block member_sm_block">
+                                    <label for="member_sm">會員編號</label>
+                                    <input type="text" id="member_sm" value="01" readonly>
+                                </div>
+                                <div class="course_title_block item_title_block member_title_block report_content_block">
+                                    <label for="report_content">通報內容</label>
+                                    <input type="text" id="report_content" value="購買地圖無法解鎖" readonly>
+                                </div>
+                                <div class="course_price_block item_price_block article_type_block report_solve_block">
+                                    <label for="report_solve">處理進度</label>
+                                    <input type="text" id="report_solve" value="已處理" readonly>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="backStage_lightBox_saveBtn">
+                            <button type="submit" class="data_save">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @@include('layout/backStage_footer.html')
+        </div>
+    </div>
+
+    <script src="./js/backStage.js"></script>
+
+</body>
+</html>

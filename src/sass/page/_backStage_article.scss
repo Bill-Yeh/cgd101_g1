@@ -1,0 +1,119 @@
+// 新增帳號燈箱
+.backStage_lightBox_article{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.607);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    .backStage_lightBox_container{
+        width: 80%;
+        height: 80%;
+        max-width: 500px;
+        padding: 30px;
+        background-color: map-get($color , bgc_y );
+        border-radius: 20px;
+        overflow-y: auto;
+
+        // 燈箱內容
+        .backStage_lightBox_content{
+            position: relative;
+
+            h3{
+                text-align: center;
+                font-size: map-get($fontSize , h3 );
+                font-family: $fontCh;
+                color: map-get($color , backstage_h );
+            }
+
+            // 關閉icon
+            .backStage_lightBox_close{
+                i{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                }
+            }
+
+            // 表單主要內容
+            .backStage_lightBox_main_content{
+                margin-top: 20px;
+                font-family: $fontCh;
+
+                .administrator_sm_block,.account_block,.account_title_block,.phone_block,.account_state_block,.user_block{
+                    padding-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                }
+                .administrator_sm_block{
+                    label{
+                        padding-right: 3%;
+                    }
+                }
+                .account_block{
+                    label{
+                        padding-right: 12.5%;
+                    }
+                }
+                .account_title_block{
+                    label{
+                        padding-right: 6%;
+                    }
+                }
+                .phone_block{
+                    label{
+                        padding-right: 12.5%;
+                    }
+                }
+                .account_state_block{
+                    label{
+                        padding-right: 6%;
+                    }
+                }
+                .user_block{
+                    label{
+                        padding-right: 3%;
+                    }
+                }
+            }
+
+            .backStage_lightBox_saveBtn{
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    border: none;
+                    border-radius: 5px;
+                    background-color: map-get($color ,primary );
+                    color: #fff;
+                    padding: 5px 20px;
+                    font-size: 1rem;
+                    font-family: $fontCh;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    input{
+        outline: none;
+    }
+    select{
+        background-color: #F9BB4D;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1rem;
+        font-family: $fontCh;
+    }
+    textarea{
+        outline: none;
+    }
+}
