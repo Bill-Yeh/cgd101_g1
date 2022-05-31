@@ -4,6 +4,7 @@
 <head>
     @@include('layout/meta.html',{"title" : "寶物商城"})
 </head>
+<!--  -->
 
 <body>
 
@@ -202,7 +203,7 @@
                                 <div class="item_1">
                                     <!-- 一之一 -->
                                     <div class="item_info_tool">
-                                        <div class="item_title">長劍</div>
+                                        <div class="item_title">寶劍</div>
                                         <div class="item_pic">
                                             <img src="./images/char_tool_4.png" alt="">
                                         </div>
@@ -215,7 +216,7 @@
                                     </div>
                                     <!-- 一之二 -->
                                     <div class="item_info_tool">
-                                        <div class="item_title">長劍</div>
+                                        <div class="item_title">寶劍</div>
                                         <div class="item_pic">
                                             <img src="./images/char_tool_4.png" alt="">
                                         </div>
@@ -228,7 +229,7 @@
                                     </div>
                                     <!-- 一之三 -->
                                     <div class="item_info_tool">
-                                        <div class="item_title">長劍</div>
+                                        <div class="item_title">寶劍</div>
                                         <div class="item_pic">
                                             <img src="./images/char_tool_4.png" alt="">
                                         </div>
@@ -241,7 +242,7 @@
                                     </div>
                                     <!-- 一之四 -->
                                     <div class="item_info_tool">
-                                        <div class="item_title">長劍</div>
+                                        <div class="item_title">寶劍</div>
                                         <div class="item_pic">
                                             <img src="./images/char_tool_4.png" alt="">
                                         </div>
@@ -373,8 +374,15 @@
 
 
 
-                    <div class="mall_npc_pic">
-                        <img src="./images/mall_npc1.png" alt="">
+                    <div class="mall_npc">
+                        <div class="npc_pic"><img src="./images/mall_npc1.png" alt="">
+                        </div>
+
+                        <div class="npc_talk" id="change_talk">
+                            <img src="./images/talk.png">
+                            <p id="talk_content"></p>
+                            <!-- <img src="./images/mall_talk_1.png" alt="" name="npc_talk"> -->
+                        </div>
                     </div>
                     <div class="mall_floor_item_pic">
                         <img src="./images/mall_floor_item.png" alt="">
@@ -429,6 +437,11 @@
                 let tool_no_btn = document.getElementById("tool_n_btn");
                 let tool_yes_btn = document.getElementById("tool_y_btn");
 
+                //NPC對話框
+                // let img = document.getElementsByName("npc_talk")[0];
+                // let imgArr = ["./images/mall_talk_1.png", "./images/mall_talk_2.png"];
+                // let talk = 0;
+
                 // 確認購買--課程燈箱
                 function show_box() {
                     pay_box.style.display = "block";
@@ -442,7 +455,7 @@
                     window.location.href = "./payment.html";
                 }
 
-                // 會員等級不足燈箱
+                // 會員等級不足--燈箱
                 function box() {
                     lv_box.style.display = "block";
                 }
@@ -465,6 +478,30 @@
                     tool_box.style.display = "none";
                 }
 
+                // NPC對話框
+                // function change_talk() {
+                //     talk--;
+                //     if (talk < 0) {
+                //         talk = imgArr.length - 1;
+                //     }
+                //     img.src = imgArr[talk];
+
+                // };
+
+                //打字效果
+                let contentout = [];
+                let content = "いらっしゃいませ,何が買いたいですか";
+                contentout = content.substring(0, content.length);
+                let sub = 0;
+                let time = 0;
+
+                function input() {
+                    for (i = 0; i < contentout.length; i++) {
+                        setTimeout("document.getElementById('talk_content').innerHTML+= contentout[sub], sub += 1", time);
+                        time += 100;
+                    }
+                }
+
                 function init() {
                     show_pay_box.onclick = show_box;
                     no_btn.onclick = no_button;
@@ -478,12 +515,16 @@
                     for (i = 0; i < show_tool_box.length; i++) {
                         show_tool_box[i].onclick = show_t_box;
                     }
-
                     ok_btn.onclick = no;
+
+                    // document.getElementById("change_talk").click = change_talk;
+                    // setInterval("change_talk()", 2500);
                 }
 
 
                 window.addEventListener("load", init, false);
+                window.addEventListener("load", input, false);
+
             </script>
 
 </body>

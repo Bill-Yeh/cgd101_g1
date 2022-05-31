@@ -8,7 +8,7 @@ body {
   display: none;
   position: fixed;
   top: 0px;
-  z-index: 10;
+  z-index: 30;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
   height: 100vh;
@@ -67,16 +67,16 @@ body {
   }
   .mall_floor_pic,
   .mall_floor_item_pic,
-  .mall_npc_pic {
+  .mall_npc {
     width: 100%;
     height: 100%;
     position: absolute;
   }
 
-  .mall_npc_pic {
+  .mall_npc {
     display: none;
 
-    img {
+    .npc_pic img {
       width: 100px;
       height: 100px;
     }
@@ -85,14 +85,26 @@ body {
       top: 65%;
       left: 20%;
     }
-    &::after {
-      content: url(/images/home_lesson_island_talk1.png);
-      position: absolute;
-      top: -110px;
-      left: 30px;
-      z-index: 50;
+    .npc_talk {
+      p {
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        z-index: 21;
+      }
+    }
+    .npc_talk img {
+      display: none;
+      @include xl() {
+        display: block;
+        z-index: 20;
+        position: absolute;
+        top: -14%;
+        left: -11%;
+      }
     }
   }
+
   .mall_floor_pic img {
     display: none;
     width: 100%;

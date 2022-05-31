@@ -659,7 +659,7 @@
   left: 70%;
 }
 .home_last_island {
-  width: 100%;
+  width: 100vw;
   position: relative;
 }
 .home_last_island_pic {
@@ -667,7 +667,11 @@
 }
 
 .home_last_island_pic img {
-  width: 100%;
+  display: none;
+  @include md() {
+    display: block;
+    width: 100%;
+  }
 }
 
 .home_last_island_info {
