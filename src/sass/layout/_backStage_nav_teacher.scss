@@ -1,0 +1,56 @@
+.backStage_nav_teacher{
+    width: 15%;
+    height: 100vh;
+    background-color: map-get($color , bgc_y );
+    z-index: 20;
+
+    .backStage_nav_list{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        li{
+            width: 100%;
+            padding: 15% 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        a{
+            text-decoration: none;
+            font-family: $fontCh;
+            font-size: 1.2rem;
+            color: #000;
+        }
+    }
+}
+
+// 三角形
+// .triangle{
+//     width: 50%;
+//     height: 50%;
+//     background-color: #fff;
+//     clip-path: polygon(100% 10%, 70% 40%, 100% 76%);
+//     position: absolute;
+//     bottom: 18%;
+//     right: 0;
+// }
+
+// 題庫管理
+.backOption_Teacher ul .nav_list:first-child{
+    background-color: #F9BB4D;
+}
+.backOption_Teacher ul li:nth-of-type(1) .triangle{
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    clip-path: polygon(100% 10%, 70% 40%, 100% 76%);
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+}
+
+// --------------------------------------------------
+

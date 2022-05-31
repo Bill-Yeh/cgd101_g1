@@ -57,7 +57,7 @@
                         span{
                             cursor: pointer;
                         }
-                        span:first-child{
+                        span:first-child,span:nth-child(2){
                             padding-right: 20px;
                         }
                     }
