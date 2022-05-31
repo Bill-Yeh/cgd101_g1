@@ -11,7 +11,7 @@ new Vue({
                 location.href="studyMap_word_lv1.html";
             },
             nextToSecond(){
-                location.href="studyMap_50village.html";
+                location.href="studyMap_dialouge_lv1.html";
             },
             nextToThird(){
                 location.href="studyMap_50village.html";

@@ -202,7 +202,7 @@
 }
 //雲
 .cloud{
-  // display: none;
+  display: none;
   .cloud_background{
       @include mem_item(110%,-5%,'','',0%);
       @include md{ //768
@@ -374,7 +374,7 @@
   position: relative;
 }
 .wordlv1{
-  background-image: url("../../images/studyMap_dialolv1.png");
+  background-image: url("../../images/studyMap_wordlv1.png");
 }
 .dialoguelv1{
   background-image: url("../../images/studyMap_dialolv1.png");
@@ -490,8 +490,8 @@ content:url(/images/npc_border_trafic.png);
 }
 //會話篇
 .hello{
-  top: 40%;
-  left: 20%;
+  top: 50%;
+  left: 10%;
   animation-delay: 0.5s;
   animation-duration:5s;
 }
@@ -499,8 +499,8 @@ content:url(/images/npc_border_trafic.png);
 content:url(/images/npc_border_hello.png);
 }
 .hi{
-  top: 60%;
-  left: 35%;
+  top: 75%;
+  left: 25%;
   animation-delay: 0.3s;
   animation-duration: 3s;
 }
@@ -508,8 +508,8 @@ content:url(/images/npc_border_hello.png);
 content:url(/images/npc_border_hello.png);
 }
 .fine{
-  top: 50%;
-  left: 48%;
+  top: 33%;
+  left: 30%;
   animation-delay: 0.8s;
   animation-duration: 7s;
 }
@@ -517,8 +517,8 @@ content:url(/images/npc_border_hello.png);
 content:url(/images/npc_border_hello.png);
 }
 .nice{
-  top: 40%;
-  right:35%;
+  top: 23%;
+  right:20%;
   animation-delay: 0.5s;
   animation-duration: 4s;
 }
@@ -527,11 +527,41 @@ content:url(/images/npc_border_hello.png);
 }
 .great{
   top: 60%;
-  right: 20%;
+  right: 40%;
   animation-duration: 5s;
 }
 .great:hover::after{
 content:url(/images/npc_border_hello.png);
+}
+//
+.a{
+  top: 40%;
+  left: 20%;
+  animation-delay: 0.5s;
+  animation-duration:5s;
+}
+.b{
+  top: 60%;
+  left: 35%;
+  animation-delay: 0.3s;
+  animation-duration: 3s;
+}
+.c{
+  top: 50%;
+  left: 48%;
+  animation-delay: 0.8s;
+  animation-duration: 7s;
+}
+.d{
+  top: 40%;
+  right:35%;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+.e{
+  top: 60%;
+  right: 20%;
+  animation-duration: 5s;
 }
 .right{
     animation-name: npc_walk_right;
@@ -655,7 +685,7 @@ content:url(/images/npc_border_hello.png);
   transform: scale(1.3);
 }
 .go-to-test{
-  width: 200px;
+  width: 250px;
   height: 100px;
   z-index: 51;
   position: absolute;
@@ -680,9 +710,10 @@ content:url(/images/npc_border_hello.png);
   background-color: #F9BB4D;
   border-radius: 5px;
   border: none;
-  padding: 5px 10px;
+  // padding: 5px 10px;
   font-size: 16px;
   font-family: 'Times New Roman', Times, serif;
+  @include btn();
 }
 .no button{
   color: #F0FDFD;
@@ -690,9 +721,10 @@ content:url(/images/npc_border_hello.png);
   background-color: #F9BB4D;
   border-radius: 5px;
   border: none;
-  padding: 5px 10px;
+  // padding: 5px 10px;
   font-size: 16px;
   font-family: 'Times New Roman', Times, serif;
+  @include btn();
 }
 .go-to-test button:hover{
   background-color: #F37420;
