@@ -380,8 +380,9 @@
 
                         <div class="npc_talk" id="change_talk">
                             <img src="./images/talk.png">
-                            <p id="talk_content"></p>
-                            <!-- <img src="./images/mall_talk_1.png" alt="" name="npc_talk"> -->
+                            <p class="talk_content">
+                                いらっしゃいませ,何が買いたいですか
+                            </p>
                         </div>
                     </div>
                     <div class="mall_floor_item_pic">
@@ -478,29 +479,6 @@
                     tool_box.style.display = "none";
                 }
 
-                // NPC對話框
-                // function change_talk() {
-                //     talk--;
-                //     if (talk < 0) {
-                //         talk = imgArr.length - 1;
-                //     }
-                //     img.src = imgArr[talk];
-
-                // };
-
-                //打字效果
-                let contentout = [];
-                let content = "いらっしゃいませ,何が買いたいですか";
-                contentout = content.substring(0, content.length);
-                let sub = 0;
-                let time = 0;
-
-                function input() {
-                    for (i = 0; i < contentout.length; i++) {
-                        setTimeout("document.getElementById('talk_content').innerHTML+= contentout[sub], sub += 1", time);
-                        time += 100;
-                    }
-                }
 
                 function init() {
                     show_pay_box.onclick = show_box;
@@ -517,13 +495,12 @@
                     }
                     ok_btn.onclick = no;
 
-                    // document.getElementById("change_talk").click = change_talk;
-                    // setInterval("change_talk()", 2500);
+
                 }
 
 
                 window.addEventListener("load", init, false);
-                window.addEventListener("load", input, false);
+
 
             </script>
 

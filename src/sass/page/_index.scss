@@ -30,6 +30,7 @@ a {
   }
   .island_pic img {
     width: 90%;
+    height: 80%;
     margin-bottom: 50px;
     @include md() {
       width: 40%;
@@ -246,7 +247,7 @@ a {
   left: 20%;
   top: 20%;
   width: 20%;
-
+  animation: cloud_1 1.5s linear 0s infinite alternate;
   @include md {
     width: 50%;
   }
@@ -256,6 +257,7 @@ a {
   right: 10%;
   top: 20%;
   width: 20%;
+  animation: cloud_2 1.5s linear 0s infinite alternate;
   @include md {
     width: 50%;
     right: 0;
@@ -268,17 +270,35 @@ a {
   right: 0;
   top: 50%;
   width: 20%;
+  animation: cloud_3 1.5s linear 0s infinite alternate;
+
   @include md {
     width: 40%;
     right: 0;
     top: 60%;
   }
 }
-// @keyframes cloud {
-//   form {
-//     top: 10%;
-//   }
-//   to {
-//     top: -25%;
-//   }
-// }
+@keyframes cloud_1 {
+  from {
+    top: 18%;
+  }
+  to {
+    top: 16%;
+  }
+}
+@keyframes cloud_2 {
+  from {
+    top: 15%;
+  }
+  to {
+    top: 16%;
+  }
+}
+@keyframes cloud_3 {
+  from {
+    top: 50%;
+  }
+  to {
+    top: 49%;
+  }
+}
