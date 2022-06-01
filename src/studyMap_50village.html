@@ -30,7 +30,8 @@
             </div>
             <!-- 圖像框 -->
             <div class="studyMap_main" id="mapMain">
-                <img id="main_pic" src="">
+                <!-- <img id="main_pic" src=""> -->
+                <p id="main_text"></p>
             </div>
             <!-- 對話框 -->
             <div class="studyMap_con" id="mapCon">
@@ -67,36 +68,67 @@
                     <button>先不要</button>
                 </div>
             </div>
+            <div class="item">
+                <img src="./images/studyMap_guide1.png">
+            </div>
         </div>
         <script>
             // let npcId =new Array('asan','isan','usan','esan','osan')
+            //==========對話招呼============
             let startCon = new Array('你好，我是あ，今天一起來學習50音的母音あ段吧!','本大爺是い，學習母音い段的事，就交給我吧!','初次見面，我是う，快來學習50音的母音う段，GO!!','嘿嘿嘿，我是え...一起來學...50音え段...','我是お~今天一起來學習50音的母音お段~~' );
+            //==========對話框人像============
             let npcSrc = new Array('./images/studyMap_NPC_a.png','./images/studyMap_NPC_i.png','./images/studyMap_NPC_u.png','./images/studyMap_NPC_e.png','./images/studyMap_NPC_o.png' );
+             //==========對話============
             let aCon = new Array("首先教學的是「あ」發音為「a」","再來是「か」，發音為「ka」","再來是「さ」，發音為「sa」","再來是「た」，發音為「ta」","再來是「な」，發音為「na」","再來是「は」，發音為「ha」","再來是「ま」，發音為「ma」","再來是「や」，發音為「ya」","再來是「ら」，發音為「ra」","再來是「わ」，發音為「wa」");
             let iCon = new Array("首先教學的是「い」發音為「i」","再來是「き」，發音為「ki」","再來是「し」，發音為「shi」","再來是「ち」，發音為「chi」","再來是「に」，發音為「ni」","再來是「ひ」，發音為「hi」","再來是「み」，發音為「mi」","再來是「り」，發音為「ri」");
             let uCon = new Array("首先教學的是「う」發音為「u」","再來是「く」，發音為「ku」","再來是「す」，發音為「su」","再來是「つ」，發音為「tsu」","再來是「ぬ」，發音為「nu」","再來是「ふ」，發音為「fu」","再來是「む」，發音為「mu」","再來是「ゆ」，發音為「yu」","再來是「る」，發音為「ru」");
             let eCon = new Array("首先...「え」發音為「e」...","...「け」，發音為「ke」...","...「せ」，發音為「se」...","...「て」，發音為「te」...","...「ね」，發音為「ne」...","...「へ」，發音為「he」...","...「め」，發音為「me」...","...「れ」，發音為「re」...");
             let oCon = new Array("首先教學的是「お」發音為「o」","再來是「こ，發音為「ko」","再來是「そ」，發音為「so」","再來是「と」，發音為「to」","再來是「の」，發音為「no」","再來是「ほ」，發音為「ho」","再來是「も」，發音為「mo」","再來是「よ」，發音為「yo」","再來是「ろ」，發音為「ro」","再來是「を」，發音為「wo」","最後一個是鼻音「ん」，發音為「n」");
+            //===========聲音檔路徑===========
             let soundSrcA = new Array("./sound/a.mp3","./sound/ka.mp3","./sound/sa.mp3","./sound/ta.mp3","./sound/na.mp3","./sound/ha.mp3","./sound/ma.mp3","./sound/ya.mp3","./sound/ra.mp3","./sound/wa.mp3");
             let soundSrcI = new Array("./sound/i.mp3","./sound/ki.mp3","./sound/shi.mp3","./sound/chi.mp3","./sound/ni.mp3","./sound/hi.mp3","./sound/mi.mp3","./sound/ri.mp3");
             let soundSrcU = new Array("./sound/u.mp3","./sound/ku.mp3","./sound/su.mp3","./sound/tsu.mp3","./sound/nu.mp3","./sound/fu.mp3","./sound/mu.mp3","./sound/yu.mp3","./sound/ru.mp3");
             let soundSrcE = new Array("./sound/e.mp3","./sound/ke.mp3","./sound/se.mp3","./sound/te.mp3","./sound/ne.mp3","./sound/he.mp3","./sound/me.mp3","./sound/re.mp3");
             let soundSrcO = new Array("./sound/o.mp3","./sound/ko.mp3","./sound/so.mp3","./sound/to.mp3","./sound/no.mp3","./sound/ho.mp3","./sound/mo.mp3","./sound/yo.mp3","./sound/ro.mp3","./sound/wo.mp3","./sound/n.mp3");
-            let fifityPicA = new Array("./images/studyMap_a.svg","./images/studyMap_ka.svg","./images/studyMap_sa.svg","./images/studyMap_ta.svg","./images/studyMap_na.svg","./images/studyMap_ha.svg","./images/studyMap_ma.svg","./images/studyMap_ya.svg","./images/studyMap_ra.svg","./images/studyMap_wa.svg");//10
-            let fifityPicI = new Array("./images/studyMap_i.svg","./images/studyMap_ki.svg","./images/studyMap_shi.svg","./images/studyMap_chi.svg","./images/studyMap_ni.svg","./images/studyMap_hi.svg","./images/studyMap_mi.svg","./images/studyMap_ri.svg");//8
-            let fifityPicU = new Array("./images/studyMap_u.svg","./images/studyMap_ku.svg","./images/studyMap_su.svg","./images/studyMap_tsu.svg","./images/studyMap_nu.svg","./images/studyMap_fu.svg","./images/studyMap_mu.svg","./images/studyMap_yu.svg","./images/studyMap_ru.svg");//9
-            let fifityPicE = new Array("./images/studyMap_e.svg","./images/studyMap_ke.svg","./images/studyMap_se.svg","./images/studyMap_te.svg","./images/studyMap_ne.svg","./images/studyMap_he.svg","./images/studyMap_me.svg","./images/studyMap_re.svg");//8
-            let fifityPicO = new Array("./images/studyMap_o.svg","./images/studyMap_ko.svg","./images/studyMap_so.svg","./images/studyMap_to.svg","./images/studyMap_no.svg","./images/studyMap_ho.svg","./images/studyMap_mo.svg","./images/studyMap_yo.svg","./images/studyMap_ro.svg","./images/studyMap_wo.svg","./images/studyMap_n.svg");//11
+              //==========圖像檔路徑==============
+            // let fifityPicA = new Array("./images/studyMap_a.svg","./images/studyMap_ka.svg","./images/studyMap_sa.svg","./images/studyMap_ta.svg","./images/studyMap_na.svg","./images/studyMap_ha.svg","./images/studyMap_ma.svg","./images/studyMap_ya.svg","./images/studyMap_ra.svg","./images/studyMap_wa.svg");//10
+            // let fifityPicI = new Array("./images/studyMap_i.svg","./images/studyMap_ki.svg","./images/studyMap_shi.svg","./images/studyMap_chi.svg","./images/studyMap_ni.svg","./images/studyMap_hi.svg","./images/studyMap_mi.svg","./images/studyMap_ri.svg");//8
+            // let fifityPicU = new Array("./images/studyMap_u.svg","./images/studyMap_ku.svg","./images/studyMap_su.svg","./images/studyMap_tsu.svg","./images/studyMap_nu.svg","./images/studyMap_fu.svg","./images/studyMap_mu.svg","./images/studyMap_yu.svg","./images/studyMap_ru.svg");//9
+            // let fifityPicE = new Array("./images/studyMap_e.svg","./images/studyMap_ke.svg","./images/studyMap_se.svg","./images/studyMap_te.svg","./images/studyMap_ne.svg","./images/studyMap_he.svg","./images/studyMap_me.svg","./images/studyMap_re.svg");//8
+            // let fifityPicO = new Array("./images/studyMap_o.svg","./images/studyMap_ko.svg","./images/studyMap_so.svg","./images/studyMap_to.svg","./images/studyMap_no.svg","./images/studyMap_ho.svg","./images/studyMap_mo.svg","./images/studyMap_yo.svg","./images/studyMap_ro.svg","./images/studyMap_wo.svg","./images/studyMap_n.svg");//11
+            //===============圖像框文字============
+            let fifityWordA = new Array("あ","か","さ","た","な","は","ま","や","ら","わ");//10
+            let fifityWordI = new Array("い","き","し","ち","に","ひ","み","り");//8
+            let fifityWordU = new Array("う","く","す","つ","ぬ","ふ","む","ゆ","る");//9
+            let fifityWordE = new Array("え","け","せ","て","ね","へ","め","れ");//8
+            let fifityWordO = new Array("お","こ","そ","と","の","ほ","も","よ","ろ","を","ん");//11
+            //=========================
+            let show = document.getElementById('mapCon');
+            let speaker = document.getElementById('sound');
+            let photo = document.getElementById('mapMain');
+            // let fifty = document.getElementById('main_pic');
+            let text = document.getElementById('main_text');
+            let con = document.getElementById('con');
+            let sound = document.getElementById('voice');
+            let test = document.getElementById('toTest');
+            let filter = document.getElementById('mapFliter');
+            let closeBox = document.getElementById('close');
+            let pic = document.getElementById('pic');
+            let asan = document.getElementById('asan');
+            let isan = document.getElementById('isan');
+            let usan = document.getElementById('usan');
+            let esan = document.getElementById('esan');
+            let osan = document.getElementById('osan');
         function showLightBox(e){
             //背景變暗
-            document.getElementById('mapFliter').style.display='block';
-            document.getElementById('mapCon').style.display ='flex';
-            document.getElementById('close').style.display='block';
-            document.getElementById('asan').style.display="none";
-            document.getElementById('isan').style.display="none";
-            document.getElementById('usan').style.display="none";
-            document.getElementById('esan').style.display="none";
-            document.getElementById('osan').style.display="none";
+            filter.style.display='block';
+            show.style.display ='flex';
+            closeBox.style.display='block';
+            asan.style.display="none";
+            isan.style.display="none";
+            usan.style.display="none";
+            esan.style.display="none";
+            osan.style.display="none";
             //====法1抓陣列ID======================
             // let id = String(e.target.id)
             // let index = npcId.indexOf(id)
@@ -106,8 +138,6 @@
             // pic.src=npcSrc[index]
             //==========法2========================
             let target = e.target.getAttribute('id');
-            let pic = document.getElementById('pic');
-            let con = document.getElementById('con');
                 if(target =='asan'){
                     con.innerText = startCon[0];
                     pic.src = npcSrc[0];
@@ -124,296 +154,291 @@
                     con.innerText = startCon[4];
                     pic.src = npcSrc[4];
                 }
-                // console.log(pic);
-                // console.log(e.target.getAttribute('id'));
         }
         function conversation(){
-            let speaker = document.getElementById('sound');
-            let photo = document.getElementById('mapMain');
-            let fifty = document.getElementById('main_pic')
-            let con = document.getElementById('con');
-            let sound = document.getElementById('voice')
-            let test = document.getElementById('toTest')
             speaker.style.display='flex';
             photo.style.display='flex';
+            let temp = show.innerText.trim();
             //あ
-            if(cat.innerText == startCon[0]){
+            if(temp == startCon[0]){
                 con.innerText = aCon[0];
-                // con.style.zIndex ='99999'
                 sound.src = soundSrcA[0];
-                fifty.src = fifityPicA[0];
-            }else if(cat.innerText == aCon[0]){
+                // fifty.src = fifityPicA[0];
+                text.innerText=fifityWordA[0];
+            }else if(temp == aCon[0]){
                 con.innerText = aCon[1];
                 sound.src = soundSrcA[1];
-                fifty.src = fifityPicA[1];
-            }else if(cat.innerText == aCon[1]){
+                // fifty.src = fifityPicA[1];
+                text.innerText=fifityWordA[1];
+            }else if(temp == aCon[1]){
                 con.innerText = aCon[2];
                 sound.src = soundSrcA[2];
-                fifty.src = fifityPicA[2];
-            }else if(cat.innerText == aCon[2]){
+                // fifty.src = fifityPicA[2];
+                text.innerText=fifityWordA[2];
+            }else if(temp == aCon[2]){
                 con.innerText = aCon[3];
                 sound.src = soundSrcA[3];
-                fifty.src = fifityPicA[3];
-            }else if(cat.innerText == aCon[3]){
+                // fifty.src = fifityPicA[3];
+                text.innerText=fifityWordA[3];
+            }else if(temp == aCon[3]){
                 con.innerText = aCon[4];
                 sound.src = soundSrcA[4];
-                fifty.src = fifityPicA[4];
-            }else if(cat.innerText == aCon[4]){
+                // fifty.src = fifityPicA[4];
+                text.innerText=fifityWordA[4];
+            }else if(temp == aCon[4]){
                 con.innerText = aCon[5];
                 sound.src = soundSrcA[5];
-                fifty.src = fifityPicA[5];
-            }else if(cat.innerText == aCon[5]){
+                // fifty.src = fifityPicA[5];
+                text.innerText=fifityWordA[5];
+            }else if(temp == aCon[5]){
                 con.innerText = aCon[6];
                 sound.src = soundSrcA[6];
-                fifty.src = fifityPicA[6];
-            }else if(cat.innerText == aCon[6]){
+                // fifty.src = fifityPicA[6];
+                text.innerText=fifityWordA[6];
+            }else if(temp == aCon[6]){
                 con.innerText = aCon[7];
                 sound.src = soundSrcA[7];
-                fifty.src = fifityPicA[7];
-            }else if(cat.innerText == aCon[7]){
+                // fifty.src = fifityPicA[7];
+                text.innerText=fifityWordA[7];
+            }else if(temp == aCon[7]){
                 con.innerText = aCon[8];
                 sound.src = soundSrcA[8];
-                fifty.src = fifityPicA[8];
-            }else if(cat.innerText == aCon[8]){
+                // fifty.src = fifityPicA[8];
+                text.innerText=fifityWordA[8];
+            }else if(temp == aCon[8]){
                 con.innerText = aCon[9];
                 sound.src = soundSrcA[9];
-                fifty.src = fifityPicA[9];
-            }else if(cat.innerText == aCon[9]){
+                // fifty.src = fifityPicA[9];
+                text.innerText=fifityWordA[9];
+            }else if(temp == aCon[9]){
                 con.innerText = aCon[0];
                 sound.src = soundSrcA[0];
-                fifty.src = fifityPicA[0];
-                // document.getElementById('mapFliter').style.display='none';
-                document.getElementById('mapCon').style.display ='none';
+                // fifty.src = fifityPicA[0];
+                text.innerText="";
+                show.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none';
+                closeBox.style.display='none';
                 toTest.style.display='flex';
             }
             //い
-            else if(cat.innerText == startCon[1]){
+            else if(temp == startCon[1]){
                 con.innerText = iCon[0];
                 sound.src = soundSrcI[0];
-                fifty.src = fifityPicI[0];
-            }else if(cat.innerText == iCon[0]){
+                text.innerText=fifityWordI[0];
+            }else if(temp == iCon[0]){
                 con.innerText = iCon[1];
                 sound.src = soundSrcI[1];
-                fifty.src = fifityPicI[1];
-            }else if(cat.innerText == iCon[1]){
+                text.innerText=fifityWordI[1];
+            }else if(temp == iCon[1]){
                 con.innerText = iCon[2];
                 sound.src = soundSrcI[2];
-                fifty.src = fifityPicI[2];
-            }else if(cat.innerText == iCon[2]){
+                text.innerText=fifityWordI[2];
+            }else if(temp == iCon[2]){
                 con.innerText = iCon[3];
                 sound.src = soundSrcI[3];
-                fifty.src = fifityPicI[3];
-            }else if(cat.innerText == iCon[3]){
+                text.innerText=fifityWordI[3];
+            }else if(temp == iCon[3]){
                 con.innerText = iCon[4];
                 sound.src = soundSrcI[4];
-                fifty.src = fifityPicI[4];
-            }else if(cat.innerText == iCon[4]){
+                text.innerText=fifityWordI[4];
+            }else if(temp == iCon[4]){
                 con.innerText = iCon[5];
                 sound.src = soundSrcI[5];
-                fifty.src = fifityPicI[5];
-            }else if(cat.innerText == iCon[5]){
+                text.innerText=fifityWordI[5];
+            }else if(temp == iCon[5]){
                 con.innerText = iCon[6];
                 sound.src = soundSrcI[6];
-                fifty.src = fifityPicI[6];
-            }else if(cat.innerText == iCon[6]){
+                text.innerText=fifityWordI[6];
+            }else if(temp == iCon[6]){
                 con.innerText = iCon[7];
                 sound.src = soundSrcI[7];
-                fifty.src = fifityPicI[7];
-            }else if(cat.innerText == iCon[7]){
+                text.innerText=fifityWordI[7];
+            }else if(temp == iCon[7]){
                 con.innerText = iCon[0];
                 sound.src = soundSrcI[0];
-                fifty.src = fifityPicI[0];
-                // document.getElementById('mapFliter').style.display='none';
-                document.getElementById('mapCon').style.display ='none';
+                text.innerText="";
+                show.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none';
+                closeBox.style.display='none';
                 test.style.display='flex';
             }
             //う
-            else if(cat.innerText == startCon[2]){
+            else if(temp == startCon[2]){
                 con.innerText = uCon[0];
                 sound.src = soundSrcU[0];
-                fifty.src = fifityPicU[0];
-            }else if(cat.innerText == uCon[0]){
+                text.innerText=fifityWordU[0];
+            }else if(temp == uCon[0]){
                 con.innerText = uCon[1];
                 sound.src = soundSrcU[1];
-                fifty.src = fifityPicU[1];
-            }else if(cat.innerText == uCon[1]){
+                text.innerText=fifityWordU[1];
+            }else if(temp == uCon[1]){
                 con.innerText = uCon[2];
                 sound.src = soundSrcU[2];
-                fifty.src = fifityPicU[2];
-            }else if(cat.innerText == uCon[2]){
+                text.innerText=fifityWordU[2];
+            }else if(temp == uCon[2]){
                 con.innerText = uCon[3];
                 sound.src = soundSrcU[3];
-                fifty.src = fifityPicU[3];
-            }else if(cat.innerText == uCon[3]){
+                text.innerText=fifityWordU[3];
+            }else if(temp == uCon[3]){
                 con.innerText = uCon[4];
                 sound.src = soundSrcU[4];
-                fifty.src = fifityPicU[4];
-            }else if(cat.innerText == uCon[4]){
+                text.innerText=fifityWordU[4];
+            }else if(temp == uCon[4]){
                 con.innerText = uCon[5];
                 sound.src = soundSrcU[5];
-                fifty.src = fifityPicU[5];
-            }else if(cat.innerText == uCon[5]){
+                text.innerText=fifityWordU[5];
+            }else if(temp == uCon[5]){
                 con.innerText = uCon[6];
                 sound.src = soundSrcU[6];
-                fifty.src = fifityPicU[6];
-            }else if(cat.innerText == uCon[6]){
+                text.innerText=fifityWordU[6];
+            }else if(temp == uCon[6]){
                 con.innerText = uCon[7];
                 sound.src = soundSrcU[7];
-                fifty.src = fifityPicU[7];
-            }else if(cat.innerText == uCon[7]){
+                text.innerText=fifityWordU[7];
+            }else if(temp == uCon[7]){
                 con.innerText = uCon[8];
                 sound.src = soundSrcU[8];
-                fifty.src = fifityPicU[8];
-            }else if(cat.innerText == uCon[8]){
+                text.innerText=fifityWordU[8];
+            }else if(temp == uCon[8]){
                 con.innerText = uCon[0];
                 sound.src = soundSrcU[0];
-                fifty.src = fifityPicU[0];
-                // document.getElementById('mapFliter').style.display='none';
-                document.getElementById('mapCon').style.display ='none';
+                text.innerText='';
+                show.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none';
+                closeBox.style.display='none';
                 test.style.display='flex';;
             }
             //え
-            else if(cat.innerText == startCon[3]){
+            else if(temp == startCon[3]){
                 con.innerText = eCon[0];
                 sound.src = soundSrcE[0];
-                fifty.src = fifityPicE[0];
-            }else if(cat.innerText == eCon[0]){
+                text.innerText=fifityWordE[0];
+            }else if(temp == eCon[0]){
                 con.innerText = eCon[1];
                 sound.src = soundSrcE[1];
-                fifty.src = fifityPicE[1];
-            }else if(cat.innerText == eCon[1]){
+                text.innerText=fifityWordE[1];
+            }else if(temp == eCon[1]){
                 con.innerText = eCon[2];
                 sound.src = soundSrcE[2];
-                fifty.src = fifityPicE[2];
-            }else if(cat.innerText == eCon[2]){
+                text.innerText=fifityWordE[2];
+            }else if(temp == eCon[2]){
                 con.innerText = eCon[3];
                 sound.src = soundSrcE[3];
-                fifty.src = fifityPicE[3];
-            }else if(cat.innerText == eCon[3]){
+                text.innerText=fifityWordE[3];
+            }else if(temp == eCon[3]){
                 con.innerText = eCon[4];
                 sound.src = soundSrcE[4];
-                fifty.src = fifityPicE[4];
-            }else if(cat.innerText == eCon[4]){
+                text.innerText=fifityWordE[4];
+            }else if(temp == eCon[4]){
                 con.innerText = eCon[5];
                 sound.src = soundSrcE[5];
-                fifty.src = fifityPicE[5];
-            }else if(cat.innerText == eCon[5]){
+                text.innerText=fifityWordE[5];
+            }else if(temp == eCon[5]){
                 con.innerText = eCon[6];
                 sound.src = soundSrcE[6];
-                fifty.src = fifityPicE[6];
-            }else if(cat.innerText == eCon[6]){
+                text.innerText=fifityWordE[6];
+            }else if(temp == eCon[6]){
                 con.innerText = eCon[7];
                 sound.src = soundSrcE[7];
-                fifty.src = fifityPicE[7];
+                text.innerText=fifityWordE[7];
             }
-            else if(cat.innerText == eCon[7]){
+            else if(temp == eCon[7]){
                 con.innerText = eCon[0];
                 sound.src = soundSrcE[0];
-                fifty.src = fifityPicE[0];
-                // document.getElementById('mapFliter').style.display='none';
-                document.getElementById('mapCon').style.display ='none';
+                text.innerText="";
+                show.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none';
+                closeBox.style.display='none';
                 test.style.display='flex';;
             }
             //お
-            else if(cat.innerText == startCon[4]){
+            else if(temp == startCon[4]){
                 con.innerText = oCon[0];
                 sound.src = soundSrcO[0];
-                fifty.src = fifityPicO[0];
-            }else if(cat.innerText == oCon[0]){
+                text.innerText=fifityWordO[0];
+            }else if(temp == oCon[0]){
                 con.innerText = oCon[1];
                 sound.src = soundSrcO[1];
-                fifty.src = fifityPicO[1];
-            }else if(cat.innerText == oCon[1]){
+                text.innerText=fifityWordO[1];
+            }else if(temp == oCon[1]){
                 con.innerText = oCon[2];
                 sound.src = soundSrcO[2];
-                fifty.src = fifityPicO[2];
-            }else if(cat.innerText == oCon[2]){
+                text.innerText=fifityWordO[2];
+            }else if(temp == oCon[2]){
                 con.innerText = oCon[3];
                 sound.src = soundSrcO[3];
-                fifty.src = fifityPicO[3];
-            }else if(cat.innerText == oCon[3]){
+                text.innerText=fifityWordO[3];
+            }else if(temp == oCon[3]){
                 con.innerText = oCon[4];
                 sound.src = soundSrcO[4];
-                fifty.src = fifityPicO[4];
-            }else if(cat.innerText == oCon[4]){
+                text.innerText=fifityWordO[4];
+            }else if(temp == oCon[4]){
                 con.innerText = oCon[5];
                 sound.src = soundSrcO[5];
-                fifty.src = fifityPicO[5];
-            }else if(cat.innerText == oCon[5]){
+                text.innerText=fifityWordO[5];
+            }else if(temp == oCon[5]){
                 con.innerText = oCon[6];
                 sound.src = soundSrcO[6];
-                fifty.src = fifityPicO[6];
-            }else if(cat.innerText == oCon[6]){
+                text.innerText=fifityWordO[6];
+            }else if(temp == oCon[6]){
                 con.innerText = oCon[7];
                 sound.src = soundSrcO[7];
-                fifty.src = fifityPicO[7];
-            }else if(cat.innerText == oCon[7]){
+                text.innerText=fifityWordO[7];
+            }else if(temp == oCon[7]){
                 con.innerText = oCon[8];
                 sound.src = soundSrcO[8];
-                fifty.src = fifityPicO[8];
-            }else if(cat.innerText == oCon[8]){
+                text.innerText=fifityWordO[8];
+            }else if(temp == oCon[8]){
                 con.innerText = oCon[9];
                 sound.src = soundSrcO[9];
-                fifty.src = fifityPicO[9];
-            }else if(cat.innerText == oCon[9]){
+                text.innerText=fifityWordO[9];
+            }else if(temp == oCon[9]){
                 con.innerText = oCon[10];
                 sound.src = soundSrcO[10];
-                fifty.src = fifityPicO[10];
-            }else if(cat.innerText == oCon[10]){
+                text.innerText=fifityWordO[10];
+            }else if(temp == oCon[10]){
                 con.innerText = oCon[0];
                 sound.src = soundSrcO[0];
-                fifty.src = fifityPicO[0];
-                // document.getElementById('mapFliter').style.display='none';
-                document.getElementById('mapCon').style.display ='none';
+                text.innerText="";
+                show.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
-                document.getElementById('close').style.display='none';
+                closeBox.style.display='none';
                 test.style.display='flex';
             }
         }  
         function justPlay(e){
-            let sound = document.getElementById('voice')
             sound.play();
             e.stopPropagation();//阻止冒泡事件
         }
         function shutDown(){
-            document.getElementById('mapFliter').style.display='none';
-            document.getElementById('mapCon').style.display ='none';
-            document.getElementById('sound').style.display='none';
-            document.getElementById('mapMain').style.display='none';
-            document.getElementById('close').style.display='none';
-            document.getElementById('asan').style.display="block";
-            document.getElementById('isan').style.display="block";
-            document.getElementById('usan').style.display="block";
-            document.getElementById('esan').style.display="block";
-            document.getElementById('osan').style.display="block";
+            filter.style.display='none';
+            show.style.display ='none';
+            speaker.style.display='none';
+            photo.style.display='none';
+            closeBox.style.display='none';
+            asan.style.display="block";
+            isan.style.display="block";
+            usan.style.display="block";
+            esan.style.display="block";
+            osan.style.display="block";
         }
         function goToTest(e){
-            let target = e.target.getAttribute('id');
             window.location.href="test.html";
         }
         function cancelBox(){
-            document.getElementById('mapFliter').style.display='none';
-            document.getElementById('toTest').style.display='none';
-            document.getElementById('asan').style.display="block";
-            document.getElementById('isan').style.display="block";
-            document.getElementById('usan').style.display="block";
-            document.getElementById('esan').style.display="block";
-            document.getElementById('osan').style.display="block";
+            filter.style.display='none';
+            test.style.display='none';
+            asan.style.display="block";
+            isan.style.display="block";
+            usan.style.display="block";
+            esan.style.display="block";
+            osan.style.display="block";
         }
-        let cat = document.getElementById('mapCon')
         function init(){
             let imgs = document.getElementsByClassName('npc-img');
             let closeBox = document.getElementById('close');
@@ -422,22 +447,15 @@
             for(let i=0;i<imgs.length; i++){
                 imgs[i].onclick = showLightBox ;
             };
-            cat.addEventListener('click',conversation,false);
-            //cat.onclick = conversation;
-            sound.addEventListener('click',justPlay,false);
-            //sound.onclick = justPlay;
+            show.addEventListener('click',conversation,false);
+            speaker.addEventListener('click',justPlay,false);
             closeBox.addEventListener('click',shutDown,false);
-            //closeBox.onclick = shutDown;
             goto.addEventListener('click',goToTest,false);
-            //goto.onclick = goToTest;
             cancel.addEventListener('click',cancelBox,false);
-            //cancel.onclick = cancelBox;
         };
-        //window.addEventListener("mouseover",justPlay)
         window.addEventListener("load", init, false);
         </script>
     </section>
      @@include('layout/footer.html')
-     
 </body>
 </html>

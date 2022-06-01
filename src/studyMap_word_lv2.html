@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html', {
-        "title" : "初級單字地圖"
+        "title" : "中級單字地圖"
     })
 </head>
 <body>
@@ -10,7 +10,7 @@
     @@include('layout/header.html')
     <!-- header end -->
     <section class="bigMap">  
-        <div class="studyMap_map wordlv1">
+        <div class="studyMap_map wordlv2">
             <!-- 人物角色 -->
             <div class="studyMap_npc a left" >
                 <img src="./images/studyMap_NPC_number.png" id="number" class="npc-img">
@@ -30,6 +30,7 @@
             <!-- 圖像框 -->
             <div class="studyMap_main" id="mapMain">
                 <img id="main_pic" src="">
+                <p id="main_text"></p>
             </div>
             <!-- 對話框 -->
             <div class="studyMap_con" id="mapCon">
@@ -66,9 +67,11 @@
                     <button>先不要</button>
                 </div>
             </div>
+            <div class="item">
+                <img src="./images/studyMap_guide4.png">
+            </div>
         </div>
         <script>
-            // let npcId =new Array('number','time','color','food','trafic')
             //==========對話招呼============
             let startCon = new Array('你好，我是數字大師，今天一起來學習數字吧!','我是時間管理大師，I want to know，你行不行?','初次見面，我是顏色大師，學習顏色怎麼說吧!','嘿嘿嘿，我是え...一起來學...50音え段...','我是お~今天一起來學習50音的母音お段~~' );
              //==========對話框人像============
@@ -86,11 +89,12 @@
             let soundSrcE = new Array("./sound/e.mp3","./sound/ke.mp3","./sound/se.mp3","./sound/te.mp3","./sound/ne.mp3","./sound/he.mp3","./sound/me.mp3","./sound/re.mp3");
             let soundSrcO = new Array("./sound/o.mp3","./sound/ko.mp3","./sound/so.mp3","./sound/to.mp3","./sound/no.mp3","./sound/ho.mp3","./sound/mo.mp3","./sound/yo.mp3","./sound/ro.mp3","./sound/wo.mp3","./sound/n.mp3");
              //==========圖像檔路徑==============
-            let fifityPicNumber = new Array("./images/studyMap_ichi.svg","./images/studyMap_ni2.svg","./images/studyMap_san.svg","./images/studyMap_yonn.svg","./images/studyMap_go.svg","./images/studyMap_roku.svg","./images/studyMap_nana.svg","./images/studyMap_hachi.svg","./images/studyMap_kyuu.svg","./images/studyMap_jyuu.svg","./images/studyMap_hyaku.svg","./images/studyMap_sen.svg","./images/studyMap_ichiman.svg");//13
-            let fifityPicTime = new Array("./images/studyMap_tdby.svg","./images/studyMap_yesterday.svg","./images/studyMap_today.svg","./images/studyMap_tomorrow.svg","./images/studyMap_tdat.svg","./images/studyMap_sunday.svg","./images/studyMap_monday.svg","./images/studyMap_tuseday.svg","./images/studyMap_wendsday.svg","./images/studyMap_thursday.svg","./images/studyMap_friday.svg","./images/studyMap_saturnday.svg");//12
-            let fifityPicColor = new Array("./images/studyMap_white.svg","./images/studyMap_black.svg","./images/studyMap_red.svg","./images/studyMap_blue.svg","./images/studyMap_yellow.svg","./images/studyMap_brown.svg","./images/studyMap_green.svg","./images/studyMap_purple.svg","./images/studyMap_gold.svg","./images/studyMap_silver.svg");//10
-            let fifityPicE = new Array("./images/studyMap_e.svg","./images/studyMap_ke.svg","./images/studyMap_se.svg","./images/studyMap_te.svg","./images/studyMap_ne.svg","./images/studyMap_he.svg","./images/studyMap_me.svg","./images/studyMap_re.svg");//8
-            let fifityPicO = new Array("./images/studyMap_o.svg","./images/studyMap_ko.svg","./images/studyMap_so.svg","./images/studyMap_to.svg","./images/studyMap_no.svg","./images/studyMap_ho.svg","./images/studyMap_mo.svg","./images/studyMap_yo.svg","./images/studyMap_ro.svg","./images/studyMap_wo.svg","./images/studyMap_n.svg");//11
+            // let fifityPicNumber = new Array("./images/studyMap_ichi.svg","./images/studyMap_ni2.svg","./images/studyMap_san.svg","./images/studyMap_yonn.svg","./images/studyMap_go.svg","./images/studyMap_roku.svg","./images/studyMap_nana.svg","./images/studyMap_hachi.svg","./images/studyMap_kyuu.svg","./images/studyMap_jyuu.svg","./images/studyMap_hyaku.svg","./images/studyMap_sen.svg","./images/studyMap_ichiman.svg");//13
+            // let fifityPicTime = new Array("./images/studyMap_tdby.svg","./images/studyMap_yesterday.svg","./images/studyMap_today.svg","./images/studyMap_tomorrow.svg","./images/studyMap_tdat.svg","./images/studyMap_sunday.svg","./images/studyMap_monday.svg","./images/studyMap_tuseday.svg","./images/studyMap_wendsday.svg","./images/studyMap_thursday.svg","./images/studyMap_friday.svg","./images/studyMap_saturnday.svg");//12
+            // let fifityPicColor = new Array("./images/studyMap_white.svg","./images/studyMap_black.svg","./images/studyMap_red.svg","./images/studyMap_blue.svg","./images/studyMap_yellow.svg","./images/studyMap_brown.svg","./images/studyMap_green.svg","./images/studyMap_purple.svg","./images/studyMap_gold.svg","./images/studyMap_silver.svg");//10
+            // let fifityPicE = new Array("./images/studyMap_e.svg","./images/studyMap_ke.svg","./images/studyMap_se.svg","./images/studyMap_te.svg","./images/studyMap_ne.svg","./images/studyMap_he.svg","./images/studyMap_me.svg","./images/studyMap_re.svg");//8
+            // let fifityPicO = new Array("./images/studyMap_o.svg","./images/studyMap_ko.svg","./images/studyMap_so.svg","./images/studyMap_to.svg","./images/studyMap_no.svg","./images/studyMap_ho.svg","./images/studyMap_mo.svg","./images/studyMap_yo.svg","./images/studyMap_ro.svg","./images/studyMap_wo.svg","./images/studyMap_n.svg");//11
+            //===============================
             let cat = document.getElementById('mapCon');
             let speaker = document.getElementById('sound');
             let photo = document.getElementById('mapMain');
@@ -99,14 +103,13 @@
             let sound = document.getElementById('voice');
             let test = document.getElementById('toTest');
             let filter = document.getElementById('mapFliter');
+            let closeBox = document.getElementById('close');
+            let pic = document.getElementById('pic');
             let number = document.getElementById('number');
             let time = document.getElementById('time');
             let color = document.getElementById('color');
             let food = document.getElementById('food');
             let trafic = document.getElementById('trafic');
-            let closeBox = document.getElementById('close');
-            let pic = document.getElementById('pic');
-            let koei = document.getElementById("sound")
         function showLightBox(e){
             //背景變暗
             filter.style.display='block';
@@ -117,16 +120,7 @@
             color.style.display="none";
             food.style.display="none";
             trafic.style.display="none";
-            //====法1抓陣列ID======================
-            // let id = String(e.target.id)
-            // let index = npcId.indexOf(id)
-            // let pic = document.getElementById('PIC')
-            // let con = document.getElementById('CON')
-            // con.innerText = startCon[index]
-            // pic.src=npcSrc[index]
-            //==========法2========================
             let target = e.target.getAttribute('id');
-
                 if(target =='number'){
                     con.innerText = startCon[0];
                     pic.src = npcSrc[0];
@@ -145,29 +139,15 @@
                 }
         }
         function conversation(){
-            // let speaker = document.getElementById('sound');
-            // let photo = document.getElementById('mapMain');
-            // let fifty = document.getElementById('main_pic')
-            // let con = document.getElementById('con');
-            // let sound = document.getElementById('voice');
-            // let test = document.getElementById('toTest');
-            // let cat = document.getElementById('mapCon')
-            // alert(numberCon[0])
-            // alert(startCon[0])
-            // alert(soundSrcNumber[0])
             speaker.style.display='flex';
             photo.style.display='flex';
-            //數字
+            
             let temp = cat.innerText.trim();
-            // alert(temp.length)
-            // alert(startCon[0].length)
+            //數字
             if(temp == startCon[0] ){
                 con.innerText = numberCon[0];
-                // alert(numberCon[0])
                 sound.src = soundSrcNumber[0];
-                // alert(soundSrcNumber[0])
                 fifty.src = fifityPicNumber[0];
-                // alert(soundSrcNumber[0])
             }else if(temp == numberCon[0]){
                 con.innerText = numberCon[1];
                 sound.src = soundSrcNumber[1];
@@ -279,7 +259,6 @@
                 con.innerText = timeCon[0];
                 sound.src = soundSrcTime[0];
                 fifty.src = fifityPicTime[0];
-                // document.getElementById('mapFliter').style.display='none';
                 cat.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -342,7 +321,6 @@
                 sound.src = soundSrcColor[0];
                 fifty.src = fifityPicColor[0];
                 photo.style.backgroundColor='#FAE6B8';
-                // document.getElementById('mapFliter').style.display='none';
                 cat.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -442,7 +420,6 @@
                 con.innerText = oCon[0];
                 sound.src = soundSrcO[0];
                 fifty.src = fifityPicO[0];
-                // document.getElementById('mapFliter').style.display='none';
                 cat.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -451,8 +428,6 @@
             }
         }  
         function justPlay(e){
-            // let sound = document.getElementById('voice')
-            // alert(123)
             sound.play();
             e.stopPropagation();//阻止冒泡事件
         }
@@ -470,12 +445,11 @@
             trafic.style.display="block";
         }
         function goToTest(e){
-            // let target = e.target.getAttribute('id');
-            window.location.href="https://www.google.com.tw/";
+            window.location.href="test.html";
         }
         function cancelBox(){
             filter.style.display='none';
-            document.getElementById('toTest').style.display='none';
+            test.style.display='none';
             number.style.display="block";
             time.style.display="block";
             color.style.display="block";
@@ -486,18 +460,15 @@
             let imgs = document.getElementsByClassName('npc-img');
             let goto =document.getElementById('Yes');
             let cancel =document.getElementById('No');
-            // let cat = document.getElementById('mapCon');
             for(let i=0;i<imgs.length; i++){
                 imgs[i].onclick = showLightBox ;
             };
             cat.addEventListener('click',conversation,false);
-            koei.addEventListener('click',justPlay,true);
+            speaker.addEventListener('click',justPlay,true);
             closeBox.addEventListener('click',shutDown,false);
             goto.addEventListener('click',goToTest,false);
             cancel.addEventListener('click',cancelBox,false);
         };
-
-        // document.body.addEventListener("touchstart",function(){});
         window.addEventListener("load", init, false);
         </script>
     </section>

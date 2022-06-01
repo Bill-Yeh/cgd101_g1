@@ -65,12 +65,28 @@
                     </div>
                 </div> -->
             </div>
+            <div class="big_npc" id="bigNpc">
+                <img  id="bigNpc" src="./images/studyMap_NPC_main.png">
+                <audio id="koei" ref="audio">
+                <source = src="./sound/pick_one.mp3" type="audio/mp3">
+                </audio>
+            </div>
         </div>
     </div>
 </section>
     @@include('layout/footer.html')
-
-
+<script>
+let bignpc = document.getElementById('bigNpc');
+let koei = document.getElementById('koei');
+function playVoice(){
+ 
+    koei.play();
+};
+function init(){
+    bignpc.addEventListener('click',playVoice,false);
+};
+window.addEventListener('load',init,false);
+</script>
 
     <script src="js/studymap.js"></script>
 </body>
