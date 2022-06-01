@@ -12,6 +12,99 @@
 
     .backStage_input_filter{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between !important;
+        align-items: center;
+
+        .input_filter{
+            display: flex;
+        }
+    }
+
+    .option_edit_item{
+        border: 0.8px solid #000;
+        padding: 20px;
+        margin-bottom: 3%;
+
+        .option_heading_can{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .option_heading{
+                display: flex;
+
+                span{
+                    font-size: 1.5rem;
+                }
+
+                input{
+                    width: 100px;
+                    text-align: center;
+                    margin-left: 22px;
+                    border: none;
+                    outline: none;
+                    border-bottom: 1px solid #000;
+                    font-size: 1.2rem;
+                }
+            }
+            .option_can{
+                display: flex;
+                i{
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+                i:first-child{
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        .option_choice_score{
+            display: flex;
+            margin-top: 30px;
+
+            span{
+                font-size: 1.5rem;
+            }
+
+            .option_choice{
+                flex-grow: 1;
+                margin-left: 22px;
+
+                li{
+                    padding-bottom: 20px;
+
+                    input{
+                        width: 100px;
+                        outline: none;
+                        border: none;
+                        text-align: center;
+                        border-bottom: 1px solid #000;
+                        font-size: 1.2rem;
+                    }
+
+                }
+                li:first-child input{
+                    color: red;
+                }
+            }
+
+            .score{
+                display: flex;
+                align-items: flex-end;
+            }
+        }
+    }
+
+    .add_topic{
+        display: flex;
+        justify-content: center;
+        border: 0.8px solid #000;
+        padding: 10px;
+        cursor: pointer;
+
+        i{
+            font-size: 1.5rem;
+        }
     }
 }
