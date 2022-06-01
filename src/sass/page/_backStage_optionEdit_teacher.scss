@@ -1,0 +1,17 @@
+.backOptionEdit_Teacher{
+    .option_type_block{
+        margin: 40px 0;
+        display: flex;
+
+        #option_type{
+            width: 80px;
+            text-align: center;
+            margin-left: 10px;
+        }
+    }
+
+    .backStage_input_filter{
+        display: flex;
+        justify-content: space-around;
+    }
+}
