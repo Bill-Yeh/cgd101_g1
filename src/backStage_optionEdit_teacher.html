@@ -35,34 +35,53 @@
                             <div class="option_edit">
                                 <span>題目編輯</span>
                             </div>
-                            <div class="input_filter">
-                                <input type="text" placeholder="以題目編號查詢">
-                                <i class="bi bi-search"></i>
-                            </div>
                             <div class="backStage_search">
-                                <button class="backStage_search_btn">
-                                    查詢
+                                <button class="backStage_search_btn" type="submit">
+                                    更新測驗
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div class="backStage_right_table_part">
-                        <table class="account_table_title table_title">
-                            <tr class="table_header_row">
-                                <th>題目編號</th>
-                                <th>題目內容</th>
-                                <th>目前狀態</th>
-                                <th>題目分類</th>
-                                <th></th>
-                            </tr>
-                            <tr class="table_data_row odd">
-                                <td>01</td>
-                                <td>日常單字</td>
-                                <td>上架商品</td>
-                                <td>日常</td>
-                                <td><button class="lightBox_btn edit_btn" @click="show">編輯</button></td>
-                            </tr>
-                        </table>
+                        <div class="option_edit_content">
+                            <div class="option_edit_item">
+                                <div class="option_heading_can">
+                                    <div class="option_heading">
+                                        <span>題目</span>
+                                        <!-- <span>あめ</span> -->
+                                        <input type="text" value="あめ">
+                                    </div>
+                                    <div class="option_can">
+                                        <i class="bi bi-clipboard-check"></i>
+                                        <i class="bi bi-trash"></i>
+                                    </div>
+                                </div>
+                                <div class="option_choice_score">
+                                    <span>選項</span>
+                                    <ul class="option_choice">
+                                        <li>
+                                            <input type="text" value="雨">
+                                        </li>
+                                        <li>
+                                            <input type="text" value="火">
+                                        </li>
+                                        <li>
+                                            <input type="text" value="水">
+                                        </li>
+                                        <li>
+                                            <input type="text" value="家">
+                                        </li>
+                                    </ul>
+                                    <div class="score">
+                                        <span>分數</span>
+                                        <span>10</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add_topic">
+                                <i class="bi bi-plus-lg"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            @@include('layout/backStage_footer.html')
+            <!-- @@include('layout/backStage_footer.html') -->
         </div>
     </div>
 
