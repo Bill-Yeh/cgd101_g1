@@ -25,13 +25,13 @@
 
         background-position: 
         // 第三座島的背景位置
-        right 11% top 100%,right 250px top 100%,right 30px top 75%,
+        right 11% top 100%,right 240px top 105%,right 30px top 75%,
 
         // 第二座島的背景位置
-        right 0% top 62%,right 250px top 55%,right 10px top 30%,
+        right 0% top 62%,right 240px top 55%,right 10px top 30%,
 
         // 第一座島的背景位置
-        right 250px top 5%,right 30% top 1%
+        right 240px top 5%,right 30% top 1%
         ;
 
     }
@@ -404,11 +404,21 @@
         top: -25px;
         left: -10%;
         // left: 90%;
+        animation: test_chara_jump .3s ease-in 0s infinite alternate;
     }
 
     &_chara img{
         width: 100%;
         vertical-align: bottom;
+    }
+}
+
+@keyframes test_chara_jump {
+    from {
+        top: -27px;
+    }
+    to {
+        top: -23px;
     }
 }
 
@@ -524,4 +534,110 @@
     &:hover{
         background-color: red;
     }
+}
+
+// 暫時偷歡迎頁的雲來用 //
+
+.test_cloud_1 {
+    position: absolute;
+    left: 0%;
+    width: 30%;
+    animation: test_cloud_1 1s linear 0s infinite alternate;
+    z-index: 3;
+
+    @media screen and (max-width : $md_breakpoint){
+        display: none;
+    }
+
+    @include md {
+        left: -10%;
+    }
+  }
+
+@keyframes test_cloud_1 {
+    from {
+        top: 2%;
+    }
+    to {
+        top: 0%;
+    }
+}
+
+.test_cloud_2 {
+    position: absolute;
+    right: -10%;
+    width: 30%;
+    animation: test_cloud_2 0.8s ease-in-out 0s infinite alternate;
+    z-index: 3;
+
+    @media screen and (max-width : $md_breakpoint){
+        display: none;
+    }
+
+    @include md {
+        right: -15%;
+    }
+  }
+
+@keyframes test_cloud_2 {
+    from {
+        top: -3%;
+    }
+    to {
+        top: -5%;
+    }
+}
+
+.test_cloud_3 {
+    position: absolute;
+    left: 0%;
+    width: 25%;
+    animation: test_cloud_3 1s ease-in-out 0s infinite alternate;
+    z-index: 3;
+
+    @media screen and (max-width : $md_breakpoint){
+        display: none;
+    }
+
+    @include md {
+        right: -10%;
+    }
+  }
+
+@keyframes test_cloud_3 {
+    from {
+        top: 25%;
+    }
+    to {
+        top: 23%;
+    }
+}
+
+.test_cloud_4 {
+    position: absolute;
+    right: 10%;
+    width: 30%;
+    transform: scale(-1,1);
+    animation: test_cloud_4 0.8s ease-in-out 0s infinite alternate;
+    z-index: 3;
+
+    @media screen and (max-width : $md_breakpoint){
+        display: none;
+    }
+
+    @include md {
+    }
+  }
+
+@keyframes test_cloud_4 {
+    from {
+        top: 0%;
+    }
+    to {
+        top: 2%;
+    }
+}
+
+.test_cloud_1 img,.test_cloud_2 img,.test_cloud_3 img,.test_cloud_4 img{
+    width: 100%;
 }
