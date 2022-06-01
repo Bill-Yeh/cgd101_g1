@@ -3,6 +3,7 @@
   width: 100%;
   margin: 50px 0 0 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* 手機版水中裝飾none */
@@ -11,6 +12,7 @@
 .home_mall_inwater img,
 .home_decorate_island_inwater img {
   display: none;
+  overflow: hidden;
 }
 
 /* 首頁第一島npc */
@@ -244,6 +246,7 @@
 }
 
 .home_first_island_pic {
+  overflow: hidden;
   position: relative;
   width: 100%;
   text-align: center;
@@ -255,6 +258,7 @@
 }
 
 .home_first_npc1 {
+  overflow: hidden;
   position: absolute;
 }
 
@@ -282,14 +286,14 @@
 .home_cloud_1_pic img {
   width: 30%;
   top: 10%;
-  //animation: move_cloud 50s linear 1s infinite;
+  animation: move_cloud 50s linear 1s infinite;
 }
 
 .home_cloud_2_pic img {
   width: 20%;
   right: 0;
   top: 5%;
-  // animation: move_cloud 50s linear 1s infinite;
+  animation: move_cloud 50s linear 1s infinite;
 }
 
 .home_cloud_3_pic img {
@@ -297,14 +301,14 @@
   right: 5%;
   top: 10%;
   z-index: -1;
-  //animation: move_cloud 50s linear 1s infinite;
+  animation: move_cloud 50s linear 1s infinite;
 }
 
 .home_cloud_4_pic img {
   width: 30%;
   bottom: 50%;
   right: 10%;
-  //animation: move_cloud 50s linear 1s infinite;
+  animation: move_cloud 50s linear 1s infinite;
 }
 
 .home_cloud_5_pic img {
@@ -312,7 +316,7 @@
   bottom: 50%;
   right: 10%;
   z-index: -1;
-  //animation: move_cloud 15s linear 1s infinite;
+  animation: move_cloud 15s linear 1s infinite;
 }
 
 /*第一島雲飄*/
@@ -420,6 +424,9 @@
 }
 
 /* 學習島NPC */
+.home_lesson_island_npc1 {
+  width: 100%;
+}
 .home_lesson_island_npc1 img,
 .home_lesson_island_npc2 img {
   position: absolute;
@@ -428,6 +435,26 @@
   top: 30%;
 }
 
+/*學習島NPC talk*/
+.lesson_talk_1 {
+  position: absolute;
+  left: 30%;
+  top: 5%;
+  img {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+.lesson_talk_2 {
+  position: absolute;
+  right: 15%;
+  top: 5%;
+  img {
+    width: 70px;
+    height: 50px;
+  }
+}
 /* 學習島NPC1的位子 */
 .home_lesson_island_npc1 img {
   left: 40%;
@@ -439,20 +466,20 @@
 }
 
 /* 學習地圖的雲 */
-.lesson_cloud {
+.home_lesson_cloud {
   position: relative;
 }
-.lesson_cloud_1 img {
+.home_lesson_cloud_1 img {
   position: absolute;
   width: 30%;
   right: 5%;
 }
 
-.lesson_cloud_2 img {
+.home_lesson_cloud_2 img {
   position: absolute;
   width: 30%;
-  right: 10%;
-  top: 0;
+  right: 20%;
+  top: 10;
 }
 
 /* 學習地圖的路標 */
@@ -472,6 +499,16 @@
   height: 40px;
   top: 40%;
   left: 25%;
+}
+/* 測驗島npc talk */
+.topic_talk {
+  position: absolute;
+  left: 16%;
+  top: 12%;
+  img {
+    width: 70px;
+    height: 50px;
+  }
 }
 
 /* 測驗島雲 */
@@ -552,6 +589,9 @@
   position: absolute;
   top: 40%;
   left: 30%;
+  @include md() {
+    left: 15%;
+  }
 }
 .home_mall_island_2 {
   display: none;
@@ -637,10 +677,16 @@
 .home_decorate_island_npc1 img {
   top: 25%;
   left: 50%;
+  @include md() {
+    left: 80%;
+  }
 }
 .home_decorate_island_npc2 img {
   top: 25%;
   left: 70%;
+  @include md() {
+    left: 90%;
+  }
 }
 
 .home_decorate_island_2 {
@@ -649,6 +695,32 @@
 }
 .home_decorate_island_2_cloud {
   position: absolute;
+}
+
+.decorate_talk_1 {
+  position: absolute;
+  left: 43%;
+  top: -2%;
+  img {
+    width: 70px;
+    height: 50px;
+  }
+  @include md() {
+    left: 77%;
+  }
+}
+
+.decorate_talk_2 {
+  position: absolute;
+  right: 30%;
+  top: -2%;
+  img {
+    width: 70px;
+    height: 50px;
+  }
+  @include md() {
+    right: 10%;
+  }
 }
 .home_decorate_island_2_npc1 img {
   top: 30%;
@@ -667,23 +739,20 @@
 }
 
 .home_last_island_pic img {
-  display: none;
+  width: 100vw;
   @include md() {
-    display: block;
     width: 100%;
   }
 }
 
 .home_last_island_info {
   position: absolute;
-  top: 0;
-  right: 35%;
+  left: 23%;
   top: 30%;
-}
-
-.home_last_island_info img {
-  width: 110px;
-  height: 100px;
+  @include md {
+    left: 42%;
+    top: 30%;
+  }
 }
 
 .home_last_island_info_text {
@@ -694,17 +763,15 @@
   background-color: #fae6b8;
   border: 5px solid #f9bb4d;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   .text {
     display: none;
   }
 }
 
 .sign_up {
-  .btn_sign_up {
-    color: #fff;
-  }
   @include btn();
+  margin-top: 10px;
 }
 
 @include md() {
@@ -920,6 +987,25 @@
     height: 70px;
   }
 
+  /* 學習島NPC talk */
+  .lesson_talk_1 {
+    left: 30%;
+    top: 3%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+  }
+
+  .lesson_talk_2 {
+    right: 10%;
+    top: 3%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+  }
+
   /* 各島路標大小 */
   .home_lesson_road_sign img,
   .home_topic_road_sign img {
@@ -953,6 +1039,15 @@
     display: block;
     right: -5%;
     bottom: 0;
+  }
+
+  .topic_talk {
+    left: 14%;
+    top: 17%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
   }
 
   .home_topic_cloud_5 img {
@@ -1004,12 +1099,13 @@
     top: 50%;
     right: 50%;
   }
+
+  /*商城島npc大小*/
   .home_mall_island_npc1 img,
   .home_mall_island_npc2 img {
     width: 70px;
     height: 70px;
   }
-  /*商城島npc大小*/
 
   .home_mall_info {
     width: 50%;
@@ -1075,6 +1171,44 @@
     top: 40%;
     left: 15%;
   }
+
+  .decorate_talk_1 {
+    left: 12%;
+    top: 13%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+  }
+
+  .decorate_talk_2 {
+    left: 11%;
+    top: 8%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+  }
+
+  .decorate_talk_3 {
+    position: absolute;
+    top: 2%;
+    right: 30%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+  }
+
+  .decorate_talk_4 {
+    position: absolute;
+    top: 2%;
+    right: 15%;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+  }
   .home_decorate_island_npc2 img {
     top: 35%;
     left: 25%;
@@ -1087,8 +1221,10 @@
     top: 30%;
     left: 85%;
   }
+
   .home_last_island_info_text {
     font-size: 20px;
+    padding: 20px;
     width: 300px;
     height: 100px;
     left: 60%;
