@@ -6,6 +6,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     //---------- 裝飾用背景 ---------//
     background-repeat: no-repeat;
@@ -142,7 +143,7 @@
     background-color: map-get($color, 'primary');
     color: #fff;
     // background-color: #FFF;
-    z-index: 1;
+    z-index: 5;
 
     @include md{
         width: 40%;
@@ -184,7 +185,6 @@
     &>input{
         position: absolute;
         opacity: 0;
-        z-index: 1;
     }
 }
 
@@ -285,7 +285,7 @@
 
         &:nth-child(odd)>.test_section_content{
             right: auto;
-            top: 40%;
+            top: 45%;
             left: 100px;
         }
 
@@ -302,6 +302,11 @@
     }
 
     @include lg{
+        
+        &:nth-child(odd)>.test_section_content{
+            left: 25%;
+        }
+
         &:last-child>.test_section_content{
             right: 25%;
         }
