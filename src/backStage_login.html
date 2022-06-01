@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @@include('layout/meta.html', {
+        "title" : "後台登入"
+    })
+</head>
+<body class="backStageLogin" style="background-color: #a2ebe8;">
+
+    <div class="index_wrap">
+        <div class="logo">
+            <img src="./images/nav_logo.png" alt="">
+        </div>
+        <div class="island_pic">
+            <div class="cloud_1">
+                <img src="./images/cloud_1.png" alt="">
+            </div>
+            <div class="cloud_2">
+                <img src="./images/cloud_2.png" alt="">
+            </div>
+            <div class="cloud_3">
+                <img src="./images/cloud_3.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="backStage_login">
+        <!-- 含登入註冊切換按鈕的容器 -->
+        <div class="backStage_login_container">
+            <!-- 管理員、教師切換 -->
+            <div class="login_identity_switch">
+                <!-- 管理員切換 -->
+                <div class="login_administator_option" id="administator">
+                    <span>我是員工</span>
+                </div>
+                <!-- 教師切換 -->
+                <div class="login_teacher_option" id="teacher">
+                    <span>我是教師</span>
+                </div>
+            </div>
+            <!-- 管理員、教師主要容器 -->
+            <div class="backStage_login_main_box">
+                <!-- 管理員、教師主要內容 -->
+                <div class="backStage_login_main_content">
+                    <!-- 管理員內容 -->
+                    <div class="administator_form_content" id="administator_form">
+                        <!-- 帳號密碼輸入區塊 -->
+                        <form action="javascript:void(0)" method="post">
+                            <div class="login_block">
+                                <label for="administator_login_account">帳號</label>
+                                <input type="text" id="administator_login_account">
+                            </div>
+                            <div class="password_block">
+                                <label for="administator_login_password">密碼</label>
+                                <input type="password" id="administator_login_password" maxlength="25" minlength="8">
+                            </div>
+                            <div class="login_btn">
+                                <button type="submit" id="administator_login">登入</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 教師內容 -->
+                    <div class="teacher_form_content" id="teacher_form">
+                        <form action="javascript:void(0)">
+                            <div class="login_block">
+                                <label for="teacher_login_account">帳號</label>
+                                <input type="text" id="teacher_login_account">
+                            </div>
+                            <div class="password_block">
+                                <label for="teacher_login_password">密碼</label>
+                                <input type="password" id="teacher_login_password">
+                            </div>
+                            <div class="login_btn">
+                                <button type="submit" id="teacher_login">登入</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/backStage_login.js"></script>
+</body>
+</html>
