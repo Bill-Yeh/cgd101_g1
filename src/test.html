@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     @@include('layout/meta.html', {
         "title" : "升級測驗",
         })
-
     <script src="js/test.js"></script>
 </head>
 <body style="background-color: #A2EBE8;">
     @@include('layout/header.html')
-
     <main class="test_wrap">
         <!-- <h2 class="test_h2">升級測驗</h2> -->
 
@@ -29,11 +28,11 @@
                         <h3>五十音測驗</h3>
                     </label>
                     <div class="test_tab_content">
-                        <div class="test_option">あ</div>
-                        <div class="test_option">い</div>
-                        <div class="test_option">う</div>
-                        <div class="test_option">え</div>
-                        <div class="test_option">お</div>
+                        <button class="test_option">あ</button>
+                        <button class="test_option">い</button>
+                        <button class="test_option">う</button>
+                        <button class="test_option">え</button>
+                        <button class="test_option">お</button>
                     </div>
                 </div>
             </div>
@@ -54,8 +53,8 @@
                         <h3>單字測驗</h3>
                     </label>
                     <div class="test_tab_content">
-                        <div class="test_option">美食</div>
-                        <div class="test_option">旅行</div>
+                        <button class="test_option" disabled>美食</button>
+                        <button class="test_option" disabled>旅行</button>
                     </div>
                 </div>
             </div>
@@ -76,7 +75,7 @@
                         <h3>會話測驗</h3>
                     </label>
                     <div class="test_tab_content">
-                        <div class="test_option">日常對話</div>
+                        <button class="test_option" disabled>日常對話</button>
                     </div>
                 </div>
             </div>

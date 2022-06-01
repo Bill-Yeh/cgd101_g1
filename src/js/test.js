@@ -68,48 +68,48 @@ let testArr_u = new Array(
     new Array("うむ","umu","suku","nutsu","unu"),
 );
 let testArr_e = new Array(
-    new Array("えて","unu","uru","tsusu","kunu"),
-    new Array("けへ","kusu","sunu","kutsu","nuu"),
-    new Array("ねせ","tsuu","suu","nutsu","kusu"),
-    new Array("ぬむ","numu","kumu","tsunu","suku"),
-    new Array("する","suru","kusu","tsusu","suru"),
-    new Array("ゆす","yusu","numu","yuu","rufu"),
-    new Array("ふく","fuku","tsuru","uku","nufu"),
-    new Array("すむ","sumu","kunu","tsusu","sunu"),
-    new Array("くる","kuru","tsunu","nufu","kusu"),
-    new Array("つぬ","tusnu","uyu","unu","ruyu"),
-    new Array("るう","ruu","kunu","tsuu","mutsu"),
-    new Array("むふ","mufu","nuu","tsuku","umu"),
-    new Array("うゆ","uyu","tsumu","nutsu","tsuku"),
-    new Array("くつ","kutsu","rufu","nuku","kunu"),
-    new Array("ぬふ","nufu","nutsu","suku","sunu"),
-    new Array("つる","tsuru","numu","tsuru","suku"),
-    new Array("ゆう","yuu","nutsu","tsuu","sumu"),
-    new Array("むつ","mutsu","utsu","usu","kunu"),
-    new Array("るふ","rufu","yusu","kusu","mutsu"),
-    new Array("うむ","umu","suku","nutsu","unu"),
+    new Array("えて","ete","neke","see","kese"),
+    new Array("けへ","kehe","teke","sene","hete"),
+    new Array("ねせ","nese","eke","mehe","kene"),
+    new Array("てえ","tee","sete","nese","kete"),
+    new Array("めね","mene","ete","rese","nese"),
+    new Array("れせ","rese","eke","rene","kere"),
+    new Array("ねけ","neke","seme","sene","hete"),
+    new Array("へえ","hee","teke","sene","kehe"),
+    new Array("てめ","teme","kese","mere","tene"),
+    new Array("せめ","seme","nere","sene","sene"),
+    new Array("へて","hete","nese","ehe","kese"),
+    new Array("てけ","teke","neke","tehe","eke"),
+    new Array("せえ","see","kese","ehe","sene"),
+    new Array("ねれ","nere","meke","ete","mene"),
+    new Array("せて","sete","teke","sene","eke"),
+    new Array("えけ","eke","sete","ete","neke"),
+    new Array("ねせ","nese","sene","nehe","sere"),
+    new Array("めて","mete","hete","kese","nese"),
+    new Array("けれ","kere","nere","kehe","nese"),
+    new Array("れね","rene","nete","rese",",mere"),
 );
 let testArr_o = new Array(
-    new Array("うぬ","unu","uru","tsusu","kunu"),
-    new Array("くす","kusu","sunu","kutsu","nuu"),
-    new Array("つう","tsuu","suu","nutsu","kusu"),
-    new Array("ぬむ","numu","kumu","tsunu","suku"),
-    new Array("する","suru","kusu","tsusu","suru"),
-    new Array("ゆす","yusu","numu","yuu","rufu"),
-    new Array("ふく","fuku","tsuru","uku","nufu"),
-    new Array("すむ","sumu","kunu","tsusu","sunu"),
-    new Array("くる","kuru","tsunu","nufu","kusu"),
-    new Array("つぬ","tusnu","uyu","unu","ruyu"),
-    new Array("るう","ruu","kunu","tsuu","mutsu"),
-    new Array("むふ","mufu","nuu","tsuku","umu"),
-    new Array("うゆ","uyu","tsumu","nutsu","tsuku"),
-    new Array("くつ","kutsu","rufu","nuku","kunu"),
-    new Array("ぬふ","nufu","nutsu","suku","sunu"),
-    new Array("つる","tsuru","numu","tsuru","suku"),
-    new Array("ゆう","yuu","nutsu","tsuu","sumu"),
-    new Array("むつ","mutsu","utsu","usu","kunu"),
-    new Array("るふ","rufu","yusu","kusu","mutsu"),
-    new Array("うむ","umu","suku","nutsu","unu"),
+    new Array("のこ","noko","koo","oso","soho"),
+    new Array("もお","moo","soto","hoo","kono"),
+    new Array("とこ","toko","koo","noto","ono"),
+    new Array("のと","noto","kono","noo","soto"),
+    new Array("そも","somo","oso","soto","komo"),
+    new Array("のろ","noro","noto","yoso","koro"),
+    new Array("こも","komo","koro","mono","koo"),
+    new Array("おそ","oso","homo","ono","yoko"),
+    new Array("とよ","toyo","yoro","toko","moyo"),
+    new Array("ほも","homo","somo","soto","tono"),
+    new Array("よろ","yoro","toko","koo","noto"),
+    new Array("ほお","hoo","oso","horo","soo"),
+    new Array("おの","ono","too","oyo","rono"),
+    new Array("そと","soto","oso","noto","komo"),
+    new Array("ろを","rowo","royo","too","moyo"),
+    new Array("そを","sowo","sono","yoko","hoo"),
+    new Array("その","sono","hono","yoro","soro"),
+    new Array("もの","mono","toko","kono","noko"),
+    new Array("よそ","yoso","yoso","somo","oso"),
+    new Array("よほ","yoho","homo","hoo","koto"),
 );
 
 
@@ -141,32 +141,62 @@ let score;
 let test_question_num;
 let test_choose;
 let test_choose_arr;
+let draw_option = new Array(0,1,2,3);
+let add_point_num = 10;
 
 
 ////////////////////////////////////
-function A_testStart(e){
+function testStart(e){
+
+    let add_point = document.getElementById('test_add_point');
+    window.addEventListener('mousemove', mousemove);
+    function mousemove(e){
+        add_point.innerText = `+${add_point_num}`;
+        add_point.style.top = `${e.clientY}px`;
+        add_point.style.left = `${e.clientX + 10}px`;
+    };
+
+    //-----產生亂數選項-----//
+    shuffleArray(draw_option);
+
+
+    //-----是否正確-----//
+    if(e.target.innerText == test_choose_arr[draw_question[(test_question_num-1)]][1]){
+        add_point.innerText = `+${add_point_num}`;
+        add_point.style.opacity = '1';
+        add_point.style.top = `${e.clientY}px`;
+        add_point.style.left = `${e.clientX + 10}px`;
+        add_point.classList.add('animate__bounceOutUp');
+        score += 10;
+        console.log(test_question_num);
+        console.log(score);
+    }else{
+        e.target.classList.add('test_wrong_option');
+        e.target.classList.add('animate__shakeX');
+        console.log(test_question_num);
+        console.log('wrong');
+    }
+
+    //-----換下一題-----//
+    //移除動畫與紅背景
+    setTimeout(function(){
+        add_point.classList.remove('animate__bounceOutUp');
+        add_point.style.opacity = '0';
+        e.target.classList.remove('test_wrong_option');
+        e.target.classList.remove('animate__shakeX');
+    },500);
+    //顯示下一題的題目
+    setTimeout(toNextQuestion,500);
+    
+}
+
+//-----換下一題-----//
+function toNextQuestion(){
     let test_question_title = document.getElementById('test_title');
     let test_ifPass =document.getElementById('test_ifPass');
     let test_score =document.getElementById('test_score');
     let test_getCoin =document.getElementById('test_getCoin');
     let test_question_option = document.querySelectorAll('.test_question_option');
-
-    //-----產生亂數選項-----//
-    let draw_option = new Array(0,1,2,3);
-    shuffleArray(draw_option);
-
-
-    //-----是否正確_あ測驗-----//
-    if(e.target.innerText == test_choose_arr[draw_question[(test_question_num-1)]][1]){
-        score += 10;
-        console.log(test_question_num);
-        console.log(score);
-    }else{
-        console.log(test_question_num);
-        console.log('wrong');
-    }
-
-    //-----換下一題_あ測驗-----//
     if(test_question_num == 10){
         test_progress_now.style.width = `100%`;
         test_progress_chara.style.left = `90%`;
@@ -186,7 +216,7 @@ function A_testStart(e){
         test_question_title.innerText = test_choose_arr[draw_question[test_question_num]][0];
         for(let x = 1; x<=4; x++){
             test_question_option[draw_option[x-1]].innerText = test_choose_arr[draw_question[test_question_num]][x];
-            console.log('題目編號',draw_option[x-1]);
+            // console.log('題目編號',draw_option[x-1]);
         };
         test_question_num += 1 ;
         test_progress_now.style.width = `${(test_question_num-1)*10}%`;
@@ -250,9 +280,9 @@ function init(){
             for(let j = 0; j < test_question_option.length; j++){
                 test_question_option[j].innerText = test_choose_arr[draw_question[0]][j+1];
             };
-            //-----按下選項_あ測驗-----//
+            //-----按下選項_開始測驗-----//
             for(let i = 0; i < test_question_option.length; i++){
-                test_question_option[i].addEventListener('click',A_testStart,false);
+                test_question_option[i].addEventListener('click',testStart,false);
             };
         
 

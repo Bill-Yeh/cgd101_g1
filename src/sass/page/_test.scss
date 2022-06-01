@@ -66,11 +66,11 @@
 
 .test_section_content{
     width: 60%;
-    padding-left: 10px;
     position: absolute;
     right: 30px;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: map-get($color, 'primary');
+    color: #fff;
     // background-color: #FFF;
     z-index: 1;
 
@@ -104,11 +104,11 @@
     }
 
     &:hover {
-        background: darken(map-get($color, 'primary'), 10%);
+        background: map-get($color, 'backstage_h');
     }
 
     &:hover::before {
-        border-right: 30px solid darken(map-get($color, 'primary'), 10%);
+        border-right: 30px solid map-get($color, 'backstage_h');
     }
     
     &>input{
@@ -132,12 +132,14 @@
     &_content {
         overflow: hidden;
         background: white;
-        border-radius: 0px;
+        border-radius: 20px;
         height: 0;
         padding: 0em;
+        color: #000;
         transform: scale(1,0);
         transform-origin: 0px 0px;
         transition: all .3s;
+
     }
 }
 
@@ -175,6 +177,10 @@
 
 .test_option{
     padding: 10px 0px 10px 10px;
+    text-align: left;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
 
     &::before{
         content: '\25B6';
@@ -262,7 +268,7 @@
     padding: 30px;
     padding-top: 60px;
     background-color:  map-get($color, 'bgc_y');
-    border-radius: 20px;
+    border-radius: 30px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -295,6 +301,7 @@
 
     &_title{
         font-weight: bold;
+        color: map-get($color, 'backstage_h');
     }
 
     &_bar{
@@ -357,23 +364,24 @@
 
     &_option{
         width: 40%;
-        padding: 15px;
+        padding: 10px 20px;
         font-size: 28px;
         border: none;
         background-color: map-get($color, 'primary');
-        border-radius: 20px;
+        color: #fff;
+        border-radius: 30px;
 
         &:hover{
             cursor: pointer;
-            background: darken(map-get($color, 'primary'), 10%);
+            background: map-get($color, 'backstage_h');
         }
     }
 }
 
 // ----- 測驗結果 -----//
-#test_lightBox_question{
-    // display: none;
-}
+// #test_lightBox_question{
+     // display: none;
+// }
 
 #test_lightBox_result{
     display: none;
@@ -408,14 +416,36 @@
 
 #test_result_save{
     width: 100%;
-        padding: 10px;
-        font-size: 24px;
+        padding: 10px 20px;
+        font-size: 20px;
         border: none;
+        color: #fff;
         background-color: map-get($color, 'primary');
-        border-radius: 20px;
+        border-radius: 30px;
 
         &:hover{
             cursor: pointer;
-            background: darken(map-get($color, 'primary'), 10%);
+            background: map-get($color, 'backstage_h');
         }
+}
+
+
+#test_add_point{
+    color: map-get($color, 'backstage_h');
+    color: #1A9070;
+    color: #000;
+    font-size: 32px;
+    position: absolute;
+    opacity: 0;
+    font-weight: bold;
+    transition: .1s;
+    z-index: 20;
+}
+
+.test_wrong_option{
+    background-color: red;
+
+    &:hover{
+        background-color: red;
+    }
 }
