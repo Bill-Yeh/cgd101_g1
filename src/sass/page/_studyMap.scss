@@ -18,7 +18,7 @@
   }
 }
 .study_big_map{
-  background-image: url("./images/studyMap_main_island.png");
+  background-image: url("../images/studyMap_main_island.png");
   width: 100%;
   position: relative;
   height: 100vh;
@@ -52,7 +52,7 @@
   animation-iteration-count: infinite;
 }
 .big_npc:hover::before{
-  content: url(./images/studyMap_border_main.png);
+  content: url(../images/studyMap_border_main.png);
   position: absolute;
   right: 85%;
   transform: scale(0.9);
@@ -60,7 +60,7 @@
 //村莊
 .village{
   .first-village:hover::before{
-    content: url(./images/studyMap_info_1.png);
+    content: url(../images/studyMap_info_1.png);
     position: absolute;
     top: 72%;
     left: 2%;
@@ -89,7 +89,7 @@
       }
   };
   .second-village:hover::before{
-    content: url(./images/studyMap_info_2.png);
+    content: url(../images/studyMap_info_2.png);
     position: absolute;
     top: 45%;
     left: 13%;
@@ -118,7 +118,7 @@
       }
   };
   .third-village:hover::before{
-    content: url(./images/studyMap_info_3.png);
+    content: url(../images/studyMap_info_3.png);
     position: absolute;
     top: 25%;
     left: 20%;
@@ -147,7 +147,7 @@
       }
   };
   .fourth-village:hover::before{
-    content: url(./images/studyMap_info_4.png);
+    content: url(../images/studyMap_info_4.png);
     position: absolute;
     top: 22%;
     right: 19%;
@@ -176,7 +176,7 @@
       }
   };
   .fifth-village:hover::before{
-    content: url(./images/studyMap_info_5.png);
+    content: url(../images/studyMap_info_5.png);
     position: absolute;
     top: 55%;
     right: 27%;
@@ -245,7 +245,7 @@
       }
     };
   .cloud1:hover::before{
-      content: url(./images/studyMap_lock_1.png);
+      content: url(../images/studyMap_lock_1.png);
       position: absolute;
       top: 40%;
       left: 10%;
@@ -274,7 +274,7 @@
       }
     };
     .cloud2:hover::before{
-      content: url(./images/studyMap_lock_2.png);
+      content: url(../images/studyMap_lock_2.png);
       position: absolute;
       top: 22%;
       left: 15%;
@@ -305,7 +305,7 @@
       }
     };
     .cloud3:hover::before{
-      content: url(./images/studyMap_lock_3.png);
+      content: url(../images/studyMap_lock_3.png);
       position: absolute;
       top: 46%;
       left: 59%;
@@ -334,7 +334,7 @@
       }
     };
     .cloud4:hover::before{
-      content: url(./images/studyMap_lock_4.png);
+      content: url(../images/studyMap_lock_4.png);
       position: absolute;
       top: 15%;
       right: 15%;
@@ -363,7 +363,7 @@
       }
     };
   .cloud5:hover::before{
-      content: url(./images/studyMap_lock_5.png);
+      content: url(../images/studyMap_lock_5.png);
       position: absolute;
       top: 55%;
       left: 85%;
@@ -397,19 +397,21 @@
 .studyMap_map{
   width: 100%; 
   height:100vh;
-  background-image: url("./images/studyMap_50village.png");
   background-size: cover;
   background-position: center;
   position: relative;
 }
+.village50{
+  background-image: url("../images/studyMap_50village.png");
+}
 .wordlv1{
-  background-image: url("./images/studyMap_wordlv1.png");
+  background-image: url("../images/studyMap_wordlv1.png");
 }
 .wordlv2{
-  background-image: url("./images/studyMap_wordlv2.jpg");
+  background-image: url("../images/studyMap_wordlv2.jpg");
 }
 .dialoguelv1{
-  background-image: url("./images/studyMap_dialolv1.png");
+  background-image: url("../images/studyMap_dialolv1.png");
 }
 .studyMap_map:first-child{
   width: 100%;
@@ -447,7 +449,7 @@
     animation-duration:5s;
 }
 .asan:hover::after{
-  content:url(./images/npc_border_a.png);
+  content:url(../images/npc_border_a.png);
 }
 .isan{
     top: 60%;
@@ -456,7 +458,7 @@
     animation-duration: 3s;
 }
 .isan:hover::after{
-  content:url(./images/npc_border_i.png);
+  content:url(../images/npc_border_i.png);
 }
 .usan{
     top: 50%;
@@ -465,7 +467,7 @@
     animation-duration: 7s;
 }
 .usan:hover::after{
-  content:url(./images/npc_border_u.png);
+  content:url(../images/npc_border_u.png);
 }
 .esan{
     top: 40%;
@@ -474,7 +476,7 @@
     animation-duration: 4s;
 }
 .esan:hover::after{
-  content:url(./images/npc_border_e.png);
+  content:url(../images/npc_border_e.png);
 }
 .osan{
     top: 60%;
@@ -482,7 +484,7 @@
     animation-duration: 5s;
 }
 .osan:hover::after{
-  content:url(./images/npc_border_o.png);
+  content:url(../images/npc_border_o.png);
 }
 //單字篇
 .number{
@@ -492,7 +494,7 @@
   animation-duration:5s;
 }
 .number:hover::after{
-content:url(./images/npc_border_number.png);
+content:url(../images/npc_border_number.png);
 }
 .time{
   top: 80%;
@@ -501,7 +503,7 @@ content:url(./images/npc_border_number.png);
   animation-duration: 3s;
 }
 .time:hover::after{
-content:url(./images/npc_border_time.png);
+content:url(../images/npc_border_time.png);
 }
 .color{
   top: 30%;
@@ -510,7 +512,7 @@ content:url(./images/npc_border_time.png);
   animation-duration: 7s;
 }
 .color:hover::after{
-content:url(./images/npc_border_color.png);
+content:url(../images/npc_border_color.png);
 }
 .food{
   top: 40%;
@@ -519,7 +521,7 @@ content:url(./images/npc_border_color.png);
   animation-duration: 4s;
 }
 .food:hover::after{
-content:url(./images/npc_border_food.png);
+content:url(../images/npc_border_food.png);
 }
 .trafic{
   top: 30%;
@@ -527,7 +529,7 @@ content:url(./images/npc_border_food.png);
   animation-duration: 5s;
 }
 .trafic:hover::after{
-content:url(./images/npc_border_trafic.png);
+content:url(../images/npc_border_trafic.png);
 }
 //會話篇
 .hello{
@@ -537,7 +539,7 @@ content:url(./images/npc_border_trafic.png);
   animation-duration:5s;
 }
 .hello:hover::after{
-content:url(./images/npc_border_hello.png);
+content:url(../images/npc_border_hello.png);
 }
 .hi{
   top: 75%;
@@ -546,7 +548,7 @@ content:url(./images/npc_border_hello.png);
   animation-duration: 3s;
 }
 .hi:hover::after{
-content:url(./images/npc_border_hello.png);
+content:url(../images/npc_border_hello.png);
 }
 .fine{
   top: 33%;
@@ -555,7 +557,7 @@ content:url(./images/npc_border_hello.png);
   animation-duration: 7s;
 }
 .fine:hover::after{
-content:url(./images/npc_border_hello.png);
+content:url(../images/npc_border_hello.png);
 }
 .nice{
   top: 23%;
@@ -564,7 +566,7 @@ content:url(./images/npc_border_hello.png);
   animation-duration: 4s;
 }
 .nice:hover::after{
-content:url(./images/npc_border_hello.png);
+content:url(../images/npc_border_hello.png);
 }
 .great{
   top: 60%;
@@ -572,7 +574,7 @@ content:url(./images/npc_border_hello.png);
   animation-duration: 5s;
 }
 .great:hover::after{
-content:url(./images/npc_border_hello.png);
+content:url(../images/npc_border_hello.png);
 }
 //
 .a{
@@ -811,7 +813,7 @@ content:url(./images/npc_border_hello.png);
     position: relative;
 }
 .npc-pic::after{
-    content: url(./images/icon_triangle.png);
+    content: url(../images/icon_triangle.png);
     width: 20px;
     height: 20px;
     position: absolute;
