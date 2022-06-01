@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html', {
-        "title" : "後台題目清單-教師用"
+        "title" : "後台編輯題目-教師用"
     })
 </head>
-<body class="backOption_Teacher backStyle" style="background-color: #fff;">
+<body class="backOptionEdit_Teacher backStyle" style="background-color: #fff;">
     <!-- header -->
     @@include('layout/backStage_header.html')
     <!-- header end -->
@@ -20,16 +20,20 @@
                 <div class="backStage_right_content">
                     <div class="backStage_right_title_part">
                         <div class="backStage_right_title">
-                            <h1>題庫管理</h1>
+                            <h1>編輯題目</h1>
                         </div>
-                        <div class="backStage_filter backStage_addAccount">
-                            <button class="lightBox_btn"><i class="bi bi-plus-lg"></i>新增題目</button>
+                        <div class="option_type_block">
+                            <span>題目分類</span>
+                            <select name="" id="option_type">
+                                <option value="life">日常</option>
+                                <option value="trip">旅行</option>
+                                <option value="food">美食</option>
+                            </select>
+                            <!-- <button class="lightBox_btn"><i class="bi bi-plus-lg"></i>新增題目</button> -->
                         </div>
                         <div class="backStage_input_filter">
-                            <div class="on_stock">
-                                <span>單字(2)</span>
-                                <span>會話(2)</span>
-                                <span>聽力測驗(2)</span>
+                            <div class="option_edit">
+                                <span>題目編輯</span>
                             </div>
                             <div class="input_filter">
                                 <input type="text" placeholder="以題目編號查詢">
@@ -56,7 +60,7 @@
                                 <td>日常單字</td>
                                 <td>上架商品</td>
                                 <td>日常</td>
-                                <td><button class="lightBox_btn edit_btn"><a href="backStage_optionEdit_teacher.html">編輯</a></button></td>
+                                <td><button class="lightBox_btn edit_btn" @click="show">編輯</button></td>
                             </tr>
                         </table>
                     </div>
