@@ -95,9 +95,15 @@
         <div class="home_lesson_island_pic">
             <div class="home_lesson_island_pic">
                 <div class="home_lesson_island_npc1">
+                    <div class="lesson_talk_1">
+                        <img src="./images/home_lesson_island_talk2.png" alt="">
+                    </div>
                     <img src="./images/home_lesson_island_npc1.png" alt="">
                 </div>
                 <div class="home_lesson_island_npc2">
+                    <div class="lesson_talk_2">
+                        <img src="./images/home_lesson_island_talk1.png" alt="">
+                    </div>
                     <img src="./images/test_NPC1.png" alt="">
                 </div>
                 <img src="./images/home_lesson_island.png" alt="">
@@ -154,6 +160,9 @@
             <!-- 測驗島 -->
             <div class="home_topic_island_pic">
                 <div class="home_topic_island_npc">
+                    <div class="topic_talk">
+                        <img src="./images/home_topic_island_talk.png" alt="">
+                    </div>
                     <img src="./images/home_topic_island_npc.png" alt="">
                 </div>
                 <img src="./images/home_topic_island.png" alt="">
@@ -238,9 +247,15 @@
             <div class="home_decorate_island_pic">
                 <img src="./images/home_lesson_island2.png" alt="">
                 <div class="home_decorate_island_npc1">
+                    <div class="decorate_talk_1">
+                        <img src="./images/home_last_island_talk1.png" alt="">
+                    </div>
                     <img src="./images/home_last_npc1.png" alt="">
                 </div>
                 <div class="home_decorate_island_npc2">
+                    <div class="decorate_talk_2">
+                        <img src="./images/home_last_island_talk2.png" alt="">
+                    </div>
                     <img src="./images/home_last_npc2.png" alt="">
                 </div>
                 <!-- 裝飾島水中裝飾 -->
@@ -271,9 +286,15 @@
             <img src="./images/home_lesson_island3.png" alt="">
         </div>
         <div class="home_decorate_island_2_npc1">
+            <div class="decorate_talk_3">
+                <img src="./images/home_last_island_talk3.png" alt="">
+            </div>
             <img src="./images/home_lesson_island_npc1.png" alt="">
         </div>
         <div class="home_decorate_island_2_npc2">
+            <div class="decorate_talk_4">
+                <img src="./images/home_last_island_talk4.png" alt="">
+            </div>
             <img src="./images/home_last_npc3.png" alt="">
         </div>
     </div>
@@ -281,16 +302,13 @@
 
     <div class="home_last_island">
         <div class="home_last_island_pic">
-            <img src="./images/home_footer_4.png" alt="">
+            <img src="./images/home_footer_3.png" alt="">
         </div>
         <div class="home_last_island_info">
-            <img src="./images/home_info_npc2.png" alt="">
             <div class="home_last_island_info_text">
                 <div class="text">現在就加入會員，</div>和學伴一起學習日文吧！
                 <div class="sign_up">
-                    <a href="./layout/login_register.html">
-                        <div class="btn_sign_up">立即註冊</div>
-                    </a>
+                    <div class="btn_sign_up" id="sign_up">立即註冊</div>
                 </div>
             </div>
         </div>
@@ -306,7 +324,8 @@
         let img = document.getElementsByName("mall_npc")[0];
 
         let imgArr = ["./images/home_mall_npc_1.png", "./images/home_mall_npc_2.png", "./images/home_mall_npc_3.png", "./images/home_mall_npc_4.png"];
-
+        let loginRegister = document.getElementById('login_register');
+        let show_sign_up = document.getElementById("sign_up");
         let npc = 0;
 
         function change() {
@@ -316,6 +335,10 @@
             }
             img.src = imgArr[npc];
         };
+
+        show_sign_up.addEventListener('click', function () {
+            loginRegister.style.display = 'flex';
+        })
 
         function init() {
             document.getElementById("change").click = change;
