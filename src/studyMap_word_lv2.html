@@ -12,7 +12,7 @@
     <section class="bigMap">  
         <div class="studyMap_map wordlv2">
             <!-- 人物角色 -->
-            <div class="studyMap_npc a left" >
+            <div class="studyMap_npc a left"  id="piggy">
                 <img src="./images/studyMap_NPC_number.png" id="number" class="npc-img">
             </div>
             <div class="studyMap_npc b right" >
@@ -88,13 +88,6 @@
             let soundSrcColor = new Array("./sound/white.mp3","./sound/black.mp3","./sound/red.mp3","./sound/blue.mp3","./sound/yellow.mp3","./sound/brown.mp3","./sound/green.mp3","./sound/purple.mp3","./sound/gold.mp3","./sound/silver.mp3");
             let soundSrcE = new Array("./sound/e.mp3","./sound/ke.mp3","./sound/se.mp3","./sound/te.mp3","./sound/ne.mp3","./sound/he.mp3","./sound/me.mp3","./sound/re.mp3");
             let soundSrcO = new Array("./sound/o.mp3","./sound/ko.mp3","./sound/so.mp3","./sound/to.mp3","./sound/no.mp3","./sound/ho.mp3","./sound/mo.mp3","./sound/yo.mp3","./sound/ro.mp3","./sound/wo.mp3","./sound/n.mp3");
-             //==========圖像檔路徑==============
-            // let fifityPicNumber = new Array("./images/studyMap_ichi.svg","./images/studyMap_ni2.svg","./images/studyMap_san.svg","./images/studyMap_yonn.svg","./images/studyMap_go.svg","./images/studyMap_roku.svg","./images/studyMap_nana.svg","./images/studyMap_hachi.svg","./images/studyMap_kyuu.svg","./images/studyMap_jyuu.svg","./images/studyMap_hyaku.svg","./images/studyMap_sen.svg","./images/studyMap_ichiman.svg");//13
-            // let fifityPicTime = new Array("./images/studyMap_tdby.svg","./images/studyMap_yesterday.svg","./images/studyMap_today.svg","./images/studyMap_tomorrow.svg","./images/studyMap_tdat.svg","./images/studyMap_sunday.svg","./images/studyMap_monday.svg","./images/studyMap_tuseday.svg","./images/studyMap_wendsday.svg","./images/studyMap_thursday.svg","./images/studyMap_friday.svg","./images/studyMap_saturnday.svg");//12
-            // let fifityPicColor = new Array("./images/studyMap_white.svg","./images/studyMap_black.svg","./images/studyMap_red.svg","./images/studyMap_blue.svg","./images/studyMap_yellow.svg","./images/studyMap_brown.svg","./images/studyMap_green.svg","./images/studyMap_purple.svg","./images/studyMap_gold.svg","./images/studyMap_silver.svg");//10
-            // let fifityPicE = new Array("./images/studyMap_e.svg","./images/studyMap_ke.svg","./images/studyMap_se.svg","./images/studyMap_te.svg","./images/studyMap_ne.svg","./images/studyMap_he.svg","./images/studyMap_me.svg","./images/studyMap_re.svg");//8
-            // let fifityPicO = new Array("./images/studyMap_o.svg","./images/studyMap_ko.svg","./images/studyMap_so.svg","./images/studyMap_to.svg","./images/studyMap_no.svg","./images/studyMap_ho.svg","./images/studyMap_mo.svg","./images/studyMap_yo.svg","./images/studyMap_ro.svg","./images/studyMap_wo.svg","./images/studyMap_n.svg");//11
-            //===============================
             let cat = document.getElementById('mapCon');
             let speaker = document.getElementById('sound');
             let photo = document.getElementById('mapMain');
@@ -111,7 +104,6 @@
             let food = document.getElementById('food');
             let trafic = document.getElementById('trafic');
         function showLightBox(e){
-            //背景變暗
             filter.style.display='block';
             cat.style.display ='flex';
             closeBox.style.display ='block';
@@ -147,47 +139,47 @@
             if(temp == startCon[0] ){
                 con.innerText = numberCon[0];
                 sound.src = soundSrcNumber[0];
-                fifty.src = fifityPicNumber[0];
+                
             }else if(temp == numberCon[0]){
                 con.innerText = numberCon[1];
                 sound.src = soundSrcNumber[1];
-                fifty.src = fifityPicNumber[1];
+                
             }else if(temp == numberCon[1]){
                 con.innerText = numberCon[2];
                 sound.src = soundSrcNumber[2];
-                fifty.src = fifityPicNumber[2];
+                
             }else if(temp == numberCon[2]){
                 con.innerText = numberCon[3];
                 sound.src = soundSrcNumber[3];
-                fifty.src = fifityPicNumber[3];
+                
             }else if(temp == numberCon[3]){
                 con.innerText = numberCon[4];
                 sound.src = soundSrcNumber[4];
-                fifty.src = fifityPicNumber[4];
+                
             }else if(temp == numberCon[4]){
                 con.innerText = numberCon[5];
                 sound.src = soundSrcNumber[5];
-                fifty.src = fifityPicNumber[5];
+                
             }else if(temp == numberCon[5]){
                 con.innerText = numberCon[6];
                 sound.src = soundSrcNumber[6];
-                fifty.src = fifityPicNumber[6];
+                
             }else if(temp == numberCon[6]){
                 con.innerText = numberCon[7];
                 sound.src = soundSrcNumber[7];
-                fifty.src = fifityPicNumber[7];
+                
             }else if(temp == numberCon[7]){
                 con.innerText = numberCon[8];
                 sound.src = soundSrcNumber[8];
-                fifty.src = fifityPicNumber[8];
+                
             }else if(temp == numberCon[8]){
                 con.innerText = numberCon[9];
                 sound.src = soundSrcNumber[9];
-                fifty.src = fifityPicNumber[9];
+                
             }else if(temp == numberCon[9]){
                 con.innerText = numberCon[10];
                 sound.src = soundSrcNumber[10];
-                fifty.src = fifityPicNumber[10];
+                
             }else if(temp == numberCon[10]){
                 con.innerText = numberCon[11];
                 sound.src = soundSrcNumber[11];
@@ -195,11 +187,11 @@
             }else if(temp == numberCon[11]){
                 con.innerText = numberCon[12];
                 sound.src = soundSrcNumber[12];
-                fifty.src = fifityPicNumber[12];
+                
             }else if(temp == numberCon[12]){
                 con.innerText = numberCon[0];
                 sound.src = soundSrcNumber[0];
-                fifty.src = fifityPicNumber[0];
+                
                 cat.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -210,55 +202,55 @@
             else if(temp == startCon[1]){
                 con.innerText = timeCon[0];
                 sound.src = soundSrcTime[0];
-                fifty.src = fifityPicTime[0];
+                
             }else if(temp == timeCon[0]){
                 con.innerText = timeCon[1];
                 sound.src = soundSrcTime[1];
-                fifty.src = fifityPicTime[1];
+                
             }else if(temp == timeCon[1]){
                 con.innerText = timeCon[2];
                 sound.src = soundSrcTime[2];
-                fifty.src = fifityPicTime[2];
+               
             }else if(temp == timeCon[2]){
                 con.innerText = timeCon[3];
                 sound.src = soundSrcTime[3];
-                fifty.src = fifityPicTime[3];
+                
             }else if(temp == timeCon[3]){
                 con.innerText = timeCon[4];
                 sound.src = soundSrcTime[4];
-                fifty.src = fifityPicTime[4];
+               
             }else if(temp == timeCon[4]){
                 con.innerText = timeCon[5];
                 sound.src = soundSrcTime[5];
-                fifty.src = fifityPicTime[5];
+                
             }else if(temp == timeCon[5]){
                 con.innerText = timeCon[6];
                 sound.src = soundSrcTime[6];
-                fifty.src = fifityPicTime[6];
+                
             }else if(temp == timeCon[6]){
                 con.innerText = timeCon[7];
                 sound.src = soundSrcTime[7];
-                fifty.src = fifityPicTime[7];
+               
             }else if(temp == timeCon[7]){
                 con.innerText = timeCon[8];
                 sound.src = soundSrcTime[8];
-                fifty.src = fifityPicTime[8];
+                
             }else if(temp == timeCon[8]){
                 con.innerText = timeCon[9];
                 sound.src = soundSrcTime[9];
-                fifty.src = fifityPicTime[9];
+                
             }else if(temp == timeCon[9]){
                 con.innerText = timeCon[10];
                 sound.src = soundSrcTime[10];
-                fifty.src = fifityPicTime[10];
+                
             }else if(temp == timeCon[10]){
                 con.innerText = timeCon[11];
                 sound.src = soundSrcTime[11];
-                fifty.src = fifityPicTime[11];
+               
             }else if(temp == timeCon[11]){
                 con.innerText = timeCon[0];
                 sound.src = soundSrcTime[0];
-                fifty.src = fifityPicTime[0];
+               
                 cat.style.display ='none';
                 speaker.style.display='none';
                 photo.style.display='none';
@@ -456,7 +448,13 @@
             food.style.display="block";
             trafic.style.display="block";
         }
+        let pig = document.getElementById("piggy").style.animationName;
+        // let dog = pig.style.animationDuration;
+        // function animation(){
+        //     console.log(dog);
+        // }
         function init(){
+            console.log(pig);
             let imgs = document.getElementsByClassName('npc-img');
             let goto =document.getElementById('Yes');
             let cancel =document.getElementById('No');
@@ -464,6 +462,7 @@
                 imgs[i].onclick = showLightBox ;
             };
             cat.addEventListener('click',conversation,false);
+            pig.addEventListener('mouseover',animation,false)
             speaker.addEventListener('click',justPlay,true);
             closeBox.addEventListener('click',shutDown,false);
             goto.addEventListener('click',goToTest,false);
