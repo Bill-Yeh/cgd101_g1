@@ -190,9 +190,9 @@ function testStart(e){
 
     //解決手機板按鈕點了之後會一直處於hover狀態的狀況
     //強制更改背景顏色
-    setTimeout(function(){
-        e.target.style.backgroundColor = "#f9bb4d";
-    },500);
+    // setTimeout(function(){
+    //     e.target.style.backgroundColor = "#f9bb4d";
+    // },500);
 }
 
 

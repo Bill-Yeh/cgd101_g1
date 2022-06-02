@@ -391,7 +391,8 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.6);
-    z-index: 10;
+    // z-index: 10;
+    z-index: 1000000;
 }
 
 .test_lightBox{
@@ -412,6 +413,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include lg{
+        max-height: 500px;
+    }
 }
 
 .test_lightBox_close{
