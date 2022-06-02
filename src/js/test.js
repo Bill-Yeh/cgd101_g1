@@ -190,6 +190,8 @@ function testStart(e){
     
 }
 
+// function touchend
+
 //-----換下一題-----//
 function toNextQuestion(){
     let test_question_title = document.getElementById('test_title');

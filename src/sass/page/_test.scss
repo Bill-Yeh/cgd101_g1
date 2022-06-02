@@ -8,6 +8,10 @@
     flex-direction: column;
     overflow: hidden;
 
+    @media screen and (max-width : 450px){
+        padding: 30px 3px;
+    } 
+
     //---------- 裝飾用背景 ---------//
     background-repeat: no-repeat;
 
@@ -73,6 +77,30 @@
         ;
     }
 
+    @media screen and (max-width : 450px){
+        background-image:
+        // 第三座島的背景
+        url("../images/home_island_inwater_3.png"),url("../images/home_lesson_island2.png"),url("../images/home_island_inwater_4.png"),
+
+        // 第二座島的背景
+        url("../images/home_island_inwater_3.png"),url("../images/home_lesson_island2.png"),url("../images/home_island_inwater_2.png"),
+        
+        // 第一座島的背景
+        url("../images/home_lesson_island3.png"),url("../images/home_island_inwater_4.png")
+        ;
+
+        background-position: 
+        // 第三座島的背景位置
+        left 60% top 100%,right 230px top 105%,right -50px top 80%,
+
+        // 第二座島的背景位置
+        right 15% top 65%,right 230px top 55%,right 10px top 30%,
+
+        // 第一座島的背景位置
+        right 230px top 5%,right 50% top 1%
+        ;
+    } 
+
     
     //---------- 裝飾用背景結束 ---------//
 
@@ -98,6 +126,10 @@
     justify-content: flex-start; 
     gap: 30px;
     position: relative;
+
+    @media screen and (max-width : 450px){
+        padding-bottom: 35%;
+    }
 
     @include md{  
         padding-top: 60px;
@@ -143,7 +175,13 @@
     background-color: map-get($color, 'primary');
     color: #fff;
     // background-color: #FFF;
-    z-index: 5;
+    z-index: 4;
+
+    
+    @media screen and (max-width : 450px){
+        right: 5px;
+        font-size: 24px;
+    } 
 
     @include md{
         width: 40%;
@@ -190,6 +228,11 @@
 
 .test_tab{
     padding: 15px;
+
+    // @media screen and (max-width : 450px){
+    //     padding: 1px 25px;
+    // } 
+
     &>label{
         padding-top: 13px;
         padding-bottom: 18px;
@@ -223,6 +266,14 @@
     text-align: center;
     transition: all .35s;
     transform-origin: 20px 10px;
+
+    
+    @media screen and (max-width : 450px){
+        width: 30px;
+        height: 30px;
+        right: 5px;
+        transform-origin: 15px 15px;
+    } 
 }
 
 // checked：打開對話選項 //
@@ -249,6 +300,7 @@
     padding: 10px 0px 10px 10px;
     text-align: left;
     border: none;
+    color: #000;
     background-color: #fff;
     border-radius: 10px;
 
@@ -345,7 +397,7 @@
 .test_lightBox{
     width: 80%;
     max-width: 500px;
-    max-height: 600px;
+    max-height: 400px;
     padding: 30px;
     padding-top: 60px;
     background-color:  map-get($color, 'bgc_y');
