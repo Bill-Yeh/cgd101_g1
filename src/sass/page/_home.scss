@@ -3,7 +3,6 @@
   width: 100%;
   margin: 50px 0 0 0;
   position: relative;
-  overflow: hidden;
 }
 
 /* 手機版水中裝飾none */
@@ -12,7 +11,6 @@
 .home_mall_inwater img,
 .home_decorate_island_inwater img {
   display: none;
-  overflow: hidden;
 }
 
 /* 首頁第一島npc */
@@ -246,7 +244,6 @@
 }
 
 .home_first_island_pic {
-  overflow: hidden;
   position: relative;
   width: 100%;
   text-align: center;
@@ -258,7 +255,6 @@
 }
 
 .home_first_npc1 {
-  overflow: hidden;
   position: absolute;
 }
 
