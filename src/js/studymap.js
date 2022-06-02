@@ -18,16 +18,16 @@ new Vue({
             },
         }
     })
-new Vue({
-        el:'.cloud',
-        data:{
-            img: ['background','1','2','3','4','5'] 
-        },
-        methods:{
+// new Vue({
+//         el:'.cloud',
+//         data:{
+//             img: ['background','1','2','3','4','5'] 
+//         },
+//         methods:{
             
-        }
+//         }
        
-    })
+//     })
 //gsap雲動畫
     // gsap.to("#cloud1",{
     //     x:-10,

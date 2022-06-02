@@ -40,16 +40,19 @@
                 <div class="cloudBackground">
                     <img src="./images/cloud_background.png" class="cloud_background" id="cloudBg">
                 </div>
-                <div class="cloud1">
+                <div class="cloud1" id="firstCloud">
                     <img src="./images/cloud_1.png" class="cloud_1" id="cloudFirst">
                 </div>
-                <div class="cloud2">
+                <div class="cloud2" 
+                id="secondCloud">
                     <img src="./images/cloud_2.png" class="cloud_2" id="cloudSecond">
                 </div>
-                <div class="cloud3">
-                    <img src="./images/cloud_3.png" class="cloud_3" id="cloudSecond">
+                <div class="cloud3"
+                id="thirdCloud">
+                    <img src="./images/cloud_3.png" class="cloud_3" id="cloudThird">
                 </div>
-                <div class="cloud4">
+                <div class="cloud4"
+                id="fourthCloud">
                     <img src="./images/cloud_4.png" class="cloud_4" id="cloudFourth">
                 </div>
                 <div class="cloud5">
@@ -78,12 +81,31 @@
 <script>
 let bignpc = document.getElementById('bigNpc');
 let koei = document.getElementById('koei');
+let unlock1 = document.getElementById("firstCloud")
+let unlock2 = document.getElementById("secondCloud")
+let unlock3 = document.getElementById("thirdCloud")
+let unlock4 = document.getElementById("fourthCloud")
 function playVoice(){
- 
     koei.play();
 };
+function unLock1(){
+    unlock1.style.display='none';
+}
+function unLock2(){
+    unlock2.style.display='none';
+}
+function unLock3(){
+    unlock3.style.display='none';
+}
+function unLock4(){
+    unlock4.style.display='none';
+}
 function init(){
     bignpc.addEventListener('click',playVoice,false);
+    unlock1.addEventListener('click',unLock1,false);
+    unlock2.addEventListener('click',unLock2,false);
+    unlock3.addEventListener('click',unLock3,false);
+    unlock4.addEventListener('click',unLock4,false);
 };
 window.addEventListener('load',init,false);
 </script>
