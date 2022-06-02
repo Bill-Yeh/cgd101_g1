@@ -436,6 +436,10 @@
   position: absolute;
   left: 30%;
   top: 5%;
+  animation-name: talk;
+  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
   img {
     width: 70px;
     height: 50px;
@@ -446,6 +450,10 @@
   position: absolute;
   right: 15%;
   top: 5%;
+  animation-name: talk1;
+  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
   img {
     width: 70px;
     height: 50px;
@@ -697,6 +705,10 @@
   position: absolute;
   left: 43%;
   top: -2%;
+  animation-name: talk;
+  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
   img {
     width: 70px;
     height: 50px;
@@ -710,6 +722,10 @@
   position: absolute;
   right: 30%;
   top: -2%;
+  animation-name: talk1;
+  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
   img {
     width: 70px;
     height: 50px;
@@ -1190,6 +1206,10 @@
     position: absolute;
     top: 2%;
     right: 30%;
+    animation-name: talk1;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
     img {
       width: 120px;
       height: 100px;
@@ -1200,6 +1220,10 @@
     position: absolute;
     top: 2%;
     right: 15%;
+    animation-name: talk;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
     img {
       width: 120px;
       height: 100px;
@@ -1228,4 +1252,26 @@
       display: block;
     }
   }
+}
+@keyframes talk{
+  0% {
+      opacity: 1;
+    }
+  50% {
+     opacity: 1;
+    }
+  100% {
+      opacity: 0;
+    }
+}
+@keyframes talk1{
+  0% {
+      opacity: 1;
+    }
+  50% {
+     opacity: 0;
+    }
+  100% {
+      opacity: 1;
+    }
 }
