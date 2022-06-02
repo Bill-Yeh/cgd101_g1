@@ -490,6 +490,10 @@
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width : 450px){
+        padding-top: 30px;
+    }
+
     &_title{ 
     font-size: 36px;
     color: map-get($color, 'backstage_h');
@@ -516,7 +520,7 @@
 
         &:hover{
             cursor: pointer;
-            background: map-get($color, 'backstage_h');
+            background-color: map-get($color, 'backstage_h');
         }
     }
 }
@@ -540,6 +544,10 @@
     
     &_wrap{
         padding-top: 80px;
+
+        @media screen and (max-width : 450px){
+            padding-top: 40px;
+        }
     }
 
     &_row{
@@ -554,6 +562,10 @@
 
     &_row:last-child{
         padding-bottom: 80px;
+
+        @media screen and (max-width : 450px){
+            padding-bottom: 40px;
+        }
     }
 }
 
