@@ -29,9 +29,24 @@
         position: absolute;
         top:calc((100% - 150px)*0.5);
         left: calc((100% - 150px)*0.5);
+
+
+        animation-duration: 1s;
+        animation-name: slidein;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+
+        @keyframes slidein{
+            from {
+              }
+              to {
+                margin-top: -10px;
+              }
+            }
+        }
     }
 
-}
+
 
 
 
@@ -182,6 +197,10 @@
     background-color:#fff;
     box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
     // position: relative;
+
+
+
+
     @include mem_item(320px,'',5%,0px,'');
     @include md{
         height: 60%
@@ -384,6 +403,8 @@
     border-top-right-radius:10px;
     background-color:#fff;
     box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
+
+
     // position: relative;
     @include mem_item(320px,'',5%,0px,'');
     @include md{
@@ -553,6 +574,8 @@
         display: inline-block;
         position: absolute;
         @include md{padding: 30px;}
+
+        
         
 
             //地圖
@@ -581,27 +604,88 @@
             .closet_lightBox{
                 display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
+
                 
 
-                .char{
+                #capture{
+                    position: relative;
                     width: 100%;
                     height: 75%;
                     display: flex;
-                    background-color: #F37420;
+                    align-items: center;
+                    justify-content: center;
+
+
+                    // background-color: #F37420;
                     @include md{
                         height: 70%;
+                    }
+
+
+                    .store{
+                        cursor: pointer;
+                        padding: 15px;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        background-color: #F37420;
+                        border-radius: 8px;
+                        color: #fff;
+
+                    }
+
+                    .char_content{
+                        position: relative;
                     }
                     
                     .closet_char_img{
                         display: block;
                         margin: auto;
-                        height: 40%;
-                        width: auto;
+                        height: 140px;
                         vertical-align: bottom;
-                        @include md{
-                            height: 50%;
+                    }
+
+                    .hat{
+                        position: absolute;
+                        width: 87px;
+                        top: 0;
+                        left: 7px;
+                        img{
+                            width: 100%;
                         }
                     }
+
+                    .dress{
+                        position: absolute;
+                        top: 50px;
+                        left: 30px;
+
+                        
+                    }
+
+                    .tool{
+                        position: absolute;
+                        width: 80px;
+                        bottom: -23px;
+                        left: 0;
+                        img{
+                            width: 100%;
+                        }
+
+                        // background-color: rgb(255, 42, 0);
+                        
+                    }
+
+
+
+                }
+
+
+                .charCanvas{
+                    // background-color: #F37420;
+                    position: absolute;
+                    top:0;
+                    left: 0;
                 }
 
                 .cloth{
@@ -637,14 +721,12 @@
                             } 
                         }
                         .tab_hat{
-                            // box-shadow: 10px 0px 0px  rgba(51, 51, 51, 0.263);
                             position: relative;
                             left: 0px;
                             z-index: 10;
                            
                         }
                         .tab_dress{
-                            // box-shadow: 10px 0px 0px rgba(51, 51, 51, 0.253);
                             position: relative;
                             left: -10px;
                             z-index: 9;
@@ -655,6 +737,7 @@
                             z-index: 8;
                         }
                         #target{
+                            height:78%;
                             padding:0.5% 13%;
                             @include md{
                                 padding:0.5% 7%;
@@ -678,54 +761,79 @@
                         .itemFront{
                             margin: auto;
                             width: 20px;
-                            
                             text-align: center;
+                            display: none;
+                            @include md{
+                                display: block;
+                            }
                             img{
-                                
                                 width: 100%;
                             }
                         }
+
                         .itemBack{
                             margin: auto;
                             width: 20px;
-                            
                             text-align: center;
+                            display: none;
+                            @include md{
+                                display: block;
+                            }
                             img{
                                 width: 100%;
                             }
-
                         }
 
 
 
                         .item-wrapper{
-                            display: flex;
-                            flex-wrap:nowrap;
                             background-color: #FAE6B8;
                             margin: auto;
-                            width: 84%;
+                            width: 95%;
                             height: 100%;
                             box-sizing: border-box;
-                            align-items: center;
-                            overflow: hidden;
-                            
-                        
-                            & :nth-child(n){
-                                cursor: pointer;
-                                flex-shrink:0;
-                                background-color: #fff;
-                                margin: 1%;
-                                height: 80%;
-                                border-radius: 10px;
+                            overflow:overlay;
+                            position: relative;
+                            border-radius:5px ;
+                            @include md{
                                 overflow: hidden;
-                                &:hover{
-                                    box-shadow: inset 0px 0px 50px #F9BB4D;
-                                }
+                                width: 84%;
+                            }
+                            .items{
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 100%;
+                                align-items: center;
+                                display: flex;
+                                // margin: auto;
+                                z-index: 20;
+
+                                transition-duration:0.8s ;
+                                transition-timing-function:linear;
+
                                 
-                                img{
-                                    width: auto;
-                                    height: 100%;
-                                
+
+                                & div{
+                                    cursor: pointer;
+                                    background-color: #fff;
+                                    margin: 5px;
+                                    height: 80%;
+                                    border-radius: 10px;
+                                    overflow: hidden;
+                                    padding: 5px;
+                                    box-sizing: border-box;
+                                    
+                                    &:hover{
+                                        background-color: #F37420;
+                                    }
+                                    
+                                    img{
+                                        background-color:none;
+                                        width: auto;
+                                        height: 100%;
+                                        // #F9BB4D
+                                    }
                                 }
                             }
                         }   
@@ -984,3 +1092,8 @@
 }
 
 
+canvas{
+    position: absolute;
+    top:0px;
+    left: -1000px;
+}
