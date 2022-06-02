@@ -4,28 +4,6 @@
   margin: 50px 0 0 0;
   position: relative;
 }
-// .ccc {
-//   width: 100%;
-//   height: 100%;
-//   position: relative;
-// }
-// #linesvg {
-//   display: none;
-//   position: absolute;
-//   top: 20%;
-//   left: 45%;
-//   .st0 {
-//     fill: none;
-//     stroke: #fff;
-//     stroke-width: 0.5;
-//     stroke-linecap: round;
-//     stroke-linejoin: round;
-//     stroke-miterlimit: 10;
-//   }
-  @include xl() {
-    display: block;
-  }
-}
 
 /* 手機版水中裝飾none */
 .home_lesson_inwater img,
