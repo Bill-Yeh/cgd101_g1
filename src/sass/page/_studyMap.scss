@@ -50,23 +50,35 @@
   animation-duration: 10s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
+  @include md{ //768
+    bottom: 8%;
+  }
+  @include lg{ //992px
+    bottom: 3%;
+  }
+  @include xl{ //1200
+
+  }
 }
 .big_npc_message{
   position: absolute;
   top: 80%;
   left: 20%;
-  transform: scale(0.o7);
+  transform: scale(0.7);
   animation-name: message;
   animation-duration: 5s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
   @include md{ //768
-    transform: scale(0.9);
+    left: 25%;
+    transform: scale(0.8);
   }
   @include lg{ //992px
-    transform: scale(0.9);
+    left: 10%;
+    transform: scale(0.7);
   }
   @include xl{ //1200
+    left: 20%;
     transform: scale(0.9);
   }
   
