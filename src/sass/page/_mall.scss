@@ -2,23 +2,6 @@ body {
   background-color: rgba(250, 230, 184, 0.5);
   font-family: $fontCh;
 }
-svg {
-  display: none;
-  position: absolute;
-  top: 20%;
-  left: 40%;
-  .st0 {
-    fill: none;
-    stroke: #fff;
-    stroke-width: 0.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-  }
-  @include xl() {
-    display: block;
-  }
-}
 
 .pay_box,
 .level_box,
