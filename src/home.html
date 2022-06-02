@@ -5,7 +5,10 @@
     @@include('layout/meta.html', {
     "title" : "語實巨進"
     })
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/MotionPathPlugin.min.js"></script>
     <style>
         body {
             background-color: #A2EBE8;
@@ -20,302 +23,307 @@
     <!-- header -->
     @@include('layout/header.html')
     <!-- header end -->
-
-    <!-- 首頁第一島 -->
-    <div class="home_first_island">
-        <!-- 島 -->
-        <div class="home_first_island_pic">
-            <img src="./images/home_first_island.png" alt="">
-            <!-- 島的NPC -->
-            <div class="home_first_island_npc1">
-                <img src="./images/home_first_island_npc1.png" alt="">
-            </div>
-            <div class="home_first_island_npc2">
-                <img src="./images/home_last_npc1.png" alt="">
-            </div>
-            <div class="home_first_island_npc3">
-                <img src="./images/home_first_island_npc3.png" alt="">
-            </div>
-            <div class="home_first_island_npc4">
-                <img src="./images/home_first_npc4.png" alt="">
-            </div>
+    <div class="ccc">
+        <!-- 船 -->
+        <div class="home_boat_pic" id="motionSVG">
+            <img src="./images/home_boat.png" alt="">
         </div>
+        <!-- xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" -->
+        <svg id="linesvg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 900 3002" xml:space="preserve">
 
-        <!-- 第一島的雲 -->
-        <div class="home_cloud_1_pic">
-            <img src="./images/cloud_1.png">
-        </div>
-
-        <div class="home_cloud_2_pic">
-            <img src="./images/cloud_transparent_2.png">
-        </div>
-
-        <div class="home_cloud_3_pic">
-            <img src="./images/cloud_2.png" alt="">
-        </div>
-
-        <div class="home_cloud_4_pic">
-            <img src="./images/cloud_3.png" alt="">
-        </div>
-
-        <div class="home_cloud_5_pic">
-            <img src="./images/cloud_5.png" alt="">
-        </div>
-
-        <!-- 第一島介紹 -->
-        <div class="home_first_info">
-            <div class="home_first_info_text">
-                歡迎來到語實巨進,<br>
-                讓我們在這個世界一起學習日文吧
-                <div class="home_first_info_pic">
-                    <img src="./images/home_info_npc.png" alt="">
+            <path id="motionPath" class="st0"
+                d="M155.395,383.31 C152.773,390.548 92.401,646.162 250.215,727.041 453.479,831.213 835.629,715.412 832.33,924.268 830.006,1071.385 20.339,1040.965 22.58,1206.204 24.517,1348.994 835.125,1320.378 832.275,1445.504 827.175,1669.362 57.235,1623.348 56.673,1760.63 55.674,2004.272 837.157,1936.609 837.205,2053.845 837.283,2246.807 137.92199,2252.96102 137.92199,2252.96102 " />
+        </svg>
+        <!-- 首頁第一島 -->
+        <div class="home_first_island">
+            <!-- 島 -->
+            <div class="home_first_island_pic">
+                <img src="./images/home_first_island.png" alt="">
+                <!-- 島的NPC -->
+                <div class="home_first_island_npc1">
+                    <img src="./images/home_first_island_npc1.png" alt="">
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 船 -->
-    <div class="home_boat_pic">
-        <img src="./images/home_boat.png" alt="">
-    </div>
-
-    <!-- 學習島的雲 -->
-    <div class="home_lesson_cloud">
-        <div class="home_lesson_cloud_1">
-            <img src="./images/cloud_5.png" alt="">
-        </div>
-        <div class="home_lesson_cloud_2">
-            <img src="./images/cloud_transparent_2.png" alt="">
-        </div>
-    </div>
-
-    <!-- 第二島--學習地圖 -->
-    <div class="home_lesson_island">
-        <!-- 學習島 -->
-        <div class="home_lesson_island_pic">
-            <div class="home_lesson_island_pic">
-                <div class="home_lesson_island_npc1">
-                    <div class="lesson_talk_1">
-                        <img src="./images/home_lesson_island_talk2.png" alt="">
-                    </div>
-                    <img src="./images/home_lesson_island_npc1.png" alt="">
-                </div>
-                <div class="home_lesson_island_npc2">
-                    <div class="lesson_talk_2">
-                        <img src="./images/home_lesson_island_talk1.png" alt="">
-                    </div>
-                    <img src="./images/test_NPC1.png" alt="">
-                </div>
-                <img src="./images/home_lesson_island.png" alt="">
-            </div>
-
-            <!-- 學習島水中裝飾 -->
-            <div class="home_lesson_inwater">
-                <img src="./images/home_island_inwater_5.png" alt="">
-            </div>
-        </div>
-
-        <!-- 學習地圖島介紹 -->
-        <div class="home_lesson_info">
-            <div class="home_lesson_info_text">
-                <div class="home_lesson_info_pic">
-                    <img src="./images/home_info_npc2.png" alt="">
-                </div>
-                <!-- 學習地圖路標 -->
-                <div class="home_lesson_road_sign">
-                    <img src="./images/home_lesson_road_sign.png" alt="">
-                </div>
-                在地圖上和不同的人進行對話，<br>學習日文的基本文法與單字。
-            </div>
-        </div>
-    </div>
-
-    <!-- 測驗島的雲 -->
-    <div class="home_topic_cloud">
-        <div class="home_topic_cloud_1">
-            <img src="./images/cloud_1.png" alt="">
-        </div>
-        <div class="home_topic_cloud_2">
-            <img src="./images/cloud_transparent_1.png" alt="">
-        </div>
-        <div class="home_topic_cloud_3">
-            <img src="./images/cloud_transparent_2.png" alt="">
-        </div>
-        <div class="home_topic_cloud_4">
-            <img src="./images/cloud_3.png" alt="">
-        </div>
-        <div class="home_topic_cloud_5">
-            <img src="./images/cloud_transparent_2.png" alt="">
-        </div>
-    </div>
-
-    <!-- 第三島--升級測驗 -->
-    <div class="home_topic_island">
-        <div class="home_topic_island_pic">
-            <!-- 測驗島水中裝飾 -->
-            <div class="home_topic_inwater">
-                <img src="./images/home_island_inwater_4.png" alt="">
-            </div>
-
-            <!-- 測驗島 -->
-            <div class="home_topic_island_pic">
-                <div class="home_topic_island_npc">
-                    <div class="topic_talk">
-                        <img src="./images/home_topic_island_talk.png" alt="">
-                    </div>
-                    <img src="./images/home_topic_island_npc.png" alt="">
-                </div>
-                <img src="./images/home_topic_island.png" alt="">
-            </div>
-        </div>
-
-        <!-- 測驗島介紹 -->
-        <div class="home_topic_info">
-            <div class="home_topic_info_text">
-                <div class="home_topic_road_sign">
-                    <img src="./images/home_topic_road_sign.png" alt="">
-                </div>
-                透過升級測驗，
-                測試自己的實力！
-                <div class="home_topic_info_pic">
-                    <img src="./images/home_info_npc.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 第四島--寶物商城 -->
-
-    <!-- 商城島1的雲 -->
-    <div class="home_mall_island">
-        <div class="home_mall_cloud">
-            <div class="home_mall_cloud_1">
-                <img src="./images/cloud_1.png" alt="">
-            </div>
-            <div class="home_mall_cloud_2">
-                <img src="./images/cloud_transparent_1.png" alt="">
-            </div>
-            <div class="home_mall_cloud_3">
-                <img src="./images/cloud_2.png" alt="">
-            </div>
-            <div class="home_mall_cloud_4">
-                <img src="./images/cloud_3.png" alt="">
-            </div>
-        </div>
-        <!-- 商城島1 -->
-        <div class="home_mall_island">
-            <div class="home_mall_island_pic">
-                <img src="./images/home_mall_island_1.png" alt="">
-                <div class="home_mall_island_npc1" id="change">
-                    <img src="./images/home_mall_npc_1.png" alt="" name="mall_npc">
-                </div>
-                <!-- 商城島2 -->
-                <div class="home_mall_island_2">
-                    <div class="home_mall_island_2_pic">
-                        <img src="./images/home_mall_island_2.png" alt="">
-                        <div class="home_mall_island_npc2">
-                            <img src="./images/mall_npc2.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 商城島介紹 -->
-        <div class="home_mall_info">
-            <div class="home_mall_info_text">
-                <div class="home_mall_info_pic">
-                    <img src="./images/home_info_npc2.png" alt="">
-                </div>
-                <!-- 商城島路標 -->
-                <div class="home_mall_road_sign">
-                    <img src="./images/home_mall_road_sign.png" alt="">
-                </div>
-                在寶物商城兌換新的地圖與裝備！
-            </div>
-
-        </div>
-
-
-
-        <!-- 第五島--裝飾島 -->
-        <div class="home_decorate_island">
-            <!--裝飾島的雲 -->
-            <div class="home_decorate_island_cloud">
-                <img src="./images/cloud_2.png" alt="">
-            </div>
-            <div class="home_decorate_island_pic">
-                <img src="./images/home_lesson_island2.png" alt="">
-                <div class="home_decorate_island_npc1">
-                    <div class="decorate_talk_1">
-                        <img src="./images/home_last_island_talk1.png" alt="">
-                    </div>
+                <div class="home_first_island_npc2">
                     <img src="./images/home_last_npc1.png" alt="">
                 </div>
-                <div class="home_decorate_island_npc2">
-                    <div class="decorate_talk_2">
-                        <img src="./images/home_last_island_talk2.png" alt="">
-                    </div>
-                    <img src="./images/home_last_npc2.png" alt="">
+                <div class="home_first_island_npc3">
+                    <img src="./images/home_first_island_npc3.png" alt="">
                 </div>
-                <!-- 裝飾島水中裝飾 -->
-                <div class="home_decorate_island_inwater">
+                <div class="home_first_island_npc4">
+                    <img src="./images/home_first_npc4.png" alt="">
+                </div>
+            </div>
+
+            <!-- 第一島的雲 -->
+            <div class="home_cloud_1_pic">
+                <img src="./images/cloud_1.png">
+            </div>
+
+            <div class="home_cloud_2_pic">
+                <img src="./images/cloud_transparent_2.png">
+            </div>
+
+            <div class="home_cloud_3_pic">
+                <img src="./images/cloud_2.png" alt="">
+            </div>
+
+            <div class="home_cloud_4_pic">
+                <img src="./images/cloud_3.png" alt="">
+            </div>
+
+            <div class="home_cloud_5_pic">
+                <img src="./images/cloud_5.png" alt="">
+            </div>
+
+            <!-- 第一島介紹 -->
+            <div class="home_first_info">
+                <div class="home_first_info_text">
+                    歡迎來到語實巨進,<br>
+                    讓我們在這個世界一起學習日文吧
+                    <div class="home_first_info_pic">
+                        <img src="./images/home_info_npc.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 學習島的雲 -->
+        <div class="home_lesson_cloud">
+            <div class="home_lesson_cloud_1">
+                <img src="./images/cloud_5.png" alt="">
+            </div>
+            <div class="home_lesson_cloud_2">
+                <img src="./images/cloud_transparent_2.png" alt="">
+            </div>
+        </div>
+
+        <!-- 第二島--學習地圖 -->
+        <div class="home_lesson_island">
+            <!-- 學習島 -->
+            <div class="home_lesson_island_pic">
+                <div class="home_lesson_island_pic">
+                    <div class="home_lesson_island_npc1">
+                        <div class="lesson_talk_1">
+                            <img src="./images/home_lesson_island_talk2.png" alt="">
+                        </div>
+                        <img src="./images/home_lesson_island_npc1.png" alt="">
+                    </div>
+                    <div class="home_lesson_island_npc2">
+                        <div class="lesson_talk_2">
+                            <img src="./images/home_lesson_island_talk1.png" alt="">
+                        </div>
+                        <img src="./images/test_NPC1.png" alt="">
+                    </div>
+                    <img src="./images/home_lesson_island.png" alt="">
+                </div>
+
+                <!-- 學習島水中裝飾 -->
+                <div class="home_lesson_inwater">
                     <img src="./images/home_island_inwater_5.png" alt="">
                 </div>
             </div>
 
-            <div class="home_decorate_info">
-                <div class="home_decorate_info_text">
-                    <div class="home_decorate_info_pic">
+            <!-- 學習地圖島介紹 -->
+            <div class="home_lesson_info">
+                <div class="home_lesson_info_text">
+                    <div class="home_lesson_info_pic">
                         <img src="./images/home_info_npc2.png" alt="">
                     </div>
-                    和各式各樣的人一起進行討論交流。
+                    <!-- 學習地圖路標 -->
+                    <div class="home_lesson_road_sign">
+                        <img src="./images/home_lesson_road_sign.png" alt="">
+                    </div>
+                    在地圖上和不同的人進行對話，<br>學習日文的基本文法與單字。
+                </div>
+            </div>
+        </div>
+
+        <!-- 測驗島的雲 -->
+        <div class="home_topic_cloud">
+            <div class="home_topic_cloud_1">
+                <img src="./images/cloud_1.png" alt="">
+            </div>
+            <div class="home_topic_cloud_2">
+                <img src="./images/cloud_transparent_1.png" alt="">
+            </div>
+            <div class="home_topic_cloud_3">
+                <img src="./images/cloud_transparent_2.png" alt="">
+            </div>
+            <div class="home_topic_cloud_4">
+                <img src="./images/cloud_3.png" alt="">
+            </div>
+            <div class="home_topic_cloud_5">
+                <img src="./images/cloud_transparent_2.png" alt="">
+            </div>
+        </div>
+
+        <!-- 第三島--升級測驗 -->
+        <div class="home_topic_island">
+            <div class="home_topic_island_pic">
+                <!-- 測驗島水中裝飾 -->
+                <div class="home_topic_inwater">
+                    <img src="./images/home_island_inwater_4.png" alt="">
+                </div>
+
+                <!-- 測驗島 -->
+                <div class="home_topic_island_pic">
+                    <div class="home_topic_island_npc">
+                        <div class="topic_talk">
+                            <img src="./images/home_topic_island_talk.png" alt="">
+                        </div>
+                        <img src="./images/home_topic_island_npc.png" alt="">
+                    </div>
+                    <img src="./images/home_topic_island.png" alt="">
+                </div>
+            </div>
+
+            <!-- 測驗島介紹 -->
+            <div class="home_topic_info">
+                <div class="home_topic_info_text">
+                    <div class="home_topic_road_sign">
+                        <img src="./images/home_topic_road_sign.png" alt="">
+                    </div>
+                    透過升級測驗，
+                    測試自己的實力！
+                    <div class="home_topic_info_pic">
+                        <img src="./images/home_info_npc.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 第四島--寶物商城 -->
+
+        <!-- 商城島1的雲 -->
+        <div class="home_mall_island">
+            <div class="home_mall_cloud">
+                <div class="home_mall_cloud_1">
+                    <img src="./images/cloud_1.png" alt="">
+                </div>
+                <div class="home_mall_cloud_2">
+                    <img src="./images/cloud_transparent_1.png" alt="">
+                </div>
+                <div class="home_mall_cloud_3">
+                    <img src="./images/cloud_2.png" alt="">
+                </div>
+                <div class="home_mall_cloud_4">
+                    <img src="./images/cloud_3.png" alt="">
+                </div>
+            </div>
+            <!-- 商城島1 -->
+            <div class="home_mall_island">
+                <div class="home_mall_island_pic">
+                    <img src="./images/home_mall_island_1.png" alt="">
+                    <div class="home_mall_island_npc1" id="change">
+                        <img src="./images/home_mall_npc_1.png" alt="" name="mall_npc">
+                    </div>
+                    <!-- 商城島2 -->
+                    <div class="home_mall_island_2">
+                        <div class="home_mall_island_2_pic">
+                            <img src="./images/home_mall_island_2.png" alt="">
+                            <div class="home_mall_island_npc2">
+                                <img src="./images/mall_npc2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 商城島介紹 -->
+            <div class="home_mall_info">
+                <div class="home_mall_info_text">
+                    <div class="home_mall_info_pic">
+                        <img src="./images/home_info_npc2.png" alt="">
+                    </div>
+                    <!-- 商城島路標 -->
+                    <div class="home_mall_road_sign">
+                        <img src="./images/home_mall_road_sign.png" alt="">
+                    </div>
+                    在寶物商城兌換新的地圖與裝備！
+                </div>
+
+            </div>
+
+
+
+            <!-- 第五島--裝飾島 -->
+            <div class="home_decorate_island">
+                <!--裝飾島的雲 -->
+                <div class="home_decorate_island_cloud">
+                    <img src="./images/cloud_2.png" alt="">
+                </div>
+                <div class="home_decorate_island_pic">
+                    <img src="./images/home_lesson_island2.png" alt="">
+                    <div class="home_decorate_island_npc1">
+                        <div class="decorate_talk_1">
+                            <img src="./images/home_last_island_talk1.png" alt="">
+                        </div>
+                        <img src="./images/home_last_npc1.png" alt="">
+                    </div>
+                    <div class="home_decorate_island_npc2">
+                        <div class="decorate_talk_2">
+                            <img src="./images/home_last_island_talk2.png" alt="">
+                        </div>
+                        <img src="./images/home_last_npc2.png" alt="">
+                    </div>
+                    <!-- 裝飾島水中裝飾 -->
+                    <div class="home_decorate_island_inwater">
+                        <img src="./images/home_island_inwater_5.png" alt="">
+                    </div>
+                </div>
+
+                <div class="home_decorate_info">
+                    <div class="home_decorate_info_text">
+                        <div class="home_decorate_info_pic">
+                            <img src="./images/home_info_npc2.png" alt="">
+                        </div>
+                        和各式各樣的人一起進行討論交流。
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="home_decorate_island_2">
+            <div class="home_decorate_island_2_cloud1">
+                <img src="./images/cloud_1.png" alt="">
+            </div>
+            <div class="home_decorate_island_2_cloud2">
+                <img src="./images/cloud_4.png" alt="">
+            </div>
+            <div class="home_decorate_island_2_pic">
+                <img src="./images/home_lesson_island3.png" alt="">
+            </div>
+            <div class="home_decorate_island_2_npc1">
+                <div class="decorate_talk_3">
+                    <img src="./images/home_last_island_talk3.png" alt="">
+                </div>
+                <img src="./images/home_lesson_island_npc1.png" alt="">
+            </div>
+            <div class="home_decorate_island_2_npc2">
+                <div class="decorate_talk_4">
+                    <img src="./images/home_last_island_talk4.png" alt="">
+                </div>
+                <img src="./images/home_last_npc3.png" alt="">
+            </div>
+        </div>
+
+
+        <div class="home_last_island">
+            <div class="home_last_island_pic">
+                <img src="../images/home_footer_3.png" alt="">
+            </div>
+            <div class="home_last_island_info">
+                <div class="home_last_island_info_text">
+                    <div class="text">現在就加入會員，</div>和學伴一起學習日文吧！
+                    <div class="sign_up">
+                        <div class="btn_sign_up" id="sign_up">立即註冊</div>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="home_decorate_island_2">
-        <div class="home_decorate_island_2_cloud1">
-            <img src="./images/cloud_1.png" alt="">
-        </div>
-        <div class="home_decorate_island_2_cloud2">
-            <img src="./images/cloud_4.png" alt="">
-        </div>
-        <div class="home_decorate_island_2_pic">
-            <img src="./images/home_lesson_island3.png" alt="">
-        </div>
-        <div class="home_decorate_island_2_npc1">
-            <div class="decorate_talk_3">
-                <img src="./images/home_last_island_talk3.png" alt="">
-            </div>
-            <img src="./images/home_lesson_island_npc1.png" alt="">
-        </div>
-        <div class="home_decorate_island_2_npc2">
-            <div class="decorate_talk_4">
-                <img src="./images/home_last_island_talk4.png" alt="">
-            </div>
-            <img src="./images/home_last_npc3.png" alt="">
-        </div>
-    </div>
-
-
-    <div class="home_last_island">
-        <div class="home_last_island_pic">
-            <img src="./images/home_footer_3.png" alt="">
-        </div>
-        <div class="home_last_island_info">
-            <div class="home_last_island_info_text">
-                <div class="text">現在就加入會員，</div>和學伴一起學習日文吧！
-                <div class="sign_up">
-                    <div class="btn_sign_up" id="sign_up">立即註冊</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
     @@include('layout/footer.html')
     @@include('layout/login_register.html')
     <script>
@@ -345,6 +353,36 @@
             setInterval("change()", 1000);
         };
         window.addEventListener("load", init, false)
+
+        var animation;
+
+        gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+
+        gsap.set("#motionSVG", { scale: 0.7, autoAlpha: 2, });
+        gsap.set("#motionSVG", { transformOrigin: "50% 50%" });
+
+        animation = gsap.to("#motionSVG", {
+            scrollTrigger: {
+                trigger: "#motionPath",
+                start: "top 50%",
+                end: '+=2950px',
+                scrub: 1,
+                markers: true,
+                onUpdate: self => {
+                    gsap.to("#motionSVG", { rotation: () => self.direction === 1 ? 0 : 90, overwrite: 'auto' });
+                }
+            },
+            duration: 200,
+            ease: "none",
+            immediateRender: true,
+            motionPath: {
+                path: "#motionPath",
+                align: "#motionPath",
+                alignOrigin: [0.5, 0.5],
+                autoRotate: 180,
+            }
+        });
+
     </script>
 
 </body>
