@@ -21,10 +21,24 @@
 
             <!-- 衣櫃 -->
             <div class="closet_lightBox">
-                <!-- <div class="char">
-                    <img class="closet_char_img" src="./images/char_00.png" alt="">
-                </div> -->
-                <canvas class="char"></canvas>
+                <div id="capture" >
+                    <div class="store">保存</div>
+                    <div class="char_content">
+                        <img class="closet_char_img" src="./images/char_00.png" alt="">
+                        <div class="hat">
+                            <!-- <img src="./images/char_hat_1.png" alt=""> -->
+                        </div>
+                        <div class="dress">
+                            <!-- <img src="./images/char_dress_1.png" alt=""> -->
+                        </div>
+                        <div class="tool">
+                            <!-- <img src="./images/char_tool_1.png" alt=""> -->
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <!-- <canvas class="charCanvas"></canvas> -->
                 <div class="cloth">
                     <div class="page">
                         <div class="tab_hat">
@@ -40,16 +54,22 @@
                     <div class="item">
                         <div class="itemFront"><img src="./images/map_mem_button2.png" alt=""></div>
                         <div class="item-wrapper">
-                            <div class="closet_item">
+                            <div class="items">
+                            <!-- <div class="char_hat_${hatArray[i]}">
                                 <img src="./images/char_dress_2.png" alt="">
+                            </div> -->
                             </div>
                         </div>
                         <div class="itemBack"><img src="./images/map_mem_button.png" alt=""></div>
                     </div>
                 </div>
 
-            <!-- 改密碼(床) -->
+            
             </div>
+
+
+
+            <!-- 改密碼(床) -->
             <div class="bed_lightBox">
                 <form class="bed_form" action="">
                     <h3 class="bed_title">變更密碼</h3>
@@ -280,7 +300,7 @@
     <!-- 頁面物件 -->
     <div class="wrapper">
         <div class="say">你好~</div>
-        <img id="me" src="./images/char_00.png" alt="char_00"></img>
+        <img id="me" src="./images/char_00_1.png" class="me01" alt="char_00_1"></img>
         <div class="wall">
             <div class="content">
                 <img v-for="(data,key) in img" :src="`./images/map_mem_${img[key]}.png`" :alt="img[key]" :class="img[key]">
@@ -365,20 +385,8 @@
 
         </div>
         
-        <script>
-            
-        </script>
-
         
 
-
-                
-
-        
-        
-
-
-    
 
     @@include('layout/footer.html')
 
@@ -393,3 +401,5 @@
 
 
 </body>
+
+</html>

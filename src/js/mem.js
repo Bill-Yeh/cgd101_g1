@@ -16,20 +16,7 @@ new Vue({
    
 })
 
-// new Vue({
-//     el:'.input',
-    
-//     methods:{
-//         inputFocus(){
 
-//         }
-
-//     }
-// })
-
-
-
-// 人物上下動
 
 
 
@@ -118,8 +105,28 @@ window.onload=function(){
     let tabs=new Array("hat","dress","tool")
     for(let i=0;i<tabs.length;i++){
         document.querySelector(`.tab_${tabs[i]}`).addEventListener("click",changeTabs);
+        document.querySelector(`.tab_${tabs[i]}`).addEventListener("click",ChangeClothesItem);
     }
+
+    let me=document.querySelector("#me")
+
+    //眨眼睛
+    
 }
+
+
+
+var eyes=setInterval(()=>{
+    me.src="./images/char_00_2.png";
+
+    setTimeout(() => {
+        me.src="./images/char_00_1.png"
+        me.className="me01"
+
+    }, 500);
+},3000
+)
+
 
 window.onresize=resize;
 
@@ -129,8 +136,16 @@ window.onresize=resize;
 
 
 
-
+//=================================================================
 //換裝區切換類別頁
+
+//裝備編碼
+var hatArray=new Array("1","2","3","4","5","6","7","8");
+var dressArray=new Array("1","2","3","4","5","6","7","8","9","10");
+var toolArray=new Array("1","2","3","4");
+
+
+
 function reStartCloset(){
 
     //判斷是否為第一次打開
@@ -150,6 +165,34 @@ function reStartCloset(){
     tab_dress.style.zIndex=9;
     tab_tool.style.zIndex=8;
 
+
+    //預設為第一個頁籤的內容
+    let parent=document.querySelector('.items');
+    let child=document.querySelectorAll(".items >div");
+    if(parent.lastElementChild !=null){
+        for(let i=0;i<child.length;i++){
+            parent.removeChild(child[i])
+        }
+    }
+
+
+    document.querySelector(".items").style.left="0";
+
+    
+
+    for(let i=0;i<hatArray.length;i++){
+        let itemContent=document.createElement('div');
+        parent.appendChild(itemContent);
+        itemContent.setAttribute("class",`char_hat_${hatArray[i]}`);
+        let itemImg=document.createElement('img');
+        document.querySelectorAll('.items >div')[i].appendChild(itemImg);
+        itemImg.setAttribute("class",`char_hat_${hatArray[i]}`);
+        itemImg.src=`./images/char_hat_${hatArray[i]}.png`;
+    }
+
+
+
+    //回拋更換頁籤的函式
     return function changeTabs(){
         document.querySelector("#target").removeAttribute('id','target')
         
@@ -181,9 +224,245 @@ function reStartCloset(){
 
 var changeTabs=reStartCloset();
 
-
-
 document.querySelector('.closet').addEventListener("click",reStartCloset);
+
+
+
+
+//切換頁籤顯示內容
+function ChangeClothesItem(){
+
+    document.querySelector(".items").style.left="0";
+
+    let target=this.className;
+    let parent=document.querySelector('.items');
+    
+    let child=document.querySelectorAll(".items >div");
+    if(parent.lastElementChild !=null){
+        for(let i=0;i<child.length;i++){
+            parent.removeChild(child[i])
+        }
+    }
+    
+    switch (target) {
+        case 'tab_hat':
+            for(let i=0;i<hatArray.length;i++){
+                let itemContent=document.createElement('div');
+                parent.appendChild(itemContent);
+                itemContent.setAttribute("class",`char_hat_${hatArray[i]}`);
+                let itemImg=document.createElement('img');
+                document.querySelectorAll('.items >div')[i].appendChild(itemImg);
+                itemImg.setAttribute("class",`char_hat_${hatArray[i]}`);
+                itemImg.src=`./images/char_hat_${hatArray[i]}.png`;
+            }
+            break;
+        case 'tab_dress':
+            for(let i=0;i<dressArray.length;i++){
+                let itemContent=document.createElement('div');
+                parent.appendChild(itemContent);
+                itemContent.setAttribute("class",`char_dress_${dressArray[i]}`);
+                let itemImg=document.createElement('img');
+                document.querySelectorAll('.items >div')[i].appendChild(itemImg);
+                itemImg.setAttribute("class",`char_dress_${dressArray[i]}`);
+                itemImg.src=`./images/char_dress_${dressArray[i]}.png`;
+            }
+            break;
+        case 'tab_tool':
+            for(let i=0;i<toolArray.length;i++){
+                let itemContent=document.createElement('div');
+                parent.appendChild(itemContent);
+                itemContent.setAttribute("class",`char_tool_${hatArray[i]}`);
+                let itemImg=document.createElement('img');
+                document.querySelectorAll('.items >div')[i].appendChild(itemImg);
+                itemImg.setAttribute("class",`char_tool_${toolArray[i]}`);
+                itemImg.src=`./images/char_tool_${toolArray[i]}.png`;
+            }
+            break;
+      }
+
+}
+
+
+
+
+
+
+
+//點擊向前
+function goFront(){
+    let itemsWrapper=document.querySelector(".item-wrapper");
+    let items=document.querySelector(".items");
+
+    let itemsWrapper_W=itemsWrapper.offsetWidth;
+    let items_W=items.offsetWidth;
+
+    let leftValue=items.offsetLeft
+    
+    if(leftValue !=0){
+        if(Math.abs(leftValue) / itemsWrapper_W < 1){
+            items.style.left="0"
+        }
+        else{
+            items.style.left=`${leftValue+itemsWrapper_W}px`
+        }
+    }
+}
+
+//點擊向後
+function goBack(){
+    let itemsWrapper=document.querySelector(".item-wrapper");
+    let items=document.querySelector(".items");
+
+    let itemsWrapper_W=itemsWrapper.offsetWidth;
+    let items_W=items.offsetWidth;
+
+    let leftValue=items.offsetLeft
+    
+    if(items_W > itemsWrapper_W){
+        if((items_W + leftValue) / itemsWrapper_W <= 2){
+            if(Math.abs(leftValue)+ itemsWrapper_W< items_W){
+            items.style.left=`-${Math.abs(leftValue)+items_W % itemsWrapper_W}px`
+            }
+        }
+        else{
+            items.style.left=`-${itemsWrapper_W}px`
+        }
+    }
+    
+}
+
+
+
+
+
+document.querySelector(".itemFront").addEventListener("click",goFront);
+document.querySelector(".itemBack").addEventListener("click",goBack)
+
+
+
+
+
+//Canvas載入
+// function checkCanvas(){
+//     setTimeout(()=>html2canvas(document.querySelector(".char_content")).then(function(canvas) {
+//         document.body.appendChild(canvas);
+//         }),100)
+// }
+
+function convertCanvasToImage(){
+    setTimeout(()=>html2canvas(document.querySelector(".char_content")).then(function(e) {
+
+        let canvasArr=document.querySelectorAll("canvas")
+        console.log(canvasArr.length)
+        
+        document.body.appendChild(e);
+        if(canvasArr.length>0){
+            document.querySelector("canvas").remove()
+        }
+
+    }),100)
+
+    setTimeout(()=>{
+        let canvas=document.querySelector("canvas")
+        let image = new Image();
+	    image.src = canvas.toDataURL();
+
+        document.querySelector("#me").src=image.src
+
+        clearInterval(eyes)
+    },500)
+
+    // console.log(1)
+
+	// return image;
+}
+
+
+
+document.querySelector(".closet").addEventListener("click",convertCanvasToImage)
+
+
+
+document.querySelector(".store").addEventListener("click",convertCanvasToImage)
+
+
+
+if(document.querySelector(".hat >img") !=null ){
+    document.querySelector(".hat >img").addEventListener("change",convertCanvasToImage)
+}
+
+
+//點選列中子物件
+function dressOn(){
+    // let char_content=document.querySelector(".char_content")
+    let hat=document.querySelector(".hat")
+    let dress=document.querySelector(".dress")
+    let tool=document.querySelector(".tool")
+
+    
+    if(document.querySelector("#target").className=="tab_hat"){
+        let hatChild=document.querySelector(".hat >img")
+        
+        if(hatChild !=null ){
+            hat.removeChild(hatChild);
+        }
+        
+        
+        let hatImg=document.createElement("img")
+        hat.appendChild(hatImg)
+        hatImg.src=`./images/${this.className}.png`
+    }
+
+    else if(document.querySelector("#target").className=="tab_dress"){
+        let dressChild=document.querySelector(".dress >img")
+        
+        if(dressChild !=null ){
+            dress.removeChild(dressChild);
+        }
+
+        let dressImg=document.createElement("img")
+        dress.appendChild(dressImg)
+        dressImg.src=`./images/${this.className}.png`
+
+    }
+
+    else if(document.querySelector("#target").className=="tab_tool"){
+        let toolChild=document.querySelector(".tool >img")
+        
+        if(toolChild !=null ){
+            tool.removeChild(toolChild);
+        }
+        let toolImg=document.createElement("img")
+        tool.appendChild(toolImg)
+        toolImg.src=`./images/${this.className}.png`
+        
+    }
+
+
+}
+
+
+//設定事件聆聽
+function clothItem(){
+    setTimeout(()=>{
+        let closet_item=document.querySelectorAll(".items >div")
+        for(i=0;i<closet_item.length;i++){
+        closet_item[i].addEventListener("click",dressOn)
+        }
+    },500)
+}
+
+
+
+
+document.querySelector('.closet').addEventListener("click",clothItem)
+document.querySelector('.tab_hat').addEventListener("click",clothItem)
+document.querySelector('.tab_dress').addEventListener("click",clothItem)
+document.querySelector('.tab_tool').addEventListener("click",clothItem)
+
+
+
+
 
 
 
@@ -377,6 +656,10 @@ function closeError(){
 }
 
 document.querySelector(".error .cancel").addEventListener('click',closeError)
+
+
+
+
 
 
 
