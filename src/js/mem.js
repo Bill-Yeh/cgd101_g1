@@ -350,7 +350,7 @@ document.querySelector(".itemBack").addEventListener("click",goBack)
 // }
 
 function convertCanvasToImage(){
-    setTimeout(()=>html2canvas(document.querySelector(".char_content")).then(function(e) {
+    setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null}).then(function(e) {
 
         let canvasArr=document.querySelectorAll("canvas")
         console.log(canvasArr.length)
