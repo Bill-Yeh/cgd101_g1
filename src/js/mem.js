@@ -108,7 +108,7 @@ window.onload=function(){
         document.querySelector(`.tab_${tabs[i]}`).addEventListener("click",ChangeClothesItem);
     }
 
-    let me=document.querySelector("#me")
+    // 
 
     //眨眼睛
     
@@ -117,12 +117,11 @@ window.onload=function(){
 
 
 var eyes=setInterval(()=>{
-    me.src="./images/char_00_2.png";
+    let me=document.querySelector(".eyes")
+    me.src="./images/char_00_eye_close.png";
 
     setTimeout(() => {
-        me.src="./images/char_00_1.png"
-        me.className="me01"
-
+        me.src="./images/char_00_eye_open.png"
     }, 500);
 },3000
 )
@@ -353,7 +352,7 @@ function convertCanvasToImage(){
     setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null}).then(function(e) {
 
         let canvasArr=document.querySelectorAll("canvas")
-        console.log(canvasArr.length)
+        // console.log(canvasArr.length)
         
         document.body.appendChild(e);
         if(canvasArr.length>0){
@@ -369,7 +368,7 @@ function convertCanvasToImage(){
 
         document.querySelector("#me").src=image.src
 
-        clearInterval(eyes)
+        // clearInterval(eyes)
     },500)
 
     // console.log(1)

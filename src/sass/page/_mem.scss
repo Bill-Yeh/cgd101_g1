@@ -23,7 +23,7 @@
         top:calc(100%*0.5 - 120px);
         left: calc(100% *0.5);
     }
-    #me{
+    .me_content{
         z-index:6 ;
         width: 150px;
         position: absolute;
@@ -42,9 +42,25 @@
               to {
                 margin-top: -10px;
               }
-            }
         }
+        #me{
+           width: 100%;
+
+        }
+        .eyes{
+            width: 100%;
+            position: absolute;
+            top:-2px;
+            left: -2px;
+
+            
+
+        }
+
+
+        
     }
+}
 
 
 
@@ -634,6 +650,18 @@
 
                     }
 
+                    .closet_char_eyes{
+                        width: 140px;
+                        position: absolute;
+                        top:calc(50% - 72px) ;
+                        left:calc(50% - 72px);
+                        z-index: 8;
+                        // top:50% ;
+                        // left: 50%;
+
+
+                    }
+
                     .char_content{
                         position: relative;
                     }
@@ -646,6 +674,7 @@
                     }
 
                     .hat{
+                        z-index: 9;
                         position: absolute;
                         width: 87px;
                         top: 0;
@@ -656,14 +685,19 @@
                     }
 
                     .dress{
+                        z-index: 9;
                         position: absolute;
                         top: 50px;
                         left: 30px;
+                        img{
+                            width: 100%;
+                        }
 
                         
                     }
 
                     .tool{
+                        z-index: 9;
                         position: absolute;
                         width: 80px;
                         bottom: -23px;
