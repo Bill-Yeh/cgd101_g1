@@ -23,8 +23,9 @@
             <div class="closet_lightBox">
                 <div id="capture" >
                     <div class="store">保存</div>
+                    <img class="closet_char_eyes" src="./images/char_00_eye_open.png"></img>
                     <div class="char_content">
-                        <img class="closet_char_img" src="./images/char_00.png" alt="">
+                        <img class="closet_char_img" src="./images/char_00_0.png" alt="">
                         <div class="hat">
                             <!-- <img src="./images/char_hat_1.png" alt=""> -->
                         </div>
@@ -35,10 +36,9 @@
                             <!-- <img src="./images/char_tool_1.png" alt=""> -->
                         </div>
                     </div>
-                    
-                    
                 </div>
-                <!-- <canvas class="charCanvas"></canvas> -->
+
+
                 <div class="cloth">
                     <div class="page">
                         <div class="tab_hat">
@@ -289,7 +289,10 @@
     <!-- 頁面物件 -->
     <div class="wrapper">
         <div class="say">你好~</div>
-        <img id="me" src="./images/char_00_1.png" class="me01" alt="char_00_1"></img>
+        <div class="me_content">
+            <img src="./images/char_00_eye_open.png" alt="" class="eyes">
+            <img id="me" src="./images/char_00_0.png" class="me01" alt="char_00_1"></img>
+        </div>
         <div class="wall">
             <div class="content">
                 <img v-for="(data,key) in img" :src="`./images/map_mem_${img[key]}.png`" :alt="img[key]" :class="img[key]">
