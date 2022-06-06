@@ -26,10 +26,10 @@
                             <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i></i>新增課程</button>
                         </div>
                         <div class="backStage_input_filter">
-                            <div class="on_stock">
+                            <!-- <div class="on_stock">
                                 <span>線上商品(2)</span>
                                 <span>回收桶(0)</span>
-                            </div>
+                            </div> -->
                             <div class="input_filter">
                                 <input type="text" placeholder="以課程編號查詢">
                                 <i class="bi bi-search"></i>
@@ -47,6 +47,7 @@
                                 <th>課程編號</th>
                                 <th>課程圖片</th>
                                 <th>課程名稱</th>
+                                <th>課程描述</th>
                                 <th>課程價格</th>
                                 <th>課程狀態</th>
                                 <th></th>
@@ -56,6 +57,7 @@
                                 <td>001</td>
                                 <td><img src="./images/payement_map.png" alt=""></td>
                                 <td>N3單字</td>
+                                <td>N3日常單字</td>
                                 <td>NT$150元</td>
                                 <td>
                                     <select name="" id="">
@@ -83,10 +85,10 @@
                         </div>
                         <div class="backStage_lightBox_main_content">
                             <form action="">
-                                <div class="course_sm_block">
+                                <!-- <div class="course_sm_block">
                                     <label for="course_sm">課程編號</label>
                                     <input type="text" id="course_sm">
-                                </div>
+                                </div> -->
                                 <div class="course_img_block">
                                     <label for="course_img">課程圖片</label>
                                     <input type="file" id="course_img">
@@ -94,6 +96,10 @@
                                 <div class="course_title_block">
                                     <label for="course_title">課程名稱</label>
                                     <input type="text" id="course_title">
+                                </div>
+                                <div class="course_descript_block">
+                                    <label for="course_descript">課程描述</label>
+                                    <input type="text" id="course_descript">
                                 </div>
                                 <div class="course_price_block">
                                     <label for="course_price">課程價格</label>
