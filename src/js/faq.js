@@ -2,6 +2,7 @@ window.addEventListener('load', function() {
     //faq 選單
     let course = document.getElementsByTagName('h2'); 
     
+    course[0].style.color = '#fff';
     for(let i = 0; i<course.length; i++){
         course[i].addEventListener('click',function(){
             course[i].style.color = '#fff';
