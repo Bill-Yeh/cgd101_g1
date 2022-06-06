@@ -17,6 +17,59 @@ new Vue({
 })
 
 
+//確定是否是首次註冊後進入會員登入
+function pageTour(){
+    let url=document.referrer;
+    let urlArry=url.split("/")
+    let frontUrl=urlArry[urlArry.length-1]
+
+    if(frontUrl == 'signUp_animation.html'){
+        //開啟燈箱
+        // let black=document.querySelector(".bg_00");
+        // black.style.display='block';
+
+        setTimeout(()=>{
+
+            let lightBoxInfo=document.querySelector(".getchar_lightBox");
+
+            lightBoxInfo.style.width='40vw';
+            lightBoxInfo.style.height='50vh';
+
+        },100)
+
+        setTimeout(()=>{
+
+            let talk=document.querySelector(".talkBox");
+            talk.style.display="block"
+
+            let talkBox=document.querySelector(".talkBox_inside");
+            talkBox.animate({
+                width:"100%"
+            },4500,'linear')
+
+
+            setTimeout(()=>{
+                let button=document.querySelector(".goMem");
+                button.style.display="block";
+
+                talkBox.style.width="100%"
+
+                // setInterval(()=>{
+
+                // })
+
+            },3000)
+
+        },1200)
+
+    
+    }
+}
+
+
+
+
+window.addEventListener("load",pageTour)
 
 
 
@@ -367,6 +420,7 @@ function convertCanvasToImage(){
 	    image.src = canvas.toDataURL();
 
         document.querySelector("#me").src=image.src
+        document.querySelector(".eyes").style.top="8px"
 
         // clearInterval(eyes)
     },500)
@@ -409,7 +463,7 @@ function dressOn(){
         
         let hatImg=document.createElement("img")
         hat.appendChild(hatImg)
-        hatImg.src=`./images/${this.className}.png`
+        hatImg.src=`./images/${this.className}_on.png`
     }
 
     else if(document.querySelector("#target").className=="tab_dress"){
