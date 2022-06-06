@@ -15,16 +15,43 @@ window.addEventListener('load',function(){
     // 取消付款btn
     let cancelBtn = document.getElementById('cancel_trade');
 
-    let inputValue = document.querySelectorAll('.customer_input');
+    let inputValue = document.querySelector('.customer_input');
+
+    // 信用卡號1
+    let cardID1 = document.getElementById('card_id');
+
+    // 信用卡號2
+    let cardID2 = document.getElementById('card_id2');
+
+    // 信用卡號3
+    let cardID3 = document.getElementById('card_id3');
+
+    // 信用卡號4
+    let cardID4 = document.getElementById('card_id4');
+
+    // 有效期限
+    let expireDate = document.getElementById('expire');
+
+    // 安全碼
+    let security = document.getElementById('security');
+
+    // 姓名
+    let name = document.getElementById('customer_name');
+
+    // 電話
+    let phone = document.getElementById('customer_phone');
+
+    // 信箱
+    let email = document.getElementById('customer_email');
 
     // 點擊確認結帳btn開燈箱
     paymentCheckBtn.addEventListener('click',function(e){
-        // for(let i = 0; i<inputValue.length; i++){
-        //     if(inputValue[i].value == ''){
-        //         alert('請輸入完整資訊');
-        //     }
-        //     e.preventDefault();
-        // }
+        if(cardID1.value =='' || cardID2.value ==''|| cardID3.value ==''|| cardID4.value ==''|| expireDate.value ==''|| security.value ==''|| name.value ==''|| phone.value ==''|| email.value ==''){
+            alert('請輸入完整資訊');
+            e.preventDefault();
+            return;
+        }
+
         
         // 開燈箱
         paymentCheckBox.style.display = 'flex';
