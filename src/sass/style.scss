@@ -30,6 +30,11 @@
 @import "page/studyMap";
 @import "layout/loginRegister";
 
+::selection{
+    background-color: map-get($color, 'backstage_h');
+    color: #fff;
+}
+
 //偽元素
 // a {
 //     color: #333;
