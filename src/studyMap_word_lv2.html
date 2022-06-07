@@ -46,12 +46,7 @@
                     <div class="npc-pic">
                         <img id="pic" src="">
                     </div>
-            </div>
-                
-            </div>
-            <div class="studyMap_con " id="mapCon">
-                <p id="con">
-                </p>
+                </div>
             </div>
             <!-- 背景濾鏡 -->
             <div class="studyMap_fliter" id="mapFliter"></div>
@@ -68,6 +63,7 @@
                     <button>先不要</button>
                 </div>
             </div>
+            <!-- 木板告示 -->
             <div class="item">
                 <img src="./images/studyMap_guide4.png">
             </div>
@@ -449,13 +445,7 @@
             food.style.display="block";
             trafic.style.display="block";
         }
-        let pig = document.getElementById("piggy").style.animationName;
-        // let dog = pig.style.animationDuration;
-        // function animation(){
-        //     console.log(dog);
-        // }
         function init(){
-            console.log(pig);
             let imgs = document.getElementsByClassName('npc-img');
             let goto =document.getElementById('Yes');
             let cancel =document.getElementById('No');
@@ -463,7 +453,6 @@
                 imgs[i].onclick = showLightBox ;
             };
             cat.addEventListener('click',conversation,false);
-            pig.addEventListener('mouseover',animation,false)
             speaker.addEventListener('click',justPlay,true);
             closeBox.addEventListener('click',shutDown,false);
             goto.addEventListener('click',goToTest,false);
