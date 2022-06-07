@@ -21,13 +21,13 @@ window.addEventListener('load',function(){
     let cardID1 = document.getElementById('card_id');
 
     // 信用卡號2
-    let cardID2 = document.getElementById('card_id2');
+    let cardID2 = document.getElementById('card_id_2');
 
     // 信用卡號3
-    let cardID3 = document.getElementById('card_id3');
+    let cardID3 = document.getElementById('card_id_3');
 
     // 信用卡號4
-    let cardID4 = document.getElementById('card_id4');
+    let cardID4 = document.getElementById('card_id_4');
 
     // 有效期限
     let expireDate = document.getElementById('expire');
@@ -46,7 +46,8 @@ window.addEventListener('load',function(){
 
     // 點擊確認結帳btn開燈箱
     paymentCheckBtn.addEventListener('click',function(e){
-        if(cardID1.value =='' || cardID2.value ==''|| cardID3.value ==''|| cardID4.value ==''|| expireDate.value ==''|| security.value ==''|| name.value ==''|| phone.value ==''|| email.value ==''){
+        // alert('hello Ava');
+        if(cardID1.value =='' || cardID2.value ==''|| cardID3.value ==''|| cardID4.value ==''|| security.value ==''|| name.value ==''|| phone.value ==''|| email.value ==''){
             alert('請輸入完整資訊');
             e.preventDefault();
             return;
