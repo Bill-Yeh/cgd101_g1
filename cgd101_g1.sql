@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-06 16:27:52
+-- 產生時間： 2022-06-07 17:00:39
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -79,9 +79,9 @@ CREATE TABLE `error` (
   `error_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `error_txt` varchar(800) NOT NULL COMMENT 'Not Null',
-  `error_file` varchar(20) NOT NULL,
+  `error_file` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `error_status` char(1) NOT NULL COMMENT 'Not Null(0-未審核,1-通過,2-未通過)',
-  `error_datetime` datetime NOT NULL COMMENT 'Not Null'
+  `error_datetime` datetime(6) NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -89,9 +89,29 @@ CREATE TABLE `error` (
 --
 
 INSERT INTO `error` (`error_id`, `member_id`, `error_txt`, `error_file`, `error_status`, `error_datetime`) VALUES
-(1, 1, '購買n5單字課程後，無法解鎖地圖', 'n5_lesson', '0', '2022-06-04 16:47:02'),
-(2, 2, '購買裝備後，無法正常穿戴', 'item_img', '2', '2022-06-03 16:47:02'),
-(3, 3, '留言區無法按讚', 'like', '1', '2022-06-02 16:48:36');
+(1, 1, '購買n5單字課程後，無法解鎖地圖', './images/report/error1.png', '0', '2022-06-04 16:47:02.000000'),
+(2, 2, '購買裝備後，無法正常穿戴', './images/report/error2.png', '2', '2022-06-03 16:47:02.000000'),
+(3, 3, '留言區無法按讚', './images/report/error3.png', '1', '2022-06-02 16:48:36.000000');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `fav`
+--
+
+CREATE TABLE `fav` (
+  `post_id` int NOT NULL COMMENT 'Not Null(PK,FK)',
+  `member_id` int NOT NULL COMMENT 'Not Null(PK,FK)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `fav`
+--
+
+INSERT INTO `fav` (`post_id`, `member_id`) VALUES
+(1, 1),
+(3, 2),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -102,7 +122,7 @@ INSERT INTO `error` (`error_id`, `member_id`, `error_txt`, `error_file`, `error_
 CREATE TABLE `item` (
   `item_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
   `item_name` varchar(30) NOT NULL COMMENT 'Not Null',
-  `item_img` varchar(20) NOT NULL COMMENT 'Not Null',
+  `item_img` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null',
   `item_price` int NOT NULL COMMENT 'Not Null',
   `item_info` varchar(90) NOT NULL COMMENT 'Not Null',
   `item_status` int NOT NULL COMMENT 'Not Null(1-上架,2-下架)'
@@ -113,9 +133,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `item_img`, `item_price`, `item_info`, `item_status`) VALUES
-(1, '漁夫帽', 'bucket_hat', 300, '帥氣漁夫帽，提升您的角色帥氣度。', 1),
-(2, '頭盔', 'helmet', 500, '鋼鐵頭盔，加成角色防禦力。', 1),
-(3, '洋裝', 'dress', 700, '氣質洋裝，加成角色氣質度。', 2);
+(1, '漁夫帽', './images/1.png', 300, '帥氣漁夫帽，提升您的角色帥氣度。', 1),
+(2, '頭盔', './images/2.png', 500, '鋼鐵頭盔，加成角色防禦力。', 1),
+(3, '洋裝', './images/3.png', 700, '氣質洋裝，加成角色氣質度。', 2);
 
 -- --------------------------------------------------------
 
@@ -128,7 +148,7 @@ CREATE TABLE `item_record` (
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `item_id` int NOT NULL COMMENT 'Not Null(FK)',
   `payment_time` datetime(6) NOT NULL COMMENT 'Not Null',
-  `put_on` char(1) NOT NULL COMMENT 'Not Null(0-未裝備,1-已裝備)',
+  `dress_on` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null(0-未裝備,1-已裝備)',
   `item_price` int NOT NULL COMMENT 'Not Null(FK)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -136,7 +156,7 @@ CREATE TABLE `item_record` (
 -- 傾印資料表的資料 `item_record`
 --
 
-INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_time`, `put_on`, `item_price`) VALUES
+INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_time`, `dress_on`, `item_price`) VALUES
 (1, 1, 1, '2022-06-04 14:04:07.000000', '0', 300),
 (2, 2, 2, '2022-06-02 14:04:07.000000', '1', 500),
 (3, 3, 3, '2022-06-01 07:23:31.000000', '1', 700);
@@ -150,7 +170,7 @@ INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_tim
 CREATE TABLE `lesson` (
   `lesson_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
   `lesson_name` varchar(50) NOT NULL COMMENT 'Not Null',
-  `lesson_img` varchar(20) NOT NULL COMMENT 'Not Null',
+  `lesson_img` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null',
   `lesson_price` int NOT NULL COMMENT 'Not Null',
   `lesson_info` varchar(90) NOT NULL COMMENT 'Not Null',
   `lesson_type_id` int NOT NULL COMMENT 'Not Null(FK)',
@@ -162,9 +182,9 @@ CREATE TABLE `lesson` (
 --
 
 INSERT INTO `lesson` (`lesson_id`, `lesson_name`, `lesson_img`, `lesson_price`, `lesson_info`, `lesson_type_id`, `lesson_status`) VALUES
-(1, 'N5單字', 'n5_vocabulary', 300, 'N5單字大全，統整N5 JLPT高頻率出現的單字，讓考生能夠輕鬆掌握精華重點。', 1, 1),
-(2, 'N4會話', 'n4_conversation', 600, 'N4會話大全，統整N4 JLPT高頻率出現的聽力會話，讓考生能夠輕鬆掌握精華重點。', 2, 1),
-(3, 'N3會話', 'n3_conversation', 700, 'N3會話大全，統整N3 JLPT高頻率出現的聽力會話，讓考生能夠輕鬆掌握精華重點。', 3, 2);
+(1, 'N5單字', './images/payment_map.png', 300, 'N5單字大全，統整N5 JLPT高頻率出現的單字，讓考生能夠輕鬆掌握精華重點。', 1, 1),
+(2, 'N4會話', './images/payment_map.png', 600, 'N4會話大全，統整N4 JLPT高頻率出現的聽力會話，讓考生能夠輕鬆掌握精華重點。', 2, 1),
+(3, 'N3會話', './images/payment_map.png', 700, 'N3會話大全，統整N3 JLPT高頻率出現的聽力會話，讓考生能夠輕鬆掌握精華重點。', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -192,22 +212,22 @@ INSERT INTO `lesson_record` (`lesson_order_id`, `memeber_id`, `lesson_id`, `paym
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `like`
+-- 資料表結構 `lesson_type`
 --
 
-CREATE TABLE `like` (
-  `post_id` int NOT NULL COMMENT 'Not Null(PK,FK)',
-  `member_id` int NOT NULL COMMENT 'Not Null(PK,FK)'
+CREATE TABLE `lesson_type` (
+  `type_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
+  `type_name` varchar(30) NOT NULL COMMENT 'Not Null(五十音、單字、會話)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- 傾印資料表的資料 `like`
+-- 傾印資料表的資料 `lesson_type`
 --
 
-INSERT INTO `like` (`post_id`, `member_id`) VALUES
-(1, 1),
-(3, 2),
-(2, 3);
+INSERT INTO `lesson_type` (`type_id`, `type_name`) VALUES
+(1, '五十音'),
+(2, '單字'),
+(3, '會話');
 
 -- --------------------------------------------------------
 
@@ -230,9 +250,9 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`) VALUES
-(1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1', 100, 1),
-(2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '0', 200, 1),
-(3, 'Bill', 'efg@gmail.com', 'cccCCC111', '1', 300, 1);
+(1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1', 0, 1),
+(2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '0', 100, 1),
+(3, 'Bill', 'efg@gmail.com', 'cccCCC111', '1', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -242,7 +262,7 @@ INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member
 
 CREATE TABLE `member_level` (
   `level` int NOT NULL COMMENT 'Not Null(PK,AI)',
-  `title` varchar(10) NOT NULL COMMENT 'Not Null(\r\n1~5 = 初心者,\r\n6~20 = 冒險者 ,\r\n21~30=探險家,\r\n31~50=大探險家,\r\n51~60=超探險家,\r\n61~70=究極探險家,\r\n71~80=無敵探險家,\r\n81~90=神探險家,\r\n91~99=極醒探險家,\r\n100(MAX)=超銀河探險家)'
+  `title` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null(\r\n1~5 = 初心者,\r\n6~20 = 冒險者 ,\r\n21~30=探險者,\r\n31~50=大探險者,\r\n51~60=超探險者,\r\n61~70=究極探險者,\r\n71~80=無敵探險者,\r\n81~90=神探險者,\r\n91~99=極醒探險者,\r\n100(MAX)=超銀河探險者)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -252,7 +272,7 @@ CREATE TABLE `member_level` (
 INSERT INTO `member_level` (`level`, `title`) VALUES
 (1, '初心者'),
 (2, '冒險者'),
-(3, '探險家');
+(3, '探險者');
 
 -- --------------------------------------------------------
 
@@ -262,7 +282,7 @@ INSERT INTO `member_level` (`level`, `title`) VALUES
 
 CREATE TABLE `message` (
   `message_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
-  `message_date` datetime NOT NULL COMMENT 'Not Null',
+  `message_date` datetime(6) NOT NULL COMMENT 'Not Null',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `post_id` int NOT NULL COMMENT 'Not Null(FK)',
   `message_txt` varchar(800) NOT NULL COMMENT 'Not Null'
@@ -273,34 +293,9 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`message_id`, `message_date`, `member_id`, `post_id`, `message_txt`) VALUES
-(1, '2022-06-04 16:32:42', 1, 1, '+1想參加讀書會'),
-(2, '2022-06-03 16:33:54', 2, 2, 'QQ我沒報名到JPLT考試'),
-(3, '2022-06-02 16:33:54', 3, 3, '+1 我也想要有個伴一起讀書');
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `option`
---
-
-CREATE TABLE `option` (
-  `option_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
-  `lesson_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `txt` varchar(240) NOT NULL COMMENT 'Not Null',
-  `option_point` int NOT NULL COMMENT 'Not Null(0,1,2,3)',
-  `ans` char(1) NOT NULL COMMENT 'Not Null',
-  `option_content` varchar(240) NOT NULL COMMENT 'Not Null',
-  `option_status` int NOT NULL COMMENT 'Not Null(1:上架,2:下架)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- 傾印資料表的資料 `option`
---
-
-INSERT INTO `option` (`option_id`, `lesson_id`, `txt`, `option_point`, `ans`, `option_content`, `option_status`) VALUES
-(1, 1, 'あか', 0, '0', '1.aka\r\n2.ao\r\n3.nan\r\n4.ame', 1),
-(2, 2, 'あお', 1, '0', '1.ao\r\n2.aka\r\n3.nan\r\n4.ame', 1),
-(3, 3, 'あめ', 2, '0', '1.ame\r\n2.aka\r\n3.nan\r\n4.ao', 2);
+(1, '2022-06-04 16:32:42.000000', 1, 1, '+1想參加讀書會'),
+(2, '2022-06-03 16:33:54.000000', 2, 2, 'QQ我沒報名到JPLT考試'),
+(3, '2022-06-02 16:33:54.000000', 3, 3, '+1 我也想要有個伴一起讀書');
 
 -- --------------------------------------------------------
 
@@ -311,7 +306,7 @@ INSERT INTO `option` (`option_id`, `lesson_id`, `txt`, `option_point`, `ans`, `o
 CREATE TABLE `post` (
   `post_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `post_date` datetime NOT NULL COMMENT 'Not Null',
+  `post_date` datetime(6) NOT NULL COMMENT 'Not Null',
   `post_txt` varchar(800) NOT NULL COMMENT 'Not Null',
   `post_title` varchar(300) NOT NULL COMMENT 'Not Null',
   `post_status` int NOT NULL COMMENT 'Not Null(1:顯示,2:隱藏)'
@@ -322,9 +317,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `member_id`, `post_date`, `post_txt`, `post_title`, `post_status`) VALUES
-(1, 1, '2022-06-04 16:18:08', '有誰有報名今年12月的JLPT N4考試? 有沒有興趣來讀書會一起練習討論呢?', '今年12月的JLPT N4考試', 1),
-(2, 2, '2022-06-03 16:18:08', '有誰可以推薦一下甚麼日劇適合初學者練習聽力呢?', '適合初學者練習聽力的日劇', 1),
-(3, 3, '2022-06-01 16:20:11', '升級測驗會話第3題為甚麼答案不是a?', '升級測驗會話第3題', 1);
+(1, 1, '2022-06-04 16:18:08.000000', '有誰有報名今年12月的JLPT N4考試? 有沒有興趣來讀書會一起練習討論呢?', '今年12月的JLPT N4考試', 1),
+(2, 2, '2022-06-03 16:18:08.000000', '有誰可以推薦一下甚麼日劇適合初學者練習聽力呢?', '適合初學者練習聽力的日劇', 1),
+(3, 3, '2022-06-01 16:20:11.000000', '升級測驗會話第3題為甚麼答案不是a?', '升級測驗會話第3題', 1);
 
 -- --------------------------------------------------------
 
@@ -333,20 +328,48 @@ INSERT INTO `post` (`post_id`, `member_id`, `post_date`, `post_txt`, `post_title
 --
 
 CREATE TABLE `quiz_record` (
-  `quiz_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
+  `quiz_record_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
+  `quiz_id` int NOT NULL COMMENT 'Not Null(FK)',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `quiz_score` int NOT NULL COMMENT 'Not Null',
-  `quiz_time` datetime NOT NULL COMMENT 'Not Null ( 1 = pass , 0 = fail)'
+  `quiz_time` datetime(6) NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `quiz_record`
 --
 
-INSERT INTO `quiz_record` (`quiz_id`, `member_id`, `quiz_score`, `quiz_time`) VALUES
-(1, 1, 90, '2022-06-04 15:22:38'),
-(2, 2, 80, '2022-06-01 15:22:38'),
-(3, 3, 50, '2022-06-01 03:23:01');
+INSERT INTO `quiz_record` (`quiz_record_id`, `quiz_id`, `member_id`, `quiz_score`, `quiz_time`) VALUES
+(1, 1, 1, 90, '2022-06-04 15:22:38.000000'),
+(2, 2, 2, 80, '2022-06-01 15:22:38.000000'),
+(3, 3, 3, 50, '2022-06-01 03:23:01.000000');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `q_data`
+--
+
+CREATE TABLE `q_data` (
+  `option_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
+  `lesson_id` int NOT NULL COMMENT 'Not Null(FK)',
+  `txt` varchar(240) NOT NULL COMMENT 'Not Null',
+  `option_point` int NOT NULL COMMENT 'Not Null',
+  `ans` varchar(240) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null',
+  `option_content1` varchar(240) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null',
+  `option_content2` varchar(240) NOT NULL COMMENT 'Not Null',
+  `option_content3` varchar(240) NOT NULL COMMENT 'Not Null',
+  `option_status` int NOT NULL COMMENT 'Not Null(1:上架,2:下架)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `q_data`
+--
+
+INSERT INTO `q_data` (`option_id`, `lesson_id`, `txt`, `option_point`, `ans`, `option_content1`, `option_content2`, `option_content3`, `option_status`) VALUES
+(1, 1, 'あか', 0, 'aka', 'ame\r\n\r\n\r\n', 'ao', 'nan', 1),
+(2, 2, 'あお', 1, 'ao', 'aka', 'nan', 'ame', 1),
+(3, 3, 'あめ', 2, 'ame', 'ao', 'aka', 'nan', 2);
 
 -- --------------------------------------------------------
 
@@ -378,29 +401,18 @@ INSERT INTO `report` (`report_id`, `member_id`, `post_id`, `report_status`, `rep
 --
 
 CREATE TABLE `topic` (
-  `quiz_id` int NOT NULL COMMENT 'Not Null(PK,FK)',
-  `option_id` int NOT NULL COMMENT 'Not Null(PK,FK)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `type`
---
-
-CREATE TABLE `type` (
-  `type_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
-  `type_name` varchar(30) NOT NULL COMMENT 'Not Null(五十音、單字、會話)'
+  `quiz_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
+  `lesson_id` int NOT NULL COMMENT 'Not Null(FK)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- 傾印資料表的資料 `type`
+-- 傾印資料表的資料 `topic`
 --
 
-INSERT INTO `type` (`type_id`, `type_name`) VALUES
-(1, '五十音'),
-(2, '單字'),
-(3, '會話');
+INSERT INTO `topic` (`quiz_id`, `lesson_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3);
 
 --
 -- 已傾印資料表的索引
@@ -426,6 +438,13 @@ ALTER TABLE `backstage`
 ALTER TABLE `error`
   ADD PRIMARY KEY (`error_id`),
   ADD KEY `error_member_fk` (`member_id`);
+
+--
+-- 資料表索引 `fav`
+--
+ALTER TABLE `fav`
+  ADD PRIMARY KEY (`post_id`,`member_id`),
+  ADD KEY `like_member_fk` (`member_id`);
 
 --
 -- 資料表索引 `item`
@@ -457,11 +476,10 @@ ALTER TABLE `lesson_record`
   ADD KEY `lesson_record_lesson_fk` (`lesson_id`);
 
 --
--- 資料表索引 `like`
+-- 資料表索引 `lesson_type`
 --
-ALTER TABLE `like`
-  ADD PRIMARY KEY (`post_id`,`member_id`),
-  ADD KEY `like_member_fk` (`member_id`);
+ALTER TABLE `lesson_type`
+  ADD PRIMARY KEY (`type_id`);
 
 --
 -- 資料表索引 `member`
@@ -485,13 +503,6 @@ ALTER TABLE `message`
   ADD KEY `message_post_fk` (`post_id`);
 
 --
--- 資料表索引 `option`
---
-ALTER TABLE `option`
-  ADD PRIMARY KEY (`option_id`),
-  ADD KEY `option_lesson_fk` (`lesson_id`);
-
---
 -- 資料表索引 `post`
 --
 ALTER TABLE `post`
@@ -502,8 +513,16 @@ ALTER TABLE `post`
 -- 資料表索引 `quiz_record`
 --
 ALTER TABLE `quiz_record`
-  ADD PRIMARY KEY (`quiz_id`),
+  ADD PRIMARY KEY (`quiz_record_id`),
+  ADD KEY `quiz_record_topic_fk` (`quiz_id`),
   ADD KEY `quiz_record_member_fk` (`member_id`);
+
+--
+-- 資料表索引 `q_data`
+--
+ALTER TABLE `q_data`
+  ADD PRIMARY KEY (`option_id`),
+  ADD KEY `option_lesson_fk` (`lesson_id`);
 
 --
 -- 資料表索引 `report`
@@ -517,14 +536,8 @@ ALTER TABLE `report`
 -- 資料表索引 `topic`
 --
 ALTER TABLE `topic`
-  ADD PRIMARY KEY (`quiz_id`,`option_id`),
-  ADD KEY `topic_option_fk` (`option_id`);
-
---
--- 資料表索引 `type`
---
-ALTER TABLE `type`
-  ADD PRIMARY KEY (`type_id`);
+  ADD PRIMARY KEY (`quiz_id`),
+  ADD KEY `topic_lesson_fk` (`lesson_id`);
 
 --
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
@@ -573,6 +586,12 @@ ALTER TABLE `lesson_record`
   MODIFY `lesson_order_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK, AI)', AUTO_INCREMENT=4;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_type`
+--
+ALTER TABLE `lesson_type`
+  MODIFY `type_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
@@ -591,12 +610,6 @@ ALTER TABLE `message`
   MODIFY `message_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `option`
---
-ALTER TABLE `option`
-  MODIFY `option_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
-
---
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post`
 --
 ALTER TABLE `post`
@@ -606,7 +619,13 @@ ALTER TABLE `post`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `quiz_record`
 --
 ALTER TABLE `quiz_record`
-  MODIFY `quiz_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
+  MODIFY `quiz_record_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `q_data`
+--
+ALTER TABLE `q_data`
+  MODIFY `option_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `report`
@@ -615,10 +634,10 @@ ALTER TABLE `report`
   MODIFY `report_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `type`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `topic`
 --
-ALTER TABLE `type`
-  MODIFY `type_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
+ALTER TABLE `topic`
+  MODIFY `quiz_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
 
 --
 -- 已傾印資料表的限制式
@@ -638,6 +657,13 @@ ALTER TABLE `error`
   ADD CONSTRAINT `error_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- 資料表的限制式 `fav`
+--
+ALTER TABLE `fav`
+  ADD CONSTRAINT `like_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `like_post_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- 資料表的限制式 `item_record`
 --
 ALTER TABLE `item_record`
@@ -648,7 +674,7 @@ ALTER TABLE `item_record`
 -- 資料表的限制式 `lesson`
 --
 ALTER TABLE `lesson`
-  ADD CONSTRAINT `lesson_type_fk` FOREIGN KEY (`lesson_type_id`) REFERENCES `type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lesson_type_fk` FOREIGN KEY (`lesson_type_id`) REFERENCES `lesson_type` (`type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `lesson_record`
@@ -656,13 +682,6 @@ ALTER TABLE `lesson`
 ALTER TABLE `lesson_record`
   ADD CONSTRAINT `lesson_record_lesson_fk` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `lesson_record_member_fk` FOREIGN KEY (`memeber_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- 資料表的限制式 `like`
---
-ALTER TABLE `like`
-  ADD CONSTRAINT `like_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `like_post_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `member`
@@ -678,12 +697,6 @@ ALTER TABLE `message`
   ADD CONSTRAINT `message_post_fk` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- 資料表的限制式 `option`
---
-ALTER TABLE `option`
-  ADD CONSTRAINT `option_lesson_fk` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- 資料表的限制式 `post`
 --
 ALTER TABLE `post`
@@ -693,7 +706,14 @@ ALTER TABLE `post`
 -- 資料表的限制式 `quiz_record`
 --
 ALTER TABLE `quiz_record`
-  ADD CONSTRAINT `quiz_record_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `quiz_record_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `quiz_record_topic_fk` FOREIGN KEY (`quiz_id`) REFERENCES `topic` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 資料表的限制式 `q_data`
+--
+ALTER TABLE `q_data`
+  ADD CONSTRAINT `option_lesson_fk` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `report`
@@ -706,8 +726,7 @@ ALTER TABLE `report`
 -- 資料表的限制式 `topic`
 --
 ALTER TABLE `topic`
-  ADD CONSTRAINT `topic_option_fk` FOREIGN KEY (`option_id`) REFERENCES `option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `topic_quiz_record_fk` FOREIGN KEY (`quiz_id`) REFERENCES `quiz_record` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `topic_lesson_fk` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
