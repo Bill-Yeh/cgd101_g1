@@ -15,7 +15,6 @@
         <div class="backStage_main_content">
             <!-- 後台左方選單 -->
             @@include('layout/backStage_nav.html')
-
             <div class="backStage_right_part">
                 <div class="backStage_right_content">
                     <div class="backStage_right_title_part">
@@ -55,7 +54,8 @@
                                 <th></th>
                                 <th></th>
                             </tr>
-                            <tr class="table_data_row odd">
+                            <tr is="row" v-for="row in rows" v-bind="row"></tr>
+                            <!-- <tr class="table_data_row odd">
                                 <td>01</td>
                                 <td>01</td>
                                 <td>周阿倫</td>
@@ -66,7 +66,7 @@
                                 <td>0</td>
                                 <td><button class="lightBox_btn edit_btn" @click="show">檢視</button></td>
                                 <td><button class="lightBox_btn cancel_course edit_btn">刪除</button></td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </div>
@@ -83,6 +83,7 @@
                             <i class="bi bi-x-lg"></i>
                         </div>
                         <div class="backStage_lightBox_main_content">
+                            <!-- <article-form v-for="content in contents" v-bind="content"></article-form> -->
                             <form action="">
                                 <div class="course_sm_block item_sm_block article_sm_block">
                                     <label for="article_sm">文章編號</label>
@@ -132,7 +133,121 @@
         </div>
     </div>
 
+
+    <script>
+
+        // Vue.component('article-form',{
+        //     props:['id','articleNum','memNum','memtitle','aticleType','aticleTitle','articleContent','like','reply','report'],
+        //     template:`
+        //     <form action="">
+        //         <div class="course_sm_block item_sm_block article_sm_block">
+        //             <label for="article_sm">文章編號</label>
+        //             <input type="text" id="article_sm" value="{{articleNum}}" readonly>
+        //         </div>
+        //         <div class="course_img_block item_img_block member_sm_block">
+        //             <label for="member_sm">會員編號</label>
+        //             <input type="text" id="member_sm" value="{{memNum}}" readonly>
+        //         </div>
+        //         <div class="course_title_block item_title_block member_title_block">
+        //             <label for="member_title">會員名稱</label>
+        //             <input type="text" id="member_title" value="{{memtitle}}" readonly>
+        //         </div>
+        //         <div class="course_price_block item_price_block article_type_block">
+        //             <label for="article_type">文章類別</label>
+        //             <input type="text" id="article_type" value="{{aticleType}}" readonly>
+        //         </div>
+        //         <div class="course_state_block item_state_block article_title_block">
+        //             <label for="article_title">文章標題</label>
+        //             <input type="text" id="article_title" value="{{aticleTitle}}" readonly>
+        //         </div>
+        //         <div class="course_state_block item_state_block article_content_block">
+        //             <label for="article_content">文章內容</label>
+        //             <textarea name="" id="article_content" cols="30" rows="10" style="resize:none;width:300px;height:150px;"    readonly>{{articleContent}}</textarea>
+        //         </div>
+        //         <div class="course_state_block item_state_block article_like_block">
+        //             <label for="article_like">按讚人數</label>
+        //             <input type="text" id="article_like" value="{{like}}" readonly>
+        //         </div>
+        //         <div class="course_state_block item_state_block article_respond_block">
+        //             <label for="article_respond">回應人數</label>
+        //             <input type="text" id="article_respond" value="{{reply}}" readonly>
+        //         </div>
+        //         <div class="course_state_block item_state_block article_report_block">
+        //             <label for="article_report">檢舉人數</label>
+        //             <input type="text" id="article_report" value="{{report}}" readonly>
+        //         </div>
+        //     </form>
+        //     `,
+        // })
+
+        Vue.component('row',{
+            props:['id','articleNum','memNum','memtitle','aticleType','aticleTitle','like','reply','report'],
+            template:`
+            <tr class="table_data_row odd">
+                <td>{{articleNum}}</td>
+                <td>{{memNum}}</td>
+                <td>{{memtitle}}</td>
+                <td>{{aticleType}}</td>
+                <td>{{aticleTitle}}?</td>
+                <td>{{like}}</td>
+                <td>{{reply}}</td>
+                <td>{{report}}</td>
+                <td><button class="lightBox_btn edit_btn" @click="show">檢視</button></td>
+                <td><button class="lightBox_btn cancel_course edit_btn">刪除</button></td>
+            </tr>
+            `,
+            methods: {
+                show(){
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                },
+                hide(){
+                    document.querySelector('.backStage_lightBox').style.display = 'none';
+                },
+            },
+        })
+
+        // let article = new Vue({
+        //     el:'#backStageID',
+        //     data:{
+        //         rows:[
+        //             {
+        //                 id:'1',
+        //                 articleNum:'1',
+        //                 memNum:'1',
+        //                 memtitle:'周阿倫',
+        //                 aticleType:'50音',
+        //                 aticleTitle:'如何背50音',
+        //                 like:'8',
+        //                 reply:'1',
+        //                 report:'0'
+        //             },
+        //             {
+        //                 id:'2',
+        //                 articleNum:'2',
+        //                 memNum:'2',
+        //                 memtitle:'陳小明',
+        //                 aticleType:'單字',
+        //                 aticleTitle:'如何背單字',
+        //                 like:'5',
+        //                 reply:'2',
+        //                 report:'0'
+        //             },
+        //         ],
+        //     },
+        //     methods: {
+        //         show(){
+        //             document.querySelector('.backStage_lightBox').style.display = 'flex';
+        //         },
+        //         hide(){
+        //             document.querySelector('.backStage_lightBox').style.display = 'none';
+        //         },
+        //     },
+        // })
+
+
+    </script>
     <script src="./js/backStage.js"></script>
+
 
 </body>
 </html>

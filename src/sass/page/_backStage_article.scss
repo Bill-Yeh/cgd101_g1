@@ -14,7 +14,8 @@
 
     .backStage_lightBox_container{
         width: 80%;
-        height: 80%;
+        height: 60%;
+        max-height: 60%;
         max-width: 500px;
         padding: 30px;
         background-color: map-get($color , bgc_y );
@@ -115,5 +116,21 @@
     }
     textarea{
         outline: none;
+    }
+
+}
+
+.course_sm_block,.article_sm_block{
+    padding-bottom: 20px;
+    label{
+        padding-right: 5.5%;
+    }
+}
+.backArticle{
+    tr:nth-child(even){
+        background:#fae6b8;
+    }
+    tr:nth-child(odd){
+        background:#fff;
     }
 }
