@@ -25,20 +25,20 @@ let backStage = new Vue({
                 report:'0'
             },
         ],
-        contents:[ //文章燈箱組件
-            {
-                id:'1',
-                articleNum:'1',
-                memNum:'1',
-                memtitle:'周阿倫',
-                aticleType:'50音',
-                aticleTitle:'如何背50音',
-                articleContent:'請問各位大大知道怎麼快速背好五十音嗎QQ',
-                like:'8',
-                reply:'1',
-                report:'0'
-            }
-        ]
+        // contents:[ //文章燈箱組件
+        //     {
+        //         id:'1',
+        //         articleNum:'1',
+        //         memNum:'1',
+        //         memtitle:'周阿倫',
+        //         aticleType:'50音',
+        //         aticleTitle:'如何背50音',
+        //         articleContent:'請問各位大大知道怎麼快速背好五十音嗎QQ',
+        //         like:'8',
+        //         reply:'1',
+        //         report:'0'
+        //     }
+        // ]
     },
     methods: {
         show(){
