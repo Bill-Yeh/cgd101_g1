@@ -5,6 +5,17 @@
   position: relative;
 }
 
+.sun_pic {
+  position: absolute;
+  bottom: 60%;
+  left: 12%;
+  z-index: 50;
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
 /* 手機版水中裝飾none */
 .home_lesson_inwater img,
 .home_topic_inwater img,
