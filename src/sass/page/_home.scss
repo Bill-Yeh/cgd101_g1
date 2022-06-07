@@ -327,6 +327,15 @@
   }
 }
 
+.home_first_info {
+  position: absolute;
+
+  @include lg() {
+    bottom: -3%;
+    right: 0;
+  }
+}
+
 /* 首頁各島介紹框 */
 .home_first_info,
 .home_lesson_info,
@@ -346,13 +355,14 @@
 .home_decorate_info_text {
   position: relative;
   display: flex;
-  width: 300px;
-  height: 50px;
+  width: 400px;
+  height: 80px;
   padding: 20px;
   background-color: #fae6b8;
   border: 5px solid #f9bb4d;
   border-radius: 20px;
   align-items: center;
+  line-height: 1.5;
 }
 
 /* 首頁各島介紹內容靠右 */
@@ -365,10 +375,10 @@
 .home_first_info_pic img,
 .home_topic_info_pic img {
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   right: 2%;
-  bottom: 20%;
+  bottom: 10%;
 }
 
 /* 首頁各島與水中裝飾的間隔 */
@@ -404,7 +414,7 @@
 
 .home_lesson_info_text {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
 }
 
 .home_lesson_info_pic {
@@ -483,7 +493,6 @@
   position: absolute;
   width: 30%;
   right: 20%;
-  top: 10;
 }
 
 /* 學習地圖的路標 */
@@ -901,7 +910,7 @@
   .home_mall_info_text,
   .home_decorate_info_text {
     font-size: 20px;
-    width: 400px;
+    width: 550px;
     height: 80px;
   }
 
@@ -984,6 +993,7 @@
   .home_lesson_cloud_1 img {
     width: 30%;
     right: 5%;
+    top: 10%;
   }
 
   .home_lesson_cloud_2 img {
@@ -1253,25 +1263,25 @@
     }
   }
 }
-@keyframes talk{
+@keyframes talk {
   0% {
-      opacity: 1;
-    }
+    opacity: 1;
+  }
   50% {
-     opacity: 1;
-    }
+    opacity: 1;
+  }
   100% {
-      opacity: 0;
-    }
+    opacity: 0;
+  }
 }
-@keyframes talk1{
+@keyframes talk1 {
   0% {
-      opacity: 1;
-    }
+    opacity: 1;
+  }
   50% {
-     opacity: 0;
-    }
+    opacity: 0;
+  }
   100% {
-      opacity: 1;
-    }
+    opacity: 1;
+  }
 }
