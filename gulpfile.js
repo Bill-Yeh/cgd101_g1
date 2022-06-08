@@ -17,6 +17,18 @@ function includeHTML() {
 
 exports.html =  includeHTML;
 
+// php move
+function includePHP() {
+  return src('src/*.php') // 來源
+      .pipe(fileinclude({
+          prefix: '@@',
+          basepath: '@file'
+      }))// fileinclude function
+      .pipe(dest('./dist'));// 目的地
+}
+
+exports.php =  includePHP;
+
 // js move
 function moveJs() {
   return src('src/js/*.js').pipe(dest('dist/js'))
@@ -54,6 +66,7 @@ function styleSass() {
 // 監看
 function watchfile() {
   watch(['src/*.html' , 'src/**/*.html'], includeHTML)    // 監看html
+  watch(['src/*.php' , 'src/**/*.php'], includePHP)    // 監看php
   watch('js/*.js' , moveJs)  // 監看js
   watch(['src/images/*.*', 'src/images/**/*.*'] , moveImg)  // 監看img
   watch('sound/*.*' , moveSound)  // 監看mp3檔
@@ -74,6 +87,7 @@ function browser(done) {
         port: 3000
     });
     watch(['src/*.html' , 'src/**/*.html'], includeHTML).on('change' , reload)    // 監看html
+    watch(['src/*.php' , 'src/**/*.php'], includePHP).on('change' , reload)    // 監看php
     watch('src/js/*.js' , moveJs).on('change' , reload)  // 監看js
     watch(['src/images/*.*', 'src/images/**/*.*'], moveImg).on('change' , reload)  // 監看 img
     watch('src/sound/*.*' , moveSound).on('change' , reload)  // 監看sound
@@ -83,10 +97,10 @@ function browser(done) {
 
 
 // 監看
-exports.w =  series(parallel(moveJs,moveImg,includeHTML,styleSass,moveSound), watchfile)  
+exports.w =  series(parallel(moveJs,moveImg,includeHTML,styleSass,moveSound,includePHP), watchfile)  
 
 //瀏覽器同步
-exports.default =  series(parallel(moveJs,includeHTML,styleSass,moveImg,moveSound), browser)  
+exports.default =  series(parallel(moveJs,includeHTML,styleSass,moveImg,moveSound,includePHP), browser)  
 
 
 
