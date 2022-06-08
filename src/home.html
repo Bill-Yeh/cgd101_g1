@@ -28,6 +28,9 @@
 
     <!-- 首頁第一島 -->
     <div class="home_first_island">
+        <div class="sun_pic">
+            <img src="./images/sun.png" alt="" name="sun_pic">
+        </div>
         <!-- 島 -->
         <div class="home_first_island_pic">
             <img src="./images/home_first_island.png" alt="">
@@ -45,12 +48,13 @@
                 <img src="./images/home_first_npc4.png" alt="">
             </div>
         </div>
-        <!-- 路線 -->
-        <svg width="1200" height="3330" viewBox="-100 -50 1200 4800"
-            style="border: 0px solid #aaa; position: absolute; z-index: -10;right: 0;left: 0;margin: auto;">
-            <path stroke="#823c2d" stroke-dasharray="5,5" id="star-path" fill="none" stroke-width="3"
+        <!-- 船 -->
+        <img src="./images/home_boat.png" id="motionSVG">
+        <svg width="1200" height="3250" viewBox="-100 -50 1200 4800"
+            style=" position: absolute; z-index: -10;right: 0;left: 0;margin: auto;">
+            <path stroke-dasharray="5,5" id="star-path" fill="none"
                 d="M681.74.46c-4,30,0,292.27-131,429C423.51,562.26,85.41,612.13,27.85,693.22c-52.16,73.49-42.35,229.14,252,352.48s411.9,407.76,237.9,678.76-390,304.75-401,517,114.67,318.5,233.35,386.1c124.74,71.05,320.65,169.9,300.65,467.88-20.23,301.45-213.36,333.64-309.36,384.64S24.74,3687.46,74.44,3965.8C130.6,4280.36,390.55,4228,507.83,4422c116.91,193.43-18.09,247.49-18.09,424.48" />
-            <path stroke="#fff" stroke-dasharray="5,5" id="" fill="none" stroke-width="4.5"
+            <path stroke="none" stroke-dasharray="5,5" id="" fill="none" stroke-width="4.5"
                 d="M681.74.46c-4,30,0,292.27-131,429C423.51,562.26,85.41,612.13,27.85,693.22c-52.16,73.49-42.35,229.14,252,352.48s411.9,407.76,237.9,678.76-390,304.75-401,517,114.67,318.5,233.35,386.1c124.74,71.05,320.65,169.9,300.65,467.88-20.23,301.45-213.36,333.64-309.36,384.64S24.74,3687.46,74.44,3965.8C130.6,4280.36,390.55,4228,507.83,4422c116.91,193.43-18.09,247.49-18.09,424.48" />
         </svg>
         <!-- 第一島的雲 -->
@@ -89,14 +93,14 @@
 
 
     <!-- 學習島的雲 -->
-    <div class="home_lesson_cloud">
+    <!-- <div class="home_lesson_cloud">
         <div class="home_lesson_cloud_1">
             <img src="./images/cloud_5.png" alt="">
         </div>
         <div class="home_lesson_cloud_2">
             <img src="./images/cloud_transparent_2.png" alt="">
         </div>
-    </div>
+    </div> -->
 
     <!-- 第二島--學習地圖 -->
     <div class="home_lesson_island">
@@ -126,7 +130,7 @@
                 <div class="home_lesson_road_sign">
                     <img src="./images/home_lesson_road_sign.png" alt="">
                 </div>
-                首先，在學習地圖從最基礎的五十音學起，想要開啟新的地圖就必須要達成對應的解鎖條件
+                首先，開啟學習地圖從最基礎的五十音學起，想要探索新的區域就必須達成對應的解鎖條件
             </div>
         </div>
     </div>
@@ -320,20 +324,27 @@
     @@include('layout/login_register.html')
     <script>
 
-
+        //換裝
         let img = document.getElementsByName("mall_npc")[0];
-
         let imgArr = ["./images/home_mall_npc_1.png", "./images/home_mall_npc_2.png", "./images/home_mall_npc_3.png", "./images/home_mall_npc_4.png"];
+        //太陽
+        let sun_img = document.getElementsByName("sun_pic")[0];
+        let sun_imgArr = ["./images/sun.png", "./images/sun_close.png", "./images/sun.png", "./images/sun_close.png"];
+
         let loginRegister = document.getElementById('login_register');
         let show_sign_up = document.getElementById("sign_up");
         let npc = 0;
+        let sun = 0;
 
         function change() {
             npc--;
-            if (npc < 0) {
+            sun--;
+            if (npc < 0 && sun < 0) {
                 npc = imgArr.length - 1;
+                sun = sun_imgArr.length - 1;
             }
             img.src = imgArr[npc];
+            sun_img.src = sun_imgArr[sun];
         };
 
         show_sign_up.addEventListener('click', function () {
@@ -347,36 +358,32 @@
         window.addEventListener("load", init, false)
 
 
-        //先放棄的船
-        // var animation;
+        //船
+        var animation;
 
-        // gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+        gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
-        // gsap.set("#motionSVG", { scale: 0.7, autoAlpha: 2, });
-        // gsap.set("#motionSVG", { transformOrigin: "50% 50%" });
+        gsap.set("#motionSVG", { scale: 0.5, autoAlpha: 2, });
+        gsap.set("#motionSVG", { transformOrigin: "50% 50%" });
 
-        // animation = gsap.to("#motionSVG", {
-        //     scrollTrigger: {
-        //         trigger: "#motionPath",
-        //         start: "top 50%",
-        //         end: '+=2950px',
-        //         scrub: 1,
-        //         pin: true,
-        //          markers: true,
-        //          onUpdate: self => {
-        //              gsap.to("#motionSVG", { rotation: () => self.direction === 1 ? 0 : 90, overwrite: 'auto' });
-        //          }
-        //     },
-        //     duration: 200,
-        //     ease: "none",
-        //     immediateRender: true,
-        //     motionPath: {
-        //         path: "#motionPath",
-        //         align: "#motionPath",
-        //         alignOrigin: [0.5, 0.5],
-        //         autoRotate: 180,
-        //     }
-        // });
+        animation = gsap.to("#motionSVG", {
+            scrollTrigger: {
+                trigger: "#star-path",
+                end: "+=3250",
+                scrub: 1,
+                markers: false,
+            },
+            duration: 500,
+            ease: "none",
+            immediateRender: true,
+            motionPath: {
+                path: "#star-path",
+                align: "#star-path",
+                alignOrigin: [0.5, 0.5],
+                autoRotate: 270,
+                ease: "power1.inOut",
+            }
+        });
 
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
