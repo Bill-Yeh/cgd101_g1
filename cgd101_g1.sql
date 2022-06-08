@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-07 17:00:39
+-- 產生時間： 2022-06-08 17:46:43
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -148,7 +148,6 @@ CREATE TABLE `item_record` (
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `item_id` int NOT NULL COMMENT 'Not Null(FK)',
   `payment_time` datetime(6) NOT NULL COMMENT 'Not Null',
-  `dress_on` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null(0-未裝備,1-已裝備)',
   `item_price` int NOT NULL COMMENT 'Not Null(FK)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -156,10 +155,10 @@ CREATE TABLE `item_record` (
 -- 傾印資料表的資料 `item_record`
 --
 
-INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_time`, `dress_on`, `item_price`) VALUES
-(1, 1, 1, '2022-06-04 14:04:07.000000', '0', 300),
-(2, 2, 2, '2022-06-02 14:04:07.000000', '1', 500),
-(3, 3, 3, '2022-06-01 07:23:31.000000', '1', 700);
+INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_time`, `item_price`) VALUES
+(1, 1, 1, '2022-06-04 14:04:07.000000', 300),
+(2, 2, 2, '2022-06-02 14:04:07.000000', 500),
+(3, 3, 3, '2022-06-01 07:23:31.000000', 700);
 
 -- --------------------------------------------------------
 
@@ -242,17 +241,18 @@ CREATE TABLE `member` (
   `password` varchar(30) NOT NULL COMMENT 'Not Null',
   `member_status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null(0-停用,1-啟用)',
   `coin` int NOT NULL COMMENT 'Not Null',
-  `level` int NOT NULL COMMENT 'Not Null(FK)'
+  `level` int NOT NULL COMMENT 'Not Null(FK)',
+  `role` varchar(300) NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `member`
 --
 
-INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`) VALUES
-(1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1', 0, 1),
-(2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '0', 100, 1),
-(3, 'Bill', 'efg@gmail.com', 'cccCCC111', '1', 0, 1);
+INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`, `role`) VALUES
+(1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1', 0, 1, ''),
+(2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '0', 100, 1, ''),
+(3, 'Bill', 'efg@gmail.com', 'cccCCC111', '1', 0, 1, '');
 
 -- --------------------------------------------------------
 
