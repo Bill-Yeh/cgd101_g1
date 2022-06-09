@@ -170,10 +170,10 @@
       }
       .header_login{
         width: 100%;
-        svg{
-          width: 30px;
-          height: 30px;
+        #userHead{
+          font-size: 30px;
           color: black;
+          cursor: pointer;
         }
       }
     }

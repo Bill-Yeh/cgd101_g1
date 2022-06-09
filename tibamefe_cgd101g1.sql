@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-08 22:27:56
+-- 產生時間： 2022-06-10 02:35:23
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -147,18 +147,17 @@ CREATE TABLE `item_record` (
   `item_order_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `item_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `payment_time` datetime(6) NOT NULL COMMENT 'Not Null',
-  `item_price` int NOT NULL COMMENT 'Not Null(FK)'
+  `payment_time` datetime(6) NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `item_record`
 --
 
-INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_time`, `item_price`) VALUES
-(1, 1, 1, '2022-06-04 14:04:07.000000', 300),
-(2, 2, 2, '2022-06-02 14:04:07.000000', 500),
-(3, 3, 3, '2022-06-01 07:23:31.000000', 700);
+INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `payment_time`) VALUES
+(1, 1, 1, '2022-06-04 14:04:07.000000'),
+(2, 2, 2, '2022-06-02 14:04:07.000000'),
+(3, 3, 3, '2022-06-01 07:23:31.000000');
 
 -- --------------------------------------------------------
 
@@ -195,18 +194,17 @@ CREATE TABLE `lesson_record` (
   `lesson_order_id` int NOT NULL COMMENT 'Not Null(PK, AI)',
   `memeber_id` int NOT NULL COMMENT 'Not Null(FK)',
   `lesson_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `payment_time` datetime NOT NULL COMMENT 'Not Null',
-  `lesson_price` int NOT NULL COMMENT 'Not Null(FK)'
+  `payment_time` datetime NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `lesson_record`
 --
 
-INSERT INTO `lesson_record` (`lesson_order_id`, `memeber_id`, `lesson_id`, `payment_time`, `lesson_price`) VALUES
-(1, 1, 1, '2022-06-04 15:18:43', 300),
-(2, 2, 2, '2022-06-01 07:18:44', 500),
-(3, 3, 3, '2022-06-02 13:18:59', 700);
+INSERT INTO `lesson_record` (`lesson_order_id`, `memeber_id`, `lesson_id`, `payment_time`) VALUES
+(1, 1, 1, '2022-06-04 15:18:43'),
+(2, 2, 2, '2022-06-01 07:18:44'),
+(3, 3, 3, '2022-06-02 13:18:59');
 
 -- --------------------------------------------------------
 
