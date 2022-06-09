@@ -567,15 +567,19 @@
 
 //初次註冊
 .bg_00{
-    // display: none;
+    display: none;
     position: fixed;
     width: 100%;
     height: 100%;
-    display: flex;
+    // display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
+    // background-color: hsla(0, 0%, 0%, 0.8);
     z-index: 1000000000000;
+    // mask-image: url("../../images/map_mem_clock.png");
+    // mask-repeat: no-repeat;
+
 
     .getchar_lightBox{
         position: absolute;
@@ -623,7 +627,7 @@
         }  
     }
     .talkBox{
-        // display: none;
+        display: none;
         background-color: #FAE6B8;
         border: 5px solid #F9BB4D;
         border-radius: 20px;
@@ -690,8 +694,6 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    
-    
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
     
@@ -1204,10 +1206,12 @@
                     }
                     
                     .book_page{
-                        overflow: overlay;
+                        // overflow: overlay;
+                        overflow: hidden;
                         box-sizing: border-box;
                         padding: 0px 10px 10px 10px;
                         flex-grow: 2;
+                        // height: 1px;
                         max-width: 42%;
                         position: relative;
                         border-left:2px solid rgb(175, 175, 175);

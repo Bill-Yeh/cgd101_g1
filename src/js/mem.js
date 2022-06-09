@@ -18,15 +18,16 @@ new Vue({
 
 
 //確定是否是首次註冊後進入會員登入
-function pageTour(){
+function showChar(){
     let url=document.referrer;
     let urlArry=url.split("/")
     let frontUrl=urlArry[urlArry.length-1]
+    console.log(frontUrl)
 
     if(frontUrl == 'signUp_animation.html'){
         //開啟燈箱
-        // let black=document.querySelector(".bg_00");
-        // black.style.display='block';
+        let black=document.querySelector(".bg_00");
+        black.style.display='flex';
 
         setTimeout(()=>{
 
@@ -53,24 +54,23 @@ function pageTour(){
                 button.style.display="block";
 
                 talkBox.style.width="100%"
-
-                // setInterval(()=>{
-
-                // })
-
             },3000)
-
         },1200)
-
-    
     }
 }
 
 
 
+function pageTour(){
+    let black=document.querySelector(".bg_00");
+    black.style.backgroundColor='rgba(0, 0, 0, 0.6)';
 
-window.addEventListener("load",pageTour)
+}
 
+
+
+window.addEventListener("load",showChar)
+document.querySelector(".goMem").addEventListener("click",pageTour)
 
 
 
