@@ -13,6 +13,19 @@
   img {
     width: 150px;
     height: 150px;
+    animation: sun 3s linear infinite;
+  }
+}
+
+@keyframes sun {
+  0% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(10px);
   }
 }
 
@@ -342,7 +355,7 @@
   position: absolute;
 
   @include lg() {
-    bottom: -3%;
+    bottom: 15%;
     right: 0;
   }
 }
@@ -950,17 +963,23 @@
     height: 90px;
     display: block;
   }
+  .home_lesson_island1_pic {
+    img {
+      width: 600px;
+      height: 500px;
+    }
+  }
 
   /* 首頁各個島的大小 */
-  .home_lesson_island img,
-  .home_topic_island_pic img,
-  .home_mall_island_pic img,
-  .home_mall_island_2_pic img,
-  .home_decorate_island_pic img,
-  .home_decorate_island_2_pic img {
-    width: 500px;
-    height: 350px;
-  }
+  // .home_lesson_island img,
+  // .home_topic_island_pic img,
+  // .home_mall_island_pic img,
+  // .home_mall_island_2_pic img,
+  // .home_decorate_island_pic img,
+  // .home_decorate_island_2_pic img {
+  //   width: 500px;
+  //   height: 350px;
+  // }
 
   /* 首頁學習地圖內容靠左 */
   .home_lesson_info {
@@ -981,10 +1000,30 @@
   }
 
   /* 首頁水中裝飾 */
+  .home_lesson_inwater {
+    position: relative;
+
+    img {
+      position: absolute;
+      right: 10%;
+      top: 15%;
+    }
+  }
+  .home_lesson_road_sign {
+    position: absolute;
+    right: 20%;
+  }
+  .lesson_npc {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    img {
+      width: 90px;
+      height: 80px;
+    }
+  }
   .home_lesson_inwater img {
     display: block;
-    width: 250px;
-    height: 250px;
   }
 
   .home_topic_inwater img {
