@@ -371,7 +371,7 @@
 
 .home_first_info {
   position: absolute;
-  left: 5%;
+
   @include lg() {
     bottom: 15%;
     right: 20%;
@@ -417,6 +417,7 @@
 /* 首頁各島介紹NPC-右 */
 .home_first_info_pic img,
 .home_topic_info_pic img {
+  display: none;
   position: absolute;
   width: 60px;
   height: 60px;
@@ -456,10 +457,30 @@
 
 .home_lesson_info_pic {
   display: none;
-  @include md {
+  @include lg {
     position: absolute;
     left: 2%;
     bottom: 20%;
+    display: block;
+  }
+}
+
+.home_topic_info_pic {
+  display: none;
+  @include lg {
+    position: absolute;
+    right: 2%;
+    bottom: 12%;
+    display: block;
+  }
+}
+
+.home_mall_info_pic {
+  display: none;
+  @include lg {
+    position: absolute;
+    left: 2%;
+    bottom: 8%;
     display: block;
   }
 }
@@ -470,27 +491,18 @@
   height: 70px;
 }
 
-/* 學習島NPC */
-.home_lesson_island1_npc {
-  width: 100%;
-  img {
-    width: 50px;
-    height: 50px;
-  }
-}
-
 /*學習島NPC talk*/
 .lesson_talk {
   position: absolute;
-  left: 30%;
-  top: 5%;
+  left: 38%;
+  top: -10%;
   animation-name: talk;
   animation-duration: 5s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
   img {
-    width: 80px;
-    height: 70px;
+    width: 130px;
+    height: 80px;
   }
 }
 
@@ -501,7 +513,7 @@
 
 .home_lesson_island_npc1 {
   position: absolute;
-  left: 30%;
+  left: 40%;
   bottom: 50%;
   @include md {
     left: 30%;
@@ -541,15 +553,15 @@
 /* 測驗島npc talk */
 .topic_talk {
   position: absolute;
-  left: 16%;
-  top: 12%;
+  left: 2%;
+  top: -5%;
   animation-name: talk;
   animation-duration: 5s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
   img {
-    width: 70px;
-    height: 50px;
+    width: 130px;
+    height: 80px;
   }
 }
 
@@ -599,7 +611,6 @@
   margin: 80px 0 0 0;
 }
 /* 商城島雲 */
-
 .home_mall_cloud {
   position: relative;
 }
@@ -626,7 +637,6 @@
 }
 
 /* 商城島npc */
-
 .home_mall_island_npc1 {
   position: absolute;
   top: 40%;
@@ -635,6 +645,16 @@
     left: 15%;
   }
 }
+.mall_talk_1 {
+  position: absolute;
+  top: -2%;
+  left: 30%;
+  img {
+    width: 120px;
+    height: 80px;
+  }
+}
+
 .home_mall_island_2 {
   display: none;
 }
@@ -646,14 +666,9 @@
 
 .home_mall_info_text {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
-.home_mall_info_pic {
-  position: absolute;
-  left: 2%;
-  bottom: 20%;
-}
 .home_mall_info_pic img {
   width: 70px;
   height: 70px;
@@ -932,6 +947,9 @@
     position: absolute;
     margin: 80px 0;
   }
+  .home_first_info_text {
+    padding: 20px 150px 20px 20px;
+  }
 
   /* 首頁介紹框 */
   .home_first_info_text,
@@ -942,7 +960,8 @@
     width: 550px;
     height: 80px;
   }
-  .home_lesson_info_text {
+  .home_lesson_info_text,
+  .home_mall_info_text {
     font-size: 20px;
     width: 550px;
     height: 80px;
@@ -959,6 +978,7 @@
   /* 首頁介紹NPC-右 */
   .home_first_info_pic img,
   .home_topic_info_pic img {
+    display: block;
     width: 100px;
     height: 100px;
     position: absolute;
@@ -1112,6 +1132,10 @@
     top: 45%;
   }
 
+  .home_topic_info_text {
+    padding: 20px 150px 20px 20px;
+  }
+
   .home_topic_island_pic {
     margin: 50px 0 0 0;
   }
@@ -1199,13 +1223,17 @@
     height: 70px;
   }
 
+  .mall_talk_1 {
+    top: 23%;
+    left: 26%;
+    img {
+      width: 120px;
+      height: 80px;
+    }
+  }
+
   .home_mall_info {
     width: 50%;
-  }
-  .home_mall_info_pic {
-    position: absolute;
-    left: 2%;
-    bottom: 5%;
   }
 
   .home_mall_info_pic img {
