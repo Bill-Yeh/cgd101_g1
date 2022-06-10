@@ -167,13 +167,44 @@
     .header_login_box{
       @include lg(){
         padding-left: 30px;
+        // width: 25%;
       }
       .header_login{
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.2;
+        @include lg(){
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          line-height: 0;
+        }
         #userHead{
           font-size: 30px;
           color: black;
           cursor: pointer;
+        }
+        #memArea{
+          display: none;
+          @include lg(){
+            // display: none;
+            cursor: pointer;
+            transition: .3s;
+            &:hover{
+              color: #F9BB4D;
+            }
+          }
+        }
+        #logout{
+          cursor: pointer;
+          transition: .3s;
+          display: none;
+          &:hover{
+            color: #F9BB4D;
+          }
         }
       }
     }

@@ -3,8 +3,7 @@ new Vue({
     data:{
         img: ['map','closet','clock','flower','window']
     },
-},
-)
+})
 new Vue({
     el:'.floor',
     data:{
@@ -13,8 +12,57 @@ new Vue({
     methods:{
 
     }
-   
 })
+
+
+
+
+{/* <td>{{orderNo}}</td>
+                <td>{{orderTime}}</td>
+                <td><img src={{imgPc}} alt=""></td>
+                <td>{{price}}</td>
+                <td>{{payment}}</td> */}
+
+new Vue({
+    el:'#orderAPP',
+    // component:{"component-orderList": {
+    //     template:`<tr>
+    //             <td>111</td>
+    //             <td>222</td>
+    //             <td>222</td>
+    //             <td>222</td>
+    //             <td>222</td>
+    //             </tr>`
+    // }}
+
+    data:{
+        
+    },
+    methods:{
+
+    }
+
+    
+})
+ Vue.component("component-orderList", {
+    template:`<tr>
+                <td>Hello</td>
+            </tr>`
+    // ,data:function(){
+    //         return{
+    //         orderNo:"11111",
+    //         orderTime:"34343",
+    //         imgPc:"./images/char_hat_1.png",
+    //         price:"10",
+    //         payment:"代幣"
+    //         }
+    //     }
+    })
+
+
+
+
+// const vm=new Vue({}).$mount('#orderAPP');
 
 
 //確定是否是首次註冊後進入會員登入
@@ -22,7 +70,6 @@ function showChar(){
     let url=document.referrer;
     let urlArry=url.split("/")
     let frontUrl=urlArry[urlArry.length-1]
-    console.log(frontUrl)
 
     if(frontUrl == 'signUp_animation.html'){
         //開啟燈箱
@@ -60,7 +107,7 @@ function showChar(){
 }
 
 
-
+//進入引導
 function pageTour(){
     let black=document.querySelector(".bg_00");
     black.style.backgroundColor='rgba(0, 0, 0, 0.6)';
@@ -74,7 +121,7 @@ document.querySelector(".goMem").addEventListener("click",pageTour)
 
 
 
-
+//確認VP範圍
 function checkWindow(){
     let vh = window.innerHeight;
     document.querySelector('.wrapper').style.height=`${vh-1}px`
@@ -84,10 +131,10 @@ window.addEventListener('load',checkWindow);
 
 window.addEventListener('resize',checkWindow);
 
+
+//========================================================
+
 // 開啟燈箱
-
-// var workItem=""
-
 function openLightBox(){
     let black=document.querySelector(".black");
     black.style.display='block';
@@ -127,9 +174,7 @@ function cancelLightBox(){
 
     for(i=0;i<lightBox.length;i++){
         document.querySelector(`.${lightBox[i].className}`).style.display='none';
-    }
-
-     
+    }   
 }
 
 
@@ -148,7 +193,6 @@ document.querySelector("#lightBox").addEventListener("click", function(e){e.stop
 
 //設定可點選物件事件聆聽
 window.onload=function(){
-
     //可點物件聆聽
     let items=new Array("desk","map","bed","closet","box1")
     for(let i=0;i<items.length;i++){
@@ -160,27 +204,15 @@ window.onload=function(){
         document.querySelector(`.tab_${tabs[i]}`).addEventListener("click",changeTabs);
         document.querySelector(`.tab_${tabs[i]}`).addEventListener("click",ChangeClothesItem);
     }
-
-    // 
-
-    //眨眼睛
-    
 }
 
 
 
-var eyes=setInterval(()=>{
-    let me=document.querySelector(".eyes")
-    me.src="./images/char_00_eye_close.png";
 
-    setTimeout(() => {
-        me.src="./images/char_00_eye_open.png"
-    }, 500);
-},3000
-)
+window.addEventListener('resize',resize);
 
 
-window.onresize=resize;
+
 
 
 
@@ -346,7 +378,6 @@ function goFront(){
     let items=document.querySelector(".items");
 
     let itemsWrapper_W=itemsWrapper.offsetWidth;
-    let items_W=items.offsetWidth;
 
     let leftValue=items.offsetLeft
     
@@ -380,7 +411,6 @@ function goBack(){
             items.style.left=`-${itemsWrapper_W}px`
         }
     }
-    
 }
 
 
@@ -421,13 +451,7 @@ function convertCanvasToImage(){
 
         document.querySelector("#me").src=image.src
         document.querySelector(".eyes").style.top="8px"
-
-        // clearInterval(eyes)
     },500)
-
-    // console.log(1)
-
-	// return image;
 }
 
 
@@ -447,7 +471,6 @@ if(document.querySelector(".hat >img") !=null ){
 
 //點選列中子物件
 function dressOn(){
-    // let char_content=document.querySelector(".char_content")
     let hat=document.querySelector(".hat")
     let dress=document.querySelector(".dress")
     let tool=document.querySelector(".tool")
@@ -712,7 +735,86 @@ document.querySelector(".error .cancel").addEventListener('click',closeError)
 
 
 
+//學伴自動對話
+
+
+var talkJpArry=new Array("こんにちは","一緒に勉強しますしょう")
+
+function talk(){
+
+
+    let txtJp=document.querySelector(".say_txt_jp")
+    let talk=document.querySelector(".say_text")
+    let content=document.querySelector(".say")
+
+    setTimeout(()=>{
+        content.style.display="inline-block";
+    },1500)
+
+    setTimeout(()=>{
+        txtJp.innerText=talkJpArry[0]
+        let talkH=txtJp.offsetHeight
+
+        talk.animate({
+            width:`${talkH+12}px`
+        },1000)
+        setTimeout(()=>{
+            talk.style.width=`${talkH+12}px`
+        },990)
+
+        setTimeout(()=>{
+            content.style.display="none";
+        },3000)
+
+    },2000)
+
+    setTimeout(()=>{
+        talk.style.width="1px"
+        content.style.display="inline-block";
+        txtJp.innerText=talkJpArry[1]
+
+        setTimeout(()=>{
+            let talkH=txtJp.offsetHeight
+            talk.animate({
+                width:`${talkH+10}px`
+            },1000)
+            setTimeout(()=>{
+                talk.style.width=`${talkH+10}px`
+            },990)
+
+            setTimeout(()=>{
+                content.style.display="none";
+                talk.style.width="1px"
+            },3000)
+        },1000)
+    },7000) 
+}
+
+
+
+setInterval(talk,13000)
+
+window.addEventListener('load',talk)
 
 
 
 
+
+setInterval(()=>{
+    let me=document.querySelector(".eyes");
+    
+
+    setTimeout(() => {
+        me.src="./images/char_00_eye_close.png"
+        console.log(me)
+    },500)
+
+
+    setTimeout(() => {
+        me.src="./images/char_00_eye_open.png"
+    },4000);
+
+},6000)
+
+
+// window.addEventListener('load',eyes)

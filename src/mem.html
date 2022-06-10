@@ -14,7 +14,7 @@
 
         <div class="getchar_lightBox">
             <div class="me_content">
-                <img src="./images/char_00_eye_open.png" alt="" class="eyes">
+                <img class="eyes" src="./images/char_00_eye_open.png" alt="" >
                 <img id="me" src="./images/char_00_0.png" class="me01" alt="char_00_1"></img>
             </div>
             
@@ -125,133 +125,16 @@
                             <th class="buy_list_title_item">付款方式</th>
                         </tr>
                     </thead>
-                    <tbody class="buy_list_content">
-                        <tr>
+                    <tbody class="buy_list_content" id="orderAPP">
+                        <!-- <tr>
                             <td>111112</td>
                             <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
+                            <td><img src="./images/char_hat_1.png" alt=""></td>
                             <td>10</td>
                             <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
-                        <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td>裝備01</td>
-                            <td>10</td>
-                            <td>代幣</td>
-                        </tr>
+                        </tr> -->
+                        <!-- <component-orderList></component-orderList> -->
+                        <v-for="(item, index) in items" :key="index"></v-for>
 
                     </tbody>
                 </table>
@@ -275,14 +158,14 @@
 
                             </div>
                             <div class="word">
-                                <h3 class="word_title">單字</h3>
+                                <!-- <h3 class="word_title">單字</h3>
                                 <h4 class="word_item">單字一</h4>
-                                <h4 class="word_item">單字二</h4>
+                                <h4 class="word_item">單字二</h4> -->
                             </div>
                             <div class="talk">
-                                <h3 class="talk_title">會話</h3>
+                                <!-- <h3 class="talk_title">會話</h3>
                                 <h4 class="talk_item">對話一</h4>
-                                <h4 class="talk_item">對話二</h4>
+                                <h4 class="talk_item">對話二</h4> -->
                             </div>
                         </div>
                     </div>
@@ -309,7 +192,12 @@
 
     <!-- 頁面物件 -->
     <div class="wrapper">
-        <div class="say">你好~</div>
+        <div class="say">
+            <div class="say_text">
+                <!-- <p class="say_txt">你好</p> -->
+                <p class="say_txt_jp"></p>
+            </div>
+        </div>
         <div class="me_content">
             <img src="./images/char_00_eye_open.png" alt="" class="eyes">
             <img id="me" src="./images/char_00_0.png" class="me01" alt="char_00_1"></img>
@@ -399,7 +287,7 @@
         </div>
         
         
-
+    @@include('layout/login_register.html')
 
     @@include('layout/footer.html')
 
