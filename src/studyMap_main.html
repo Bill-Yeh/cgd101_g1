@@ -83,48 +83,39 @@
     <!-- 背景濾鏡 -->
     <div class="main_filter" id="mainFilter"></div>
         <!-- 案內NPC -->
-        <div class="guide" id="guider">
-            <img src="./images/studyMap_NPC_main1.png">
-        </div>
-        <div class="guide_message" id="guiderMes">
-            <img src="./images/guide_message.png">
-        </div>
-        <div class="village_guide" id="vGuide">
-            <img src="../../images/guide-village.jpg">
-        </div>
-        <div class="cloud_guide" id="cGuide">
-            <img src="../../images/guide-cloud.jpg">
-        </div>
+    <div class="guide" id="guider">
+        <img src="./images/studyMap_NPC_main1.png">
+    </div>
+    <div class="guide_message" id="guiderMes">
+        <img src="./images/guide_message.png">
+    </div>
+    <div class="village_guide" id="vGuide">
+        <img src="../../images/guide-village.jpg">
+    </div>
+    <div class="cloud_guide" id="cGuide">
+        <img src="../../images/guide-cloud.jpg">
+    </div>
         <!-- 對話框 -->
-        <div class="studyMap_con" id="mapCon">
-            <p id="con"></p>
-            <div class="fix-item">
-                <!-- <audio id="voice">
-                <source = src="./sound/nyu.mp3" type="audio/mp3">
-                </audio> -->
-                <div class="npc-pic">
-                    <img id="pic" src="./images/studyMap_NPC_main1.png">
-                </div>
+    <div class="studyMap_con" id="mapCon">
+        <p id="con"></p>
+        <div class="fix-item">
+            <div class="npc-pic">
+                <img id="pic" src="./images/studyMap_NPC_main1.png">
             </div>
         </div>
+    </div>
         <!--結束教學對話框 -->
-        <div class="go-to-test" id="toTest">
-            <div class="ask">
-                <p>結束教學</p>
-            </div>
-            <div class="yes" id="Yes">
-                <button>確認</button>
-            </div>
-            <div class="no" id="No">
-                <button>再一次</button>
-            </div>
+    <div class="go-to-test" id="toTest">
+        <div class="ask">
+            <p>結束教學</p>
         </div>
-        <!-- <audio id="sorry">
-            <source = src="./sound/cannot.mp3" type="audio/mp3">
-        </audio>
-        <audio id="gogo">
-            <source = src="./sound/nyu.mp3" type="audio/mp3">
-        </audio> -->
+        <div class="yes" id="Yes">
+            <button>確認</button>
+        </div>
+        <div class="no" id="No">
+            <button>再一次</button>
+        </div>
+    </div>
 </section>
     @@include('layout/footer.html')
 <script>
@@ -148,18 +139,22 @@ let toMap = document.getElementById('Yes');
 let again = document.getElementById('No');
 let cGuide = document.getElementById('cGuide');
 let guideCon = new Array("你好，第一次來嗎？","讓我來帶你前往使用教學吧！","首先，點選地圖上有冒煙的村莊，即可進入學習單元","滑鼠移動到漂浮的雲時，會出現解鎖條件，達成解鎖條件即可進入新的學習單元");
-let npcVoice = new Array("./sound/pika.mp3","./sound/nyu.mp3","./sound/cannot.mp3")
-function playVoice(){
-    koei.src = npcVoice[0];
-    koei.play();
-};
-function unLock1(){
-    koei.src = npcVoice[2];
-    koei.play();
-    alert("請完成50音課程，並且測驗分數達到60分以上");
-};
-function unLock2(){
-    window.location.href="mall.html";
+let npcVoice = new Array("./sound/pika.mp3","./sound/nyu.mp3","./sound/cannot.mp3");
+
+function getGuide(){
+    if (document.cookie.replace(/(?:(?:^|.*;\s*)mainMapGuide\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true"){
+    // alert("Do something here!");
+    document.cookie = "mainMapGuide=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+    console.log(1);
+    filter.style.display="block";
+    console.log(2);
+    guideNpc.style.display="block";
+    console.log(3);
+    guiderMes.style.display="block";
+    }else{
+        bignpc.style.display = "block";
+        bigMessage.style.display = "block";
+    }
 };
 function startGuide(){
     show.style.display='flex';
@@ -202,7 +197,20 @@ function guideAgain(){
     hint.style.display = "none";
     guideNpc.style.display="block";
 };
+function playVoice(){
+    koei.src = npcVoice[0];
+    koei.play();
+};
+function unLock1(){
+    koei.src = npcVoice[2];
+    koei.play();
+    alert("請完成50音課程，並且測驗分數達到60分以上");
+};
+function unLock2(){
+    window.location.href="mall.html";
+};
 function init(){
+    getGuide();
     bignpc.addEventListener('click',playVoice,false);
     unlock1.addEventListener('click',unLock1,false);
     unlock2.addEventListener('click',unLock1,false);
