@@ -3,7 +3,7 @@
 // *-----------題庫---------* //
 let testArr_a = new Array(
     new Array("ああ","aa","aka","sata","hana"),
-    new Array("なか","naka","kaya","tana","naka"),
+    new Array("なか","naka","kaya","tana","maka"),
     new Array("たま","tama","kana","nata","sama"),
     new Array("はさ","hasa","rasa","naka","wana"),
     new Array("らや","raya","an","sara","tana"),
