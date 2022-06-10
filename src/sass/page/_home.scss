@@ -1,3 +1,12 @@
+.svg_none,
+#motionSVG,
+#star-path {
+  display: none;
+  @include xl {
+    display: block;
+  }
+}
+
 /* 首頁第一島 */
 .home_first_island {
   width: 100%;
@@ -7,13 +16,22 @@
 
 .sun_pic {
   position: absolute;
-  bottom: 60%;
-  left: 12%;
+  top: 10%;
+  left: 8%;
   z-index: 50;
+  @include lg() {
+    bottom: 70%;
+    left: 12%;
+    z-index: 50;
+  }
   img {
-    width: 150px;
-    height: 150px;
+    width: 75px;
+    height: 75px;
     animation: sun 3s linear infinite;
+    @include lg() {
+      width: 150px;
+      height: 150px;
+    }
   }
 }
 
@@ -353,10 +371,10 @@
 
 .home_first_info {
   position: absolute;
-
+  left: 5%;
   @include lg() {
     bottom: 15%;
-    right: 0;
+    right: 20%;
   }
 }
 
@@ -369,9 +387,11 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  @include md {
+    margin-left: 50px;
+  }
 }
 
-/* 首頁各島介紹內容 */
 .home_first_info_text,
 .home_lesson_info_text,
 .home_topic_info_text,
@@ -389,7 +409,6 @@
   line-height: 1.5;
 }
 
-/* 首頁各島介紹內容靠右 */
 .home_topic_info {
   display: flex;
   justify-content: center;
@@ -404,14 +423,13 @@
   right: 2%;
   bottom: 10%;
 }
-
 /* 首頁各島與水中裝飾的間隔 */
 .home_lesson_island_pic,
 .home_topic_island_pic,
 .home_mall_island_pic,
 .home_mall_island_2_pic {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
 }
 
@@ -436,15 +454,14 @@
   height: 200px;
 }
 
-.home_lesson_info_text {
-  display: flex;
-  justify-content: space-around;
-}
-
 .home_lesson_info_pic {
-  position: absolute;
-  left: 2%;
-  bottom: 20%;
+  display: none;
+  @include md {
+    position: absolute;
+    left: 2%;
+    bottom: 20%;
+    display: block;
+  }
 }
 
 /* 學習島介紹內容NPC */
@@ -454,19 +471,16 @@
 }
 
 /* 學習島NPC */
-.home_lesson_island_npc1 {
+.home_lesson_island1_npc {
   width: 100%;
-}
-.home_lesson_island_npc1 img,
-.home_lesson_island_npc2 img {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 30%;
+  img {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 /*學習島NPC talk*/
-.lesson_talk_1 {
+.lesson_talk {
   position: absolute;
   left: 30%;
   top: 5%;
@@ -475,32 +489,28 @@
   animation-delay: 0s;
   animation-iteration-count: infinite;
   img {
-    width: 70px;
-    height: 50px;
+    width: 80px;
+    height: 70px;
   }
 }
 
-.lesson_talk_2 {
-  position: absolute;
-  right: 15%;
-  top: 5%;
-  animation-name: talk1;
-  animation-duration: 5s;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  img {
-    width: 70px;
-    height: 50px;
-  }
-}
 /* 學習島NPC1的位子 */
-.home_lesson_island_npc1 img {
-  left: 40%;
+.home_lesson_island_pic {
+  position: relative;
 }
 
-/* 學習島NPC2的位子 */
-.home_lesson_island_npc2 img {
-  right: 20%;
+.home_lesson_island_npc1 {
+  position: absolute;
+  left: 30%;
+  bottom: 50%;
+  @include md {
+    left: 30%;
+    bottom: 50%;
+  }
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* 學習地圖的雲 */
@@ -519,15 +529,6 @@
   right: 20%;
 }
 
-/* 學習地圖的路標 */
-.home_lesson_road_sign img {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  bottom: 80%;
-  right: 0;
-}
-
 /* 測驗島 */
 /* 測驗島npc */
 .home_topic_island_npc img {
@@ -542,6 +543,10 @@
   position: absolute;
   left: 16%;
   top: 12%;
+  animation-name: talk;
+  animation-duration: 5s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
   img {
     width: 70px;
     height: 50px;
@@ -924,12 +929,12 @@
   }
 
   .home_first_info_text {
+    position: absolute;
     margin: 80px 0;
   }
 
   /* 首頁介紹框 */
   .home_first_info_text,
-  .home_lesson_info_text,
   .home_topic_info_text,
   .home_mall_info_text,
   .home_decorate_info_text {
@@ -937,11 +942,18 @@
     width: 550px;
     height: 80px;
   }
+  .home_lesson_info_text {
+    font-size: 20px;
+    width: 550px;
+    height: 80px;
+    padding: 20px 20px 20px 150px;
+  }
 
   /* 首頁介紹內容 */
   .home_first_info {
-    width: 50%;
-    transform: translateX(90%);
+    left: 20%;
+    bottom: 50%;
+    position: absolute;
   }
 
   /* 首頁介紹NPC-右 */
@@ -963,28 +975,28 @@
     height: 90px;
     display: block;
   }
-  .home_lesson_island1_pic {
+  .home_lesson_island_pic {
     img {
-      width: 600px;
-      height: 500px;
+      width: 400px;
+      height: 300px;
     }
   }
 
   /* 首頁各個島的大小 */
-  // .home_lesson_island img,
-  // .home_topic_island_pic img,
-  // .home_mall_island_pic img,
-  // .home_mall_island_2_pic img,
-  // .home_decorate_island_pic img,
-  // .home_decorate_island_2_pic img {
-  //   width: 500px;
-  //   height: 350px;
-  // }
+  .home_lesson_island img,
+  .home_topic_island_pic img,
+  .home_mall_island_pic img,
+  .home_mall_island_2_pic img,
+  .home_decorate_island_pic img,
+  .home_decorate_island_2_pic img {
+    width: 500px;
+    height: 350px;
+  }
 
   /* 首頁學習地圖內容靠左 */
   .home_lesson_info {
-    width: 50%;
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
   }
 
   /* 首頁學習地圖介紹框NPC大小 */
@@ -1002,16 +1014,24 @@
   /* 首頁水中裝飾 */
   .home_lesson_inwater {
     position: relative;
-
     img {
+      width: 200px;
+      height: 200px;
+    }
+    .lesson_frog {
       position: absolute;
-      right: 10%;
-      top: 15%;
+      right: 28%;
+      bottom: 66%;
+      img {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
   .home_lesson_road_sign {
     position: absolute;
-    right: 20%;
+    right: -30%;
+    bottom: 20%;
   }
   .lesson_npc {
     position: absolute;
@@ -1031,6 +1051,15 @@
     width: 200px;
     height: 200px;
     margin: 100px 0;
+  }
+  .topic_frog {
+    position: absolute;
+    bottom: 40%;
+    left: 19%;
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .home_mall_inwater img {
@@ -1053,27 +1082,18 @@
   }
 
   /* 學習島NPC大小 */
-  .home_lesson_island_npc1 img,
-  .home_lesson_island_npc2 img {
+  .home_lesson_island_npc1 img {
     width: 70px;
     height: 70px;
   }
 
   /* 學習島NPC talk */
-  .lesson_talk_1 {
+  .lesson_talk {
+    position: absolute;
     left: 30%;
-    top: 3%;
+    top: 2%;
     img {
-      width: 120px;
-      height: 100px;
-    }
-  }
-
-  .lesson_talk_2 {
-    right: 10%;
-    top: 3%;
-    img {
-      width: 120px;
+      width: 180px;
       height: 100px;
     }
   }
@@ -1114,10 +1134,10 @@
   }
 
   .topic_talk {
-    left: 14%;
+    left: 4%;
     top: 17%;
     img {
-      width: 120px;
+      width: 180px;
       height: 100px;
     }
   }
