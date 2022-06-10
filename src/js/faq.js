@@ -111,6 +111,7 @@ window.addEventListener('load', function() {
     for(let i = 0; i<faqTitle.length; i++){
         faqTitle[i].addEventListener('click',function(e){
             messageLightBox.style.display = 'flex';
+            
             e.stopPropagation();
         })
     }

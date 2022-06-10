@@ -104,6 +104,16 @@ window.addEventListener('load', function(){
         // }
     })
 
+    window.addEventListener('resize',function() {
+        if(window.innerWidth < 992){
+            memArea.style.display = 'none';
+            memIcon.style.display = 'none';
+        }else{
+            memArea.style.display = 'block';
+            // memIcon.style.display = 'none';
+        }
+    })
+
     // =================登入驗證==================
     // window.onresize = loginBtn;
     loginBtn.addEventListener('click',function(e){

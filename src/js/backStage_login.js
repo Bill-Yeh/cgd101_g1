@@ -1,6 +1,8 @@
 window.addEventListener('load',function(){
+    // 管理員切換
     let administatorSwitch = document.getElementById('administator');
 
+    // 教師切換
     let teacherSwitch = document.getElementById('teacher');
 
     // 管理員表單
@@ -102,7 +104,30 @@ window.addEventListener('load',function(){
                 e.preventDefault();
                 return;
             }else{
-                return window.location.replace('backStage_account.html');
+                // alert('登入成功!!!');
+            //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function(){
+                    let memberWeb = JSON.parse(xhr.responseText);
+                    memName.innerText = memberWeb.member_name;
+                    //將登入表單上的資料清空，並隱藏起來
+                    loginAccount.value = '';
+                    loginPassword.value = '';
+                    loginRegister.style.display = 'none';
+                    
+                    memArea.style.display = 'none';
+                    memIcon.style.display = 'none';
+                    logout.style.display = 'block';
+                    loginBox.style.width = '10%';
+                    moneyArea.style.margin = 'auto';
+                }
+                xhr.open("post", "front_login_register.php", true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
+                console.log(data_info);
+                xhr.send(data_info);
+                    return window.location.replace('backStage_account.html');
             }   
     
         })
