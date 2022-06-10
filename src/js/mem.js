@@ -15,6 +15,56 @@ new Vue({
 })
 
 
+
+
+{/* <td>{{orderNo}}</td>
+                <td>{{orderTime}}</td>
+                <td><img src={{imgPc}} alt=""></td>
+                <td>{{price}}</td>
+                <td>{{payment}}</td> */}
+
+new Vue({
+    el:'#orderAPP',
+    // component:{"component-orderList": {
+    //     template:`<tr>
+    //             <td>111</td>
+    //             <td>222</td>
+    //             <td>222</td>
+    //             <td>222</td>
+    //             <td>222</td>
+    //             </tr>`
+    // }}
+
+    data:{
+        
+    },
+    methods:{
+
+    }
+
+    
+})
+ Vue.component("component-orderList", {
+    template:`<tr>
+                <td>Hello</td>
+            </tr>`
+    // ,data:function(){
+    //         return{
+    //         orderNo:"11111",
+    //         orderTime:"34343",
+    //         imgPc:"./images/char_hat_1.png",
+    //         price:"10",
+    //         payment:"代幣"
+    //         }
+    //     }
+    })
+
+
+
+
+// const vm=new Vue({}).$mount('#orderAPP');
+
+
 //確定是否是首次註冊後進入會員登入
 function showChar(){
     let url=document.referrer;

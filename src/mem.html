@@ -125,14 +125,17 @@
                             <th class="buy_list_title_item">付款方式</th>
                         </tr>
                     </thead>
-                    <tbody class="buy_list_content">
-                        <tr>
+                    <tbody class="buy_list_content" id="orderAPP">
+                        <!-- <tr>
                             <td>111112</td>
                             <td>2022/5/31 12:38:55</td>
                             <td><img src="./images/char_hat_1.png" alt=""></td>
                             <td>10</td>
                             <td>代幣</td>
-                        </tr>
+                        </tr> -->
+                        <!-- <component-orderList></component-orderList> -->
+                        <v-for="(item, index) in items" :key="index"></v-for>
+
                     </tbody>
                 </table>
                 
@@ -155,14 +158,14 @@
 
                             </div>
                             <div class="word">
-                                <h3 class="word_title">單字</h3>
+                                <!-- <h3 class="word_title">單字</h3>
                                 <h4 class="word_item">單字一</h4>
-                                <h4 class="word_item">單字二</h4>
+                                <h4 class="word_item">單字二</h4> -->
                             </div>
                             <div class="talk">
-                                <h3 class="talk_title">會話</h3>
+                                <!-- <h3 class="talk_title">會話</h3>
                                 <h4 class="talk_item">對話一</h4>
-                                <h4 class="talk_item">對話二</h4>
+                                <h4 class="talk_item">對話二</h4> -->
                             </div>
                         </div>
                     </div>
