@@ -9,7 +9,7 @@ try{
   $options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL,  PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
 
   $pdo = new PDO($dsn, $user, $password, $options);
-  $sql = "select * from `backstage` where backstage_account=:backstage_account and backstage_password=:backstage_password"; 
+  $sql = "select * from `backstage` where backstage_account=:backstage_account and backstage_password=:backstage_password and backstage_status=2"; 
   $member = $pdo->prepare($sql);
   $member->bindValue(":backstage_account", $_POST["backstage_account"]);
   $member->bindValue(":backstage_password", $_POST["backstage_password"]);
@@ -25,8 +25,9 @@ try{
     $_SESSION["backstage_account"] = $memRow["backstage_account"];
     $_SESSION["backstage_password"] = $memRow["backstage_password"];
     $_SESSION["backstage_name"] = $memRow["backstage_name"];
+    $_SESSION["backstage_status"] = $memRow["backstage_status"];
 
-    $result = ["backstage_id"=>$_SESSION["backstage_id"], "backstage_account"=>$_SESSION["backstage_account"], "backstage_password"=>$_SESSION["backstage_password"], "backstage_name"=>$_SESSION["backstage_name"]];
+    $result = ["backstage_id"=>$_SESSION["backstage_id"], "backstage_account"=>$_SESSION["backstage_account"], "backstage_password"=>$_SESSION["backstage_password"], "backstage_name"=>$_SESSION["backstage_name"],"backstage_status"=>$_SESSION["backstage_status"]];
 
     //送出登入者的姓名資料
     echo json_encode($result);

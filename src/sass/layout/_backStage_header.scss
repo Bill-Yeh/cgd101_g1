@@ -30,16 +30,16 @@
             .administrator{
                 padding-right: 30px;
             }
-            span,a{
+            span{
                 font-size: 1.2rem;
                 font-family: $fontCh;
                 color: #fff;
             }
-            a{
-                text-decoration: none;
+            #backLogout{
+                cursor: pointer;
                 transition: .2s;
                 &:hover{
-                    color: yellow;
+                    color: #ffff61;
                 }
             }
         }

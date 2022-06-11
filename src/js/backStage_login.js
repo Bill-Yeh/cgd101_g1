@@ -1,4 +1,5 @@
 window.addEventListener('load',function(){
+    let adminWeb;
     // 管理員切換
     let administatorSwitch = document.getElementById('administator');
 
@@ -56,19 +57,11 @@ window.addEventListener('load',function(){
     //密碼的正規表達式
     let passwordCheck = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/; 
 
-    //管理員登入帳號過
-    let accountValid = userEmail.test(administatorAccount.value);
-    // console.log("帳號", accountValid);
-
-    //管理員登入密碼過
-    let passwordValid = passwordCheck.test(administatorPassword.value);
-    // console.log("密碼", passwordValid); 
-
-    //教師登入帳號過
+    // //教師登入帳號過
     let accountValid2 = userEmail.test(teacherAccount.value);
-    // console.log("帳號", accountValid);
+    // // console.log("帳號", accountValid);
 
-    //教師登入密碼過
+    // //教師登入密碼過
     let passwordValid2 = passwordCheck.test(teacherPassword.value);
     // console.log("密碼", passwordValid);
 
@@ -78,6 +71,9 @@ window.addEventListener('load',function(){
 
     // 教師登入btn
     let teacherBtn = document.getElementById('teacher_login');
+
+    // 管理員顯示字樣
+    let headerAdmin = document.getElementById('header_admin');
 
 
     // 管理員登入驗證
@@ -103,34 +99,28 @@ window.addEventListener('load',function(){
                 administatorPassword.select();
                 e.preventDefault();
                 return;
-            }else{
-                // alert('登入成功!!!');
-            //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
-                let xhr = new XMLHttpRequest();
-                xhr.onload = function(){
-                    let memberWeb = JSON.parse(xhr.responseText);
-                    memName.innerText = memberWeb.member_name;
-                    //將登入表單上的資料清空，並隱藏起來
-                    loginAccount.value = '';
-                    loginPassword.value = '';
-                    loginRegister.style.display = 'none';
-                    
-                    memArea.style.display = 'none';
-                    memIcon.style.display = 'none';
-                    logout.style.display = 'block';
-                    loginBox.style.width = '10%';
-                    moneyArea.style.margin = 'auto';
+            }
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                adminWeb = JSON.parse(xhr.responseText);
+                if(adminWeb.backstage_account == true || adminWeb.backstage_status == '2'){
+                    //將登入表單上的資料清空
+                    administatorAccount.value = '';
+                    administatorPassword.value = '';
+                    window.location.href = "backStage_account.html";
+                }else{
+                    alert('資格不符，請連繫後台人員');
+                    // e.preventDefault();
                 }
-                xhr.open("post", "front_login_register.php", true);
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            }
+            xhr.open("post", "back_administrator_login.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
-                let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
-                console.log(data_info);
-                xhr.send(data_info);
-                    return window.location.replace('backStage_account.html');
-            }   
-    
-        })
+            let data_info = `backstage_account=${administatorAccount.value}&backstage_password=${administatorPassword.value}`;
+            console.log(data_info);
+            xhr.send(data_info);
+            
+    })
 
 
 
