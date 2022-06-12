@@ -125,6 +125,81 @@
 .coin_guide img{
   width: 100%;
 }
+//會話引導
+.coversation_guide{
+  clip-path: inset(0% 0% 0% 0%);
+  z-index: 100;
+  position: absolute;
+  bottom: 36%;
+  right: 28%;
+  z-index: 10000;
+  // display: none;
+  animation-name: Bungy-Jumping;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+.coversation_guide img{
+  width: 100%;
+}
+//主視窗引導
+.window_guide{
+  clip-path: inset(0% 0% 0% 0%);
+  z-index: 100;
+  position: absolute;
+  top: 40%;
+  left: 32%;
+  z-index: 10000;
+  // display: none;
+  animation-name: Bungy-Jumping;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+.window_guide img{
+  width: 100%;
+}
+//聲音播放引導
+.speaker_guide{
+  clip-path: inset(0% 0% 0% 0%);
+  z-index: 100;
+  position: absolute;
+  bottom: 24%;
+  right: 28%;
+  z-index: 10000;
+  // display: none;
+  animation-name: Bungy-Jumping;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+.speaker_guide img{
+  width: 100%;
+}
+//關閉引導
+.stop_guide{
+  clip-path: inset(0% 0% 0% 0%);
+  z-index: 100;
+  position: absolute;
+  top: 22.9%;
+  right: 29.8%;
+  z-index: 10000;
+  // display: none;
+  animation-name: Bungy-Jumping;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+.stop_guide img{
+  width: 100%;
+}
+.lesson-teach{
+  width: 70%;
+  position: absolute;
+  top: 17%;
+  left: 15%;
+}
+//==============================================
 .study_big_map{
   background-image: url("../images/studyMap_main_island.png");
   width: 100%;
@@ -1144,34 +1219,6 @@ content:url(../images/npc_border_hello.png);
     left: 43%;
   }
 }
-// .close-guide2{
-//   width: 250px;
-//   height: 100px;
-//   z-index: 51;
-//   position: absolute;
-//   top: 50%;
-//   left: 16%;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: space-around;
-//   align-items: center;
-//   background-color: #FAE6B8;
-//   border:8px solid #F9BB4D;
-//   border-radius: 20px;
-//   display: none;
-//   @include md{ //768
-//     top: 45%;
-//     left: 35%;
-//   }
-//   @include lg{ //992
-//     top: 50%;
-//     left: 40%;
-//   }
-//   @include xl{ //1200
-//     top: 50%;
-//     left: 43%;
-//   }
-// }
 .sure button{
   color: #F0FDFD;
   cursor: pointer;
