@@ -640,15 +640,15 @@
 .home_mall_island_npc1 {
   position: absolute;
   top: 40%;
-  left: 30%;
+  left: 40%;
   @include md() {
     left: 15%;
   }
 }
 .mall_talk_1 {
   position: absolute;
-  top: -2%;
-  left: 30%;
+  top: -3%;
+  left: 40%;
   img {
     width: 120px;
     height: 80px;
@@ -1224,11 +1224,20 @@
   }
 
   .mall_talk_1 {
-    top: 23%;
-    left: 26%;
+    top: 18%;
+    left: 25%;
     img {
-      width: 120px;
-      height: 80px;
+      width: 180px;
+      height: 100px;
+    }
+  }
+  .mall_talk_2 {
+    position: absolute;
+    top: 20%;
+    right: 50%;
+    img {
+      width: 180px;
+      height: 100px;
     }
   }
 

@@ -44,19 +44,28 @@ let animation;
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
-gsap.set("#motionSVG", { scale: 0.5, autoAlpha: 2 });
+gsap.set("#motionSVG", {
+  scale: 0.5,
+  autoAlpha: 1,
+});
 gsap.set("#motionSVG", { transformOrigin: "50% 50%" });
 
 animation = gsap.to("#motionSVG", {
   scrollTrigger: {
     trigger: "#star-path",
-    end: "+=3250",
+    start: "top 40%",
+    end: "bottom -150",
     scrub: 1,
     markers: false,
+    //回頭
+    onUpdate: (self) => {
+      gsap.to("#motionSVG", {
+        rotation: () => (self.direction === 1 ? 0 : -180),
+      });
+    },
   },
-  delay: 0.5,
-  duration: 500,
-  ease: "power1.inOut",
+  duration: 10,
+  ease: "none",
   immediateRender: true,
   motionPath: {
     path: "#star-path",
