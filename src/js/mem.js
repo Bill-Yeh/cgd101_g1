@@ -110,14 +110,103 @@ function showChar(){
 //進入引導
 function pageTour(){
     let black=document.querySelector(".bg_00");
-    black.style.backgroundColor='rgba(0, 0, 0, 0.6)';
-
+    black.style.backgroundColor='rgba(0, 0, 0, 0.8)';
+    let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
+    let talkInside = document.getElementById("firstSpeak");
+    talkInside.innerText = hello[0]
 }
-
 
 
 window.addEventListener("load",showChar)
 document.querySelector(".goMem").addEventListener("click",pageTour)
+
+
+
+function guide(){
+    let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
+    let talkInside = document.getElementById("firstSpeak");
+    let talkCon = talkInside.innerText.trim();
+    let black =document.querySelector(".bg_00");
+    let lightBoxInfo =document.querySelector(".getchar_lightBox");
+    let guideClose = document.getElementById("closeGuide2");
+    let talk = document.querySelector(".talkBox");
+    let bedguide = document.getElementById("bedGuide");
+    let mapguide = document.getElementById("mapGuide");
+    let bookguide = document.getElementById("bookGuide");
+    let closetguide = document.getElementById("closetGuide");
+    let treasureboxguide = document.getElementById("treasureBoxGuide");
+    let messageguide = document.getElementById("messageGuide");
+    let errorguide = document.getElementById("errorGuide");
+    let button=document.querySelector(".goMem");
+    
+    guideClose.style.display = "none";
+    if(talkCon ==hello[0]){
+    talkInside.innerText=hello[1];
+    bedguide.style.display = "block";
+    button.style.display = "none";
+   }else if(talkCon ==hello[1]){
+    talkInside.innerText=hello[2];
+    bedguide.style.display = "none";
+    mapguide.style.display = "block";
+   }else if(talkCon ==hello[2]){
+    talkInside.innerText=hello[3];
+    mapguide.style.display = "none";
+    bookguide.style.display = "block";
+   }else if(talkCon ==hello[3]){
+    talkInside.innerText=hello[4];
+    bookguide.style.display = "none";
+    closetguide.style.display = "block";
+   }else if(talkCon ==hello[4]){
+    talkInside.innerText=hello[5];
+    closetguide.style.display = "none";
+    treasureboxguide.style.display = "block";
+   }else if(talkCon ==hello[5]){
+    talkInside.innerText=hello[6];
+    treasureboxguide.style.display = "none";
+    messageguide.style.display = "block";
+   }else if(talkCon ==hello[6]){
+    talkInside.innerText=hello[7];
+    messageguide.style.display = "none";
+    errorguide.style.display = "block";
+   }else if(talkCon ==hello[7]){
+    talkInside.innerText="";
+    black.style.display='flex';
+    lightBoxInfo.style.display = "none";
+    guideClose.style.display = "flex";
+    talk.style.display = "none";
+    errorguide.style.display = "none";
+   }
+};
+function guideClose(){
+    let closeguide = document.getElementById("closeGuide2");
+    let black =document.querySelector(".bg_00");
+    closeguide.style.display="none";
+    black.style.display="none";
+};
+function guideAgain(){
+    let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
+    let talkInside = document.getElementById("firstSpeak");
+    let bedguide = document.getElementById("bedGuide");
+    let closeguide = document.getElementById("closeGuide2");
+    let talk = document.querySelector(".talkBox");
+    let lightBoxInfo = document.querySelector(".getchar_lightBox");
+    talkInside.innerText=hello[1];
+    bedguide.style.display = "block";
+    closeguide.style.display="none";
+    talk.style.display = "block";
+    lightBoxInfo.style.display="block";
+};
+
+
+function init(){
+    let talk = document.querySelector(".talkBox");
+    let close = document.getElementById("imSure");
+    let again = document.getElementById("doAgain");
+    talk.addEventListener("click",guide);
+    close.addEventListener("click",guideClose);
+    again.addEventListener("click",guideAgain);
+};
+window.addEventListener('load',init)
 
 
 

@@ -1,5 +1,7 @@
 
-
+.mem{
+    position: relative;
+}
 
 .wrapper{
     position: relative;
@@ -748,7 +750,7 @@
                 img{
                     display: block;
                     margin: auto;
-                    vertical-align:bottom;
+                    // vertical-align:bottom;
                     width: auto;
                     height: 100%;
                 }
@@ -815,7 +817,7 @@
                         display: block;
                         margin: auto;
                         height: 140px;
-                        vertical-align: bottom;
+                        // vertical-align: bottom;
                     }
 
                     .hat{
@@ -1294,4 +1296,234 @@ canvas{
     
 
 }
+
+//導引用catMessage
+//床
+.bed_guide{
+    clip-path: inset(1% 5% 1% 2%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    top: 10%;
+    right: 17%;;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+      top: 66%;
+      right: 17%;;
+      transform: scale(0.8);
+    }
+    @include lg() {
+      top: 65%;
+      right: 17%;
+      transform: scale(0.7);
+    }
+    @include xl() {
+      top: 38%;
+      right: 11%;
+      transform: scale(1);
+    }
+  }
+  .bed_guide img{
+    width: 100%;
+  }
+//地圖
+.map_guide{
+    clip-path: inset(6% 3% 10% 3%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    top: 10%;
+    right: 37%;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+      top: 66%;
+      right: 37%;
+      transform: scale(0.8);
+    }
+    @include lg() {
+      top: 65%;
+      right: 37%;
+      transform: scale(0.7);
+    }
+    @include xl() {
+      top: 17%;
+      right: 36%;
+      transform: scale(1);
+    }
+  }
+  .map_guide img{
+    width: 100%;
+  }
+  //書
+.book_guide{
+    clip-path: circle(50% at 50% 50%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    top: 10%;
+    right: 17%;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+      top: 66%;
+      right: 17%;
+      transform: scale(0.8);
+    }
+    @include lg() {
+      top: 65%;
+      right: 24%;
+      transform: scale(0.7);
+    }
+    @include xl() {
+      top: 48%;
+      right: 23%;
+      transform: scale(0.8);
+    }
+  }
+  .book_guide img{
+    width: 100%;
+  }
+//衣櫥
+.closet_guide{
+    clip-path: inset(1% 6% 5% 4%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    top: 10%;
+    left: 19.5%;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+      top: 66%;
+      left: 19%;
+      transform: scale(0.8);
+    }
+    @include lg() {
+      top: 65%;
+      left: 13%;
+      transform: scale(0.7);
+    }
+    @include xl() {
+      top: 19%;
+      left: 12.5%;
+      transform: scale(0.9);
+    }
+  }
+  .closet_guide img{
+    width: 100%;
+  }
+//藏寶箱
+.treasureBox_guide{
+    clip-path: circle(50% at 50% 50%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    bottom: 0%;
+    left: 19.5%;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+        bottom: -2%;
+        left: 19%;
+        transform: scale(0.8);
+    }
+    @include lg() {
+        bottom: -2%;
+        left: 13%;
+        transform: scale(0.7);
+    }
+    @include xl() {
+        bottom: 0%;
+        left: 7%;
+        transform: scale(1);
+    }
+  }
+  .treasureBox_guide img{
+    width: 100%;
+  }
+//老師諮詢
+.message_guide{
+    clip-path: circle(45% at 50% 50%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    bottom: -2%;
+    right: 15.2%;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+        bottom: -2%;
+        right: 15.2%;
+        transform: scale(0.8);
+    }
+    @include lg() {
+        bottom: -2%;
+        right: 15.2%;
+        transform: scale(0.7);
+    }
+    @include xl() {
+        bottom: 0%;
+        right: 16.4%;
+        transform: scale(0.9);
+    }
+  }
+  .message_guide img{
+    width: 100%;
+  }
+//異常
+.error_guide{
+    clip-path: circle(40% at 50% 50%);
+    z-index: 9999999999999999999;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    transform: scale(0.8);
+    display: none;
+    @include md() {
+        bottom: 10%;
+        right: 10%;
+        transform: scale(0.8);
+    }
+    @include lg() {
+        bottom: 10%;
+        right: 10%;
+        transform: scale(0.7);
+    }
+    @include xl() {
+        bottom: 0%;
+        right: 11.2%;
+        transform: scale(1);
+    }
+  }
+  .error_guide img{
+    width: 100%;
+  }
+  .close-guide2{
+    width: 250px;
+    height: 100px;
+    z-index: 9999999999999999999999;
+    position: absolute;
+    top: 50%;
+    left: 16%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FAE6B8;
+    border:8px solid #F9BB4D;
+    border-radius: 20px;
+    display: none;
+    @include md{ //768
+      top: 45%;
+      left: 35%;
+    }
+    @include lg{ //992
+      top: 50%;
+      left: 40%;
+    }
+    @include xl{ //1200
+      top: 50%;
+      left: 43%;
+    }
+  }
+  .close-guide2 button:hover{
+    background-color: #F37420;
+  }
+
+
 
