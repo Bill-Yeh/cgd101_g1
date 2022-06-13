@@ -35,8 +35,8 @@ new Vue({
         let xhr = new XMLHttpRequest();
 
 		xhr.onload = function(){
-                console.log(xhr);
-				// buyListVue.prodRows = JSON.parse(xhr.responseText);
+                // console.log(JSON.parse(xhr.responseText));
+				buyListVue.prodRows = JSON.parse(xhr.responseText);
 		}
 			
 		xhr.open("get", "./orderListInsert.php",true);
@@ -49,23 +49,14 @@ new Vue({
 
 let prodRow = Vue.component("component-orderList", {
 
-    props:['item_order_id','payment_time','item_img','item_price','payment'],
+    props:['item_order_id','payment_time','item_img','item_price'],
     template:` <tr>
                 <td>{{item_order_id}}</td>
                 <td>{{payment_time}}</td>
-                <td><img src={{item_img}} alt=""></td>
+                <td><img :src='item_img' alt=""></td>
                 <td>{{item_price}}</td>
                 <td>{{payment}}</td>
                 </tr>`
-    // ,data:function(){
-    //         return{
-    //         orderNo:"11111",
-    //         orderTime:"34343",
-    //         imgPc:"./images/char_hat_1.png",
-    //         price:"10",
-    //         payment:"代幣"
-    //         }
-    //     }
     })
 
 
