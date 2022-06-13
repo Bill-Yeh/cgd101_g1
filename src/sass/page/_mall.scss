@@ -4,7 +4,6 @@ body {
 }
 
 .pay_box,
-.level_box,
 .tool_box {
   display: none;
   position: fixed;
@@ -14,7 +13,6 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100vh;
 
-  .level_text_box,
   .tool_text_box {
     display: none;
     position: absolute;
@@ -44,7 +42,6 @@ body {
     display: flex;
     .yes_btn,
     .no_btn,
-    .level_btn,
     .tool_yes_btn,
     .tool_no_btn {
       cursor: pointer;
@@ -56,8 +53,8 @@ body {
 .text_box {
   display: block;
   position: absolute;
-  width: 250px;
-  height: 300px;
+  width: 200px;
+  height: 80px;
   background-color: #fae6b8;
   border: 5px solid #f9bb4d;
   margin: auto;
@@ -240,6 +237,7 @@ body {
           flex-direction: column;
           justify-content: space-around;
         }
+
         .item_1,
         .item_2,
         .item_3,
@@ -303,6 +301,128 @@ body {
           }
         }
       }
+    }
+  }
+}
+.mall_rwd_floor {
+  position: absolute;
+  bottom: -5%;
+  width: 100vw;
+  img {
+    width: 100%;
+    height: 120px;
+  }
+  @include md() {
+    display: none;
+  }
+}
+@include md() {
+  //課程介紹_992
+  .n5_word {
+    &:hover::after {
+      content: url(../images/mall_n5_word.png);
+      position: absolute;
+      left: -13%;
+      top: -5%;
+    }
+  }
+  .n5_conversation {
+    &:hover::after {
+      content: url(../images/mall_n5_conversation.png);
+      position: absolute;
+      left: 9%;
+      top: -5%;
+      z-index: 10;
+    }
+  }
+
+  .n3_word {
+    &:hover::after {
+      content: url(../images/mall_n3_word.png);
+      position: absolute;
+      left: -13%;
+      top: 22.5%;
+    }
+  }
+  .n3_conversation {
+    &:hover::after {
+      content: url(../images/mall_n3_conversation.png);
+      position: absolute;
+      left: 9%;
+      top: 22.5%;
+      z-index: 10;
+    }
+  }
+
+  .n1_word {
+    &:hover::after {
+      content: url(../images/mall_n1_word.png);
+      position: absolute;
+      left: -13%;
+      top: 50.5%;
+    }
+  }
+  .n1_conversation {
+    &:hover::after {
+      content: url(../images/mall_n1_conversation.png);
+      position: absolute;
+      left: 9%;
+      top: 50.5%;
+      z-index: 10;
+    }
+  }
+
+  .n4_word {
+    &:hover::after {
+      content: url(../images/mall_n4_word.png);
+      position: absolute;
+      left: 31%;
+      top: -5%;
+    }
+  }
+  .n4_conversation {
+    &:hover::after {
+      content: url(../images/mall_n4_conversation.png);
+      position: absolute;
+      left: 53%;
+      top: -5%;
+      z-index: 10;
+    }
+  }
+
+  .n2_word {
+    &:hover::after {
+      content: url(../images/mall_n2_word.png);
+      position: absolute;
+      left: 31%;
+      top: 22.5%;
+    }
+  }
+  .n2_conversation {
+    &:hover::after {
+      content: url(../images/mall_n2_conversation.png);
+      position: absolute;
+      left: 53%;
+      top: 22.5%;
+      z-index: 10;
+    }
+  }
+
+  .all_word {
+    &:hover::after {
+      content: url(../images/mall_all_word.png);
+      position: absolute;
+      left: 30%;
+      top: 50.5%;
+    }
+  }
+  .all_conversation {
+    &:hover::after {
+      content: url(../images/mall_all_conversation.png);
+      position: absolute;
+      left: 52%;
+      top: 50.5%;
+      z-index: 10;
     }
   }
 }
