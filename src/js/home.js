@@ -54,7 +54,7 @@ animation = gsap.to("#motionSVG", {
   scrollTrigger: {
     trigger: "#star-path",
     start: "top 40%",
-    end: "bottom -150",
+    end: "bottom -80",
     scrub: 1,
     markers: false,
     //回頭
