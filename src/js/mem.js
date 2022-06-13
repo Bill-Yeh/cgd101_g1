@@ -17,37 +17,46 @@ new Vue({
 
 
 
+
+
 {/* <td>{{orderNo}}</td>
                 <td>{{orderTime}}</td>
                 <td><img src={{imgPc}} alt=""></td>
                 <td>{{price}}</td>
                 <td>{{payment}}</td> */}
 
+let buyListVue=
 new Vue({
     el:'#orderAPP',
-    // component:{"component-orderList": {
-    //     template:`<tr>
-    //             <td>111</td>
-    //             <td>222</td>
-    //             <td>222</td>
-    //             <td>222</td>
-    //             <td>222</td>
-    //             </tr>`
-    // }}
-
     data:{
-        
+        prodRows:[],
     },
-    methods:{
+    created() {
+        let xhr = new XMLHttpRequest();
 
-    }
+		xhr.onload = function(){
+                console.log(xhr);
+				// buyListVue.prodRows = JSON.parse(xhr.responseText);
+		}
+			
+		xhr.open("get", "./orderListInsert.php",true);
+		xhr.send();	
+    },
 
     
-})
- Vue.component("component-orderList", {
-    template:`<tr>
-                <td>Hello</td>
-            </tr>`
+});
+
+
+let prodRow = Vue.component("component-orderList", {
+
+    props:['item_order_id','payment_time','item_img','item_price','payment'],
+    template:` <tr>
+                <td>{{item_order_id}}</td>
+                <td>{{payment_time}}</td>
+                <td><img src={{item_img}} alt=""></td>
+                <td>{{item_price}}</td>
+                <td>{{payment}}</td>
+                </tr>`
     // ,data:function(){
     //         return{
     //         orderNo:"11111",
@@ -62,7 +71,7 @@ new Vue({
 
 
 
-// const vm=new Vue({}).$mount('#orderAPP');
+
 
 
 //確定是否是首次註冊後進入會員登入
@@ -572,7 +581,7 @@ function openChetbox(){
             let trHead=document.querySelector('.trHead')
 
             let img = document.createElement('img');
-            img.src="./images/char_00.png";
+            img.src="./images/char_00_1.png";
             trHead.appendChild(img);
 
             let p = document.createElement('p');
@@ -609,7 +618,7 @@ function sentMessage(){
     let userHeadArr= document.querySelectorAll('.userHead');
 
     let img = document.createElement('img');
-    img.src="./images/char_00.png";    
+    img.src="./images/char_00_1.png";    
     
     userHeadArr[userHeadArr.length-1].appendChild(img);
 
@@ -643,7 +652,7 @@ function sentMessage(){
         let trHeadArr= document.querySelectorAll('.trHead');
 
         let img = document.createElement('img');
-        img.src="./images/char_00.png";
+        img.src="./images/char_00_1.png";
         trHeadArr[trHeadArr.length-1].appendChild(img);
 
         let p = document.createElement('p');
@@ -806,12 +815,12 @@ setInterval(()=>{
 
     setTimeout(() => {
         me.src="./images/char_00_eye_close.png"
-        console.log(me)
     },500)
 
 
     setTimeout(() => {
         me.src="./images/char_00_eye_open.png"
+
     },4000);
 
 },6000)

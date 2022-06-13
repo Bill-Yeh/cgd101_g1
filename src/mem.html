@@ -126,6 +126,10 @@
                         </tr>
                     </thead>
                     <tbody class="buy_list_content" id="orderAPP">
+                        <template v-for="prodRow in prodRows">
+                            <tr is="component-orderList" v-bind="prodRow"></tr>
+                            
+                        </template>
                         <!-- <tr>
                             <td>111112</td>
                             <td>2022/5/31 12:38:55</td>
@@ -134,7 +138,6 @@
                             <td>代幣</td>
                         </tr> -->
                         <!-- <component-orderList></component-orderList> -->
-                        <v-for="(item, index) in items" :key="index"></v-for>
 
                     </tbody>
                 </table>
@@ -218,7 +221,7 @@
         <div class="chetbox">
             <div class="info">
                 <div class="headshot">
-                    <img src="./images/char_00.png">
+                    <img src="./images/char_00_1.png">
                 </div>
                 <span class="teacher-name">語實巨進老師</span>
                 <div class="cancel">
