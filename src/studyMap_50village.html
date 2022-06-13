@@ -73,12 +73,6 @@
         <div class="lesson-teach" id="lessonTeach">
             <img src="./images/guide-lesson-interface.jpg">
         </div>
-        <div class="guide" id="guider">
-            <img src="./images/studyMap_NPC_main1.png">
-        </div>
-        <div class="guide_message" id="guiderMes">
-            <img src="./images/guide_message.png">
-        </div>
         <div class="border_guide" id="bGuide">
             <img src="../../images/guide-border.jpg">
         </div>
@@ -153,7 +147,7 @@
     let fifityWordE = new Array("え","け","せ","て","ね","へ","め","れ");//8
     let fifityWordO = new Array("お","こ","そ","と","の","ほ","も","よ","ろ","を","ん");//11
     //===========導覽文字==============
-    let guideCon = new Array("首先，地圖的中間牌子，可以知道目前是在哪一章節。","點選中間的NPC可以進入教學，頭上的對話框會顯示教學內容！","每個教學結束後，就會進行測驗。","測驗通過後，即會獲得代幣。持有的代幣會顯示在右上角。","課程的部分","1111","22222","3333","44444","55555");
+    let guideCon = new Array("首先，地圖的中間牌子，可以知道目前是在哪一章節。","點選中間的NPC可以進入教學，頭上的對話框會顯示教學內容！","點選後會跳出教學對話框，","下面的教學對話框會顯示片假名及中文，還有羅馬拼音，點選這個對話框可前往下一段教學。","點選喇叭圖示，即會進行發音，跟著發音一起練習吧!","正方形的對話框，會顯示漢字的寫法，沒有的話會顯示片假名。","教學過程中，可以點選X符號，結束教學。","每個教學結束後，就會進行測驗。","測驗通過後，即會獲得代幣。持有的代幣會顯示在右上角。","課程的部分");
     //=================================
     let show = document.getElementById('mapCon');
     let guiderTalk = document.getElementById('guiderCon');
@@ -173,21 +167,20 @@
     let usan = document.getElementById('usan');
     let esan = document.getElementById('esan');
     let osan = document.getElementById('osan');
-    let guideNpc = document.getElementById('guider');
-    let guiderMes = document.getElementById('guiderMes');
+    let lessonpic = document.getElementById('lessonTeach');
     let hint = document.getElementById('closeGuide');
-    // let hint2 = document.getElementById('closeGuide2');
     let toMap = document.getElementById('imSure');
     let again = document.getElementById('doAgain');
-    // let toMap2 = document.getElementById('imSure2');
-    // let again2 = document.getElementById('doAgain2');
     let bguide = document.getElementById('bGuide');
     let lguide = document.getElementById('lGuide');
     let cguide = document.getElementById('cGuide');
+    let cvguide = document.getElementById('cvGuide');
+    let wguide = document.getElementById('wGuide');
+    let sguide = document.getElementById('sGuide');
+    let stopguide = document.getElementById('stopGuide');
     
     function getGuide(){
         if (document.cookie.replace(/(?:(?:^|.*;\s*)village50Guide\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true"){
-        // alert("Do something here!");
         document.cookie = "village50Guide = true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
         filter.style.display="block";
         guiderTalk.style.display="flex";
@@ -203,42 +196,46 @@
     };
     function guideContent(){
     let tempguider = guidertext.innerText.trim();
-    if(tempguider == startCon[5]){
-        guidertext.innerText= guideCon[0];
-        bGuide.style.display="block";
-    }else if(tempguider == guideCon[0]){
-        guidertext.innerText= guideCon[1];
-        bGuide.style.display="none";
-        lGuide.style.display="block";
-    }else if(tempguider == guideCon[1]){
-        guidertext.innerText= guideCon[2];
-        lGuide.style.display="none";
-    }else if(tempguider == guideCon[2]){
-        guidertext.innerText= guideCon[3];
-        cGuide.style.display="block";
-    }
-    // else if(tempguider == guideCon[4]){
-    //     guidertext.innerText= guideCon[5];
-    //     // cGuide.style.display="block";
-    // }else if(tempguider == guideCon[5]){
-    //     guidertext.innerText= guideCon[6];
-    //     // cGuide.style.display="block";
-    // }else if(tempguider == guideCon[6]){
-    //     guidertext.innerText = guideCon[7];
-    //     // cGuide.style.display="block";
-    // }
-    else if(tempguider == guideCon[3]){
-        cGuide.style.display="none";
-        guidertext.innerText = "";
-        hint.style.display="flex";
-        guiderTalk.style.display="none";
-    }
-    // else if(tempguider == guideCon[7]){
-    //     cGuide.style.display="none";
-    //     guidertext.innerText = "";
-    //     hint2.style.display="flex";
-    //     guiderTalk.style.display="none";
-    // }
+        if(tempguider == startCon[5]){
+            guidertext.innerText= guideCon[0];
+            bGuide.style.display="block";
+        }else if(tempguider == guideCon[0]){
+            guidertext.innerText= guideCon[1];
+            bGuide.style.display="none";
+            lGuide.style.display="block";
+        }else if(tempguider == guideCon[1]){
+            guidertext.innerText = guideCon[2];
+            lGuide.style.display = "none";
+            lessonpic.style.display = "block";
+        }else if(tempguider == guideCon[2]){
+            guidertext.innerText= guideCon[3];
+            cvGuide.style.display="block";
+        }else if(tempguider == guideCon[3]){
+            guidertext.innerText= guideCon[4];
+            cvGuide.style.display="none";
+            sGuide.style.display="block";
+        }else if(tempguider == guideCon[4]){
+            guidertext.innerText= guideCon[5];
+            sGuide.style.display="none";
+            wGuide.style.display="block";
+        }else if(tempguider == guideCon[5]){
+            guidertext.innerText= guideCon[6];
+            wGuide.style.display="none";
+            stopGuide.style.display="block";
+        }else if(tempguider == guideCon[6]){
+            guidertext.innerText= guideCon[7];
+            stopGuide.style.display="none";
+            lessonpic.style.display = "none";
+        }else if(tempguider == guideCon[7]){
+            guidertext.innerText= guideCon[8];
+            cGuide.style.display="block";
+        }
+        else if(tempguider == guideCon[8]){
+            cGuide.style.display="none";
+            guidertext.innerText = "";
+            hint.style.display="flex";
+            guiderTalk.style.display="none";
+        }
     };
     function guideClose(){
         filter.style.display = "none";
@@ -254,14 +251,8 @@
         guiderTalk.style.display = "flex";
         guidertext.innerText = guideCon[0];
         hint.style.display = "none";
-        // hint2.style.display = "none";
         bGuide.style.display="block";
     };
-    // function guideAgain2(){
-    //     guiderTalk.style.display = "flex";
-    //     guidertext.innerText = guideCon[4];
-    //     hint2.style.display = "none";
-    // };
     function showLightBox(e){
             //背景變暗
         filter.style.display='block';
@@ -599,8 +590,6 @@
         cancel.addEventListener('click',cancelBox,false);
         toMap.addEventListener('click',guideClose,false);
         again.addEventListener('click',guideAgain,false);
-        // toMap2.addEventListener('click',guideClose,false);
-        // again2.addEventListener('click',guideAgain2,false);
     };
     window.addEventListener("load", init, false);
     </script>

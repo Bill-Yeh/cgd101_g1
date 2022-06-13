@@ -65,9 +65,25 @@
   clip-path: circle(50% at 50% 50%);
   z-index: 100;
   position: absolute;
-  top: 68%;
-  left: 17%;
+  top: 62%;
+  left: 19.5%;
+  transform: scale(0.8);
   display: none;
+  @include md() {
+    top: 66%;
+    left: 19%;
+    transform: scale(0.8);
+  }
+  @include lg() {
+    top: 65%;
+    left: 13%;
+    transform: scale(0.7);
+  }
+  @include xl() {
+    top: 68%;
+    left: 17%;
+    transform: scale(1);
+  }
 }
 .village_guide img{
   width: 100%;
@@ -80,6 +96,22 @@
   top: 54%;
   left: 22%;
   display: none;
+  transform: scale(0.8);
+  @include md() {
+    top: 54%;
+    left: 24%;
+    transform: scale(1);
+  }
+  @include lg() {
+    top: 50%;
+    left: 13%;
+    transform: scale(0.7);
+  }
+  @include xl() {
+    top: 54%;
+    left: 22%;
+    transform: scale(1);
+  }
 }
 .cloud_guide img{
   width: 100%;
@@ -90,8 +122,24 @@
   z-index: 100;
   position: absolute;
   top: 13.5%;
-  left: 44%;
+  left: 25%;
   display: none;
+  transform: scale(0.8);
+  @include md() {
+    top: 13.8%;
+    left: 36%;
+    transform: scale(0.9);
+  }
+  @include lg() {
+    top: 13.5%;
+    left: 42%;
+    transform: scale(0.9);
+  }
+  @include xl() {
+    top: 13.5%;
+    left: 44%;
+    transform: scale(1);
+  }
 }
 .border_guide img{
   width: 100%;
@@ -101,9 +149,25 @@
   clip-path: circle(50% at 50% 50%);
   z-index: 100;
   position: absolute;
-  top: 31%;
-  left: 13%;
+  top: 33.5%;
+  left: 0%;
   display: none;
+  transform: scale(0.7);
+  @include md() {
+    top: 35.8%;
+    left: 10%;
+    transform: scale(0.8);
+  }
+  @include lg() {
+    top: 31.5%;
+    left: 14%;
+    transform: scale(0.9);
+  }
+  @include xl() {
+    top: 31%;
+    left: 13%;
+    transform: scale(1);
+  }
 }
 .lesson_guide img{
   width: 100%;
@@ -111,7 +175,6 @@
 //代幣引導
 .coin_guide{
   clip-path: inset(0% 0% 0% 0%);
-  z-index: 100;
   position: absolute;
   top: 10%;
   right: 8%;
@@ -123,21 +186,35 @@
   animation-iteration-count: infinite;
 }
 .coin_guide img{
-  width: 100%;
+  width: 100%;  
 }
 //會話引導
 .coversation_guide{
   clip-path: inset(0% 0% 0% 0%);
   z-index: 100;
   position: absolute;
-  bottom: 36%;
-  right: 28%;
+  bottom: 51%;
+  right: 20%;
   z-index: 10000;
-  // display: none;
-  animation-name: Bungy-Jumping;
+  display: none;
+  animation-name: flash;
   animation-duration: 2s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
+  transform: scale(0.9);
+  @include md() {
+    bottom: 47%;
+    right: 20%;
+  }
+  @include lg() {
+    bottom: 45%;
+    right: 25%;
+  }
+  @include xl() {
+    bottom: 38%;
+    right: 30%;
+    // transform: scale(1);
+  }
 }
 .coversation_guide img{
   width: 100%;
@@ -147,14 +224,28 @@
   clip-path: inset(0% 0% 0% 0%);
   z-index: 100;
   position: absolute;
-  top: 40%;
-  left: 32%;
+  top: 38%;
+  left: 18%;
   z-index: 10000;
-  // display: none;
-  animation-name: Bungy-Jumping;
+  display: none;
+  animation-name: flash;
   animation-duration: 2s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
+  @include md() {
+    top: 38%;
+    left: 27%;
+
+  }
+  @include lg() {
+    top: 34%;
+  left: 32%;
+  }
+  @include xl() {
+    top: 38%;
+    left: 36%;
+    // transform: scale(1);
+  }
 }
 .window_guide img{
   width: 100%;
@@ -164,14 +255,26 @@
   clip-path: inset(0% 0% 0% 0%);
   z-index: 100;
   position: absolute;
-  bottom: 24%;
-  right: 28%;
+  bottom: 43.5%;
+  right: 9%;
   z-index: 10000;
-  // display: none;
-  animation-name: Bungy-Jumping;
+  display: none;
+  animation-name: flash;
   animation-duration: 2s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
+  @include md() {
+    bottom: 39.5%;
+    right: 14%;
+  }
+  @include lg() {
+    bottom: 34%;
+  right: 20%;
+  }
+  @include xl() {
+    bottom: 26.5%;
+    right: 26.5%;
+  }
 }
 .speaker_guide img{
   width: 100%;
@@ -181,23 +284,61 @@
   clip-path: inset(0% 0% 0% 0%);
   z-index: 100;
   position: absolute;
-  top: 22.9%;
-  right: 29.8%;
+  top: 30.5%;
+  right: 11.4%;
   z-index: 10000;
-  // display: none;
-  animation-name: Bungy-Jumping;
+  display: none;
+  animation-name: flash;
   animation-duration: 2s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
+  @include md() {
+    top: 30%;
+    right: 17%;
+  }
+  @include lg() {
+    top: 22%;
+    right: 22.5%;
+  }
+  @include xl() {
+    top: 23%;
+    right: 28.4%;
+  }
 }
 .stop_guide img{
   width: 100%;
 }
 .lesson-teach{
-  width: 70%;
+  width: 95%;
   position: absolute;
-  top: 17%;
-  left: 15%;
+  top: 30%;
+  left: 0%;
+  display: none;
+  z-index: 5000;
+  border: #F9BB4D 10px solid;
+  border-radius: 20px;
+  @include md() {
+    width: 90%;
+    top: 27%;
+    left: 4%;
+  }
+  @include lg() {
+    width:74%;
+    top: 17%;
+    left: 13%;
+  }
+  @include xl() {
+    width: 60%;
+    top: 17%;
+  left: 20%;
+    // transform: scale(1);
+  }
+  
+}
+.lesson-teach img{
+  width: 100%;
+  vertical-align: top;
+  border-radius: 20px;
 }
 //==============================================
 .study_big_map{
@@ -891,8 +1032,8 @@ content:url(../images/npc_border_hello.png);
     }
     @include lg{ //992
       font-size: 40px;
-      width: 500px;
-      height: 500px;
+      width: 400px;
+      height: 400px;
       padding: 30px;
       bottom: 30%;
       left: 26%;
@@ -986,6 +1127,7 @@ content:url(../images/npc_border_hello.png);
     position: absolute;
     bottom: 10%;
     left: 5%;
+    display: flex;
     display: none;
     justify-content: space-between;
     align-items: center;
@@ -1119,11 +1261,11 @@ content:url(../images/npc_border_hello.png);
     display: none;
     cursor: pointer;
     @include md{ //768
-      top: 10%;
+      top: 15%;
       right: 10%;
     }
     @include lg{ //992
-      top: 10%;
+      top: 20%;
       right: 10%;
     }
     @include xl{ //1200
@@ -1198,7 +1340,6 @@ content:url(../images/npc_border_hello.png);
   position: absolute;
   top: 50%;
   left: 16%;
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
@@ -1634,5 +1775,18 @@ content:url(../images/npc_border_hello.png);
   //   }
   100% {
       transform: translate3d(0%, -20%, 0) scaleX(1);
+    }
+}
+//教學引導
+@keyframes flash{
+  0% {
+      transform: translate3d(0%, 0%, 0) scaleX(1);
+    }
+  50% {
+      transform: translate3d(0%, 0%, 0) scaleX(1);
+      opacity: 0;
+    }
+  100% {
+      transform: translate3d(0%, 0%, 0) scaleX(1);
     }
 }

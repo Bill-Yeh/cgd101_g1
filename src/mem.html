@@ -6,7 +6,7 @@
   
     
 </head>
-<body>
+<body class="mem">
     @@include('layout/header.html')
 
     <!-- 初次登入 -->
@@ -21,13 +21,47 @@
         </div>
         <div class="talkBox">
             <div class="talkBox_inside">
-                <p class="firstTalk">  初次見面~我是你的學習小夥伴!之後就交由我陪你學習日文啦~
+                <p class="firstTalk" id="firstSpeak">  初次見面~我是你的學習小夥伴!之後就交由我陪你學習日文啦~
                 </p>
                 <span class="goMem">會員專區</span>
             </div>
-        </div> 
+        </div>
+
     </div>
-    
+    <!-- 案內物品 -->
+    <div class="bed_guide" id="bedGuide">
+        <img src="./images/guide-bed.jpg">
+    </div>
+    <div class="map_guide" id="mapGuide">
+        <img src="../../images/guide-mapM.jpg">
+    </div>
+    <div class="book_guide" id="bookGuide">
+        <img src="../../images/guide-book.jpg">
+    </div>
+    <div class="closet_guide" id="closetGuide">
+        <img src="../../images/guide-closet.jpg">
+    </div>
+    <div class="treasureBox_guide" id="treasureBoxGuide">
+        <img src="../../images/guide-treasure.jpg">
+    </div>
+    <div class="message_guide" id="messageGuide">
+        <img src="../../images/guide-messageT.jpg">
+    </div>
+    <div class="error_guide" id="errorGuide">
+        <img src="../../images/guide-error.jpg">
+    </div>
+    <div class="close-guide2" id="closeGuide2">
+        <div class="ask">
+            <p>結束教學</p>
+        </div>
+        <div class="sure" id="imSure">
+            <button>確認</button>
+        </div>
+        <div class="again" id="doAgain">
+            <button>再一次</button>
+        </div>
+    </div>   
+
 
     <!-- 燈箱 -->
     <div class="black">
@@ -288,8 +322,7 @@
             </div>  
 
         </div>
-        
-        
+    </div>
     @@include('layout/login_register.html')
 
     @@include('layout/footer.html')
