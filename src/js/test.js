@@ -137,7 +137,7 @@ function shuffleArray(arr) {
 }
 
 //測驗用變數
-let score;
+let score = 0;
 let test_question_num;
 let test_choose;
 let test_choose_arr;
@@ -168,13 +168,13 @@ function testStart(e){
         add_point.style.left = `${e.clientX + 10}px`;
         add_point.classList.add('animate__bounceOutUp');
         score += 10;
-        console.log(test_question_num);
-        console.log(score);
+        // console.log(test_question_num);
+        // console.log(score);
     }else{
         e.target.classList.add('test_wrong_option');
         e.target.classList.add('animate__shakeX');
-        console.log(test_question_num);
-        console.log('wrong');
+        // console.log(test_question_num);
+        // console.log('wrong');
     }
 
     //-----換下一題-----//
@@ -199,12 +199,16 @@ function testStart(e){
 
 //-----換下一題-----//
 function toNextQuestion(){
+    let test_score_now_wrap = document.getElementById('test_score_now_wrap');
+    let test_question = document.getElementById('test_progress');
     let test_question_title = document.getElementById('test_title');
     let test_ifPass =document.getElementById('test_ifPass');
     let test_score =document.getElementById('test_score');
     let test_getCoin =document.getElementById('test_getCoin');
     let test_question_option = document.querySelectorAll('.test_question_option');
     if(test_question_num == 10){
+        test_score_now_wrap.style.display = 'none';
+        test_question.style.display = 'none';
         test_progress_now.style.width = `100%`;
         test_progress_chara.style.left = `90%`;
         test_lightBox_question.style.display = 'none';
@@ -229,6 +233,8 @@ function toNextQuestion(){
         test_progress_now.style.width = `${(test_question_num-1)*10}%`;
         test_progress_chara.style.left = `${((test_question_num-1)*10)-10}%`;
     }
+    //-----目前分數-----//
+    test_score_now.innerText = score;
 }
 
 // *-----------基本燈箱設定---------* //
@@ -236,9 +242,22 @@ function init(){
     //-----DOM-----//
     //選了哪個測驗
     let test_option = document.querySelectorAll('.test_option');
-    //測驗進度條
+    //確認是否進行測驗
+    let test_confirm_box = document.getElementById('test_confirm_box');
+    let test_choose_text = document.getElementById('test_choose');
+    let test_start = document.getElementById('test_start');
+    let test_cancel = document.getElementById('test_cancel');
+    //進行測驗(測驗燈箱)
+    let test_lightBox = document.getElementById('test_lightBox');
+    let test_score_now_wrap = document.getElementById('test_score_now_wrap');
+    let test_question = document.getElementById('test_progress');
+    //關閉燈箱
+    let test_lightBox_close = document.querySelector('.test_lightBox_close');
+    let testing = document.querySelector('.test_lightBox_bg');
+    //測驗進度條與分數
     let test_progress_now =document.getElementById('test_progress_now');
     let test_progress_chara =document.getElementById('test_progress_chara');
+    let test_score_now =document.getElementById('test_score_now');
     //測驗問題介面
     let test_lightBox_question =document.getElementById('test_lightBox_question');
     let test_question_title = document.getElementById('test_title');
@@ -249,60 +268,71 @@ function init(){
     let test_result_save =document.getElementById('test_result_save');
 
 
-
     // *-----------開啟燈箱---------* //
     for(let c = 0; c < test_option.length; c++){
         test_option[c].addEventListener('click',function(){
             testing.style.display = 'block';
-
+            //確認是點到哪個測驗
             test_choose = test_option[c].innerText;
-            
-            //-----開啟測驗-----//
-            if(test_choose == 'あ'){
-                test_choose_arr = testArr_a;
-            }else if(test_choose == 'い'){
-                test_choose_arr = testArr_i;
-            }else if(test_choose == 'う'){
-                test_choose_arr = testArr_u;
-            }else if(test_choose == 'え'){
-                test_choose_arr = testArr_e;
-            }else if(test_choose == 'お'){
-                test_choose_arr = testArr_o;
-            }
-
-            //-----亂數抽題-----//
-            test_randomDraw();
-            console.log(draw_question);
-            console.log(test_choose);
-            //-----分數與題數歸零-----//
-            score = 0;
-            test_question_num = 1;
-            test_progress_now.style.width = `0%`;
-            test_progress_chara.style.left = `-10%`;
-
-            
-
-            test_question_title.innerText = test_choose_arr[draw_question[0]][0];
-
-            for(let j = 0; j < test_question_option.length; j++){
-                test_question_option[j].innerText = test_choose_arr[draw_question[0]][j+1];
-            };
-            //-----按下選項_開始測驗-----//
-            for(let i = 0; i < test_question_option.length; i++){
-                test_question_option[i].addEventListener('click',testStart,false);
-            };
-        
-
-
-            
+            test_choose_text.innerText = test_choose;
         });
     };
 
-    
+    //確認是否進行測驗
+    test_start.addEventListener('click',test_conent_start);
+    test_cancel.addEventListener('click',function(){
+        testing.style.display = 'none';
+        test_lightBox_question.style.display = 'block';
+        test_lightBox_result.style.display = 'none';
+        score = 0;
+        test_question_num = 1;
+    });
 
-    // *-----------關閉燈箱---------* //
-    let test_lightBox_close = document.querySelector('.test_lightBox_close');
-    let testing = document.querySelector('.test_lightBox_bg');
+
+    function test_conent_start(){
+        test_confirm_box.style.display = 'none';
+        test_lightBox.style.display = 'flex';
+        
+        //-----開啟測驗-----//
+        if(test_choose == 'あ'){
+            test_choose_arr = testArr_a;
+        }else if(test_choose == 'い'){
+            test_choose_arr = testArr_i;
+        }else if(test_choose == 'う'){
+            test_choose_arr = testArr_u;
+        }else if(test_choose == 'え'){
+            test_choose_arr = testArr_e;
+        }else if(test_choose == 'お'){
+            test_choose_arr = testArr_o;
+        }
+
+        //-----目前分數-----//
+        test_score_now.innerText = score;
+
+        //-----亂數抽題-----//
+        test_randomDraw();
+        // console.log(draw_question);
+        // console.log(test_choose);
+
+        //-----分數與題數歸零-----//
+        score = 0;
+        test_question_num = 1;
+        test_progress_now.style.width = `0%`;
+        test_progress_chara.style.left = `-10%`;
+        test_score_now_wrap.style.display = 'block';
+        test_question.style.display = 'flex';
+
+
+        test_question_title.innerText = test_choose_arr[draw_question[0]][0];
+
+        for(let j = 0; j < test_question_option.length; j++){
+            test_question_option[j].innerText = test_choose_arr[draw_question[0]][j+1];
+        };
+        //-----按下選項_開始測驗-----//
+        for(let i = 0; i < test_question_option.length; i++){
+            test_question_option[i].addEventListener('click',testStart,false);
+        };
+    }
 
     // *------點叉叉關閉-----* //
     test_lightBox_close.addEventListener('click',function(){
@@ -319,7 +349,7 @@ function init(){
     // *------點旁邊關閉-----* //
     testing.addEventListener('click',function(e){
         if (e.target==this) {
-            let ifClose = '是否需要中斷測驗？(測驗結果不會保存)'
+            let ifClose = '是否需要中斷測驗？'
             if (confirm(ifClose) == true) {
                 testing.style.display = 'none';
                 test_lightBox_question.style.display = 'block';
