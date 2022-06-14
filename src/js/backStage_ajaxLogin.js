@@ -1,14 +1,14 @@
 window.addEventListener('load',function(){
     let adminWeb;
 
-    // 管理員帳號
-    let administatorAccount = document.getElementById('administator_login_account');
+    // // 管理員帳號
+    // let administatorAccount = document.getElementById('administator_login_account');
 
-    // 管理員密碼
-    let administatorPassword = document.getElementById('administator_login_password');
+    // // 管理員密碼
+    // let administatorPassword = document.getElementById('administator_login_password');
 
-    // 管理員登入btn
-    let administatorBtn = document.getElementById('administator_login');
+    // // 管理員登入btn
+    // let administatorBtn = document.getElementById('administator_login');
 
     // 管理員顯示字樣
     let headerAdmin = document.getElementById('header_admin');
@@ -20,7 +20,7 @@ window.addEventListener('load',function(){
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
         adminWeb = JSON.parse(xhr.responseText);
-        if(adminWeb.backstage_account == true || adminWeb.backstage_status == '2'){
+        if(adminWeb.backstage_status == '2' || adminWeb.backstage_status == '1'){
             headerAdmin.innerText = adminWeb.backstage_name;
         }
     }

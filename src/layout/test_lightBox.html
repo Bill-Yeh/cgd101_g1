@@ -1,8 +1,21 @@
 <section class="test_lightBox_bg">
+    <div id="test_confirm_box">
+        <div class="test_confirm_title">
+            <p>您目前選擇的測驗為</p>
+            <div id="test_choose"></div>
+            <p>及格分數：60分</p>
+        </div>
+        <div class="test_confirm">
+            <button class="test_btn" id="test_start">開始測驗！</button>
+            <button class="test_btn" id="test_cancel">取消</button>
+        </div>
+    </div>
+
+
     <!-- 按對時跳出的選項 -->
     <div id="test_add_point" class="animate__animated"></div>
     
-    <div class="test_lightBox">
+    <div id="test_lightBox">
         <div class="test_lightBox_close">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="post_close_id">
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
@@ -10,6 +23,10 @@
         </div>
 
         <!------- 測驗正式開始 ------->
+        
+        <div id="test_score_now_wrap">
+            目前分數：<span id="test_score_now"></span>
+        </div>
         <div id="test_progress">
             <div id="test_progress_title">
                 progress
@@ -21,7 +38,9 @@
                     <img src="images/test_NPC1.png" alt="進度條_人物">
                 </div>
             </div>
+            
         </div>
+        
 
         <div class="test_question">
             <!-- 測驗問題出現區域 -->

@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// $_POST["action"] ==> Login
 try{
   $dbname = "tibamefe_cgd101g1";
 	$user = "root";

@@ -69,11 +69,9 @@ window.addEventListener('load',function(){
     // 管理員登入btn
     let administatorBtn = document.getElementById('administator_login');
 
-    // 教師登入btn
+    // // 教師登入btn
     let teacherBtn = document.getElementById('teacher_login');
 
-    // 管理員顯示字樣
-    let headerAdmin = document.getElementById('header_admin');
 
 
     // 管理員登入驗證
@@ -103,14 +101,15 @@ window.addEventListener('load',function(){
             let xhr = new XMLHttpRequest();
             xhr.onload = function(){
                 adminWeb = JSON.parse(xhr.responseText);
-                if(adminWeb.backstage_account == true || adminWeb.backstage_status == '2'){
+                if(adminWeb.backstage_account == `${administatorAccount.value}` && adminWeb.backstage_status == '2'){
                     //將登入表單上的資料清空
                     administatorAccount.value = '';
                     administatorPassword.value = '';
                     window.location.href = "backStage_account.html";
+                }else if(adminWeb.backstage_account == `${administatorAccount.value}` && adminWeb.backstage_status == '1'){
+                    alert('請切換到教師欄位');
                 }else{
                     alert('資格不符，請連繫後台人員');
-                    // e.preventDefault();
                 }
             }
             xhr.open("post", "back_administrator_login.php", true);
@@ -124,8 +123,8 @@ window.addEventListener('load',function(){
 
 
 
-        // 教師登入驗證
-        teacherBtn.addEventListener('click',function(e){
+    // 教師登入驗證
+    teacherBtn.addEventListener('click',function(e){
         // 登入欄位如為空值，跳警告
             if(teacherAccount.value == '' || teacherPassword.value == ''){
                 alert('請輸入帳號密碼');
@@ -147,9 +146,27 @@ window.addEventListener('load',function(){
                 teacherPassword.select();
                 e.preventDefault();
                 return;
-            }else{
-                return window.location.replace('backStage_option_teacher.html');
-            }   
-    
-        })
+            }
+            
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                adminWeb = JSON.parse(xhr.responseText);
+                if(adminWeb.backstage_account == `${teacherAccount.value}` && adminWeb.backstage_status == '1'){
+                    //將登入表單上的資料清空
+                    teacherAccount.value = '';
+                    teacherPassword.value = '';
+                    window.location.href = "backStage_option_teacher.html";
+                }else if(adminWeb.backstage_account == `${teacherAccount.value}` && adminWeb.backstage_status == '2'){
+                    alert('請切換到員工欄位');
+                }else{
+                    alert('資格不符，請連繫後台人員');
+                }
+            }
+            xhr.open("post", "back_administrator_login.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        
+            let data_info = `backstage_account=${teacherAccount.value}&backstage_password=${teacherPassword.value}`;
+            console.log(data_info);
+            xhr.send(data_info);
+    })
 })
