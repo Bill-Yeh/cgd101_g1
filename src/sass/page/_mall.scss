@@ -425,6 +425,104 @@ body {
       z-index: 10;
     }
   }
+
+  //裝備介紹_992
+  .mall_hat_1 {
+    &:hover::after {
+      content: url(../images/mall_hat_1.png);
+      position: absolute;
+      left: -4.5%;
+      top: -11%;
+    }
+  }
+  .mall_hat_2 {
+    &:hover::after {
+      content: url(../images/mall_hat_2.png);
+      position: absolute;
+      left: 17%;
+      top: -11%;
+    }
+  }
+  .mall_hat_3 {
+    &:hover::after {
+      content: url(../images/mall_hat_3.png);
+      position: absolute;
+      left: 39%;
+      top: -11%;
+    }
+  }
+  .mall_hat_4 {
+    &:hover::after {
+      content: url(../images/mall_hat_4.png);
+      position: absolute;
+      left: 60%;
+      top: -11%;
+    }
+  }
+  .mall_hat_5 {
+    &:hover::after {
+      content: url(../images/mall_hat_5.png);
+      position: absolute;
+      left: -5.5%;
+      top: 16%;
+    }
+  }
+  .mall_hat_6 {
+    &:hover::after {
+      content: url(../images/mall_hat_6.png);
+      position: absolute;
+      left: 17%;
+      top: 16%;
+    }
+  }
+  .mall_hat_7 {
+    &:hover::after {
+      content: url(../images/mall_hat_7.png);
+      position: absolute;
+      left: 39%;
+      top: 16%;
+    }
+  }
+  .mall_hat_8 {
+    &:hover::after {
+      content: url(../images/mall_hat_8.png);
+      position: absolute;
+      left: 60%;
+      top: 16%;
+    }
+  }
+  .mall_dress_1 {
+    &:hover::after {
+      content: url(../images/mall_dress_1.png);
+      position: absolute;
+      left: -4.5%;
+      top: 44%;
+    }
+  }
+  .mall_dress_2 {
+    &:hover::after {
+      content: url(../images/mall_dress_2.png);
+      position: absolute;
+      left: 17%;
+      top: 44%;
+    }
+  }
+  .mall_tool_1 {
+    &:hover::after {
+      content: url(../images/mall_tool_1.png);
+      position: absolute;
+      left: 39%;
+      top: 44%;
+    }
+  }
+  .mall_tool_2 {
+    &:hover::after {
+      content: url(../images/mall_tool_2.png);
+      position: absolute;
+      left: 60%;
+      top: 44%;
+    }
+  }
 }
 
 //商品切換
