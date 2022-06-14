@@ -39,69 +39,76 @@ window.addEventListener('load', function(){
     // 登入後出現的會員名稱
     let memName = document.getElementById('memName');
 
+
+    // let testBtn = document.getElementById('testBtn');
+    // testBtn.addEventListener('click',function(e){
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.onload = function(){
+    //         let memberEnroll = JSON.parse(xhr.responseText);
+    //         console.log('memberEnroll:'+memberEnroll)
+    //     }
+    //     xhr.open("post", "front_register.php", true);
+    //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+    //     let data_info = `member_name=${memberName.value}&account=${memberAccount.value}&password=${memberPassword.value}`;
+
+    //     console.log('註冊資訊:',data_info);
+    //     xhr.send(data_info);
+    // })
+
     
     // =================註冊驗證==================
     registerBtn.addEventListener('click',function(e){
     // 註冊欄位如為空值，跳警告
-        if(memberName.value == '' || memberAccount.value == '' || memberPassword.value == '' || confirmPassword.value == ''){
-            alert('欄位不可為空值');
-            e.preventDefault();
-            return;
-        }
-
-        // 帳號驗證
-        if (memberAccount.value.search(userEmail) == -1) {
-            alert('帳號格式錯誤');
-            memberAccount.value = "";
-            memberAccount.focus();
-            e.preventDefault();
-            return;
-        }
-
-        // 密碼驗證
-        if(memberPassword.value.search(passwordCheck) == -1){
-            alert('密碼格式錯誤');
-            memberPassword.select();
-            e.preventDefault();
-            return;
-        }
-
-        // 確認密碼驗證
-        if (confirmPassword.value != memberPassword.value) {
-            alert('確認密碼錯誤');
-            confirmPassword.select();
-            // e.preventDefault();
-        } 
-        // else{
-        //     alert('恭喜註冊成功!!!');
-        //     return window.location.replace('mem.html');
+        // if(memberName.value == '' || memberAccount.value == '' || memberPassword.value == '' || confirmPassword.value == ''){
+        //     alert('欄位不可為空值');
+        //     e.preventDefault();
+        //     return;
         // }
 
-        if(window.innerWidth < 992){ 
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function(){
-                let memberEnroll = JSON.parse(xhr.responseText);
-                memName.innerText = memberEnroll.member_name;
-                //將註冊表單上的資料清空，並隱藏起來
-                memberName.value = '';
-                memberAccount.value = '';
-                memberPassword.value = '';
-                confirmPassword.value = '';
-                loginRegister.style.display = 'none';
-                
-                // memArea.style.display = 'none';
-                // memIcon.style.display = 'none';
-                // logout.style.display = 'block';
-                // loginBox.style.width = '10%';
-                // moneyArea.style.margin = 'auto';
-            }
-            xhr.open("post", "front_register.php", true);
-            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        // // 帳號驗證
+        // if (memberAccount.value.search(userEmail) == -1) {
+        //     alert('帳號格式錯誤');
+        //     memberAccount.value = "";
+        //     memberAccount.focus();
+        //     e.preventDefault();
+        //     return;
+        // }
 
-            let data_info = `member_name=${memberName.value}&account=${memberAccount.value}&password=${memberPassword.value}`;
-            console.log('註冊資訊:',data_info);
-            xhr.send(data_info);
+        // // // 密碼驗證
+        // if(memberPassword.value.search(passwordCheck) == -1){
+        //     alert('密碼格式錯誤');
+        //     memberPassword.select();
+        //     e.preventDefault();
+        //     return;
+        // }
+
+        // // // 確認密碼驗證
+        // if (confirmPassword.value != memberPassword.value) {
+        //     alert('確認密碼錯誤');
+        //     confirmPassword.select();
+        //     // e.preventDefault();
+        // } 
+
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            let memberEnroll = JSON.parse(xhr.responseText);
+            memName.innerText = `member_name=${memberName.value}`;
+            //將註冊表單上的資料清空，並隱藏起來
+            // memberAccount.value = '';
+            // memberPassword.value = '';
+            // confirmPassword.value = '';
+            loginRegister.style.display = 'none';
+            window.location.href = "mem.html";
         }
+        xhr.open("post", "front_register.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+        let data_info = `member_name=${memberName.value}&account=${memberAccount.value}&password=${memberPassword.value}`;
+
+        console.log('註冊資訊:',data_info);
+        xhr.send(data_info);
+        
     })
 
 })
