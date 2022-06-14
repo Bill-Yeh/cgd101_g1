@@ -1,4 +1,5 @@
 <?php 
+session_start();
 try{
 	//==========
     $dbname = "tibamefe_cgd101g1";
@@ -14,18 +15,18 @@ try{
 
 
     //=========
-
 	$sql = "SELECT * FROM `tibamefe_cgd101g1`.`item_record` join `tibamefe_cgd101g1`.`item` 
-    on `tibamefe_cgd101g1`.`item_record`.`item_id`=`tibamefe_cgd101g1`.`item`.`item_id` WHERE `member_id` = 1"; 
+    on `tibamefe_cgd101g1`.`item_record`.`item_id`=`tibamefe_cgd101g1`.`item`.`item_id` WHERE `member_id` =:mem_id"; 
     
-    //準備好sql指令
-	$products = $pdo->query($sql);//將sql指令送到mysql去執行, 回傳的是pdoStatement
+    
+	$products = $pdo->prepare($sql);
+	$products->bindValue("mem_id",$_SESSION["member_id"]);
+	$products->execute();
+
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($prodRows);
 }catch(PDOException $e){
-	//$msg =  "系統暫時無法提供服務, 請聯絡系統維護人員<br>";
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
-	//echo [$msg];
 }
 ?>

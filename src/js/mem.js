@@ -9,22 +9,10 @@ new Vue({
     data:{
         img: ['bed','box1','teacher','phone','mat','desk','chair','box2'] 
     },
-    methods:{
-
-    }
 })
 
 
-
-
-
-
-{/* <td>{{orderNo}}</td>
-                <td>{{orderTime}}</td>
-                <td><img src={{imgPc}} alt=""></td>
-                <td>{{price}}</td>
-                <td>{{payment}}</td> */}
-
+//交易紀錄請求
 let buyListVue=
 new Vue({
     el:'#orderAPP',
@@ -35,18 +23,14 @@ new Vue({
         let xhr = new XMLHttpRequest();
 
 		xhr.onload = function(){
-                // console.log(JSON.parse(xhr.responseText));
-				buyListVue.prodRows = JSON.parse(xhr.responseText);
-		}
-			
-		xhr.open("get", "./orderListInsert.php",true);
+				buyListVue.prodRows = JSON.parse(xhr.responseText)};
+		xhr.open("get", "./mem_orderListInsert.php",true);
 		xhr.send();	
-    },
-
-    
+    },    
 });
 
 
+//交易紀錄模板
 let prodRow = Vue.component("component-orderList", {
 
     props:['item_order_id','payment_time','item_img','item_price'],
@@ -59,6 +43,39 @@ let prodRow = Vue.component("component-orderList", {
                 </tr>`
     })
 
+
+
+
+//裝備請求
+let itemVue=
+new Vue({
+    el:'#itemAPP',
+    data:{
+        itemRows:[],
+    },
+    created() {
+        let xhr = new XMLHttpRequest();
+
+		xhr.onload = function(){
+				buyListVue.prodRows = JSON.parse(xhr.responseText)};
+		xhr.open("get", "./mem_itemList.php",true);
+		xhr.send();	
+    },    
+});
+
+
+//裝備模板
+let itemRow= Vue.component("component-items", {
+
+    props:['item_order_id','payment_time','item_img','item_price'],
+    template:` <tr>
+                <td>{{item_order_id}}</td>
+                <td>{{payment_time}}</td>
+                <td><img :src='item_img' alt=""></td>
+                <td>{{item_price}}</td>
+                <td>{{payment}}</td>
+                </tr>`
+    })
 
 
 
@@ -512,13 +529,6 @@ document.querySelector(".itemBack").addEventListener("click",goBack)
 
 
 
-
-//Canvas載入
-// function checkCanvas(){
-//     setTimeout(()=>html2canvas(document.querySelector(".char_content")).then(function(canvas) {
-//         document.body.appendChild(canvas);
-//         }),100)
-// }
 
 function convertCanvasToImage(){
     setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null}).then(function(e) {
