@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-13 19:30:03
+-- 產生時間： 2022-06-14 23:44:13
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `cgd101_g1`
+-- 資料庫： `tibamefe_cgd101g1`
 --
 
 -- --------------------------------------------------------
@@ -321,7 +321,7 @@ INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `pass_l
 (1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1,2,3,4,5,6,7,8,9,10,11', '1', 1000, 4, './images/char_00_0.png'),
 (2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '1,2,3,4,5', '0', 100, 1, './images/char_00_0.png'),
 (3, 'Bill', 'efg@gmail.com', 'cccCCC111', NULL, '1', 0, 1, './images/char_00_0.png'),
-(7, 'Triangle', 'tri@gmail.com', 'TTTttt111', '1,2,3', '1', 666, 1, './images/char_00_0.png');
+(7, 'Triangle', 'tri@gmail.com', 'TRItri123', '1,2,3', '1', 666, 1, './images/char_00_0.png');
 
 -- --------------------------------------------------------
 
@@ -453,7 +453,7 @@ CREATE TABLE `q_data` (
 --
 
 INSERT INTO `q_data` (`option_id`, `lesson_id`, `txt`, `ans`, `option_content1`, `option_content2`, `option_content3`, `option_point`, `option_status`) VALUES
-(1, 1, 'ああ', 'aa', 'aka\r\n\r\n\r\n', 'sata', 'hana', 10, 1),
+(1, 1, 'ああ', 'aa', 'aka', 'sata', 'hana', 10, 1),
 (2, 1, 'なか', 'naka', 'kaya', 'tana', 'maka', 10, 1),
 (3, 1, 'たま', 'tama', 'kana', 'nata', 'sama', 10, 1),
 (4, 1, 'はさ', 'hasa', 'rasa', 'naka', 'wana', 10, 1),
