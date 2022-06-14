@@ -79,6 +79,9 @@
           display: flex;
           justify-content: space-evenly;
           flex-grow: 1;
+          li{
+            cursor: pointer;
+          }
         }
       }
       // 代幣區
