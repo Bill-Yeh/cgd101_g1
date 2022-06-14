@@ -128,6 +128,7 @@ function init(){
     //-----DOM-----//
     //選了哪個測驗
     let test_option = document.querySelectorAll('.test_option');
+    let test_input = document.getElementById('test_input');
     //確認是否進行測驗
     let test_confirm_box = document.getElementById('test_confirm_box');
     let test_choose_text = document.getElementById('test_choose');
@@ -161,6 +162,24 @@ function init(){
             //確認是點到哪個測驗
             test_choose = test_option[c].innerText;
             test_choose_text.innerText = test_choose;
+            test_choose = test_option[c].innerText;
+            switch (test_choose){
+                case 'あ':
+                    test_input.value = 1;
+                    break;
+                case 'い':
+                    test_input.value = 2;
+                    break;
+                case 'う':
+                    test_input.value = 3;
+                    break;
+                case 'え':
+                    test_input.value = 4;
+                    break;
+                case 'お':
+                    test_input.value = 5;
+                    break;
+            }
 
             //從後端抓資料
             let xhr = new XMLHttpRequest();
@@ -276,6 +295,23 @@ function init(){
         test_lightBox_result.style.display = 'none';
         score = 0;
         test_question_num = 1;
+
+        //把成寫入資料庫
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("get", "./test_getquestion.php", true);
+        // xhr.send(null);
+        // xhr.onload = function(){
+        //     let test_data = JSON.parse(xhr.responseText);
+        //     for(let i=0;i<test_data.length;i++){
+        //         test_choose_arr[i] = new Array();
+        //         test_choose_arr[i][0] = test_data[i].txt;
+        //         test_choose_arr[i][1] = test_data[i].ans;
+        //         test_choose_arr[i][2] = test_data[i].option_content1;
+        //         test_choose_arr[i][3] = test_data[i].option_content2;
+        //         test_choose_arr[i][4] = test_data[i].option_content3;
+        //     }
+        //     console.log(test_choose_arr);
+        // };
     });
 }
 

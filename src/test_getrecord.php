@@ -18,9 +18,8 @@ try{
 
     //=====連接資料庫=====//
 	$sql = "SELECT * FROM `q_data` WHERE lesson_id =1;"; 
-	// $sql = "SELECT * FROM `q_data` WHERE lesson_id =:test_input;"; 
 	$get_qdata = $pdo->prepare($sql);
-	// $get_qdata->bindValue(":test_input", $_GET["test_input"]);
+	// $get_qdata->bindValue(":test", $_GET["test_click"]);
 	$get_qdata->execute();
 
 	$q_data = $get_qdata->fetchAll(PDO::FETCH_ASSOC);

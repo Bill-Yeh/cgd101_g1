@@ -1,18 +1,4 @@
-// *-----------題庫---------* //
-// let testArr_a = new Array();
-// let testArr_i = new Array();
-// let testArr_u = new Array();
-// let testArr_e = new Array();
-// let testArr_o = new Array();
 
-//從後端抓資料
-// let xhr = new XMLHttpRequest();
-// xhr.open("get", "../test_getquestion.php", true);
-// xhr.send(null);
-// xhr.onload = function(){ //登出後將頁面的資訊調整一下
-//     $id('memName').innerHTML = '&nbsp';
-//     $id('spanLogin').innerHTML = '登入';
-// }
 let testArr_a = new Array(
     new Array("ああ","aa","aka","sata","hana"),
     new Array("なか","naka","kaya","tana","maka"),
@@ -123,6 +109,16 @@ let testArr_o = new Array(
     new Array("よそ","yoso","yoso","somo","oso"),
     new Array("よほ","yoho","homo","hoo","koto"),
 );
+
+//測驗用變數
+let score = 0;
+let test_question_num;
+let test_choose;
+let test_choose_arr = new Array();
+let draw_option = new Array(0,1,2,3);
+let add_point_num = 10;
+
+
 //亂數抽題
 let testA_num;
 let draw_question;
@@ -145,14 +141,6 @@ function test_randomDraw(){
 function shuffleArray(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
-
-//測驗用變數
-let score = 0;
-let test_question_num;
-let test_choose;
-let test_choose_arr;
-let draw_option = new Array(0,1,2,3);
-let add_point_num = 10;
 
 
 ////////////////////////////////////
@@ -206,7 +194,6 @@ function testStart(e){
 }
 
 
-
 //-----換下一題-----//
 function toNextQuestion(){
     let test_score_now_wrap = document.getElementById('test_score_now_wrap');
@@ -247,11 +234,13 @@ function toNextQuestion(){
     test_score_now.innerText = score;
 }
 
-// *-----------基本燈箱設定---------* //
+
+// *-----------基本設定---------* //
 function init(){
     //-----DOM-----//
     //選了哪個測驗
     let test_option = document.querySelectorAll('.test_option');
+    let test_input = document.getElementById('test_input');
     //確認是否進行測驗
     let test_confirm_box = document.getElementById('test_confirm_box');
     let test_choose_text = document.getElementById('test_choose');
@@ -284,7 +273,42 @@ function init(){
             testing.style.display = 'block';
             //確認是點到哪個測驗
             test_choose = test_option[c].innerText;
+            switch (test_choose){
+                case 'あ':
+                    test_input.value = 1;
+                    break;
+                case 'い':
+                    test_input.value = 2;
+                    break;
+                case 'う':
+                    test_input.value = 3;
+                    break;
+                case 'え':
+                    test_input.value = 4;
+                    break;
+                case 'お':
+                    test_input.value = 5;
+                    break;
+            }
             test_choose_text.innerText = test_choose;
+
+            //從後端抓資料
+            let xhr = new XMLHttpRequest();
+            var url = "./test_getquestion.php?test_input=" + test_input.value;
+            xhr.open("get", url, true);
+            xhr.send(null);
+            xhr.onload = function(){
+                let test_data = JSON.parse(xhr.responseText);
+                for(let i=0;i<test_data.length;i++){
+                    test_choose_arr[i] = new Array();
+                    test_choose_arr[i][0] = test_data[i].txt;
+                    test_choose_arr[i][1] = test_data[i].ans;
+                    test_choose_arr[i][2] = test_data[i].option_content1;
+                    test_choose_arr[i][3] = test_data[i].option_content2;
+                    test_choose_arr[i][4] = test_data[i].option_content3;
+                }
+                console.log(test_choose_arr);
+            };
         });
     };
 
@@ -304,17 +328,17 @@ function init(){
         test_lightBox.style.display = 'flex';
         
         //-----開啟測驗-----//
-        if(test_choose == 'あ'){
-            test_choose_arr = testArr_a;
-        }else if(test_choose == 'い'){
-            test_choose_arr = testArr_i;
-        }else if(test_choose == 'う'){
-            test_choose_arr = testArr_u;
-        }else if(test_choose == 'え'){
-            test_choose_arr = testArr_e;
-        }else if(test_choose == 'お'){
-            test_choose_arr = testArr_o;
-        }
+        // if(test_choose == 'あ'){
+        //     test_choose_arr = testArr_a;
+        // }else if(test_choose == 'い'){
+        //     test_choose_arr = testArr_i;
+        // }else if(test_choose == 'う'){
+        //     test_choose_arr = testArr_u;
+        // }else if(test_choose == 'え'){
+        //     test_choose_arr = testArr_e;
+        // }else if(test_choose == 'お'){
+        //     test_choose_arr = testArr_o;
+        // }
 
         //-----目前分數-----//
         test_score_now.innerText = score;
@@ -349,6 +373,8 @@ function init(){
         let ifClose = '是否需要中斷測驗？(測驗結果不會保存)'
         if (confirm(ifClose) == true) {
             testing.style.display = 'none';
+            test_confirm_box.style.display = 'block';
+            test_lightBox.style.display = 'none';
             test_lightBox_question.style.display = 'block';
             test_lightBox_result.style.display = 'none';
             score = 0;
@@ -362,6 +388,8 @@ function init(){
             let ifClose = '是否需要中斷測驗？'
             if (confirm(ifClose) == true) {
                 testing.style.display = 'none';
+                test_confirm_box.style.display = 'block';
+                test_lightBox.style.display = 'none';  
                 test_lightBox_question.style.display = 'block';
                 test_lightBox_result.style.display = 'none';
                 score = 0;
@@ -373,11 +401,29 @@ function init(){
     // *------測驗結束關閉燈箱----* //
     test_result_save.addEventListener('click',function(){
         testing.style.display = 'none';
+        testing.style.display = 'none';
+        test_confirm_box.style.display = 'block';
         test_lightBox_question.style.display = 'block';
         test_lightBox_result.style.display = 'none';
         score = 0;
         test_question_num = 1;
-        // location.reload();
+
+        //把成寫入資料庫
+        let xhr = new XMLHttpRequest();
+        xhr.open("get", "./test_getquestion.php", true);
+        xhr.send(null);
+        xhr.onload = function(){
+            let test_data = JSON.parse(xhr.responseText);
+            for(let i=0;i<test_data.length;i++){
+                test_choose_arr[i] = new Array();
+                test_choose_arr[i][0] = test_data[i].txt;
+                test_choose_arr[i][1] = test_data[i].ans;
+                test_choose_arr[i][2] = test_data[i].option_content1;
+                test_choose_arr[i][3] = test_data[i].option_content2;
+                test_choose_arr[i][4] = test_data[i].option_content3;
+            }
+            console.log(test_choose_arr);
+        };
     });
 }
 

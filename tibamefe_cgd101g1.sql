@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-14 23:44:13
+-- 產生時間： 2022-06-15 00:53:55
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -413,7 +413,7 @@ INSERT INTO `post` (`post_id`, `member_id`, `post_date`, `post_txt`, `post_title
 
 CREATE TABLE `quiz_record` (
   `quiz_record_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
-  `quiz_id` int NOT NULL COMMENT 'Not Null(FK)',
+  `lesson_id` int NOT NULL COMMENT 'Not Null(FK)',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `quiz_score` int NOT NULL COMMENT 'Not Null',
   `quiz_pass` int DEFAULT NULL COMMENT '0-未通過，1-通過',
@@ -424,7 +424,7 @@ CREATE TABLE `quiz_record` (
 -- 傾印資料表的資料 `quiz_record`
 --
 
-INSERT INTO `quiz_record` (`quiz_record_id`, `quiz_id`, `member_id`, `quiz_score`, `quiz_pass`, `quiz_time`) VALUES
+INSERT INTO `quiz_record` (`quiz_record_id`, `lesson_id`, `member_id`, `quiz_score`, `quiz_pass`, `quiz_time`) VALUES
 (1, 1, 1, 90, 1, '2022-06-04 15:22:38.000000'),
 (2, 2, 2, 80, 1, '2022-06-01 15:22:38.000000'),
 (3, 3, 3, 50, 0, '2022-06-01 03:23:01.000000'),
@@ -748,7 +748,7 @@ ALTER TABLE `post`
 --
 ALTER TABLE `quiz_record`
   ADD PRIMARY KEY (`quiz_record_id`),
-  ADD KEY `quiz_record_topic_fk` (`quiz_id`),
+  ADD KEY `quiz_record_topic_fk` (`lesson_id`),
   ADD KEY `quiz_record_member_fk` (`member_id`);
 
 --
@@ -940,8 +940,8 @@ ALTER TABLE `post`
 -- 資料表的限制式 `quiz_record`
 --
 ALTER TABLE `quiz_record`
-  ADD CONSTRAINT `quiz_record_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `quiz_record_topic_fk` FOREIGN KEY (`quiz_id`) REFERENCES `topic` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lesson_id` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`lesson_id`),
+  ADD CONSTRAINT `quiz_record_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `q_data`
