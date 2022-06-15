@@ -18,7 +18,8 @@ try{
   $member->execute();
 
   if( $member->rowCount()==0){ //查無此人
-	  echo "exist";
+	  // echo "exist";
+    echo json_encode("exist");
   }else{ //登入成功
     //自資料庫中取回資料
     $memRow = $member->fetch(PDO::FETCH_ASSOC);
