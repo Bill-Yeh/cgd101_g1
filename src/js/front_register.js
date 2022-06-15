@@ -60,46 +60,52 @@ window.addEventListener('load', function(){
     // =================註冊驗證==================
     registerBtn.addEventListener('click',function(e){
     // 註冊欄位如為空值，跳警告
-        // if(memberName.value == '' || memberAccount.value == '' || memberPassword.value == '' || confirmPassword.value == ''){
-        //     alert('欄位不可為空值');
-        //     e.preventDefault();
-        //     return;
-        // }
+        if(memberName.value == '' || memberAccount.value == '' || memberPassword.value == '' || confirmPassword.value == ''){
+            alert('欄位不可為空值');
+            e.preventDefault();
+            return;
+        }
 
-        // // 帳號驗證
-        // if (memberAccount.value.search(userEmail) == -1) {
-        //     alert('帳號格式錯誤');
-        //     memberAccount.value = "";
-        //     memberAccount.focus();
-        //     e.preventDefault();
-        //     return;
-        // }
+        // 帳號驗證
+        if (memberAccount.value.search(userEmail) == -1) {
+            alert('帳號格式錯誤');
+            memberAccount.value = "";
+            memberAccount.focus();
+            e.preventDefault();
+            return;
+        }
 
-        // // // 密碼驗證
-        // if(memberPassword.value.search(passwordCheck) == -1){
-        //     alert('密碼格式錯誤');
-        //     memberPassword.select();
-        //     e.preventDefault();
-        //     return;
-        // }
+        // // 密碼驗證
+        if(memberPassword.value.search(passwordCheck) == -1){
+            alert('密碼格式錯誤');
+            memberPassword.select();
+            e.preventDefault();
+            return;
+        }
 
-        // // // 確認密碼驗證
-        // if (confirmPassword.value != memberPassword.value) {
-        //     alert('確認密碼錯誤');
-        //     confirmPassword.select();
-        //     // e.preventDefault();
-        // } 
+        // // 確認密碼驗證
+        if (confirmPassword.value != memberPassword.value) {
+            alert('確認密碼錯誤');
+            confirmPassword.select();
+            e.preventDefault();
+            return;
+        } 
 
         let xhr = new XMLHttpRequest();
         xhr.onload = function(){
             let memberEnroll = JSON.parse(xhr.responseText);
-            memName.innerText = `member_name=${memberName.value}`;
-            //將註冊表單上的資料清空，並隱藏起來
-            // memberAccount.value = '';
-            // memberPassword.value = '';
-            // confirmPassword.value = '';
-            loginRegister.style.display = 'none';
-            window.location.href = "mem.html";
+
+            if(memberEnroll == '帳號已存在'){
+                alert(memberEnroll);
+            }else{
+                // memName.innerText = `member_name=${memberName.value}`;
+                //將註冊表單上的資料清空，並隱藏起來
+                memberAccount.value = '';
+                memberPassword.value = '';
+                confirmPassword.value = '';
+                loginRegister.style.display = 'none';
+                window.location.href = "mem.html";
+            }
         }
         xhr.open("post", "front_register.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
