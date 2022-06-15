@@ -254,14 +254,6 @@ window.addEventListener('load',init,false);
     <script src="js/studymap.js"></script>
 </body>
 </html>
-
-<!-- <script>
-    if (village.cloud.style.display="none"){
-        village::before.animationName=villageInfo;
-    }else{
-        village::before.animationName=villageInfo;
-    }
-</script> -->
 <script>
     //從後端抓資料(get)
 
@@ -282,9 +274,17 @@ window.addEventListener('load',init,false);
     //4.收到資料之後要做的事情(這裡可以抓JSON.parse(xhr.responseText)) -- AJAX課本的20頁
     memxhr.onload = function(){
         console.log(memxhr.responseText);
-        // let member = JSON.parse(memxhr.responseText);
-       
-
-
+        let ticket = JSON.parse(memxhr.responseText);
+        let cloud1 = document.getElementById('cloudFirst');
+        let cloud2 = document.getElementById('cloudSecond');
+        console.log(ticket);
+        if(ticket.length>=5){ //檢查是否通過50音的5個測驗
+            console.log("恭喜通過");
+            cloud1.style.display="none";
+            cloud2.style.display="none";
+	    }else{ 
+            console.log("還沒學完耶");
+	    }
+        
     };
 </script>
