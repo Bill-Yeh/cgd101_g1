@@ -11,7 +11,7 @@
     var url = "./test_getquestion.php?test_input=" + test_input.value;
     xhr.open("get", url, true);
     
-    //3.把資料送出去(get是null,post)
+    //3.把資料送出去(get是null)
     xhr.send(null);
 
     //4.收到資料之後要做的事情(這裡可以抓JSON.parse(xhr.responseText)) -- AJAX課本的20頁
