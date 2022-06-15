@@ -25,6 +25,7 @@ let backStage = new Vue({
                 report:'0'
             },
         ],
+        // accountRows:[]
         // contents:[ //文章燈箱組件
         //     {
         //         id:'1',
@@ -48,4 +49,13 @@ let backStage = new Vue({
             document.querySelector('.backStage_lightBox').style.display = 'none';
         },
     },
+    // created(){
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.onload = () =>{
+    //         this.accountRows = JSON.parse(xhr.responseText);
+    //         console.log(this.accountRows);
+    //     }
+    //     xhr.open("get","back_account.php",true);
+    //     xhr.send(null);
+    // }
 })
