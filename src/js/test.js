@@ -183,7 +183,9 @@ function init(){
 
             //從後端抓資料
             let xhr = new XMLHttpRequest();
-            xhr.open("get", "./test_getquestion.php", true);
+            console.log(test_input.value);
+            xhr.open("get", "../test_getquestion.php", true);
+            
             xhr.send(null);
             xhr.onload = function(){
                 let test_data = JSON.parse(xhr.responseText);
