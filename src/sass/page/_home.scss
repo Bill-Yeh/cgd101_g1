@@ -840,9 +840,17 @@
 
 .home_last_island_info {
   position: absolute;
-  left: 23%;
-  top: 30%;
+  left: 25%;
+  top: -70%;
   @include md {
+    left: 35%;
+    top: -10%;
+  }
+  @include lg {
+    left: 35%;
+    top: -20%;
+  }
+  @include xl {
     left: 40%;
     top: -20%;
   }
