@@ -52,19 +52,14 @@
                                 <th></th>
                                 <th></th>
                             </tr>
-                            <tr class="table_data_row odd">
-                                <td>001</td>
-                                <td><img src="./images/char_tool_4.png" alt=""></td>
-                                <td>寶劍</td>
-                                <td>代幣150</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">上架中</option>
-                                        <option value="stop">下架</option>
-                                    </select>
-                                </td>
+                            <tr class="table_data_row odd" v-for="itemRow in itemRows">
+                                <td>{{itemRow.item_id}}</td>
+                                <td><img :src="itemRow.item_img"></td>
+                                <td>{{itemRow.item_name}}</td>
+                                <td>{{itemRow.item_info}}</td>
+                                <td>{{itemRow.item_price}}</td>
+                                <td>{{itemRow.item_status}}</td>
                                 <td><button class="lightBox_btn edit_btn" @click="show">編輯裝備</button></td>
-                                <td><button class="lightBox_btn cancel_course edit_btn">刪除裝備</button></td>
                             </tr>
                         </table>
                     </div>
@@ -114,11 +109,35 @@
                     </div>
                 </div>
             </div>
-            @@include('layout/backStage_footer.html')
+            <!-- @@include('layout/backStage_footer.html') -->
         </div>
     </div>
 
-    <script src="./js/backStage.js"></script>
+    <script>
+        let backStage_item = new Vue({
+            el:'#backStageID',
+            data:{
+                itemRows:[]
+            },
+            methods: {
+                show(){
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                },
+                hide(){
+                    document.querySelector('.backStage_lightBox').style.display = 'none';
+                },
+            },
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    this.itemRows = JSON.parse(xhr.responseText);
+                    console.log(this.itemRows);
+                }
+                xhr.open("get","back_item.php",true);
+                xhr.send(null);
+            }
+        })
+    </script>
 
 </body>
 </html>

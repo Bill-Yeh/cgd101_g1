@@ -8,12 +8,12 @@ try{
   $options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL,  PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
 
   $pdo = new PDO($dsn, $user, $password, $options);
-  $sql = "SELECT member.member_id,member.member_name,member.account,member.password,member.member_status,member.level,member_level.title FROM `member`JOIN`member_level`ON member.level = member_level.level;"; 
-  $member = $pdo->query($sql);
+  $sql = "select * from item"; 
+  $article = $pdo->query($sql);
   // 取回所有的資料列放在$accounts
-  $members = $member->fetchAll(PDO::FETCH_ASSOC);
+  $articles = $article->fetchAll(PDO::FETCH_ASSOC);
   //送出$accounts
-  echo json_encode($members);
+  echo json_encode($articles);
 
 }catch(PDOException $e){
   echo $e->getMessage();

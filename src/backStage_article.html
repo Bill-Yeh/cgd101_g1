@@ -52,9 +52,8 @@
                                 <th>回應人數</th>
                                 <th>檢舉人數</th>
                                 <th></th>
-                                <th></th>
                             </tr>
-                            <tr is="row" v-for="row in rows" v-bind="row"></tr>
+                            <tr is="row" v-for="articleRow in articleRows" v-bind="row"></tr>
                             <!-- <tr class="table_data_row odd">
                                 <td>01</td>
                                 <td>01</td>
@@ -188,12 +187,11 @@
                 <td>{{memNum}}</td>
                 <td>{{memtitle}}</td>
                 <td>{{aticleType}}</td>
-                <td>{{aticleTitle}}?</td>
+                <td>{{aticleTitle}}</td>
                 <td>{{like}}</td>
                 <td>{{reply}}</td>
                 <td>{{report}}</td>
                 <td><button class="lightBox_btn edit_btn" @click="show">檢視</button></td>
-                <td><button class="lightBox_btn cancel_course edit_btn">刪除</button></td>
             </tr>
             `,
             methods: {
@@ -206,47 +204,32 @@
             },
         })
 
-        // let article = new Vue({
-        //     el:'#backStageID',
-        //     data:{
-        //         rows:[
-        //             {
-        //                 id:'1',
-        //                 articleNum:'1',
-        //                 memNum:'1',
-        //                 memtitle:'周阿倫',
-        //                 aticleType:'50音',
-        //                 aticleTitle:'如何背50音',
-        //                 like:'8',
-        //                 reply:'1',
-        //                 report:'0'
-        //             },
-        //             {
-        //                 id:'2',
-        //                 articleNum:'2',
-        //                 memNum:'2',
-        //                 memtitle:'陳小明',
-        //                 aticleType:'單字',
-        //                 aticleTitle:'如何背單字',
-        //                 like:'5',
-        //                 reply:'2',
-        //                 report:'0'
-        //             },
-        //         ],
-        //     },
-        //     methods: {
-        //         show(){
-        //             document.querySelector('.backStage_lightBox').style.display = 'flex';
-        //         },
-        //         hide(){
-        //             document.querySelector('.backStage_lightBox').style.display = 'none';
-        //         },
-        //     },
-        // })
+        let backStage_article = new Vue({
+            el:'#backStageID',
+            data:{
+                articleRows:[]
+            },
+            methods: {
+                show(){
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                },
+                hide(){
+                    document.querySelector('.backStage_lightBox').style.display = 'none';
+                },
+            },
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    this.articleRows = JSON.parse(xhr.responseText);
+                    console.log(this.articleRows);
+                }
+                xhr.open("get","back_article.php",true);
+                xhr.send(null);
+            }
+        })
 
 
     </script>
-    <script src="./js/backStage.js"></script>
 
 
 </body>
