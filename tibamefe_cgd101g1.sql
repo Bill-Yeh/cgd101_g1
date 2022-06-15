@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-15 14:37:55
+-- 產生時間： 2022-06-15 18:12:51
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -446,7 +446,7 @@ CREATE TABLE `quiz_record` (
 
 INSERT INTO `quiz_record` (`quiz_record_id`, `lesson_id`, `member_id`, `quiz_score`, `quiz_pass`, `quiz_time`) VALUES
 (1, 1, 1, 90, 1, '2022-06-04 15:22:38.000000'),
-(2, 2, 2, 80, 1, '2022-06-01 15:22:38.000000'),
+(2, 2, 2, 80, 1, '2022-06-05 15:22:38.000000'),
 (3, 3, 3, 50, 0, '2022-06-01 03:23:01.000000'),
 (4, 3, 3, 50, 0, '2022-06-01 03:23:01.000000'),
 (5, 2, 1, 90, 1, '2022-06-10 14:32:14.000000'),
@@ -458,7 +458,11 @@ INSERT INTO `quiz_record` (`quiz_record_id`, `lesson_id`, `member_id`, `quiz_sco
 (11, 8, 1, 90, 1, '2022-06-10 14:32:14.000000'),
 (12, 9, 1, 90, 1, '2022-06-10 14:32:14.000000'),
 (13, 10, 1, 90, 1, '2022-06-10 14:32:14.000000'),
-(14, 11, 1, 90, 1, '2022-06-10 14:32:14.000000');
+(14, 11, 1, 90, 1, '2022-06-10 14:32:14.000000'),
+(16, 1, 2, 90, 1, '2022-06-11 18:08:21.000000'),
+(17, 3, 2, 70, 1, '2022-06-11 18:08:21.000000'),
+(18, 4, 2, 70, 1, '2022-06-11 18:10:22.000000'),
+(19, 5, 2, 40, 0, '2022-06-12 18:08:21.000000');
 
 -- --------------------------------------------------------
 
@@ -562,7 +566,7 @@ INSERT INTO `q_data` (`option_id`, `lesson_id`, `txt`, `ans`, `option_content1`,
 (77, 4, 'ねせ', 'nese', 'sene', 'nehe', 'sere', 10, 1),
 (78, 4, 'めて', 'mete', 'hete', 'kese', 'nese', 10, 1),
 (79, 4, 'けれ', 'kere', 'nere', 'kehe', 'nese', 10, 1),
-(80, 4, 'れね', 'rene', 'nete', 'rese', ',mere', 10, 1),
+(80, 4, 'れね', 'rene', 'nete', 'rese', 'mere', 10, 1),
 (81, 5, 'のこ', 'noko', 'koo', 'oso', 'soho', 10, 1),
 (82, 5, 'もお', 'moo', 'soto', 'hoo', 'kono', 10, 1),
 (83, 5, 'とこ', 'toko', 'koo', 'noto', 'ono', 10, 1),
@@ -897,7 +901,7 @@ ALTER TABLE `post`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `quiz_record`
 --
 ALTER TABLE `quiz_record`
-  MODIFY `quiz_record_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=16;
+  MODIFY `quiz_record_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=20;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `q_data`
