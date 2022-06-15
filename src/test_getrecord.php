@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 try{
 	//=====連接資料庫=====//
 

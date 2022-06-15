@@ -91,6 +91,7 @@ function toNextQuestion(){
     let test_score =document.getElementById('test_score');
     let test_getCoin =document.getElementById('test_getCoin');
     let test_question_option = document.querySelectorAll('.test_question_option');
+    // ---測驗結束--- //
     if(test_question_num == 10){
         test_score_now_wrap.style.display = 'none';
         test_question.style.display = 'none';
@@ -98,6 +99,7 @@ function toNextQuestion(){
         test_progress_chara.style.left = `90%`;
         test_lightBox_question.style.display = 'none';
         test_lightBox_result.style.display = 'block';
+        document.getElementById('test_ifPass').value = score;
         if(score>=60){
             test_ifPass.innerText= "通過";
             test_getCoin.innerText= score;
@@ -107,6 +109,7 @@ function toNextQuestion(){
             test_getCoin.innerText=0;
         }
         test_score.innerText= score;
+        console.log(document.getElementById('test_ifPass').value);
 
     }else{
         test_question_title.innerText = test_choose_arr[draw_question[test_question_num]][0];
@@ -331,23 +334,6 @@ function init(){
         test_lightBox_result.style.display = 'none';
         score = 0;
         test_question_num = 1;
-
-        //把成寫入資料庫
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("get", "./test_getquestion.php", true);
-        // xhr.send(null);
-        // xhr.onload = function(){
-        //     let test_data = JSON.parse(xhr.responseText);
-        //     for(let i=0;i<test_data.length;i++){
-        //         test_choose_arr[i] = new Array();
-        //         test_choose_arr[i][0] = test_data[i].txt;
-        //         test_choose_arr[i][1] = test_data[i].ans;
-        //         test_choose_arr[i][2] = test_data[i].option_content1;
-        //         test_choose_arr[i][3] = test_data[i].option_content2;
-        //         test_choose_arr[i][4] = test_data[i].option_content3;
-        //     }
-        //     console.log(test_choose_arr);
-        // };
     });
 }
 
