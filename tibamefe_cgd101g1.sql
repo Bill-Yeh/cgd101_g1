@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-15 12:15:52
+-- 產生時間： 2022-06-15 14:00:06
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -272,7 +272,7 @@ INSERT INTO `lesson` (`lesson_id`, `lesson_name`, `lesson_img`, `lesson_price`, 
 
 CREATE TABLE `lesson_record` (
   `lesson_order_id` int NOT NULL COMMENT 'Not Null(PK, AI)',
-  `memeber_id` int NOT NULL COMMENT 'Not Null(FK)',
+  `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `lesson_id` int NOT NULL COMMENT 'Not Null(FK)',
   `payment_time` datetime NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -281,7 +281,7 @@ CREATE TABLE `lesson_record` (
 -- 傾印資料表的資料 `lesson_record`
 --
 
-INSERT INTO `lesson_record` (`lesson_order_id`, `memeber_id`, `lesson_id`, `payment_time`) VALUES
+INSERT INTO `lesson_record` (`lesson_order_id`, `member_id`, `lesson_id`, `payment_time`) VALUES
 (1, 1, 1, '2022-05-01 15:18:43'),
 (2, 2, 2, '2022-05-02 07:18:44'),
 (3, 3, 3, '2022-05-03 13:18:59'),
@@ -734,7 +734,7 @@ ALTER TABLE `lesson`
 --
 ALTER TABLE `lesson_record`
   ADD PRIMARY KEY (`lesson_order_id`),
-  ADD KEY `lesson_record_member_fk` (`memeber_id`),
+  ADD KEY `lesson_record_member_fk` (`member_id`),
   ADD KEY `lesson_record_lesson_fk` (`lesson_id`);
 
 --
@@ -956,7 +956,7 @@ ALTER TABLE `lesson`
 --
 ALTER TABLE `lesson_record`
   ADD CONSTRAINT `lesson_record_lesson_fk` FOREIGN KEY (`lesson_id`) REFERENCES `lesson` (`lesson_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `lesson_record_member_fk` FOREIGN KEY (`memeber_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `lesson_record_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `member`

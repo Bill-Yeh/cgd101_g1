@@ -126,16 +126,30 @@ function toNextQuestion(){
 function test_getMemberInfo(){
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
-            let member = JSON.parse(xhr.responseText);
-            if(member.member_name){
+        let member = JSON.parse(xhr.responseText);
+        if(member.member_name){    
             document.getElementById('test_result_save').innerText = '儲存紀錄';
             document.getElementById('test_getCoin_line').style.display = 'block';
+            // test_result_save.addEventListener('click',function(){
+            //     alert('test');
+            // });
+            console.log(JSON.parse(xhr.responseText));
             console.log('會員');
         }else{
             document.getElementById('test_result_save').innerText = '關閉';
             document.getElementById('test_getCoin_line').style.display = 'none';
             console.log('訪客');
         }
+    }
+    xhr.open("get", "./front_getMemberInfo.php", true);
+    xhr.send(null);
+}
+
+// *-----------紀錄測驗資料---------* //
+function test_record(){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        let member = JSON.parse(xhr.responseText);
     }
     xhr.open("get", "./front_getMemberInfo.php", true);
     xhr.send(null);
@@ -205,8 +219,8 @@ function init(){
             console.log(test_input.value);
             var url = "./test_getquestion.php?test_input=" + test_input.value;
             xhr.open("get", url, true);
-            
             xhr.send(null);
+            //把抓到的資料放到js陣列裡
             xhr.onload = function(){
                 let test_data = JSON.parse(xhr.responseText);
                 for(let i=0;i<test_data.length;i++){
@@ -311,8 +325,8 @@ function init(){
     // *------測驗結束關閉燈箱----* //
     test_result_save.addEventListener('click',function(){
         testing.style.display = 'none';
-        testing.style.display = 'none';
         test_confirm_box.style.display = 'block';
+        test_lightBox.style.display = 'none';
         test_lightBox_question.style.display = 'block';
         test_lightBox_result.style.display = 'none';
         score = 0;
