@@ -4,12 +4,13 @@
     @@include('layout/meta.html', {
         "title" : "學習大地圖"
     })
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body class="studyMapMain">
     <!-- header -->
     @@include('layout/header.html')
     @@include('layout/login_register.html')
-<section class="bigMap">
+<section class="bigMap"  id="capture">
     <div class="scroller">  
         <div class="study_big_map">
             <div class="village">
@@ -116,6 +117,7 @@
             <button>再一次</button>
         </div>
     </div>
+    <canvas class="canvas" id="myCanvas"></canvas>
 </section>
     @@include('layout/footer.html')
 <script>
@@ -209,8 +211,30 @@ function unLock1(){
 function unLock2(){
     window.location.href="mall.html";
 };
+
+
+
+   
+function createCanvas(){
+    html2canvas(document.querySelector("#capture")).then(canvas => {
+    // document.body.appendChild(canvas);
+    let myCanvas = document.getElementById("myCanvas");
+    console.log(myCanvas)
+    let ctx = myCanvas.getContext("2d");
+    myCanvas.width = 400; 
+    myCanvas.height = 300;
+    ctx.drawImage(canvas,0, 0,400, 300);
+    console.log(canvas);
+    
+    let image = new Image();
+    image.src = canvas.toDataURL("image/jpeg",1);
+    
+    console.log(image.src)
+    })
+}
 function init(){
     getGuide();
+    createCanvas();
     bignpc.addEventListener('click',playVoice,false);
     unlock1.addEventListener('click',unLock1,false);
     unlock2.addEventListener('click',unLock1,false);
