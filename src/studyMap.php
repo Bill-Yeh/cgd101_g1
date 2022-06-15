@@ -2,14 +2,14 @@
 
 //try代表作下面的動作
 //catch(PDOException $e)出錯的時候跑的動作
-
+session_start();
 try{
 	//=====連接資料庫=====//
 
     //1.自己用的
-    $dbname = "資料庫名稱";
+    $dbname = "tibamefe_cgd101g1";
 	$user = "root"; //帳號
-	$password = "Orange0810apple"; //密碼
+	$password = "Apple0810orange"; //密碼
 
     //連接資料庫的變數(固定寫法)
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
@@ -25,12 +25,13 @@ try{
     //=====要資料庫做的事情=====//
 
     //1.sql指令
-	$sql = "SELECT * FROM `member` ";
+	$sql = "SELECT * FROM `lesson_record` ";
 	
     //2.要資料庫準備接收指令
 	$get_qdata = $pdo->prepare($sql);
 	//前台input傳來的變數(看是get還是post),可以用在sql指令中
-	// $get_qdata->bindValue(":member", $_GET["test_input"]);
+	
+	// $get_qdata->bindValue(":member_id", $_SESSION["member_id"]);
 
     //3.執行sql指令
 	$get_qdata->execute();

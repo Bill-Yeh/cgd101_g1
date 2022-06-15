@@ -231,7 +231,7 @@ function createCanvas(){
     let image = new Image();
     image.src = canvas.toDataURL("image/jpeg",1);
     
-    console.log(image.src)
+    // console.log(image.src)
     })
 }
 function init(){
@@ -266,55 +266,25 @@ window.addEventListener('load',init,false);
     //從後端抓資料(get)
 
     //1.新增一個XMLHttpRequest
-    let xhr = new XMLHttpRequest();
+    let memxhr = new XMLHttpRequest();
+    // console.log(xhr)
     
     //2.要打開哪個php檔(方法,"位置",)
-    xhr.open("get", "./studyMap.php", true);
-
+    memxhr.open("get", "./studyMap.php", true);
+    
     //2.5.自己打變數的位置(問號後面是要查詢的東西)
     // var url = "./test_getquestion.php?test_input=" + test_input.value;
     // xhr.open("get", url, true);
     
     //3.把資料送出去(get是null)
-    xhr.send(null);
+    memxhr.send(null);
 
     //4.收到資料之後要做的事情(這裡可以抓JSON.parse(xhr.responseText)) -- AJAX課本的20頁
-    xhr.onload = function(){};
+    memxhr.onload = function(){
+        console.log(memxhr.responseText);
+        // let member = JSON.parse(memxhr.responseText);
+       
 
-    //=========================================//
 
-    //從後端抓資料(post) -- login_navbar_json/login.js
-
-    //1.新增一個XMLHttpRequest
-    let xhr = new XMLHttpRequest();
-
-    //2.要打開哪個php檔(方法,"位置",)
-    xhr.open("post", "ajaxLogin.php", true);
-    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-     
-    //4.收到資料之後要做的事情
-    xhr.onload = function(){
-        let member = JSON.parse(xhr.responseText);
-        $id("memName").innerText = member.memName;
-        $id("spanLogin").innerText = "登出";
-        $id('lightBox').style.display = 'none';
-        $id('memId').value = '';
-        $id('memPsw').value = '';
-    }
-
-    //5.post要傳的資料(js物件)
-    let datas = {}; //新增空的js物件
-    datas.memId = $id("memId").value;
-    datas.memPsw = $id("memPsw").value;
-
-    //===> datas = {
-    //             memId:$id("memId").value;
-    //             memId:$id("memPsw").value;
-    // };
-
-    //6.把js物件轉成json格式(PHP才看得懂)
-    let data_info = `json=${JSON.stringify(datas)}`;
-
-    //7.把資料送出去
-    xhr.send(data_info);
+    };
 </script>
