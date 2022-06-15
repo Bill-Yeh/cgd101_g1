@@ -7,8 +7,20 @@ try{
 	$password = "Lakers11220913";
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
 	$options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
-
   $pdo = new PDO($dsn, $user, $password, $options);
+
+  $sql = "select * from member where account=:account";
+  $memberCheck = $pdo->prepare($sql);
+  $memberCheck -> bindValue(":account", $_POST["account"]);
+  $memberCheck->execute();
+
+  $checkResult = $memberCheck -> rowCount();
+
+  if($checkResult != 0){
+    echo json_encode('帳號已存在');
+    exit();
+  }
+
   $sql = "INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `pass_lesson`, `member_status`, `coin`, `level`, `role`) VALUES (NULL, :member_name, :account, :password, NULL, '1', '0', '1', './images/char_00_0.png')";
   $member = $pdo->prepare($sql);
   $member->bindValue(":member_name", $_POST["member_name"]);
@@ -16,9 +28,7 @@ try{
   $member->bindValue(":password", $_POST["password"]);
 
   $member->execute();
-  $jsonAnswer = array('test' => 'true');
-  echo json_encode($jsonAnswer);
-
+  echo json_encode('ok');
     // if( $member->rowCount()==0){ //查無此人
     // 	  echo "exist";
     // }else{ //登入成功
