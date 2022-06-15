@@ -5,7 +5,7 @@ session_start();
 try{
   $dbname = "tibamefe_cgd101g1";
 	$user = "root";
-	$password = "Sarah34302521";
+	$password = "";
 
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
 	$options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
@@ -28,6 +28,7 @@ try{
     $_SESSION["account"] = $memRow["account"];
     $_SESSION["password"] = $memRow["password"];
     $_SESSION["member_name"] = $memRow["member_name"];
+    $_SESSION["coin"] = $memRow["coin"];
 
     $result = ["member_id"=>$_SESSION["member_id"], "account"=>$_SESSION["account"], "password"=>$_SESSION["password"], "member_name"=>$_SESSION["member_name"]];
 

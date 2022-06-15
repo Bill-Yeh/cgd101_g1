@@ -244,7 +244,7 @@ function init(){
         });
     };
 
-    //確認是否進行測驗
+    //確認是否進行測驗的燈箱
     test_start.addEventListener('click',test_conent_start);
     test_cancel.addEventListener('click',function(){
         testing.style.display = 'none';
@@ -258,19 +258,6 @@ function init(){
     function test_conent_start(){
         test_confirm_box.style.display = 'none';
         test_lightBox.style.display = 'flex';
-        
-        //-----開啟測驗-----//
-        // if(test_choose == 'あ'){
-        //     test_choose_arr = testArr_a;
-        // }else if(test_choose == 'い'){
-        //     test_choose_arr = testArr_i;
-        // }else if(test_choose == 'う'){
-        //     test_choose_arr = testArr_u;
-        // }else if(test_choose == 'え'){
-        //     test_choose_arr = testArr_e;
-        // }else if(test_choose == 'お'){
-        //     test_choose_arr = testArr_o;
-        // }
 
         //-----目前分數-----//
         test_score_now.innerText = score;
@@ -302,7 +289,7 @@ function init(){
 
     // *------點叉叉關閉-----* //
     test_lightBox_close.addEventListener('click',function(){
-        let ifClose = '是否需要中斷測驗？(測驗結果不會保存)'
+        let ifClose = '是否需要中斷測驗？';
         if (confirm(ifClose) == true) {
             testing.style.display = 'none';
             test_confirm_box.style.display = 'block';
@@ -317,7 +304,7 @@ function init(){
     // *------點旁邊關閉-----* //
     testing.addEventListener('click',function(e){
         if (e.target==this) {
-            let ifClose = '是否需要中斷測驗？'
+            let ifClose = '是否需要中斷測驗？';
             if (confirm(ifClose) == true) {
                 testing.style.display = 'none';
                 test_confirm_box.style.display = 'block';
