@@ -43,35 +43,15 @@
                                 <th>管理員編號</th>
                                 <th>帳號</th>
                                 <th>帳號名稱</th>
-                                <th>手機</th>
+                                <th>密碼</th>
                                 <th>帳號狀態</th>
-                                <th>使用者角色</th>
                             </tr>
-                            <tr class="table_data_row odd">
-                                <td>001</td>
-                                <td>abc@gmail.com</td>
-                                <td>周阿倫</td>
-                                <td>0912345678</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">啟用</option>
-                                        <option value="stop">停用</option>
-                                    </select>
-                                </td>
-                                <td>管理員</td>
-                            </tr>
-                            <tr class="table_data_row even">
-                                <td>002</td>
-                                <td>def@gmail.com</td>
-                                <td>劉小華</td>
-                                <td>0912345677</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">啟用</option>
-                                        <option value="stop">停用</option>
-                                    </select>
-                                </td>
-                                <td>教師</td>
+                            <tr class="table_data_row odd" v-for="accountRow in accountRows">
+                                <td>{{accountRow.backstage_id}}</td>
+                                <td>{{accountRow.backstage_account}}</td>
+                                <td>{{accountRow.backstage_name}}</td>
+                                <td>{{accountRow.backstage_password}}</td>
+                                <td>{{accountRow.backstage_status}}</td>
                             </tr>
                         </table>
                     </div>
@@ -131,8 +111,32 @@
             @@include('layout/backStage_footer.html')
         </div>
     </div>
-
-    <script src="./js/backStage.js"></script>
+    <script>
+        let backStage_account = new Vue({
+            el:'#backStageID',
+            data:{
+                accountRows:[]
+            },
+            methods: {
+                show(){
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                },
+                hide(){
+                    document.querySelector('.backStage_lightBox').style.display = 'none';
+                },
+            },
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    this.accountRows = JSON.parse(xhr.responseText);
+                    console.log(this.accountRows);
+                }
+                xhr.open("get","back_account.php",true);
+                xhr.send(null);
+            }
+        })
+    </script>
+    <!-- <script src="./js/backStage.js"></script> -->
 
 </body>
 </html>
