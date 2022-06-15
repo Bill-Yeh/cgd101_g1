@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-15 00:53:55
+-- 產生時間： 2022-06-15 12:15:52
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -68,6 +68,27 @@ INSERT INTO `backstage` (`backstage_id`, `backstage_name`, `backstage_account`, 
 (1, '管理員01', 'admin@gmail.com', 'aaaAAA111', '2'),
 (2, '管理員02', 'admin2@gmail.com', 'eeeEEE111', '0'),
 (3, '教師', 'teacher@gmail.com', 'tttTTT111', '1');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `consult`
+--
+
+CREATE TABLE `consult` (
+  `consult_id` int NOT NULL COMMENT 'PK',
+  `member_id` int NOT NULL COMMENT 'FK',
+  `backstage_id` int NOT NULL COMMENT 'FK',
+  `message` varchar(600) NOT NULL,
+  `send_from` int NOT NULL COMMENT '1-teacher;2-user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- 傾印資料表的資料 `consult`
+--
+
+INSERT INTO `consult` (`consult_id`, `member_id`, `backstage_id`, `message`, `send_from`) VALUES
+(1, 1, 3, '', 1);
 
 -- --------------------------------------------------------
 
@@ -306,7 +327,6 @@ CREATE TABLE `member` (
   `member_name` varchar(30) NOT NULL COMMENT 'Not Null',
   `account` varchar(30) NOT NULL COMMENT 'Not Null(email)',
   `password` varchar(30) NOT NULL COMMENT 'Not Null',
-  `pass_lesson` varchar(200) DEFAULT NULL,
   `member_status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Not Null(0-停用,1-啟用)',
   `coin` int NOT NULL COMMENT 'Not Null',
   `level` int NOT NULL COMMENT 'Not Null(FK)',
@@ -317,11 +337,11 @@ CREATE TABLE `member` (
 -- 傾印資料表的資料 `member`
 --
 
-INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `pass_lesson`, `member_status`, `coin`, `level`, `role`) VALUES
-(1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1,2,3,4,5,6,7,8,9,10,11', '1', 1000, 4, './images/char_00_0.png'),
-(2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '1,2,3,4,5', '0', 100, 1, './images/char_00_0.png'),
-(3, 'Bill', 'efg@gmail.com', 'cccCCC111', NULL, '1', 0, 1, './images/char_00_0.png'),
-(7, 'Triangle', 'tri@gmail.com', 'TRItri123', '1,2,3', '1', 666, 1, './images/char_00_0.png');
+INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`, `role`) VALUES
+(1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1', 1000, 4, './images/char_00_0.png'),
+(2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '0', 100, 1, './images/char_00_0.png'),
+(3, 'Bill', 'efg@gmail.com', 'cccCCC111', '1', 0, 1, './images/char_00_0.png'),
+(7, 'Triangle', 'tri@gmail.com', 'TRItri123', '1', 666, 1, './images/char_00_0.png');
 
 -- --------------------------------------------------------
 
@@ -667,6 +687,14 @@ ALTER TABLE `backstage`
   ADD PRIMARY KEY (`backstage_id`);
 
 --
+-- 資料表索引 `consult`
+--
+ALTER TABLE `consult`
+  ADD PRIMARY KEY (`consult_id`),
+  ADD KEY `backstage_id` (`backstage_id`),
+  ADD KEY `member_id` (`member_id`);
+
+--
 -- 資料表索引 `error`
 --
 ALTER TABLE `error`
@@ -790,6 +818,12 @@ ALTER TABLE `backstage`
   MODIFY `backstage_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `consult`
+--
+ALTER TABLE `consult`
+  MODIFY `consult_id` int NOT NULL AUTO_INCREMENT COMMENT 'PK', AUTO_INCREMENT=2;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `error`
 --
 ALTER TABLE `error`
@@ -883,6 +917,13 @@ ALTER TABLE `topic`
 ALTER TABLE `ask_log`
   ADD CONSTRAINT `ask_log_backstage_fk` FOREIGN KEY (`ans_backstage_id`) REFERENCES `backstage` (`backstage_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ask_log_member_fk` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 資料表的限制式 `consult`
+--
+ALTER TABLE `consult`
+  ADD CONSTRAINT `consult_ibfk_1` FOREIGN KEY (`backstage_id`) REFERENCES `backstage` (`backstage_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `consult_ibfk_2` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- 資料表的限制式 `error`

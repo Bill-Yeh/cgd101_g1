@@ -43,12 +43,13 @@
     datas.memId = $id("memId").value;
     datas.memPsw = $id("memPsw").value;
 
-    //===> datas = {
-    //             memId:$id("memId").value;
-    //             memId:$id("memPsw").value;
+    //代表這個物件為：
+    //datas = {
+    //  memId:$id("memId").value;
+    //  memId:$id("memPsw").value;
     // };
 
-    //6.把js物件轉成json格式(PHP才看得懂)
+    //6.把js物件轉成json格式(PHP才看得懂)-- AJAX課本的20頁
     let data_info = `json=${JSON.stringify(datas)}`;
 
     //7.把資料送出去
