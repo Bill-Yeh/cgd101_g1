@@ -27,7 +27,7 @@ try{
     //1.sql指令
 	// $sql = "SELECT * FROM `quiz_record` where member_id = :member_id";
 	// $sql = "SELECT distinct quiz_pass FROM `quiz_record` where member_id = :member_id";
-	$sql = "SELECT distinct lesson_id, quiz_pass FROM `quiz_record` where member_id = :member_id group by lesson_id having lesson_id <=5 && quiz_pass is not null ";
+	$sql = "SELECT  lesson_id FROM `lesson_record` where member_id = :member_id group by lesson_id having lesson_id > 11 ";
     //2.要資料庫準備接收指令
 	$get_qdata = $pdo->prepare($sql);
 	//前台input傳來的變數(看是get還是post),可以用在sql指令中
@@ -37,11 +37,7 @@ try{
 
     //3.執行sql指令
 	$get_qdata->execute();
-	// if( $get_qdata->rowCount()>=5){ //查無此人
-	// 	echo 2;
-	// }else{ //
-	// 	echo 1;
-	// }
+	
     //4.要抓全部還是只抓值
 	$q_data = $get_qdata->fetchAll(PDO::FETCH_ASSOC);
 

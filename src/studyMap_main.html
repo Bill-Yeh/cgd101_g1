@@ -221,17 +221,20 @@ function createCanvas(){
     html2canvas(document.querySelector("#capture")).then(canvas => {
     // document.body.appendChild(canvas);
     let myCanvas = document.getElementById("myCanvas");
-    console.log(myCanvas)
+    // console.log(myCanvas)
     let ctx = myCanvas.getContext("2d");
-    myCanvas.width = 400; 
-    myCanvas.height = 300;
-    ctx.drawImage(canvas,0, 0,400, 300);
-    console.log(canvas);
+    // myCanvas.width = 400; 
+    // myCanvas.height = 300;
+    // ctx.drawImage(canvas,0, 0,400, 300);
+    // console.log(canvas);
     
     let image = new Image();
     image.src = canvas.toDataURL("image/jpeg",1);
-    
-    // console.log(image.src)
+    let book = image.src;
+    // console.log(book)
+    localStorage.settings = book;
+    // console.log(localStorage);
+    // console.log(localStorage.settings)
     })
 }
 function init(){
@@ -254,6 +257,7 @@ window.addEventListener('load',init,false);
     <script src="js/studymap.js"></script>
 </body>
 </html>
+<!-- 撈資料庫的50音測驗分數 -->
 <script>
     //從後端抓資料(get)
 
@@ -277,14 +281,52 @@ window.addEventListener('load',init,false);
         let ticket = JSON.parse(memxhr.responseText);
         let cloud1 = document.getElementById('cloudFirst');
         let cloud2 = document.getElementById('cloudSecond');
-        console.log(ticket);
+        // console.log(ticket);
         if(ticket.length>=5){ //檢查是否通過50音的5個測驗
-            console.log("恭喜通過");
             cloud1.style.display="none";
             cloud2.style.display="none";
+            // console.log("恭喜通過");
+            // console.log("趕快進入下一個吧");
 	    }else{ 
-            console.log("還沒學完耶");
+            // console.log("還沒學完耶");
 	    }
         
     };
 </script>
+
+<!-- 撈資料庫的購買課程資料 -->
+<script>
+    
+    let lessonxhr = new XMLHttpRequest();
+    
+    lessonxhr.open("get", "./studyMap_shop.php", true);
+    
+    lessonxhr.send(null);
+
+    lessonxhr.onload = function(){
+        console.log(lessonxhr.responseText);
+        let lesson = JSON.parse(lessonxhr.responseText);
+        let cloud3 = document.getElementById('cloudThird');
+        let cloud4 = document.getElementById('cloudFourth');
+        console.log(lesson[0].lesson_id);
+        // if(lesson[0].lesson_id == 12){ //檢查是否有購買L4單字課程
+            
+        //     cloud4.style.display="none";
+            
+	    // }else{ 
+            
+	    // };
+        // if(lesson[1].lesson_id == 13){ //檢查是否有購買L4會話課程
+            
+        //     cloud3.style.display="none";
+	    // }else{ 
+
+        // };
+        for(i=0;i>=lesson.length;i++){
+            if(lesson[i].lesson_id == i+12){
+                cloud(i+3).style.display="none";
+            }
+        }
+    };
+</script>
+
