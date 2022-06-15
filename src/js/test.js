@@ -31,9 +31,9 @@ function shuffleArray(arr) {
 }
 
 
-////////////////////////////////////
+// ========== 測驗開始 ==========//
 function testStart(e){
-
+    //-----加分動畫-----//
     let add_point = document.getElementById('test_add_point');
     window.addEventListener('mousemove', mousemove);
     function mousemove(e){
@@ -99,7 +99,7 @@ function toNextQuestion(){
         test_progress_chara.style.left = `90%`;
         test_lightBox_question.style.display = 'none';
         test_lightBox_result.style.display = 'block';
-        document.getElementById('test_ifPass').value = score;
+        document.getElementById('test_score_input').value = score;
         if(score>=60){
             test_ifPass.innerText= "通過";
             test_getCoin.innerText= score;
@@ -109,7 +109,6 @@ function toNextQuestion(){
             test_getCoin.innerText=0;
         }
         test_score.innerText= score;
-        console.log(document.getElementById('test_ifPass').value);
 
     }else{
         test_question_title.innerText = test_choose_arr[draw_question[test_question_num]][0];
@@ -125,19 +124,20 @@ function toNextQuestion(){
     test_score_now.innerText = score;
 }
 
-// *-----------抓會員---------* //
+// ========== 抓會員 ========== //
 function test_getMemberInfo(){
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
         let member = JSON.parse(xhr.responseText);
-        if(member.member_name){    
-            document.getElementById('test_result_save').innerText = '儲存紀錄';
+        if(member.member_name){
+            let test_result_save= document.getElementById('test_result_save');
+            test_result_save.innerText = '儲存紀錄';
             document.getElementById('test_getCoin_line').style.display = 'block';
-            // test_result_save.addEventListener('click',function(){
-            //     alert('test');
-            // });
-            console.log(JSON.parse(xhr.responseText));
+            // console.log(JSON.parse(xhr.responseText));
             console.log('會員');
+
+            //最後按按鈕會把分數存進去
+            test_result_save.addEventListener('click',test_record);
         }else{
             document.getElementById('test_result_save').innerText = '關閉';
             document.getElementById('test_getCoin_line').style.display = 'none';
@@ -150,13 +150,19 @@ function test_getMemberInfo(){
 
 // *-----------紀錄測驗資料---------* //
 function test_record(){
+    let test_input = document.getElementById('test_input');
+    let test_score_input = document.getElementById('test_score_input');
     let xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-        let member = JSON.parse(xhr.responseText);
-    }
-    xhr.open("get", "./front_getMemberInfo.php", true);
+    // let url = "./test_addrecord.php?test_input=" + test_input.value + "&test_score_input=" + test_score_input.value;
+    // xhr.open("get", url, true);
+    let url = "./test_addrecord.php?test_input=" + test_input.value + "&test_score_input=" + test_score_input.value;
+    xhr.open("get", url, true);
     xhr.send(null);
-}
+    xhr.onload = function(){
+        // console.log(document.getElementById('test_score_input').value);
+        console.log(xhr.responseText);
+    };
+};
 
 // *-----------基本設定---------* //
 function init(){
@@ -219,8 +225,7 @@ function init(){
 
             //從後端抓資料
             let xhr = new XMLHttpRequest();
-            console.log(test_input.value);
-            var url = "./test_getquestion.php?test_input=" + test_input.value;
+            let url = "./test_getquestion.php?test_input=" + test_input.value;
             xhr.open("get", url, true);
             xhr.send(null);
             //把抓到的資料放到js陣列裡
