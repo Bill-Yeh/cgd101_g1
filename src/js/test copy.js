@@ -1,3 +1,115 @@
+
+let testArr_a = new Array(
+    new Array("ああ","aa","aka","sata","hana"),
+    new Array("なか","naka","kaya","tana","maka"),
+    new Array("たま","tama","kana","nata","sama"),
+    new Array("はさ","hasa","rasa","naka","wana"),
+    new Array("らや","raya","an","sara","tana"),
+    new Array("はま","hama","nata","awa","haha"),
+    new Array("たん","tan","han","nan","an"),
+    new Array("なあ","naa","nia","taa","kaya"),
+    new Array("はは","haha","han","hasa","haya"),
+    new Array("わあ","waa","nama","aka","kaha"),
+    new Array("さわ","sawa","sata","nama","tara"),
+    new Array("たな","tana","kaha","naka","aka"),
+    new Array("やら","yara","waka","raya","rata"),
+    new Array("かま","kama","kaha","rawa","aka"),
+    new Array("まは","yaha","maha","kana","haha"),
+    new Array("さら","sara","tana","rasa","hasa"),
+    new Array("やん","yan","han","ran","wan"),
+    new Array("さや","saya","raya","nata","yan"),
+    new Array("らわ","rawa","an","sara","yawa"),
+    new Array("たや","taya","waka","tana","kaha"),
+);
+let testArr_i = new Array(
+    new Array("いき","iki","ishi","kini","chiki"),
+    new Array("にし","nishi","hini","chishi","kichi"),
+    new Array("ちみ","chimi","richi","shimi","shichi"),
+    new Array("きに","kini","chini","shini","kiri"),
+    new Array("いし","ishi","ihi","iri","ichi"),
+    new Array("ひり","hiri","niki","michi","hishi"),
+    new Array("いみ","imi","shimi","chiki","iri"),
+    new Array("きち","kichi","chiki","kini","richi"),
+    new Array("ひみ","himi","shini","iki","kini"),
+    new Array("りき","riki","shichi","richi","chimi"),
+    new Array("にひ","nihi","chii","nishi","nichi"),
+    new Array("しち","shichi","ichi","kini","kichi"),
+    new Array("にき","niki","iki","nichi","kini"),
+    new Array("りし","rishi","shiki","iri","shichi"),
+    new Array("しひ","shihi","chimi","rimi","hini"),
+    new Array("りち","richi","shichi","iki","himi"),
+    new Array("みひ","mihi","nihi","himi","nishi"),
+    new Array("ちき","chiki","hii","shichi","kimi"),
+    new Array("いい","ii","yaya","mimi","nini"),
+    new Array("みい","mii","nii","kii","rii"),
+);
+let testArr_u = new Array(
+    new Array("うぬ","unu","uru","tsusu","kunu"),
+    new Array("くす","kusu","sunu","kutsu","nuu"),
+    new Array("つう","tsuu","suu","nutsu","kusu"),
+    new Array("ぬむ","numu","kumu","tsunu","suku"),
+    new Array("する","suru","kusu","tsusu","suru"),
+    new Array("ゆす","yusu","numu","yuu","rufu"),
+    new Array("ふく","fuku","tsuru","uku","nufu"),
+    new Array("すむ","sumu","kunu","tsusu","sunu"),
+    new Array("くる","kuru","tsunu","nufu","kusu"),
+    new Array("つぬ","tusnu","uyu","unu","ruyu"),
+    new Array("るう","ruu","kunu","tsuu","mutsu"),
+    new Array("むふ","mufu","nuu","tsuku","umu"),
+    new Array("うゆ","uyu","tsumu","nutsu","tsuku"),
+    new Array("くつ","kutsu","rufu","nuku","kunu"),
+    new Array("ぬふ","nufu","nutsu","suku","sunu"),
+    new Array("つる","tsuru","numu","tsuru","suku"),
+    new Array("ゆう","yuu","nutsu","tsuu","sumu"),
+    new Array("むつ","mutsu","utsu","usu","kunu"),
+    new Array("るふ","rufu","yusu","kusu","mutsu"),
+    new Array("うむ","umu","suku","nutsu","unu"),
+);
+let testArr_e = new Array(
+    new Array("えて","ete","neke","see","kese"),
+    new Array("けへ","kehe","teke","sene","hete"),
+    new Array("ねせ","nese","eke","mehe","kene"),
+    new Array("てえ","tee","sete","nese","kete"),
+    new Array("めね","mene","ete","rese","nese"),
+    new Array("れせ","rese","eke","rene","kere"),
+    new Array("ねけ","neke","seme","sene","hete"),
+    new Array("へえ","hee","teke","sene","kehe"),
+    new Array("てめ","teme","kese","mere","tene"),
+    new Array("せめ","seme","nere","sene","sene"),
+    new Array("へて","hete","nese","ehe","kese"),
+    new Array("てけ","teke","neke","tehe","eke"),
+    new Array("せえ","see","kese","ehe","sene"),
+    new Array("ねれ","nere","meke","ete","mene"),
+    new Array("せて","sete","teke","sene","eke"),
+    new Array("えけ","eke","sete","ete","neke"),
+    new Array("ねせ","nese","sene","nehe","sere"),
+    new Array("めて","mete","hete","kese","nese"),
+    new Array("けれ","kere","nere","kehe","nese"),
+    new Array("れね","rene","nete","rese",",mere"),
+);
+let testArr_o = new Array(
+    new Array("のこ","noko","koo","oso","soho"),
+    new Array("もお","moo","soto","hoo","kono"),
+    new Array("とこ","toko","koo","noto","ono"),
+    new Array("のと","noto","kono","noo","soto"),
+    new Array("そも","somo","oso","soto","komo"),
+    new Array("のろ","noro","noto","yoso","koro"),
+    new Array("こも","komo","koro","mono","koo"),
+    new Array("おそ","oso","homo","ono","yoko"),
+    new Array("とよ","toyo","yoro","toko","moyo"),
+    new Array("ほも","homo","somo","soto","tono"),
+    new Array("よろ","yoro","toko","koo","noto"),
+    new Array("ほお","hoo","oso","horo","soo"),
+    new Array("おの","ono","too","oyo","rono"),
+    new Array("そと","soto","oso","noto","komo"),
+    new Array("ろを","rowo","royo","too","moyo"),
+    new Array("そを","sowo","sono","yoko","hoo"),
+    new Array("その","sono","hono","yoro","soro"),
+    new Array("もの","mono","toko","kono","noko"),
+    new Array("よそ","yoso","yoso","somo","oso"),
+    new Array("よほ","yoho","homo","hoo","koto"),
+);
+
 //測驗用變數
 let score = 0;
 let test_question_num;
@@ -161,8 +273,6 @@ function init(){
             testing.style.display = 'block';
             //確認是點到哪個測驗
             test_choose = test_option[c].innerText;
-            test_choose_text.innerText = test_choose;
-            test_choose = test_option[c].innerText;
             switch (test_choose){
                 case 'あ':
                     test_input.value = 1;
@@ -180,12 +290,12 @@ function init(){
                     test_input.value = 5;
                     break;
             }
+            test_choose_text.innerText = test_choose;
 
             //從後端抓資料
             let xhr = new XMLHttpRequest();
-            console.log(test_input.value);
-            xhr.open("get", "../test_getquestion.php", true);
-            
+            var url = "./test_getquestion.php?test_input=" + test_input.value;
+            xhr.open("get", url, true);
             xhr.send(null);
             xhr.onload = function(){
                 let test_data = JSON.parse(xhr.responseText);
@@ -299,21 +409,21 @@ function init(){
         test_question_num = 1;
 
         //把成寫入資料庫
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("get", "./test_getquestion.php", true);
-        // xhr.send(null);
-        // xhr.onload = function(){
-        //     let test_data = JSON.parse(xhr.responseText);
-        //     for(let i=0;i<test_data.length;i++){
-        //         test_choose_arr[i] = new Array();
-        //         test_choose_arr[i][0] = test_data[i].txt;
-        //         test_choose_arr[i][1] = test_data[i].ans;
-        //         test_choose_arr[i][2] = test_data[i].option_content1;
-        //         test_choose_arr[i][3] = test_data[i].option_content2;
-        //         test_choose_arr[i][4] = test_data[i].option_content3;
-        //     }
-        //     console.log(test_choose_arr);
-        // };
+        let xhr = new XMLHttpRequest();
+        xhr.open("get", "./test_getquestion.php", true);
+        xhr.send(null);
+        xhr.onload = function(){
+            let test_data = JSON.parse(xhr.responseText);
+            for(let i=0;i<test_data.length;i++){
+                test_choose_arr[i] = new Array();
+                test_choose_arr[i][0] = test_data[i].txt;
+                test_choose_arr[i][1] = test_data[i].ans;
+                test_choose_arr[i][2] = test_data[i].option_content1;
+                test_choose_arr[i][3] = test_data[i].option_content2;
+                test_choose_arr[i][4] = test_data[i].option_content3;
+            }
+            console.log(test_choose_arr);
+        };
     });
 }
 

@@ -88,13 +88,10 @@ window.addEventListener('load', function(){
     //註冊密碼過
     let passwordValid2 = passwordCheck.test(memberPassword.value);
 
-    // 解析度
-    let screenWidth = screen.width;
-
     // ====================開燈箱和登入註冊切換=============================
 
     // 燈箱開
-    member.addEventListener('click',function(){
+    memIcon.addEventListener('click',function(){
         // 登入開燈箱
         if(memIcon.style.display = 'block'){
             loginRegister.style.display = 'flex';
@@ -106,11 +103,10 @@ window.addEventListener('load', function(){
 
     window.addEventListener('resize',function() {
         if(window.innerWidth < 992){
+            // memIcon.style.display = 'none';
             memArea.style.display = 'none';
-            memIcon.style.display = 'none';
         }else{
             memArea.style.display = 'block';
-            // memIcon.style.display = 'none';
         }
     })
 
@@ -139,59 +135,103 @@ window.addEventListener('load', function(){
             e.preventDefault();
             return;
         }
-        if(window.innerWidth < 992){
-            // alert('登入成功!!!');
-            //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function(){
+
+        let xhr = new XMLHttpRequest();
+            xhr.onload = function(e){
                 let memberWeb = JSON.parse(xhr.responseText);
-                memName.innerText = memberWeb.member_name;
-                //將登入表單上的資料清空，並隱藏起來
-                loginAccount.value = '';
-                loginPassword.value = '';
-                loginRegister.style.display = 'none';
+                if(memberWeb.account != `${loginAccount.value}` || memberWeb.password != `${loginPassword.value}` || memberWeb.member_status == '0'){
+                    alert('帳號密碼不符!');
+                    e.preventDefault();
+                    return;
+                }else if(window.innerWidth < 992){
+                    window.addEventListener('resize',function() {
+                        memArea.style.display = 'none';
+                        memIcon.style.display = 'none';
+                    })
+                    memName.innerText = memberWeb.member_name;
+                    //將登入表單上的資料清空，並隱藏起來
+                    loginAccount.value = '';
+                    loginPassword.value = '';
+                    loginRegister.style.display = 'none';
+                    
+                    // memArea.style.display = 'none';
+                    // memIcon.style.display = 'none';
+                    logout.style.display = 'block';
+                    loginBox.style.width = '10%';
+                    moneyArea.style.margin = 'auto';
+                }else if(window.innerWidth > 992){
+                    memName.innerText = memberWeb.member_name;
+                    //將登入表單上的資料清空，並隱藏起來
+                    loginAccount.value = '';
+                    loginPassword.value = '';
+                    loginRegister.style.display = 'none';
+                    
+                    memArea.style.display = 'block';
+                    memIcon.style.display = 'none';
+                    logout.style.display = 'block';
+                    loginBox.style.width = '25%';
+                    moneyArea.style.margin = '0';
+                }
                 
-                memArea.style.display = 'none';
-                memIcon.style.display = 'none';
-                logout.style.display = 'block';
-                loginBox.style.width = '10%';
-                moneyArea.style.margin = 'auto';
             }
-            xhr.open("post", "front_login_register.php", true);
+            xhr.open("post", "front_login.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
             let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
             console.log(data_info);
             xhr.send(data_info);
 
-        }else if(window.innerWidth > 992){
-            // alert('登入成功!!!');
-            //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function(){
-                let memberWeb = JSON.parse(xhr.responseText);
-                memName.innerText = memberWeb.member_name;
-                //將登入表單上的資料清空，並隱藏起來
-                loginAccount.value = '';
-                loginPassword.value = '';
-                loginRegister.style.display = 'none';
+        // if(window.innerWidth < 992){
+        //     window.addEventListener('resize',function() {
+        //         memArea.style.display = 'none';
+        //         memIcon.style.display = 'none';
+        //     })
+        //     //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onload = function(){
+        //         let memberWeb = JSON.parse(xhr.responseText);
+        //         memName.innerText = memberWeb.member_name;
+        //         //將登入表單上的資料清空，並隱藏起來
+        //         loginAccount.value = '';
+        //         loginPassword.value = '';
+        //         loginRegister.style.display = 'none';
                 
-                memArea.style.display = 'block';
-                memIcon.style.display = 'none';
-                logout.style.display = 'block';
-                loginBox.style.width = '25%';
-                moneyArea.style.margin = '0';
-            }
-            xhr.open("post", "front_login_register.php", true);
-            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        //         memArea.style.display = 'none';
+        //         memIcon.style.display = 'none';
+        //         logout.style.display = 'block';
+        //         loginBox.style.width = '10%';
+        //         moneyArea.style.margin = 'auto';
+        //     }
+        //     xhr.open("post", "front_login.php", true);
+        //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
-            let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
-            console.log(data_info);
-            xhr.send(data_info);
-        }
+        //     let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
+        //     xhr.send(data_info);
+
+        // }else if(window.innerWidth > 992){
+        //     //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onload = function(){
+        //         let memberWeb = JSON.parse(xhr.responseText);
+        //         memName.innerText = memberWeb.member_name;
+        //         //將登入表單上的資料清空，並隱藏起來
+        //         loginAccount.value = '';
+        //         loginPassword.value = '';
+        //         loginRegister.style.display = 'none';
                 
-            
-        //  window.onresize = loginBtn;
+        //         memArea.style.display = 'block';
+        //         memIcon.style.display = 'none';
+        //         logout.style.display = 'block';
+        //         loginBox.style.width = '25%';
+        //         moneyArea.style.margin = '0';
+        //     }
+        //     xhr.open("post", "front_login.php", true);
+        //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+        //     let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
+        //     xhr.send(data_info);
+        // }
+                
    
     })
     // 取得會員是否已登入的資訊
@@ -204,7 +244,6 @@ window.addEventListener('load', function(){
                 // header上面的東西隱藏/顯示
                 memIcon.style.display = 'none';
                 logout.style.display = 'block';
-                // memArea.style.display = 'block';
                 loginBox.style.width = '10%';
                 moneyArea.style.margin = 'auto';
             }
@@ -241,6 +280,7 @@ window.addEventListener('load', function(){
             memArea.style.display = 'none';
             loginBox.style.width = '0';
             moneyArea.style.margin = '0';
+            window.location.href = "home.html";
         }
         xhr.open("get", "front_logout.php", true);
         xhr.send(null);
@@ -295,54 +335,4 @@ window.addEventListener('load', function(){
         memberPassword.value = '';
         confirmPassword.value = '';
     })
-
-     
-    
-    // =================註冊驗證==================
-    registerBtn.addEventListener('click',function(e){
-    // 註冊欄位如為空值，跳警告
-        if(memberName.value == '' || memberAccount.value == '' || memberPassword.value == '' || confirmPassword.value == ''){
-            alert('欄位不可為空值');
-            e.preventDefault();
-            return;
-        }
-
-        // 帳號驗證
-        if (memberAccount.value.search(userEmail) == -1) {
-            alert('帳號格式錯誤');
-            memberAccount.value = "";
-            memberAccount.focus();
-            e.preventDefault();
-            return;
-        }
-
-        // 密碼驗證
-        if(memberPassword.value.search(passwordCheck) == -1){
-            alert('密碼格式錯誤');
-            memberPassword.select();
-            e.preventDefault();
-            return;
-        }
-
-        // 確認密碼驗證
-        if (confirmPassword.value != memberPassword.value) {
-            alert('確認密碼錯誤');
-            confirmPassword.select();
-            // e.preventDefault();
-        } else{
-            alert('恭喜註冊成功!!!');
-            return window.location.replace('mem.html');
-        }
-    })
-
-    // let window =window.innerWidth;
-    // window.addEventListener('resize',function(){
-    //     console.log(window)
-    // });
-
-    // window.onresize =function(){
-    //     // let window =window.innerWidth;
-    //     console.log(window.innerWidth)
-    // };
-
 })

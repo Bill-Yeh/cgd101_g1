@@ -1,9 +1,11 @@
 <?php
 session_start();
+
+// $_POST["action"] ==> Login
 try{
   $dbname = "tibamefe_cgd101g1";
 	$user = "root";
-	$password = "Lakers11220913";
+	$password = "Sarah34302521";
 
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
 	$options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
@@ -16,7 +18,8 @@ try{
   $member->execute();
 
   if( $member->rowCount()==0){ //查無此人
-	  echo "exist";
+	  // echo "exist";
+    echo json_encode("exist");
   }else{ //登入成功
     //自資料庫中取回資料
     $memRow = $member->fetch(PDO::FETCH_ASSOC);

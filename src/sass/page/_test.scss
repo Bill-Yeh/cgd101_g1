@@ -1,3 +1,7 @@
+#test_input{
+    display: none;
+}
+
 .test_wrap{
     width: 100%;
     margin: auto;
@@ -173,7 +177,7 @@
     right: 30px;
     border-radius: 30px;
     background-color: map-get($color, 'primary');
-    color: #fff;
+    // color: #fff;
     // background-color: #FFF;
     z-index: 4;
 
@@ -395,13 +399,13 @@
     z-index: 5000;
 }
 
-.test_lightBox{
-    width: 80%;
-    max-width: 500px;
-    max-height: 400px;
-    padding: 30px;
-    padding-top: 60px;
+#test_confirm_box{
+    max-width: 300px;
+    max-height: 300px;
+    padding: 40px 30px;
+    box-sizing: border-box;
     background-color:  map-get($color, 'bgc_y');
+    border: 5px solid map-get($color, 'primary');
     border-radius: 30px;
     position: absolute;
     top: 0;
@@ -412,9 +416,62 @@
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+    & .test_confirm_title,p{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    & .test_confirm_title{
+        padding-bottom: 30px;
+    }
+}
+
+#test_choose{
+    padding: 30px 0px;
+    text-align: center;
+    font-size: 36px;
+    color: map-get($color, 'backstage_h');
+    font-weight:bold;
+}
+.test_btn{
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    color: #fff;
+    background-color: map-get($color, 'primary');
+    border-radius: 30px;
+
+    &:hover{
+        cursor: pointer;
+        background: map-get($color, 'backstage_h');
+    }
+}
+
+#test_lightBox{
+    width: 80%;
+    max-width: 500px;
+    max-height: 400px;
+    padding: 30px;
+    padding-top: 60px;
+    background-color:  map-get($color, 'bgc_y');
+    border: 5px solid map-get($color, 'primary');
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+    // display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: none;
 
     @include lg{
+        display: none;
         max-height: 500px;
     }
 }
@@ -482,6 +539,15 @@
     to {
         top: -23px;
     }
+}
+
+#test_score_now_wrap{
+    width: 100%;
+    padding: 0px 2px 40px;
+    text-align: center;
+    // font-weight: bold;
+    font-size: 24px;
+    color: map-get($color, 'backstage_h');
 }
 
 .test_question{
@@ -576,17 +642,17 @@
 
 #test_result_save{
     width: 100%;
-        padding: 10px 20px;
-        font-size: 20px;
-        border: none;
-        color: #fff;
-        background-color: map-get($color, 'primary');
-        border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    color: #fff;
+    background-color: map-get($color, 'primary');
+    border-radius: 30px;
 
-        &:hover{
-            cursor: pointer;
-            background: map-get($color, 'backstage_h');
-        }
+    &:hover{
+        cursor: pointer;
+        background: map-get($color, 'backstage_h');
+    }
 }
 
 

@@ -799,10 +799,36 @@
 }
 .home_last_island {
   width: 100vw;
+  margin-top: 50%;
   position: relative;
+  @include lg() {
+    margin-top: 20%;
+  }
 }
 .home_last_island_pic {
   width: 100%;
+}
+
+.footer_frog {
+  display: none;
+  position: absolute;
+  @include lg() {
+    display: block;
+    top: 40%;
+    animation: frog 13s linear infinite;
+  }
+}
+
+@keyframes frog {
+  0% {
+    right: -2%;
+  }
+  50% {
+    right: 50%;
+  }
+  100% {
+    right: 100%;
+  }
 }
 
 .home_last_island_pic img {
@@ -814,11 +840,19 @@
 
 .home_last_island_info {
   position: absolute;
-  left: 23%;
-  top: 30%;
+  left: 25%;
+  top: -70%;
   @include md {
-    left: 42%;
-    top: 30%;
+    left: 35%;
+    top: -10%;
+  }
+  @include lg {
+    left: 35%;
+    top: -20%;
+  }
+  @include xl {
+    left: 40%;
+    top: -20%;
   }
 }
 
@@ -1097,6 +1131,9 @@
     height: 200px;
     margin: 100px 0;
   }
+  .home_decorate_island_inwater {
+    position: relative;
+  }
   .topic_frog {
     position: absolute;
     bottom: 40%;
@@ -1369,7 +1406,6 @@
     padding: 20px;
     width: 300px;
     height: 100px;
-    left: 60%;
     .text {
       display: block;
     }
