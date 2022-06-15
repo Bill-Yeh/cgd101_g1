@@ -122,9 +122,28 @@ function toNextQuestion(){
     test_score_now.innerText = score;
 }
 
+// *-----------抓會員---------* //
+function test_getMemberInfo(){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+            let member = JSON.parse(xhr.responseText);
+            if(member.member_name){
+            document.getElementById('test_result_save').innerText = '儲存紀錄';
+            document.getElementById('test_getCoin_line').style.display = 'block';
+            console.log('會員');
+        }else{
+            document.getElementById('test_result_save').innerText = '關閉';
+            document.getElementById('test_getCoin_line').style.display = 'none';
+            console.log('訪客');
+        }
+    }
+    xhr.open("get", "./front_getMemberInfo.php", true);
+    xhr.send(null);
+}
 
 // *-----------基本設定---------* //
 function init(){
+    test_getMemberInfo();
     //-----DOM-----//
     //選了哪個測驗
     let test_option = document.querySelectorAll('.test_option');
@@ -161,8 +180,8 @@ function init(){
             testing.style.display = 'block';
             //確認是點到哪個測驗
             test_choose = test_option[c].innerText;
+            //把變數傳入input中(之後傳去php用)
             test_choose_text.innerText = test_choose;
-            test_choose = test_option[c].innerText;
             switch (test_choose){
                 case 'あ':
                     test_input.value = 1;
@@ -184,7 +203,8 @@ function init(){
             //從後端抓資料
             let xhr = new XMLHttpRequest();
             console.log(test_input.value);
-            xhr.open("get", "../test_getquestion.php", true);
+            var url = "./test_getquestion.php?test_input=" + test_input.value;
+            xhr.open("get", url, true);
             
             xhr.send(null);
             xhr.onload = function(){
