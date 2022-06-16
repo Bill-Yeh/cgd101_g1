@@ -40,23 +40,6 @@ window.addEventListener('load', function(){
     let memName = document.getElementById('memName');
 
 
-    // let testBtn = document.getElementById('testBtn');
-    // testBtn.addEventListener('click',function(e){
-    //     let xhr = new XMLHttpRequest();
-    //     xhr.onload = function(){
-    //         let memberEnroll = JSON.parse(xhr.responseText);
-    //         console.log('memberEnroll:'+memberEnroll)
-    //     }
-    //     xhr.open("post", "front_register.php", true);
-    //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-    //     let data_info = `member_name=${memberName.value}&account=${memberAccount.value}&password=${memberPassword.value}`;
-
-    //     console.log('註冊資訊:',data_info);
-    //     xhr.send(data_info);
-    // })
-
-    
     // =================註冊驗證==================
     registerBtn.addEventListener('click',function(e){
     // 註冊欄位如為空值，跳警告
@@ -98,7 +81,6 @@ window.addEventListener('load', function(){
             if(memberEnroll == '帳號已存在'){
                 alert(memberEnroll);
             }else{
-                // memName.innerText = `member_name=${memberName.value}`;
                 //將註冊表單上的資料清空，並隱藏起來
                 memberAccount.value = '';
                 memberPassword.value = '';
