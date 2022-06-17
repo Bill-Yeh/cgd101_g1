@@ -39,50 +39,14 @@ let prodRow = Vue.component("component-orderList", {
                 <td>{{payment_time}}</td>
                 <td><img :src='item_img' alt=""></td>
                 <td>{{item_price}}</td>
-                <td>{{payment}}</td>
                 </tr>`
-    })
-
-
-
-
-//裝備請求
-let itemVue=
-new Vue({
-    el:'#itemAPP',
-    data:{
-        itemRows:[],
-    },
-    created() {
-        let xhr = new XMLHttpRequest();
-
-		xhr.onload = function(){
-				buyListVue.prodRows = JSON.parse(xhr.responseText)};
-		xhr.open("get", "./mem_itemList.php",true);
-		xhr.send();	
-    },    
-});
-
-
-//裝備模板
-let itemRow= Vue.component("component-items", {
-
-    props:['item_order_id','payment_time','item_img','item_price'],
-    template:` <tr>
-                <td>{{item_order_id}}</td>
-                <td>{{payment_time}}</td>
-                <td><img :src='item_img' alt=""></td>
-                <td>{{item_price}}</td>
-                <td>{{payment}}</td>
-                </tr>`
-    })
+})
 
 
 
 
 
-
-//確定是否是首次註冊後進入會員登入
+//確定是否是首次註冊後進入會員專區
 function showChar(){
     let url=document.referrer;
     let urlArry=url.split("/")
@@ -280,7 +244,15 @@ function cancelLightBox(){
 
     for(i=0;i<lightBox.length;i++){
         document.querySelector(`.${lightBox[i].className}`).style.display='none';
-    }   
+    }
+
+    let psw=document.querySelector('#psw')
+    let new_psw=document.querySelector('#new_psw')
+    let new_psw_check=document.querySelector('#new_psw_check')
+
+    psw.value="";
+    new_psw.value="";
+    new_psw_check.value="";
 }
 
 
@@ -319,23 +291,101 @@ window.addEventListener('resize',resize);
 
 
 
+//================================================================
+//變更密碼
+
+function setPW(){
+    let psw=document.querySelector('#psw')
+    let new_psw=document.querySelector('#new_psw')
+    let new_psw_check=document.querySelector('#new_psw_check')
 
 
 
+    let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            let ans= JSON.parse(xhr.responseText);
+            if(ans=="修改成功"){
+                psw.value="";
+                new_psw.value="";
+                new_psw_check.value="";
+                
 
+                //關閉燈箱
+                let black=document.querySelector(".black");
+                black.style.display='none';
+                let lightBox=document.querySelectorAll("div#lightBox > div");
+
+                for(i=0;i<lightBox.length;i++){
+                    document.querySelector(`.${lightBox[i].className}`).style.display='none';
+                }   
+                alert("修改成功");
+
+            }
+            else{
+                alert("輸入錯誤請再次檢查");
+            }
+        
+        };
+
+    xhr.open("post", "mem_resetPw.php",true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        
+    let newPwInfo= `password=${psw.value}&newPassword=${new_psw.value}&new_psw_check=${new_psw_check.value}`
+    xhr.send(newPwInfo);
+}
+
+document.querySelector("#reset").addEventListener('submit',(e)=>{
+    e.preventDefault()});
+
+document.querySelector("#reset").addEventListener('click',setPW);
 
 
 
 //=================================================================
-//換裝區切換類別頁
+//換裝區
 
-//裝備編碼
-var hatArray=new Array("1","2","3","4","5","6","7","8");
-var dressArray=new Array("1","2","3","4","5","6","7","8","9","10");
-var toolArray=new Array("1","2","3","4");
+var hatArray=new Array();
+var dressArray=new Array();
+var toolArray=new Array();
+
+//裝備資料匯入
+function getItem(){
+    let xhr = new XMLHttpRequest();
+
+    xhr.onload = function(){
+        buyList= JSON.parse(xhr.responseText);
+
+        for(i=0 ; i<buyList.length ;i++){
+            let this_item_id=buyList[i].item_id
+            let this_item_class=buyList[i].item_img.split("_")
+
+            switch(this_item_class[1]){
+                case"hat":
+                    hatArray.push(this_item_class[2])
+                    break;
+                case"dress":
+                    dressArray.push(this_item_class[2])
+                    break;
+                case"tool":
+                    toolArray.push(this_item_class[2])
+                    break;
+            }
+        }
+    };
+    xhr.open("get", "./mem_itemList.php",true);
+    xhr.send();	
+
+}
+
+window.addEventListener('load',getItem);
 
 
 
+
+
+
+
+//切換類別頁
 function reStartCloset(){
 
     //判斷是否為第一次打開
@@ -377,7 +427,7 @@ function reStartCloset(){
         let itemImg=document.createElement('img');
         document.querySelectorAll('.items >div')[i].appendChild(itemImg);
         itemImg.setAttribute("class",`char_hat_${hatArray[i]}`);
-        itemImg.src=`./images/char_hat_${hatArray[i]}.png`;
+        itemImg.src=`./images/char_hat_${hatArray[i]}`;
     }
 
 
@@ -443,7 +493,7 @@ function ChangeClothesItem(){
                 let itemImg=document.createElement('img');
                 document.querySelectorAll('.items >div')[i].appendChild(itemImg);
                 itemImg.setAttribute("class",`char_hat_${hatArray[i]}`);
-                itemImg.src=`./images/char_hat_${hatArray[i]}.png`;
+                itemImg.src=`./images/char_hat_${hatArray[i]}`;
             }
             break;
         case 'tab_dress':
@@ -454,7 +504,7 @@ function ChangeClothesItem(){
                 let itemImg=document.createElement('img');
                 document.querySelectorAll('.items >div')[i].appendChild(itemImg);
                 itemImg.setAttribute("class",`char_dress_${dressArray[i]}`);
-                itemImg.src=`./images/char_dress_${dressArray[i]}.png`;
+                itemImg.src=`./images/char_dress_${dressArray[i]}`;
             }
             break;
         case 'tab_tool':
@@ -465,7 +515,7 @@ function ChangeClothesItem(){
                 let itemImg=document.createElement('img');
                 document.querySelectorAll('.items >div')[i].appendChild(itemImg);
                 itemImg.setAttribute("class",`char_tool_${toolArray[i]}`);
-                itemImg.src=`./images/char_tool_${toolArray[i]}.png`;
+                itemImg.src=`./images/char_tool_${toolArray[i]}`;
             }
             break;
       }
@@ -834,14 +884,11 @@ document.querySelector(".error .cancel").addEventListener('click',closeError)
 
 
 
+
 //學伴自動對話
-
-
 var talkJpArry=new Array("こんにちは","一緒に勉強しますしょう")
 
 function talk(){
-
-
     let txtJp=document.querySelector(".say_txt_jp")
     let talk=document.querySelector(".say_text")
     let content=document.querySelector(".say")
@@ -890,19 +937,14 @@ function talk(){
 }
 
 
-
 setInterval(talk,13000)
 
 window.addEventListener('load',talk)
 
 
 
-
-
 setInterval(()=>{
     let me=document.querySelector(".eyes");
-    
-
     setTimeout(() => {
         me.src="./images/char_00_eye_close.png"
     },500)
@@ -910,7 +952,6 @@ setInterval(()=>{
 
     setTimeout(() => {
         me.src="./images/char_00_eye_open.png"
-
     },4000);
 
 },6000)

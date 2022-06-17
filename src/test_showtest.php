@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 try{
 	//=====連接資料庫=====//
 
@@ -18,10 +18,12 @@ try{
 
 
     //=====連接資料庫=====//
-	$sql = "SELECT * FROM `q_data` WHERE lesson_id =:test;";  
+	$sql = "select distinct lr.member_id,q.lesson_id,l.lesson_name,l.lesson_type_id
+	from lesson l join lesson_record lr on l.lesson_id = lr.lesson_id join q_data q on l.lesson_id = q.lesson_id
+	where lr.member_id=:mem;";  
 	$get_qdata = $pdo->prepare($sql);
 	
-	$get_qdata->bindValue(":test", $_GET["test_input"]);
+	$get_qdata->bindValue(":mem", $_SESSION["member_id"]);
 	$get_qdata->execute();
 
 	$q_data = $get_qdata->fetchAll(PDO::FETCH_ASSOC);

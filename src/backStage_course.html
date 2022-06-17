@@ -51,22 +51,15 @@
                                 <th>課程價格</th>
                                 <th>課程狀態</th>
                                 <th></th>
-                                <th></th>
                             </tr>
-                            <tr class="table_data_row odd">
-                                <td>001</td>
+                            <tr class="table_data_row odd" v-for="lessonRow in lessonRows">
+                                <td>{{lessonRow.lesson_id}}</td>
                                 <td><img src="./images/payement_map.png" alt=""></td>
-                                <td>N3單字</td>
-                                <td>N3日常單字</td>
-                                <td>NT$150元</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">上架中</option>
-                                        <option value="stop">下架</option>
-                                    </select>
-                                </td>
+                                <td>{{lessonRow.lesson_name}}</td>
+                                <td>{{lessonRow.lesson_info}}</td>
+                                <td>{{lessonRow.lesson_price}}</td>
+                                <td>{{lessonRow.lesson_status}}</td>
                                 <td><button class="lightBox_btn edit_btn" @click="show">編輯課程</button></td>
-                                <td><button class="lightBox_btn cancel_course edit_btn">刪除課程</button></td>
                             </tr>
                         </table>
                     </div>
@@ -120,11 +113,35 @@
                     </div>
                 </div>
             </div>
-            @@include('layout/backStage_footer.html')
+            <!-- @@include('layout/backStage_footer.html') -->
         </div>
     </div>
 
-    <script src="./js/backStage.js"></script>
+    <script>
+        let backStage_lesson = new Vue({
+            el:'#backStageID',
+            data:{
+                lessonRows:[]
+            },
+            methods: {
+                show(){
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                },
+                hide(){
+                    document.querySelector('.backStage_lightBox').style.display = 'none';
+                },
+            },
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    this.lessonRows = JSON.parse(xhr.responseText);
+                    console.log(this.lessonRows);
+                }
+                xhr.open("get","back_lesson.php",true);
+                xhr.send(null);
+            }
+        })
+    </script>
 
 </body>
 </html>

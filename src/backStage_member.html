@@ -41,39 +41,21 @@
                         <table class="account_table_title table_title">
                             <tr class="table_header_row">
                                 <th>會員編號</th>
-                                <th>帳號</th>
                                 <th>會員名稱</th>
-                                <th>手機</th>
+                                <th>帳號</th>
+                                <th>密碼</th>
                                 <th>會員狀態</th>
                                 <th>會員稱號</th>
-                                <th>加入時間</th>
+                                <th>會員等級</th>
                             </tr>
-                            <tr class="table_data_row odd">
-                                <td>001</td>
-                                <td>abc@gmail.com</td>
-                                <td>周阿倫</td>
-                                <td>0912345678</td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="active">啟用</option>
-                                        <option value="stop">停用</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="">初心者</option>
-                                        <option value="">冒險者</option>
-                                        <option value="">探險者</option>
-                                        <option value="">大探險者</option>
-                                        <option value="">超探險者</option>
-                                        <option value="">究極探險者</option>
-                                        <option value="">無敵探險者</option>
-                                        <option value="">神探險者</option>
-                                        <option value="">極醒探險者</option>
-                                        <option value="">超銀河探險者</option>
-                                    </select>
-                                </td>
-                                <td>2022/05/30</td>
+                            <tr class="table_data_row odd" v-for="memberRow in memberRows">
+                                <td>{{memberRow.member_id}}</td>
+                                <td>{{memberRow.member_name}}</td>
+                                <td>{{memberRow.account}}</td>
+                                <td>{{memberRow.password}}</td>
+                                <td>{{memberRow.member_status}}</td>
+                                <td>{{memberRow.title}}</td>
+                                <td>{{memberRow.level}}</td>
                             </tr>
                         </table>
                     </div>
@@ -142,7 +124,31 @@
         </div>
     </div>
 
-    <!-- <script src="./js/backStage.js"></script> -->
+    <script>
+        let backStage_member = new Vue({
+            el:'#backStageID',
+            data:{
+                memberRows:[]
+            },
+            methods: {
+                show(){
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                },
+                hide(){
+                    document.querySelector('.backStage_lightBox').style.display = 'none';
+                },
+            },
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    this.memberRows = JSON.parse(xhr.responseText);
+                    console.log(this.memberRows);
+                }
+                xhr.open("get","back_member.php",true);
+                xhr.send(null);
+            }
+        })
+    </script>
 
 </body>
 </html>

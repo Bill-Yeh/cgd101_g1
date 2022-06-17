@@ -22,13 +22,13 @@
                             <h1>文章管理</h1>
                         </div>
                         <div class="backStage_filter backStage_addAccount">
-                            <button class="lightBox_btn" @click="show"><i class="bi bi-funnel-fill"></i>條件篩選</button>
+                            <button class="lightBox_btn"><i class="bi bi-funnel-fill"></i>條件篩選</button>
                         </div>
                         <div class="backStage_input_filter">
-                            <div class="on_stock">
+                            <!-- <div class="on_stock">
                                 <span>線上商品(2)</span>
                                 <span>回收桶(0)</span>
-                            </div>
+                            </div> -->
                             <div class="input_filter">
                                 <input type="text" placeholder="以文章編號查詢">
                                 <i class="bi bi-search"></i>
@@ -52,27 +52,24 @@
                                 <th>回應人數</th>
                                 <th>檢舉人數</th>
                                 <th></th>
-                                <th></th>
                             </tr>
-                            <tr is="row" v-for="row in rows" v-bind="row"></tr>
-                            <!-- <tr class="table_data_row odd">
-                                <td>01</td>
-                                <td>01</td>
-                                <td>周阿倫</td>
-                                <td>50音</td>
-                                <td>如何背50音?</td>
-                                <td>8</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td><button class="lightBox_btn edit_btn" @click="show">檢視</button></td>
-                                <td><button class="lightBox_btn cancel_course edit_btn">刪除</button></td>
-                            </tr> -->
+                            <tr class="table_data_row odd" v-for="articleRow in articleRows">
+                                <td>{{articleRow.post_id}}</td>
+                                <td>{{articleRow.member_id}}</td>
+                                <td>{{articleRow.member_name}}</td>
+                                <td>{{articleRow.post_type}}</td>
+                                <td>{{articleRow.post_title}}</td>
+                                <td>{{articleRow.fav}}</td>
+                                <td>{{articleRow.message}}</td>
+                                <td>{{articleRow.report}}</td>
+                                <td><button class="lightBox_btn edit_btn" @click="view(articleRow.post_id)">檢視</button></td>
+                            </tr>
                         </table>
                     </div>
                 </div>
             </div>
             
-            <!-- 新增帳號燈箱 -->
+            <!-- 檢視文章燈箱 -->
             <div class="backStage_lightBox backStage_lightBox_article">
                 <div class="backStage_lightBox_container">
                     <div class="backStage_lightBox_content">
@@ -87,115 +84,82 @@
                             <form action="">
                                 <div class="course_sm_block item_sm_block article_sm_block">
                                     <label for="article_sm">文章編號</label>
-                                    <input type="text" id="article_sm" value="01" readonly>
+                                    <input type="text" id="article_sm" :value="popupItem.post_id" readonly>
                                 </div>
                                 <div class="course_img_block item_img_block member_sm_block">
                                     <label for="member_sm">會員編號</label>
-                                    <input type="text" id="member_sm" value="01" readonly>
+                                    <input type="text" id="member_sm" :value="popupItem.member_id" readonly>
                                 </div>
                                 <div class="course_title_block item_title_block member_title_block">
                                     <label for="member_title">會員名稱</label>
-                                    <input type="text" id="member_title" value="周阿倫" readonly>
+                                    <input type="text" id="member_title" :value="popupItem.member_name" readonly>
                                 </div>
                                 <div class="course_price_block item_price_block article_type_block">
                                     <label for="article_type">文章類別</label>
-                                    <input type="text" id="article_type" value="50音單字" readonly>
+                                    <input type="text" id="article_type" :value="popupItem.post_type" readonly>
                                 </div>
                                 <div class="course_state_block item_state_block article_title_block">
                                     <label for="article_title">文章標題</label>
-                                    <input type="text" id="article_title" value="要如何背50音?" readonly>
+                                    <input type="text" id="article_title" :value="popupItem.post_title" readonly>
                                 </div>
                                 <div class="course_state_block item_state_block article_content_block">
                                     <label for="article_content">文章內容</label>
-                                    <textarea name="" id="article_content" cols="30" rows="10" style="resize:none;width:300px;height:150px;"    readonly>請問各位大大知道怎麼快速背好五十音嗎QQ</textarea>
+                                    <textarea name="" id="article_content" cols="30" rows="10" style="resize:none;width:300px;height:150px;" readonly>{{popupItem.post_txt}}</textarea>
                                 </div>
                                 <div class="course_state_block item_state_block article_like_block">
                                     <label for="article_like">按讚人數</label>
-                                    <input type="text" id="article_like" value="8" readonly>
+                                    <input type="text" id="article_like" :value="popupItem.fav" readonly>
                                 </div>
                                 <div class="course_state_block item_state_block article_respond_block">
                                     <label for="article_respond">回應人數</label>
-                                    <input type="text" id="article_respond" value="1" readonly>
+                                    <input type="text" id="article_respond" :value="popupItem.message" readonly>
                                 </div>
                                 <div class="course_state_block item_state_block article_report_block">
                                     <label for="article_report">檢舉人數</label>
-                                    <input type="text" id="article_report" value="0" readonly>
+                                    <input type="text" id="article_report" :value="popupItem.report" readonly>
                                 </div>
                             </form>
                         </div>
-                        <div class="backStage_lightBox_saveBtn">
+                        <!-- <div class="backStage_lightBox_saveBtn">
                             <button type="submit" class="data_save">儲存</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-            @@include('layout/backStage_footer.html')
+            <!-- @@include('layout/backStage_footer.html') -->
         </div>
     </div>
 
 
     <script>
 
-        // Vue.component('article-form',{
-        //     props:['id','articleNum','memNum','memtitle','aticleType','aticleTitle','articleContent','like','reply','report'],
-        //     template:`
-        //     <form action="">
-        //         <div class="course_sm_block item_sm_block article_sm_block">
-        //             <label for="article_sm">文章編號</label>
-        //             <input type="text" id="article_sm" value="{{articleNum}}" readonly>
-        //         </div>
-        //         <div class="course_img_block item_img_block member_sm_block">
-        //             <label for="member_sm">會員編號</label>
-        //             <input type="text" id="member_sm" value="{{memNum}}" readonly>
-        //         </div>
-        //         <div class="course_title_block item_title_block member_title_block">
-        //             <label for="member_title">會員名稱</label>
-        //             <input type="text" id="member_title" value="{{memtitle}}" readonly>
-        //         </div>
-        //         <div class="course_price_block item_price_block article_type_block">
-        //             <label for="article_type">文章類別</label>
-        //             <input type="text" id="article_type" value="{{aticleType}}" readonly>
-        //         </div>
-        //         <div class="course_state_block item_state_block article_title_block">
-        //             <label for="article_title">文章標題</label>
-        //             <input type="text" id="article_title" value="{{aticleTitle}}" readonly>
-        //         </div>
-        //         <div class="course_state_block item_state_block article_content_block">
-        //             <label for="article_content">文章內容</label>
-        //             <textarea name="" id="article_content" cols="30" rows="10" style="resize:none;width:300px;height:150px;"    readonly>{{articleContent}}</textarea>
-        //         </div>
-        //         <div class="course_state_block item_state_block article_like_block">
-        //             <label for="article_like">按讚人數</label>
-        //             <input type="text" id="article_like" value="{{like}}" readonly>
-        //         </div>
-        //         <div class="course_state_block item_state_block article_respond_block">
-        //             <label for="article_respond">回應人數</label>
-        //             <input type="text" id="article_respond" value="{{reply}}" readonly>
-        //         </div>
-        //         <div class="course_state_block item_state_block article_report_block">
-        //             <label for="article_report">檢舉人數</label>
-        //             <input type="text" id="article_report" value="{{report}}" readonly>
-        //         </div>
-        //     </form>
-        //     `,
-        // })
-
-        Vue.component('row',{
-            props:['id','articleNum','memNum','memtitle','aticleType','aticleTitle','like','reply','report'],
-            template:`
-            <tr class="table_data_row odd">
-                <td>{{articleNum}}</td>
-                <td>{{memNum}}</td>
-                <td>{{memtitle}}</td>
-                <td>{{aticleType}}</td>
-                <td>{{aticleTitle}}?</td>
-                <td>{{like}}</td>
-                <td>{{reply}}</td>
-                <td>{{report}}</td>
-                <td><button class="lightBox_btn edit_btn" @click="show">檢視</button></td>
-                <td><button class="lightBox_btn cancel_course edit_btn">刪除</button></td>
-            </tr>
-            `,
+        let backStage_article = new Vue({
+            el:'#backStageID',
+            data:{
+                articleRows: [],
+                focusId: '',
+                popupItem: {
+                    "post_id": 0,
+                    "member_id": 0,
+                    "post_txt":"",
+                    "post_title":"",
+                    "post_type": '',
+                    "member_name":"",
+                    "fav": 0,
+                    "message": 0,
+                    "report": 0
+                },
+            },
+            computed: {
+                focusItem() {
+                    return this.articleRows.find(v => v.post_id == this.focusId);
+                },
+            },
+            watch: {
+                focusItem(nVal) {
+                    this.popupItem = nVal;
+                },
+            },
             methods: {
                 show(){
                     document.querySelector('.backStage_lightBox').style.display = 'flex';
@@ -203,50 +167,46 @@
                 hide(){
                     document.querySelector('.backStage_lightBox').style.display = 'none';
                 },
+                view(id) {
+                    document.querySelector('.backStage_lightBox').style.display = 'flex';
+                    this.focusId = id;
+                },
             },
-        })
+            created(){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    
+                    // 按讚
+                    let postFav = JSON.parse(JSON.parse(xhr.responseText).postFav);
+                    
+                    console.log('文章',postFav);
+                    
+                    // 留言
+                    let message = JSON.parse(JSON.parse(xhr.responseText).message);
+                    
+                    console.log('留言',message);
+                    
+                    // 檢舉
+                    let report = JSON.parse(JSON.parse(xhr.responseText).report);
+                    
+                    console.log('檢舉',report);
 
-        // let article = new Vue({
-        //     el:'#backStageID',
-        //     data:{
-        //         rows:[
-        //             {
-        //                 id:'1',
-        //                 articleNum:'1',
-        //                 memNum:'1',
-        //                 memtitle:'周阿倫',
-        //                 aticleType:'50音',
-        //                 aticleTitle:'如何背50音',
-        //                 like:'8',
-        //                 reply:'1',
-        //                 report:'0'
-        //             },
-        //             {
-        //                 id:'2',
-        //                 articleNum:'2',
-        //                 memNum:'2',
-        //                 memtitle:'陳小明',
-        //                 aticleType:'單字',
-        //                 aticleTitle:'如何背單字',
-        //                 like:'5',
-        //                 reply:'2',
-        //                 report:'0'
-        //             },
-        //         ],
-        //     },
-        //     methods: {
-        //         show(){
-        //             document.querySelector('.backStage_lightBox').style.display = 'flex';
-        //         },
-        //         hide(){
-        //             document.querySelector('.backStage_lightBox').style.display = 'none';
-        //         },
-        //     },
-        // })
+                    result = postFav.map((item) => {
+                        let messageItem = message.find(v => v.post_id == item.post_id);
+                        let reportItem = report.find(v => v.post_id == item.post_id);
+                        return {...item, ...messageItem, ...reportItem};
+                    })
+
+                    this.articleRows = result;
+                    console.log(result);
+                }
+                xhr.open("get","back_article.php",true);
+                xhr.send(null);
+            }
+        })
 
 
     </script>
-    <script src="./js/backStage.js"></script>
 
 
 </body>
