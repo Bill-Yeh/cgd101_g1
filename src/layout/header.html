@@ -11,11 +11,11 @@
                 <a href="home.html"><img src="./images/nav_logo.png" alt="語實巨進"></a>
             </div>
             <nav class="header_main_nav">
-                <div id="moneyArea" class="header_money">
+                <div id="moneyArea" class="header_money" style="display: none">
                     <div class="header_coin">
                         <img src="./images/nav_coin.png" alt="代幣">
                     </div>
-                    <span>1000</span>
+                    <span id="mem_coin"></span>
                 </div>
                 <ul>
                     <li><a href="studyMap_main.html">學習地圖</a></li>
@@ -37,4 +37,29 @@
     <div class="header_nav_cloud">
         <img src="./images/nav2.png" alt="導覽列雲">
     </div>
+    <script>
+        let coinxhr = new XMLHttpRequest();
+
+        coinxhr.open("get", "coin.php", true);
+        coinxhr.send(null);
+
+        coinxhr.onload = function () {
+            if (coinxhr.status == 200) {
+                document.getElementById("mem_coin").innerText = coinxhr.responseText;
+            }
+
+        };
+
+    </script>
+    <script>
+        let coin = document.getElementById("moneyArea");
+        let a = document.getElementById("logout");
+        function show_coin() {
+            if (a.innerText === "登出")
+                coin.style.display = "flex"
+        }
+
+
+        window.addEventListener("load", show_coin, false);
+    </script>
 </header>

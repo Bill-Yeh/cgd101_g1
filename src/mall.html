@@ -387,4 +387,93 @@
             @@include('layout/login_register.html')
             <script src="./js/mall.js"></script>
 
+
+            <script>
+
+                //撈課程資料
+                let lessonxhr = new XMLHttpRequest();
+
+                lessonxhr.open("get", "./mall_lesson.php", true);
+
+                lessonxhr.send(null);
+
+                lessonxhr.onload = function () {
+                    console.log(lessonxhr.responseText);
+                    let lesson = JSON.parse(lessonxhr.responseText);
+
+                    console.log(lesson[0].lesson_order_id);
+                    if (lesson[0].lesson_id == 12) { //檢查是否有購買L4單字課程
+
+                        cloud4.style.display = "none";
+
+                    } else {
+
+                    };
+                    if (lesson[1].lesson_id == 13) { //檢查是否有購買L4會話課程
+
+                        cloud3.style.display = "none";
+                    } else {
+
+                    };
+                    for (i = 0; i >= lesson.length; i++) {
+                        if (lesson[i].lesson_id == i + 12) {
+                            cloud(i + 3).style.display = "none";
+                        }
+                    }
+                };
+
+            </script>
+            <!-- <script>
+
+                //撈裝備資料
+                let itemxhr = new XMLHttpRequest();
+
+                itemxhr.open("get", "./mall_item.php", true);
+
+                itemxhr.send(null);
+
+                itemxhr.onload = function () {
+                    console.log(itemxhr.responseText);
+                    let item = JSON.parse(itemxhr.responseText);
+
+                    console.log(item[0].item_order_id);
+                    if (item[0].item_id == 12) { //檢查是否有購買L4單字課程
+
+                    } else {
+
+                    };
+                    if (item[1].item_id == 13) { //檢查是否有購買L4會話課程
+                        cloud3.style.display = "none";
+                    } else {
+                    };
+
+                };
+            </script> -->
+
+            <!-- <script>
+
+                //撈裝備資料
+                let itemxhr = new XMLHttpRequest();
+
+                itemxhr.open("get", "./mall_item.php", true);
+
+                itemxhr.send(null);
+
+                itemxhr.onload = function () {
+                    console.log(itemxhr.responseText);
+                    let item = JSON.parse(itemxhr.responseText);
+
+                    console.log(item[0].item_order_id);
+                    if (item[0].item_id == 12) { //檢查是否有購買L4單字課程
+
+                    } else {
+
+                    };
+                    if (item[1].item_id == 13) { //檢查是否有購買L4會話課程
+                        cloud3.style.display = "none";
+                    } else {
+                    };
+
+                };
+            </script> -->
 </body>
