@@ -1,3 +1,7 @@
+function $_(id){
+    return document.getElementById(id);
+}
+
 //測驗用變數
 let score = 0;
 let test_question_num;
@@ -5,6 +9,13 @@ let test_choose;
 let test_choose_arr = new Array();
 let draw_option = new Array(0,1,2,3);
 let add_point_num = 10;
+//檢視目前測驗進度變數
+let test50Arr = new Array();
+let test50Arr_id = new Array();
+let testTangoArr = new Array();
+let testTangoArr_id = new Array();
+let testKaiwaArr = new Array();
+let testKaiwaArr_id = new Array();
 
 
 //亂數抽題
@@ -25,13 +36,100 @@ function test_randomDraw(){
     }while(draw_question.length < 10);
 };
 
-//打亂陣列方程式
+//打亂陣列
 function shuffleArray(arr) {
     arr.sort(() => Math.random() - 0.5);
 }
 
+// ========== 註冊測驗按鈕 ========== //
+function testBtnAll(){
+    let test_option = document.querySelectorAll('.test_option');
+    let testing = document.querySelector('.test_lightBox_bg');
+    let test_choose_text = $_('test_choose');
 
-// ========== 測驗開始 ==========//
+    for(let c = 0; c < test_option.length; c++){
+        test_option[c].addEventListener('click',function(){
+            testing.style.display = 'block';
+            //確認是點到哪個測驗
+            test_choose = test_option[c].innerText;
+            test_choose_text.innerText = test_choose;
+
+            //把變數傳入input中(之後傳去php用)
+            let area1 = test50Arr.indexOf(test_option[c].innerText);
+            let area2 = testTangoArr.indexOf(test_option[c].innerText);
+            let area3 = testKaiwaArr.indexOf(test_option[c].innerText);
+            
+            if(area1>=0){
+                test_input.value = test50Arr_id[area1];
+            }else if(area2>=0){
+                test_input.value = testTangoArr_id[area2];
+            }else if(area3>=0){
+                test_input.value = testKaiwaArr_id[area3];
+            }
+            console.log(test_input.value)
+
+            //從後端抓資料
+            let xhr = new XMLHttpRequest();
+            let url = "./test_getquestion.php?test_input=" + test_input.value;
+            xhr.open("get", url, true);
+            xhr.send(null);
+            //把抓到的資料放到js陣列裡
+            xhr.onload = function(){
+                let test_data = JSON.parse(xhr.responseText);
+                for(let i=0;i<test_data.length;i++){
+                    test_choose_arr[i] = new Array();
+                    test_choose_arr[i][0] = test_data[i].txt;
+                    test_choose_arr[i][1] = test_data[i].ans;
+                    test_choose_arr[i][2] = test_data[i].option_content1;
+                    test_choose_arr[i][3] = test_data[i].option_content2;
+                    test_choose_arr[i][4] = test_data[i].option_content3;
+                }
+            };
+        });
+    }
+
+    //確認是否進行測驗的燈箱
+    test_start.addEventListener('click',test_conent_start());
+    test_cancel.addEventListener('click',function(){
+        testing.style.display = 'none';
+        test_lightBox_question.style.display = 'block';
+        test_lightBox_result.style.display = 'none';
+        score = 0;
+        test_question_num = 1;
+    });
+}
+
+function test_conent_start(){
+    test_confirm_box.style.display = 'none';
+    test_lightBox.style.display = 'flex';
+
+    //-----目前分數-----//
+    test_score_now.innerText = score;
+
+    //-----亂數抽題-----//
+    test_randomDraw();
+
+    //-----分數與題數歸零-----//
+    score = 0;
+    test_question_num = 1;
+    test_progress_now.style.width = `0%`;
+    test_progress_chara.style.left = `-10%`;
+    test_score_now_wrap.style.display = 'block';
+    test_question.style.display = 'flex';
+
+    test_question_title.innerText = test_choose_arr[draw_question[0]][0];
+
+    for(let j = 0; j < test_question_option.length; j++){
+        test_question_option[j].innerText = test_choose_arr[draw_question[0]][j+1];
+    };
+    //-----按下選項_開始測驗-----//
+    for(let i = 0; i < test_question_option.length; i++){
+        test_question_option[i].addEventListener('click',testStart,false);
+    };
+}
+
+
+// ========== 測驗開始 ========== //
 function testStart(e){
     //-----加分動畫-----//
     let add_point = document.getElementById('test_add_point');
@@ -44,7 +142,6 @@ function testStart(e){
 
     //-----產生亂數選項-----//
     shuffleArray(draw_option);
-
 
     //-----是否正確-----//
     if(e.target.innerText == test_choose_arr[draw_question[(test_question_num-1)]][1]){
@@ -82,7 +179,7 @@ function testStart(e){
 }
 
 
-//-----換下一題-----//
+// ========== 換下一題 ========== //
 function toNextQuestion(){
     let test_score_now_wrap = document.getElementById('test_score_now_wrap');
     let test_question = document.getElementById('test_progress');
@@ -130,31 +227,85 @@ function test_getMemberInfo(){
     xhr.onload = function(){
         let member = JSON.parse(xhr.responseText);
         if(member.member_name){
+            //載入目前上課進度
+            test_showTest();
+
+            //顯示可以儲存紀錄的按鈕
             let test_result_save= document.getElementById('test_result_save');
             test_result_save.innerText = '儲存紀錄';
             document.getElementById('test_getCoin_line').style.display = 'block';
             // console.log(JSON.parse(xhr.responseText));
-            console.log('會員');
+            // console.log('會員');
 
-            //最後按按鈕會把分數存進去
+            //把分數存進去
             test_result_save.addEventListener('click',test_record);
         }else{
             document.getElementById('test_result_save').innerText = '關閉';
             document.getElementById('test_getCoin_line').style.display = 'none';
-            console.log('訪客');
+            // console.log('訪客');
         }
     }
     xhr.open("get", "./front_getMemberInfo.php", true);
     xhr.send(null);
 }
 
-// *-----------紀錄測驗資料---------* //
+// ========== 載入會員上課的進度 ========= //
+function test_showTest(){
+    //清空頁面顯示
+    let test50 = $_('test50_data');
+    let testTango = $_('testTango_data');
+    let testKaiwa = $_('testKaiwa_data');
+    test50.innerHTML = '';
+    testTango.innerHTML = '';
+    testKaiwa.innerHTML = '';
+
+    //從後台撈出會員課程進度
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        let show = JSON.parse(xhr.responseText);
+        console.log(JSON.parse(xhr.responseText));
+        for(let i=0;i<show.length;i++){
+            if(show[i].lesson_type_id == 1){
+                test50Arr.push(show[i].lesson_name);
+                test50Arr_id.push(show[i].lesson_id);
+            }else if(show[i].lesson_type_id == 2){
+                testTangoArr.push(show[i].lesson_name);
+                testTangoArr_id.push(show[i].lesson_id);
+            }else if(show[i].lesson_type_id == 3){
+                testKaiwaArr.push(show[i].lesson_name);
+                testKaiwaArr_id.push(show[i].lesson_id);
+            };
+        };
+        console.log(test50Arr_id);
+        console.log(testTangoArr_id);
+        console.log(testKaiwaArr_id);
+
+        //把陣列資料放進html裡
+        for(let i=0;i<test50Arr.length;i++){
+            test50.innerHTML += `<button class="test_option">${test50Arr[i]}</button>`;
+        }
+        for(let i=0;i<testTangoArr.length;i++){
+            testTango.innerHTML += `<button class="test_option">${testTangoArr[i]}</button>`;
+        }
+        for(let i=0;i<testKaiwaArr.length;i++){
+            testKaiwa.innerHTML += `<button class="test_option">${testKaiwaArr[i]}</button>`;
+        }
+        
+        //確認區域是否開啟
+        test_checkProgress();
+
+        //重新註冊按鈕
+        testBtnAll();
+    }
+    xhr.open("get", "./test_showtest.php", true);
+    xhr.send(null);
+}
+
+// ========== 測驗資料寫入資料庫 ========= //
 function test_record(){
     let test_input = document.getElementById('test_input');
     let test_score_input = document.getElementById('test_score_input');
     let xhr = new XMLHttpRequest();
-    // let url = "./test_addrecord.php?test_input=" + test_input.value + "&test_score_input=" + test_score_input.value;
-    // xhr.open("get", url, true);
     let url = "./test_addrecord.php?test_input=" + test_input.value + "&test_score_input=" + test_score_input.value;
     xhr.open("get", url, true);
     xhr.send(null);
@@ -164,128 +315,43 @@ function test_record(){
     };
 };
 
-// *-----------基本設定---------* //
+// ========== 檢查測驗區域是否開放 ========= //
+function test_checkProgress(){
+
+    let checktango = $_('test_tango');
+    if(testTangoArr.length == 0){
+        checktango.disabled = true;
+    }else{
+        checktango.disabled = false;
+    };
+
+    let checkKaiwa = $_('test_kaiwa');
+    if(testKaiwaArr.length == 0){
+        checkKaiwa.disabled = true;
+    }else{
+        checkKaiwa.disabled = false;
+    };
+};
+
+// ========= 基本設定 ========== //
 function init(){
     test_getMemberInfo();
+    test_checkProgress();
+    testBtnAll();
     //-----DOM-----//
-    //選了哪個測驗
-    let test_option = document.querySelectorAll('.test_option');
-    let test_input = document.getElementById('test_input');
     //確認是否進行測驗
     let test_confirm_box = document.getElementById('test_confirm_box');
-    let test_choose_text = document.getElementById('test_choose');
-    let test_start = document.getElementById('test_start');
-    let test_cancel = document.getElementById('test_cancel');
     //進行測驗(測驗燈箱)
     let test_lightBox = document.getElementById('test_lightBox');
-    let test_score_now_wrap = document.getElementById('test_score_now_wrap');
-    let test_question = document.getElementById('test_progress');
     //關閉燈箱
     let test_lightBox_close = document.querySelector('.test_lightBox_close');
     let testing = document.querySelector('.test_lightBox_bg');
-    //測驗進度條與分數
-    let test_progress_now =document.getElementById('test_progress_now');
-    let test_progress_chara =document.getElementById('test_progress_chara');
-    let test_score_now =document.getElementById('test_score_now');
     //測驗問題介面
     let test_lightBox_question =document.getElementById('test_lightBox_question');
-    let test_question_title = document.getElementById('test_title');
-    let test_question_option = document.querySelectorAll('.test_question_option');
     //測驗結果介面
     let test_lightBox_result =document.getElementById('test_lightBox_result');
     //儲存測驗結果
     let test_result_save =document.getElementById('test_result_save');
-
-
-    // *-----------開啟燈箱---------* //
-    for(let c = 0; c < test_option.length; c++){
-        test_option[c].addEventListener('click',function(){
-            testing.style.display = 'block';
-            //確認是點到哪個測驗
-            test_choose = test_option[c].innerText;
-            //把變數傳入input中(之後傳去php用)
-            test_choose_text.innerText = test_choose;
-            switch (test_choose){
-                case 'あ':
-                    test_input.value = 1;
-                    break;
-                case 'い':
-                    test_input.value = 2;
-                    break;
-                case 'う':
-                    test_input.value = 3;
-                    break;
-                case 'え':
-                    test_input.value = 4;
-                    break;
-                case 'お':
-                    test_input.value = 5;
-                    break;
-            }
-
-            //從後端抓資料
-            let xhr = new XMLHttpRequest();
-            let url = "./test_getquestion.php?test_input=" + test_input.value;
-            xhr.open("get", url, true);
-            xhr.send(null);
-            //把抓到的資料放到js陣列裡
-            xhr.onload = function(){
-                let test_data = JSON.parse(xhr.responseText);
-                for(let i=0;i<test_data.length;i++){
-                    test_choose_arr[i] = new Array();
-                    test_choose_arr[i][0] = test_data[i].txt;
-                    test_choose_arr[i][1] = test_data[i].ans;
-                    test_choose_arr[i][2] = test_data[i].option_content1;
-                    test_choose_arr[i][3] = test_data[i].option_content2;
-                    test_choose_arr[i][4] = test_data[i].option_content3;
-                }
-                console.log(test_choose_arr);
-            };
-        });
-    };
-
-    //確認是否進行測驗的燈箱
-    test_start.addEventListener('click',test_conent_start);
-    test_cancel.addEventListener('click',function(){
-        testing.style.display = 'none';
-        test_lightBox_question.style.display = 'block';
-        test_lightBox_result.style.display = 'none';
-        score = 0;
-        test_question_num = 1;
-    });
-
-
-    function test_conent_start(){
-        test_confirm_box.style.display = 'none';
-        test_lightBox.style.display = 'flex';
-
-        //-----目前分數-----//
-        test_score_now.innerText = score;
-
-        //-----亂數抽題-----//
-        test_randomDraw();
-        // console.log(draw_question);
-        // console.log(test_choose);
-
-        //-----分數與題數歸零-----//
-        score = 0;
-        test_question_num = 1;
-        test_progress_now.style.width = `0%`;
-        test_progress_chara.style.left = `-10%`;
-        test_score_now_wrap.style.display = 'block';
-        test_question.style.display = 'flex';
-
-
-        test_question_title.innerText = test_choose_arr[draw_question[0]][0];
-
-        for(let j = 0; j < test_question_option.length; j++){
-            test_question_option[j].innerText = test_choose_arr[draw_question[0]][j+1];
-        };
-        //-----按下選項_開始測驗-----//
-        for(let i = 0; i < test_question_option.length; i++){
-            test_question_option[i].addEventListener('click',testStart,false);
-        };
-    }
 
     // *------點叉叉關閉-----* //
     test_lightBox_close.addEventListener('click',function(){

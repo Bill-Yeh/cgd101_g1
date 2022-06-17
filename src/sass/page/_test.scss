@@ -217,11 +217,11 @@
     }
 
     &:hover {
-        background: map-get($color, 'backstage_h');
+        // background: map-get($color, 'backstage_h');
     }
 
     &:hover::before {
-        border-right: 30px solid map-get($color, 'backstage_h');
+        // border-right: 30px solid map-get($color, 'backstage_h');
     }
     
     &>input{

@@ -39,6 +39,11 @@ function moveImg() {
   return src('src/images/*.*').pipe(dest('dist/images'))
 }
 
+//ico move
+function moveIco() {
+  return src('src/*.ico').pipe(dest('dist'))
+}
+
 //sound move
 function moveSound() {
   return src('src/sound/*.*').pipe(dest('dist/sound'))
@@ -69,6 +74,7 @@ function watchfile() {
   watch(['src/*.php' , 'src/**/*.php'], includePHP)    // 監看php
   watch('js/*.js' , moveJs)  // 監看js
   watch(['src/images/*.*', 'src/images/**/*.*'] , moveImg)  // 監看img
+  watch('src/*.ico', moveIco)  // 監看ico
   watch('sound/*.*' , moveSound)  // 監看mp3檔
   watch(['./src/sass/*.scss' ,'./src/sass/**/*.scss'], styleSass) // 監看sass
 }
@@ -90,6 +96,7 @@ function browser(done) {
     watch(['src/*.php' , 'src/**/*.php'], includePHP).on('change' , reload)    // 監看php
     watch('src/js/*.js' , moveJs).on('change' , reload)  // 監看js
     watch(['src/images/*.*', 'src/images/**/*.*'], moveImg).on('change' , reload)  // 監看 img
+    watch('src/*.ico' , moveIco).on('change' , reload)  // 監看ico
     watch('src/sound/*.*' , moveSound).on('change' , reload)  // 監看sound
     watch(['./src/sass/*.scss' ,'./src/sass/**/*.scss'], styleSass).on('change' , reload) // 監看sass
     done();
@@ -97,16 +104,7 @@ function browser(done) {
 
 
 // 監看
-exports.w =  series(parallel(moveJs,moveImg,includeHTML,styleSass,moveSound,includePHP), watchfile)  
+exports.w =  series(parallel(moveJs,moveImg,includeHTML,styleSass,moveIco,moveSound,includePHP), watchfile)  
 
 //瀏覽器同步
-exports.default =  series(parallel(moveJs,includeHTML,styleSass,moveImg,moveSound,includePHP), browser)  
-
-
-
-
-
-
-
-
-
+exports.default =  series(parallel(moveJs,includeHTML,styleSass,moveIco,moveImg,moveSound,includePHP), browser)  

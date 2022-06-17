@@ -172,6 +172,12 @@ window.addEventListener('load', function(){
                     loginBox.style.width = '25%';
                     moneyArea.style.margin = '0';
                 }
+
+                //測驗頁面重新整理(現在是全部都會重新整理)
+                // if((location.pathname).split('/')[3] == 'test.html' || (location.pathname).split('/')[3] == 'studyMap_main.html'){
+                    location.reload();
+                // }
+                
                 
             }
             xhr.open("post", "front_login.php", true);
