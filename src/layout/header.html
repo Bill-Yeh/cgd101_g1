@@ -37,29 +37,30 @@
     <div class="header_nav_cloud">
         <img src="./images/nav2.png" alt="導覽列雲">
     </div>
-    <script>
-        //從資料庫撈出代幣金額
-        let coinxhr = new XMLHttpRequest();
+</header>
+<script>
+    //從資料庫撈出代幣金額
+    let coinxhr = new XMLHttpRequest();
 
-        coinxhr.open("get", "coin.php", true);
-        coinxhr.send(null);
+    coinxhr.open("get", "coin.php", true);
+    coinxhr.send(null);
 
-        coinxhr.onload = function () {
-            if (coinxhr.status == 200) {
-                //再丟回去
-                document.getElementById("mem_coin").innerText = coinxhr.responseText;
-            }
-
-        };
-
-    </script>
-    <script>
-        let coin = document.getElementById("moneyArea");
-        let show = document.getElementById("logout");
-        function show_coin() {
-            if (show.innerHTML == "登出")
-                coin.style.display = "flex"
+    coinxhr.onload = function () {
+        if (coinxhr.status == 200) {
+            //再丟回去
+            document.getElementById("mem_coin").innerText = coinxhr.responseText;
         }
 
+    };
 
-    </script>
+</script>
+<script>
+    let coin = document.getElementById("moneyArea");
+    let show = document.getElementById("logout");
+    function show_coin() {
+        if (show.innerHTML == "登出")
+            coin.style.display = "flex"
+    }
+
+
+</script>
