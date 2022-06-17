@@ -47,45 +47,47 @@ function testBtnAll(){
     let testing = document.querySelector('.test_lightBox_bg');
     let test_choose_text = $_('test_choose');
 
-    for(let c = 0; c < test_option.length; c++){
-        test_option[c].addEventListener('click',function(){
-            testing.style.display = 'block';
-            //確認是點到哪個測驗
-            test_choose = test_option[c].innerText;
-            test_choose_text.innerText = test_choose;
-
-            //把變數傳入input中(之後傳去php用)
-            let area1 = test50Arr.indexOf(test_option[c].innerText);
-            let area2 = testTangoArr.indexOf(test_option[c].innerText);
-            let area3 = testKaiwaArr.indexOf(test_option[c].innerText);
-            
-            if(area1>=0){
-                test_input.value = test50Arr_id[area1];
-            }else if(area2>=0){
-                test_input.value = testTangoArr_id[area2];
-            }else if(area3>=0){
-                test_input.value = testKaiwaArr_id[area3];
-            }
-            console.log(test_input.value)
-
-            //從後端抓資料
-            let xhr = new XMLHttpRequest();
-            let url = "./test_getquestion.php?test_input=" + test_input.value;
-            xhr.open("get", url, true);
-            xhr.send(null);
-            //把抓到的資料放到js陣列裡
-            xhr.onload = function(){
-                let test_data = JSON.parse(xhr.responseText);
-                for(let i=0;i<test_data.length;i++){
-                    test_choose_arr[i] = new Array();
-                    test_choose_arr[i][0] = test_data[i].txt;
-                    test_choose_arr[i][1] = test_data[i].ans;
-                    test_choose_arr[i][2] = test_data[i].option_content1;
-                    test_choose_arr[i][3] = test_data[i].option_content2;
-                    test_choose_arr[i][4] = test_data[i].option_content3;
+    if(member.member_name){
+        for(let c = 0; c < test_option.length; c++){
+            test_option[c].addEventListener('click',function(){
+                testing.style.display = 'block';
+                //確認是點到哪個測驗
+                test_choose = test_option[c].innerText;
+                test_choose_text.innerText = test_choose;
+    
+                //把變數傳入input中(之後傳去php用)
+                let area1 = test50Arr.indexOf(test_option[c].innerText);
+                let area2 = testTangoArr.indexOf(test_option[c].innerText);
+                let area3 = testKaiwaArr.indexOf(test_option[c].innerText);
+                
+                if(area1>=0){
+                    test_input.value = test50Arr_id[area1];
+                }else if(area2>=0){
+                    test_input.value = testTangoArr_id[area2];
+                }else if(area3>=0){
+                    test_input.value = testKaiwaArr_id[area3];
                 }
-            };
-        });
+                console.log(test_input.value)
+    
+                //從後端抓資料
+                let xhr = new XMLHttpRequest();
+                let url = "./test_getquestion.php?test_input=" + test_input.value;
+                xhr.open("get", url, true);
+                xhr.send(null);
+                //把抓到的資料放到js陣列裡
+                xhr.onload = function(){
+                    let test_data = JSON.parse(xhr.responseText);
+                    for(let i=0;i<test_data.length;i++){
+                        test_choose_arr[i] = new Array();
+                        test_choose_arr[i][0] = test_data[i].txt;
+                        test_choose_arr[i][1] = test_data[i].ans;
+                        test_choose_arr[i][2] = test_data[i].option_content1;
+                        test_choose_arr[i][3] = test_data[i].option_content2;
+                        test_choose_arr[i][4] = test_data[i].option_content3;
+                    }
+                };
+            });
+        }
     }
 
     //確認是否進行測驗的燈箱
