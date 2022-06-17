@@ -760,7 +760,7 @@
 
             //換裝
             .closet_lightBox{
-                display: none;
+                // display: none;
                 @include lightboxSize($sm_boxW,$sm_boxH,$md_boxW,$md_boxH,$lg_boxW,$lg_boxH,$lg_boxW,$lg_boxH);
 
                 
@@ -1291,9 +1291,9 @@
 
 canvas{
     position: absolute;
-    top:0px;
-    left: -10000px;
-    // left:0px;
+    top:500px;
+    // left: 0000px;
+    left:0px;
     
 
 }
