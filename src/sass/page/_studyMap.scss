@@ -431,7 +431,7 @@
     left: 3%;
     z-index: 50;
     animation-name: villageInfo;
-    animation-duration: 10s;
+    animation-duration: 5.5s;
     animation-delay: 0s;
     animation-iteration-count: infinite;
     // animation-direction: reverse;  
@@ -441,7 +441,7 @@
     z-index: 10;
     animation-name: village;
     animation-duration: 3s;
-    animation-delay: 0s;
+    animation-delay: 0.5s;
     animation-iteration-count: infinite;
     animation-direction: reverse;
       &:hover{
@@ -458,13 +458,38 @@
         @include mem_item(50px,84.5%,'','',16%);
       }
   };
-  .second-village:hover::before{
+  // .second-village:hover::before{
+  //   content: url(../images/studyMap_info_2.png);
+  //   position: absolute;
+  //   top: 45%;
+  //   left: 13%;
+  //   z-index: 50;
+  // };
+  .v2::before{
     content: url(../images/studyMap_info_2.png);
     position: absolute;
     top: 45%;
     left: 13%;
     z-index: 50;
+    animation-name: villageInfo;
+    animation-duration: 6s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: reverse;
   };
+  // .second-village::before{
+  //   content: url(../images/studyMap_info_2.png);
+  //   position: absolute;
+  //   top: 45%;
+  //   left: 13%;
+  //   z-index: 50;
+  //   animation-name: villageInfo;
+  //   animation-duration: 6s;
+  //   animation-delay: 0s;
+  //   animation-iteration-count: infinite;
+  //   // animation-direction: reverse;  
+  //   display: none;
+  // };
   .secondVillage{
     cursor: pointer;
     z-index: 10;
@@ -487,13 +512,38 @@
         @include mem_item(70px,57%,'','',29%);
       }
   };
-  .third-village:hover::before{
+  // .third-village:hover::before{
+  //   content: url(../images/studyMap_info_3.png);
+  //   position: absolute;
+  //   top: 25%;
+  //   left: 20%;
+  //   z-index: 50;
+  // };
+  .v3::before{
     content: url(../images/studyMap_info_3.png);
     position: absolute;
     top: 25%;
     left: 20%;
     z-index: 50;
+    animation-name: villageInfo;
+    animation-duration: 4s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: reverse; 
   };
+  // .third-village::before{
+  //   content: url(../images/studyMap_info_3.png);
+  //   position: absolute;
+  //   top: 25%;
+  //   left: 20%;
+  //   z-index: 50;
+  //   animation-name: villageInfo;
+  //   animation-duration: 4s;
+  //   animation-delay: 0s;
+  //   animation-iteration-count: infinite;
+  //   // animation-direction: reverse;
+  //   display: none;  
+  // };
   .thirdVillage{
     cursor: pointer;
     z-index: 10;
@@ -516,13 +566,38 @@
         @include mem_item(50px,38.5%,'','',33%);
       }
   };
-  .fourth-village:hover::before{
+  // .fourth-village:hover::before{
+  //   content: url(../images/studyMap_info_4.png);
+  //   position: absolute;
+  //   top: 22%;
+  //   right: 19%;
+  //   z-index: 50;
+  // };
+  .v4::before{
     content: url(../images/studyMap_info_4.png);
     position: absolute;
     top: 22%;
     right: 19%;
     z-index: 50;
+    animation-name: villageInfo;
+    animation-duration: 4s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: reverse; 
   };
+  // .fourth-village::before{
+  //   content: url(../images/studyMap_info_4.png);
+  //   position: absolute;
+  //   top: 22%;
+  //   right: 19%;
+  //   z-index: 50;
+  //   animation-name: villageInfo;
+  //   animation-duration: 4s;
+  //   animation-delay: 0s;
+  //   animation-iteration-count: infinite;
+  //   // animation-direction: reverse; 
+  //   display: none; 
+  // };
   .fourthVillage{
     cursor: pointer;
     z-index: 10;
@@ -544,13 +619,38 @@
         @include mem_item(60px,33%,32%,'','');
       }
   };
-  .fifth-village:hover::before{
+  // .fifth-village:hover::before{
+  //   content: url(../images/studyMap_info_5.png);
+  //   position: absolute;
+  //   top: 55%;
+  //   right: 27%;
+  //   z-index: 50;
+  // };
+  .v5::before{
     content: url(../images/studyMap_info_5.png);
     position: absolute;
     top: 55%;
     right: 27%;
     z-index: 50;
+    animation-name: villageInfo;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: reverse;
   };
+  // .fifth-village::before{
+  //   content: url(../images/studyMap_info_5.png);
+  //   position: absolute;
+  //   top: 55%;
+  //   right: 27%;
+  //   z-index: 50;
+  //   animation-name: villageInfo;
+  //   animation-duration: 5s;
+  //   animation-delay: 0s;
+  //   animation-iteration-count: infinite;
+  //   // animation-direction: reverse; 
+  //   display: none; 
+  // };
   .fifthVillage{
     cursor: pointer;
     z-index: 10;
@@ -642,13 +742,13 @@
         @include mem_item(20%,55%,'','',23%);
       }
     };
-    .cloud2:hover::before{
-      content: url(../images/studyMap_lock_2.png);
-      position: absolute;
-      top: 22%;
-      left: 15%;
-      z-index: 50;
-      };
+  .cloud2:hover::before{
+    content: url(../images/studyMap_lock_2.png);
+    position: absolute;
+    top: 22%;
+    left: 15%;
+    z-index: 50;
+    };
   .cloud_2{
     z-index: 30;
     cursor: pointer;
@@ -673,43 +773,14 @@
         @include mem_item(21%,38.5%,'','',27%);
       }
     };
-    .cloud3:hover::before{
-      content: url(../images/studyMap_lock_4.png);
-      position: absolute;
-      top: 46%;
-      left: 59%;
-      z-index: 50;
-      };
-  .cloud_3{
-    z-index: 30;
-    cursor: pointer;
-    animation-name: cloud-left;
-    animation-duration: 25s;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: reverse;
-      &:hover{
-        transform: scale(1.1)
-      };
-      @include mem_item(30%,65%,22%,'','');
-      @include md{ //768
-        @include mem_item(31%,65%,23%,'','');
-      }
-      @include lg{ //992
-        @include mem_item(31%,65%,23%,'','');
-      }
-      @include xl{ //1200
-        @include mem_item(31%,67.7%,23%,'','');
-      }
+  .cloud3:hover::before{
+    content: url(../images/studyMap_lock_3.png);
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    z-index: 50;
     };
-    .cloud4:hover::before{
-      content: url(../images/studyMap_lock_3.png);
-      position: absolute;
-      top: 15%;
-      right: 15%;
-      z-index: 50;
-      };
-  .cloud_4{
+  .cloud_3{
     z-index: 30;
     cursor: pointer;
     animation-name: cloud-right;
@@ -729,6 +800,35 @@
       }
       @include xl{ //1200
         @include mem_item(25%,30%,20%,'','');
+      }
+    };
+  .cloud4:hover::before{
+    content: url(../images/studyMap_lock_4.png);
+    position: absolute;
+    top: 46%;
+    left: 59%;
+    z-index: 50;
+    };
+  .cloud_4{
+    z-index: 30;
+    cursor: pointer;
+    animation-name: cloud-left;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+      &:hover{
+        transform: scale(1.1)
+      };
+      @include mem_item(30%,65%,22%,'','');
+      @include md{ //768
+        @include mem_item(31%,65%,23%,'','');
+      }
+      @include lg{ //992
+        @include mem_item(31%,65%,23%,'','');
+      }
+      @include xl{ //1200
+        @include mem_item(31%,67.7%,23%,'','');
       }
     };
   .cloud5:hover::before{
@@ -817,7 +917,7 @@
     animation-delay: 0.5s;
     animation-duration:5s;
 }
-.asan:hover::after{
+.hover_a:hover::after{
   content:url(../images/npc_border_a.png);
 }
 .isan{
@@ -826,7 +926,7 @@
     animation-delay: 0.3s;
     animation-duration: 3s;
 }
-.isan:hover::after{
+.hover_i:hover::after{
   content:url(../images/npc_border_i.png);
 }
 .usan{
@@ -835,7 +935,7 @@
     animation-delay: 0.8s;
     animation-duration: 7s;
 }
-.usan:hover::after{
+.hover_u:hover::after{
   content:url(../images/npc_border_u.png);
 }
 .esan{
@@ -844,7 +944,7 @@
     animation-delay: 0.5s;
     animation-duration: 4s;
 }
-.esan:hover::after{
+.hover_e:hover::after{
   content:url(../images/npc_border_e.png);
 }
 .osan{
@@ -852,8 +952,20 @@
     right: 20%;
     animation-duration: 5s;
 }
-.osan:hover::after{
+.hover_o:hover::after{
   content:url(../images/npc_border_o.png);
+}
+.mask::before{
+  content:url(../images/char_hat_2.png);
+  width: 20px;
+  height: 50px;
+  position: absolute;
+  top: -50px;
+  left: -29px;
+  z-index: 100;
+}
+.test_pass:hover::after{
+  content:url(../images/npc_border_pass.png);
 }
 //單字篇
 .number{
@@ -1402,16 +1514,19 @@ content:url(../images/npc_border_hello.png);
 @keyframes villageInfo{
   0% {
       transform: translate3d(5%, 30%, 0) scaleX(1);
-      opacity: 1;
+      opacity: 0;
     }
   25%{
       transform: translate3d(4%, 20%, 0) scaleX(1.1);
+      opacity: 1;
     }
   50% {
       transform: translate3d(3%, 10%, 0) scaleX(1);
+      opacity: 0;
     }
   75%{
       transform: translate3d(2%, 0%, 0) scaleX(1.1);
+      opacity: 1;
     }
   100% {
       transform: translate3d(-10%, -20%, 0) scaleX(1);

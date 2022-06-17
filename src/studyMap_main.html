@@ -17,17 +17,19 @@
                 <div class="first-village" @click="nextTo50()">
                     <img src="./images/studyMap_firstvillage.png" class="firstVillage" id="firstVil">
                 </div>
-                <div class="second-village" @click="nextToFirst()">
+                <div class="second-village" @click="nextToFirst()"
+                id="village2">
                     <img src="./images/studyMap_secondvillage.png" class="secondVillage" id="secondVil">
                 </div>
                 <div class="third-village" 
-                @click="nextToSecond()">
+                @click="nextToSecond()"
+                id="village3">
                     <img src="./images/studyMap_thirdvillage.png" class="thirdVillage" id="thirdVil">
                 </div>
-                <div class="fourth-village" @click="nextToThird()">
+                <div class="fourth-village" @click="nextToThird()" id="village4">
                     <img src="./images/studyMap_fourthvillage.png" class="fourthVillage" id="fourthVil">
                 </div>
-                <div class="fifth-village">
+                <div class="fifth-village" id="village5">
                     <img src="./images/studyMap_fifthvillage.png" class="fifthVillage" id="fifthVil">
                 </div>
                 <div class="sixth-village">
@@ -254,8 +256,11 @@ function init(){
 window.addEventListener('load',init,false);
 </script>
 
-    <script src="js/studymap.js"></script>
+<script src="js/studymap.js"></script>
+
 </body>
+
+
 </html>
 <!-- 撈資料庫的50音測驗分數 -->
 <script>
@@ -281,8 +286,12 @@ window.addEventListener('load',init,false);
         let ticket = JSON.parse(memxhr.responseText);
         let cloud1 = document.getElementById('cloudFirst');
         let cloud2 = document.getElementById('cloudSecond');
-        // console.log(ticket);
+        console.log(ticket);
         if(ticket.length>=5){ //檢查是否通過50音的5個測驗
+            let element = document.getElementById("village2");
+            let elements = document.getElementById("village3");
+            element.classList.add("v2");
+            elements.classList.add("v3");
             cloud1.style.display="none";
             cloud2.style.display="none";
             // console.log("恭喜通過");
@@ -309,24 +318,37 @@ window.addEventListener('load',init,false);
         let cloud3 = document.getElementById('cloudThird');
         let cloud4 = document.getElementById('cloudFourth');
         console.log(lesson[0].lesson_id);
-        // if(lesson[0].lesson_id == 12){ //檢查是否有購買L4單字課程
+        console.log(lesson[1].lesson_id);
+        if(lesson[0].lesson_id == 12){ //檢查是否有購買L4單字課程
+            var element = document.getElementById("village4");
+            element.classList.add("v4");
+            cloud3.style.display="none";
+	    }else{ 
             
-        //     cloud4.style.display="none";
+	    };
+        if(lesson[1].lesson_id == 13){ //檢查是否有購買L4會話課程
+            var element = document.getElementById("village5");
+            element.classList.add("v5");
+            cloud4.style.display="none";
+	    }else{ 
+
+        };
+        // if(lesson[2].lesson_id == 14){ //檢查是否有購買L4會話課程
             
-	    // }else{ 
-            
-	    // };
-        // if(lesson[1].lesson_id == 13){ //檢查是否有購買L4會話課程
-            
-        //     cloud3.style.display="none";
+           
 	    // }else{ 
 
         // };
-        for(i=0;i>=lesson.length;i++){
-            if(lesson[i].lesson_id == i+12){
-                cloud(i+3).style.display="none";
-            }
-        }
+        // for迴圈寫法測試中
+        // for(i=0;i>=lesson.length;i++){
+           
+        //     if(lesson[i].lesson_id == (i+12)){
+
+        //         `cloud${i+3}`.style.display="none";
+
+        //     }
+            
+        // }
     };
 </script>
 

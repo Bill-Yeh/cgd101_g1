@@ -13,19 +13,19 @@
     <section class="bigMap">  
         <div class="studyMap_map village50">
             <!-- 人物角色 -->
-            <div class="studyMap_npc asan left" >
+            <div class="studyMap_npc asan left hover_a" id="sanA">
                 <img src="./images/studyMap_NPC_a.png" id="asan" class="npc-img">
             </div>
-            <div class="studyMap_npc isan right" >
+            <div class="studyMap_npc isan right hover_i" id="sanI">
                 <img src="./images/studyMap_NPC_i.png" id="isan" class="npc-img">
             </div>
-            <div class="studyMap_npc usan right" >
+            <div class="studyMap_npc usan right hover_u" id="sanU">
                 <img src="./images/studyMap_NPC_u.png" id="usan" class="npc-img">
             </div>
-            <div class="studyMap_npc esan left" >
+            <div class="studyMap_npc esan left hover_e" id="sanE">
                 <img src="./images/studyMap_NPC_e.png" id="esan" class="npc-img">
             </div>
-            <div class="studyMap_npc osan right" >
+            <div class="studyMap_npc osan right hover_o" id="sanO">
                 <img src="./images/studyMap_NPC_o.png" id="osan" class="npc-img">
             </div>
             <!-- 圖像框 -->
@@ -116,6 +116,70 @@
             </div>
         </div>
     </section>
+    <!-- 撈資料庫的50音測驗紀錄資料 -->
+<script>
+    
+    let scorexhr = new XMLHttpRequest();
+    
+    scorexhr.open("get", "./village50_test.php", true);
+    
+    scorexhr.send(null);
+
+    scorexhr.onload = function(){
+        console.log(scorexhr.responseText);
+        let lesson = JSON.parse(scorexhr.responseText);
+        console.log(lesson[0].lesson_id);
+        console.log(lesson[0].quiz_pass);
+        if(lesson[0].quiz_pass == 1){ //檢查是否測驗有通過a單字課程
+            
+            // let npcA = document.getElementById("sanA");
+            npcA.classList.add("mask");
+            npcA.classList.remove("hover_a");
+            npcA.classList.add("test_pass");
+            console.log("Peter")
+	    }else{ 
+            
+	    };
+        if(lesson[1].quiz_pass == 1){ //檢查是否測驗有通過i單字課程
+            // let npcI = document.getElementById("sanI");
+            npcI.classList.add("mask");
+            npcI.classList.remove("hover_i");
+            npcI.classList.add("test_pass");
+            console.log("Park")
+	    }else{ 
+            
+	    };
+        if(lesson[2].quiz_pass == 1){ //檢查是否測驗有通過u單字課程
+            // let npcU = document.getElementById("sanU");
+            npcU.classList.add("mask");
+            npcU.classList.remove("hover_u");
+            npcU.classList.add("test_pass");
+            console.log("is")
+	    }else{ 
+            
+	    };
+        if(lesson[3].quiz_pass == 1){ //檢查是否測驗有通過e單字課程
+            // let npcE = document.getElementById("sanE");
+            npcE.classList.add("mask");
+            npcE.classList.remove("hover_e");
+            npcE.classList.add("test_pass");
+            console.log("spider")
+	    }else{ 
+            
+	    };
+        if(lesson[4].quiz_pass == 1){ //檢查是否測驗有通過o單字課程
+            // let npcO = document.getElementById("sanO");
+            npcO.classList.add("mask");
+            npcO.classList.remove("hover_o");
+            npcO.classList.add("test_pass");
+            console.log("man")
+	    }else{ 
+            
+	    };
+        
+    };
+</script>
+
     <script>
     // let npcId =new Array('asan','isan','usan','esan','osan')
     //==========對話招呼============
@@ -178,6 +242,11 @@
     let wguide = document.getElementById('wGuide');
     let sguide = document.getElementById('sGuide');
     let stopguide = document.getElementById('stopGuide');
+    let npcA = document.getElementById("sanA");
+    let npcI = document.getElementById("sanI");
+    let npcE = document.getElementById("sanE");
+    let npcU = document.getElementById("sanU");
+    let npcO = document.getElementById("sanO");
     
     function getGuide(){
         if (document.cookie.replace(/(?:(?:^|.*;\s*)village50Guide\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true"){
@@ -191,6 +260,7 @@
         esan.style.display="none";
         osan.style.display="none";
         }else {
+            
 
         };
     };
@@ -263,6 +333,12 @@
         usan.style.display="none";
         esan.style.display="none";
         osan.style.display="none";
+        console.log(npcA);
+        npcA.classList.remove("mask");
+        npcI.classList.remove("mask");
+        npcU.classList.remove("mask");
+        npcE.classList.remove("mask");
+        npcO.classList.remove("mask");
     //====法1抓陣列ID======================
     // let id = String(e.target.id)
     // let index = npcId.indexOf(id)
@@ -560,6 +636,11 @@
         usan.style.display="block";
         esan.style.display="block";
         osan.style.display="block";
+        npcA.classList.add("mask");
+        npcI.classList.add("mask");
+        npcU.classList.add("mask");
+        npcE.classList.add("mask");
+        npcO.classList.add("mask");
     };
     function goToTest(e){
         window.location.href="test.html";
@@ -572,6 +653,11 @@
         usan.style.display="block";
         esan.style.display="block";
         osan.style.display="block";
+        npcA.classList.add("mask");
+        npcI.classList.add("mask");
+        npcU.classList.add("mask");
+        npcE.classList.add("mask");
+        npcO.classList.add("mask");
     };
     function init(){
         getGuide();
@@ -596,3 +682,4 @@
      @@include('layout/footer.html')
 </body>
 </html>
+
