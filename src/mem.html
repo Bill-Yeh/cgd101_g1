@@ -13,9 +13,9 @@
     <div class="bg_00">
 
         <div class="getchar_lightBox">
-            <div class="me_content">
-                <img class="eyes" src="./images/char_00_eye_open.png" alt="" >
-                <img id="me" src="./images/char_00_0.png" class="me01" alt="char_00_1"></img>
+            <div class="me_content_first">
+                <img class="eyes_first" src="./images/char_00_eye_open.png" alt="" >
+                <img id="me_first" src="./images/char_00_0.png"  alt="char_00_1"></img>
             </div>
             
         </div>
@@ -162,14 +162,6 @@
                         <template v-for="prodRow in prodRows">
                             <tr is="component-orderList" v-bind="prodRow"></tr>
                         </template>
-                        <!-- <tr>
-                            <td>111112</td>
-                            <td>2022/5/31 12:38:55</td>
-                            <td><img src="./images/char_hat_1.png" alt=""></td>
-                            <td>10</td>
-                        </tr> -->
-                        <!-- <component-orderList></component-orderList> -->
-
                     </tbody>
                 </table>
                 
@@ -234,7 +226,8 @@
         </div>
         <div class="me_content">
             <img src="./images/char_00_eye_open.png" alt="" class="eyes">
-            <img id="me" src="./images/char_00_0.png" class="me01" alt="char_00_1"></img>
+            <img id="me" :src="`${roleImg.role}`" alt="char_00_1"></img>
+            
         </div>
         <div class="wall">
             <div class="content">

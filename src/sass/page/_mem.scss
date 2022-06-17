@@ -617,7 +617,7 @@
         transition-duration: 1.5s;
         transition-timing-function: ease-out;
 
-        .me_content{
+        .me_content_first{
             z-index:6 ;
             width: 150px;
             position: absolute;
@@ -636,10 +636,10 @@
                     margin-top: -10px;
                   }
             }
-            #me{
+            #me_first{
                width: 100%;
             }
-            .eyes{
+            .eyes_first{
                 width: 100%;
                 position: absolute;
                 top:-2px;
@@ -1291,8 +1291,8 @@
 
 canvas{
     position: absolute;
-    top:500px;
-    left: 000px;
+    top:0px;
+    left: -10000px;
     // left:0px;
     
 
