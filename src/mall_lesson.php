@@ -9,7 +9,7 @@ try{
     //1.自己用的
     $dbname = "tibamefe_cgd101g1";
 	$user = "root"; //帳號
-	$password = "Apple0810orange"; //密碼
+	$password = "fsrs90115"; //密碼
 
     //連接資料庫的變數(固定寫法)
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
@@ -25,9 +25,8 @@ try{
     //=====要資料庫做的事情=====//
 
     //1.sql指令
-	// $sql = "SELECT * FROM `quiz_record` where member_id = :member_id";
-	// $sql = "SELECT distinct quiz_pass FROM `quiz_record` where member_id = :member_id";
-	$sql = "SELECT distinct lesson_id, quiz_pass FROM `quiz_record` where member_id = :member_id group by lesson_id having lesson_id <=5 && quiz_pass is not null ";
+
+	$sql = "SELECT lesson_order_id FROM `lesson_record` where member_id = :member_id";
     //2.要資料庫準備接收指令
 	$get_qdata = $pdo->prepare($sql);
 	//前台input傳來的變數(看是get還是post),可以用在sql指令中

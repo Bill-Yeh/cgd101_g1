@@ -15,9 +15,11 @@ try{
 
 
     //=========
-    $total = [];
+    
 	$sql = "SELECT * FROM `tibamefe_cgd101g1`.`item_record` join `tibamefe_cgd101g1`.`item` 
     on `tibamefe_cgd101g1`.`item_record`.`item_id`=`tibamefe_cgd101g1`.`item`.`item_id` WHERE `member_id` =:mem_id"; 
+
+
     
     
 	$products = $pdo->prepare($sql);
@@ -25,20 +27,7 @@ try{
 	$products->execute();
 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
-	$total["products"] = json_encode($prodRows);
-
-// =====================================
-    $sql = "SELECT * FROM `tibamefe_cgd101g1`.`item_record` join `tibamefe_cgd101g1`.`item` 
-    on `tibamefe_cgd101g1`.`item_record`.`item_id`=`tibamefe_cgd101g1`.`item`.`item_id` WHERE `member_id` =:mem_id"; 
-    
-	$lesson = $pdo->prepare($sql);
-	$lesson->bindValue("mem_id",$_SESSION["member_id"]);
-	$lesson->execute();
-
-	$lessonRows = $lesson->fetchAll(PDO::FETCH_ASSOC);
-	$total["lesson"] = json_encode($lessonRows);
-
-
+	echo json_encode($prodRows);
 
 
 
