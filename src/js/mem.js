@@ -23,8 +23,15 @@ new Vue({
         let xhr = new XMLHttpRequest();
 
 		xhr.onload = function(){
-				buyListVue.prodRows = JSON.parse(xhr.responseText)};
-		xhr.open("get", "./mem_orderListInsert.php",true);
+            buyListVue.prodRows = JSON.parse(xhr.responseText)
+            // console.log(JSON.parse(xhr.responseText))
+            for(i=0;i<buyListVue.prodRows.length;i++){
+                buyListVue.prodRows[i].payment_time=buyListVue.prodRows[i].payment_time.split('.')[0]
+            }
+
+            // console.log(buyListVue.prodRows)
+        };
+		xhr.open("get", "./mem_orderList.php",true);
 		xhr.send();	
     },    
 });
@@ -33,14 +40,38 @@ new Vue({
 //交易紀錄模板
 let prodRow = Vue.component("component-orderList", {
 
-    props:['item_order_id','payment_time','item_img','item_price'],
+    props:['item_order_id','payment_time','item_img','item_price','lesson_order_id','lesson_img','lesson_price'],
     template:` <tr>
-                <td>{{item_order_id}}</td>
+                <td>#{{item_order_id}}{{lesson_order_id}}</td>
                 <td>{{payment_time}}</td>
-                <td><img :src='item_img' alt=""></td>
-                <td>{{item_price}}</td>
+                <td><img :src='item_img ? item_img : lesson_img' alt=""></td>
+                <td>{{item_price}}{{lesson_price}}</td>
                 </tr>`
 })
+
+
+
+//抓目前會員的角色
+let me=
+new Vue({
+    el:'#me',
+    data:{
+        roleImg:[],
+    },
+    created() {
+        let xhr = new XMLHttpRequest();
+
+		xhr.onload = function(){
+            console.log(JSON.parse(xhr.responseText))
+            me.roleImg = JSON.parse(xhr.responseText)
+            
+        };
+		xhr.open("get", "front_getMemberInfo.php",true);
+		xhr.send();	
+    }, 
+})
+
+
 
 
 
@@ -356,7 +387,6 @@ function getItem(){
         buyList= JSON.parse(xhr.responseText);
 
         for(i=0 ; i<buyList.length ;i++){
-            let this_item_id=buyList[i].item_id
             let this_item_class=buyList[i].item_img.split("_")
 
             switch(this_item_class[1]){
@@ -584,38 +614,33 @@ function convertCanvasToImage(){
     setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null}).then(function(e) {
 
         let canvasArr=document.querySelectorAll("canvas")
-        // console.log(canvasArr.length)
         
         document.body.appendChild(e);
         if(canvasArr.length>0){
             document.querySelector("canvas").remove()
         }
 
-    }),100)
-
-    setTimeout(()=>{
         let canvas=document.querySelector("canvas")
         let image = new Image();
 	    image.src = canvas.toDataURL();
+       
 
         document.querySelector("#me").src=image.src
         document.querySelector(".eyes").style.top="8px"
-    },500)
+
+    }),100)
+
 }
 
-
-
 document.querySelector(".closet").addEventListener("click",convertCanvasToImage)
-
-
 
 document.querySelector(".store").addEventListener("click",convertCanvasToImage)
 
 
 
-if(document.querySelector(".hat >img") !=null ){
-    document.querySelector(".hat >img").addEventListener("change",convertCanvasToImage)
-}
+// if(document.querySelector(".hat >img") !=null ){
+//     document.querySelector(".hat >img").addEventListener("change",convertCanvasToImage)
+// }
 
 
 //點選列中子物件
@@ -647,7 +672,7 @@ function dressOn(){
 
         let dressImg=document.createElement("img")
         dress.appendChild(dressImg)
-        dressImg.src=`./images/${this.className}.png`
+        dressImg.src=`./images/${this.className}_on.png`
 
     }
 
@@ -659,7 +684,7 @@ function dressOn(){
         }
         let toolImg=document.createElement("img")
         tool.appendChild(toolImg)
-        toolImg.src=`./images/${this.className}.png`
+        toolImg.src=`./images/${this.className}_on.png`
         
     }
 
@@ -952,9 +977,9 @@ setInterval(()=>{
 
     setTimeout(() => {
         me.src="./images/char_00_eye_open.png"
-    },4000);
+    },1500);
 
-},6000)
+},4500)
 
 
 // window.addEventListener('load',eyes)

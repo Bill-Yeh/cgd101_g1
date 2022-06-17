@@ -1,5 +1,7 @@
 <?php 
 session_start();
+//  $_POST["new_psw"]=1;
+//  $_POST["new_psw_check"]=1;
 try{
 	//==========
     $dbname = "tibamefe_cgd101g1";
@@ -15,18 +17,28 @@ try{
 
 
     //=========
-	$sql = "SELECT * FROM `tibamefe_cgd101g1`.`item_record` join `tibamefe_cgd101g1`.`item` 
-    on `tibamefe_cgd101g1`.`item_record`.`item_id`=`tibamefe_cgd101g1`.`item`.`item_id` WHERE `member_id` =:mem_id"; 
     
-    
-	$products = $pdo->prepare($sql);
-	$products->bindValue("mem_id",$_SESSION["member_id"]);
-	$products->execute();
 
-	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
-	echo json_encode($prodRows);
+    $sql = "SELECT `tibamefe_cgd101g1`.`member`.`role`
+    from  `tibamefe_cgd101g1`.`member` 
+    WHERE `tibamefe_cgd101g1`. `member`.`member_id` =:mem_id; "; 
+    
+    $role = $pdo->prepare($sql);
+    $role->bindValue("mem_id",$_SESSION["member_id"]);
+    $role->execute();
+
+    $roleImg = $role->fetch(PDO::FETCH_ASSOC);
+
+    echo json_encode($roleImg);
+
+    
+
+
+
 }catch(PDOException $e){
+	
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
+	
 }
 ?>
