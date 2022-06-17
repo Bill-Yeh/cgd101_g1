@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-15 18:59:37
+-- 產生時間： 2022-06-17 14:26:52
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -294,7 +294,10 @@ INSERT INTO `lesson_record` (`lesson_order_id`, `member_id`, `lesson_id`, `payme
 (10, 1, 8, '2022-05-27 19:15:06'),
 (11, 1, 9, '2022-05-27 19:15:06'),
 (12, 1, 10, '2022-05-27 19:15:06'),
-(13, 1, 11, '2022-05-27 19:15:06');
+(13, 1, 11, '2022-05-27 19:15:06'),
+(14, 2, 1, '2022-06-15 14:06:29'),
+(15, 2, 3, '2022-06-15 14:06:29'),
+(16, 2, 4, '2022-06-15 14:06:29');
 
 -- --------------------------------------------------------
 
@@ -866,7 +869,7 @@ ALTER TABLE `lesson`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_record`
 --
 ALTER TABLE `lesson_record`
-  MODIFY `lesson_order_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK, AI)', AUTO_INCREMENT=14;
+  MODIFY `lesson_order_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK, AI)', AUTO_INCREMENT=17;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_type`
