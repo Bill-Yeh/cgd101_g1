@@ -47,7 +47,7 @@
 
     coinxhr.onload = function () {
         if (coinxhr.status == 200) {
-            //再丟回去
+            //如果 coin撈到的資料不是 no login ,就在頁面上顯示會員的代幣數量
             if (coinxhr.responseText != "no login") {
                 coin.style.display = "flex";
                 document.getElementById("mem_coin").innerText = coinxhr.responseText;
