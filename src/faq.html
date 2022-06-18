@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="faq_desktop_writing">
-                            <button id="faq_desktop_btn">我要發文</button>
+                            <button id="faq_desktop_btn" @click="postShow">我要發文</button>
                         </div>
                     </div>
                 </div>
@@ -62,22 +62,58 @@
                 </div>
             </div>
             <div class="faq_rwd_writing">
-                <div class="faq_rwd_writing_icon" id="postRwdBtn">
+                <div class="faq_rwd_writing_icon" id="postRwdBtn" @click="postShow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                         <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                     </svg>
                 </div>
             </div>
         </div>
+        
+        <!-- 發文燈箱 -->
+        <section id="faq_post">
+            <div class="faq_post_box">
+                <div class="faq_post_content">
+                    <h3>我要發文</h3>
+                    <div class="faq_post_close">
+                        <i id="message_close_id" class="bi bi-x-lg" @click="close"></i>
+                    </div>
+                    <div class="faq_post_article">
+                        <form id="article_post" action="" method="post">
+                            <div class="faq_post_title">
+                                <label for="article_title">標題</label>
+                                <input type="text" placeholder="請輸入標題" id="post_article_title">
+                            </div>
+                            <div class="faq_post_type">
+                                <label for="article_type">類別</label>
+                                <select name="" id="article_type_select">
+                                    <option value="type">50音</option>
+                                    <option value="type">單字</option>
+                                    <option value="type">會話</option>
+                                    <option value="type">升級測驗</option>
+                                </select>
+                            </div>
+                            <div class="faq_post_paragragh">
+                                <label for="article_paragragh">
+                                    內文
+                                </label>
+                                <textarea name="post" id="paragragh" placeholder="請輸入內文" style="resize:none;width:96%;height: 200px;;"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="faq_post_btn">
+                        <button type="submit" id="post_article-btn">發文</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- 檢舉燈箱 -->
         <section id="faq_report">
             <div class="faq_report_box">
                 <div class="faq_report_content">
                     <h3>我要檢舉</h3>
                     <div class="faq_report_close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="report_close_id">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg>
+                        <i id="message_close_id" class="bi bi-x-lg" @click="close"></i>
                     </div>
                     <div class="faq_report_option">
                         <p>文章內容含有:</p>
@@ -110,155 +146,112 @@
                 </div>
             </div>
         </section>
-        <!-- 發文燈箱 -->
-        <section id="faq_post">
-            <div class="faq_post_box">
-                <div class="faq_post_content">
-                    <h3>我要發文</h3>
-                    <div class="faq_post_close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="post_close_id">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg>
-                    </div>
-                    <div class="faq_post_article">
-                        <form id="article_post" action="" method="post">
-                            <div class="faq_post_title">
-                                <label for="article_title">標題</label>
-                                <input type="text" placeholder="請輸入標題" id="post_article_title">
+        <!-- 學員留言介面 -->
+        <section id="faq_message">
+            <div class="faq_message_frame">
+                <div class="faq_message_box">
+                    <div class="faq_message_content">
+                        <div class="faq_message_close">
+                            <i id="message_close_id" class="bi bi-x-lg" @click="close"></i>
+                        </div>
+                        <!-- Vue component 元件==>當事人po文的內容 -->
+                        <div>
+                            <article-detail v-for="focusArticle in focusArticles" :focus-article="focusArticle"/>
+                        </div>
+                        <!-- <div class="faq_message_article">
+                            <div class="faq_student">
+                                <div class="faq_npc">
+                                    <img src="images/studyMap_NPC_a.png" alt="學員A">
+                                </div>
+                                <div class="name_time">
+                                    <span>AAA</span>
+                                    <span>2022/5/22/3:00</span>
+                                </div>
                             </div>
-                            <div class="faq_post_type">
-                                <label for="article_type">類別</label>
-                                <select name="" id="article_type_select">
-                                    <option value="type">50音</option>
-                                    <option value="type">單字</option>
-                                    <option value="type">會話</option>
-                                    <option value="type">升級測驗</option>
-                                </select>
+                            <div class="faq_message_title_paragragh">
+                                <h3>日文50音要怎麼背???</h3>
+                                <p>嗨嗨，想請問大家都怎麼背50音嗎?</p>
                             </div>
-                            <div class="faq_post_paragragh">
-                                <label for="article_paragragh">
-                                    內文
-                                </label>
-                                <textarea name="post" id="paragragh" placeholder="請輸入內文" style="resize:none;width:96%;height: 200px;;"></textarea>
+                            <div class="faq_article_heart">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                </svg>
                             </div>
-                        </form>
-                    </div>
-                    <div class="faq_post_btn">
-                        <button type="submit" id="post_article-btn">發文</button>
+                        </div> -->
                     </div>
                 </div>
+                
+                <!-- Vue component 元件==>其他學員留言內容 -->
+                <!-- <article-message v-for="message in messages" v-bind="message"/> -->
+                <!-- <div class="faq_student_message">
+                    <div class="faq_student1 student">
+                        <div class="faq_student_npc">
+                            <img src="images/studyMap_NPC_e.png" alt="學員1">
+                        </div>
+                        <div class="faq_student_text">
+                            <span class="student_name">BBB</span>
+                            <span class="post_date">2022/05/23</span>
+                            <p>背就對了!加油</p>
+                            <span class="student_code">B1</span>
+                            <span class="post_time">3:00</span>
+                        </div>
+                    </div>
+                    <div class="faq_student2 student">
+                        <div class="faq_student_npc">
+                            <img src="images/studyMap_NPC_o.png" alt="學員2">
+                        </div>
+                        <div class="faq_student_text">
+                            <span class="student_name">CCC</span>
+                            <span class="post_date">2022/05/23</span>
+                            <p>背就對了!加油</p>
+                            <span class="student_code">B1</span>
+                            <span class="post_time">3:00</span>
+                        </div>
+                    </div>
+                    <div class="faq_student3 student">
+                        <div class="faq_student_npc">
+                            <img src="images/studyMap_NPC_i.png" alt="學員3">
+                        </div>
+                        <div class="faq_student_text">
+                            <span class="student_name">DDD</span>
+                            <span class="post_date">2022/05/23</span>
+                            <p>背就對了!加油</p>
+                            <span class="student_code">B1</span>
+                            <span class="post_time">3:00</span>
+                        </div>
+                    </div>
+                    <div class="faq_student4 student">
+                        <div class="faq_student_npc">
+                            <img src="images/studyMap_NPC_u.png" alt="學員4">
+                        </div>
+                        <div class="faq_student_text">
+                            <span class="student_name">EEE</span>
+                            <span class="post_date">2022/05/23</span>
+                            <p>背就對了!加油</p>
+                            <span class="student_code">B1</span>
+                            <span class="post_time">3:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq_user_input">
+                    <div class="user_npc">
+                        <img src="images/studyMap_NPC_a.png" alt="學員C">
+                    </div>
+                    <form action="" method="post">
+                        <input type="text" id="user_message" placeholder="我要留言">
+                    </form>
+                    <div class="user_message_submit">
+                        <button class="message_submit_btn" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div> -->
             </div>
         </section>
     </section>
-    
 
-
-
-
-    <!-- 學員留言介面 -->
-    <section id="faq_message">
-        <div class="faq_message_frame">
-            <div class="faq_message_box">
-                <div class="faq_message_content">
-                    <div class="faq_message_close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="message_close_id">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg>
-                    </div>
-                    <!-- Vue component 元件==>當事人po文的內容 -->
-                    <article-detail v-bind="focusArticle"/>
-                    <!-- <div class="faq_message_article">
-                        <div class="faq_student">
-                            <div class="faq_npc">
-                                <img src="images/studyMap_NPC_a.png" alt="學員A">
-                            </div>
-                            <div class="name_time">
-                                <span>AAA</span>
-                                <span>2022/5/22/3:00</span>
-                            </div>
-                        </div>
-                        <div class="faq_message_title_paragragh">
-                            <h3>日文50音要怎麼背???</h3>
-                            <p>嗨嗨，想請問大家都怎麼背50音嗎?</p>
-                        </div>
-                        <div class="faq_article_heart">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                            </svg>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-            
-            <!-- Vue component 元件==>其他學員留言內容 -->
-            <article-message v-for="message in messages" v-bind="message"/>
-            <!-- <div class="faq_student_message">
-                <div class="faq_student1 student">
-                    <div class="faq_student_npc">
-                        <img src="images/studyMap_NPC_e.png" alt="學員1">
-                    </div>
-                    <div class="faq_student_text">
-                        <span class="student_name">BBB</span>
-                        <span class="post_date">2022/05/23</span>
-                        <p>背就對了!加油</p>
-                        <span class="student_code">B1</span>
-                        <span class="post_time">3:00</span>
-                    </div>
-                </div>
-                <div class="faq_student2 student">
-                    <div class="faq_student_npc">
-                        <img src="images/studyMap_NPC_o.png" alt="學員2">
-                    </div>
-                    <div class="faq_student_text">
-                        <span class="student_name">CCC</span>
-                        <span class="post_date">2022/05/23</span>
-                        <p>背就對了!加油</p>
-                        <span class="student_code">B1</span>
-                        <span class="post_time">3:00</span>
-                    </div>
-                </div>
-                <div class="faq_student3 student">
-                    <div class="faq_student_npc">
-                        <img src="images/studyMap_NPC_i.png" alt="學員3">
-                    </div>
-                    <div class="faq_student_text">
-                        <span class="student_name">DDD</span>
-                        <span class="post_date">2022/05/23</span>
-                        <p>背就對了!加油</p>
-                        <span class="student_code">B1</span>
-                        <span class="post_time">3:00</span>
-                    </div>
-                </div>
-                <div class="faq_student4 student">
-                    <div class="faq_student_npc">
-                        <img src="images/studyMap_NPC_u.png" alt="學員4">
-                    </div>
-                    <div class="faq_student_text">
-                        <span class="student_name">EEE</span>
-                        <span class="post_date">2022/05/23</span>
-                        <p>背就對了!加油</p>
-                        <span class="student_code">B1</span>
-                        <span class="post_time">3:00</span>
-                    </div>
-                </div>
-            </div>
-            <div class="faq_user_input">
-                <div class="user_npc">
-                    <img src="images/studyMap_NPC_a.png" alt="學員C">
-                </div>
-                <form action="" method="post">
-                    <input type="text" id="user_message" placeholder="我要留言">
-                </form>
-                <div class="user_message_submit">
-                    <button class="message_submit_btn" type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div> -->
-        </div>
-    </section>
 
     @@include('layout/login_register.html')
 
@@ -275,22 +268,22 @@
             template:`
             <div class="faq_mem faq_mem_A" isActive>
                 <div class="faq_mem_npc">
-                    <img :src="test.pic" alt="學員A">
+                    <img :src="test.role" alt="學員A">
                 </div>
                 <div class="faq_article_content">
-                    <span>{{test.name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{test.title}}</h3>
-                    <p class="article_paragragh">{{test.paragragh}}</p>
+                    <span>{{test.member_name}}</span>
+                    <h3 class="article_title" @click="setFoucsId">{{test.post_title}}</h3>
+                    <p class="article_paragragh">{{test.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
                             <div class="faq_heart" @click="setHeart" ref="heart">
                                 <i class="bi bi-heart"></i>
                                 <i class="bi bi-heart-fill"></i>
                             </div>
-                            <p class="heart_quantity">{{test.quantity}}</p>
+                            <p class="heart_quantity">{{test.fav}}</p>
                         </div>
                         <div class="faq_report">
-                            <span class="user_report">檢舉</span>
+                            <span class="user_report" @click="reportShow">檢舉</span>
                         </div>
                     </div>
                 </div>
@@ -313,17 +306,21 @@
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
                 setFoucsId() {
-                    articleDetail.focusId = this.id;
-                    articleList.focusId = this.id;
+                    // articleDetail.focusId = this.id;
+                    // articleList.focusId = this.id;
+                    document.getElementById('faq_message').style.display='flex';
                 },
+                reportShow(){
+                    document.getElementById('faq_report').style.display='flex';
+                }
             },
             mounted() { //初始化
                 let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
                 // 初始化愛心的狀態，判斷是否在list內
                 if (fav.indexOf(this.id) > -1) {
-                        this.$refs.heart.classList.add('show')
+                        // this.$refs.heart.classList.add('show')
                     } else {
-                        this.$refs.heart.classList.remove('show')
+                        // this.$refs.heart.classList.remove('show')
                 }
             },
         })
@@ -336,22 +333,22 @@
             template:`
             <div class="faq_mem faq_mem_A isActive">
                 <div class="faq_mem_npc">
-                    <img :src="talk.pic" alt="學員A">
+                    <img :src="talk.role" alt="學員A">
                 </div>
                 <div class="faq_article_content">
-                    <span>{{talk.name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{talk.title}}</h3>
-                    <p class="article_paragragh">{{talk.paragragh}}</p>
+                    <span>{{talk.member_name}}</span>
+                    <h3 class="article_title" @click="setFoucsId">{{talk.post_title}}</h3>
+                    <p class="article_paragragh">{{talk.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
                             <div class="faq_heart" @click="setHeart" ref="heart">
                                 <i class="bi bi-heart"></i>
                                 <i class="bi bi-heart-fill"></i>
                             </div>
-                            <p class="heart_quantity">{{talk.quantity}}</p>
+                            <p class="heart_quantity">{{talk.fav}}</p>
                         </div>
                         <div class="faq_report">
-                            <span class="user_report">檢舉</span>
+                            <span class="user_report" @click="reportShow">檢舉</span>
                         </div>
                     </div>
                 </div>
@@ -374,46 +371,49 @@
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
                 setFoucsId() {
-                    articleDetail.focusId = this.id;
-                    articleList.focusId = this.id;
+                    // articleDetail.focusId = this.id;
+                    // articleList.focusId = this.id;
+                    document.getElementById('faq_message').style.display='flex';
                 },
+                reportShow(){
+                    document.getElementById('faq_report').style.display='flex';
+                }
             },
             mounted() { //初始化
                 let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
                 // 初始化愛心的狀態，判斷是否在list內
                 if (fav.indexOf(this.id) > -1) {
-                        this.$refs.heart.classList.add('show')
+                        // this.$refs.heart.classList.add('show')
                     } else {
-                        this.$refs.heart.classList.remove('show')
+                        // this.$refs.heart.classList.remove('show')
                 }
             },
         })
 
         //Vue component 元件==>文章列表 - 單字 -->
         Vue.component('v-card',{
-            // props:['pic','name','title','paragragh','quantity', 'id'],
             props:{
                 vocabulary : Object,
             },
             template:`
             <div class="faq_mem faq_mem_A isActive">
                 <div class="faq_mem_npc">
-                    <img :src="vocabulary.pic" alt="學員A">
+                    <img :src="vocabulary.role" alt="學員A">
                 </div>
                 <div class="faq_article_content">
-                    <span>{{vocabulary.name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{vocabulary.title}}</h3>
-                    <p class="article_paragragh">{{vocabulary.paragragh}}</p>
+                    <span>{{vocabulary.member_name}}</span>
+                    <h3 class="article_title" @click="setFoucsId">{{vocabulary.post_title}}</h3>
+                    <p class="article_paragragh">{{vocabulary.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
                             <div class="faq_heart" @click="setHeart" ref="heart">
                                 <i class="bi bi-heart"></i>
                                 <i class="bi bi-heart-fill"></i>
                             </div>
-                            <p class="heart_quantity">{{vocabulary.quantity}}</p>
+                            <p class="heart_quantity">{{vocabulary.fav}}</p>
                         </div>
                         <div class="faq_report">
-                            <span class="user_report">檢舉</span>
+                            <span class="user_report" @click="reportShow">檢舉</span>
                         </div>
                     </div>
                 </div>
@@ -436,17 +436,21 @@
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
                 setFoucsId() {
-                    articleDetail.focusId = this.id;
-                    articleList.focusId = this.id;
+                    // articleDetail.focusId = this.id;
+                    // articleList.focusId = this.id;
+                    document.getElementById('faq_message').style.display='flex';
                 },
+                reportShow(){
+                    document.getElementById('faq_report').style.display='flex';
+                }
             },
             mounted() { //初始化
                 let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
                 // 初始化愛心的狀態，判斷是否在list內
                 if (fav.indexOf(this.id) > -1) {
-                        this.$refs.heart.classList.add('show')
+                        // this.$refs.heart.classList.add('show')
                     } else {
-                        this.$refs.heart.classList.remove('show')
+                        // this.$refs.heart.classList.remove('show')
                 }
             },
         })
@@ -459,22 +463,22 @@
             template:`
             <div class="faq_mem faq_mem_A" isActive>
                 <div class="faq_mem_npc">
-                    <img :src="item.pic" alt="學員A">
+                    <img :src="item.role" alt="學員A">
                 </div>
                 <div class="faq_article_content">
-                    <span>{{faqs.role}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{faqs.post_title}}</h3>
-                    <p class="article_paragragh">{{faqs.post_txt}}</p>
+                    <span>{{item.member_name}}</span>
+                    <h3 class="article_title" @click="setFoucsId">{{item.post_title}}</h3>
+                    <p class="article_paragragh">{{item.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
                             <div class="faq_heart" @click="setHeart" ref="heart">
                                 <i class="bi bi-heart"></i>
                                 <i class="bi bi-heart-fill"></i>
                             </div>
-                            <p class="heart_quantity">{{faqs.fav}}</p>
+                            <p class="heart_quantity">{{item.fav}}</p>
                         </div>
                         <div class="faq_report">
-                            <span class="user_report">檢舉</span>
+                            <span class="user_report" @click="reportShow">檢舉</span>
                         </div>
                     </div>
                 </div>
@@ -497,198 +501,114 @@
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
                 setFoucsId() {
-                    articleDetail.focusId = this.id;
-                    articleList.focusId = this.id;
+                    document.getElementById('faq_message').style.display='flex';
                 },
+                reportShow(){
+                    document.getElementById('faq_report').style.display='flex';
+                }
             },
             mounted() { //初始化
                 let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
                 // 初始化愛心的狀態，判斷是否在list內
                 if (fav.indexOf(this.id) > -1) {
-                        this.$refs.heart.classList.add('show')
+                        // this.$refs.heart.classList.add('show')
                     } else {
-                        this.$refs.heart.classList.remove('show')
+                        // this.$refs.heart.classList.remove('show')
                 }
             },
         })
 
+        // Vue component 元件==>當事人po文的內容
+        Vue.component('article-detail',{
+            props:{
+                focusArticle : Object,
+            },
+            data() {
+                return {
+                    // focusArticles:[]
+                }
+            },
+            template:`
+            <div class="faq_message_article">
+                <div class="faq_student">
+                    <div class="faq_npc">
+                        <img :src="getFocusArticle" alt="學員A">
+                    </div>
+                    <div class="name_time">
+                        <span>{{getFocusName}}</span>
+                        <span>{{getFocusDate}}</span>
+                    </div>
+                </div>
+                <div class="faq_message_title_paragragh">
+                    <h3>{{getFocusTitle}}</h3>
+                    <p>{{getFocusText}}</p>
+                </div>
+                <div class="faq_article_heart" @click="setHeart" ref="heart">
+                    <i class="bi bi-heart"></i>
+                    <i class="bi bi-heart-fill"></i>
+                    <p class="heart_quantity">{{getFocusFav}}</p>
+                </div>
+            </div>
+            `,
+            methods: {
+                setHeart(e) {
+                    //確認localStorage有沒有收藏清單
+                    // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
+                
+                    let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
+                    e.currentTarget.classList.toggle('show');
+                    
+                    if (fav.indexOf(this.id) > -1) {
+                        fav.splice(fav.indexOf(this.id),1)
+                    } else {
+                        fav.push(this.id)
+                    }
+                    // 將更新後的收藏清單存入localStorage
+                    localStorage.setItem('fav',JSON.stringify(fav));
+                },
+            },
+            created(){
+                console.log('article-detail created')
+                console.log(this.focusArticle)
+            },
+            computed:{
+                getFocusArticle(){
+                    return this.focusArticle?.role
+                },
+                getFocusName(){
+                    return this.focusArticle?.member_name
+                },
+                getFocusDate(){
+                    return this.focusArticle?.post_date
+                },
+                getFocusTitle(){
+                    return this.focusArticle?.post_title
+                },
+                getFocusText(){
+                    return this.focusArticle?.post_txt
+                },
+                getFocusFav(){
+                    return this.focusArticle?.fav
+                }
+            },
+            mounted() { //初始化
+                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
+                // 初始化愛心的狀態，判斷是否在list內
+                if (fav.indexOf(this.id) > -1) {
+                        // this.$refs.heart.classList.add('show')
+                    } else {
+                        // this.$refs.heart.classList.remove('show')
+                    }
+            },
+        })
         let articleList = new Vue({
             data:{
-                itemRows:[],
                 type:'a',
-                faqs:[
-                    {
-                        id:'1',
-                        role:'',
-                        post_title:'',
-                        post_txt:'',
-                        fav:''
-                        // pic:'./images/studyMap_NPC_a.png',
-                        // name:'AAA',
-                        // title:'日文50音要怎麼背?',
-                        // paragragh:'你們知道50音要怎麼背嗎?',
-                        // quantity:'1'
-                    },
-                //     {
-                //         id:'2',
-                //         pic:'./images/studyMap_NPC_e.png',
-                //         name:'BBB',
-                //         title:'單字好難背啊啊啊啊?',
-                //         paragragh:'你們知道單字要怎麼背嗎?',
-                //         quantity:'1'
-                //     },
-                //     {
-                //         id:'3',
-                //         pic:'./images/studyMap_NPC_i.png',
-                //         name:'CCC',
-                //         title:'日文會話讀書會，有興趣參加嗎?',
-                //         paragragh:'徵求5名夥伴一起學習日文會話，有誰想+1呢?',
-                //         quantity:'1'
-                //     },
-                //     {
-                //         id:'4',
-                //         pic:'./images/studyMap_NPC_o.png',
-                //         name:'DDD',
-                //         title:'有人有推薦的日劇嗎?想練習日文聽力',
-                //         paragragh:'最近想練習日語聽力，但不知道該選甚麼影集好呢?',
-                //         quantity:'1'
-                //     },
-                //     {
-                //         id:'5',
-                //         pic:'./images/studyMap_NPC_u.png',
-                //         name:'EEE',
-                //         title:'請問N4測驗的第3題為甚麼答案是B啊?',
-                //         paragragh:'N4測驗的第3題想了好久還是不知道答案，有誰可以解答一下呢?',
-                //         quantity:'1'
-                //     },
-                    
-                ],
-                vocabularys:[
-                    {
-                        id:'1',
-                        pic:'./images/studyMap_NPC_a.png',
-                        name:'Andy',
-                        title:'日文單字怎麼背?',
-                        paragragh:'你們知道單字要怎麼背嗎?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'2',
-                        pic:'./images/studyMap_NPC_e.png',
-                        name:'Bill',
-                        title:'單字好難背啊啊啊啊?',
-                        paragragh:'你們知道單字要怎麼背嗎?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'3',
-                        pic:'./images/studyMap_NPC_i.png',
-                        name:'Cathy',
-                        title:'日文單字讀書會，有興趣參加嗎?',
-                        paragragh:'徵求5名夥伴一起學習日文會話，有誰想+1呢?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'4',
-                        pic:'./images/studyMap_NPC_o.png',
-                        name:'David',
-                        title:'有人有推薦的日劇嗎?想練習日文聽力',
-                        paragragh:'最近想練習日語聽力，但不知道該選甚麼影集好呢?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'5',
-                        pic:'./images/studyMap_NPC_u.png',
-                        name:'Eric',
-                        title:'請問N4單字第3題為甚麼答案是B啊?',
-                        paragragh:'N4單字的第3題想了好久還是不知道答案，有誰可以解答一下呢?',
-                        quantity:'1'
-                    },
-                ],
-                talks:[
-                    {
-                        id:'1',
-                        pic:'./images/studyMap_NPC_a.png',
-                        name:'Ava',
-                        title:'日文會話怎麼背?',
-                        paragragh:'你們知道會話要怎麼背嗎?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'2',
-                        pic:'./images/studyMap_NPC_e.png',
-                        name:'Bryant',
-                        title:'會話好難背啊啊啊啊?',
-                        paragragh:'你們知道會話要怎麼背嗎?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'3',
-                        pic:'./images/studyMap_NPC_i.png',
-                        name:'Cindy',
-                        title:'日文會話讀書會，有興趣參加嗎?',
-                        paragragh:'徵求5名夥伴一起學習日文會話，有誰想+1呢?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'4',
-                        pic:'./images/studyMap_NPC_o.png',
-                        name:'Durent',
-                        title:'有人有推薦的日劇嗎?想練習日文聽力',
-                        paragragh:'最近想練習日語聽力，但不知道該選甚麼影集好呢?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'5',
-                        pic:'./images/studyMap_NPC_u.png',
-                        name:'Eve',
-                        title:'請問N4會話第3題為甚麼答案是B啊?',
-                        paragragh:'N4會話的第3題想了好久還是不知道答案，有誰可以解答一下呢?',
-                        quantity:'1'
-                    },
-                ],
-                tests:[
-                    {
-                        id:'1',
-                        pic:'./images/studyMap_NPC_a.png',
-                        name:'Anthony',
-                        title:'日文會話怎麼背?',
-                        paragragh:'你們知道會話要怎麼背嗎?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'2',
-                        pic:'./images/studyMap_NPC_e.png',
-                        name:'Bob',
-                        title:'會話好難背啊啊啊啊?',
-                        paragragh:'你們知道會話要怎麼背嗎?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'3',
-                        pic:'./images/studyMap_NPC_i.png',
-                        name:'Curry',
-                        title:'日文會話讀書會，有興趣參加嗎?',
-                        paragragh:'徵求5名夥伴一起學習日文會話，有誰想+1呢?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'4',
-                        pic:'./images/studyMap_NPC_o.png',
-                        name:'Devin',
-                        title:'有人有推薦的日劇嗎?想練習日文聽力',
-                        paragragh:'最近想練習日語聽力，但不知道該選甚麼影集好呢?',
-                        quantity:'1'
-                    },
-                    {
-                        id:'5',
-                        pic:'./images/studyMap_NPC_u.png',
-                        name:'Edward',
-                        title:'請問N4會話第3題為甚麼答案是B啊?',
-                        paragragh:'N4會話的第3題想了好久還是不知道答案，有誰可以解答一下呢?',
-                        quantity:'1'
-                    },
-                ],
+                faqs:[],
+                vocabularys:[],
+                talks:[],
+                tests:[],
+                focusArticles:[],
                 focusId: 0,
             },
             methods: {
@@ -710,10 +630,23 @@
                 },
                 getPostType(postType){
                     let xhr = new XMLHttpRequest();
-                    // xhr.onload = () =>{
-                    //     this.faqs = JSON.parse(xhr.responseText);
-                    //     console.log(this.faqs);
-                    // }
+                    xhr.onload = () =>{
+                        // // 50音
+                        this.faqs = JSON.parse(xhr.responseText);
+                        console.log(this.faqs);
+                        // 單字
+                        this.vocabularys = JSON.parse(xhr.responseText);
+                        console.log(this.vocabularys);
+                        // 會話
+                        this.talks = JSON.parse(xhr.responseText);
+                        console.log(this.talks);
+                        // 測驗
+                        this.tests = JSON.parse(xhr.responseText);
+                        console.log(this.tests);
+                        // 文章燈箱內容
+                        this.focusArticles = JSON.parse(xhr.responseText);
+                        console.log(this.focusArticles);
+                    }
                     xhr.open("post", "faq.php", true);
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
@@ -721,187 +654,149 @@
                     dataset.action = postType;
                     let data_info = `json=${JSON.stringify(dataset)}`;
                     xhr.send(data_info);
+                },
+                close(){
+                    document.getElementById('faq_message').style.display='none';
+                    document.getElementById('faq_report').style.display='none';
+                    document.getElementById('faq_post').style.display='none';
+                },
+                postShow(){
+                    document.getElementById('faq_post').style.display='flex';
                 }
             },
-            mounted() {
+            created() {
                 let xhr = new XMLHttpRequest();
                 xhr.onload = () =>{
+                    // 50音
                     this.faqs = JSON.parse(xhr.responseText);
                     console.log(this.faqs);
+
+                    // 文章燈箱內容
+                    this.focusArticles = JSON.parse(xhr.responseText);
+                    console.log(this.focusArticles);
                 }
-                xhr.open("post", "faq.php", true);
+                xhr.open("post", "faq_50.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                // let dataset = {};
-                // dataset.action = postType;
-                // let data_info = `json=${JSON.stringify(dataset)}`;
-                // xhr.send(data_info);
+                let typeset = {};
+                typeset.type = '1';
+                let data_info = `json=${JSON.stringify(typeset)}`;
+                xhr.send(data_info);
             },
             
             el:'#faq',
         });
 
 
-        // Vue component 元件==>當事人po文的內容
-        Vue.component('article-detail',{
-            props:['pic','name','time','title','paragragh','id'],
-            template:`
-            <div class="faq_message_article">
-                <div class="faq_student">
-                    <div class="faq_npc">
-                        <img :src="pic" alt="學員A">
-                    </div>
-                    <div class="name_time">
-                        <span>{{name}}</span>
-                        <span>{{time}}</span>
-                    </div>
-                </div>
-                <div class="faq_message_title_paragragh">
-                    <h3>{{title}}</h3>
-                    <p>{{paragragh}}</p>
-                </div>
-                <div class="faq_article_heart" @click="setHeart" ref="heart">
-                    <i class="bi bi-heart"></i>
-                    <i class="bi bi-heart-fill"></i>
-                </div>
-            </div>
-            `,
-            methods: {
-                setHeart(e) {
-                    //確認localStorage有沒有收藏清單
-                    // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                
-                    let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
-                    e.currentTarget.classList.toggle('show');
-                    
-                    if (fav.indexOf(this.id) > -1) {
-                        fav.splice(fav.indexOf(this.id),1)
-                    } else {
-                        fav.push(this.id)
-                    }
-                    // 將更新後的收藏清單存入localStorage
-                    localStorage.setItem('fav',JSON.stringify(fav));
-                },
-            },
-            mounted() { //初始化
-                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
-                // 初始化愛心的狀態，判斷是否在list內
-                if (fav.indexOf(this.id) > -1) {
-                        this.$refs.heart.classList.add('show')
-                    } else {
-                        this.$refs.heart.classList.remove('show')
-                    }
-            },
-        })
+        
         
         // Vue component 元件==>其他學員留言內容
-        Vue.component('article-message',{
-            props:['pic','name','date','info','sequence','time'],
-            template:`
-            <div class="faq_message_info">
-                <div class="faq_student_message">
-                    <div class="faq_student1 student">
-                        <div class="faq_student_npc">
-                            <img :src="pic" alt="學員1">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">{{name}}</span>
-                            <span class="post_date">{{date}}</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">{{sequence}}</span>
-                            <span class="post_time">{{time}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="faq_user_input">
-                    <div class="user_npc">
-                        <img :src="pic" alt="學員C">
-                    </div>
-                    <form action="" method="post">
-                        <input type="text" id="user_message" placeholder="我要留言">
-                    </form>
-                    <div class="user_message_submit">
-                        <button class="message_submit_btn" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            `,
-        })
+        // Vue.component('article-message',{
+        //     props:['pic','name','date','info','sequence','time'],
+        //     template:`
+        //     <div class="faq_message_info">
+        //         <div class="faq_student_message">
+        //             <div class="faq_student1 student">
+        //                 <div class="faq_student_npc">
+        //                     <img :src="pic" alt="學員1">
+        //                 </div>
+        //                 <div class="faq_student_text">
+        //                     <span class="student_name">{{name}}</span>
+        //                     <span class="post_date">{{date}}</span>
+        //                     <p>背就對了!加油</p>
+        //                     <span class="student_code">{{sequence}}</span>
+        //                     <span class="post_time">{{time}}</span>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //         <div class="faq_user_input">
+        //             <div class="user_npc">
+        //                 <img :src="pic" alt="學員C">
+        //             </div>
+        //             <form action="" method="post">
+        //                 <input type="text" id="user_message" placeholder="我要留言">
+        //             </form>
+        //             <div class="user_message_submit">
+        //                 <button class="message_submit_btn" type="submit">
+        //                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+        //                         <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+        //                     </svg>
+        //                 </button>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     `,
+        // })
 
         
-        let articleDetail = new Vue({
-            data:{
-                focusId: 0,
-                articles:[
-                    {
-                        id:'1',
-                        pic:'./images/studyMap_NPC_a.png',
-                        name:'AAA',
-                        time:'2022/5/22/3:00',
-                        title:'日文50音要怎麼背?',
-                        paragragh:'你們知道50音要怎麼背嗎?'
-                    },
-                    {
-                        id:'2',
-                        pic:'./images/studyMap_NPC_e.png',
-                        name:'BBB',
-                        title:'單字好難背啊啊啊啊?',
-                        paragragh:'你們知道單字要怎麼背嗎?',
-                        quantity:'1'
-                    },
-
-                ],
-                messages:[
-                    {
-                        pic:'./images/studyMap_NPC_e.png',
-                        name:'BBB',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B1',
-                        time:'9:00'
-                    },
-                    {
-                        pic:'./images/studyMap_NPC_i.png',
-                        name:'CCC',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B2',
-                        time:'10:00'
-                    },
-                    {
-                        pic:'./images/studyMap_NPC_o.png',
-                        name:'DDD',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B3',
-                        time:'11:00'
-                    },
-                    {
-                        pic:'./images/studyMap_NPC_u.png',
-                        name:'EEE',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B4',
-                        time:'12:00'
-                    },
-                ],
-            },
-            computed: {
-                focusArticle() {
-                    return this.articles.find(v => v.id == this.focusId) ?? this.articles[0]
-                },
-            },
-            watch: {
-                focusId(nVal, oVal) {
-                    console.log(nVal)
-                    //處理愛心變色
-                },
-            },
-            el:'#faq_message',
-        });
+        // let articleDetail = new Vue({
+        //     data:{
+        //         focusId: 0,
+        //         // articles:[
+        //         //     {
+        //         //         id:'1',
+        //         //         pic:'./images/studyMap_NPC_a.png',
+        //         //         name:'AAA',
+        //         //         time:'2022/5/22/3:00',
+        //         //         title:'日文50音要怎麼背?',
+        //         //         paragragh:'你們知道50音要怎麼背嗎?'
+        //         //     },
+        //         //     {
+        //         //         id:'2',
+        //         //         pic:'./images/studyMap_NPC_e.png',
+        //         //         name:'BBB',
+        //         //         title:'單字好難背啊啊啊啊?',
+        //         //         paragragh:'你們知道單字要怎麼背嗎?',
+        //         //         quantity:'1'
+        //         //     },
+        //         // ],
+        //         messages:[
+        //             {
+        //                 pic:'./images/studyMap_NPC_e.png',
+        //                 name:'BBB',
+        //                 date:'2022/5/22',
+        //                 info:'背就對了!加油!',
+        //                 sequence:'B1',
+        //                 time:'9:00'
+        //             },
+        //             {
+        //                 pic:'./images/studyMap_NPC_i.png',
+        //                 name:'CCC',
+        //                 date:'2022/5/22',
+        //                 info:'背就對了!加油!',
+        //                 sequence:'B2',
+        //                 time:'10:00'
+        //             },
+        //             {
+        //                 pic:'./images/studyMap_NPC_o.png',
+        //                 name:'DDD',
+        //                 date:'2022/5/22',
+        //                 info:'背就對了!加油!',
+        //                 sequence:'B3',
+        //                 time:'11:00'
+        //             },
+        //             {
+        //                 pic:'./images/studyMap_NPC_u.png',
+        //                 name:'EEE',
+        //                 date:'2022/5/22',
+        //                 info:'背就對了!加油!',
+        //                 sequence:'B4',
+        //                 time:'12:00'
+        //             },
+        //         ],
+        //     },
+        //     computed: {
+        //         focusArticle() {
+        //             return this.articles.find(v => v.id == this.focusId) ?? this.articles[0]
+        //         },
+        //     },
+        //     watch: {
+        //         focusId(nVal, oVal) {
+        //             console.log(nVal)
+        //             //處理愛心變色
+        //         },
+        //     },
+        //     el:'#faq_message',
+        // });
 
 
     </script>

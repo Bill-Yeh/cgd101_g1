@@ -319,7 +319,6 @@
                                     // 按讚數量
                                     .heart_quantity{
                                         margin: 0 20px 0 0;
-                                        display: none;
                                     }
                                     // 留言
                                     .faq_info{
@@ -405,9 +404,8 @@
             }
             // 關閉icon
             .faq_report_close{
-                svg{
-                    width: 20px;
-                    height: 20px;
+                i{
+                    font-size: 20px;
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -481,9 +479,8 @@
 
             // 關閉icon
             .faq_post_close{
-                svg{
-                    width: 20px;
-                    height: 20px;
+                i{
+                    font-size: 20px;
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -564,9 +561,8 @@
     
                 // 關閉icon
                 .faq_message_close{
-                    svg{
-                        width: 20px;
-                        height: 20px;
+                    i{
+                        font-size: 20px;
                         position: absolute;
                         top: 0;
                         right: 0;
