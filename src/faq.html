@@ -57,7 +57,8 @@
                     </div>
                     <div class="faq_article_list" v-else-if="type=='d'">
                         <!-- Vue component 元件==>文章列表- 測驗 -->
-                        <test-card v-for="test in tests" :test="test"/>
+                        <test-card v-for="test in tests" :test="test"
+                        @update="implFilterFocusArticlesList"/>
                     </div>
                 </div>
             </div>
@@ -156,7 +157,7 @@
                         </div>
                         <!-- Vue component 元件==>當事人po文的內容 -->
                         <div>
-                            <article-detail v-for="focusArticle in focusArticles" :focus-article="focusArticle"/>
+                            <article-detail v-for="focusArticle in filterFocuArticlesList"  :focus-article="focusArticle"/>
                         </div>
                         <!-- <div class="faq_message_article">
                             <div class="faq_student">
@@ -272,7 +273,7 @@
                 </div>
                 <div class="faq_article_content">
                     <span>{{test.member_name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{test.post_title}}</h3>
+                    <h3 class="article_title" @click="setFoucsId(test.post_title)">{{test.post_title}}</h3>
                     <p class="article_paragragh">{{test.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
@@ -305,10 +306,12 @@
                     // 將更新後的收藏清單存入localStorage
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
-                setFoucsId() {
+                setFoucsId(post_title) {
                     // articleDetail.focusId = this.id;
                     // articleList.focusId = this.id;
                     document.getElementById('faq_message').style.display='flex';
+                    console.log('setFoucsId:'+ post_title)
+                    this.$emit('update', post_title)
                 },
                 reportShow(){
                     document.getElementById('faq_report').style.display='flex';
@@ -337,7 +340,7 @@
                 </div>
                 <div class="faq_article_content">
                     <span>{{talk.member_name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{talk.post_title}}</h3>
+                    <h3 class="article_title" @click="setFoucsId()">{{talk.post_title}}</h3>
                     <p class="article_paragragh">{{talk.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
@@ -609,6 +612,17 @@
                 talks:[],
                 tests:[],
                 focusArticles:[],
+                targetPostKey: '',
+                // focusArticles:{
+                //     "post_id":0,
+                //     "post_date":"",
+                //     "post_title":"",
+                //     "post_txt":"",
+                //     "post_type":0,
+                //     "member_name":"",
+                //     "role":"",
+                //     "fav": 0
+                // },
                 focusId: 0,
             },
             methods: {
@@ -627,6 +641,17 @@
                 showLesson4(){
                     this.type = 'd';
                     articleList.getPostType(4);
+                },
+                implFilterFocusArticlesList(post_title){
+                    console.log('implFilterFocusArticlesList')
+                    console.log('implFilterFocusArticlesList:'+ post_title)
+                    this.targetPostKey = post_title
+                    
+                    console.log('this.targetPostKey')
+                    console.log(this.targetPostKey)
+                    // this.tests = processedItemList
+                    // console.log('this.tests')
+                    // console.log(this.tests)
                 },
                 getPostType(postType){
                     let xhr = new XMLHttpRequest();
@@ -681,6 +706,25 @@
                 typeset.type = '1';
                 let data_info = `json=${JSON.stringify(typeset)}`;
                 xhr.send(data_info);
+            },
+            computed:{
+                filterFocuArticlesList(){
+                    console.log('filterFocuArticlesList')
+                    console.log(this.focusArticles)
+                    if(this.targetPostKey && this.targetPostKey != null){
+                        const tmpKey = this.targetPostKey 
+                        const temp = this.focusArticles.filter(function(item) {
+                            if(item.post_title === tmpKey){
+                                return true
+                            }
+                        })
+                        console.log('temp')
+                        console.log(temp)
+                        return temp
+
+                    }
+                    return this.focusArticles
+                }
             },
             
             el:'#faq',
