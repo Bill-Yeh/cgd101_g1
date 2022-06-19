@@ -11,7 +11,7 @@
                 <a href="home.html"><img src="./images/nav_logo.png" alt="語實巨進"></a>
             </div>
             <nav class="header_main_nav">
-                <div id="moneyArea" class="header_money" style="display: none">
+                <div id="moneyArea" class="header_money" style="display:none">
                     <div class="header_coin">
                         <img src="./images/nav_coin.png" alt="代幣">
                     </div>
@@ -37,31 +37,23 @@
     <div class="header_nav_cloud">
         <img src="./images/nav2.png" alt="導覽列雲">
     </div>
-    <link rel="Shortcut Icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="bookmark" href="favicon.ico"/>
 </header>
 <script>
+    //從資料庫撈出代幣金額
     let coinxhr = new XMLHttpRequest();
-
+    let coin = document.getElementById("moneyArea");
     coinxhr.open("get", "coin.php", true);
     coinxhr.send(null);
 
     coinxhr.onload = function () {
         if (coinxhr.status == 200) {
-            document.getElementById("mem_coin").innerText = coinxhr.responseText;
+            //如果 coin撈到的資料不是 no login ,就在頁面上顯示會員的代幣數量
+            if (coinxhr.responseText != "no login") {
+                coin.style.display = "flex";
+                document.getElementById("mem_coin").innerText = coinxhr.responseText;
+            }
         }
 
     };
 
-</script>
-<script>
-    let coin = document.getElementById("moneyArea");
-    let a = document.getElementById("logout");
-    function show_coin() {
-        if (a.innerText === "登出")
-            coin.style.display = "flex"
-    }
-
-
-    window.addEventListener("load", show_coin, false);
 </script>

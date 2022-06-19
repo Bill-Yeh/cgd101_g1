@@ -317,18 +317,18 @@ body {
   }
 }
 @include md() {
-  //課程介紹_992
-  .n5_word {
+  //課程介紹_768
+  .n4_word {
     &:hover::after {
-      content: url(../images/mall_n5_word.png);
+      content: url(../images/mall_n4_word.png);
       position: absolute;
       left: -13%;
       top: -5%;
     }
   }
-  .n5_conversation {
+  .n4_conversation {
     &:hover::after {
-      content: url(../images/mall_n5_conversation.png);
+      content: url(../images/mall_n4_conversation.png);
       position: absolute;
       left: 9%;
       top: -5%;
@@ -340,49 +340,13 @@ body {
     &:hover::after {
       content: url(../images/mall_n3_word.png);
       position: absolute;
-      left: -13%;
-      top: 22.5%;
+      left: 31%;
+      top: -5%;
     }
   }
   .n3_conversation {
     &:hover::after {
       content: url(../images/mall_n3_conversation.png);
-      position: absolute;
-      left: 9%;
-      top: 22.5%;
-      z-index: 10;
-    }
-  }
-
-  .n1_word {
-    &:hover::after {
-      content: url(../images/mall_n1_word.png);
-      position: absolute;
-      left: -13%;
-      top: 50.5%;
-    }
-  }
-  .n1_conversation {
-    &:hover::after {
-      content: url(../images/mall_n1_conversation.png);
-      position: absolute;
-      left: 9%;
-      top: 50.5%;
-      z-index: 10;
-    }
-  }
-
-  .n4_word {
-    &:hover::after {
-      content: url(../images/mall_n4_word.png);
-      position: absolute;
-      left: 31%;
-      top: -5%;
-    }
-  }
-  .n4_conversation {
-    &:hover::after {
-      content: url(../images/mall_n4_conversation.png);
       position: absolute;
       left: 53%;
       top: -5%;
@@ -394,13 +358,31 @@ body {
     &:hover::after {
       content: url(../images/mall_n2_word.png);
       position: absolute;
-      left: 31%;
+      left: -13%;
       top: 22.5%;
     }
   }
   .n2_conversation {
     &:hover::after {
       content: url(../images/mall_n2_conversation.png);
+      position: absolute;
+      left: 9%;
+      top: 22.5%;
+      z-index: 10;
+    }
+  }
+
+  .n1_word {
+    &:hover::after {
+      content: url(../images/mall_n1_word.png);
+      position: absolute;
+      left: 31%;
+      top: 22.5%;
+    }
+  }
+  .n1_conversation {
+    &:hover::after {
+      content: url(../images/mall_n1_conversation.png);
       position: absolute;
       left: 53%;
       top: 22.5%;
@@ -412,7 +394,7 @@ body {
     &:hover::after {
       content: url(../images/mall_all_word.png);
       position: absolute;
-      left: 30%;
+      left: -13%;
       top: 50.5%;
     }
   }
@@ -420,13 +402,30 @@ body {
     &:hover::after {
       content: url(../images/mall_all_conversation.png);
       position: absolute;
-      left: 52%;
+      left: 9%;
+      top: 50.5%;
+      z-index: 10;
+    }
+  }
+  .add_word {
+    &:hover::after {
+      content: url(../images/mall_add_word.png);
+      position: absolute;
+      left: 31%;
+      top: 50.5%;
+    }
+  }
+  .add_conversation {
+    &:hover::after {
+      content: url(../images/mall_add_conversation.png);
+      position: absolute;
+      left: 53%;
       top: 50.5%;
       z-index: 10;
     }
   }
 
-  //裝備介紹_992
+  //裝備介紹_768
   .mall_hat_1 {
     &:hover::after {
       content: url(../images/mall_hat_1.png);
@@ -507,17 +506,17 @@ body {
       top: 44%;
     }
   }
-  .mall_tool_1 {
+  .mall_dress_3 {
     &:hover::after {
-      content: url(../images/mall_tool_1.png);
+      content: url(../images/mall_dress_3.png);
       position: absolute;
       left: 39%;
       top: 44%;
     }
   }
-  .mall_tool_2 {
+  .mall_dress_4 {
     &:hover::after {
-      content: url(../images/mall_tool_2.png);
+      content: url(../images/mall_dress_4.png);
       position: absolute;
       left: 60%;
       top: 44%;
