@@ -1,10 +1,11 @@
 //換裝
 let img = document.getElementsByName("mall_npc")[0];
 let imgArr = [
-  "./images/home_mall_npc_1.png",
-  "./images/home_mall_npc_2.png",
-  "./images/home_mall_npc_3.png",
-  "./images/home_mall_npc_4.png",
+  "./images/home_mall_npc2.png",
+  "./images/home_mall_npc3.png",
+  "./images/home_mall_npc4.png",
+  "./images/home_mall_npc5.png",
+  "./images/home_mall_npc6.png",
 ];
 let npc = 0;
 
