@@ -601,17 +601,57 @@ function goBack(){
 
 
 
-
-
 document.querySelector(".itemFront").addEventListener("click",goFront);
 document.querySelector(".itemBack").addEventListener("click",goBack)
 
 
+//取得目前會員有穿的裝備
+function catchItem(){
+    let xhr = new XMLHttpRequest();
+
+    xhr.onload = function(){
+        onList= JSON.parse(xhr.responseText);
+        console.log(onList)
+        if(onList !==''){
+            for(i=0;i<onList.length;i++){
+                switch(onList[i].item_img.split("_")[1]){
+                    case "hat":
+                        let hat=document.querySelector(".hat")
+                        let hatImg=document.createElement("img")
+                        hat.appendChild(hatImg)
+                        hatImg.src=`${onList[i].item_img}_on.png`
+                        break;
+
+                    case "dress":
+                        let dress=document.querySelector(".dress")
+                        let dressImg=document.createElement("img")
+                        dress.appendChild(dressImg)
+                        dressImg.src=`${onList[i].item_img}_on.png`
+                        break;
+
+                    case "tool":
+                        let tool=document.querySelector(".tool")
+                        let toolImg=document.createElement("img")
+                        tool.appendChild(toolImg)
+                        toolImg.src=`${onList[i].item_img}_on.png`
+                        break;
+                }
+            }
+        }
+        
+    };
+
+    xhr.open("get", "mem_catchItem.php",true);
+    xhr.send();
+
+}
+
+window.addEventListener("load",catchItem)
 
 
-
+//html>canvas>img
 function convertCanvasToImage(){
-    setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null}).then(function(e) {
+    setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null},{allowTaint: true}).then(function(e) {
 
         let canvasArr=document.querySelectorAll("canvas")
         
@@ -632,15 +672,45 @@ function convertCanvasToImage(){
 
 }
 
-document.querySelector(".closet").addEventListener("click",convertCanvasToImage)
-
 document.querySelector(".store").addEventListener("click",convertCanvasToImage)
 
 
 
-// if(document.querySelector(".hat >img") !=null ){
-//     document.querySelector(".hat >img").addEventListener("change",convertCanvasToImage)
-// }
+//存進資料庫，哪些衣服穿上
+function storeClothes(){
+    setTimeout(()=>{
+    let xhr = new XMLHttpRequest();
+
+    xhr.onload = function(){
+        onList= JSON.parse(xhr.responseText);
+    
+    }
+    let hat=(document.querySelector(".hat >img")!=null) ? document.querySelector(".hat >img").src.split("/")[6].replace(".png_on","") : ""
+
+    console.log(`./images/${hat}`)
+
+    let dress=(document.querySelector(".dress >img")!=null) ? document.querySelector(".dress >img").src.split("/")[6].replace(".png_on","") :"";
+    // console.log(document.querySelector(".tool >img").src)
+
+    let tool=(document.querySelector(".tool >img")!=null) ? 
+    document.querySelector(".tool >img").src.split("/")[6].replace(".png_on","") : "";
+
+
+
+    xhr.open("post", "mem_storeClothes.php",true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        
+    let newImgInfo=`hat=./images/${hat}&dress=./images/${dress}&tool=./images/${tool}`
+    xhr.send(newImgInfo)
+
+    },300)
+}
+
+document.querySelector(".store").addEventListener("click",storeClothes)
+
+
+
+
 
 
 //點選列中子物件
@@ -661,6 +731,7 @@ function dressOn(){
         let hatImg=document.createElement("img")
         hat.appendChild(hatImg)
         hatImg.src=`./images/${this.className}_on.png`
+        
     }
 
     else if(document.querySelector("#target").className=="tab_dress"){

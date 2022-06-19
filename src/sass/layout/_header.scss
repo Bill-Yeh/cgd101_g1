@@ -1,44 +1,43 @@
-#header_menu_switch{
+#header_menu_switch {
   position: absolute;
   left: -1000px;
-  @include lg(){
+  @include lg() {
     display: none;
   }
 }
-#header_menu_switch:checked ~ header .header_main_nav{
+#header_menu_switch:checked ~ header .header_main_nav {
   top: 60px;
   opacity: 1;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 }
 
-#header_menu_switch:checked ~ header .header_hb span:first-child{
+#header_menu_switch:checked ~ header .header_hb span:first-child {
   top: 19px;
   transform: rotate(45deg);
-  transition:top .3s, transform .3s .1s;
+  transition: top 0.3s, transform 0.3s 0.1s;
 }
-#header_menu_switch:checked ~ header .header_hb span:nth-child(2){
+#header_menu_switch:checked ~ header .header_hb span:nth-child(2) {
   display: none;
 }
-#header_menu_switch:checked ~ header .header_hb span:last-child{
+#header_menu_switch:checked ~ header .header_hb span:last-child {
   bottom: 19px;
   transform: rotate(-45deg);
-  transition:bottom .3s, transform .3s .1s;
+  transition: bottom 0.3s, transform 0.3s 0.1s;
 }
 
 // -----------------------------------------------
 
-#main_header{
+#main_header {
   width: 100%;
   // background-color: white;
   position: fixed;
   top: 0;
   z-index: 5000;
-  .header_white-bg{
+  .header_white-bg {
     // width: 100%;
     background-color: white;
   }
-  .header_wrap{
-    
+  .header_wrap {
     width: $wrapRwd;
     margin: auto;
     display: flex;
@@ -46,24 +45,23 @@
     align-items: center;
     padding-top: 20px;
     box-sizing: border-box;
-    @include lg(){
+    @include lg() {
       width: $navRwd;
     }
-    
 
-    .header_main_nav{
+    .header_main_nav {
       position: absolute;
-      background-color: map-get($color , bgc_y );
+      background-color: map-get($color, bgc_y);
       top: -1000px;
       left: 0;
       width: 100%;
       box-sizing: border-box;
       z-index: 5000;
       opacity: 0;
-      transition: opacity .5s, top 0s .5s;
+      transition: opacity 0.5s, top 0s 0.5s;
       padding: 80px 0 30px 0;
       height: 100vh;
-      @include lg(){
+      @include lg() {
         position: relative;
         top: 0;
         height: 0;
@@ -74,18 +72,18 @@
         justify-content: space-around;
         align-items: center;
       }
-      ul{
-        @include lg(){
+      ul {
+        @include lg() {
           display: flex;
           justify-content: space-evenly;
           flex-grow: 1;
-          li{
+          li {
             cursor: pointer;
           }
         }
       }
       // 代幣區
-      .header_money{
+      .header_money {
         width: 100px;
         margin: auto;
         padding: 5px 0;
@@ -95,89 +93,89 @@
         border: 1px solid black;
         border-radius: 30px;
         background-color: #fff;
-        @include lg(){
+        @include lg() {
           order: 1;
           margin: 0;
         }
 
-        .header_coin{
-          img{
+        .header_coin {
+          img {
             width: 20px;
           }
         }
       }
       // nav裡的連結
-      a{
+      a {
         display: block;
         text-align: center;
         text-decoration: none;
         padding: 30px 0;
-        color: #F37420;
+        color: #f37420;
         font-size: 1.25rem;
         font-family: $fontCh;
         font-weight: 500;
-        @include lg(){
+        @include lg() {
           padding: 0;
           color: black;
-          transition: .3s;
-          &:hover{
-            color: map-get($color , primary );
+          transition: 0.3s;
+          &:hover {
+            color: map-get($color, primary);
           }
         }
       }
     }
     // 漢堡
-    .header_hb{
+    .header_hb {
       width: 40px;
       height: 40px;
       position: relative;
-      @include lg(){
+      @include lg() {
         display: none;
       }
 
-      span{
+      span {
         position: absolute;
         left: 0;
         right: 0;
         width: 32px;
         height: 2px;
-        background-color: map-get($color , backstage_h );
+        background-color: map-get($color, backstage_h);
         margin: auto;
       }
-      span:first-child{
+      span:first-child {
         top: 11px;
       }
-      span:nth-child(2){
+      span:nth-child(2) {
         top: 0;
         bottom: 0;
       }
-      span:last-child{
+      span:last-child {
         bottom: 11px;
       }
     }
 
-    .header_logo{
+    .header_logo {
       width: 30%;
-      @include lg(){
+      @include lg() {
         width: 20%;
       }
-  
-      img{
+
+      img {
         width: 100%;
       }
     }
     // 登入
-    .header_login_box{
-      @include lg(){
+    .header_login_box {
+      @include lg() {
         padding-left: 30px;
         // width: 25%;
       }
-      .header_login{
+      .header_login {
         display: flex;
         flex-direction: column;
         align-items: center;
         line-height: 1.2;
-        @include lg(){
+        @include lg() {
           width: 100%;
           display: flex;
           flex-direction: row;
@@ -185,28 +183,28 @@
           justify-content: space-around;
           line-height: 0;
         }
-        #userHead{
+        #userHead {
           font-size: 30px;
           color: black;
           cursor: pointer;
         }
-        #memArea{
+        #memArea {
           display: none;
-          @include lg(){
+          @include lg() {
             // display: none;
             cursor: pointer;
-            transition: .3s;
-            &:hover{
-              color: #F9BB4D;
+            transition: 0.3s;
+            &:hover {
+              color: #f9bb4d;
             }
           }
         }
-        #logout{
+        #logout {
           cursor: pointer;
-          transition: .3s;
+          transition: 0.3s;
           display: none;
-          &:hover{
-            color: #F9BB4D;
+          &:hover {
+            color: #f9bb4d;
           }
         }
       }
@@ -214,56 +212,58 @@
   }
 }
 // 雲朵
-.header_nav_cloud{
+.header_nav_cloud {
   width: 100%;
   z-index: 10;
-  img{
+  img {
     width: 100%;
     z-index: 10;
   }
 }
 
 // 學習地圖
-.studyMapMain #main_header ul :first-child a{
-  color: #F9BB4D;
+.studyMapMain #main_header ul :first-child a {
+  color: #f9bb4d;
 }
 
 // 50音新手村
-.map50Body #main_header ul :first-child a{
-  color: #F9BB4D;
+.map50Body #main_header ul :first-child a {
+  color: #f9bb4d;
 }
 
 // 初級單字
-.elementary_vocabulary #main_header ul :first-child a{
-  color: #F9BB4D;
+.elementary_vocabulary #main_header ul :first-child a {
+  color: #f9bb4d;
 }
 
 // 初級單字
-.elementary_conversation #main_header ul :first-child a{
-  color: #F9BB4D;
+.elementary_conversation #main_header ul :first-child a {
+  color: #f9bb4d;
 }
 
 // 初級單字
-.intermediate_vocabulary #main_header ul :first-child a{
-  color: #F9BB4D;
+.intermediate_vocabulary #main_header ul :first-child a {
+  color: #f9bb4d;
 }
 
 // 升級測驗
-.test #main_header ul :nth-child(2) a{
-  color: #F9BB4D;
+.test #main_header ul :nth-child(2) a {
+  color: #f9bb4d;
 }
 
 // 寶物商城
-.mall #main_header ul :nth-child(3) a{
-  color: #F9BB4D;
+.mall #main_header ul :nth-child(3) a {
+  color: #f9bb4d;
 }
 
 // 問題討論
-.paymentBody #main_header ul :nth-child(3) a{
-  color: #F9BB4D;
+.paymentBody #main_header ul :nth-child(3) a {
+  color: #f9bb4d;
 }
 
 // 問題討論
-.faqBody #main_header ul :nth-child(4) a{
-  color: #F9BB4D;
+.faqBody #main_header ul :nth-child(4) a {
+  color: #f9bb4d;
 }
+
+

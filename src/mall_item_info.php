@@ -8,7 +8,7 @@ try{
     //1.自己用的
     $dbname = "tibamefe_cgd101g1";
 	$user = "root"; //帳號
-	$password = "fsrs90115"; //密碼
+	$password = ""; //密碼
 
     //連接資料庫的變數(固定寫法)
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";

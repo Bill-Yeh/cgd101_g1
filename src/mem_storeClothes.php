@@ -1,7 +1,6 @@
 <?php 
 session_start();
-//  $_POST["new_psw"]=1;
-//  $_POST["new_psw_check"]=1;
+
 try{
 	//==========
     $dbname = "tibamefe_cgd101g1";
@@ -19,17 +18,22 @@ try{
     //=========
     
 
-    $sql = "SELECT `tibamefe_cgd101g1`.`member`.`role`
-    from  `tibamefe_cgd101g1`.`member` 
-    WHERE `tibamefe_cgd101g1`. `member`.`member_id` =:mem_id; "; 
+    $sql = "UPDATE `tibamefe_cgd101g1`.`item_record` 
+    SET `tibamefe_cgd101g1`.`item_record`.`item_on` =0;
+    UPDATE `tibamefe_cgd101g1`.`item_record` 
+    JOIN `tibamefe_cgd101g1`.`item` ON `tibamefe_cgd101g1`.`item_record`.`item_id`=`tibamefe_cgd101g1`.`item`.`item_id`
+    SET `tibamefe_cgd101g1`.`item_record`.`item_on` =1 
+    WHERE `tibamefe_cgd101g1`. `item_record`.`member_id` =:mem_id and (`tibamefe_cgd101g1`. `item`.`item_img`=:hat OR `tibamefe_cgd101g1`. `item`.`item_img`=:dress OR `tibamefe_cgd101g1`. `item`.`item_img`=:tool);"; 
     
-    $role = $pdo->prepare($sql);
-    $role->bindValue("mem_id",$_SESSION["member_id"]);
-    $role->execute();
+    $newImg = $pdo->prepare($sql);
+    $newImg ->bindValue("hat",$_POST["hat"]);
+    $newImg ->bindValue("dress",$_POST["dress"]);
+    $newImg ->bindValue("tool",$_POST["tool"]);
+    $newImg ->bindValue("mem_id",$_SESSION["member_id"]);
 
-    $roleImg = $role->fetch(PDO::FETCH_ASSOC);
+    $newImg ->execute();
 
-    echo json_encode($roleImg);
+    echo json_encode("成功");
 
     
 

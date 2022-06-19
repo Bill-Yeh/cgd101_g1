@@ -118,6 +118,9 @@
 
 // section
 .faq{
+    .isActive{
+        display: block;
+    }
     margin-top: 25%;
     @include md(){
         margin-top: 15%;
@@ -316,13 +319,11 @@
                                     // 按讚數量
                                     .heart_quantity{
                                         margin: 0 20px 0 0;
-                                        display: none;
                                     }
                                     // 留言
                                     .faq_info{
-                                        svg{
-                                            width: 17px;
-                                            height: 17px;
+                                        .bi-heart,.bi-heart-fill{
+                                            font-size: 18px;
                                             color: map-get($color , primary );
                                             cursor: pointer;
                                         }
@@ -403,9 +404,8 @@
             }
             // 關閉icon
             .faq_report_close{
-                svg{
-                    width: 20px;
-                    height: 20px;
+                i{
+                    font-size: 20px;
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -437,7 +437,9 @@
     }
 }
 
-
+::-webkit-scrollbar {
+    display: none;
+}
 // 發文燈箱
 
 // 燈箱外面的黑色區塊
@@ -457,6 +459,9 @@
     // 燈箱box
     .faq_post_box{
         width: 80%;
+        overflow-y: auto;
+        
+        max-height: 80%;
         max-width: 500px;
         padding: 30px;
         background-color: map-get($color , bgc_y );
@@ -474,9 +479,8 @@
 
             // 關閉icon
             .faq_post_close{
-                svg{
-                    width: 20px;
-                    height: 20px;
+                i{
+                    font-size: 20px;
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -489,7 +493,7 @@
                 font-family: $fontCh;
 
                 // 標題區塊
-                .faq_post_title,.faq_post_paragragh{
+                .faq_post_title,.faq_post_type,.faq_post_paragragh{
                     display: flex;
                     flex-direction: column;
                     margin-bottom: 30px;
@@ -498,9 +502,10 @@
                         font-size: 1.2rem;
                         margin-bottom: 10px;
                     }
-                    input,textarea{
+                    input,textarea,select{
                         padding: 5px;
                         font-size: 1rem;
+                        outline: none;
                     }
                 }
             }
@@ -556,9 +561,8 @@
     
                 // 關閉icon
                 .faq_message_close{
-                    svg{
-                        width: 20px;
-                        height: 20px;
+                    i{
+                        font-size: 20px;
                         position: absolute;
                         top: 0;
                         right: 0;
