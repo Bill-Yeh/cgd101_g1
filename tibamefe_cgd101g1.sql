@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-17 14:31:52
+-- 產生時間： 2022-06-19 20:52:31
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -263,7 +263,9 @@ INSERT INTO `lesson` (`lesson_id`, `lesson_name`, `lesson_img`, `lesson_price`, 
 (18, 'N1單字', './images/payement_map.png', 300, 'N1單字大全，系統化統整N1單字，依日檢出題基準進行模擬', 2, 1),
 (19, 'N1會話', './images/payement_map.png', 300, 'N1會話大全，集結日檢N1高頻率出現的會話，讓你輕鬆自學！', 3, 1),
 (20, '單字統整', './images/payement_map.png', 300, 'N5~N1單字統整精華濃縮日檢N5~N1所有高分必備單字，絕對超滿足。', 2, 1),
-(21, '會話統整', './images/payement_map.png', 300, 'N5~N1會話統整精華濃縮日檢N5~N1所有高分必備會話，絕對超滿足', 3, 1);
+(21, '會話統整', './images/payement_map.png', 300, 'N5~N1會話統整精華濃縮日檢N5~N1所有高分必備會話，絕對超滿足', 3, 1),
+(22, '情境會話', './images/payment_map.png', 300, '情境會話，日本點餐、參拜、泡溫泉相關情境對話，讓你自助旅遊也不怕！', 3, 1),
+(23, '日本文化', './images/payment_map.png', 300, '日本文化，幫助大家理解日本文化，宛如置身日\r\n本社會一般，感受真實日本的普遍樣\r\n貌。', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -864,7 +866,7 @@ ALTER TABLE `item_record`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `lesson_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=22;
+  MODIFY `lesson_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=24;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_record`
