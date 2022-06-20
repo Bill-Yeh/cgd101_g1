@@ -16,16 +16,16 @@
                 <div class="col-12 col-md-3 faq_course">
                     <div class="faq_selection">
                         <div class="faq_jap faq_japan_50">
-                            <h2 @click="showLesson1" ref="a">50音課程</h2>
+                            <h2 @click="showLesson('a',1)" ref="a">50音課程</h2>
                         </div>
                         <div class="faq_jap faq_japan_vocabular y">
-                            <h2 @click="showLesson2" ref="b">單字課程</h2>
+                            <h2 @click="showLesson('b',2)" ref="b">單字課程</h2>
                         </div>
                         <div class="faq_jap faq_japan_conversation">
-                            <h2 @click="showLesson3" ref="c">會話課程</h2>
+                            <h2 @click="showLesson('c',3)" ref="c">會話課程</h2>
                         </div>
                         <div class="faq_jap faq_japan_test">
-                            <h2 @click="showLesson4" ref="d">升級測驗</h2>
+                            <h2 @click="showLesson('d',4)" ref="d">升級測驗</h2>
                         </div>
                     </div>
                     <div class="faq_filter_section">
@@ -41,24 +41,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-9 faq_article" id="faqArticle">
-                    <div class="faq_article_list" v-if="type=='a'">
-
-                        <!-- Vue component 元件==>文章列表-50音 -->
-                        <faq-card v-for="item in faqs" :item="item"/>
-
+                    <div class="faq_article_list">
+                        <article-card v-for="item in articleList" :item="item" @update="implFilterFocusArticlesList"/>
                     </div>
-                    <div class="faq_article_list" v-else-if="type=='b'">
-                        <!-- Vue component 元件==>文章列表- 單字 -->
-                        <v-card v-for="vocabulary in vocabularys" :vocabulary="vocabulary"/>
-                    </div>
-                    <div class="faq_article_list" v-else-if="type=='c'">
-                        <!-- Vue component 元件==>文章列表- 會話 -->
-                        <t-card v-for="talk in talks" :talk="talk"/>
-                    </div>
-                    <div class="faq_article_list" v-else-if="type=='d'">
-                        <!-- Vue component 元件==>文章列表- 測驗 -->
-                        <test-card v-for="test in tests" :test="test"/>
-                    </div>
+                    
                 </div>
             </div>
             <div class="faq_rwd_writing">
@@ -156,33 +142,16 @@
                         </div>
                         <!-- Vue component 元件==>當事人po文的內容 -->
                         <div>
-                            <article-detail v-for="focusArticle in focusArticles" :focus-article="focusArticle"/>
+                            <article-detail v-for="focusArticle in filterFocuArticlesList"  :focus-article="focusArticle"/>
                         </div>
-                        <!-- <div class="faq_message_article">
-                            <div class="faq_student">
-                                <div class="faq_npc">
-                                    <img src="images/studyMap_NPC_a.png" alt="學員A">
-                                </div>
-                                <div class="name_time">
-                                    <span>AAA</span>
-                                    <span>2022/5/22/3:00</span>
-                                </div>
-                            </div>
-                            <div class="faq_message_title_paragragh">
-                                <h3>日文50音要怎麼背???</h3>
-                                <p>嗨嗨，想請問大家都怎麼背50音嗎?</p>
-                            </div>
-                            <div class="faq_article_heart">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                                </svg>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 
                 <!-- Vue component 元件==>其他學員留言內容 -->
-                <!-- <article-message v-for="message in messages" v-bind="message"/> -->
+                <div>
+                    <article-message v-for="message in messages" v-bind="message"/>
+                </div>
+                
                 <!-- <div class="faq_student_message">
                     <div class="faq_student1 student">
                         <div class="faq_student_npc">
@@ -260,203 +229,9 @@
 
 
     <script>
-        //Vue component 元件==>文章列表 - 測驗 -->
-        Vue.component('test-card',{
-            props:{
-                test : Object,
-            },
-            template:`
-            <div class="faq_mem faq_mem_A" isActive>
-                <div class="faq_mem_npc">
-                    <img :src="test.role" alt="學員A">
-                </div>
-                <div class="faq_article_content">
-                    <span>{{test.member_name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{test.post_title}}</h3>
-                    <p class="article_paragragh">{{test.post_txt}}</p>
-                    <div class="faq_icon_function">
-                        <div class="faq_heart_info">
-                            <div class="faq_heart" @click="setHeart" ref="heart">
-                                <i class="bi bi-heart"></i>
-                                <i class="bi bi-heart-fill"></i>
-                            </div>
-                            <p class="heart_quantity">{{test.fav}}</p>
-                        </div>
-                        <div class="faq_report">
-                            <span class="user_report" @click="reportShow">檢舉</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `,
-            methods: {
-                setHeart(e) {
-                    //確認localStorage有沒有收藏清單
-                    // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                
-                    let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
-                    e.currentTarget.classList.toggle('show');
-                    
-                    if (fav.indexOf(this.id) > -1) {
-                        fav.splice(fav.indexOf(this.id),1)
-                    } else {
-                        fav.push(this.id)
-                    }
-                    // 將更新後的收藏清單存入localStorage
-                    localStorage.setItem('fav',JSON.stringify(fav));
-                },
-                setFoucsId() {
-                    // articleDetail.focusId = this.id;
-                    // articleList.focusId = this.id;
-                    document.getElementById('faq_message').style.display='flex';
-                },
-                reportShow(){
-                    document.getElementById('faq_report').style.display='flex';
-                }
-            },
-            mounted() { //初始化
-                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
-                // 初始化愛心的狀態，判斷是否在list內
-                if (fav.indexOf(this.id) > -1) {
-                        // this.$refs.heart.classList.add('show')
-                    } else {
-                        // this.$refs.heart.classList.remove('show')
-                }
-            },
-        })
 
-        //Vue component 元件==>文章列表 - 會話 -->
-        Vue.component('t-card',{
-            props:{
-                talk : Object,
-            },
-            template:`
-            <div class="faq_mem faq_mem_A isActive">
-                <div class="faq_mem_npc">
-                    <img :src="talk.role" alt="學員A">
-                </div>
-                <div class="faq_article_content">
-                    <span>{{talk.member_name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{talk.post_title}}</h3>
-                    <p class="article_paragragh">{{talk.post_txt}}</p>
-                    <div class="faq_icon_function">
-                        <div class="faq_heart_info">
-                            <div class="faq_heart" @click="setHeart" ref="heart">
-                                <i class="bi bi-heart"></i>
-                                <i class="bi bi-heart-fill"></i>
-                            </div>
-                            <p class="heart_quantity">{{talk.fav}}</p>
-                        </div>
-                        <div class="faq_report">
-                            <span class="user_report" @click="reportShow">檢舉</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `,
-            methods: {
-                setHeart(e) {
-                    //確認localStorage有沒有收藏清單
-                    // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                
-                    let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
-                    e.currentTarget.classList.toggle('show');
-                    
-                    if (fav.indexOf(this.id) > -1) {
-                        fav.splice(fav.indexOf(this.id),1)
-                    } else {
-                        fav.push(this.id)
-                    }
-                    // 將更新後的收藏清單存入localStorage
-                    localStorage.setItem('fav',JSON.stringify(fav));
-                },
-                setFoucsId() {
-                    // articleDetail.focusId = this.id;
-                    // articleList.focusId = this.id;
-                    document.getElementById('faq_message').style.display='flex';
-                },
-                reportShow(){
-                    document.getElementById('faq_report').style.display='flex';
-                }
-            },
-            mounted() { //初始化
-                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
-                // 初始化愛心的狀態，判斷是否在list內
-                if (fav.indexOf(this.id) > -1) {
-                        // this.$refs.heart.classList.add('show')
-                    } else {
-                        // this.$refs.heart.classList.remove('show')
-                }
-            },
-        })
-
-        //Vue component 元件==>文章列表 - 單字 -->
-        Vue.component('v-card',{
-            props:{
-                vocabulary : Object,
-            },
-            template:`
-            <div class="faq_mem faq_mem_A isActive">
-                <div class="faq_mem_npc">
-                    <img :src="vocabulary.role" alt="學員A">
-                </div>
-                <div class="faq_article_content">
-                    <span>{{vocabulary.member_name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{vocabulary.post_title}}</h3>
-                    <p class="article_paragragh">{{vocabulary.post_txt}}</p>
-                    <div class="faq_icon_function">
-                        <div class="faq_heart_info">
-                            <div class="faq_heart" @click="setHeart" ref="heart">
-                                <i class="bi bi-heart"></i>
-                                <i class="bi bi-heart-fill"></i>
-                            </div>
-                            <p class="heart_quantity">{{vocabulary.fav}}</p>
-                        </div>
-                        <div class="faq_report">
-                            <span class="user_report" @click="reportShow">檢舉</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `,
-            methods: {
-                setHeart(e) {
-                    //確認localStorage有沒有收藏清單
-                    // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                
-                    let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
-                    e.currentTarget.classList.toggle('show');
-                    
-                    if (fav.indexOf(this.id) > -1) {
-                        fav.splice(fav.indexOf(this.id),1)
-                    } else {
-                        fav.push(this.id)
-                    }
-                    // 將更新後的收藏清單存入localStorage
-                    localStorage.setItem('fav',JSON.stringify(fav));
-                },
-                setFoucsId() {
-                    // articleDetail.focusId = this.id;
-                    // articleList.focusId = this.id;
-                    document.getElementById('faq_message').style.display='flex';
-                },
-                reportShow(){
-                    document.getElementById('faq_report').style.display='flex';
-                }
-            },
-            mounted() { //初始化
-                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
-                // 初始化愛心的狀態，判斷是否在list內
-                if (fav.indexOf(this.id) > -1) {
-                        // this.$refs.heart.classList.add('show')
-                    } else {
-                        // this.$refs.heart.classList.remove('show')
-                }
-            },
-        })
-
-        //Vue component 元件==>文章列表 - 50音 -->
-        Vue.component('faq-card',{
+        //Vue component 元件==>文章列表 - 共用元件 -->
+        Vue.component('article-card',{
             props:{
                 item : Object,
             },
@@ -467,15 +242,19 @@
                 </div>
                 <div class="faq_article_content">
                     <span>{{item.member_name}}</span>
-                    <h3 class="article_title" @click="setFoucsId">{{item.post_title}}</h3>
+                    <h3 class="article_title" @click="setFoucsId(item.post_id)">{{item.post_title}}</h3>
                     <p class="article_paragragh">{{item.post_txt}}</p>
                     <div class="faq_icon_function">
                         <div class="faq_heart_info">
                             <div class="faq_heart" @click="setHeart" ref="heart">
                                 <i class="bi bi-heart"></i>
                                 <i class="bi bi-heart-fill"></i>
+                                <p class="heart_quantity">{{item.fav}}</p>
                             </div>
-                            <p class="heart_quantity">{{item.fav}}</p>
+                            <div class="faq_message">
+                                <i class="bi bi-chat-dots"></i>
+                                <p class="message_quantity">{{item.messageNum}}</p>
+                            </div>
                         </div>
                         <div class="faq_report">
                             <span class="user_report" @click="reportShow">檢舉</span>
@@ -500,8 +279,10 @@
                     // 將更新後的收藏清單存入localStorage
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
-                setFoucsId() {
+                setFoucsId(post_id) {
                     document.getElementById('faq_message').style.display='flex';
+                    console.log('setFoucsId:'+ post_id)
+                    this.$emit('update', post_id)
                 },
                 reportShow(){
                     document.getElementById('faq_report').style.display='flex';
@@ -518,15 +299,11 @@
             },
         })
 
+
         // Vue component 元件==>當事人po文的內容
         Vue.component('article-detail',{
             props:{
                 focusArticle : Object,
-            },
-            data() {
-                return {
-                    // focusArticles:[]
-                }
             },
             template:`
             <div class="faq_message_article">
@@ -601,51 +378,144 @@
                     }
             },
         })
+
+        // Vue component 元件==>其他學員留言內容
+        Vue.component('article-message',{
+            // props:['pic','name','date','info','sequence','time'],
+            props:{
+                message:Object
+            },
+            template:`
+            <div class="faq_message_info">
+                <div class="faq_student_message">
+                    <div class="faq_student1 student">
+                        <div class="faq_student_npc">
+                            <img :src="pic" alt="學員1">
+                        </div>
+                        <div class="faq_student_text">
+                            <span class="student_name">{{name}}</span>
+                            <span class="post_date">{{date}}</span>
+                            <p>背就對了!加油</p>
+                            <span class="student_code">{{sequence}}</span>
+                            <span class="post_time">{{time}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq_user_input">
+                    <div class="user_npc">
+                        <img :src="pic" alt="學員C">
+                    </div>
+                    <form action="" method="post">
+                        <input type="text" id="user_message" placeholder="我要留言">
+                    </form>
+                    <div class="user_message_submit">
+                        <button class="message_submit_btn" type="submit">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            `,
+            computed:{
+                messageImg(){
+                    return this.message?.role
+                },
+                memberName(){
+                    return this.message?.member_name
+                },
+                messageDate(){
+                    return this.message?.message_date
+                },
+            }
+        })
+
         let articleList = new Vue({
             data:{
                 type:'a',
-                faqs:[],
-                vocabularys:[],
-                talks:[],
-                tests:[],
                 focusArticles:[],
+                targetPostKey: '',
+                articleList: [],
                 focusId: 0,
+                messages:[
+                    {
+                        pic:'./images/studyMap_NPC_e.png',
+                        name:'BBB',
+                        date:'2022/5/22',
+                        info:'背就對了!加油!',
+                        sequence:'B1',
+                        time:'9:00'
+                    },
+                    {
+                        pic:'./images/studyMap_NPC_i.png',
+                        name:'CCC',
+                        date:'2022/5/22',
+                        info:'背就對了!加油!',
+                        sequence:'B2',
+                        time:'10:00'
+                    },
+                    {
+                        pic:'./images/studyMap_NPC_o.png',
+                        name:'DDD',
+                        date:'2022/5/22',
+                        info:'背就對了!加油!',
+                        sequence:'B3',
+                        time:'11:00'
+                    },
+                    {
+                        pic:'./images/studyMap_NPC_u.png',
+                        name:'EEE',
+                        date:'2022/5/22',
+                        info:'背就對了!加油!',
+                        sequence:'B4',
+                        time:'12:00'
+                    },
+                ],
             },
             methods: {
-                showLesson1(){
-                    this.type = 'a';
-                    articleList.getPostType(1);
+                showLesson(type, typeInt){
+                    this.type = type;
+                    articleList.getPostType(typeInt);
                 },
-                showLesson2(){
-                    this.type = 'b';
-                    articleList.getPostType(2);
-                },
-                showLesson3(){
-                    this.type = 'c';
-                    articleList.getPostType(3);
-                },
-                showLesson4(){
-                    this.type = 'd';
-                    articleList.getPostType(4);
+                implFilterFocusArticlesList(post_id){
+                    console.log('implFilterFocusArticlesList')
+                    console.log('implFilterFocusArticlesList:'+ post_id)
+                    this.targetPostKey = post_id
+                    
+                    // console.log('this.targetPostKey')
+                    // console.log(this.targetPostKey)
+                    // this.tests = processedItemList
+                    // console.log('this.tests')
+                    // console.log(this.tests)
                 },
                 getPostType(postType){
                     let xhr = new XMLHttpRequest();
                     xhr.onload = () =>{
-                        // // 50音
-                        this.faqs = JSON.parse(xhr.responseText);
-                        console.log(this.faqs);
-                        // 單字
-                        this.vocabularys = JSON.parse(xhr.responseText);
-                        console.log(this.vocabularys);
-                        // 會話
-                        this.talks = JSON.parse(xhr.responseText);
-                        console.log(this.talks);
-                        // 測驗
-                        this.tests = JSON.parse(xhr.responseText);
-                        console.log(this.tests);
+                        // 含留言內容、留言編號
+                        let messageText = JSON.parse(JSON.parse(xhr.responseText).messageText);
+                        console.log('留言內容:',messageText);
+
+                        // 含按讚數、留言數
+                        let numbers = JSON.parse(JSON.parse(xhr.responseText).numbers);
+                        console.log('數量:',numbers);
+
+                        // 合併上方兩個指令
+                        // result = messageText.map((item) => {
+                        //     let numberItem = numbers.find(v => v.post_id == item.post_id);
+                        //     return {...item, ...numberItem};
+                        // })
+                        this.articleList = numbers;
+                        console.log('articleList:',numbers);
+                        // this.articleList = JSON.parse(xhr.responseText);
+                        // TODO
+                        // if(postType === 1){
+                        //     // 50音
+                        //     this.faqs = JSON.parse(xhr.responseText);
+                        //     console.log(this.faqs);
+                        // }
                         // 文章燈箱內容
-                        this.focusArticles = JSON.parse(xhr.responseText);
-                        console.log(this.focusArticles);
+                        this.focusArticles = numbers;
+                        // this.focusArticles = JSON.parse(xhr.responseText);
+                        // console.log(this.focusArticles);
                     }
                     xhr.open("post", "faq.php", true);
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -668,12 +538,13 @@
                 let xhr = new XMLHttpRequest();
                 xhr.onload = () =>{
                     // 50音
-                    this.faqs = JSON.parse(xhr.responseText);
-                    console.log(this.faqs);
-
+                    // this.faqs = JSON.parse(xhr.responseText);
+                    // console.log(this.faqs);
+                    this.articleList = JSON.parse(xhr.responseText);
+                    
                     // 文章燈箱內容
                     this.focusArticles = JSON.parse(xhr.responseText);
-                    console.log(this.focusArticles);
+                    // console.log(this.focusArticles);
                 }
                 xhr.open("post", "faq_50.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -682,6 +553,26 @@
                 let data_info = `json=${JSON.stringify(typeset)}`;
                 xhr.send(data_info);
             },
+            computed:{
+                
+                filterFocuArticlesList(){
+                    console.log('filterFocuArticlesList')
+                    console.log(this.focusArticles)
+                    if(this.targetPostKey && this.targetPostKey != null){
+                        const tmpKey = this.targetPostKey 
+                        const temp = this.focusArticles.filter(function(item) {
+                            if(item.post_id === tmpKey){
+                                return true
+                            }
+                        })
+                        // console.log('temp')
+                        // console.log(temp)
+                        return temp
+
+                    }
+                    return this.focusArticles
+                }
+            },
             
             el:'#faq',
         });
@@ -689,43 +580,7 @@
 
         
         
-        // Vue component 元件==>其他學員留言內容
-        // Vue.component('article-message',{
-        //     props:['pic','name','date','info','sequence','time'],
-        //     template:`
-        //     <div class="faq_message_info">
-        //         <div class="faq_student_message">
-        //             <div class="faq_student1 student">
-        //                 <div class="faq_student_npc">
-        //                     <img :src="pic" alt="學員1">
-        //                 </div>
-        //                 <div class="faq_student_text">
-        //                     <span class="student_name">{{name}}</span>
-        //                     <span class="post_date">{{date}}</span>
-        //                     <p>背就對了!加油</p>
-        //                     <span class="student_code">{{sequence}}</span>
-        //                     <span class="post_time">{{time}}</span>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //         <div class="faq_user_input">
-        //             <div class="user_npc">
-        //                 <img :src="pic" alt="學員C">
-        //             </div>
-        //             <form action="" method="post">
-        //                 <input type="text" id="user_message" placeholder="我要留言">
-        //             </form>
-        //             <div class="user_message_submit">
-        //                 <button class="message_submit_btn" type="submit">
-        //                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-        //                         <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-        //                     </svg>
-        //                 </button>
-        //             </div>
-        //         </div>
-        //     </div>
-        //     `,
-        // })
+        
 
         
         // let articleDetail = new Vue({

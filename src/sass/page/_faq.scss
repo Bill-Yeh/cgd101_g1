@@ -296,7 +296,9 @@
                                     align-items: center;
                                     // 按讚
                                     .faq_heart{
-                                        margin-right: 20px;
+                                        display: flex;
+                                        align-items: center;
+                                        margin-right: 10px;
                                         height: 16px;
                                         .bi-heart{
                                             color: map-get($color , primary );
@@ -319,6 +321,18 @@
                                     // 按讚數量
                                     .heart_quantity{
                                         margin: 0 20px 0 0;
+                                        padding-left: 5px;
+                                    }
+                                    .faq_message{
+                                        display: flex;
+                                        align-items: center;
+                                        i{
+                                            font-size: 18px;
+                                            color: map-get($color , primary );
+                                        }
+                                        .message_quantity{
+                                            padding-left: 5px;
+                                        }
                                     }
                                     // 留言
                                     .faq_info{
@@ -687,9 +701,8 @@
                     outline: none;
                     background-color: #fff;
                     cursor: pointer;
-                    svg{
-                        width: 25px;
-                        height: 25px;
+                    i{
+                        font-size: 20px;
                         color: map-get($color , primary );
                     }
                 }

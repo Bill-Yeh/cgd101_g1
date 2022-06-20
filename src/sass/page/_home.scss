@@ -371,12 +371,14 @@
 
 .home_first_info {
   position: absolute;
-
+  
   @include lg() {
     bottom: 15%;
     right: 20%;
   }
 }
+
+
 
 /* 首頁各島介紹框 */
 .home_first_info,
