@@ -454,5 +454,24 @@
                     }
                 };
             </script>
+            <script>
+                //撈資料庫裝備資料寫入HTML
+                let having_itemxhr = new XMLHttpRequest();
+
+
+                //console.log(title)
+                having_itemxhr.open("get", "./mem_having_item.php", true);
+
+                having_itemxhr.send(null);
+
+                having_itemxhr.onload = function () {
+
+                    let having_item = JSON.parse(having_itemxhr.responseText);
+
+                    console.log(having_item);
+
+
+                };
+            </script>
 
 </body>

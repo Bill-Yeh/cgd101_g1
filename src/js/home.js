@@ -21,18 +21,23 @@ let show_sign_up = document.getElementById("sign_up");
 //換裝+太陽眨眼function
 function change() {
   npc--;
-  sun--;
   if (npc < 0) {
     npc = imgArr.length - 1;
-  } else if (sun < 0) {
-    sun = sun_imgArr.length - 1;
   }
   img.src = imgArr[npc];
+}
+
+function change_sun() {
+  sun--;
+  if (sun < 0) {
+    sun = sun_imgArr.length - 1;
+  }
   sun_img.src = sun_imgArr[sun];
 }
 
 function init() {
   setInterval("change()", 1000);
+  setInterval("change_sun()", 1000);
 }
 window.addEventListener("load", init, false);
 
