@@ -29,7 +29,6 @@ new Vue({
                 buyListVue.prodRows[i].payment_time=buyListVue.prodRows[i].payment_time.split('.')[0]
             }
 
-            // console.log(buyListVue.prodRows)
         };
 		xhr.open("get", "./mem_orderList.php",true);
 		xhr.send();	
@@ -62,7 +61,6 @@ new Vue({
         let xhr = new XMLHttpRequest();
 
 		xhr.onload = function(){
-            console.log(JSON.parse(xhr.responseText))
             me.roleImg = JSON.parse(xhr.responseText)
             
         };
@@ -611,7 +609,6 @@ function catchItem(){
 
     xhr.onload = function(){
         onList= JSON.parse(xhr.responseText);
-        console.log(onList)
         if(onList !==''){
             for(i=0;i<onList.length;i++){
                 switch(onList[i].item_img.split("_")[1]){
@@ -637,6 +634,37 @@ function catchItem(){
                         break;
                 }
             }
+
+            setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null},{allowTaint: true}).then(function(e) {
+
+                let canvasArr=document.querySelectorAll("canvas")
+                
+                document.body.appendChild(e);
+                if(canvasArr.length>0){
+                    document.querySelector("canvas").remove()
+                }
+        
+                let canvas=document.querySelector("canvas")
+                let image = new Image();
+                image.src = canvas.toDataURL();
+               
+        
+                document.querySelector("#me").src=image.src
+                document.querySelector(".eyes").style.top="8px"
+
+                let black=document.querySelector(".black")
+
+
+                black.style.display="none"
+                black.style.backgroundColor="rgba(0, 0, 0, 0.6)"
+                black.style.zIndex=10000000
+
+                document.querySelector("#lightBox").style.left="50%"
+
+                document.querySelector(".closet_lightBox").style.display="none"
+
+        
+            }),10)
         }
         
     };
@@ -687,10 +715,8 @@ function storeClothes(){
     }
     let hat=(document.querySelector(".hat >img")!=null) ? document.querySelector(".hat >img").src.split("/")[6].replace(".png_on","") : ""
 
-    console.log(`./images/${hat}`)
 
     let dress=(document.querySelector(".dress >img")!=null) ? document.querySelector(".dress >img").src.split("/")[6].replace(".png_on","") :"";
-    // console.log(document.querySelector(".tool >img").src)
 
     let tool=(document.querySelector(".tool >img")!=null) ? 
     document.querySelector(".tool >img").src.split("/")[6].replace(".png_on","") : "";
@@ -791,10 +817,89 @@ document.querySelector('.tab_tool').addEventListener("click",clothItem)
 //==================================================
 //諮詢老師
 
+
+let AskList=
+    new Vue({
+        el:'#askAPP',
+        data:{
+            sentence:[],
+        },
+        created() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.onload = function(){
+                AskList.sentence = JSON.parse(xhr.responseText)
+               
+                if(AskList.sentence){ //如果學生已經發問過
+                    let filter=AskList.sentence.filter(index => index.ask_src=="2" && index.read_or_not=="0")
+
+                    if(filter.length!="0"){ //是否有未讀訊息
+                    document.querySelector(".teacher").src='./images/map_mem_teacher_reply.png'
+                    }
+
+                    let wrapper = document.createElement('div');
+                    wrapper.setAttribute('class','tr');
+                    document.querySelector('.conv').appendChild(wrapper);
+
+                    let tr=document.querySelector('.tr')
+
+                    let title = document.createElement('span');
+                    title.textContent ='語實巨進老師';
+                    title.setAttribute('class','tr-name');
+                    tr.appendChild(title);
+                    
+                    let HeadShot = document.createElement('div');
+                    HeadShot.setAttribute('class','trHead');
+                    tr.appendChild(HeadShot);
+
+                    let trHead=document.querySelector('.trHead')
+
+                    let img = document.createElement('img');
+                    img.src="./images/home_teacher2.png";
+                    trHead.appendChild(img);
+
+                    let p = document.createElement('p');
+                    p.textContent ='同學您好，請留下想問的問題，老師將盡快回覆你^^';
+                    tr.appendChild(p);
+                }
+
+                
+
+            };
+            xhr.open("get", "mem_askLog.php",true);
+            xhr.send();	
+        },
+    });
+
+
+//對話模板
+let askCom= Vue.component("component-askLog", {
+
+    props:['ask_content','ask_src','ask_time','member_name'],
+    template:`<div :class='ask_src==1 ?"user":"tr"' >
+                <span :class='ask_src==1 ?   "user-name" : "tr-name"'>{{ ask_src==1 ?member_name :"語實巨進老師"}}</span>
+                <div :class='ask_src==1 ? "userHead" : "trHead"'>
+                <img src="./images/home_teacher2.png">
+                </div>
+                <p>{{ask_content}}</p>
+                </div>`
+})
+
+
+
+
+
 //開啟談話視窗
 function openChetbox(){
     let chetbox=document.querySelector(".chetbox");
     chetbox.style.display='block';
+
+    let user=document.querySelectorAll('.userHead')
+    for(i=0;i<user.length;i++){
+        user[i].remove()
+    }
+
+
 
     if(document.querySelector('.tr') == null){
 
@@ -817,21 +922,47 @@ function openChetbox(){
             let trHead=document.querySelector('.trHead')
 
             let img = document.createElement('img');
-            img.src="./images/char_00_1.png";
+            img.src="./images/home_teacher2.png";
             trHead.appendChild(img);
 
             let p = document.createElement('p');
             p.textContent ='同學您好，請留下想問的問題，老師將盡快回覆你^^';
             tr.appendChild(p);
 
-
         },800)
     }
+
+    let xhr = new XMLHttpRequest()
+        xhr.onload = function(){
+            result=JSON.parse(xhr.responseText);
+            console.log(result)
+        }
+                
+    xhr.open("get", "mem_checkReply.php",true);
+    xhr.send();	
+
+
+
+    document.querySelector(".teacher").src='./images/map_mem_teacher.png'
 
 }
 
 
 function sentMessage(){
+    let input=document.querySelector('#inputTxt').value;
+
+    let xhr = new XMLHttpRequest();
+
+            xhr.onload = function(){
+                let result= JSON.parse(xhr.responseText)
+                console.log(result)
+            }
+            xhr.open("post", "mem_insertAsk.php",true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+            let newAsk=`ask=${input}`
+            xhr.send(newAsk);	
+
 
     //建立使用者訊息
     let wrapper = document.createElement('div');
@@ -843,7 +974,8 @@ function sentMessage(){
 
 
     let title = document.createElement('span');
-    title.textContent ='使用者';
+    let name=document.querySelector('#memName').innerText
+    title.textContent =name;
     title.setAttribute('class','user-name');
     userArr[userArr.length-1].appendChild(title);
     
@@ -859,7 +991,7 @@ function sentMessage(){
     userHeadArr[userHeadArr.length-1].appendChild(img);
 
     let p = document.createElement('p');
-    let input=document.querySelector('#inputTxt').value;
+    
 
     p .textContent =input;
     userArr[userArr.length-1].appendChild(p);
@@ -888,7 +1020,7 @@ function sentMessage(){
         let trHeadArr= document.querySelectorAll('.trHead');
 
         let img = document.createElement('img');
-        img.src="./images/char_00_1.png";
+        img.src="./images/home_teacher2.png";
         trHeadArr[trHeadArr.length-1].appendChild(img);
 
         let p = document.createElement('p');
@@ -980,7 +1112,7 @@ document.querySelector(".error .cancel").addEventListener('click',closeError)
 
 
 
-
+//=====================================================
 //學伴自動對話
 var talkJpArry=new Array("こんにちは","一緒に勉強しますしょう")
 
