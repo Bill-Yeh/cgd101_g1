@@ -371,26 +371,14 @@
 
 .home_first_info {
   position: absolute;
-  animation: fadeInUp 1.5s ease 1;
+  
   @include lg() {
     bottom: 15%;
     right: 20%;
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
 
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
 
 /* 首頁各島介紹框 */
 .home_first_info,
