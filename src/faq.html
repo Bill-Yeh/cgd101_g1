@@ -147,77 +147,26 @@
                     </div>
                 </div>
                 
+
                 <!-- Vue component 元件==>其他學員留言內容 -->
-                <div>
-                    <article-message v-for="message in messages" v-bind="message"/>
-                </div>
-                
-                <!-- <div class="faq_student_message">
-                    <div class="faq_student1 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_e.png" alt="學員1">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">BBB</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">3:00</span>
-                        </div>
-                    </div>
-                    <div class="faq_student2 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_o.png" alt="學員2">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">CCC</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">3:00</span>
-                        </div>
-                    </div>
-                    <div class="faq_student3 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_i.png" alt="學員3">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">DDD</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">3:00</span>
-                        </div>
-                    </div>
-                    <div class="faq_student4 student">
-                        <div class="faq_student_npc">
-                            <img src="images/studyMap_NPC_u.png" alt="學員4">
-                        </div>
-                        <div class="faq_student_text">
-                            <span class="student_name">EEE</span>
-                            <span class="post_date">2022/05/23</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">B1</span>
-                            <span class="post_time">3:00</span>
-                        </div>
-                    </div>
+                <div class="student_message_info">
+                    <article-message v-for="message in focusMessages" :item="message"/>
                 </div>
                 <div class="faq_user_input">
                     <div class="user_npc">
-                        <img src="images/studyMap_NPC_a.png" alt="學員C">
+                        <img src="" alt="學員">
                     </div>
                     <form action="" method="post">
                         <input type="text" id="user_message" placeholder="我要留言">
                     </form>
                     <div class="user_message_submit">
                         <button class="message_submit_btn" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                                <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                            </svg>
+                            <i class="bi bi-send-fill"></i>
                         </button>
                     </div>
-                </div> -->
             </div>
+            </div>
+
         </section>
     </section>
 
@@ -383,35 +332,22 @@
         Vue.component('article-message',{
             // props:['pic','name','date','info','sequence','time'],
             props:{
-                message:Object
+                item:Object,
             },
             template:`
             <div class="faq_message_info">
                 <div class="faq_student_message">
                     <div class="faq_student1 student">
                         <div class="faq_student_npc">
-                            <img :src="pic" alt="學員1">
+                            <img :src="item.role" alt="學員1">
                         </div>
                         <div class="faq_student_text">
-                            <span class="student_name">{{name}}</span>
-                            <span class="post_date">{{date}}</span>
-                            <p>背就對了!加油</p>
-                            <span class="student_code">{{sequence}}</span>
-                            <span class="post_time">{{time}}</span>
+                            <span class="student_name">{{item.member_name}}</span>
+                            <span class="post_date">{{item.message_date}}</span>
+                            <p>{{item.message_txt}}</p>
+                            <span class="student_code">編號{{item.message_id}}</span>
+                            <span class="post_time">{{item.message_date}}</span>
                         </div>
-                    </div>
-                </div>
-                <div class="faq_user_input">
-                    <div class="user_npc">
-                        <img :src="pic" alt="學員C">
-                    </div>
-                    <form action="" method="post">
-                        <input type="text" id="user_message" placeholder="我要留言">
-                    </form>
-                    <div class="user_message_submit">
-                        <button class="message_submit_btn" type="submit">
-                            <i class="bi bi-send-fill"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -426,6 +362,12 @@
                 messageDate(){
                     return this.message?.message_date
                 },
+                messageContent(){
+                    return this.message?.message_txt
+                },
+                messageId(){
+                    return this.message?.message_id
+                },
             }
         })
 
@@ -436,40 +378,7 @@
                 targetPostKey: '',
                 articleList: [],
                 focusId: 0,
-                messages:[
-                    {
-                        pic:'./images/studyMap_NPC_e.png',
-                        name:'BBB',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B1',
-                        time:'9:00'
-                    },
-                    {
-                        pic:'./images/studyMap_NPC_i.png',
-                        name:'CCC',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B2',
-                        time:'10:00'
-                    },
-                    {
-                        pic:'./images/studyMap_NPC_o.png',
-                        name:'DDD',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B3',
-                        time:'11:00'
-                    },
-                    {
-                        pic:'./images/studyMap_NPC_u.png',
-                        name:'EEE',
-                        date:'2022/5/22',
-                        info:'背就對了!加油!',
-                        sequence:'B4',
-                        time:'12:00'
-                    },
-                ],
+                messages:[]
             },
             methods: {
                 showLesson(type, typeInt){
@@ -480,12 +389,6 @@
                     console.log('implFilterFocusArticlesList')
                     console.log('implFilterFocusArticlesList:'+ post_id)
                     this.targetPostKey = post_id
-                    
-                    // console.log('this.targetPostKey')
-                    // console.log(this.targetPostKey)
-                    // this.tests = processedItemList
-                    // console.log('this.tests')
-                    // console.log(this.tests)
                 },
                 getPostType(postType){
                     let xhr = new XMLHttpRequest();
@@ -503,19 +406,15 @@
                         //     let numberItem = numbers.find(v => v.post_id == item.post_id);
                         //     return {...item, ...numberItem};
                         // })
+                        this.messages = messageText;
+                       
+                        console.log('messages:',messageText);
                         this.articleList = numbers;
                         console.log('articleList:',numbers);
-                        // this.articleList = JSON.parse(xhr.responseText);
-                        // TODO
-                        // if(postType === 1){
-                        //     // 50音
-                        //     this.faqs = JSON.parse(xhr.responseText);
-                        //     console.log(this.faqs);
-                        // }
+
                         // 文章燈箱內容
                         this.focusArticles = numbers;
                         // this.focusArticles = JSON.parse(xhr.responseText);
-                        // console.log(this.focusArticles);
                     }
                     xhr.open("post", "faq.php", true);
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -537,24 +436,23 @@
             created() {
                 let xhr = new XMLHttpRequest();
                 xhr.onload = () =>{
-                    // 50音
-                    // this.faqs = JSON.parse(xhr.responseText);
-                    // console.log(this.faqs);
-                    this.articleList = JSON.parse(xhr.responseText);
-                    
-                    // 文章燈箱內容
-                    this.focusArticles = JSON.parse(xhr.responseText);
+                    // 50音文章列表
+                    this.articleList = JSON.parse(JSON.parse(xhr.responseText).post);
+                    // 文章燈箱留言內容
+                    this.messages = JSON.parse(JSON.parse(xhr.responseText).comment);
+                    // 文章燈箱po文內容
+                    this.focusArticles = JSON.parse(JSON.parse(xhr.responseText).post);
                     // console.log(this.focusArticles);
                 }
-                xhr.open("post", "faq_50.php", true);
+                xhr.open("get", "faq_50.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                let typeset = {};
-                typeset.type = '1';
-                let data_info = `json=${JSON.stringify(typeset)}`;
-                xhr.send(data_info);
+                // let dataset = {};
+                // dataset.action = "1";
+                // let data_info = `json=${JSON.stringify(dataset)}`;
+                xhr.send(null);
+
             },
             computed:{
-                
                 filterFocuArticlesList(){
                     console.log('filterFocuArticlesList')
                     console.log(this.focusArticles)
@@ -565,13 +463,15 @@
                                 return true
                             }
                         })
-                        // console.log('temp')
-                        // console.log(temp)
                         return temp
 
                     }
                     return this.focusArticles
-                }
+                },
+                focusMessages() {
+                    let id = this.filterFocuArticlesList?.[0]?.post_id ?? 0;
+                    return this.messages.filter(v => v.post_id == id);
+                },
             },
             
             el:'#faq',

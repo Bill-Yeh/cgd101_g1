@@ -16,7 +16,7 @@ try{
     $total = [];
 
     // 含留言內容、留言編號
-    $sql = "SELECT message.message_id, message.message_txt FROM `message` LEFT JOIN post ON message.post_id = post.post_id WHERE post.post_type=:post_type;";
+    $sql = "SELECT post.post_id,member.member_name,member.role,message.message_id, message.message_txt, message.message_date FROM `message` LEFT JOIN post ON message.post_id = post.post_id LEFT JOIN member on member.member_id = message.member_id WHERE post.post_type=:post_type;";
     // $sql = "SELECT post.post_id, post.post_date, post.post_txt, post.post_title, post.post_type, member.member_name, member.role,message.message_id,message.message_txt FROM `post`LEFT JOIN member ON post.member_id = member.member_id LEFT JOIN message ON post.post_id = message.post_id WHERE post_type=:post_type;";
 
     $postType = $pdo->prepare($sql);

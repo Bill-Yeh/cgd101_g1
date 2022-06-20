@@ -86,6 +86,7 @@ window.addEventListener('load', function(){
                 memberPassword.value = '';
                 confirmPassword.value = '';
                 loginRegister.style.display = 'none';
+                alert('註冊成功，請登入帳號即可開始學習!');
                 window.location.href = "mem.html";
             }
         }
