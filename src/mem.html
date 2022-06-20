@@ -227,7 +227,6 @@
         <div class="me_content">
             <img src="./images/char_00_eye_open.png" alt="" class="eyes">
             <img id="me" :src="`${roleImg.role}`" alt="char_00_1"></img>
-            
         </div>
         <div class="wall">
             <div class="content">
@@ -241,11 +240,13 @@
         </div>
 
 
+
+
         <!-- 老師對話視窗 -->
         <div class="chetbox">
             <div class="info">
                 <div class="headshot">
-                    <img src="./images/char_00_1.png">
+                    <img src="./images/home_teacher2.png">
                 </div>
                 <span class="teacher-name">語實巨進老師</span>
                 <div class="cancel">
@@ -253,9 +254,12 @@
                     <span></span>
                 </div>
             </div>
-            <div class="conv">
+            <div class="conv" id="askAPP">
+                <template v-for="item in sentence">
+                    <div is="component-askLog" v-bind="item"></div>
+                </template>
                 <!-- <div class="tr">
-                    <span class="tr-name">語實巨進</span>
+                    <span class="tr-name">語實巨進老師</span>
                     <div class=trHead>
                         <img src="./images/char_00.png">
                     </div>
