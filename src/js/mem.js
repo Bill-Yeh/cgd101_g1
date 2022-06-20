@@ -891,6 +891,8 @@ let askCom= Vue.component("component-askLog", {
 
 //開啟談話視窗
 function openChetbox(){
+    
+
     let chetbox=document.querySelector(".chetbox");
     chetbox.style.display='block';
 
@@ -944,6 +946,11 @@ function openChetbox(){
 
 
     document.querySelector(".teacher").src='./images/map_mem_teacher.png'
+
+
+    let bar=document.querySelector(".conv")
+    bar.scrollTop=bar.scrollHeight
+
 
 }
 

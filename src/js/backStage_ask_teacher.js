@@ -83,6 +83,12 @@ let ask_tr = new Vue({
                 }
             }
 
+            setTimeout(()=>{
+                let bar=document.querySelector(".chat_message_block")
+                console.log(bar.scrollHeight)
+                bar.scrollTop=bar.scrollHeight
+            },50)
+
         },
 
         reply: function(){

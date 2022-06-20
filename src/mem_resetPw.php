@@ -17,7 +17,7 @@ try{
     //=========
     
 
-    if($_POST["newPassword"]==$_POST["new_psw_check"] && $_POST["password"]==$_SESSION["password"]){ //檢查輸入資料是否正確
+    if($_POST["newPassword"]==$_POST["new_psw_check"] && $_POST["password"]==$_SESSION["password"]  ){ //檢查輸入資料是否正確
 
         $sql = "UPDATE `tibamefe_cgd101g1`.`member` SET `tibamefe_cgd101g1`.`member`.`password` =:new_psw  WHERE `tibamefe_cgd101g1`. `member`.`member_id` =:mem_id ;"; 
         
