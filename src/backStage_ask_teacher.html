@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="backStage_right_student_list">
+                    <div id="message_list_img_name" class="backStage_right_student_list">
                         <div class="student_list_content">
                             <div class="list_title">
                                 <div class="list_title_content">
@@ -46,19 +46,23 @@
                             </div>
                             <div class="message_list">
                                 <div class="message_list_content">
-                                    <div class="message_list_info">
-                                        <div class="message_list_img_name">
+                                    <div class="message_list_info" id="message_list_info">
+                                        <template v-for="item in userInfo">
+                                            <div is="component-back-chat" v-bind="item"
+                                            @click.native="dataImport" ></div>
+                                        </template>
+
+                                        <!-- <div class="message_list_img_name" id="1" @click="dataImport">
                                             <div class="list_img">
                                                 <img src="./images/studyMap_NPC_o.png" alt="">
                                             </div>
                                             <div class="list_name">
                                                 <span>周阿倫</span>
-                                                <span>初心者</span>
                                             </div>
                                             <div class="new_message">
                                                 <span>1</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -66,35 +70,19 @@
                         <div class="backStage_chat_part">
                             <div class="backStage_chat_content">
                                 <div class="backStage_student_block">
-                                    <div class="backStage_student_name">
-                                        <div class="backStage_student_head">
-                                            <img src="./images/studyMap_NPC_o.png" alt="">
-                                        </div>
-                                        <div class="student_name_level">
-                                            <span>周阿倫</span>
-                                            <span>初心者</span>
-                                        </div>
-                                    </div>
+                                    <template >
+                                        <div is="component-back-chat-thisUser" v-bind="chatRows"></div>
+                                    </template>
                                 </div>
-                                <div class="chat_message_block">
-                                    <div class="backStage_chat_student">
-                                        <div class="student_img">
-                                            <img src="./images/studyMap_NPC_o.png" alt="">
-                                        </div>
-                                        <div class="student_chat">
-                                            <p>您好，我想請教N5會話的第10題?</p>
-                                        </div>
-                                    </div>
-                                    <div class="backStage_chat_teacher">
-                                        <div class="teacher_chat">
-                                            <p>您好，我是語實巨進的老師木村，很高興為您服務。</p>
-                                        </div>
-                                    </div>
+                                <div class="chat_message_block" id="chatroom">
+                                    <template v-for="item in chatRows">
+                                        <div is="component-back-chatroom" v-bind="item"></div>
+                                    </template>
                                 </div>
                                 <div class="backStage_chat_input">
-                                    <form action="" method="post">
-                                        <input type="text">
-                                        <button id="info_send" type="submit">送出</button>
+                                    <form method="post" @keydown.enter="reply">
+                                        <input type="text" id="inputTxt" >
+                                        <button id="info_send" type="button" @click="reply">送出</button>
                                     </form>
                                 </div>
                             </div>
@@ -157,7 +145,7 @@
         </div>
     </div>
 
-    <script src="./js/backStage.js"></script>
+    <script src="./js/backStage_ask_teacher.js"></script>
 
 </body>
 </html>

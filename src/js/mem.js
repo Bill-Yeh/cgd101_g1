@@ -875,7 +875,7 @@ let AskList=
 //對話模板
 let askCom= Vue.component("component-askLog", {
 
-    props:['ask_content','ask_src','ask_time','member_name'],
+    props:['ask_content','ask_src','ask_time','member_name','read_or_not'],
     template:`<div :class='ask_src==1 ?"user":"tr"' >
                 <span :class='ask_src==1 ?   "user-name" : "tr-name"'>{{ ask_src==1 ?member_name :"語實巨進老師"}}</span>
                 <div :class='ask_src==1 ? "userHead" : "trHead"'>
