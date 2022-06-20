@@ -115,16 +115,22 @@
                     }
 
                     .message_list_content{
-                        cursor: pointer;
-                        &:hover{
-                            background-color: #FAE6B8;
-                        }
+                        overflow: scroll;
+                        min-height: 53.7vh;
+                        
+                       
                         .message_list_img_name{
-                            width: 90%;
+                            cursor: pointer;
+                            width: 100%;
                             margin: auto;
-                            padding: 10px 0;
+                            padding: 10px 0px;
                             display: flex;
                             align-items: center;
+                            box-sizing: content-box;
+
+                            &:hover{
+                                background-color: #FAE6B8;
+                            }
                             
 
                             .list_name{
@@ -151,6 +157,7 @@
                                 border-radius: 50%;
                                 display: flex;justify-content: center;
                                 align-items: center;
+                                margin: 0px 10px;
                             }
                         }
                     }
@@ -166,6 +173,7 @@
                     max-height: 60vh;
                     margin-left: 3%;
                     border: 1px solid #000;
+                    overflow: scroll;
 
                     // 學員名稱和頭像
                     .backStage_student_name{
@@ -200,7 +208,9 @@
                         .student_img{
                             width: 10%;
                             height: 10%;
-                            margin: 10px 15px 10px 10px;
+                            margin: 10px;
+                            display: flex;
+                            justify-content: center;
                             img{
                                 width: 80%;
                             }
@@ -209,45 +219,48 @@
                         // 學員訊息
                         .student_chat{
                             background-color: #FAE6B8;
+                            border-radius: 10px;
                             padding: 10px;
                             p{
                                 position: relative;
-                                &::before{
-                                    content: '';
-                                    position: absolute;
-                                    top: -57%;
-                                    left: -24%;
-                                    width: 50px;
-                                    height: 50px;
-                                    clip-path: polygon(58% 48%, 100% 71%, 100% 23%);
-                                    background-color: #FAE6B8;
-                                }
+                                // &::before{
+                                //     content: '';
+                                //     position: absolute;
+                                //     top: -57%;
+                                //     left: -24%;
+                                //     width: 50px;
+                                //     height: 50px;
+                                //     clip-path: polygon(58% 48%, 100% 71%, 100% 23%);
+                                //     background-color: #FAE6B8;
+                                // }
                             }
                         }
                     }
 
                     // 老師回覆
                     .backStage_chat_teacher{
+                        padding: 10px 0px;
                         display: flex;
                         justify-content: flex-end;
 
                         .teacher_chat{
                             background-color: #FAE6B8;
+                            border-radius: 10px;
                             padding: 10px;
                             margin-right: 5%;
 
                             p{
                                 position: relative;
-                                &::before{
-                                    content: '';
-                                    position: absolute;
-                                    top: -35%;
-                                    right: -16%;
-                                    width: 50px;
-                                    height: 50px;
-                                    clip-path: polygon(0 64%, 34% 48%, 0 32%);
-                                    background-color: #FAE6B8;
-                                }
+                                // &::before{
+                                //     content: '';
+                                //     position: absolute;
+                                //     top: -35%;
+                                //     right: -16%;
+                                //     width: 50px;
+                                //     height: 50px;
+                                //     clip-path: polygon(0 64%, 34% 48%, 0 32%);
+                                //     background-color: #FAE6B8;
+                                // }
                             }
                         }
                     }
