@@ -173,7 +173,17 @@
                     max-height: 60vh;
                     margin-left: 3%;
                     border: 1px solid #000;
-                    overflow: scroll;
+
+                    .backStage_chat_content{
+                        height: 100%;
+
+                        .chat_message_block{
+                            overflow-y: auto;
+                            height: 73%;
+                        }
+
+                    }
+                    
 
                     // 學員名稱和頭像
                     .backStage_student_name{
@@ -195,10 +205,8 @@
                         }
                     }
 
-                    // 學員老師聊天區
-                    // .chat_message_block{
-                    //     overflow-y: auto;
-                    // }
+
+                    
 
                     .backStage_chat_student{
                         display: flex;
@@ -206,9 +214,10 @@
 
                         // 學員NPC
                         .student_img{
-                            width: 10%;
-                            height: 10%;
-                            margin: 10px;
+                            width: 8%;
+                            height: 8%;
+                            margin: 0px 5px;
+                            padding: 5px;
                             display: flex;
                             justify-content: center;
                             img{
@@ -239,7 +248,7 @@
 
                     // 老師回覆
                     .backStage_chat_teacher{
-                        padding: 10px 0px;
+                        padding: 5px 0px;
                         display: flex;
                         justify-content: flex-end;
 
@@ -247,7 +256,7 @@
                             background-color: #FAE6B8;
                             border-radius: 10px;
                             padding: 10px;
-                            margin-right: 5%;
+                            margin-right: 3%;
 
                             p{
                                 position: relative;
@@ -272,6 +281,7 @@
                         left: 0;
                         width: 100%;
                         border-top: 1px solid #c4c4c4;
+                        background-color: #fff;
                         
                         form{
                             display: flex;

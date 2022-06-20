@@ -979,16 +979,7 @@ function sentMessage(){
     title.setAttribute('class','user-name');
     userArr[userArr.length-1].appendChild(title);
     
-    let HeadShot = document.createElement('div');
-    HeadShot.setAttribute('class','userHead');
-    userArr[userArr.length-1].appendChild(HeadShot);
-
-    let userHeadArr= document.querySelectorAll('.userHead');
-
-    let img = document.createElement('img');
-    img.src="./images/char_00_1.png";    
     
-    userHeadArr[userHeadArr.length-1].appendChild(img);
 
     let p = document.createElement('p');
     
