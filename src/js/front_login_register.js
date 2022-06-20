@@ -90,6 +90,7 @@ window.addEventListener('load', function(){
 
     // ====================開燈箱和登入註冊切換=============================
 
+    let isLogin = false;
     // 燈箱開
     memIcon.addEventListener('click',function(){
         // 登入開燈箱
@@ -106,9 +107,13 @@ window.addEventListener('load', function(){
             // memIcon.style.display = 'none';
             memArea.style.display = 'none';
         }else{
-            memArea.style.display = 'block';
+            if (isLogin) memArea.style.display = 'block';
         }
+
+        console.log(isLogin)
     })
+
+    
 
     // =================登入驗證==================
     // window.onresize = loginBtn;
@@ -144,6 +149,7 @@ window.addEventListener('load', function(){
                     e.preventDefault();
                     return;
                 }else if(window.innerWidth < 992){
+                    isLogin = true;
                     window.addEventListener('resize',function() {
                         memArea.style.display = 'none';
                         memIcon.style.display = 'none';
@@ -160,6 +166,7 @@ window.addEventListener('load', function(){
                     loginBox.style.width = '10%';
                     moneyArea.style.margin = 'auto';
                 }else if(window.innerWidth > 992){
+                    isLogin = true;
                     memName.innerText = memberWeb.member_name;
                     //將登入表單上的資料清空，並隱藏起來
                     loginAccount.value = '';
@@ -246,12 +253,15 @@ window.addEventListener('load', function(){
         xhr.onload = function(){
             memberWeb = JSON.parse(xhr.responseText);
             if(memberWeb.account){
+                isLogin = true;
                 memName.innerText = memberWeb.member_name;
                 // header上面的東西隱藏/顯示
                 memIcon.style.display = 'none';
                 logout.style.display = 'block';
                 loginBox.style.width = '10%';
                 moneyArea.style.margin = 'auto';
+            } else {
+                isLogin = false;
             }
         }
         xhr.open("get", "front_getMemberInfo.php", true);
@@ -261,6 +271,7 @@ window.addEventListener('load', function(){
         xhr.onload = function(){
             memberWeb = JSON.parse(xhr.responseText);
             if(memberWeb.account){
+                isLogin = true;
                 memName.innerText = memberWeb.member_name;
                 // header上面的東西隱藏/顯示
                 memIcon.style.display = 'none';
@@ -268,6 +279,8 @@ window.addEventListener('load', function(){
                 memArea.style.display = 'block';
                 loginBox.style.width = '25%';
                 moneyArea.style.margin = '0';
+            } else {
+                isLogin = false;
             }
         }
         xhr.open("get", "front_getMemberInfo.php", true);

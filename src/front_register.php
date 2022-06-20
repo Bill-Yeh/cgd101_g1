@@ -4,7 +4,8 @@
 try{
   $dbname = "tibamefe_cgd101g1";
 	$user = "root";
-	$password = "Sarah34302521";
+	// $password = "Sarah34302521";
+  $password = "Lakers11220913";
 	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
 	$options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
   $pdo = new PDO($dsn, $user, $password, $options);
@@ -20,8 +21,8 @@ try{
     echo json_encode('帳號已存在');
     exit();
   }
+  $sql = "INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`, `role`) VALUES (NULL, :member_name, :account, :password, '1', '0', '1', './images/char_00_0.png')";
 
-  $sql = "INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `pass_lesson`, `member_status`, `coin`, `level`, `role`) VALUES (NULL, :member_name, :account, :password, NULL, '1', '0', '1', './images/char_00_0.png')";
   $member = $pdo->prepare($sql);
   $member->bindValue(":member_name", $_POST["member_name"]);
   $member->bindValue(":account", $_POST["account"]);

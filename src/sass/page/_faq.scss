@@ -642,14 +642,16 @@
                 }
             }
         }
-
+        .student_message_info{
+            padding-bottom: 8%;
+        }
         .faq_student_message{
             padding: 30px 30px 0 30px;
 
             // 學員留言
             .student{
                 display: flex;
-                padding: 10px 0 45px 0;
+                padding: 10px 0 30px 0;
                 border-bottom: 1px solid rgb(174, 174, 174);
 
                 .faq_student_text{
@@ -665,6 +667,12 @@
             }
         }
 
+        .faq_student_npc{
+            img{
+                width: 70%;
+            }
+        }
+
         // user留言欄位
         .faq_user_input{
             width: 100%;
@@ -673,14 +681,17 @@
             display: flex;
             align-items: center;
             background-color: #fff;
+            padding: 3px;
             @include xl(){
-                width: 80%;
+                width: 79.5%;
             }
 
             .user_npc{
-                margin-left: 10px;
+                display: flex;
+                justify-content: center;
+                width: 10%;
                 img{
-                    width: 80%;
+                    width: 40%;
                 }
             }
 
