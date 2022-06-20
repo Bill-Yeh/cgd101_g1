@@ -253,7 +253,7 @@
                             </div>
                             <div class="faq_message">
                                 <i class="bi bi-chat-dots"></i>
-                                <p class="message_quantity">{{item.fav}}</p>
+                                <p class="message_quantity">{{item.messageNum}}</p>
                             </div>
                         </div>
                         <div class="faq_report">
@@ -381,7 +381,10 @@
 
         // Vue component 元件==>其他學員留言內容
         Vue.component('article-message',{
-            props:['pic','name','date','info','sequence','time'],
+            // props:['pic','name','date','info','sequence','time'],
+            props:{
+                message:Object
+            },
             template:`
             <div class="faq_message_info">
                 <div class="faq_student_message">
@@ -413,6 +416,17 @@
                 </div>
             </div>
             `,
+            computed:{
+                messageImg(){
+                    return this.message?.role
+                },
+                memberName(){
+                    return this.message?.member_name
+                },
+                messageDate(){
+                    return this.message?.message_date
+                },
+            }
         })
 
         let articleList = new Vue({
@@ -499,6 +513,7 @@
                         //     console.log(this.faqs);
                         // }
                         // 文章燈箱內容
+                        this.focusArticles = numbers;
                         // this.focusArticles = JSON.parse(xhr.responseText);
                         // console.log(this.focusArticles);
                     }
@@ -523,13 +538,12 @@
                 let xhr = new XMLHttpRequest();
                 xhr.onload = () =>{
                     // 50音
-                    this.faqs = JSON.parse(xhr.responseText);
-                    console.log(this.faqs);
-
+                    // this.faqs = JSON.parse(xhr.responseText);
+                    // console.log(this.faqs);
                     this.articleList = JSON.parse(xhr.responseText);
-
+                    
                     // 文章燈箱內容
-                    // this.focusArticles = JSON.parse(xhr.responseText);
+                    this.focusArticles = JSON.parse(xhr.responseText);
                     // console.log(this.focusArticles);
                 }
                 xhr.open("post", "faq_50.php", true);
