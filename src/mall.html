@@ -382,7 +382,7 @@
             <!-- 確認是否購買課程--燈箱 -->
             <div class="pay_box" id="pay_box">
                 <div class="text_box" id="text_box">
-                    <div class="text"></div>
+                    <div class="text">是否確認購買?</div>
                     <div class="choice">
                         <div class="yes_btn" id="yes_btn">確認</div>
                         <div class="no_btn" id="no_btn">取消</div>
@@ -392,7 +392,8 @@
             <!-- 確認是否購買裝備--燈箱 -->
             <div class="tool_box" id="tool_box">
                 <div class="tool_text_box" id="tool_text_box">
-                    <div class="tool_text">是否確認購買?</div>
+                    <div class="tool_text" id="tool_choice">是否確認購買?</div>
+                    <div class="tool_text" id="tool_having" style="display: none;">無法重複購買</div>
                     <div class="choice">
                         <div class="tool_yes_btn" id="tool_y_btn">確認</div>
                         <div class="tool_no_btn" id="tool_n_btn">取消</div>
@@ -400,11 +401,10 @@
                 </div>
             </div>
             @@include('layout/login_register.html')
-            <script src="./js/mall.js"></script>
+
 
 
             <script>
-
                 //撈課程資料寫入HTML
                 let lessonxhr = new XMLHttpRequest();
                 let lesson_title = document.querySelectorAll(".lesson_title");
@@ -416,7 +416,6 @@
                 lessonxhr.send(null);
 
                 lessonxhr.onload = function () {
-
                     let lesson = JSON.parse(lessonxhr.responseText);
 
                     //i=要放入課程的欄位
@@ -432,13 +431,8 @@
                                 //console.log(i + 12);
                             }
                         }
-
                     }
-
                 };
-
-            </script>
-            <script>
 
                 //撈資料庫裝備資料寫入HTML
                 let item_titlexhr = new XMLHttpRequest();
@@ -467,8 +461,6 @@
                         }
                     }
                 };
-            </script>
-            <script>
 
                 let having_itemxhr = new XMLHttpRequest();
                 let hat = document.querySelectorAll(".hat");
@@ -477,30 +469,143 @@
                 let tool_coin_text = document.querySelectorAll(".tool_price");
 
 
+
                 having_itemxhr.open("get", "./mall_having_item.php", true);
-
-
 
                 having_itemxhr.send(null);
 
                 having_itemxhr.onload = function () {
-
                     let having_item = JSON.parse(having_itemxhr.responseText);
 
+                    //當抓不到東西時,就會停止動作
                     if (!having_item) return;
-                    having_item = having_item.map(v => v.item_id);
 
-                    console.log(having_item);
+                    //having_item儲存成新陣列,只顯示value
+                    having_item = having_item.map((v) => v.item_id);
+                    //console.log(having_item);
+
                     for (i = 0; i < having_item.length; i++) {
+
+                        let having_text = document.getElementById("tool_having");
+                        let tool_choice = document.getElementById("tool_choice");
                         let item_idx = having_item[i] - 1;
                         having[item_idx].style.display = "block";
                         tool_coin[item_idx].style.display = "none";
-                        tool_coin_text[item_idx].innerText = "已擁有"
+                        tool_coin_text[item_idx].innerText = "已擁有";
 
+                    }
+                };
+
+            </script>
+            <script>
+                //裝備
+                let tool = document.querySelectorAll(".hat");
+                let show_tool = document.getElementById("tool_box");
+                let tool_no = document.getElementById("tool_n_btn");
+                let tool_yes = document.getElementById("tool_y_btn");
+
+
+                //課程
+                let lesson_no = document.getElementById("no_btn");
+                let lesson_yes = document.getElementById("yes_btn");
+                let lesson_pay = document.getElementById("pay_box");
+                let lesson_pay_box = document.querySelectorAll(".item_info");
+
+                //登入狀態
+                let name = document.getElementById("memName");
+                let loginRegister = document.getElementById("login_register");
+
+
+
+
+                function tool_login() {
+                    //如果名字是空字串,跳登入燈箱
+                    if (name.innerText == "") {
+                        loginRegister.style.display = "flex";
+                    }
+                    //else if,跳確認購買燈箱
+                    else if (name.innerText != "") {
+                        tool_pay();
+                    }
+                }
+
+                function lesson_login() {
+                    //如果名字是空字串,跳登入燈箱
+                    if (name.innerText == "") {
+                        loginRegister.style.display = "flex";
+                    }
+                    //else if,跳確認購買燈箱 
+                    else if (name.innerText != "") {
+                        show_box();
+                    }
+                }
+
+
+
+                function tool_pay() {
+                    show_tool.style.display = "block";
+                }
+
+                function tool_n_btn() {
+                    show_tool.style.display = "none";
+                }
+                function tool_y_btn(e) {
+                    console.log(e.target);
+                    show_tool.style.display = "none";
+                    let xhr = new XMLHttpRequest();
+                    // xhr.open("get", "", true);
+
+                }
+
+                function show_box() {
+                    lesson_pay.style.display = "block";
+                }
+
+                function no_button() {
+                    lesson_pay.style.display = "none";
+                }
+
+                function yes_button() {
+                    window.location.href = "./payment.html";
+                }
+
+
+
+
+                function init() {
+
+                    lesson_pay_box.onclick = show_box;
+                    lesson_no.onclick = no_button;
+                    lesson_yes.onclick = yes_button;
+                    tool_no.onclick = tool_n_btn;
+                    tool_yes.onclick = tool_y_btn;
+
+                    for (i = 0; i < lesson_pay_box.length; i++) {
+                        lesson_pay_box[i].onclick = lesson_login;
+                    }
+
+                    for (i = 0; i < tool.length; i++) {
+                        tool[i].onclick = tool_login;
                     }
 
 
-                };
+                }
+
+                //console.log(show_tool)
+                window.addEventListener("load", init, false)
+
+                // for (i = 0; i < tool.length; i++) {
+                //     tool[i].addEventListener("click", function () {
+                //         if (tool_coin_text.innerText != "123")
+                //             console.log("123")
+                //     });
+
+
+                // }
+
+            </script>
+            <script>
+
             </script>
 
 </body>
