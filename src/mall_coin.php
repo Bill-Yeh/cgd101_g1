@@ -1,6 +1,7 @@
 <?php
-
+$coin = 0;
 session_start();
+$_SESSION["coin"] -= $coin;
 try{
 	//=====連接資料庫=====//
 
@@ -52,28 +53,29 @@ try{
 //1.sql指令
 
  $mem_info_sql = "SELECT coin FROM member where member_id = :member_id";
-  $item_info_sql = "SELECT item_price FROM item where item_id = 1";
+$item_info_sql = "SELECT item_price FROM item where item_id = :item_id";
+
 
     //2.要資料庫準備接收指令
  $get_mem_qdata = $pdo->prepare($mem_info_sql);
  $get_item_qdata = $pdo->prepare($item_info_sql);
  //前台input傳來的變數(看是get還是post),可以用在sql指令中
  
- $get_mem_qdata->bindValue(":member_id", 1);
+ $get_mem_qdata->bindValue(":member_id", $_SESSION["member_id"]);
+
+
 
     //3.執行sql指令
  $get_mem_qdata->execute();
  $get_item_qdata->execute();
- // if( $get_qdata->rowCount()>=5){ //查無此人
- //  echo 2;
- // }else{ //
- //  echo 1;
- // }
+
+ 
     //4.要抓全部還是只抓值
- $mem_coin_data = $get_mem_qdata->fetchAll(PDO::FETCH_ASSOC);
- $item_price_data = $get_item_qdata->fetchAll(PDO::FETCH_ASSOC);
-$mem_coin_value = $mem_coin_data[0]['coin'];
-$item_price_value = $item_price_data[0]['item_price'];
+$mem_coin_data = $get_mem_qdata->fetchAll(PDO::FETCH_ASSOC);
+$item_price_data = $get_item_qdata->fetchAll(PDO::FETCH_ASSOC);
+//$mem_coin_value = $mem_coin_data[0]['coin'];
+//$item_price_value = $item_price_data[0]['item_price'];
+
  //宣告會員購買該裝備剩餘的coin
  
 
@@ -85,17 +87,15 @@ $item_price_value = $item_price_data[0]['item_price'];
 //  $update_mem_coin_qdata->execute();
  //update member end
 
- //update member start 加錢
-//  $mem_after_coin = 1000;
-//  $update_mem_coin_sql = "UPDATE member SET coin = :coin WHERE member_id = :member_id";
-//  $update_mem_coin_qdata = $pdo->prepare($update_mem_coin_sql);
-//  $update_mem_coin_qdata->bindValue(":coin", $mem_after_coin);
-//  $update_mem_coin_qdata->bindValue(":member_id", 1);
-//  $update_mem_coin_qdata->execute();
- //update member end
+$sql2 = "UPDATE `member` SET `coin`=:coin WHERE `member`.`member_id` = :member_id;";
+		$pay_coin = $pdo->prepare($sql2);
+		$pay_coin->bindValue(":coin", $_SESSION["coin"]);
+		$pay_coin->bindValue(":member_id", $_SESSION["member_id"]);
+		$pay_coin->execute();
+		
 
 }catch(PDOException $e){
-	//$msg =  "系統暫時無法提供服務, 請聯絡系統維護人員<br>";
+	
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
 }

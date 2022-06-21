@@ -25,9 +25,13 @@ try{
 
     //1.sql指令
 
-	$sql = "SELECT item_id FROM `item_record` where member_id = :member_id";
+	$sql = "select i.item_id,ir.item_id from item i join item_record ir on (i.item_id = ir.item_id) where member_id = :member_id";
+
+
     //2.要資料庫準備接收指令
 	$get_qdata = $pdo->prepare($sql);
+	
+
     $get_qdata->bindValue(":member_id", $_SESSION["member_id"]);
 	
 
@@ -37,6 +41,7 @@ try{
 
     //5.把資料傳回去js檔(變成js檔的xhr.responseText，可以放在onload用)
 	echo json_encode($q_data);
+
 
 }catch(PDOException $e){
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
