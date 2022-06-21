@@ -105,29 +105,29 @@
                         <p>文章內容含有:</p>
                         <form id="report_post" action="" method="post">
                             <div class="faq_violence">
-                                <input type="radio" name="report" id="violence" checked>
+                                <input type="radio" name="report" id="violence" checked v-model="report" value="暴力內容">
                                 <label for="violence">暴力內容</label>
                             </div>
                             <div class="faq_ads">
-                                <input type="radio" name="report" id="ads">
+                                <input type="radio" name="report" id="ads" v-model="report" value="廣告推銷">
                                 <label for="ads">廣告推銷</label>
                             </div>
                             <div class="faq_porn">
-                                <input type="radio" name="report" id="porn">
+                                <input type="radio" name="report" id="porn" v-model="report" value="色情內容">
                                 <label for="porn">色情內容</label>
                             </div>
                             <div class="faq_trash">
-                                <input type="radio" name="report" id="trash">
+                                <input type="radio" name="report" id="trash" v-model="report" value="垃圾內容">
                                 <label for="trash">垃圾內容</label>
                             </div>
                             <div class="faq_terrorism">
-                                <input type="radio" name="report" id="terrorism">
+                                <input type="radio" name="report" id="terrorism" v-model="report" value="恐怖主義">
                                 <label for="terrorism">恐怖主義</label>
                             </div>
                         </form>
                     </div>
                     <div class="faq_report_btn">
-                        <button id="report_submit" type="submit">檢舉</button>
+                        <button id="report_submit" type="button" @click="postReport">檢舉</button>
                     </div>
                 </div>
             </div>
@@ -185,7 +185,7 @@
                 item : Object,
             },
             template:`
-            <div class="faq_mem faq_mem_A" isActive>
+            <div class="faq_mem faq_mem_A" ref="post">
                 <div class="faq_mem_npc">
                     <img src="./images/char_00_1.png" alt="學員A">
                 </div>
@@ -363,7 +363,7 @@
                         <div class="faq_student_text">
                             <span class="student_name">{{item.member_name}}</span>
                             <p>{{item.message_txt}}</p>
-                            <span class="student_code">編號{{item.message_id}}</span>
+                            <span class="student_code">B{{item.message_id}}&nbsp</span>
                             <span class="post_time">{{item.message_date}}</span>
                         </div>
                     </div>
@@ -400,7 +400,8 @@
                 postTitle:'',
                 postText:'',
                 postType:'',
-                inputMessage:''
+                inputMessage:'',
+                report:''
             },
             methods: {
                 showLesson(type, typeInt){
@@ -441,7 +442,7 @@
                     let data_info = `json=${JSON.stringify(dataset)}`;
                     xhr.send(data_info);
                 },
-                close(){
+                close(){  //關閉燈箱+清除欄位值
                     document.getElementById('faq_message').style.display='none';
                     document.getElementById('faq_report').style.display='none';
                     this.postTitle = '';
@@ -449,15 +450,15 @@
                     document.getElementById('faq_post').style.display='none';
                     this.inputMessage = '';
                 },
-                postShow(){
-                    let memName = document.getElementById('memName');
-                    if(memName.innerText != ''){
+                postShow(){ //show發文燈箱+阻擋沒燈帳號發文功能
+                    let logOut = document.getElementById('logout');
+                    if(logOut.style.display = 'block'){
                         document.getElementById('faq_post').style.display='flex';
                     }else{
                         alert('請登入帳號');
                     }
                 },
-                userPost(){
+                userPost(){ //發文燈箱送出資料到資料庫
                     if(this.postTitle == '' || this.postText == ''){
                         alert('標題和內文不可為空白');
                     }else{
@@ -479,10 +480,9 @@
                         xhr.send(data_info);
                     }
                 },
-                sendMessage(){
-                    let memName = document.getElementById('memName');
-                    console.log(memName.innerText);
-                    if(memName.innerText == ''){
+                sendMessage(){ //留言功能
+                    let logOut = document.getElementById('logout');
+                    if(logOut.style.display = 'none'){
                         alert('請登入帳號');
                     }else if(this.inputMessage == ''){
                         alert('欄位不可為空值');
@@ -503,6 +503,20 @@
                     let data_info = `message_txt=${this.inputMessage}&post_id=${this.targetPostKey}`;
 
                     console.log('留言資訊:',data_info);
+                    xhr.send(data_info);
+                },
+                postReport(){ //檢舉功能
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function(){
+                        alert('管理員審核中');
+                        document.getElementById('faq_report').style.display='none';
+                    }
+                    xhr.open("post", "faq_report.php", true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                    let data_info = `report_reason=${this.report}&post_id=${this.targetPostKey}`;
+
+                    console.log('檢舉資訊:',data_info);
                     xhr.send(data_info);
                 }
             },
