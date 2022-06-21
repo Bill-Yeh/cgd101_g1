@@ -16,8 +16,8 @@ body {
   .tool_text_box {
     display: none;
     position: absolute;
-    width: 250px;
-    height: 100px;
+    width: 200px;
+    height: 80px;
     background-color: #fae6b8;
     border: 5px solid #f9bb4d;
     margin: auto;
@@ -298,7 +298,7 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
+            width: 50px;
             @include md() {
               width: 50px;
               padding: 5px;
