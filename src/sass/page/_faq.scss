@@ -116,11 +116,14 @@
 
 
 
+#memName{
+    cursor: pointer;
+    @include lg(){
+        cursor: default;
+    }
+}
 // section
 .faq{
-    .isActive{
-        display: block;
-    }
     margin-top: 25%;
     @include md(){
         margin-top: 15%;

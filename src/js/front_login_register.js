@@ -314,6 +314,7 @@ window.addEventListener('load', function(){
             window.location.replace('mem.html');
         })
     }
+    
 
     // 點叉叉關燈箱
     loginRegisterClose.addEventListener('click',function(){

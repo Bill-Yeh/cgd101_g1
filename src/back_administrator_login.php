@@ -3,7 +3,8 @@ session_start();
 try{
   $dbname = "tibamefe_cgd101g1";
   $user = "root";
-  $password = "Sarah34302521";
+  // $password = "Sarah34302521";
+  $password = "Lakers11220913";
 
   $dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
   $options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL,  PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];

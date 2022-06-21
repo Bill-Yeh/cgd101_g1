@@ -68,27 +68,27 @@
                         <form id="article_post" action="" method="post">
                             <div class="faq_post_title">
                                 <label for="article_title">標題</label>
-                                <input type="text" placeholder="請輸入標題" id="post_article_title">
+                                <input type="text" placeholder="請輸入標題" id="post_article_title" v-model="postTitle">
                             </div>
                             <div class="faq_post_type">
                                 <label for="article_type">類別</label>
-                                <select name="" id="article_type_select">
-                                    <option value="type">50音</option>
-                                    <option value="type">單字</option>
-                                    <option value="type">會話</option>
-                                    <option value="type">升級測驗</option>
+                                <select name="" id="article_type_select" v-model="postType" :value="postType">
+                                    <option value="1">50音</option>
+                                    <option value="2">單字</option>
+                                    <option value="3">會話</option>
+                                    <option value="4">升級測驗</option>
                                 </select>
                             </div>
                             <div class="faq_post_paragragh">
                                 <label for="article_paragragh">
                                     內文
                                 </label>
-                                <textarea name="post" id="paragragh" placeholder="請輸入內文" style="resize:none;width:96%;height: 200px;;"></textarea>
+                                <textarea name="post" id="paragragh" placeholder="請輸入內文" style="resize:none;width:96%;height: 200px;;" v-model="postText"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="faq_post_btn">
-                        <button type="submit" id="post_article-btn">發文</button>
+                        <button type="button" id="post_article-btn" @click="userPost">發文</button>
                     </div>
                 </div>
             </div>
@@ -154,13 +154,13 @@
                 </div>
                 <div class="faq_user_input">
                     <div class="user_npc">
-                        <img src="" alt="學員">
+                        <img src="./images/char_00_1.png" alt="學員">
                     </div>
                     <form action="" method="post">
-                        <input type="text" id="user_message" placeholder="我要留言">
+                        <input type="text" id="user_message" placeholder="我要留言" v-model="inputMessage">
                     </form>
                     <div class="user_message_submit">
-                        <button class="message_submit_btn" type="submit">
+                        <button id="message_send" class="message_submit_btn" type="button" @click="sendMessage">
                             <i class="bi bi-send-fill"></i>
                         </button>
                     </div>
@@ -187,7 +187,7 @@
             template:`
             <div class="faq_mem faq_mem_A" isActive>
                 <div class="faq_mem_npc">
-                    <img :src="item.role" alt="學員A">
+                    <img src="./images/char_00_1.png" alt="學員A">
                 </div>
                 <div class="faq_article_content">
                     <span>{{item.member_name}}</span>
@@ -216,7 +216,11 @@
                 setHeart(e) {
                     //確認localStorage有沒有收藏清單
                     // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                
+                    let memName = document.getElementById('memName');
+                    if(memName.innerText = ''){
+                        alert('請登入帳號');
+                        return;
+                    }
                     let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
                     e.currentTarget.classList.toggle('show');
                     
@@ -234,17 +238,32 @@
                     this.$emit('update', post_id)
                 },
                 reportShow(){
-                    document.getElementById('faq_report').style.display='flex';
+                    let memName = document.getElementById('memName');
+                    if(memName.innerText != ''){
+                        document.getElementById('faq_report').style.display='flex';
+                    }else{
+                        alert('請登入帳號');
+                    }
                 }
             },
             mounted() { //初始化
-                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
-                // 初始化愛心的狀態，判斷是否在list內
-                if (fav.indexOf(this.id) > -1) {
-                        // this.$refs.heart.classList.add('show')
-                    } else {
-                        // this.$refs.heart.classList.remove('show')
+                let memName = document.getElementById('memName');
+                if(memName.innerText = ''){
+                    alert('請登入帳號');
+                    return;
                 }
+                let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
+                if(fav.indexOf(this.id) > -1){
+                    this.$refs.heart.classList.add('show')
+                }else{
+                    this.$refs.heart.classList.remove('show')
+                }
+                // 初始化愛心的狀態，判斷是否在list內
+                // if (fav.indexOf(this.id) > -1) {
+                //         this.$refs.heart.classList.add('show')
+                //     } else {
+                //         this.$refs.heart.classList.remove('show')
+                // }
             },
         })
 
@@ -258,7 +277,7 @@
             <div class="faq_message_article">
                 <div class="faq_student">
                     <div class="faq_npc">
-                        <img :src="getFocusArticle" alt="學員A">
+                        <img src="./images/char_00_1.png" alt="學員A">
                     </div>
                     <div class="name_time">
                         <span>{{getFocusName}}</span>
@@ -339,11 +358,10 @@
                 <div class="faq_student_message">
                     <div class="faq_student1 student">
                         <div class="faq_student_npc">
-                            <img :src="item.role" alt="學員1">
+                            <img src="./images/char_00_1.png" alt="學員1">
                         </div>
                         <div class="faq_student_text">
                             <span class="student_name">{{item.member_name}}</span>
-                            <span class="post_date">{{item.message_date}}</span>
                             <p>{{item.message_txt}}</p>
                             <span class="student_code">編號{{item.message_id}}</span>
                             <span class="post_time">{{item.message_date}}</span>
@@ -378,7 +396,11 @@
                 targetPostKey: '',
                 articleList: [],
                 focusId: 0,
-                messages:[]
+                messages:[],
+                postTitle:'',
+                postText:'',
+                postType:'',
+                inputMessage:''
             },
             methods: {
                 showLesson(type, typeInt){
@@ -401,11 +423,6 @@
                         let numbers = JSON.parse(JSON.parse(xhr.responseText).numbers);
                         console.log('數量:',numbers);
 
-                        // 合併上方兩個指令
-                        // result = messageText.map((item) => {
-                        //     let numberItem = numbers.find(v => v.post_id == item.post_id);
-                        //     return {...item, ...numberItem};
-                        // })
                         this.messages = messageText;
                        
                         console.log('messages:',messageText);
@@ -427,10 +444,66 @@
                 close(){
                     document.getElementById('faq_message').style.display='none';
                     document.getElementById('faq_report').style.display='none';
+                    this.postTitle = '';
+                    this.postText = '';
                     document.getElementById('faq_post').style.display='none';
+                    this.inputMessage = '';
                 },
                 postShow(){
-                    document.getElementById('faq_post').style.display='flex';
+                    let memName = document.getElementById('memName');
+                    if(memName.innerText != ''){
+                        document.getElementById('faq_post').style.display='flex';
+                    }else{
+                        alert('請登入帳號');
+                    }
+                },
+                userPost(){
+                    if(this.postTitle == '' || this.postText == ''){
+                        alert('標題和內文不可為空白');
+                    }else{
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = function(){
+                            alert('發文成功!');
+                            // 按下發文按鈕後，發文燈箱消失
+                            document.getElementById('faq_post').style.display = 'none';
+
+                            // 發文成功後，更新頁面文章
+                            articleList.getPostType(articleList.postType);
+                        }
+                        xhr.open("post", "faq_post.php", true);
+                        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                        let data_info = `post_title=${this.postTitle}&post_txt=${this.postText}&post_type=${this.postType}`;
+
+                        console.log('PO文資訊:',data_info);
+                        xhr.send(data_info);
+                    }
+                },
+                sendMessage(){
+                    let memName = document.getElementById('memName');
+                    console.log(memName.innerText);
+                    if(memName.innerText == ''){
+                        alert('請登入帳號');
+                    }else if(this.inputMessage == ''){
+                        alert('欄位不可為空值');
+                    }
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function(){
+                        // 這裡的articleList是指最上層的new vue變數
+                        articleList.inputMessage = '';
+                        
+                        let messageText = JSON.parse(xhr.responseText);
+
+                        articleList.messages = messageText;
+
+                    }
+                    xhr.open("post", "faq_message.php", true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                    let data_info = `message_txt=${this.inputMessage}&post_id=${this.targetPostKey}`;
+
+                    console.log('留言資訊:',data_info);
+                    xhr.send(data_info);
                 }
             },
             created() {
@@ -446,11 +519,7 @@
                 }
                 xhr.open("get", "faq_50.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                // let dataset = {};
-                // dataset.action = "1";
-                // let data_info = `json=${JSON.stringify(dataset)}`;
                 xhr.send(null);
-
             },
             computed:{
                 filterFocuArticlesList(){
@@ -476,83 +545,6 @@
             
             el:'#faq',
         });
-
-
-        
-        
-        
-
-        
-        // let articleDetail = new Vue({
-        //     data:{
-        //         focusId: 0,
-        //         // articles:[
-        //         //     {
-        //         //         id:'1',
-        //         //         pic:'./images/studyMap_NPC_a.png',
-        //         //         name:'AAA',
-        //         //         time:'2022/5/22/3:00',
-        //         //         title:'日文50音要怎麼背?',
-        //         //         paragragh:'你們知道50音要怎麼背嗎?'
-        //         //     },
-        //         //     {
-        //         //         id:'2',
-        //         //         pic:'./images/studyMap_NPC_e.png',
-        //         //         name:'BBB',
-        //         //         title:'單字好難背啊啊啊啊?',
-        //         //         paragragh:'你們知道單字要怎麼背嗎?',
-        //         //         quantity:'1'
-        //         //     },
-        //         // ],
-        //         messages:[
-        //             {
-        //                 pic:'./images/studyMap_NPC_e.png',
-        //                 name:'BBB',
-        //                 date:'2022/5/22',
-        //                 info:'背就對了!加油!',
-        //                 sequence:'B1',
-        //                 time:'9:00'
-        //             },
-        //             {
-        //                 pic:'./images/studyMap_NPC_i.png',
-        //                 name:'CCC',
-        //                 date:'2022/5/22',
-        //                 info:'背就對了!加油!',
-        //                 sequence:'B2',
-        //                 time:'10:00'
-        //             },
-        //             {
-        //                 pic:'./images/studyMap_NPC_o.png',
-        //                 name:'DDD',
-        //                 date:'2022/5/22',
-        //                 info:'背就對了!加油!',
-        //                 sequence:'B3',
-        //                 time:'11:00'
-        //             },
-        //             {
-        //                 pic:'./images/studyMap_NPC_u.png',
-        //                 name:'EEE',
-        //                 date:'2022/5/22',
-        //                 info:'背就對了!加油!',
-        //                 sequence:'B4',
-        //                 time:'12:00'
-        //             },
-        //         ],
-        //     },
-        //     computed: {
-        //         focusArticle() {
-        //             return this.articles.find(v => v.id == this.focusId) ?? this.articles[0]
-        //         },
-        //     },
-        //     watch: {
-        //         focusId(nVal, oVal) {
-        //             console.log(nVal)
-        //             //處理愛心變色
-        //         },
-        //     },
-        //     el:'#faq_message',
-        // });
-
 
     </script>
 

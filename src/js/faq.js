@@ -25,15 +25,18 @@ window.addEventListener('load', function() {
     // 內文
     let artilceParagragh = document.getElementById('paragragh');
 
+    // 類別
+    let articleType = document.getElementById('article_type_select');
+
     // 發文btn
     let articleBtn = document.getElementById('post_article-btn');
 
     // 欄位不能為空值得驗證
-    articleBtn.addEventListener('click',function(){
-        if(articleTitle.value == '' || artilceParagragh.value == ''){
-            alert('標題和內文不可為空白');
-        }
-    })
+    // articleBtn.addEventListener('click',function(){
+    //     if(articleTitle.value == '' || artilceParagragh.value == '' || articleType.value == ''){
+    //         alert('標題和內文不可為空白');
+    //     }
+    // })
 
     // =============檢舉驗證===================
 
@@ -45,4 +48,14 @@ window.addEventListener('load', function() {
 
     // // 檢舉送出btn
     // let reportBtn = document.getElementById('report_submit');
+
+
+    // let memName = document.getElementById('memName');
+    // let messageSend =document.getElementById('message_send');
+    // messageSend.addEventListener('click',function(){
+    //     if(memName.innerText = ''){
+    //         alert('請登入帳號');
+    //         return;
+    //     }
+    // })
 });
