@@ -3,6 +3,7 @@ session_start();
 
 // $_POST["action"] ==> Login
 try{
+<<<<<<< HEAD
   // $dbname = "tibamefe_cgd101g1";
 	// $user = "root";
 	// $password = "";
@@ -14,6 +15,13 @@ try{
 
   //上線之後用的
   require_once("connect_cgd101g1.php");
+=======
+  $dbname = "tibamefe_cgd101g1";
+	$user = "root";
+	// $password = "fsrs90115";
+	$password = "Sarah34302521";
+  // $password = "Lakers11220913";
+>>>>>>> Sarah
 
 
   $sql = "select * from `member` where account=:account and password=:password"; 

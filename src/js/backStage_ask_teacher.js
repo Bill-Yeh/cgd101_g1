@@ -19,7 +19,7 @@ let ask_user_com= Vue.component("component-back-chat", {
 
 let chatroom = Vue.component("component-back-chatroom", {
 
-    props:['ask_content','ask_src','member_name','read_or_not','member_id'],
+    props:['ask_content','ask_time','ask_src','member_name','read_or_not','member_id'],
     template:
     `<div :class='ask_src==1? "backStage_chat_student":"backStage_chat_teacher"'>
         <div class="student_img" v-if='ask_src==1'>
@@ -27,6 +27,9 @@ let chatroom = Vue.component("component-back-chatroom", {
         </div>
         <div :class='ask_src==1? "student_chat":"teacher_chat"'>
             <p>{{ask_content}}</p>
+        </div>
+        <div class="ask_time">
+            {{ask_time}}
         </div>
     </div> `
 })
@@ -92,39 +95,44 @@ let ask_tr = new Vue({
         },
 
         reply: function(){
-
-            let xhr = new XMLHttpRequest();
-                xhr.onload = function(){
-                    let result= JSON.parse(xhr.responseText)
-                    console.log(result)
-                }
-                xhr.open("post", "backstage_insertAsk.php",true);
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-                let newAsk=`ask=${document.querySelector('#inputTxt').value}&user=${document.querySelector('.student_name_level').id}`
-                xhr.send(newAsk);	
-
-
-            //建立使用者訊息
-            let txt=document.querySelector("#inputTxt")
-            let user=document.querySelector('.student_name_level')
-            let userName=document.querySelector('.student_name_level > span')
-
-
-            let reply={
-                ask_content: txt.value,
-                ask_src:2,
-                member_id: user.id,
-                member_name:userName.innerText,
-                read_or_not:0,
-
+            if(document.querySelector('#inputTxt').value==""){
+                alert("欄位不可為空白，請輸入資料")
             }
+            else{
 
-            ask_tr.chatRows.push(reply)
+                let xhr = new XMLHttpRequest();
+                    xhr.onload = function(){
+                        let result= JSON.parse(xhr.responseText)
+                        console.log(result)
+                    }
+                    xhr.open("post", "backstage_insertAsk.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+                    let newAsk=`ask=${document.querySelector('#inputTxt').value}&user=${document.querySelector('.student_name_level').id}`
+                    xhr.send(newAsk);	
 
 
-            //清空輸入欄位
-            document.querySelector('#inputTxt').value=""
+                //建立使用者訊息
+                let txt=document.querySelector("#inputTxt")
+                let user=document.querySelector('.student_name_level')
+                let userName=document.querySelector('.student_name_level > span')
+
+
+                let reply={
+                    ask_content: txt.value,
+                    ask_src:2,
+                    member_id: user.id,
+                    member_name:userName.innerText,
+                    read_or_not:0,
+
+                }
+
+                ask_tr.chatRows.push(reply)
+
+
+                //清空輸入欄位
+                document.querySelector('#inputTxt').value=""
+            }
             
 
         }
