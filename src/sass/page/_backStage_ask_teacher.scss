@@ -201,15 +201,19 @@
                         padding: 10px;
                         background-color: #F9BB4D;
                         border-bottom: 1px solid #000;
+                        .backStage_student_head{
+                            width: 50px;
+                            height: auto;
+                            img{
+                                width: 100%;
+                            }
+                        }
                         .student_name_level{
                             display: flex;
                             flex-direction: column;
                             padding-left: 10px;
                             span{
-                                line-height: 1.2;
-                            }
-                            span:nth-child(2){
-                                font-size: 13px;
+                                font-size: 22px;
                             }
                         }
                     }
@@ -240,6 +244,7 @@
                             border-radius: 10px;
                             padding: 10px;
                             max-width: 65%;
+                            margin-left: 3%;
                             word-wrap:break-word;
                             height: auto;
                             p{

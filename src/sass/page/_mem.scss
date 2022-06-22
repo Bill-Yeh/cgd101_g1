@@ -630,11 +630,13 @@
             position: absolute;
             top:calc((100% - 150px)*0.5);
             left: calc((100% - 150px)*0.5);
+           
         
             animation-duration: 1s;
             animation-name: slidein;
             animation-iteration-count: infinite;
             animation-direction: alternate;
+
     
             @keyframes slidein{
                 from {
@@ -653,7 +655,25 @@
                 left: -2px;
             }
         }  
+
     }
+
+    .first_bg{
+        width: 50%;
+        position: absolute;
+        top:40%;
+        left: 25%;
+        z-index: -1;
+    }
+    .first_sky{
+        position: absolute;
+        top:0px;
+        opacity: 85%;
+        width:120%;
+        height: 100%;
+        z-index: -2;
+    }
+
     .talkBox{
         display: none;
         background-color: #FAE6B8;

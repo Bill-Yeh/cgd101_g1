@@ -229,9 +229,26 @@ function createCanvas(){
     
     let image = new Image();
     image.src = canvas.toDataURL("image/jpeg",1);
-    let book = image.src;
+    // let book = image.src;
+    
+    //將圖片存入伺服器及dataBase
+    setTimeout(()=>{
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                let ans= JSON.parse(xhr.responseText);
+                console.log(ans)
+            };
+
+            xhr.open("post", "studyMap_canvas.php",true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                
+            let newImg= `img=${image.src}`
+            xhr.send(newImg);
+        },100)
+
+
     // console.log(book)
-    localStorage.settings = book;
+    // localStorage.settings = book;
     // console.log(localStorage);
     // console.log(localStorage.settings)
     })

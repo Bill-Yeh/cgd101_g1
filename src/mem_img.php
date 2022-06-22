@@ -15,26 +15,18 @@ try{
 
 
     //=========
-	$sql = "SELECT `ask_log`.`ask_src`,`ask_log`.`member_id`,`ask_log`.`read_or_not`,`ask_log`.`ask_time`,`member`.`member_name`,`member`.`role`
-	FROM `tibamefe_cgd101g1`.`ask_log` join `tibamefe_cgd101g1`.`member` 
-			on `ask_log`.`member_id`=`member`.`member_id`
-	order by `ask_log`.`ask_time`ASC;"; 
+	$sql = "SELECT `map_img` FROM `tibamefe_cgd101g1`.`member`  WHERE `member_id` =:mem_id"; 
+    
+    
+	$products = $pdo->prepare($sql);
+	$products->bindValue("mem_id",$_SESSION["member_id"]);
+	$products->execute();
 
-
-	$info = $pdo->prepare($sql);
-	// $info->bindValue("mem_id",$_GET["memid"]);
-	$info->execute();
-
-	$ask_prodRows = $info->fetchAll(PDO::FETCH_ASSOC);
-
-	echo json_encode($ask_prodRows);
-
-
+	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
+	echo json_encode($prodRows);
 
 }catch(PDOException $e){
-	
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
-	
 }
 ?>
