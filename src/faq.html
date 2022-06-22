@@ -216,11 +216,6 @@
                 setHeart(e) {
                     //確認localStorage有沒有收藏清單
                     // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                    let memName = document.getElementById('memName');
-                    if(memName.innerText == ''){
-                        alert('請登入帳號');
-                        return;
-                    }
                     let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
                     e.currentTarget.classList.toggle('show');
                     
@@ -446,11 +441,11 @@
                     this.inputMessage = '';
                 },
                 postShow(){ //show發文燈箱+阻擋沒燈帳號發文功能
-                    let logOut = document.getElementById('logout');
-                    if(logOut.style.display = 'none'){
-                        alert('請登入帳號');
-                    }else{
+                    let memName = document.getElementById('memName');
+                    if(memName.innerText != ''){
                         document.getElementById('faq_post').style.display='flex';
+                    }else{
+                        alert('請登入帳號');
                     }
                 },
                 userPost(){ //發文燈箱送出資料到資料庫

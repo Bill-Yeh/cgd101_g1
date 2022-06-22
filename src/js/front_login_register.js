@@ -250,17 +250,17 @@ window.addEventListener('load', function(){
         xhr.send(null);
     })
     
-window.addEventListener('resize',function(){
-    if(window.innerWidth < 992){
-        memName.addEventListener('click',function(){
-            window.location.replace('mem.html');
-        })
-    }else if(window.innerWidth > 992){
-        memArea.addEventListener('click',function(){
-            window.location.replace('mem.html');
-        })
-    }
-})
+    window.addEventListener('resize',function(){
+        if(window.innerWidth < 992){
+            memName.addEventListener('click',function(){
+                window.location.replace('mem.html');
+            })
+        }else if(window.innerWidth > 992){
+            memArea.addEventListener('click',function(){
+                window.location.replace('mem.html');
+            })
+        }
+    })
     
 
     // 點叉叉關燈箱
