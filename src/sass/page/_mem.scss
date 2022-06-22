@@ -780,6 +780,7 @@
                     justify-content: center;
 
 
+
                     // background-color: #F37420;
                     @include md{
                         height: 70%;
@@ -817,61 +818,71 @@
                         // background-color: rgb(227, 208, 39);
                         display: flex;
                         align-items:center;
-                    }
                     
-                    .closet_char_img{
-                        // display: block;
+                    
+                        .closet_char_img{
+                            // display: block;
 
-                        margin: auto;
-                        height: 140px;
-                        // vertical-align: bottom;
-                    }
- 
-                    .hat{
-                        // opacity: 0.5;
-                        // background-color: rgb(255, 21, 0);
-                        z-index: 9;
-                        position: absolute;
-                        width: 140px;
-                        height: 100px;
-                        top: 0px;
-                        left: 0px;
-                        img{
-                            width: 100%;
-                        }
-                    }
-
-                    .dress{
-                        // opacity: 0.5;
-                        // background-color: rgb(21, 255, 0);
-                        z-index: 9;
-                        position: absolute;
-                        width: 120px;
-                        height: 60px;
-                        bottom: 10px;
-                        left: 10px;
-                        img{
-                            width: 100%;
+                            margin: auto;
+                            height: 140px;
+                            // vertical-align: bottom;
                         }
 
-                        
-                    }
+                        .closet_char_eyes_inside{
+                            display: none;
+                            width: 140px;
+                            position: absolute;
+                            top:8px;
+                            left:-1px;
+                            z-index: 8;
 
-                    .tool{
-                        // opacity: 0.5;
-                        // background-color: aqua;
-                        z-index: 9;
-                        position: absolute;
-                        width: 90px;
-                        height: 50px;
-                        bottom: 10px;
-                        left: 20px;
-                        img{
-                            width: 100%;
+                        }
+    
+                        .hat{
+                            // opacity: 0.5;
+                            // background-color: rgb(255, 21, 0);
+                            z-index: 9;
+                            position: absolute;
+                            width: 140px;
+                            height: 100px;
+                            top: 0px;
+                            left: 0px;
+                            img{
+                                width: 100%;
+                            }
                         }
 
-                        // background-color: rgb(255, 42, 0);
-                        
+                        .dress{
+                            // opacity: 0.5;
+                            // background-color: rgb(21, 255, 0);
+                            z-index: 9;
+                            position: absolute;
+                            width: 120px;
+                            height: 60px;
+                            bottom: 10px;
+                            left: 10px;
+                            img{
+                                width: 100%;
+                            }
+
+                            
+                        }
+
+                        .tool{
+                            // opacity: 0.5;
+                            // background-color: aqua;
+                            z-index: 9;
+                            position: absolute;
+                            width: 90px;
+                            height: 50px;
+                            bottom: 10px;
+                            left: 20px;
+                            img{
+                                width: 100%;
+                            }
+
+                            // background-color: rgb(255, 42, 0);
+                        }
                     }
 
 

@@ -69,22 +69,18 @@ new Vue({
 })
 
 
-
-
-
-
-
 //確定是否是首次註冊後進入會員專區
 function showChar(){
     let url=document.referrer;
+    console.log(url)
     let urlArry=url.split("/")
     let frontUrl=urlArry[urlArry.length-1]
+    console.log(urlArry)
 
     if(frontUrl == 'signUp_animation.html'){
         //開啟燈箱
         let black=document.querySelector(".bg_00");
-        black.style.display='flex';
-
+        black.style.display='flex'; 
         setTimeout(()=>{
 
             let lightBoxInfo=document.querySelector(".getchar_lightBox");
@@ -112,6 +108,7 @@ function showChar(){
                 talkBox.style.width="100%"
             },3000)
         },1200)
+        // window.location.assign("mem.html");
     }
 }
 
@@ -697,6 +694,46 @@ function convertCanvasToImage(){
 
     }),100)
 
+    setTimeout(()=>{
+        document.querySelector(".closet_char_eyes_inside").style.display="block"
+    },150)
+
+    setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null},{allowTaint: true}).then(function(e) {
+
+        let canvasArr=document.querySelectorAll("canvas")
+        
+        document.body.appendChild(e);
+        if(canvasArr.length>0){
+            document.querySelector("canvas").remove()
+        }
+
+        let canvas=document.querySelector("canvas")
+        let image = new Image();
+	    image.src = canvas.toDataURL();
+
+        // console.log(image.src)
+
+
+        setTimeout(()=>{
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                let ans= JSON.parse(xhr.responseText);
+                console.log(ans)
+            };
+
+            xhr.open("post", "mem_updateImg.php",true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                
+            let newImg= `img=${image.src}`
+            xhr.send(newImg);
+        },100)
+
+    }),200)
+
+    setTimeout(()=>{
+        document.querySelector(".closet_char_eyes_inside").style.display="none"
+    },300)
+
 }
 
 document.querySelector(".store").addEventListener("click",convertCanvasToImage)
@@ -1137,7 +1174,11 @@ function sentErrorInfo(){
     }
 
     xhr.open("post", "mem_error.php");
-    xhr.send(new FormData(document.getElementById("Form")));
+    
+    let Form=document.getElementById("Form")
+    // let newForm= new FormData(Form)
+    // console.log(newForm.get('upFile').tmp_name)
+    xhr.send(new FormData(Form));
 }
 
 

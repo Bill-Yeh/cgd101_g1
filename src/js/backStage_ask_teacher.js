@@ -1,10 +1,10 @@
 let ask_user_com= Vue.component("component-back-chat", {
 
-    props:['ask_src','member_name','member_id','read_or_not','member_id','new_msg'],
+    props:['ask_src','member_name','member_id','read_or_not','member_id','new_msg','role'],
     template:
     `<div class="message_list_img_name" :id=member_id>
         <div class="list_img">
-            <img src="./images/studyMap_NPC_o.png" alt="">
+            <img :src=role alt="">
         </div>
         <div class="list_name">
             <span>{{member_name}}</span>
@@ -19,11 +19,11 @@ let ask_user_com= Vue.component("component-back-chat", {
 
 let chatroom = Vue.component("component-back-chatroom", {
 
-    props:['ask_content','ask_time','ask_src','member_name','read_or_not','member_id'],
+    props:['ask_content','ask_time','ask_src','member_name','read_or_not','member_id','role'],
     template:
     `<div :class='ask_src==1? "backStage_chat_student":"backStage_chat_teacher"'>
         <div class="student_img" v-if='ask_src==1'>
-            <img src="./images/studyMap_NPC_o.png" alt="" v-if='ask_src==1'>
+            <img :src=role alt="" v-if='ask_src==1'>
         </div>
         <div :class='ask_src==1? "student_chat":"teacher_chat"'>
             <p>{{ask_content}}</p>
@@ -37,11 +37,11 @@ let chatroom = Vue.component("component-back-chatroom", {
 
 let thisUser = Vue.component("component-back-chat-thisUser", {
 
-    props:['ask_content','ask_src','member_name','read_or_not','member_id'],
+    props:['ask_content','ask_src','member_name','read_or_not','member_id','role'],
     template:
     `<div class="backStage_student_name">
     <div class="backStage_student_head">
-        <img src="./images/studyMap_NPC_o.png" alt="">
+        <img :src=role alt="">
     </div>
     <div :id=member_id class="student_name_level" >
         <span>{{member_name}}</span>
