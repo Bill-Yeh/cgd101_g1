@@ -12,7 +12,6 @@
   width: 100%;
   margin: 50px 0 0 0;
   position: relative;
-  
 }
 
 .sun_pic {
@@ -64,6 +63,18 @@
   position: absolute;
   width: 30px;
   height: 30px;
+  @include md() {
+    width: 70px;
+    height: 40px;
+  }
+  @include lg() {
+    width: 80px;
+    height: 50px;
+  }
+  @include xl() {
+    width: 100px;
+    height: 70px;
+  }
 }
 
 /* 首頁第一島npc1 */
@@ -372,14 +383,12 @@
 
 .home_first_info {
   position: absolute;
-  
+
   @include lg() {
     bottom: 15%;
     right: 20%;
   }
 }
-
-
 
 /* 首頁各島介紹框 */
 .home_first_info,
@@ -944,18 +953,18 @@
   }
 
   .home_first_island_pic img {
-    width: 60%;
+    width: 80%;
     height: 100%;
   }
 
   /* 首頁第一島npc */
-  .home_first_island_npc1,
-  .home_first_island_npc2,
-  .home_first_island_npc3,
-  .home_first_island_npc4 {
-    width: 100px;
-    height: 70px;
-  }
+  // .home_first_island_npc1,
+  // .home_first_island_npc2,
+  // .home_first_island_npc3,
+  // .home_first_island_npc4 {
+  //   width: 100px;
+  //   height: 70px;
+  // }
 
   /* 首頁第一島npc1 */
   .home_first_island_npc1 {
@@ -1036,8 +1045,9 @@
 
   /* 首頁介紹內容 */
   .home_first_info {
+    width: 70%;
     left: 20%;
-    bottom: 50%;
+    bottom: 20%;
     position: absolute;
   }
 
@@ -1121,6 +1131,14 @@
     img {
       width: 90px;
       height: 80px;
+    }
+  }
+  .lesson_talk {
+    left: 30%;
+    top: 2%;
+    img {
+      width: 180px;
+      height: 100px;
     }
   }
 
