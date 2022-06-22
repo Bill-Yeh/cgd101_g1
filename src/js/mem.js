@@ -12,6 +12,25 @@ new Vue({
 })
 
 
+
+let map=new Vue({
+    el:'.map_lightBox',
+    data:{
+        prodRows:[],
+    },
+    beforeCreate(){
+        let xhr = new XMLHttpRequest();
+
+		xhr.onload = function(){
+            map.prodRows = JSON.parse(xhr.responseText)
+            console.log(map.prodRows)
+        };
+		xhr.open("get", "mem_img.php",true);
+		xhr.send();	
+    }
+})
+
+
 //交易紀錄請求
 let buyListVue=
 new Vue({
@@ -72,10 +91,8 @@ new Vue({
 //確定是否是首次註冊後進入會員專區
 function showChar(){
     let url=document.referrer;
-    console.log(url)
     let urlArry=url.split("/")
     let frontUrl=urlArry[urlArry.length-1]
-    console.log(urlArry)
 
     if(frontUrl == 'signUp_animation.html'){
         //開啟燈箱
@@ -116,6 +133,8 @@ function showChar(){
 //進入引導
 function pageTour(){
     let black=document.querySelector(".bg_00");
+    document.querySelector(".first_bg").style.display="none";
+    document.querySelector(".first_sky").style.display="none";
     black.style.backgroundColor='rgba(0, 0, 0, 0.8)';
     let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
     let talkInside = document.getElementById("firstSpeak");
@@ -188,6 +207,7 @@ function guideClose(){
     let black =document.querySelector(".bg_00");
     closeguide.style.display="none";
     black.style.display="none";
+    window.location.href="mem.html"
 };
 function guideAgain(){
     let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
@@ -866,7 +886,7 @@ let AskList=
             xhr.onload = function(){
                 AskList.sentence = JSON.parse(xhr.responseText)
                
-                if(AskList.sentence){ //如果學生已經發問過
+                if(AskList.sentence.length){ //如果學生已經發問過
                     let filter=AskList.sentence.filter(index => index.ask_src=="2" && index.read_or_not=="0")
 
                     if(filter.length!="0"){ //是否有未讀訊息
@@ -940,7 +960,6 @@ function openChetbox(){
 
 
     if(document.querySelector('.tr') == null){
-
         setTimeout(()=>{
             let wrapper = document.createElement('div');
             wrapper.setAttribute('class','tr');

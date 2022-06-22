@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="backStage_right_table_part">
-                        <table class="account_table_title table_title">
+                        <table class="account_table_title table_title" id="errorApp">
                             <tr class="table_header_row">
                                 <th>通報編號</th>
                                 <th>通報時間</th>
@@ -51,19 +51,25 @@
                                 <th>處理進度</th>
                                 <th></th>
                             </tr>
-                            <tr class="table_data_row odd">
+
+                            <template v-for="item in reporterInfo">
+                                <tr is="component-back-report" v-bind="item">
+                                </tr>
+                            </template>
+
+                            <!-- <tr class="table_data_row odd">
                                 <td>01</td>
                                 <td>2022/05/17 18:32:50</td>
                                 <td>01</td>
                                 <td>購買地圖無法解鎖...</td>
                                 <td>
                                     <select name="" id="">
-                                        <option value="solved">已處理</option>
                                         <option value="unsolved">未處理</option>
+                                        <option value="solved">已處理</option>
                                     </select>
                                 </td>
                                 <td><button class="lightBox_btn edit_btn" @click="show">檢視</button></td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </div>
@@ -101,6 +107,10 @@
                                     <label for="report_solve">處理進度</label>
                                     <input type="text" id="report_solve" value="已處理" readonly>
                                 </div>
+                                <div class="errorImg">
+                                    <img src="" alt="">
+
+                                </div>
                             </form>
                         </div>
                         <div class="backStage_lightBox_saveBtn">
@@ -113,7 +123,7 @@
         </div>
     </div>
 
-    <script src="./js/backStage.js"></script>
+    <script src="./js/backStage_report.js"></script>
 
 </body>
 </html>

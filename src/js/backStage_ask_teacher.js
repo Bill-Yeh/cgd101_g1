@@ -22,9 +22,6 @@ let chatroom = Vue.component("component-back-chatroom", {
     props:['ask_content','ask_time','ask_src','member_name','read_or_not','member_id','role'],
     template:
     `<div :class='ask_src==1? "backStage_chat_student":"backStage_chat_teacher"'>
-        <div class="student_img" v-if='ask_src==1'>
-            <img :src=role alt="" v-if='ask_src==1'>
-        </div>
         <div :class='ask_src==1? "student_chat":"teacher_chat"'>
             <p>{{ask_content}}</p>
         </div>
@@ -37,7 +34,7 @@ let chatroom = Vue.component("component-back-chatroom", {
 
 let thisUser = Vue.component("component-back-chat-thisUser", {
 
-    props:['ask_content','ask_src','member_name','read_or_not','member_id','role'],
+    props:['ask_content','ask_src','member_name','read_or_not','member_id','role','ask_time'],
     template:
     `<div class="backStage_student_name">
     <div class="backStage_student_head">
@@ -60,10 +57,21 @@ let ask_tr = new Vue({
         dataImport: function(event){
             //取得點擊到的userId
             let _this=event.target;
+            let list=document.querySelectorAll('.message_list_img_name')
+
+            for(i=0;i<list.length;i++){
+                list[i].style.backgroundColor='#fff'
+            }
+            
+
             while(_this.className != "message_list_img_name"){
                 _this=_this.parentNode
             }
             let thisUser=_this.id
+
+            _this.style.backgroundColor='#FAE6B8'
+
+
 
             //請求對話紀錄
             let xhr = new XMLHttpRequest();
@@ -103,7 +111,15 @@ let ask_tr = new Vue({
                 let xhr = new XMLHttpRequest();
                     xhr.onload = function(){
                         let result= JSON.parse(xhr.responseText)
-                        console.log(result)
+
+                        ask_tr.chatRows.push(result[0])
+
+                        setTimeout(()=>{
+                            let bar=document.querySelector(".chat_message_block")
+                            bar.scrollTop=bar.scrollHeight
+                        },150)
+                        
+
                     }
                     xhr.open("post", "backstage_insertAsk.php",true);
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -111,23 +127,10 @@ let ask_tr = new Vue({
                     let newAsk=`ask=${document.querySelector('#inputTxt').value}&user=${document.querySelector('.student_name_level').id}`
                     xhr.send(newAsk);	
 
+                    // setTimeout(()=>{},150)
+                    
 
-                //建立使用者訊息
-                let txt=document.querySelector("#inputTxt")
-                let user=document.querySelector('.student_name_level')
-                let userName=document.querySelector('.student_name_level > span')
-
-
-                let reply={
-                    ask_content: txt.value,
-                    ask_src:2,
-                    member_id: user.id,
-                    member_name:userName.innerText,
-                    read_or_not:0,
-
-                }
-
-                ask_tr.chatRows.push(reply)
+                
 
 
                 //清空輸入欄位
