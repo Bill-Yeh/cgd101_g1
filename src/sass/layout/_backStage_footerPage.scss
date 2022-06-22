@@ -1,0 +1,14 @@
+.backStage_footer_qData {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: static;
+}
+
+.currentPage{
+    color: map-get($color, 'backstage_h');
+    cursor: default;
+    &:hover{
+        cursor: default;
+    }
+}

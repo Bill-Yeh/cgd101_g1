@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: map-get($color , bgc_y );
     z-index: 20;
+    // flex-grow: 1; //上線用的
 
     .backStage_nav_list{
         height: 100%;

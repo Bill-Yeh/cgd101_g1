@@ -256,3 +256,33 @@
         }
     }
 }
+
+
+// ========== 三角形新增的東西 ========== //
+//表格偶數排變白色
+.table_data_row:nth-child(odd){
+    background-color: #fff;
+}
+
+// 操作下的「編輯」與「刪除」按鈕
+.backStage_edit_btn,.backStage_delete_btn{
+    border: none;
+    border-radius: 5px;
+    background-color: map-get($color , primary );
+    padding: 5px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: $fontCh;
+    cursor: pointer;
+}
+
+.backStage_edit_btn{
+    margin-right: 5px;
+}
+
+.backStage_delete_btn{
+    &:hover{
+        color: #fff;
+        background-color:red;
+    }
+}
