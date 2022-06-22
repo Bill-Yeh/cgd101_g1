@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
+<<<<<<< HEAD
 -- 產生時間： 2022-06-22 10:28:04
+=======
+-- 產生時間： 2022-06-22 10:45:41
+>>>>>>> Bill
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -32,19 +36,22 @@ CREATE TABLE `ask_log` (
   `ask_time` datetime NOT NULL COMMENT 'Not Null',
   `ask_content` varchar(500) NOT NULL COMMENT 'Not Null',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `ans_backstage_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `ask_src` int NOT NULL COMMENT '1:會員諮詢，:2:教師回答'
+  `ans_backstage_id` int NOT NULL DEFAULT '3' COMMENT 'Not Null(FK)',
+  `ask_src` int NOT NULL COMMENT '1:會員諮詢，:2:教師回答',
+  `read_or_not` int NOT NULL DEFAULT '0' COMMENT '0-對方未讀;1-對方已讀'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- 傾印資料表的資料 `ask_log`
 --
 
-INSERT INTO `ask_log` (`ask_id`, `ask_time`, `ask_content`, `member_id`, `ans_backstage_id`, `ask_src`) VALUES
-(1, '2022-06-03 15:59:05', '請問N5單字第8題的答案是?', 1, 1, 1),
-(2, '2022-06-04 15:59:05', '您好，N5單字第8題的答案是あか。', 2, 2, 2),
-(3, '2022-06-03 16:01:09', '請問會話要怎麼練習比較好?', 3, 3, 1),
-(4, '2022-06-03 18:02:02', '多聽多看多寫，就會熟練了。', 1, 1, 2);
+INSERT INTO `ask_log` (`ask_id`, `ask_time`, `ask_content`, `member_id`, `ans_backstage_id`, `ask_src`, `read_or_not`) VALUES
+(1, '2022-06-03 15:59:05', '請問N5單字第8題的答案是?', 1, 3, 1, 1),
+(2, '2022-06-04 15:59:05', '您好，N5單字第8題的答案是あか。', 2, 3, 2, 1),
+(3, '2022-06-03 16:01:09', '請問會話要怎麼練習比較好?', 3, 3, 1, 1),
+(4, '2022-06-03 18:02:02', '多聽多看多寫，就會熟練了。', 1, 3, 2, 1),
+(16, '2022-06-21 03:25:33', '有人在嗎', 1, 3, 1, 1),
+(29, '2022-02-01 10:38:48', '請問?', 2, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -101,7 +108,7 @@ CREATE TABLE `error` (
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `error_title` varchar(200) DEFAULT NULL,
   `error_txt` varchar(800) NOT NULL COMMENT 'Not Null',
-  `error_file` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `error_file` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `error_status` char(1) NOT NULL COMMENT 'Not Null(0-未審核,1-通過,2-未通過)',
   `error_datetime` datetime(6) NOT NULL COMMENT 'Not Null'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -111,9 +118,9 @@ CREATE TABLE `error` (
 --
 
 INSERT INTO `error` (`error_id`, `member_id`, `error_title`, `error_txt`, `error_file`, `error_status`, `error_datetime`) VALUES
-(1, 1, NULL, '購買n5單字課程後，無法解鎖地圖', './images/report/error1.png', '0', '2022-06-04 16:47:02.000000'),
-(2, 2, NULL, '購買裝備後，無法正常穿戴', './images/report/error2.png', '2', '2022-06-03 16:47:02.000000'),
-(3, 3, NULL, '留言區無法按讚', './images/report/error3.png', '1', '2022-06-02 16:48:36.000000');
+(1, 1, '地圖未解鎖', '購買n5單字課程後，無法解鎖地圖', './images/report/error1.png', '0', '2022-06-04 16:47:02.000000'),
+(2, 2, '換裝壞了', '購買裝備後，無法正常穿戴', './images/report/error2.png', '2', '2022-06-03 16:47:02.000000'),
+(3, 3, '按讚壞了', '留言區無法按讚', './images/report/error3.png', '1', '2022-06-02 16:48:36.000000');
 
 -- --------------------------------------------------------
 
@@ -198,7 +205,7 @@ CREATE TABLE `item_record` (
 
 INSERT INTO `item_record` (`item_order_id`, `member_id`, `item_id`, `item_on`, `payment_time`) VALUES
 (1, 1, 1, 0, '2022-05-01 14:04:07.000000'),
-(2, 2, 2, 0, '2022-05-04 14:04:07.000000'),
+(2, 2, 2, 1, '2022-05-04 14:04:07.000000'),
 (3, 3, 3, 0, '2022-05-06 07:23:31.000000'),
 (4, 1, 2, 0, '2022-05-07 19:03:07.000000'),
 (5, 1, 3, 0, '2022-05-08 19:03:07.000000'),
@@ -263,9 +270,7 @@ INSERT INTO `lesson` (`lesson_id`, `lesson_name`, `lesson_img`, `lesson_price`, 
 (18, 'N1單字', './images/payement_map.png', 300, 'N1單字大全，系統化統整N1單字，依日檢出題基準進行模擬', 2, 1),
 (19, 'N1會話', './images/payement_map.png', 300, 'N1會話大全，集結日檢N1高頻率出現的會話，讓你輕鬆自學！', 3, 1),
 (20, '單字統整', './images/payement_map.png', 300, 'N5~N1單字統整精華濃縮日檢N5~N1所有高分必備單字，絕對超滿足。', 2, 1),
-(21, '會話統整', './images/payement_map.png', 300, 'N5~N1會話統整精華濃縮日檢N5~N1所有高分必備會話，絕對超滿足', 3, 1),
-(22, '情境會話', './images/payment_map.png', 300, '情境會話，日本點餐、參拜、泡溫泉相關情境對話，讓你自助旅遊也不怕！', 3, 1),
-(23, '日本文化', './images/payment_map.png', 300, '日本文化，幫助大家理解日本文化，宛如置身日\r\n本社會一般，感受真實日本的普遍樣\r\n貌。', 2, 1);
+(21, '會話統整', './images/payement_map.png', 300, 'N5~N1會話統整精華濃縮日檢N5~N1所有高分必備會話，絕對超滿足', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -384,7 +389,7 @@ INSERT INTO `member_level` (`level`, `title`) VALUES
 
 CREATE TABLE `message` (
   `message_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
-  `message_date` datetime NOT NULL COMMENT 'Not Null',
+  `message_date` datetime(6) NOT NULL COMMENT 'Not Null',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
   `post_id` int NOT NULL COMMENT 'Not Null(FK)',
   `message_txt` varchar(800) NOT NULL COMMENT 'Not Null'
@@ -395,11 +400,11 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`message_id`, `message_date`, `member_id`, `post_id`, `message_txt`) VALUES
-(1, '2022-06-04 09:00:00', 1, 1, '+1想參加讀書會'),
-(2, '2022-06-03 04:00:00', 2, 1, 'QQ我沒報名到JPLT考試'),
-(3, '2022-06-02 11:00:00', 3, 1, '+1 我也想要有個伴一起讀書'),
-(4, '2022-06-10 18:00:00', 2, 4, '背就對了!加油'),
-(5, '2022-06-10 03:00:00', 1, 4, '背就對了!加油');
+(1, '2022-06-04 16:32:42.000000', 1, 1, '+1想參加讀書會'),
+(2, '2022-06-03 16:33:54.000000', 2, 1, 'QQ我沒報名到JPLT考試'),
+(3, '2022-06-02 16:33:54.000000', 3, 1, '+1 我也想要有個伴一起讀書'),
+(4, '2022-06-10 19:22:01.000000', 2, 4, '背就對了!加油'),
+(5, '2022-06-10 19:22:01.000000', 1, 4, '背就對了!加油');
 
 -- --------------------------------------------------------
 
@@ -410,7 +415,7 @@ INSERT INTO `message` (`message_id`, `message_date`, `member_id`, `post_id`, `me
 CREATE TABLE `post` (
   `post_id` int NOT NULL COMMENT 'Not Null(PK,AI)',
   `member_id` int NOT NULL COMMENT 'Not Null(FK)',
-  `post_date` datetime NOT NULL COMMENT 'Not Null',
+  `post_date` datetime(6) NOT NULL COMMENT 'Not Null',
   `post_txt` varchar(800) NOT NULL COMMENT 'Not Null',
   `post_title` varchar(300) NOT NULL COMMENT 'Not Null',
   `post_type` int NOT NULL COMMENT '1-五十音，2-單字，3-會話，4-升級測驗',
@@ -422,14 +427,14 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `member_id`, `post_date`, `post_txt`, `post_title`, `post_type`, `post_status`) VALUES
-(1, 1, '2022-05-05 16:18:08', '有誰有報名今年12月的JLPT N4考試? 有沒有興趣來讀書會一起練習討論呢?', '今年12月的JLPT N4考試', 4, 1),
-(2, 2, '2022-05-10 16:18:08', '有誰可以推薦一下甚麼日劇適合初學者練習聽力呢?', '適合初學者練習聽力的日劇', 4, 1),
-(3, 3, '2022-05-20 16:20:11', '升級測驗會話第3題為甚麼答案不是a?', '升級測驗會話第3題', 4, 1),
-(4, 3, '2022-05-22 18:46:20', '你們知道50音要怎麼背嗎?', '日文50音要怎麼背?', 1, 1),
-(5, 2, '2022-05-22 20:46:40', '你們知道單字要怎麼背嗎？', '單字好難背啊啊啊啊！', 2, 1),
-(6, 3, '2022-05-28 12:10:30', '徵求5名夥伴一起學習日文會話，有誰想+1呢？', '日文會話讀書會，有興趣參加嗎？', 3, 1),
-(7, 2, '2022-05-30 14:20:10', '最近想練習日語聽力，但不知道該選甚麼影集好呢？', '有人有推薦的日劇嗎？想練習日文聽力', 4, 1),
-(8, 2, '2022-05-30 20:30:50', 'N4測驗的第3題想了好久還是不知道答案，有誰可以解答一下呢？', '請問N4測驗的第3題為甚麼答案是B啊？', 4, 1);
+(1, 1, '2022-05-05 16:18:08.000000', '有誰有報名今年12月的JLPT N4考試? 有沒有興趣來讀書會一起練習討論呢?', '今年12月的JLPT N4考試', 4, 1),
+(2, 2, '2022-05-10 16:18:08.000000', '有誰可以推薦一下甚麼日劇適合初學者練習聽力呢?', '適合初學者練習聽力的日劇', 4, 1),
+(3, 3, '2022-05-20 16:20:11.000000', '升級測驗會話第3題為甚麼答案不是a?', '升級測驗會話第3題', 4, 1),
+(4, 3, '2022-05-22 18:46:20.000000', '你們知道50音要怎麼背嗎?', '日文50音要怎麼背?', 1, 1),
+(5, 2, '2022-05-22 20:46:40.000000', '你們知道單字要怎麼背嗎？', '單字好難背啊啊啊啊！', 2, 1),
+(6, 3, '2022-05-28 12:10:30.000000', '徵求5名夥伴一起學習日文會話，有誰想+1呢？', '日文會話讀書會，有興趣參加嗎？', 3, 1),
+(7, 2, '2022-05-30 14:20:10.000000', '最近想練習日語聽力，但不知道該選甚麼影集好呢？', '有人有推薦的日劇嗎？想練習日文聽力', 4, 1),
+(8, 2, '2022-05-30 20:30:50.000000', 'N4測驗的第3題想了好久還是不知道答案，有誰可以解答一下呢？', '請問N4測驗的第3題為甚麼答案是B啊？', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -645,7 +650,11 @@ INSERT INTO `q_data` (`option_id`, `lesson_id`, `txt`, `ans`, `option_content1`,
 (149, 11, '不好意思', 'すみません', 'はじめまして', 'おねがいします', 'さよなら', 10, 1),
 (150, 11, '拜託', 'おねがいします', 'はじめまして', 'すみません', 'さよなら', 10, 1),
 (151, 11, '再見', 'さよなら', 'すみません', 'はじめまして', 'おねがいします', 10, 1),
+<<<<<<< HEAD
 (152, 11, 'おはようございます', '早安', '晚安', '你好嗎', '肚子餓', 10, 1);
+=======
+(152, 21, '早安', 'おはよ', 'よおは', 'よおはおは', 'よおはは', 10, 1);
+>>>>>>> Bill
 
 -- --------------------------------------------------------
 
@@ -831,7 +840,7 @@ ALTER TABLE `topic`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `ask_log`
 --
 ALTER TABLE `ask_log`
-  MODIFY `ask_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=5;
+  MODIFY `ask_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=31;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `backstage`
@@ -849,7 +858,7 @@ ALTER TABLE `consult`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `error`
 --
 ALTER TABLE `error`
-  MODIFY `error_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=4;
+  MODIFY `error_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=17;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `item`
@@ -867,7 +876,7 @@ ALTER TABLE `item_record`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `lesson_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=24;
+  MODIFY `lesson_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=22;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_record`
