@@ -392,8 +392,8 @@
 }
 .big_npc_message{
   position: absolute;
-  top: 80%;
-  left: 20%;
+  top: 86%;
+  left: 39%;
   transform: scale(0.7);
   animation-name: message;
   animation-duration: 5s;
@@ -401,11 +401,13 @@
   animation-iteration-count: infinite;
   display: none;
   @include md{ //768
-    left: 25%;
+    left: 45%;
+    top: 86%;
     transform: scale(0.8);
   }
   @include lg{ //992px
-    left: 10%;
+    left: 30%;
+    top: 85%;
     transform: scale(0.7);
   }
   @include xl{ //1200
@@ -420,14 +422,27 @@
   .first-village::before{
     content: url(../images/studyMap_info_1.png);
     position: absolute;
-    top: 72%;
-    left: 3%;
+    top: 65%;
+    left: -3%;
     z-index: 50;
+    transform: scale(0.7);
     animation-name: villageInfo;
     animation-duration: 5.5s;
     animation-delay: 0s;
     animation-iteration-count: infinite;
     // animation-direction: reverse;  
+    @include md{ //768
+      top: 66%;
+      left: 0%;
+    }
+    @include lg{ //992px
+      top: 60%;
+      left: -5%;
+    }
+    @include xl{ //1200
+      top: 72%;
+      left: 3%;
+    }
   };
   .firstVillage{
     cursor: pointer;
@@ -455,13 +470,25 @@
     content: url(../images/studyMap_info_2.png);
     position: absolute;
     top: 45%;
-    left: 13%;
+    left: 10%;
     z-index: 50;
     animation-name: villageInfo;
     animation-duration: 6s;
     animation-delay: 0s;
     animation-iteration-count: infinite;
     // animation-direction: reverse;
+    @include md{ //768
+      top: 45%;
+      left: 17%;
+    }
+    @include lg{ //992px
+      top: 45%;
+      left: 10%;
+    }
+    @include xl{ //1200
+      top: 45%;
+      left: 16%;
+    }
   };
   .secondVillage{
     cursor: pointer;
@@ -496,6 +523,18 @@
     animation-delay: 0s;
     animation-iteration-count: infinite;
     // animation-direction: reverse; 
+    @include md{ //768
+      top: 32%;
+      left: 20%;
+    }
+    @include lg{ //992px
+      top: 28%;
+      left: 15%;
+    }
+    @include xl{ //1200
+      top: 25%;
+      left: 20%;
+    }
   };
   .thirdVillage{
     cursor: pointer;
@@ -522,14 +561,26 @@
   .v4::before{
     content: url(../images/studyMap_info_4.png);
     position: absolute;
-    top: 22%;
-    right: 19%;
+    top: 24%;
+    right: 15%;
     z-index: 50;
     animation-name: villageInfo;
     animation-duration: 4s;
     animation-delay: 0s;
     animation-iteration-count: infinite;
     // animation-direction: reverse; 
+    @include md{ //768
+      top: 28%;
+      right: 20%;
+    }
+    @include lg{ //992px
+      top: 22%;
+      right: 15%;
+    }
+    @include xl{ //1200
+      top: 22%;
+      right: 20%;
+    }
   };
 
   .fourthVillage{
@@ -558,13 +609,25 @@
     content: url(../images/studyMap_info_5.png);
     position: absolute;
     top: 55%;
-    right: 27%;
+    right: 23%;
     z-index: 50;
     animation-name: villageInfo;
     animation-duration: 5s;
     animation-delay: 0s;
     animation-iteration-count: infinite;
     // animation-direction: reverse;
+    @include md{ //768
+      top: 57%;
+      right: 27%;
+    }
+    @include lg{ //992px
+      top: 53%;
+      right: 21%;
+    }
+    @include xl{ //1200
+      top: 55%;
+      right: 27%;
+    }
   };
 
   .fifthVillage{
@@ -1021,7 +1084,7 @@ content:url(../images/npc_border_hello.png);
 }
 //通過測驗後的狀態更改
 //N5會話篇
-.hat::before{
+.studymap_hat::before{
   content:url(../images/char_hat_6.png);
   width: 20px;
   height: 50px;

@@ -547,6 +547,15 @@
                 npcFood.classList.add("scarf");;
                 //加10交通單字課程
                 npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");;
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
             }
         }else if(word.length == 3){
             if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8){
@@ -742,6 +751,15 @@
                 npcTime.classList.add("scarf");
                 //加8顏色單字課程
                 npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");;
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
                 //加9食物單字課程
                 npcFood.classList.add("scarf");;
                 //加10交通單字課程
@@ -1020,7 +1038,24 @@
                 npcTraffic.classList.add("scarf");
                 npcTraffic.classList.remove("hover_trafic");
                 npcTraffic.classList.add("test_pass");
-            }
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            };
         }else if(word.length == 3){
             if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8){
                 //加6數字單字課程
@@ -1271,6 +1306,8 @@
     function cors(){
         let backGI = document.getElementById("backGroundImg");
         let sunFace = document.getElementById("sunnyFace");
+        let moon = document.getElementById("moonFace");
+        let night = document.getElementById("nightFliter");
         let rainFogy = document.getElementById("foggy");
         var xhr = new XMLHttpRequest();
         xhr.onload = function(){
@@ -1279,7 +1316,7 @@
         let result = JSON.parse(xhr.responseText);
         let todayWeather = result.dataseries[0].weather;
         //取得現在時刻
-        let rightNnow =new Date("Wed Jun 22 2022 20:47:02 GMT+0800 (台北標準時間)");
+        let rightNnow =new Date();
         console.log(rightNnow);
         let rightHour = rightNnow.getHours();
         console.log(rightHour);
@@ -1290,7 +1327,7 @@
                 console.log("強對流天氣");
                 console.log("白天");
                 sunFace.style.display="block";
-            }else if(rightHour <6 && rightHour >18){
+            }else if(rightHour <6 | rightHour >18){
                 console.log("晚上");
                 console.log("強對流天氣");
                 moon.style.display="block";
@@ -1302,7 +1339,7 @@
                 console.log("白天");
                 sunFace.style.display="block";
 
-            }else if(rightHour <6 && rightHour >18){
+            }else if(rightHour <6 | rightHour >18){
                 console.log("晚上");
                 console.log("晴天無雲");
                 moon.style.display="block";

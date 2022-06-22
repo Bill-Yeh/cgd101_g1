@@ -672,7 +672,16 @@
                 npcE.classList.add("mask");;
                 //加5お課程
                 npcO.classList.add("mask");
-            }
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 4 && lesson[3].lesson_id== 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");;
+                //加5お課程
+                npcO.classList.add("mask");
+            };
         }else if(lesson.length == 3){
             if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3){
                 //加1あ課程
@@ -871,7 +880,16 @@
                 npcE.classList.add("mask");;
                 //加5お課程
                 npcO.classList.add("mask");
-            }
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 4 && lesson[3].lesson_id== 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");;
+                //加5お課程
+                npcO.classList.add("mask");
+            };
         }else if(lesson.length == 3){
             if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3){
                 //加1あ課程
@@ -1141,7 +1159,24 @@
                 npcO.classList.add("mask");
                 npcO.classList.remove("hover_o");
                 npcO.classList.add("test_pass");
-            }
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 4 && lesson[3].lesson_id== 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            };
         }else if(lesson.length == 3){
             if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3){
                 //加1あ課程
@@ -1448,7 +1483,7 @@
                 console.log("強對流天氣");
                 console.log("白天");
                 sunFace.style.display="block";
-            }else if(rightHour <6 && rightHour >18){
+            }else if(rightHour <6 | rightHour >18){
                 console.log("晚上");
                 console.log("強對流天氣");
                 moon.style.display="block";
@@ -1460,7 +1495,7 @@
                 console.log("白天");
                 sunFace.style.display="block";
 
-            }else if(rightHour <6 && rightHour >18){
+            }else if(rightHour <6 | rightHour >18){
                 console.log("晚上");
                 console.log("晴天無雲");
                 moon.style.display="block";

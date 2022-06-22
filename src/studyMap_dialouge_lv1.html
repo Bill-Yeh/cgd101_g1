@@ -13,7 +13,7 @@
     <section class="bigMap">  
         <div class="studyMap_map dialoguelv1" id="backGroundImg">
             <!-- 人物角色 -->
-            <div class="studyMap_npc hello left hover_hello" id="sanHello">
+            <div class="studyMap_npc hello left hover_hello studymap_hat" id="sanHello">
                 <img src="./images/studyMap_NPC_hello.png" id="hello" class="npc-img">
             </div>
             <div class="studyMap_npc hi right hover_hi" id="sanHi">
@@ -132,11 +132,11 @@
             fine.style.display="none";
             nice.style.display="none";
             great.style.display="none";
-            npcHello.classList.remove("hat");
-            npcHi.classList.remove("hat");
-            npcFine.classList.remove("hat");
-            npcNice.classList.remove("hat");
-            npcGreat.classList.remove("hat");
+            npcHello.classList.remove("studymap_hat");
+            npcHi.classList.remove("studymap_hat");
+            npcFine.classList.remove("studymap_hat");
+            npcNice.classList.remove("studymap_hat");
+            npcGreat.classList.remove("studymap_hat");
             let target = e.target.getAttribute('id');
                 if(target =='hello'){
                     con.innerText = startCon[0];
@@ -469,187 +469,196 @@
             let dialouge = JSON.parse(scorexhr.responseText);
             if(dialouge.length == 5){
             //加11
-            npcHello.classList.add("hat");
+            npcHello.classList.add("studymap_hat");
             //加12
-            npcHi.classList.add("hat");
+            npcHi.classList.add("studymap_hat");
             //加13
-            npcFine.classList.add("hat");
+            npcFine.classList.add("studymap_hat");
             //加14
-            npcNice.classList.add("hat");
+            npcNice.classList.add("studymap_hat");
             //加15
-            npcGreat.classList.add("hat");
+            npcGreat.classList.add("studymap_hat");
         }else if(dialouge.length == 4){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13 && dialouge[3].lesson_id== 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13 && dialouge[3].lesson_id== 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");;
+                npcNice.classList.add("studymap_hat");;
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
+            }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
+                //加11
+                npcHello.classList.add("studymap_hat");
+                //加12
+                npcHi.classList.add("studymap_hat");
+                //加14
+                npcNice.classList.add("studymap_hat");;
+                //加15
+                npcGreat.classList.add("studymap_hat");
             }
         }else if(dialouge.length == 3){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }; 
         }else if(dialouge.length == 2){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  &&  dialouge[1].lesson_id == 15){
                 console.log("78")
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  &&  dialouge[1].lesson_id == 13){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 14){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 14){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 15){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 14  && dialouge[1].lesson_id == 15){
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             };
         }else if(dialouge.length == 1){
             if(dialouge[0].lesson_id == 11){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 14){
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 15){
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }
         }else if(dialouge.length == 0){
            
@@ -669,187 +678,196 @@
             let dialouge = JSON.parse(scorexhr.responseText);
             if(dialouge.length == 5){
             //加11
-            npcHello.classList.add("hat");
+            npcHello.classList.add("studymap_hat");
             //加12
-            npcHi.classList.add("hat");
+            npcHi.classList.add("studymap_hat");
             //加13
-            npcFine.classList.add("hat");
+            npcFine.classList.add("studymap_hat");
             //加14
-            npcNice.classList.add("hat");
+            npcNice.classList.add("studymap_hat");
             //加15
-            npcGreat.classList.add("hat");
+            npcGreat.classList.add("studymap_hat");
         }else if(dialouge.length == 4){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13 && dialouge[3].lesson_id== 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13 && dialouge[3].lesson_id== 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");;
+                npcNice.classList.add("studymap_hat");;
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
+            }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
+                //加11
+                npcHello.classList.add("studymap_hat");
+                //加12
+                npcHi.classList.add("studymap_hat");
+                //加14
+                npcNice.classList.add("studymap_hat");;
+                //加15
+                npcGreat.classList.add("studymap_hat");
             }
         }else if(dialouge.length == 3){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }; 
         }else if(dialouge.length == 2){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 11  &&  dialouge[1].lesson_id == 15){
                 console.log("78")
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  &&  dialouge[1].lesson_id == 13){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 14){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 14){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 15){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 14  && dialouge[1].lesson_id == 15){
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             };
         }else if(dialouge.length == 1){
             if(dialouge[0].lesson_id == 11){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 12){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 13){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 14){
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
             }else if(dialouge[0].lesson_id == 15){
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
             }
         }else if(dialouge.length == 0){
            
@@ -900,332 +918,349 @@
         
         if(dialouge.length == 5){
             //加11
-            npcHello.classList.add("hat");
+            npcHello.classList.add("studymap_hat");
             npcHello.classList.remove("hover_hello");
             npcHello.classList.add("test_pass");
             //加12
-            npcHi.classList.add("hat");
+            npcHi.classList.add("studymap_hat");
             npcHi.classList.remove("hover_hi");
             npcHi.classList.add("test_pass");
             //加13
-            npcFine.classList.add("hat");
+            npcFine.classList.add("studymap_hat");
             npcFine.classList.remove("hover_fine");
             npcFine.classList.add("test_pass");
             //加14
-            npcNice.classList.add("hat");
+            npcNice.classList.add("studymap_hat");
             npcNice.classList.remove("hover_nice");
             npcNice.classList.add("test_pass");
             //加15
-            npcGreat.classList.add("hat");
+            npcGreat.classList.add("studymap_hat");
             npcGreat.classList.remove("hover_great");
             npcGreat.classList.add("test_pass");
         }else if(dialouge.length == 4){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13 && dialouge[3].lesson_id== 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13 && dialouge[3].lesson_id== 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
+                npcGreat.classList.remove("hover_great");
+                npcGreat.classList.add("test_pass");
+            }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 14 && dialouge[3].lesson_id== 15){
+                //加11
+                npcHello.classList.add("studymap_hat");
+                npcHello.classList.remove("hover_hello");
+                npcHello.classList.add("test_pass");
+                //加12
+                npcHi.classList.add("studymap_hat");
+                npcHi.classList.remove("hover_hi");
+                npcHi.classList.add("test_pass");
+                //加14
+                npcNice.classList.add("studymap_hat");
+                npcNice.classList.remove("hover_nice");
+                npcNice.classList.add("test_pass");
+                //加15
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }
         }else if(dialouge.length == 3){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 13){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 13 && dialouge[2].lesson_id == 14){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 14 && dialouge[2].lesson_id == 15){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }; 
         }else if(dialouge.length == 2){
             if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 12){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 13){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  && dialouge[1].lesson_id == 14){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 11  &&  dialouge[1].lesson_id == 15){
                 console.log("78")
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12  &&  dialouge[1].lesson_id == 13){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 14){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12  && dialouge[1].lesson_id == 15){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 14){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 13  && dialouge[1].lesson_id == 15){
                 console.log(999999999999999);
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 14  && dialouge[1].lesson_id == 15){
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             };
         }else if(dialouge.length == 1){
             if(dialouge[0].lesson_id == 11){
                 //加11
-                npcHello.classList.add("hat");
+                npcHello.classList.add("studymap_hat");
                 npcHello.classList.remove("hover_hello");
                 npcHello.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 12){
                 //加12
-                npcHi.classList.add("hat");
+                npcHi.classList.add("studymap_hat");
                 npcHi.classList.remove("hover_hi");
                 npcHi.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 13){
                 //加13
-                npcFine.classList.add("hat");
+                npcFine.classList.add("studymap_hat");
                 npcFine.classList.remove("hover_fine");
                 npcFine.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 14){
                 //加14
-                npcNice.classList.add("hat");
+                npcNice.classList.add("studymap_hat");
                 npcNice.classList.remove("hover_nice");
                 npcNice.classList.add("test_pass");
             }else if(dialouge[0].lesson_id == 15){
                 //加15
-                npcGreat.classList.add("hat");
+                npcGreat.classList.add("studymap_hat");
                 npcGreat.classList.remove("hover_great");
                 npcGreat.classList.add("test_pass");
             }
@@ -1259,7 +1294,7 @@
                 console.log("強對流天氣");
                 console.log("白天");
                 sunFace.style.display="block";
-            }else if(rightHour <6 && rightHour >18){
+            }else if(rightHour <6 | rightHour >18){
                 console.log("晚上");
                 console.log("強對流天氣");
                 moon.style.display="block";
@@ -1271,7 +1306,7 @@
                 console.log("白天");
                 sunFace.style.display="block";
 
-            }else if(rightHour <6 && rightHour >18){
+            }else if(rightHour <6 | rightHour >18){
                 console.log("晚上");
                 console.log("晴天無雲");
                 moon.style.display="block";
