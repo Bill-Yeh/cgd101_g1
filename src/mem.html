@@ -269,7 +269,7 @@
                 </div>
             </div>
             <div class="error_content">
-                <form action="fileUpload.php" method="post" enctype="multipart/form-data">
+                <form action="mem_error.php" method="post" enctype="multipart/form-data" id="Form">
                     <p class="msg">請填寫下方資訊，人員將盡快與您聯繫!</p>
                         
                     <div class="error_txt">標題</div>
@@ -280,15 +280,12 @@
 
                     <div class="error_txt">附件</div>
                     <input type="file" name="upFile" id="upFile">
-                    <label for="upFile" class="label">
-                        <div class="error_img">
-                            <img src="" id="myImage">
-                        </div>
-                    </label>
+                    <div id="error_img"></div>
                 </form> 
+                
             </div>
             <div class="check">
-                <input type="submit" value="提交" id="error_submit">
+                <input type="button" value="提交" id="error_submit">
             </div>  
 
         </div>

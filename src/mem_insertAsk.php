@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 try{
 	//==========
     $dbname = "tibamefe_cgd101g1";
@@ -15,20 +16,15 @@ try{
 
 
     //=========
-	$sql = "SELECT `ask_log`.`ask_content`,`ask_log`.`ask_src`,`ask_log`.`ask_time`,`ask_log`.`read_or_not`,`member`.`member_name`,`member`.`member_id`
-	FROM `tibamefe_cgd101g1`.`ask_log` join `tibamefe_cgd101g1`.`member` 
-			on `ask_log`.`member_id`=`member`.`member_id`
-	WHERE `ask_log`.`member_id` =:mem_id
-	order by `ask_log`.`ask_time`;"; 
+        $sql = "INSERT `tibamefe_cgd101g1`.`ask_log`"."(`ask_time`,`ask_content`, `member_id`,`ask_src`,`ans_backstage_id`)"."VALUES "."(NOW(),:ask,:mem_id,'1','1')"; 
+        
+        $products = $pdo->prepare($sql);
+        $products->bindValue("ask",$_POST["ask"]);
+        $products->bindValue("mem_id",$_SESSION["member_id"]);
 
+        $products->execute();
 
-	$info = $pdo->prepare($sql);
-	$info->bindValue("mem_id",$_GET["memid"]);
-	$info->execute();
-
-	$ask_prodRows = $info->fetchAll(PDO::FETCH_ASSOC);
-
-	echo json_encode($ask_prodRows);
+        echo json_encode("修改成功");
 
 
 

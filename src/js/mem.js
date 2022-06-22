@@ -24,7 +24,6 @@ new Vue({
 
 		xhr.onload = function(){
             buyListVue.prodRows = JSON.parse(xhr.responseText)
-            // console.log(JSON.parse(xhr.responseText))
             for(i=0;i<buyListVue.prodRows.length;i++){
                 buyListVue.prodRows[i].payment_time=buyListVue.prodRows[i].payment_time.split('.')[0]
             }
@@ -937,7 +936,6 @@ function openChetbox(){
     let xhr = new XMLHttpRequest()
         xhr.onload = function(){
             result=JSON.parse(xhr.responseText);
-            console.log(result)
         }
                 
     xhr.open("get", "mem_checkReply.php",true);
@@ -956,19 +954,22 @@ function openChetbox(){
 
 
 function sentMessage(){
+
+    
     let input=document.querySelector('#inputTxt').value;
 
+    if(document.querySelector('#inputTxt').value==""){
+        alert("欄位不可為空白，請輸入資料")
+    }
+    else{
+        
     let xhr = new XMLHttpRequest();
 
-            xhr.onload = function(){
-                let result= JSON.parse(xhr.responseText)
-                console.log(result)
-            }
-            xhr.open("post", "mem_insertAsk.php",true);
-            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    xhr.open("post", "mem_insertAsk.php",true);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
-            let newAsk=`ask=${input}`
-            xhr.send(newAsk);	
+    let newAsk=`ask=${input}`
+    xhr.send(newAsk);	
 
 
     //建立使用者訊息
@@ -996,6 +997,9 @@ function sentMessage(){
 
     //清空輸入欄位
     document.querySelector('#inputTxt').value="";
+
+    let bar=document.querySelector(".conv")
+    bar.scrollTop=bar.scrollHeight
 
 
     //老師回覆
@@ -1025,7 +1029,15 @@ function sentMessage(){
         p.textContent ='感謝你的提問，請稍等老師回覆~';
         trArr[trArr.length-1].appendChild(p);
 
-    },800)
+
+        let bar=document.querySelector(".conv")
+        bar.scrollTop=bar.scrollHeight
+
+    },1000)
+
+
+    }
+
 }
 
 
@@ -1085,18 +1097,49 @@ document.querySelector('.error_msg').addEventListener('input',textareaSize)
 
 
 //異常通報上傳檔案預覽
-window.addEventListener("load", function(){
-    document.getElementById("upFile").onchange = function(e){
-        let file = e.target.files[0];  //取得所選物件file的參考
-        let reader = new FileReader();
-        reader.onload = function(e){
-            document.getElementById("myImage").src=e.target.result;
-        }
-        reader.readAsDataURL(file);
-
-    document.querySelector("#upFile").style.display='none';
+function preview(e){
+    let files = e.target.files;  //取得所選物件file的參考
+    let showPanel = document.getElementById("error_img");
+    if(showPanel.childNodes.length!==0){
+        showPanel.removeChild(showPanel.childNodes[0])
     }
-})
+
+    for(let i=0; i<files.length; i++){
+        let reader = new FileReader();
+        reader.onload = function(){
+            let img = document.createElement("img");
+            img.src = reader.result;
+            showPanel.appendChild(img);
+        }
+    reader.readAsDataURL(files[i]);
+    }
+}
+
+function sentErrorInfo(){
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        let input=document.querySelector('.error_h')
+        let txt=document.querySelector('.error_msg')
+        let file=document.getElementById("upFile")
+
+        input.value="";
+        txt.value="";
+        file.value="";
+
+        let showPanel = document.getElementById("error_img");
+        if(showPanel.childNodes.length!==0){
+            showPanel.removeChild(showPanel.childNodes[0])
+        }
+
+        alert ("感謝你的詢問!人員將回覆您的問題至您帳號之信箱，還請稍待")
+
+        
+    }
+
+    xhr.open("post", "mem_error.php");
+    xhr.send(new FormData(document.getElementById("Form")));
+}
+
 
 
 
@@ -1107,7 +1150,8 @@ function closeError(){
 }
 
 document.querySelector(".error .cancel").addEventListener('click',closeError)
-
+document.getElementById('error_submit').addEventListener("click",sentErrorInfo)
+document.getElementById("upFile").addEventListener("change",preview)
 
 
 //=====================================================

@@ -230,6 +230,9 @@
                             background-color: #FAE6B8;
                             border-radius: 10px;
                             padding: 10px;
+                            max-width: 65%;
+                            word-wrap:break-word;
+                            height: auto;
                             p{
                                 position: relative;
                                 // &::before{
@@ -244,21 +247,34 @@
                                 // }
                             }
                         }
+                        .ask_time{
+                            font-size: 12px;
+                            color: rgb(149, 149, 149);
+                            display: flex;
+                            padding: 10px;
+                            max-width: 67px;
+                            word-wrap:break-word;
+                        }
                     }
 
                     // 老師回覆
                     .backStage_chat_teacher{
                         padding: 5px 0px;
                         display: flex;
-                        justify-content: flex-end;
+                        flex-direction: row-reverse;
 
                         .teacher_chat{
                             background-color: #FAE6B8;
+                            max-width: 65%;
                             border-radius: 10px;
                             padding: 10px;
                             margin-right: 3%;
+                            word-wrap:break-word;
+                            height: auto;
+                            margin-bottom: 5px;
 
                             p{
+                                // width: 100%;
                                 position: relative;
                                 // &::before{
                                 //     content: '';
@@ -271,6 +287,17 @@
                                 //     background-color: #FAE6B8;
                                 // }
                             }
+                        }
+                        .ask_time{
+                            font-size: 12px;
+                            color: rgb(149, 149, 149);
+                            display: flex;
+                            padding: 10px;
+                            max-width: 65px;
+                            word-wrap:break-word;
+                            position: relative;
+                            flex-direction: column-reverse
+                            ;
                         }
                     }
 
