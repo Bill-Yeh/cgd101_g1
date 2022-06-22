@@ -153,6 +153,7 @@ window.addEventListener('load', function(){
                     window.addEventListener('resize',function() {
                         memArea.style.display = 'none';
                         memIcon.style.display = 'none';
+                        loginBox.style.width = '10%';
                     })
                     memName.innerText = memberWeb.member_name;
                     //將登入表單上的資料清空，並隱藏起來
@@ -161,7 +162,7 @@ window.addEventListener('load', function(){
                     loginRegister.style.display = 'none';
                     
                     logout.style.display = 'block';
-                    loginBox.style.width = '10%';
+                    // loginBox.style.width = '10%';
                     moneyArea.style.margin = 'auto';
                 }else if(window.innerWidth > 992){
                     isLogin = true;
@@ -250,17 +251,18 @@ window.addEventListener('load', function(){
         xhr.send(null);
     })
     
-    window.addEventListener('resize',function(){
-        if(window.innerWidth < 992){
-            memName.addEventListener('click',function(){
-                window.location.replace('mem.html');
-            })
-        }else if(window.innerWidth > 992){
-            memArea.addEventListener('click',function(){
-                window.location.replace('mem.html');
-            })
-        }
+    // window.addEventListener('resize',function(){
+    // })
+    
+    if(window.innerWidth < 992){
+        memName.addEventListener('click',function(){
+            window.location.href = "mem.html";
+        })
+    }else{
+        memArea.addEventListener('click',function(){
+        window.location.href = "mem.html";
     })
+    }
     
 
     // 點叉叉關燈箱
