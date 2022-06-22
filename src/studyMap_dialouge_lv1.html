@@ -13,7 +13,7 @@
     <section class="bigMap">  
         <div class="studyMap_map dialoguelv1" id="backGroundImg">
             <!-- 人物角色 -->
-            <div class="studyMap_npc hello left hover_hello studymap_hat" id="sanHello">
+            <div class="studyMap_npc hello left hover_hello" id="sanHello">
                 <img src="./images/studyMap_NPC_hello.png" id="hello" class="npc-img">
             </div>
             <div class="studyMap_npc hi right hover_hi" id="sanHi">
@@ -1286,7 +1286,7 @@
         let rightNnow =new Date();
         console.log(rightNnow);
         let rightHour = rightNnow.getHours();
-        console.log(rightHour);
+        console.log("時",rightHour);
         //取今日天氣資料
         console.log("今日天氣:",todayWeather);
         if(todayWeather == "ts"){

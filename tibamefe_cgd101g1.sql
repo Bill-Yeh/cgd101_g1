@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0.0aaaaa
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-22 11:09:35
+-- 產生時間： 2022-06-22 16:26:17
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -257,16 +257,20 @@ INSERT INTO `lesson` (`lesson_id`, `lesson_name`, `lesson_img`, `lesson_price`, 
 (9, '食物', './images/payment_map.png', 0, '', 2, 1),
 (10, '交通', './images/payment_map.png', 0, '', 2, 1),
 (11, '日常會話', './images/payment_map.png', 0, '', 3, 1),
-(12, 'N4單字', './images/payement_map.png', 300, 'N4單字大全，系統化統整N4單字，依日檢出題基準進行模擬', 2, 1),
-(13, 'N4會話', './images/payement_map.png', 300, 'N4會話大全，集結日檢N4高頻率出現的會話，讓你輕鬆自學！', 3, 1),
-(14, 'N3單字', './images/payement_map.png', 300, 'N3單字大全，系統化統整N3單字，依日檢出題基準進行模擬', 2, 1),
-(15, 'N3會話', './images/payement_map.png', 300, 'N3會話大全，集結日檢N3高頻率出現的會話，讓你輕鬆自學！', 3, 1),
-(16, 'N2單字', './images/payement_map.png', 300, 'N2單字大全，系統化統整N2單字，依日檢出題基準進行模擬', 2, 1),
-(17, 'N2會話', './images/payement_map.png', 300, 'N2會話大全，集結日檢N2高頻率出現的會話，讓你輕鬆自學！', 3, 1),
-(18, 'N1單字', './images/payement_map.png', 300, 'N1單字大全，系統化統整N1單字，依日檢出題基準進行模擬', 2, 1),
-(19, 'N1會話', './images/payement_map.png', 300, 'N1會話大全，集結日檢N1高頻率出現的會話，讓你輕鬆自學！', 3, 1),
-(20, '單字統整', './images/payement_map.png', 300, 'N5~N1單字統整精華濃縮日檢N5~N1所有高分必備單字，絕對超滿足。', 2, 1),
-(21, '會話統整', './images/payement_map.png', 300, 'N5~N1會話統整精華濃縮日檢N5~N1所有高分必備會話，絕對超滿足', 3, 1);
+(12, '日常會話', './images/payment_map.png', 0, '', 3, 1),
+(13, '日常會話', './images/payment_map.png', 0, '', 3, 1),
+(14, '日常會話', './images/payment_map.png', 0, '', 3, 1),
+(15, '日常會話', './images/payment_map.png', 0, '', 3, 1),
+(16, 'N4單字', './images/payement_map.png', 300, 'N4單字大全，系統化統整N4單字，依日檢出題基準進行模擬', 2, 1),
+(17, 'N4會話', './images/payement_map.png', 300, 'N4會話大全，集結日檢N4高頻率出現的會話，讓你輕鬆自學！', 3, 1),
+(18, 'N3單字', './images/payement_map.png', 300, 'N3單字大全，系統化統整N3單字，依日檢出題基準進行模擬', 2, 1),
+(19, 'N3會話', './images/payement_map.png', 300, 'N3會話大全，集結日檢N3高頻率出現的會話，讓你輕鬆自學！', 3, 1),
+(20, 'N2單字', './images/payement_map.png', 300, 'N2單字大全，系統化統整N2單字，依日檢出題基準進行模擬', 2, 1),
+(21, 'N2會話', './images/payement_map.png', 300, 'N2會話大全，集結日檢N2高頻率出現的會話，讓你輕鬆自學！', 3, 1),
+(22, 'N1單字', './images/payement_map.png', 300, 'N1單字大全，系統化統整N1單字，依日檢出題基準進行模擬', 2, 1),
+(23, 'N1會話', './images/payement_map.png', 300, 'N1會話大全，集結日檢N1高頻率出現的會話，讓你輕鬆自學！', 3, 1),
+(24, '單字統整', './images/payement_map.png', 300, 'N5~N1單字統整精華濃縮日檢N5~N1所有高分必備單字，絕對超滿足。', 2, 1),
+(25, '會話統整', './images/payement_map.png', 300, 'N5~N1會話統整精華濃縮日檢N5~N1所有高分必備會話，絕對超滿足', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -301,7 +305,10 @@ INSERT INTO `lesson_record` (`lesson_order_id`, `member_id`, `lesson_id`, `payme
 (13, 1, 11, '2022-05-27 19:15:06'),
 (14, 2, 1, '2022-06-15 14:06:29'),
 (15, 2, 3, '2022-06-15 14:06:29'),
-(16, 2, 4, '2022-06-15 14:06:29');
+(16, 2, 4, '2022-06-15 14:06:29'),
+(17, 12, 1, '2022-06-22 16:17:43'),
+(18, 12, 2, '2022-06-22 16:23:08'),
+(19, 12, 4, '2022-06-22 16:23:15');
 
 -- --------------------------------------------------------
 
@@ -348,7 +355,12 @@ INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member
 (1, 'Kenny', 'abc@gmail.com', 'aaaAAA111', '1', 1000, 4, './images/char_00_0.png'),
 (2, 'Jerry', 'def@gmail.com', 'bbbBBB111', '1', 100, 1, './images/char_00_0.png'),
 (3, 'Bill', 'efg@gmail.com', 'cccCCC111', '0', 0, 1, './images/char_00_0.png'),
-(7, 'Triangle', 'tri@gmail.com', 'TRItri123', '1', 666, 1, './images/char_00_0.png');
+(7, 'Triangle', 'tri@gmail.com', 'TRItri123', '1', 666, 1, './images/char_00_0.png'),
+(8, 'Bob', 'Bob@gmail.com', 'Bob12345', '1', 0, 1, './images/char_00_0.png'),
+(9, 'Curry', 'Curry@gmail.com', 'Curry12345', '1', 0, 1, './images/char_00_0.png'),
+(10, 'Peter', '123@gmail.com', 'Peter123', '1', 6900, 1, './images/char_00_0.png'),
+(12, 'yunyun', 'Yun@gmail.com', 'Yun1234567', '1', 2190, 1, './images/char_00_0.png'),
+(14, 'Sarah', 'Sarah@gmail.com', 'Sarah111', '1', 10000, 6, './images/char_00_0.png');
 
 -- --------------------------------------------------------
 
@@ -470,7 +482,10 @@ INSERT INTO `quiz_record` (`quiz_record_id`, `lesson_id`, `member_id`, `quiz_sco
 (16, 1, 2, 90, 1, 90, '2022-06-11 18:08:21.000000'),
 (17, 3, 2, 40, 0, 0, '2022-06-11 18:08:21.000000'),
 (18, 4, 2, 70, 1, 70, '2022-06-11 18:10:22.000000'),
-(19, 5, 2, 80, 1, 80, '2022-06-12 18:08:21.000000');
+(19, 5, 2, 80, 1, 80, '2022-06-12 18:08:21.000000'),
+(20, 1, 12, 90, 1, 90, '2022-06-22 16:18:23.000000'),
+(21, 4, 12, 100, 1, 100, '2022-06-22 16:24:34.000000'),
+(22, 2, 12, 20, 0, 20, '2022-06-22 16:24:51.000000');
 
 -- --------------------------------------------------------
 
@@ -646,7 +661,7 @@ INSERT INTO `q_data` (`option_id`, `lesson_id`, `txt`, `ans`, `option_content1`,
 (149, 11, '不好意思', 'すみません', 'はじめまして', 'おねがいします', 'さよなら', 10, 1),
 (150, 11, '拜託', 'おねがいします', 'はじめまして', 'すみません', 'さよなら', 10, 1),
 (151, 11, '再見', 'さよなら', 'すみません', 'はじめまして', 'おねがいします', 10, 1),
-(152, 21, '早安', 'おはよ', 'よおは', 'よおはおは', 'よおはは', 10, 1);
+(152, 25, '早安', 'おはよ', 'よおは', 'よおはおは', 'よおはは', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -667,9 +682,9 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`report_id`, `member_id`, `post_id`, `report_status`, `report_reason`) VALUES
-(1, 1, 1, '1', '廣告推銷'),
-(2, 2, 2, '0', '暴力內容'),
-(3, 3, 3, '2', '恐怖主義');
+(1, 8, 3, '1', '廣告推銷'),
+(2, 7, 2, '1', '暴力內容'),
+(3, 9, 7, '1', '恐怖主義');
 
 -- --------------------------------------------------------
 
@@ -868,13 +883,13 @@ ALTER TABLE `item_record`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `lesson_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=22;
+  MODIFY `lesson_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=26;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_record`
 --
 ALTER TABLE `lesson_record`
-  MODIFY `lesson_order_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK, AI)', AUTO_INCREMENT=17;
+  MODIFY `lesson_order_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK, AI)', AUTO_INCREMENT=20;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `lesson_type`
@@ -886,7 +901,7 @@ ALTER TABLE `lesson_type`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=8;
+  MODIFY `member_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=15;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `member_level`
@@ -910,7 +925,7 @@ ALTER TABLE `post`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `quiz_record`
 --
 ALTER TABLE `quiz_record`
-  MODIFY `quiz_record_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=20;
+  MODIFY `quiz_record_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=23;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `q_data`
