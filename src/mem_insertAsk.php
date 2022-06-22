@@ -16,7 +16,7 @@ try{
 
 
     //=========
-        $sql = "INSERT `tibamefe_cgd101g1`.`ask_log`"."(`ask_time`,`ask_content`, `member_id`,`ask_src`,`ans_backstage_id`)"."VALUES "."(NOW(),:ask,:mem_id,'1','1')"; 
+        $sql = "INSERT `tibamefe_cgd101g1`.`ask_log`"."(`ask_time`,`ask_content`, `member_id`,`ask_src`,`ans_backstage_id`)"."VALUES "."(NOW(),:ask,:mem_id,'1','3')"; 
         
         $products = $pdo->prepare($sql);
         $products->bindValue("ask",$_POST["ask"]);

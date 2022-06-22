@@ -15,7 +15,7 @@ try{
 
 
     //=========
-	$sql = "SELECT `ask_log`.`ask_src`,`ask_log`.`member_id`,`ask_log`.`read_or_not`,`member`.`member_name`
+	$sql = "SELECT `ask_log`.`ask_src`,`ask_log`.`member_id`,`ask_log`.`read_or_not`,`member`.`member_name`,`member`.`role`
 	FROM `tibamefe_cgd101g1`.`ask_log` join `tibamefe_cgd101g1`.`member` 
 			on `ask_log`.`member_id`=`member`.`member_id`
 	order by `ask_log`.`ask_time`ASC;"; 
