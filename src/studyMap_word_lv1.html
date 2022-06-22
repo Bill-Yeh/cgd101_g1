@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html', {
-        "title" : "初級單字地圖"
+        "title" : "N5單字"
     })
 </head>
 <body class="elementary_vocabulary">
@@ -11,21 +11,21 @@
     @@include('layout/login_register.html')
     <!-- header end -->
     <section class="bigMap">  
-        <div class="studyMap_map wordlv1">
+        <div class="studyMap_map wordlv1" id="backGroundImg">
             <!-- 人物角色 -->
-            <div class="studyMap_npc number left" >
+            <div class="studyMap_npc number left hover_number" id="sanNumber">
                 <img src="./images/studyMap_NPC_number.png" id="number" class="npc-img">
             </div>
-            <div class="studyMap_npc time right" >
+            <div class="studyMap_npc time right hover_time" id="sanTime">
                 <img src="./images/studyMap_NPC_time.png" id="time" class="npc-img">
             </div>
-            <div class="studyMap_npc color right" >
+            <div class="studyMap_npc color right hover_color" id="sanColor">
                 <img src="./images/studyMap_NPC_color.png" id="color" class="npc-img">
             </div>
-            <div class="studyMap_npc food left" >
+            <div class="studyMap_npc food left hover_food" id="sanFood">
                 <img src="./images/studyMap_NPC_food.png" id="food" class="npc-img">
             </div>
-            <div class="studyMap_npc trafic right" >
+            <div class="studyMap_npc trafic right hover_trafic" id="sanTraffic">
                 <img src="./images/studyMap_NPC_trafic.png" id="trafic" class="npc-img">
             </div>
             <!-- 圖像框 -->
@@ -48,39 +48,50 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="studyMap_con " id="mapCon">
-                <p id="con">
-                </p>
-                
-            </div> -->
-            <!-- 背景濾鏡 -->
-            <div class="studyMap_fliter" id="mapFliter"></div>
-            <div class="quit" id="close"></div>
-            <!-- 前往測驗對話框 -->
-            <div class="go-to-test" id="toTest">
-                <div class="ask">
-                    <p>前往測驗</p>
-                </div>
-                <div class="yes" id="Yes">
-                    <button>確認</button>
-                </div>
-                <div class="no" id="No">
-                    <button>先不要</button>
-                </div>
+        </div>
+        <!-- 背景濾鏡 -->
+        <div class="studyMap_fliter" id="mapFliter"></div>
+        <div class="quit" id="close"></div>
+        <!-- 前往測驗對話框 -->
+        <div class="go-to-test" id="toTest">
+            <div class="ask">
+                <p>前往測驗</p>
             </div>
-            <div class="item">
-                <img src="./images/studyMap_guide2.png">
+            <div class="yes" id="Yes">
+                <button>確認</button>
+            </div>
+            <div class="no" id="No">
+                <button>先不要</button>
             </div>
         </div>
+        <!-- 木板告示 -->
+        <div class="item">
+            <img src="./images/studyMap_guide2.png">
+        </div>
+        <!-- 青蛙 -->
+        <div class="fogy" id="foggy">
+            <img src="./images/home_red_frog_2.gif">
+        </div>
+        <!-- 太陽 -->
+        <div class="sunny" id="sunnyFace">
+            <img src="./images/sun.png">
+        </div>
+        <!-- 月亮 -->
+        <div class="moon" id="moonFace">
+            <img src="./images/moon.png">
+        </div>
+        <!-- 夜晚濾鏡 -->
+        <div class="night_fliter" id="nightFliter"></div>
+    </section>
         <script>
             //==========對話招呼============
             let startCon = new Array('你好，我是數字大師，今天一起來學習數字吧!','我是時間管理大師，I want to know，你行不行?','初次見面，我是顏色大師，學習顏色怎麼說吧!','嘿嘿嘿，我是え...一起來學...50音え段...','我是お~今天一起來學習50音的母音お段~~' );
             //==========對話框人像============
             let npcSrc = new Array('./images/studyMap_NPC_number.png','./images/studyMap_NPC_time.png','./images/studyMap_NPC_color.png','./images/studyMap_NPC_food.png','./images/studyMap_NPC_trafic.png' );
              //==========對話============
-            let numberCon = new Array("首先是「1」發音為「ichi」","再來是「2」，發音為「ni」","再來是「3」，發音為「san」","再來是「4」，發音為「yon」","再來是「5」，發音為「go」","再來是「6」，發音為「roku」","再來是「7」，發音為「nana」","再來是「8」，發音為「hachi」","再來是「9」，發音為「kyuu」","再來是「10」，發音為「jyuu」","再來是「100」，發音為「hyaku」","再來是「1千」，發音為「sen」","再來是「1萬」，發音為「ichiman」");
-            let timeCon = new Array("「おととい」前天，發音為「ototoi」","「きのう」昨天，發音為「kinou」","「きょう」今天，發音為「kyou」","「あした」明天，發音為「ashita」","「あさって」後天，發音為「asa-te」","「にちようび」星期日，發音為「nichiyoubi」","「げつようび」星期一，發音為「getsuyoubi」","「かようび」星期二，發音為「kayoubi」","「すいようび」星期三，發音為「suiyoubi」","「もくようび」星期四，發音為「mokuyoubi」","「きんようび」星期五，發音為「kinyoubi」","「どようび」星期六，發音為「doyoubi」");
-            let colorCon = new Array("首先教學的是「しろ」白色，發音為「shiro」","再來是「くろ」黑色，發音為「kuro」","再來是「あか」紅色，發音為「aka」","再來是「あお」藍色，發音為「ao」","再來是「きいろ」黃色，發音為「kiiro」","再來是「ちゃいろ」棕色，發音為「chairo」","再來是「みどり」綠色，發音為「midori」","再來是「むらさき」紫色，發音為「murasaki」","再來是「きんいろ」金色，發音為「kiniro」","再來是「ぎんいろ」銀色，發音為「giniro」");
+            let numberCon = new Array("首先是「1」發音為「i-chi」","再來是「2」，發音為「ni」","再來是「3」，發音為「san」","再來是「4」，發音為「yon」","再來是「5」，發音為「go」","再來是「6」，發音為「ro-ku」","再來是「7」，發音為「na-na」","再來是「8」，發音為「ha-chi」","再來是「9」，發音為「kyuu-」","再來是「10」，發音為「jyuu-」","再來是「100」，發音為「hya-ku」","再來是「1千」，發音為「sen」","再來是「1萬」，發音為「ichi-man」");
+            let timeCon = new Array("「おととい」前天，發音為「o-to-toi」","「きのう」昨天，發音為「ki-nou」","「きょう」今天，發音為「kyou-」","「あした」明天，發音為「a-shi-ta」","「あさって」後天，發音為「asa-te」","「にちようび」星期日，發音為「ni-chi-you-bi」","「げつようび」星期一，發音為「ge-tsu-you-bi」","「かようび」星期二，發音為「ka-you-bi」","「すいようび」星期三，發音為「sui-you-bi」","「もくようび」星期四，發音為「mo-ku-you-bi」","「きんようび」星期五，發音為「kin-you-bi」","「どようび」星期六，發音為「do-you-bi」");
+            let colorCon = new Array("首先教學的是「しろ」白色，發音為「shi-ro」","再來是「くろ」黑色，發音為「ku-ro」","再來是「あか」紅色，發音為「a-ka」","再來是「あお」藍色，發音為「a-o」","再來是「きいろ」黃色，發音為「ki-iro」","再來是「ちゃいろ」棕色，發音為「cha-iro」","再來是「みどり」綠色，發音為「mi-do-ri」","再來是「むらさき」紫色，發音為「mu-ra-sa-ki」","再來是「きんいろ」金色，發音為「kin-iro」","再來是「ぎんいろ」銀色，發音為「gin-iro」");
             let eCon = new Array("首先...「え」發音為「e」...","...「け」白色，發音為「ke」...","...「せ」，發音為「se」...","...「て」，發音為「te」...","...「ね」，發音為「ne」...","...「へ」，發音為「he」...","...「め」，發音為「me」...","...「れ」，發音為「re」...");
             let oCon = new Array("首先教學的是「お」發音為「o」","再來是「こ，發音為「ko」","再來是「そ」，發音為「so」","再來是「と」，發音為「to」","再來是「の」，發音為「no」","再來是「ほ」，發音為「ho」","再來是「も」，發音為「mo」","再來是「よ」，發音為「yo」","再來是「ろ」，發音為「ro」","再來是「を」，發音為「wo」","最後一個是鼻音「ん」，發音為「n」");
             //===========聲音檔路徑===========
@@ -90,7 +101,7 @@
             let soundSrcE = new Array("./sound/e.mp3","./sound/ke.mp3","./sound/se.mp3","./sound/te.mp3","./sound/ne.mp3","./sound/he.mp3","./sound/me.mp3","./sound/re.mp3");
             let soundSrcO = new Array("./sound/o.mp3","./sound/ko.mp3","./sound/so.mp3","./sound/to.mp3","./sound/no.mp3","./sound/ho.mp3","./sound/mo.mp3","./sound/yo.mp3","./sound/ro.mp3","./sound/wo.mp3","./sound/n.mp3");
             //===============圖像框文字============
-            let fifityWordNumber = new Array("1","2","3","4","5","6","7","8","9","10","100","1000","10,000");//13
+            let fifityWordNumber = new Array("1","2","3","4","5","6","7","8","9","10","100","1000","10,000");//8
             let fifityWordTime = new Array("おととい","昨日","今日","明日","明後日","日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日");//12
             let fifityWordColor = new Array("白","黒","赤","青","黄色","茶色","緑","紫","金色","銀色");//10
             let fifityWordE = new Array("え","け","せ","て","ね","へ","め","れ");//8
@@ -121,6 +132,11 @@
             color.style.display="none";
             food.style.display="none";
             trafic.style.display="none";
+            npcNumber.classList.remove("scarf");
+            npcTime.classList.remove("scarf");
+            npcColor.classList.remove("scarf");
+            npcFood.classList.remove("scarf");
+            npcTraffic.classList.remove("scarf");
             let target = e.target.getAttribute('id');
                 if(target =='number'){
                     con.innerText = startCon[0];
@@ -206,6 +222,13 @@
                 photo.style.display='none';
                 closeBox.style.display='none';
                 toTest.style.display='flex';
+                let xhr = new XMLHttpRequest();
+                xhr.onload=()=>{
+                // alert(xhr.responseText);
+                };
+                let url = "./N5_word_lesson_record_number.php?lesson_id=6"
+                xhr.open("get", url, true);
+                xhr.send(null);
             }
             //時間
             else if(temp == startCon[1]){
@@ -265,6 +288,13 @@
                 photo.style.display='none';
                 closeBox.style.display='none';
                 test.style.display='flex';
+                let xhr = new XMLHttpRequest();
+                xhr.onload=()=>{
+                // alert(xhr.responseText);
+                };
+                let url = "./N5_word_lesson_record_time.php?lesson_id=7"
+                xhr.open("get", url, true);
+                xhr.send(null);
             }
             //顏色
             else if(temp == startCon[2]){
@@ -328,9 +358,16 @@
                 photo.style.display='none';
                 photo.style.backgroundColor='#FAE6B8'
                 closeBox.style.display='none';
-                test.style.display='flex';;
+                test.style.display='flex';
+                let xhr = new XMLHttpRequest();
+                xhr.onload=()=>{
+                // alert(xhr.responseText);
+                };
+                let url = "./N5_word_lesson_record_color.php?lesson_id=8 "
+                xhr.open("get", url, true);
+                xhr.send(null);
             }
-            //食物
+            //食物待更新
             else if(temp == startCon[3]){
                 con.innerText = eCon[0];
                 sound.src = soundSrcE[0];
@@ -372,9 +409,16 @@
                 speaker.style.display='none';
                 photo.style.display='none';
                 closeBox.style.display='none';
-                test.style.display='flex';;
+                test.style.display='flex';
+                let xhr = new XMLHttpRequest();
+                xhr.onload=()=>{
+                // alert(xhr.responseText);
+                };
+                let url = "./N5_word_lesson_record_food.php?lesson_id=9"
+                xhr.open("get", url, true);
+                xhr.send(null);
             }
-            //交通
+            //交通待更新
             else if(temp == startCon[4]){
                 con.innerText = oCon[0];
                 sound.src = soundSrcO[0];
@@ -428,6 +472,13 @@
                 photo.style.display='none';
                 closeBox.style.display='none';
                 test.style.display='flex';
+                let xhr = new XMLHttpRequest();
+                xhr.onload=()=>{
+                // alert(xhr.responseText);
+                };
+                let url = "./N5_word_lesson_record_trafic.php?lesson_id=10"
+                xhr.open("get", url, true);
+                xhr.send(null);
             }
         }  
         function justPlay(e){
@@ -446,7 +497,194 @@
             food.style.display="block";
             trafic.style.display="block";
             photo.style.backgroundColor='#FAE6B8'
-            text.style.color='black'
+            text.style.color='black';
+            let word = JSON.parse(scorexhr.responseText);
+            if(word.length == 5){
+            //加6數字單字課程
+            npcNumber.classList.add("scarf");
+            //加7時間單字課程
+            npcTime.classList.add("scarf");
+            //加8顏色單字課程
+            npcColor.classList.add("scarf");
+            //加9食物單字課程
+            npcFood.classList.add("scarf");
+            //加10交通單字課程
+            npcTraffic.classList.add("scarf");
+        }else if(word.length == 4){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8 && word[3].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 9 && word[3].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8 && word[3].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 8 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");;
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }
+        }else if(word.length == 3){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 8 && word[2].lesson_id == 9){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }; 
+        }else if(word.length == 2){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  &&  word[1].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  &&  word[1].lesson_id == 8){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 9){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 9){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 10){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 9  && word[1].lesson_id == 10){
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            };
+        }else if(word.length == 1){
+            if(word[0].lesson_id == 6){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+            }else if(word[0].lesson_id == 7){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+            }else if(word[0].lesson_id == 8){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 9){
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 10){
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }
+        }else if(word.length == 0){
+           
+        };  
         }
         function goToTest(e){
             window.location.href="test.html";
@@ -459,8 +697,196 @@
             color.style.display="block";
             food.style.display="block";
             trafic.style.display="block";
+            let word = JSON.parse(scorexhr.responseText);
+            if(word.length == 5){
+            //加6數字單字課程
+            npcNumber.classList.add("scarf");
+            //加7時間單字課程
+            npcTime.classList.add("scarf");
+            //加8顏色單字課程
+            npcColor.classList.add("scarf");
+            //加9食物單字課程
+            npcFood.classList.add("scarf");
+            //加10交通單字課程
+            npcTraffic.classList.add("scarf");
+        }else if(word.length == 4){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8 && word[3].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 9 && word[3].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8 && word[3].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 8 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");;
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }
+        }else if(word.length == 3){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 8 && word[2].lesson_id == 9){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }; 
+        }else if(word.length == 2){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 6  &&  word[1].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  &&  word[1].lesson_id == 8){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 9){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 9){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 10){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }else if(word[0].lesson_id == 9  && word[1].lesson_id == 10){
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            };
+        }else if(word.length == 1){
+            if(word[0].lesson_id == 6){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+            }else if(word[0].lesson_id == 7){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+            }else if(word[0].lesson_id == 8){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+            }else if(word[0].lesson_id == 9){
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+            }else if(word[0].lesson_id == 10){
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+            }
+        }else if(word.length == 0){
+           
+        };  
         }
         function init(){
+            cors()
             let imgs = document.getElementsByClassName('npc-img');
             let closeBox = document.getElementById('close');
             let goto =document.getElementById('Yes');
@@ -481,10 +907,458 @@
     
         
         </script>
-    </section>
     @@include('layout/footer.html')
 
 
     <!-- <script src="js/studymap.js"></script> -->
 </body>
 </html>
+
+<!-- 撈資料庫的N5單字測驗紀錄資料 -->
+<script>
+    let npcNumber = document.getElementById("sanNumber");
+    let npcTime = document.getElementById("sanTime");
+    let npcColor = document.getElementById("sanColor");
+    let npcFood = document.getElementById("sanFood");
+    let npcTraffic = document.getElementById("sanTraffic");
+    let scorexhr = new XMLHttpRequest();
+    
+    scorexhr.open("get", "./N5_word_test.php", true);
+    
+    scorexhr.send(null);
+
+    scorexhr.onload = function(){
+        console.log(scorexhr.responseText);
+        let word = JSON.parse(scorexhr.responseText);
+        if(word.length == 5){
+            //加6數字單字課程
+            npcNumber.classList.add("scarf");
+            npcNumber.classList.remove("hover_number");
+            npcNumber.classList.add("test_pass");
+            //加7時間單字課程
+            npcTime.classList.add("scarf");
+            npcTime.classList.remove("hover_time");
+            npcTime.classList.add("test_pass");
+            //加8顏色單字課程
+            npcColor.classList.add("scarf");
+            npcColor.classList.remove("hover_color");
+            npcColor.classList.add("test_pass");
+            //加9食物單字課程
+            npcFood.classList.add("scarf");
+            npcFood.classList.remove("hover_food");
+            npcFood.classList.add("test_pass");
+            //加10交通單字課程
+            npcTraffic.classList.add("scarf");
+            npcTraffic.classList.remove("hover_trafic");
+            npcTraffic.classList.add("test_pass");
+        }else if(word.length == 4){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8 && word[3].lesson_id== 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8 && word[3].lesson_id== 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 8 && word[2].lesson_id == 9 && word[3].lesson_id== 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }
+        }else if(word.length == 3){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 8){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 7 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 8 && word[2].lesson_id == 9){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 9 && word[2].lesson_id == 10){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }; 
+        }else if(word.length == 2){
+            if(word[0].lesson_id == 6  && word[1].lesson_id == 7){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 8){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  && word[1].lesson_id == 9){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 6  &&  word[1].lesson_id == 10){
+                console.log("78")
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7  &&  word[1].lesson_id == 8){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 9){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7  && word[1].lesson_id == 10){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 9){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 8  && word[1].lesson_id == 10){
+                console.log(999999999999999);
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }else if(word[0].lesson_id == 9  && word[1].lesson_id == 10){
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            };
+        }else if(word.length == 1){
+            if(word[0].lesson_id == 6){
+                //加6數字單字課程
+                npcNumber.classList.add("scarf");
+                npcNumber.classList.remove("hover_number");
+                npcNumber.classList.add("test_pass");
+            }else if(word[0].lesson_id == 7){
+                //加7時間單字課程
+                npcTime.classList.add("scarf");
+                npcTime.classList.remove("hover_time");
+                npcTime.classList.add("test_pass");
+            }else if(word[0].lesson_id == 8){
+                //加8顏色單字課程
+                npcColor.classList.add("scarf");
+                npcColor.classList.remove("hover_color");
+                npcColor.classList.add("test_pass");
+            }else if(word[0].lesson_id == 9){
+                //加9食物單字課程
+                npcFood.classList.add("scarf");
+                npcFood.classList.remove("hover_food");
+                npcFood.classList.add("test_pass");
+            }else if(word[0].lesson_id == 10){
+                //加10交通單字課程
+                npcTraffic.classList.add("scarf");
+                npcTraffic.classList.remove("hover_trafic");
+                npcTraffic.classList.add("test_pass");
+            }
+        }else if(word.length == 0){
+                console.log(0)
+        };
+        
+    };
+</script>
+<script>
+    function cors(){
+        let backGI = document.getElementById("backGroundImg");
+        let sunFace = document.getElementById("sunnyFace");
+        let rainFogy = document.getElementById("foggy");
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+  	if(xhr.status == 200){
+  		// console.log(xhr.responseText);
+        let result = JSON.parse(xhr.responseText);
+        let todayWeather = result.dataseries[0].weather;
+        //取得現在時刻
+        let rightNnow =new Date("Wed Jun 22 2022 20:47:02 GMT+0800 (台北標準時間)");
+        console.log(rightNnow);
+        let rightHour = rightNnow.getHours();
+        console.log(rightHour);
+        //取今日天氣資料
+        console.log("今日天氣:",todayWeather);
+        if(todayWeather == "ts"){
+            if(rightHour <18 && rightHour >6){
+                console.log("強對流天氣");
+                console.log("白天");
+                sunFace.style.display="block";
+            }else if(rightHour <6 && rightHour >18){
+                console.log("晚上");
+                console.log("強對流天氣");
+                moon.style.display="block";
+                night.style.display="block";
+            }; 
+        }else if(todayWeather == "clear"){
+            if(rightHour <18 && rightHour >6){
+                console.log("晴天無雲");
+                console.log("白天");
+                sunFace.style.display="block";
+
+            }else if(rightHour <6 && rightHour >18){
+                console.log("晚上");
+                console.log("晴天無雲");
+                moon.style.display="block";
+                night.style.display="block";
+            }; 
+        }else if(todayWeather == "mcloudy"){
+            console.log("總雲量介於20%-80%間");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_mcloudy.jpg')";
+        }else if(todayWeather == "cloudy"){
+            console.log("總雲量超過80%");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_cloudy.jpg')";
+        }else if(todayWeather == "rain"|todayWeather == "lightrain"){
+            console.log("下雨");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_rain.jpg')";
+            rainFogy.style.display="block";
+        }else if(todayWeather == "snow"){
+            console.log("下雪");
+        }else if(todayWeather == "tsrain"){
+            console.log("抬升指數小於-5且有雨");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_tsrain.jpg')";
+            rainFogy.style.display="block";
+        }
+        //測試用
+        // let test = "cloudy";
+        // if(test == "ts"){
+        //     console.log("強對流天氣");
+        //     sunFace.style.display="block";
+        // }else if(test == "clear"){
+        //     console.log("晴天無雲");
+        //     sunFace.style.display="block";
+        // }else if(test == "mcloudy"){
+        //     console.log("總雲量介於20%-80%間");
+        //     backGI.style.backgroundImage="url('./images/studyMap_wordlv1_mcloudy.jpg')";
+        // }else if(test == "cloudy"){
+        //     console.log("總雲量超過80%");
+        //     backGI.style.backgroundImage="url('./images/studyMap_wordlv1_cloudy.jpg')";
+        // }else if(test == "rain"){
+        //     console.log("下雨");
+        //     backGI.style.backgroundImage="url('./images/studyMap_wordlv1_rain.jpg')";
+        //     rainFogy.style.display="block";
+        // }else if(test == "snow"){
+        //     console.log("下雪");
+        // }else if(test == "tsrain"){
+        //     console.log("抬升指數小於-5且有雨");
+        //     backGI.style.backgroundImage="url('./images/studyMap_wordlv1_tsrain.jpg')";
+        //     rainFogy.style.display="block";
+        // }
+  	}else{
+  		alert(xhr.status);
+  	}
+  }
+  //台灣一週天氣預報
+  let url = "https://www.7timer.info/bin/civillight.php?lon=121.59&lat=25.10&ac=0&lang=en&unit=metric&output=json&tzshift=0";
+  xhr.open("get", url, true);
+
+  xhr.send(null); 
+
+}
+</script>

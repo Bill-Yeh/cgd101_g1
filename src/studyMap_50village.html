@@ -11,7 +11,7 @@
     @@include('layout/login_register.html')
     <!-- header end -->
     <section class="bigMap">  
-        <div class="studyMap_map village50">
+        <div class="studyMap_map village50" id="backGroundImg">
             <!-- 人物角色 -->
             <div class="studyMap_npc asan left hover_a" id="sanA">
                 <img src="./images/studyMap_NPC_a.png" id="asan" class="npc-img">
@@ -115,70 +115,21 @@
                 <button>再一次</button>
             </div>
         </div>
+        <!-- 青蛙 -->
+        <div class="fogy" id="foggy">
+            <img src="./images/home_red_frog_2.gif">
+        </div>
+        <!-- 太陽 -->
+        <div class="sunny" id="sunnyFace">
+            <img src="./images/sun.png">
+        </div>
+        <!-- 月亮 -->
+        <div class="moon" id="moonFace">
+            <img src="./images/moon.png">
+        </div>
+        <!-- 夜晚濾鏡 -->
+        <div class="night_fliter" id="nightFliter"></div>
     </section>
-    <!-- 撈資料庫的50音測驗紀錄資料 -->
-<script>
-    
-    let scorexhr = new XMLHttpRequest();
-    
-    scorexhr.open("get", "./village50_test.php", true);
-    
-    scorexhr.send(null);
-
-    scorexhr.onload = function(){
-        console.log(scorexhr.responseText);
-        let lesson = JSON.parse(scorexhr.responseText);
-        console.log(lesson[0].lesson_id);
-        console.log(lesson[0].quiz_pass);
-        if(lesson[0].quiz_pass == 1){ //檢查是否測驗有通過a單字課程
-            
-            // let npcA = document.getElementById("sanA");
-            npcA.classList.add("mask");
-            npcA.classList.remove("hover_a");
-            npcA.classList.add("test_pass");
-            console.log("Peter")
-	    }else{ 
-            
-	    };
-        if(lesson[1].quiz_pass == 1){ //檢查是否測驗有通過i單字課程
-            // let npcI = document.getElementById("sanI");
-            npcI.classList.add("mask");
-            npcI.classList.remove("hover_i");
-            npcI.classList.add("test_pass");
-            console.log("Park")
-	    }else{ 
-            
-	    };
-        if(lesson[2].quiz_pass == 1){ //檢查是否測驗有通過u單字課程
-            // let npcU = document.getElementById("sanU");
-            npcU.classList.add("mask");
-            npcU.classList.remove("hover_u");
-            npcU.classList.add("test_pass");
-            console.log("is")
-	    }else{ 
-            
-	    };
-        if(lesson[3].quiz_pass == 1){ //檢查是否測驗有通過e單字課程
-            // let npcE = document.getElementById("sanE");
-            npcE.classList.add("mask");
-            npcE.classList.remove("hover_e");
-            npcE.classList.add("test_pass");
-            console.log("spider")
-	    }else{ 
-            
-	    };
-        if(lesson[4].quiz_pass == 1){ //檢查是否測驗有通過o單字課程
-            // let npcO = document.getElementById("sanO");
-            npcO.classList.add("mask");
-            npcO.classList.remove("hover_o");
-            npcO.classList.add("test_pass");
-            console.log("man")
-	    }else{ 
-            
-	    };
-        
-    };
-</script>
 
     <script>
     // let npcId =new Array('asan','isan','usan','esan','osan')
@@ -430,6 +381,13 @@
             photo.style.display='none';
             closeBox.style.display='none';
             toTest.style.display='flex';
+            let xhr = new XMLHttpRequest();
+            xhr.onload=()=>{
+            // alert(xhr.responseText);
+            };
+            let url = "./village50_lesson_record_a.php?lesson_id=1"
+            xhr.open("get", url, true);
+            xhr.send(null);
         }
             //い
         else if(temp == startCon[1]){
@@ -473,6 +431,14 @@
             photo.style.display='none';
             closeBox.style.display='none';
             test.style.display='flex';
+            //寫入lesson_id=2
+            let xhr = new XMLHttpRequest();
+            xhr.onload=()=>{
+            // alert(xhr.responseText);
+            };
+            let url = "./village50_lesson_record_i.php?lesson_id=2"
+            xhr.open("get", url, true);
+            xhr.send(null);
         }
             //う
         else if(temp == startCon[2]){
@@ -519,7 +485,14 @@
             speaker.style.display='none';
             photo.style.display='none';
             closeBox.style.display='none';
-            test.style.display='flex';;
+            test.style.display='flex';
+            let xhr = new XMLHttpRequest();
+            xhr.onload=()=>{
+            // alert(xhr.responseText);
+            };
+            let url = "./village50_lesson_record_u.php?lesson_id=3"
+            xhr.open("get", url, true);
+            xhr.send(null);
         }
             //え
         else if(temp == startCon[3]){
@@ -563,7 +536,14 @@
             speaker.style.display='none';
             photo.style.display='none';
             closeBox.style.display='none';
-            test.style.display='flex';;
+            test.style.display='flex';
+            let xhr = new XMLHttpRequest();
+            xhr.onload=()=>{
+            // alert(xhr.responseText);
+            };
+            let url = "./village50_lesson_record_e.php?lesson_id=4"
+            xhr.open("get", url, true);
+            xhr.send(null);
         }
             //お
         else if(temp == startCon[4]){
@@ -619,6 +599,13 @@
             photo.style.display='none';
             closeBox.style.display='none';
             test.style.display='flex';
+            let xhr = new XMLHttpRequest();
+            xhr.onload=()=>{
+            // alert(xhr.responseText);
+            };
+            let url = "./village50_lesson_record_o.php?lesson_id=5"
+            xhr.open("get", url, true);
+            xhr.send(null);
         };
     } ; 
     function justPlay(e){
@@ -636,11 +623,193 @@
         usan.style.display="block";
         esan.style.display="block";
         osan.style.display="block";
-        npcA.classList.add("mask");
-        npcI.classList.add("mask");
-        npcU.classList.add("mask");
-        npcE.classList.add("mask");
-        npcO.classList.add("mask");
+        let lesson = JSON.parse(scorexhr.responseText);
+        if(lesson.length == 5){
+            //加1あ課程
+            npcA.classList.add("mask");
+            //加2い課程
+            npcI.classList.add("mask");
+            //加3う課程
+            npcU.classList.add("mask");
+            //加4え課程
+            npcE.classList.add("mask");;
+            //加5お課程
+            npcO.classList.add("mask");
+        }else if(lesson.length == 4){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3 && lesson[3].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4 && lesson[3].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3 && lesson[3].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4 && lesson[3].lesson_id== 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");;
+                //加5お課程
+                npcO.classList.add("mask");
+            }
+        }else if(lesson.length == 3){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }; 
+        }else if(lesson.length == 2){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  &&  lesson[1].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  &&  lesson[1].lesson_id == 3){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 4){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 4){
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 5){
+                //加3う課程
+                npcU.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 4  && lesson[1].lesson_id == 5){
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            };
+        }else if(lesson.length == 1){
+            if(lesson[0].lesson_id == 1){
+                //加1あ課程
+                npcA.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2){
+                //加2い課程
+                npcI.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3){
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 4){
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 5){
+                //加5お課程
+                npcO.classList.add("mask");
+            }
+        }else if(lesson.length == 0){
+            
+        };  
     };
     function goToTest(e){
         window.location.href="test.html";
@@ -653,14 +822,197 @@
         usan.style.display="block";
         esan.style.display="block";
         osan.style.display="block";
-        npcA.classList.add("mask");
-        npcI.classList.add("mask");
-        npcU.classList.add("mask");
-        npcE.classList.add("mask");
-        npcO.classList.add("mask");
+        let lesson = JSON.parse(scorexhr.responseText);
+        if(lesson.length == 5){
+            //加1あ課程
+            npcA.classList.add("mask");
+            //加2い課程
+            npcI.classList.add("mask");
+            //加3う課程
+            npcU.classList.add("mask");
+            //加4え課程
+            npcE.classList.add("mask");;
+            //加5お課程
+            npcO.classList.add("mask");
+        }else if(lesson.length == 4){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3 && lesson[3].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4 && lesson[3].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3 && lesson[3].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4 && lesson[3].lesson_id== 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");;
+                //加5お課程
+                npcO.classList.add("mask");
+            }
+        }else if(lesson.length == 3){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }; 
+        }else if(lesson.length == 2){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加2い課程
+                npcI.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 1  &&  lesson[1].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  &&  lesson[1].lesson_id == 3){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 4){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 4){
+                //加3う課程
+                npcU.classList.add("mask");
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 5){
+                //加3う課程
+                npcU.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            }else if(lesson[0].lesson_id == 4  && lesson[1].lesson_id == 5){
+                //加4え課程
+                npcE.classList.add("mask");
+                //加5お課程
+                npcO.classList.add("mask");
+            };
+        }else if(lesson.length == 1){
+            if(lesson[0].lesson_id == 1){
+                //加1あ課程
+                npcA.classList.add("mask");
+            }else if(lesson[0].lesson_id == 2){
+                //加2い課程
+                npcI.classList.add("mask");
+            }else if(lesson[0].lesson_id == 3){
+                //加3う課程
+                npcU.classList.add("mask");
+            }else if(lesson[0].lesson_id == 4){
+                //加4え課程
+                npcE.classList.add("mask");
+            }else if(lesson[0].lesson_id == 5){
+                //加5お課程
+                npcO.classList.add("mask");
+            }
+        }else if(lesson.length == 0){
+            
+        };  
     };
     function init(){
         getGuide();
+        cors();
         let imgs = document.getElementsByClassName('npc-img');
         let closeBox = document.getElementById('close');
         let goto =document.getElementById('Yes');
@@ -683,3 +1035,488 @@
 </body>
 </html>
 
+<!-- 撈資料庫的50音測驗紀錄資料 -->
+<script>
+    
+    let scorexhr = new XMLHttpRequest();
+    
+    scorexhr.open("get", "./village50_test.php", true);
+    
+    scorexhr.send(null);
+
+    scorexhr.onload = function(){
+        console.log(scorexhr.responseText);
+        let lesson = JSON.parse(scorexhr.responseText);
+        //排列組合，先判定JSON傳回的長度，為了迴避因為長度不足時出現的undefined
+        //所以從長度裡寫出每一種不重複的可能性，並加上對應NPC的效果。
+        //或者是一開始就能找到物件索引值對應的值
+        //未來也許會知道更好的解法
+        if(lesson.length == 5){
+            //加1あ課程
+            npcA.classList.add("mask");
+            npcA.classList.remove("hover_a");
+            npcA.classList.add("test_pass");
+            //加2い課程
+            npcI.classList.add("mask");
+            npcI.classList.remove("hover_i");
+            npcI.classList.add("test_pass");
+            //加3う課程
+            npcU.classList.add("mask");
+            npcU.classList.remove("hover_u");
+            npcU.classList.add("test_pass");
+            //加4え課程
+            npcE.classList.add("mask");
+            npcE.classList.remove("hover_e");
+            npcE.classList.add("test_pass");
+            //加5お課程
+            npcO.classList.add("mask");
+            npcO.classList.remove("hover_o");
+            npcO.classList.add("test_pass");
+        }else if(lesson.length == 4){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3 && lesson[3].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4 && lesson[3].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3 && lesson[3].lesson_id== 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4 && lesson[3].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }
+        }else if(lesson.length == 3){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 3){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 3 && lesson[2].lesson_id == 4){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 4 && lesson[2].lesson_id == 5){
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }; 
+        }else if(lesson.length == 2){
+            if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 2){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 3){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  && lesson[1].lesson_id == 4){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 1  &&  lesson[1].lesson_id == 5){
+                console.log("78")
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2  &&  lesson[1].lesson_id == 3){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 4){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2  && lesson[1].lesson_id == 5){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 4){
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 3  && lesson[1].lesson_id == 5){
+                console.log(999999999999999);
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 4  && lesson[1].lesson_id == 5){
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            };
+        }else if(lesson.length == 1){
+            if(lesson[0].lesson_id == 1){
+                //加1あ課程
+                npcA.classList.add("mask");
+                npcA.classList.remove("hover_a");
+                npcA.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 2){
+                //加2い課程
+                npcI.classList.add("mask");
+                npcI.classList.remove("hover_i");
+                npcI.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 3){
+                //加3う課程
+                npcU.classList.add("mask");
+                npcU.classList.remove("hover_u");
+                npcU.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 4){
+                //加4え課程
+                npcE.classList.add("mask");
+                npcE.classList.remove("hover_e");
+                npcE.classList.add("test_pass");
+            }else if(lesson[0].lesson_id == 5){
+                //加5お課程
+                npcO.classList.add("mask");
+                npcO.classList.remove("hover_o");
+                npcO.classList.add("test_pass");
+            }
+        }else if(lesson.length == 0){
+                console.log(0)
+        };
+        // if(lesson[0].quiz_pass == 1){ //檢查是否測驗有通過a單字課程
+        //     npcA.classList.add("mask");
+        //     npcA.classList.remove("hover_a");
+        //     npcA.classList.add("test_pass");
+	    // }else{ 
+            
+	    // };
+        // if(lesson[1].quiz_pass == 1){ //檢查是否測驗有通過i單字課程
+        //     npcI.classList.add("mask");
+        //     npcI.classList.remove("hover_i");
+        //     npcI.classList.add("test_pass");
+	    // }else{ 
+            
+	    // };
+        // if(lesson[2].quiz_pass == 1){ //檢查是否測驗有通過u單字課程
+        //     npcU.classList.add("mask");
+        //     npcU.classList.remove("hover_u");
+        //     npcU.classList.add("test_pass");
+	    // }else{ 
+            
+	    // };
+        // if(lesson[3].quiz_pass == 1){ //檢查是否測驗有通過e單字課程
+        //     npcE.classList.add("mask");
+        //     npcE.classList.remove("hover_e");
+        //     npcE.classList.add("test_pass");
+	    // }else{ 
+            
+	    // };
+        // if(lesson[4].quiz_pass == 1){ //檢查是否測驗有通過o單字課程
+        //     npcO.classList.add("mask");
+        //     npcO.classList.remove("hover_o");
+        //     npcO.classList.add("test_pass");
+	    // }else{ 
+            
+	    // };
+        
+    };
+</script>
+<script>
+    function cors(){
+        let backGI = document.getElementById("backGroundImg");
+        let sunFace = document.getElementById("sunnyFace");
+        let moon = document.getElementById("moonFace");
+        let night = document.getElementById("nightFliter");
+        let rainFogy = document.getElementById("foggy");
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+  	if(xhr.status == 200){
+  		// console.log(xhr.responseText);
+        let result = JSON.parse(xhr.responseText);
+        let todayWeather = result.dataseries[0].weather;
+        //取得現在時刻
+        let rightNnow =new Date();
+        console.log(rightNnow);
+        let rightHour = rightNnow.getHours();
+        console.log(rightHour);
+        //取今日天氣資料
+        console.log("今日天氣:",todayWeather);
+        if(todayWeather == "ts"){
+            if(rightHour <18 && rightHour >6){
+                console.log("強對流天氣");
+                console.log("白天");
+                sunFace.style.display="block";
+            }else if(rightHour <6 && rightHour >18){
+                console.log("晚上");
+                console.log("強對流天氣");
+                moon.style.display="block";
+                night.style.display="block";
+            }; 
+        }else if(todayWeather == "clear"){
+            if(rightHour <18 && rightHour >6){
+                console.log("晴天無雲");
+                console.log("白天");
+                sunFace.style.display="block";
+
+            }else if(rightHour <6 && rightHour >18){
+                console.log("晚上");
+                console.log("晴天無雲");
+                moon.style.display="block";
+                night.style.display="block";
+            }; 
+        }else if(todayWeather == "mcloudy"){
+            console.log("總雲量介於20%-80%間");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_mcloudy.jpg')";
+        }else if(todayWeather == "cloudy"){
+            console.log("總雲量超過80%");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_cloudy.jpg')";
+        }else if(todayWeather == "rain"|todayWeather == "lightrain"){
+            console.log("下雨");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_rain.jpg')";
+            rainFogy.style.display="block";
+        }else if(todayWeather == "snow"){
+            console.log("下雪");
+        }else if(todayWeather == "tsrain"){
+            console.log("抬升指數小於-5且有雨");
+            backGI.style.backgroundImage="url('./images/studyMap_wordlv1_tsrain.jpg')";
+            rainFogy.style.display="block";
+        }
+        //測試用
+        // let test = "rain";
+        // if(test == "ts"){
+        //     console.log("強對流天氣");
+        //     sunFace.style.display="block";
+        // }else if(test == "clear"){
+        //     console.log("晴天無雲");
+        //     sunFace.style.display="block";
+        // }else if(test == "mcloudy"){
+        //     console.log("總雲量介於20%-80%間");
+        //     backGI.style.backgroundImage="url('./images/studyMap_50village_mcloudy.jpg')";
+        // }else if(test == "cloudy"){
+        //     console.log("總雲量超過80%");
+        //     backGI.style.backgroundImage="url('./images/studyMap_50village_cloudy.jpg')";
+        // }else if(test == "rain"){
+        //     console.log("下雨");
+        //     backGI.style.backgroundImage="url('./images/studyMap_50village_rain.jpg')";
+        //     rainFogy.sty.display="block";
+        // }else if(test == "snow"){
+        //     console.log("下雪");
+        // }else if(test == "tsrain"){
+        //     console.log("抬升指數小於-5且有雨");
+        //     backGI.style.backgroundImage="url('./images/studyMap_50village_tsrain.jpg')";
+        //     rainFogy.style.display="block";
+        // }
+  	}else{
+  		alert(xhr.status);
+  	}
+  }
+  //台灣一週天氣預報
+  let url = "https://www.7timer.info/bin/civillight.php?lon=121.59&lat=25.10&ac=0&lang=en&unit=metric&output=json&tzshift=0";
+  xhr.open("get", url, true);
+
+  xhr.send(null); 
+
+}
+</script>
