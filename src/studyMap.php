@@ -6,20 +6,20 @@ session_start();
 try{
 	//=====連接資料庫=====//
 
-    //1.自己用的
-    $dbname = "tibamefe_cgd101g1";
-	$user = "root"; //帳號
-	$password = "Apple0810orange"; //密碼
+    // //1.自己用的
+    // $dbname = "tibamefe_cgd101g1";
+	// $user = "root"; //帳號
+	// $password = "Apple0810orange"; //密碼
 
-    //連接資料庫的變數(固定寫法)
-	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
-	$options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
+    // //連接資料庫的變數(固定寫法)
+	// $dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
+	// $options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
 
-    //新增連接資料庫的物件(固定寫法)
-	$pdo = new PDO($dsn, $user, $password, $options);
+    // //新增連接資料庫的物件(固定寫法)
+	// $pdo = new PDO($dsn, $user, $password, $options);
     
     //2.上線之後用的
-    // require_once("connect_cgd101g1.php");
+    require_once("connect_cgd101g1.php");
 
 
     //=====要資料庫做的事情=====//
