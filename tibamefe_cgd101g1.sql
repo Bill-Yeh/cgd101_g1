@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2022-06-20 13:41:47
+-- 產生時間： 2022-06-22 10:28:04
 -- 伺服器版本： 8.0.29
 -- PHP 版本： 8.1.5
 
@@ -644,7 +644,8 @@ INSERT INTO `q_data` (`option_id`, `lesson_id`, `txt`, `ans`, `option_content1`,
 (148, 11, '謝謝', 'ありがとうございます', 'はじめまして', 'おねがいします', 'さよなら', 10, 1),
 (149, 11, '不好意思', 'すみません', 'はじめまして', 'おねがいします', 'さよなら', 10, 1),
 (150, 11, '拜託', 'おねがいします', 'はじめまして', 'すみません', 'さよなら', 10, 1),
-(151, 11, '再見', 'さよなら', 'すみません', 'はじめまして', 'おねがいします', 10, 1);
+(151, 11, '再見', 'さよなら', 'すみません', 'はじめまして', 'おねがいします', 10, 1),
+(152, 11, 'おはようございます', '早安', '晚安', '你好嗎', '肚子餓', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -914,7 +915,7 @@ ALTER TABLE `quiz_record`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `q_data`
 --
 ALTER TABLE `q_data`
-  MODIFY `option_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=152;
+  MODIFY `option_id` int NOT NULL AUTO_INCREMENT COMMENT 'Not Null(PK,AI)', AUTO_INCREMENT=153;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `report`
