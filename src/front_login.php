@@ -4,7 +4,6 @@ session_start();
 // $_POST["action"] ==> Login
 try{
 
-
   //上線之後用的
   require_once("connect_cgd101g1.php");
 
