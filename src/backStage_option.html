@@ -22,9 +22,9 @@
                         <div class="backStage_right_title">
                             <h1>題庫管理</h1>
                         </div>
-                        <div class="backStage_filter backStage_addAccount">
+                        <!-- <div class="backStage_filter backStage_addAccount">
                             <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i>新增題目</button>
-                        </div>
+                        </div> -->
                         <div class="backStage_input_filter">
                             <div class="on_stock">
                                 一頁總共顯示
@@ -50,7 +50,7 @@
                                 <th>題目</th>
                                 <th>正確解答</th>
                                 <th>其他選項</th>
-                                <th>操作</th>
+                                <!-- <th>操作</th> -->
                             </tr>
                             <tr class="table_data_row odd" v-for="qDataRow in qDataRows">
                                 <td>{{qDataRow.option_id}}</td>
@@ -58,14 +58,14 @@
                                 <td>{{qDataRow.txt}}</td>
                                 <td>{{qDataRow.ans}}</td>
                                 <td>{{qDataRow.option_content1}}、{{qDataRow.option_content2}}、{{qDataRow.option_content3}}</td>
-                                <td>
+                                <!-- <td>
                                     <button class="backStage_edit_btn" @click="edit_qData">
                                         編輯
                                     </button>
                                     <button class="backStage_delete_btn" @click="delete_qData">
                                         刪除
                                     </button>
-                                </td>
+                                </td> -->
                             </tr>
                         </table>
                     </div>
