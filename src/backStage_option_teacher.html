@@ -23,15 +23,526 @@
                             <h1>題庫管理</h1>
                         </div>
                         <div class="backStage_filter backStage_addAccount">
-                            <button class="lightBox_btn"><i class="bi bi-plus-lg"></i>新增題目</button>
+                            <button class="lightBox_btn" @click="show"><i class="bi bi-plus-lg"></i>新增題目</button>
                         </div>
                         <div class="backStage_input_filter">
+                            <div class="on_stock">
+                                一頁總共顯示
+                                <input type="number" min="5" max="10" v-model="data_perPage" class="data_perPage" @change="change_dataPerPage"/>
+                                筆資料
+                            </div>
+                            <div class="input_filter">
+                                <input type="text" placeholder="輸入課程或題目關鍵字" v-model="search" @change="search_txt"/>
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <div class="backStage_search">
+                                <button class="backStage_search_btn" @click="search_txt">
+                                    查詢
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backStage_right_table_part">
+                        <table class="account_table_title table_title">
+                            <tr class="table_header_row">
+                                <th>題目編號</th>
+                                <th>課程編號：名稱</th>
+                                <th>題目</th>
+                                <th>正確解答</th>
+                                <th>其他選項</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr class="table_data_row odd" v-for="qDataRow in qDataRows">
+                                <td>{{qDataRow.option_id}}</td>
+                                <td>{{qDataRow.lesson_id}}：{{qDataRow.lesson_name}}</td>
+                                <td>{{qDataRow.txt}}</td>
+                                <td>{{qDataRow.ans}}</td>
+                                <td>{{qDataRow.option_content1}}、{{qDataRow.option_content2}}、{{qDataRow.option_content3}}</td>
+                                <td>
+                                    <button class="backStage_edit_btn" @click="edit_qData">
+                                        編輯
+                                    </button>
+                                    <button class="backStage_delete_btn" @click="delete_qData">
+                                        刪除
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 表格底下的頁數 -->
+                <footer class="backStage_footer backStage_footer_qData">
+                    <ul class="footer_list">
+                        <li class="arrow double-left" :class="arrow_disable_l(current_page)">
+                            <i class="bi bi-chevron-double-left" :class="arrow_i_disable_l(current_page)" @click="toPage(1)"></i>
+                        </li>
+                        <li class="arrow arrow_left" :class="arrow_disable_l(current_page)">
+                            <i class="bi bi-chevron-left" :class="arrow_i_disable_l(current_page)" @click="toPage(current_page-1)"></i>
+                        </li>
+                        <li class="page_num" v-for="page in all_pages" @click="toPage(page)" :class="page_now(page)">
+                            {{page}}
+                        </li>
+                        <li class="arrow arrow_right" :class="arrow_disable_r(current_page)">
+                            <i class="bi bi-chevron-right" :class="arrow_i_disable_r(current_page)" @click="toPage(current_page+1)"></i>
+                        </li>
+                        <li class="arrow double-right" :class="arrow_disable_r(current_page)">
+                            <i class="bi bi-chevron-double-right" :class="arrow_i_disable_r(current_page)" @click="toPage(all_pages.length)"></i>
+                        </li>
+                    </ul>
+                </footer>
+
+            </div>
+            
+            <!-- 新增題目燈箱 -->
+            <div class="backStage_lightBox" id="backStage_insert_qData">
+                <div class="backStage_lightBox_container">
+                    <div class="backStage_lightBox_content">
+                        <div class="backStage_lightBox_title">
+                            <h3>新增題目</h3>
+                        </div>
+                        <div class="backStage_lightBox_close" @click="hide">
+                            <i class="bi bi-x-lg"></i>
+                        </div>
+                        <div class="backStage_lightBox_main_content">
+                            <div class="backStage_lightBox_des">
+                                請注意，若該課程之題目沒有超過10題，<br>
+                                網站前台便不會出現該測驗卷。<br>
+                                題目與選項順序會在前台重抽，與後台順序無關。
+                            </div>
+                            <form action="">
+                                <div class="course_sm_block item_sm_block article_sm_block report_sm_block">
+                                    <label for="report_sm">對應課程</label>
+                                    <select v-model="insert_lesson_type">
+                                        <option v-for="lesson_Row in lesson_Rows" :value="lesson_Row.lesson_id">{{lesson_Row.lesson_name}}</option>
+                                    </select>
+                                </div>
+                                <div class="course_sm_block item_sm_block article_sm_block report_time_block">
+                                    <label for="report_time">題目</label>
+                                    <input type="text" id="qData_txt" placeholder="請輸入題目" v-model="insert_data_txt">
+                                </div>
+                                <div class="course_img_block item_img_block member_sm_block">
+                                    <label for="member_sm">正確解答</label>
+                                    <input type="text" id="qData_ans" placeholder="請輸入正確解答" v-model="insert_data_ans">
+                                </div>
+                                <div class="course_title_block item_title_block member_title_block report_content_block">
+                                    <label for="report_content">其他選項1</label>
+                                    <input type="text" id="qData_content1" placeholder="請輸入其他選項" v-model="insert_data_content1">
+                                </div>
+                                <div class="course_price_block item_price_block article_type_block report_solve_block">
+                                    <label for="report_content">其他選項2</label>
+                                    <input type="text" id="qData_content2" placeholder="請輸入其他選項" v-model="insert_data_content2">
+                                </div>
+                                <div class="course_price_block item_price_block article_type_block report_solve_block">
+                                    <label for="report_content">其他選項3</label>
+                                    <input type="text" id="qData_content3" placeholder="請輸入其他選項" v-model="insert_data_content3">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="backStage_lightBox_saveBtn">
+                            <button type="submit" class="data_save" @click="insert_qData">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 編輯題目燈箱 -->
+            <div class="backStage_lightBox" id="backStage_edit_qData">
+                <div class="backStage_lightBox_container">
+                    <div class="backStage_lightBox_content">
+                        <div class="backStage_lightBox_title">
+                            <h3>編輯題目</h3>
+                        </div>
+                        <div class="backStage_lightBox_close" @click="hide_edit">
+                            <i class="bi bi-x-lg"></i>
+                        </div>
+                        <div class="backStage_lightBox_main_content">
+                            <form action="">
+                                <div class="course_sm_block item_sm_block article_sm_block report_sm_block">
+                                    <label for="report_sm">對應課程</label>
+                                    <select v-model="insert_lesson_type" >
+                                        <option v-for="lesson_Row in lesson_Rows" :value="lesson_Row.lesson_id">{{lesson_Row.lesson_name}}</option>
+                                    </select>
+                                </div>
+                                <div class="course_sm_block item_sm_block article_sm_block report_time_block">
+                                    <label for="report_time">題目</label>
+                                    <input type="text" id="qData_txt" placeholder="請輸入題目" v-model="insert_data_txt">
+                                </div>
+                                <div class="course_img_block item_img_block member_sm_block">
+                                    <label for="member_sm">正確解答</label>
+                                    <input type="text" id="qData_ans" placeholder="請輸入正確解答" v-model="insert_data_ans">
+                                </div>
+                                <div class="course_title_block item_title_block member_title_block report_content_block">
+                                    <label for="report_content">其他選項1</label>
+                                    <input type="text" id="qData_content1" placeholder="請輸入其他選項" v-model="insert_data_content1">
+                                </div>
+                                <div class="course_price_block item_price_block article_type_block report_solve_block">
+                                    <label for="report_content">其他選項2</label>
+                                    <input type="text" id="qData_content2" placeholder="請輸入其他選項" v-model="insert_data_content2">
+                                </div>
+                                <div class="course_price_block item_price_block article_type_block report_solve_block">
+                                    <label for="report_content">其他選項3</label>
+                                    <input type="text" id="qData_content3" placeholder="請輸入其他選項" v-model="insert_data_content3">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="backStage_lightBox_saveBtn">
+                            <button type="submit" class="data_save" @click="update_qData">儲存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+    <script>
+        let backStage_qData = new Vue({
+            el:'#backStageID',
+            data:{
+                // 頁面渲染用
+                qDataRows:[],
+                lesson_Rows:[],
+                // 分頁用
+                data_perPage:10,
+                all_pages:[],
+                current_page:1,
+                // 搜尋用
+                search_arr : [], //查詢的資料
+                temp_arr : [], //暫存所有資料
+                search:'',
+                // 燈箱用
+                insert_lesson_type:'',
+                insert_data_txt:'',
+                insert_data_ans:'',
+                insert_data_content1:'',
+                insert_data_content2:'',
+                insert_data_content3:'',
+                // 刪除題目用
+                delete_data_id:'',
+            },
+            methods: {
+                page_now(page){
+                    if(page == this.current_page){
+                        return 'currentPage';
+                    }
+                },
+                arrow_disable_l(){
+                    if(this.current_page == 1){
+                        return 'arrow_disable';
+                    }
+                },
+                arrow_i_disable_l(){
+                    if(this.current_page == 1){
+                        return 'arrow_i_disable';
+                    }
+                },arrow_disable_r(){
+                    if(this.current_page == this.all_pages.length){
+                        return 'arrow_disable';
+                    }
+                },
+                arrow_i_disable_r(){
+                    if(this.current_page == this.all_pages.length){
+                        return 'arrow_i_disable';
+                    }
+                },
+                toPage(page){
+                    this.current_page = page;
+                    //改變表格內容
+                    if(this.search == ''){
+                            if(page != parseInt((this.temp_arr.length / this.data_perPage)+1)){
+                            this.qDataRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(page*this.data_perPage-1);i++){
+                                this.qDataRows.push(this.temp_arr[i]);
+                            }
+                        }else{
+                            this.qDataRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(this.temp_arr.length-1);i++){
+                                this.qDataRows.push(this.temp_arr[i]);
+                            }
+                        };
+                    }else{
+                        if(page != parseInt((this.search_arr.length / this.data_perPage)+1)){
+                            this.qDataRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(page*this.data_perPage-1);i++){
+                                this.qDataRows.push(this.search_arr[i]);
+                            }
+                        }else{
+                            this.qDataRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(this.search_arr.length-1);i++){
+                                this.qDataRows.push(this.search_arr[i]);
+                            }
+                        };
+                    }
+                    
+                },
+                show(){
+                    document.getElementById('backStage_insert_qData').style.display = 'flex';
+                },
+                hide(){
+                    document.getElementById('backStage_insert_qData').style.display = 'none';
+                    this.insert_lesson_type = '';
+                    this.insert_data_txt='';
+                    this.insert_data_ans='';
+                    this.insert_data_content1='';
+                    this.insert_data_content2='';
+                    this.insert_data_content3='';
+                },
+                change_dataPerPage(){
+                    if(this.data_perPage>10 || this.data_perPage<5){
+                        alert('請輸入5~10之間的整數');
+                        this.data_perPage=10;
+                    }else{
+                        if(!Number.isInteger(this.data_perPage)){
+                            this.data_perPage = parseInt(this.data_perPage);
+                        }
+                        this.qDataRows = [];
+                        this.all_pages =[];
+                        //===== 表格分頁 =====//
+                        //產出頁數
+                        if(this.temp_arr.length < this.data_perPage){
+                            this.all_pages.push(1);
+                        }else if(this.temp_arr.length % this.data_perPage == 0){
+                            for(let i=1;i<=(this.temp_arr.length / this.data_perPage);i++){
+                                this.all_pages.push(i);
+                                // console.log(i);
+                            };
+                        }else{
+                            for(let i=1;i<=((this.temp_arr.length / this.data_perPage)+1);i++){
+                                this.all_pages.push(i);
+                                // console.log(i);
+                            };
+                        };
+                        //寫入初始表格
+                        if(this.temp_arr.length < this.data_perPage){
+                            for(let i=0;i<this.temp_arr.length;i++){
+                                this.qDataRows.push(this.temp_arr[i]);
+                            };
+                        }else{
+                            for(let i=0;i<=this.data_perPage-1;i++){
+                                this.qDataRows.push(this.temp_arr[i]);
+                            };
+                        };
+                        this.current_page= 1;
+                    }
+                },
+                search_txt(){
+                    console.log('開始查詢');
+                    let search = this.search;
+                    this.search_arr = [];
+                    if(search == ''){
+                        this.search_arr = this.temp_arr;
+                        console.log('結果空值');
+                    }else{
+                        this.search_arr = [];
+                        console.log(search);
+                        for(let i = 0; i<this.temp_arr.length;i++){
+                            if(this.temp_arr[i].lesson_name.indexOf(search) != -1){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(this.temp_arr[i].txt.indexOf(search) != -1){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(this.temp_arr[i].ans.indexOf(search) != -1){
+                                this.search_arr.push(this.temp_arr[i]);
+                            };
+                        };
+                    };
+                    this.qDataRows = this.search_arr;
+
+                    //===== 表格分頁 =====//
+                    this.all_pages = [];
+                    this.current_page = 1;
+                    //產出頁數
+                    if(this.qDataRows.length < this.data_perPage){
+                        this.all_pages.push(1);
+                    }else if(this.qDataRows.length % this.data_perPage == 0){
+                        for(let i=1;i<=(this.qDataRows.length / this.data_perPage);i++){
+                            this.all_pages.push(i);
+                        };
+                    }else{
+                        for(let i=1;i<=((this.qDataRows.length / this.data_perPage)+1);i++){
+                            this.all_pages.push(i);
+                        };
+                    };
+
+                    // //產出初始表格
+                    if(this.search_arr == []){
+                        if(this.temp_arr.length < this.data_perPage){
+                            for(let i=0;i<this.temp_arr.length;i++){
+                                this.qDataRows.push(this.temp_arr[i]);
+                            };
+                        }else{
+                            for(let i=0;i<=this.data_perPage-1;i++){
+                                this.qDataRows.push(this.temp_arr[i]);
+                            };
+                        };
+                    }else{
+                        if(this.all_pages.length>1){
+                            this.qDataRows = [];
+                            for(let i=0;i<this.data_perPage;i++){
+                                this.qDataRows.push(this.search_arr[i]);
+                            };
+                        };
+                    };
+                },
+                insert_qData(){
+                    if(this.insert_lesson_type == '' ||
+                    this.insert_data_txt=='' ||
+                    this.insert_data_ans=='' ||
+                    this.insert_data_content1=='' ||
+                    this.insert_data_content2==''||
+                    this.insert_data_content3==''){
+                        alert('請填寫所有欄位')
+                    }else{
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = () =>{
+                            console.log(xhr.responseText);
+                            location.reload();
+                        }
+                        xhr.open("post","back_q_data_insert.php",true);
+                        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                        //送出資料
+                        let data_info = "lesson_type=" + this.insert_lesson_type + "&qdata_txt=" + this.insert_data_txt + "&qdata_ans=" + this.insert_data_ans + "&qdata_con1=" + this.insert_data_content1 + "&qdata_con2=" + this.insert_data_content2 + "&qdata_con3=" + this.insert_data_content3;
+                        xhr.send(data_info);
+
+                        console.log(data_info);
+                        this.insert_lesson_type = '';
+                        this.insert_data_txt='';
+                        this.insert_data_ans='';
+                        this.insert_data_content1='';
+                        this.insert_data_content2='';
+                        this.insert_data_content3='';
+                        document.querySelector('.backStage_lightBox').style.display = 'none';
+                    }
+                },
+                edit_qData(e){
+                    document.getElementById('backStage_edit_qData').style.display = 'flex';
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    this.insert_lesson_type = e.path[2].cells[1].innerHTML.split('：')[0];
+                    this.insert_data_txt = e.path[2].cells[2].innerHTML;
+                    this.insert_data_ans = e.path[2].cells[3].innerHTML;
+                    this.insert_data_content1=e.path[2].cells[4].innerHTML.split('、')[0];
+                    this.insert_data_content2=e.path[2].cells[4].innerHTML.split('、')[1];
+                    this.insert_data_content3=e.path[2].cells[4].innerHTML.split('、')[2];
+                },
+                hide_edit(){
+                    document.getElementById('backStage_edit_qData').style.display = 'none';
+                    this.insert_lesson_type = '';
+                    this.insert_data_txt='';
+                    this.insert_data_ans='';
+                    this.insert_data_content1='';
+                    this.insert_data_content2='';
+                    this.insert_data_content3='';
+                },
+                update_qData(){
+                    if(this.insert_lesson_type == '' ||
+                    this.insert_data_txt=='' ||
+                    this.insert_data_ans=='' ||
+                    this.insert_data_content1=='' ||
+                    this.insert_data_content2==''||
+                    this.insert_data_content3==''){
+                        alert('請填寫所有欄位')
+                    }else{
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = () =>{
+                            console.log(xhr.responseText);
+                            location.reload();
+                        }
+                        xhr.open("post","back_q_data_update.php",true);
+                        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                        //送出資料
+                        let data_info = "option_id=" + this.delete_data_id + "&lesson_type=" + this.insert_lesson_type + "&qdata_txt=" + this.insert_data_txt + "&qdata_ans=" + this.insert_data_ans + "&qdata_con1=" + this.insert_data_content1 + "&qdata_con2=" + this.insert_data_content2 + "&qdata_con3=" + this.insert_data_content3;
+                        xhr.send(data_info);
+
+                        console.log(data_info);
+                        this.insert_lesson_type = '';
+                        this.insert_data_txt='';
+                        this.insert_data_ans='';
+                        this.insert_data_content1='';
+                        this.insert_data_content2='';
+                        this.insert_data_content3='';
+                        document.querySelector('.backStage_lightBox').style.display = 'none';
+                    }
+                    },
+                delete_qData(e){
+                    let ifDelete = '確定刪除？';
+                    if (confirm(ifDelete) == true) {
+                        // console.log(e.path[2].cells[0].innerHTML);
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () =>{
+                        console.log(xhr.responseText);
+                        location.reload();
+                    }
+                    xhr.open("post","back_q_data_delete.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    //送出資料
+                    let data_info = "option_id=" + this.delete_data_id;
+                    xhr.send(data_info);
+                    }
+                },
+            },
+            computed:{
+            },
+            created(){
+                //===== 表格資料 =====//
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    this.temp_arr = JSON.parse(xhr.responseText);
+                    // console.log(this.temp_arr);
+
+                    //===== 表格分頁 =====//
+                    //產出頁數
+                    if(this.temp_arr.length < this.data_perPage){
+                        this.all_pages.push(1);
+                    }else if(this.temp_arr.length % this.data_perPage == 0){
+                        for(let i=1;i<=(this.temp_arr.length / this.data_perPage);i++){
+                            this.all_pages.push(i);
+                        };
+                    }else{
+                        for(let i=1;i<=((this.temp_arr.length / this.data_perPage)+1);i++){
+                            this.all_pages.push(i);
+                        };
+                    };
+                    //寫入初始表格
+                    if(this.temp_arr.length < this.data_perPage){
+                        for(let i=0;i<this.temp_arr.length;i++){
+                            this.qDataRows.push(this.temp_arr[i]);
+                        };
+                    }else{
+                        for(let i=0;i<=this.data_perPage-1;i++){
+                            this.qDataRows.push(this.temp_arr[i]);
+                        };
+                    };
+                };
+                xhr.open("get","back_q_data.php",true);
+                xhr.send(null);
+
+                //===== 課程類型資料(新增課程用) =====//
+                let xhr2 = new XMLHttpRequest();
+                xhr2.onload = () =>{
+                    this.lesson_Rows = JSON.parse(xhr2.responseText);
+                    // console.log(this.lesson_Rows);
+                }
+                xhr2.open("get","back_q_data_lesson.php",true);
+                xhr2.send(null);
+            }
+        })
+    </script>
+            <!-- <div class="backStage_right_part">
+                <div class="backStage_right_content">
+                    <div class="backStage_right_title_part">
+                        <div class="backStage_right_title">
+                            <h1>題庫管理</h1>
+                        </div>
+                        <div class="backStage_filter backStage_addAccount">
+                            <button class="lightBox_btn"><i class="bi bi-plus-lg"></i>新增題目</button>
+                        </div>
+                        <div class="backStage_input_filter"> -->
                             <!-- <div class="on_stock">
                                 <span>單字(2)</span>
                                 <span>會話(2)</span>
                                 <span>聽力測驗(2)</span>
                             </div> -->
-                            <div class="input_filter">
+                            <!-- <div class="input_filter">
                                 <input type="text" placeholder="以題目編號查詢">
                                 <i class="bi bi-search"></i>
                             </div>
@@ -59,10 +570,10 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
             <!-- 新增帳號燈箱 -->
-            <div class="backStage_lightBox">
+            <!-- <div class="backStage_lightBox">
                 <div class="backStage_lightBox_container">
                     <div class="backStage_lightBox_content">
                         <div class="backStage_lightBox_title">
@@ -100,12 +611,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- @@include('layout/backStage_footer.html') -->
-        </div>
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->
 
-    <script>
+    <!-- <script>
         let backStage_qData = new Vue({
             el:'#backStageID',
             data:{
@@ -129,7 +640,7 @@
                 xhr.send(null);
             }
         })
-    </script>
+    </script> -->
 
 </body>
 </html>

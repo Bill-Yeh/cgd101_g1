@@ -12,3 +12,10 @@
         cursor: default;
     }
 }
+
+.backStage_lightBox_des{
+    padding: 5px 0px 10px;
+    margin-bottom: 20px;
+    line-height: 20px;
+    border-bottom: 1px solid map-get($color, 'backstage_h');
+}
