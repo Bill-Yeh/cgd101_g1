@@ -187,7 +187,7 @@
             template:`
             <div class="faq_mem faq_mem_A" ref="post">
                 <div class="faq_mem_npc">
-                    <img src="./images/char_00_1.png" alt="學員A">
+                    <img :src="item.role" alt="學員A">
                 </div>
                 <div class="faq_article_content">
                     <span>{{item.member_name}}</span>
@@ -267,7 +267,7 @@
             <div class="faq_message_article">
                 <div class="faq_student">
                     <div class="faq_npc">
-                        <img src="./images/char_00_1.png" alt="學員A">
+                        <img :src="getFocusArticle" alt="學員A">
                     </div>
                     <div class="name_time">
                         <span>{{getFocusName}}</span>
@@ -348,7 +348,7 @@
                 <div class="faq_student_message">
                     <div class="faq_student1 student">
                         <div class="faq_student_npc">
-                            <img src="./images/char_00_1.png" alt="學員1">
+                            <img :src="item.role" alt="學員1">
                         </div>
                         <div class="faq_student_text">
                             <span class="student_name">{{item.member_name}}</span>
