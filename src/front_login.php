@@ -3,15 +3,19 @@ session_start();
 
 // $_POST["action"] ==> Login
 try{
-  $dbname = "tibamefe_cgd101g1";
-	$user = "root";
-	// $password = "fsrs90115";
-	$password = "Sarah34302521";
+  // $dbname = "tibamefe_cgd101g1";
+	// $user = "root";
+	// $password = "";
 
-	$dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
-	$options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
+	// $dsn = "mysql:host=localhost;port=3306;dbname=$dbname;charse=utf8";
+	// $options = [PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
 
-	$pdo = new PDO($dsn, $user, $password, $options);
+	// $pdo = new PDO($dsn, $user, $password, $options);
+
+  //上線之後用的
+  require_once("connect_cgd101g1.php");
+
+
   $sql = "select * from `member` where account=:account and password=:password"; 
   $member = $pdo->prepare($sql);
   $member->bindValue(":account", $_POST["account"]);
