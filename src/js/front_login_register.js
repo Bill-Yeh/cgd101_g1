@@ -160,8 +160,6 @@ window.addEventListener('load', function(){
                     loginPassword.value = '';
                     loginRegister.style.display = 'none';
                     
-                    // memArea.style.display = 'none';
-                    // memIcon.style.display = 'none';
                     logout.style.display = 'block';
                     loginBox.style.width = '10%';
                     moneyArea.style.margin = 'auto';
@@ -193,59 +191,6 @@ window.addEventListener('load', function(){
             let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
             console.log(data_info);
             xhr.send(data_info);
-
-        // if(window.innerWidth < 992){
-        //     window.addEventListener('resize',function() {
-        //         memArea.style.display = 'none';
-        //         memIcon.style.display = 'none';
-        //     })
-        //     //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
-        //     let xhr = new XMLHttpRequest();
-        //     xhr.onload = function(){
-        //         let memberWeb = JSON.parse(xhr.responseText);
-        //         memName.innerText = memberWeb.member_name;
-        //         //將登入表單上的資料清空，並隱藏起來
-        //         loginAccount.value = '';
-        //         loginPassword.value = '';
-        //         loginRegister.style.display = 'none';
-                
-        //         memArea.style.display = 'none';
-        //         memIcon.style.display = 'none';
-        //         logout.style.display = 'block';
-        //         loginBox.style.width = '10%';
-        //         moneyArea.style.margin = 'auto';
-        //     }
-        //     xhr.open("post", "front_login.php", true);
-        //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-        //     let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
-        //     xhr.send(data_info);
-
-        // }else if(window.innerWidth > 992){
-        //     //================使用Ajax 回server端,取回登入者姓名, 放到頁面上    
-        //     let xhr = new XMLHttpRequest();
-        //     xhr.onload = function(){
-        //         let memberWeb = JSON.parse(xhr.responseText);
-        //         memName.innerText = memberWeb.member_name;
-        //         //將登入表單上的資料清空，並隱藏起來
-        //         loginAccount.value = '';
-        //         loginPassword.value = '';
-        //         loginRegister.style.display = 'none';
-                
-        //         memArea.style.display = 'block';
-        //         memIcon.style.display = 'none';
-        //         logout.style.display = 'block';
-        //         loginBox.style.width = '25%';
-        //         moneyArea.style.margin = '0';
-        //     }
-        //     xhr.open("post", "front_login.php", true);
-        //     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-
-        //     let data_info = `account=${loginAccount.value}&password=${loginPassword.value}`;
-        //     xhr.send(data_info);
-        // }
-                
-   
     })
     // 取得會員是否已登入的資訊
     if(window.innerWidth < 992){
@@ -305,6 +250,7 @@ window.addEventListener('load', function(){
         xhr.send(null);
     })
     
+window.addEventListener('resize',function(){
     if(window.innerWidth < 992){
         memName.addEventListener('click',function(){
             window.location.replace('mem.html');
@@ -314,6 +260,7 @@ window.addEventListener('load', function(){
             window.location.replace('mem.html');
         })
     }
+})
     
 
     // 點叉叉關燈箱

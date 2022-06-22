@@ -217,7 +217,7 @@
                     //確認localStorage有沒有收藏清單
                     // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
                     let memName = document.getElementById('memName');
-                    if(memName.innerText = ''){
+                    if(memName.innerText == ''){
                         alert('請登入帳號');
                         return;
                     }
@@ -247,11 +247,6 @@
                 }
             },
             mounted() { //初始化
-                let memName = document.getElementById('memName');
-                if(memName.innerText = ''){
-                    alert('請登入帳號');
-                    return;
-                }
                 let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
                 if(fav.indexOf(this.id) > -1){
                     this.$refs.heart.classList.add('show')
@@ -259,11 +254,11 @@
                     this.$refs.heart.classList.remove('show')
                 }
                 // 初始化愛心的狀態，判斷是否在list內
-                // if (fav.indexOf(this.id) > -1) {
-                //         this.$refs.heart.classList.add('show')
-                //     } else {
-                //         this.$refs.heart.classList.remove('show')
-                // }
+                if (fav.indexOf(this.id) > -1) {
+                        this.$refs.heart.classList.add('show')
+                    } else {
+                        this.$refs.heart.classList.remove('show')
+                }
             },
         })
 
@@ -452,10 +447,10 @@
                 },
                 postShow(){ //show發文燈箱+阻擋沒燈帳號發文功能
                     let logOut = document.getElementById('logout');
-                    if(logOut.style.display = 'block'){
-                        document.getElementById('faq_post').style.display='flex';
-                    }else{
+                    if(logOut.style.display = 'none'){
                         alert('請登入帳號');
+                    }else{
+                        document.getElementById('faq_post').style.display='flex';
                     }
                 },
                 userPost(){ //發文燈箱送出資料到資料庫
