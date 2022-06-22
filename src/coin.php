@@ -10,10 +10,12 @@ try{
 	// $pdo = new PDO($dsn, $user, $password, $options);
 	 require_once("connect_cgd101g1.php");
 if(isset($_SESSION["coin"])){
- echo $_SESSION["coin"];
-
-
-    
+	$sql = "select coin from member where member_id=:member_id";
+	$coin = $pdo->prepare($sql);
+	$coin->bindValue(":member_id", $_SESSION["member_id"]);
+	$coin->execute();
+	$coinRow = $coin->fetch(PDO::FETCH_ASSOC);
+ echo json_encode($coinRow);
 }else{
     echo "no login";
 }

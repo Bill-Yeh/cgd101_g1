@@ -63,18 +63,6 @@
   position: absolute;
   width: 30px;
   height: 30px;
-  @include md() {
-    width: 70px;
-    height: 40px;
-  }
-  @include lg() {
-    width: 80px;
-    height: 50px;
-  }
-  @include xl() {
-    width: 100px;
-    height: 70px;
-  }
 }
 
 /* 首頁第一島npc1 */
@@ -411,7 +399,7 @@
 .home_decorate_info_text {
   position: relative;
   display: flex;
-  width: 400px;
+  width: 300px;
   height: 80px;
   padding: 20px;
   background-color: #fae6b8;
@@ -953,18 +941,18 @@
   }
 
   .home_first_island_pic img {
-    width: 80%;
+    width: 60%;
     height: 100%;
   }
 
   /* 首頁第一島npc */
-  // .home_first_island_npc1,
-  // .home_first_island_npc2,
-  // .home_first_island_npc3,
-  // .home_first_island_npc4 {
-  //   width: 100px;
-  //   height: 70px;
-  // }
+  .home_first_island_npc1,
+  .home_first_island_npc2,
+  .home_first_island_npc3,
+  .home_first_island_npc4 {
+    width: 100px;
+    height: 70px;
+  }
 
   /* 首頁第一島npc1 */
   .home_first_island_npc1 {
@@ -1045,9 +1033,8 @@
 
   /* 首頁介紹內容 */
   .home_first_info {
-    width: 70%;
     left: 20%;
-    bottom: 20%;
+    bottom: 50%;
     position: absolute;
   }
 
@@ -1131,14 +1118,6 @@
     img {
       width: 90px;
       height: 80px;
-    }
-  }
-  .lesson_talk {
-    left: 30%;
-    top: 2%;
-    img {
-      width: 180px;
-      height: 100px;
     }
   }
 
@@ -1465,5 +1444,13 @@
       width: 180px;
       height: 100px;
     }
+  }
+
+  .home_first_island {
+    height: 650px;
+  }
+
+  .home_first_info {
+    bottom: 30%;
   }
 }

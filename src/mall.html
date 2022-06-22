@@ -407,6 +407,7 @@
                 <div class="tool_text_box" id="tool_text_box">
                     <div class="tool_text" id="tool_choice">是否確認購買?</div>
                     <div class="tool_text" id="tool_having" style="display: none;">無法重複購買</div>
+                    <div class="tool_text" id="no_coin" style="display: none;">代幣不足</div>
                     <div class="choice">
                         <div class="tool_yes_btn" id="tool_y_btn">確認</div>
                         <div class="tool_no_btn" id="tool_n_btn">取消</div>
@@ -436,7 +437,7 @@
                         //j=要從資料庫第幾個課程開始抓取
                         for (j = 10; j < lesson.length; j++) {
                             //從lesson_id:12開始抓取
-                            if (lesson[j].lesson_id == i + 12) {
+                            if (lesson[j].lesson_id == i + 16) {
                                 lesson_title[i].innerText = lesson[j].lesson_name;
                                 lesson_price[i].innerText = "$" + lesson[j].lesson_price;
                                 lesson_img[i].src = lesson[j].lesson_img;
@@ -531,7 +532,6 @@
                     //console.log(having_item);
 
                     for (i = 0; i < having_item.length; i++) {
-
                         let item_idx = having_item[i] - 1;
                         having[item_idx].style.display = "block";
                         tool_coin[item_idx].style.display = "none";
@@ -568,7 +568,7 @@
                 let name = document.getElementById("memName");
                 let loginRegister = document.getElementById("login_register");
 
-
+                let mem_coin = document.getElementById("mem_coin");
 
 
                 function tool_login() {
@@ -600,13 +600,7 @@
                 function tool_n_btn() {
                     show_tool.style.display = "none";
                 }
-                function tool_y_btn(e) {
-                    console.log(e.target);
-                    show_tool.style.display = "none";
-                    let xhr = new XMLHttpRequest();
-                    // xhr.open("get", "", true);
 
-                }
 
                 function show_box() {
                     lesson_pay.style.display = "block";
@@ -627,6 +621,8 @@
                     tool[i].addEventListener("click", function () {
                         let having_text = document.getElementById("tool_having");
                         let tool_choice = document.getElementById("tool_choice");
+                        let no_coin = document.getElementById("no_coin");
+                        tool_yes.onclick = tool_y_btn;
                         //console.log(i);
                         if (tool_coin_text[i].innerText == "已擁有") {
                             having_text.style.display = "block"
@@ -636,11 +632,39 @@
                         else if (tool_coin_text[i].innerText != "已擁有") {
                             having_text.style.display = "none"
                             tool_choice.style.display = "block";
+
+                        }
+                        function tool_y_btn() {
+                            show_tool.style.display = "none";
+
+                            //if 會員的代幣 - 裝備的代幣 >=0
+                            if (Number(coin.innerText) - Number(tool_coin_text[i].innerText) >= 0) {
+
+                                //剩餘代幣 = 相減之後的數量
+                                now_coin = Number(coin.innerText) - Number(tool_coin_text[i].innerText)
+
+                                //叫出PHP來處理代幣資料
+                                let xhr = new XMLHttpRequest();
+                                let url = `./mall_coin.php?coin=${now_coin}`
+                                xhr.open("get", url, true);
+                                xhr.send(null);
+                                xhr.onload = function () {
+                                    let having_coin = JSON.parse(xhr.responseText);
+                                    mem_coin.innerText = now_coin;
+                                };
+
+                                //if 會員的代幣 - 裝備的代幣 <=0 跳代幣不足燈箱
+                            } else if (Number(coin.innerText) - Number(tool_coin_text[i].innerText) <= 0) {
+                                tool_choice.style.display = "none";
+                                no_coin.style.display = "block";
+                                tool_no.style.display = "none";
+                            }
                         }
                     }
 
                     );
                 }
+
                 //==========讓裝備無法重複購買_end==========
 
                 //==========讓課程無法重複購買==========
@@ -661,17 +685,23 @@
                             lesson_choice.style.display = "block";
                             lesson_yes.style.display = "block";
                         }
-                    }
-                    );
+                    });
                 }
                 //==========讓課程無法重複購買_end==========
+
+
+
+
+                //let xhr = new XMLHttpRequest();
+                // xhr.open("get", "", true);
+
 
                 function init() {
                     lesson_pay_box.onclick = show_box;
                     lesson_no.onclick = no_button;
                     lesson_yes.onclick = yes_button;
                     tool_no.onclick = tool_n_btn;
-                    tool_yes.onclick = tool_y_btn;
+
 
                     for (i = 0; i < lesson_pay_box.length; i++) {
                         lesson_pay_box[i].onclick = lesson_login;
