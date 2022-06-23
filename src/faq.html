@@ -178,7 +178,7 @@
 
 
     <script>
-
+        // let logOut = document.getElementById('logout');
         //Vue component 元件==>文章列表 - 共用元件 -->
         Vue.component('article-card',{
             props:{
@@ -474,13 +474,12 @@
                     }
                 },
                 sendMessage(e){ //留言功能
-                    // let logOut = document.getElementById('logout');
-                    // if(logOut.style.display == 'none'){
-                    //     alert('請登入帳號');
-                    //     return;
-                    //     e.preventDefault();
-                    // }
-                    if(this.inputMessage == ''){
+                    let memName = document.getElementById('memName');
+                    if(memName.innerText == ''){
+                        alert('請登入帳號');
+                        return;
+                        e.preventDefault();
+                    }else if(this.inputMessage == ''){
                         alert('欄位不可為空值');
                         return;
                         e.preventDefault();
@@ -529,7 +528,7 @@
                     this.focusArticles = JSON.parse(JSON.parse(xhr.responseText).post);
 
                     this.user = JSON.parse(JSON.parse(xhr.responseText).comment);
-                    console.log(this.user);
+                    console.log('aaa',this.user);
                 }
                 xhr.open("get", "faq_50.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
