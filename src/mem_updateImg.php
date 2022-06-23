@@ -31,6 +31,9 @@ try{
     $products->execute();
 
 
+    $_SESSION["role"]="./images/role/{$_SESSION["member_id"]}.png";
+
+
     echo json_encode("修改成功");
         
     
