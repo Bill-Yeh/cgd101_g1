@@ -470,12 +470,17 @@
                         xhr.send(data_info);
                     }
                 },
-                sendMessage(){ //留言功能
-                    let logOut = document.getElementById('logout');
-                    if(logOut.style.display = 'none'){
-                        alert('請登入帳號');
-                    }else if(this.inputMessage == ''){
+                sendMessage(e){ //留言功能
+                    // let logOut = document.getElementById('logout');
+                    // if(logOut.style.display == 'none'){
+                    //     alert('請登入帳號');
+                    //     return;
+                    //     e.preventDefault();
+                    // }
+                    if(this.inputMessage == ''){
                         alert('欄位不可為空值');
+                        return;
+                        e.preventDefault();
                     }
                     let xhr = new XMLHttpRequest();
                     xhr.onload = function(){
