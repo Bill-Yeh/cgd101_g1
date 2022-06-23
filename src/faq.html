@@ -154,7 +154,7 @@
                 </div>
                 <div class="faq_user_input">
                     <div class="user_npc">
-                        <img src="./images/char_00_1.png" alt="學員">
+                        <img :src="user.role" alt="學員" :user="user">
                     </div>
                     <form action="" method="post">
                         <input type="text" id="user_message" placeholder="我要留言" v-model="inputMessage">
@@ -164,7 +164,7 @@
                             <i class="bi bi-send-fill"></i>
                         </button>
                     </div>
-            </div>
+                </div>
             </div>
 
         </section>
@@ -391,7 +391,8 @@
                 postText:'',
                 postType:'',
                 inputMessage:'',
-                report:''
+                report:'',
+                user:[]
             },
             methods: {
                 showLesson(type, typeInt){
@@ -416,13 +417,15 @@
 
                         this.messages = messageText;
                        
-                        console.log('messages:',messageText);
+                        // console.log('messages:',messageText);
                         this.articleList = numbers;
-                        console.log('articleList:',numbers);
+                        // console.log('articleList:',numbers);
 
                         // 文章燈箱內容
                         this.focusArticles = numbers;
                         // this.focusArticles = JSON.parse(xhr.responseText);
+                        this.user = JSON.parse(JSON.parse(xhr.responseText).messageText);
+                        // console.log(this.user);
                     }
                     xhr.open("post", "faq.php", true);
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -524,7 +527,9 @@
                     this.messages = JSON.parse(JSON.parse(xhr.responseText).comment);
                     // 文章燈箱po文內容
                     this.focusArticles = JSON.parse(JSON.parse(xhr.responseText).post);
-                    // console.log(this.focusArticles);
+
+                    this.user = JSON.parse(JSON.parse(xhr.responseText).comment);
+                    console.log(this.user);
                 }
                 xhr.open("get", "faq_50.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
