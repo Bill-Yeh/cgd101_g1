@@ -1,3 +1,7 @@
+#test_dia_50 a,#test_dia_tango a,#test_dia_kaiwa a{
+    color: map-get($color, 'backstage_h');
+}
+
 #test_input,#test_score_input{
     display: none;
 }
@@ -6,7 +10,7 @@
     width: 100%;
     margin: auto;
     margin-top: 10%;
-    padding: 30px 30px;
+    padding: 130px 30px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -34,13 +38,13 @@
 
         background-position: 
         // 第三座島的背景位置
-        right 11% top 100%,right 240px top 105%,right 30px top 75%,
+        right 11% top 95%,right 240px top 86%,right 30px top 75%,
 
         // 第二座島的背景位置
-        right 0% top 62%,right 240px top 55%,right 10px top 30%,
+        right 0% top 65%,right 240px top 50%,right 10px top 30%,
 
         // 第一座島的背景位置
-        right 240px top 5%,right 30% top 1%
+        right 240px top 15%,right 30% top 1%
         ;
 
     }
@@ -60,24 +64,24 @@
 
         background-position: 
         // 第三座島的背景位置
-        right -15% top 105%,right 10% top 80%,
+        right -15% top 98%,left 0% top 100%,
 
         // 第二座島的背景位置
         left 18% top 60%,
 
         // 第一座島的背景位置
-        right -10% top -1%,right 5% top 30%,left 8% top 40%
+        right -10% top 1%,right 5% top 30%,left 8% top 40%
         ;
 
         background-size: 
         // 第三座島的背景大小
-        45%,14%,
+        40%,10%,
 
         // 第二座島的背景大小
         13%,
 
         // 第一座島的背景大小
-        40%,10%,15%
+        40%,8%,15%
         ;
     }
 
@@ -95,13 +99,13 @@
 
         background-position: 
         // 第三座島的背景位置
-        left 60% top 100%,right 230px top 105%,right -50px top 80%,
+        left 60% top 100%,right 230px top 95%,right -50px top 80%,
 
         // 第二座島的背景位置
-        right 15% top 65%,right 230px top 55%,right 10px top 30%,
+        right 15% top 65%,right 230px top 50%,right 10px top 30%,
 
         // 第一座島的背景位置
-        right 230px top 5%,right 50% top 1%
+        right 230px top 10%,right 50% top 1%
         ;
     } 
 
@@ -124,20 +128,21 @@
 
 .test_section{
     width: 100%;
-    padding-top: 100px;
-    padding-bottom: 30%;
+    padding-top: 200px;
+    padding-bottom: 200px;
     display: flex;
     justify-content: flex-start; 
     gap: 30px;
     position: relative;
 
     @media screen and (max-width : 450px){
-        padding-bottom: 35%;
+        padding-top: 200px;
+        padding-bottom: 200px;
     }
 
     @include md{  
-        padding-top: 60px;
-        padding-bottom: 60px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 
@@ -153,21 +158,28 @@
     width: 100%;
     border-radius: 20px;
     transform: scale(-1,1);
+    @include xl{
+        width: 85%;
+    }
 }
 
-#test_50_pic_s{
+.test_50_pic_s{
     display: block;
     @include md{
         display: none;
     }
 }
 
-#test_50_pic_l{
+.test_50_pic_l{
     display: none;
     @include md{
+        width: 80%;
         display: block;
         position: relative;
         left: 50px;
+    }
+    @include xl{
+        left: 100px;
     }
 }
 
@@ -256,12 +268,17 @@
         transform: scale(1,0);
         transform-origin: 0px 0px;
         transition: all .3s;
+    }
 
+    & h3{
+        @include md{
+            margin-left: 10px;
+        }
     }
 }
 
-.test_tab_label::after {
-    content: "\276F";
+.test_tab_label::after,.test_tab_label_lock::after {
+    content: url(../images/test_arrow.png);
     width: 50px;
     height: 50px;
     position: absolute;
@@ -278,6 +295,10 @@
         right: 5px;
         transform-origin: 15px 15px;
     } 
+}
+
+.test_tab_label_lock::after{
+    content: url(../images/test_lock.png);
 }
 
 // checked：打開對話選項 //
@@ -309,7 +330,7 @@
     border-radius: 10px;
 
     &::before{
-        content: '\25B6';
+        content: url(../images/test_triangle.png);
         font-size: 10px;
         padding-right: 5px;
     }
@@ -400,9 +421,10 @@
 }
 
 #test_confirm_box{
-    max-width: 300px;
-    max-height: 300px;
-    padding: 40px 30px;
+    max-width: 400px;
+    max-height: 430px;
+    padding: 20px 25px;
+    padding-top: 30px;
     box-sizing: border-box;
     background-color:  map-get($color, 'bgc_y');
     border: 5px solid map-get($color, 'primary');
@@ -420,11 +442,37 @@
     justify-content: space-between;
     & .test_confirm_title,p{
         font-size: 20px;
+        line-height: 30px;
         text-align: center;
+        span{
+            color: map-get($color, 'backstage_h');
+        }
     }
 
     & .test_confirm_title{
         padding-bottom: 30px;
+        &_toptxt{
+            padding: 10px 0px;
+            border-bottom: 2px solid map-get($color, 'primary');
+        }
+        &_bomtxt{
+            padding-top: 20px;
+        }
+    }
+
+    &#test_passScore{
+        font-size: 23px;
+    }
+
+    & .test_confirm_description{
+        letter-spacing: 1px;
+        padding: 10px 0px 0px;
+        font-size: 16px;
+    }
+
+    & .test_confirm{
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -435,7 +483,9 @@
     color: map-get($color, 'backstage_h');
     font-weight:bold;
 }
+
 .test_btn{
+    margin: auto 10px;
     padding: 10px 20px;
     font-size: 20px;
     border: none;
@@ -446,6 +496,10 @@
     &:hover{
         cursor: pointer;
         background: map-get($color, 'backstage_h');
+    }
+
+    @media screen and (max-width : 450px){
+        padding: 15px;
     }
 }
 
@@ -553,7 +607,7 @@
 .test_question{
     display: none;
     padding: 20px;
-    padding-top: 60px;
+    padding-top: 0px;
     flex-grow: 1;
 
     display: flex;
@@ -614,7 +668,7 @@
     }
     
     &_wrap{
-        padding-top: 50px;
+        padding-top: 30px;
 
         @media screen and (max-width : 450px){
             padding-top: 40px;
@@ -640,21 +694,18 @@
     }
 }
 
-#test_result_save{
-    width: 100%;
-    padding: 10px 20px;
-    font-size: 20px;
-    border: none;
-    color: #fff;
-    background-color: map-get($color, 'primary');
-    border-radius: 30px;
-
-    &:hover{
-        cursor: pointer;
-        background: map-get($color, 'backstage_h');
-    }
+#notMemTxt_end{
+    padding: 5px 0px 20px;
+    font-size: 18px;
+    line-height: 32px;
+    border-top: 1px solid map-get($color, 'primary');
+    margin-top: 20px;
 }
 
+.test_end_area{
+    display: flex;
+    justify-content: center;
+}
 
 #test_add_point{
     color: map-get($color, 'backstage_h');
@@ -780,4 +831,90 @@
 
 .test_cloud_1 img,.test_cloud_2 img,.test_cloud_3 img,.test_cloud_4 img{
     width: 100%;
+}
+
+
+//新增說明//
+#test_dialog,#test_dialog_2nd,#test_dialog_3rd{
+    padding: 10px 10px;
+    border: #f9bb4d 3px solid;
+    border-radius: 10px;
+    z-index: 3;
+    background-color: #fae6b8;
+    position: absolute;
+    top: calc(50% - 160px);
+    left: 2%;
+    letter-spacing: 1px;
+    line-height: 25px;
+
+    @include md{
+        top: calc(50% - 170px);
+        left: 23%;
+    }
+
+    &::before{
+        content: '';
+        position: absolute;
+        left: 20px;
+        bottom: -23px;
+        border-top: 20px solid #f9bb4d;
+        border-right: 10px solid  transparent;
+        border-left: 10px solid  transparent;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        left: 21px;
+        bottom: -19px;
+        border-top: 20px solid #fae6b8;
+        border-right: 9px solid  transparent;
+        border-left: 9px solid  transparent;
+    }
+}
+
+#test_dialog_2nd{
+    @include md{
+        top: calc(50% - 120px);
+        left: 50%;
+
+        &::before{
+            left: 100px;
+            bottom: -23px;
+        }
+        &::after{
+            left: 101px;
+            bottom: -19px;
+        }
+    }
+
+    @include lg{
+        &::before{
+            left: 120px;
+        }
+        &::after{
+            left: 121px;
+        }
+    }
+
+    @media screen and(min-width:1200px) {
+        &::before{
+            left: 150px;
+        }
+        &::after{
+            left: 151px;
+        }
+    }
+}
+
+#test_dialog_3rd{
+    @include md{
+        top: calc(50% - 110px);
+        left: 20%;
+    }
+}
+
+//新增灰階濾鏡
+.lock_filter{
+    filter: grayscale(80%);
 }
