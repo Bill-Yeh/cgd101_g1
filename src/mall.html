@@ -622,6 +622,7 @@
                         let having_text = document.getElementById("tool_having");
                         let tool_choice = document.getElementById("tool_choice");
                         let no_coin = document.getElementById("no_coin");
+                        let tool_having = document.getElementById("tool_having");
                         tool_yes.onclick = tool_y_btn;
                         //console.log(i);
                         if (tool_coin_text[i].innerText == "已擁有") {
@@ -632,7 +633,11 @@
                         else if (tool_coin_text[i].innerText != "已擁有") {
                             having_text.style.display = "none"
                             tool_choice.style.display = "block";
-
+                        } if (Number(coin.innerText) - Number(tool_coin_text[i].innerText) <= 0) {
+                            having_text.style.display = "none"
+                            tool_choice.style.display = "none";
+                            tool_no.style.display = "none";
+                            no_coin.style.display = "block"
                         }
                         function tool_y_btn() {
                             show_tool.style.display = "none";
@@ -642,7 +647,8 @@
 
                                 //剩餘代幣 = 相減之後的數量
                                 now_coin = Number(coin.innerText) - Number(tool_coin_text[i].innerText)
-
+                                tool_coin_text[i].innerText = "已擁有"
+                                tool_coin[i].style.display = "none";
                                 //叫出PHP來處理代幣資料
                                 let xhr = new XMLHttpRequest();
                                 let url = `./mall_coin.php?coin=${now_coin}`
@@ -651,18 +657,24 @@
                                 xhr.onload = function () {
                                     let having_coin = JSON.parse(xhr.responseText);
                                     mem_coin.innerText = now_coin;
-                                };
 
-                                //if 會員的代幣 - 裝備的代幣 <=0 跳代幣不足燈箱
-                            } else if (Number(coin.innerText) - Number(tool_coin_text[i].innerText) <= 0) {
-                                tool_choice.style.display = "none";
-                                no_coin.style.display = "block";
-                                tool_no.style.display = "none";
+                                    //location.reload()
+                                };
+                            }
+                        }
+
+                        function having() {
+                            for (let j; j < item.length; j++) {
+                                if (item.id == item[i].id) {
+
+                                }
                             }
                         }
                     }
 
                     );
+
+
                 }
 
                 //==========讓裝備無法重複購買_end==========
