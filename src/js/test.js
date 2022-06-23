@@ -302,39 +302,51 @@ function test_showTest(){
         if(test50Arr.length == 0){
             $_('test_50').disabled = true;
             $_('test_label_50').className = 'test_tab_label_lock';
-            $_('test_dia_test50').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
             $_('test_pic_test50').classList.add('lock_filter');
+            if( missing_test_50 > 0){
+                $_('test_dia_tango').innerHTML += `本區域有${missing_test_50}個測驗待更新，<br>敬請期待！`;
+            }else{
+                $_('test_dia_test50').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+            };
         }else{
             $_('test_label_50').disabled = false;
             $_('test_dia_test50').innerHTML = `目前本區域共開放${test50Arr.length}個測驗。`;
             if( missing_test_50 > 0){
-                $_('test_dia_test50').innerHTML += `<br>有${missing_test_50}個測驗待更新`;
+                $_('test_dia_test50').innerHTML += `有${missing_test_50}個測驗待更新`;
             }
         };
         if(testTangoArr.length == 0){
             $_('test_tango').disabled = true;
-            $_('test_dia_tango').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+            if( missing_test_tango > 0){
+                $_('test_dia_tango').innerHTML += `本區域有${missing_test_tango}個測驗待更新，<br>敬請期待！`;
+            }else{
+                $_('test_dia_tango').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+            };
         }else{
             $_('test_tango').disabled = false;
             $_('test_label_tango').className = 'test_tab_label';
             $_('test_dia_tango').innerHTML = `目前本區域共開放${testTangoArr.length}個測驗。`;
             $_('test_pic_tango').classList.remove('lock_filter');
             if( missing_test_tango > 0){
-                $_('test_dia_tango').innerHTML += `<br>有${missing_test_tango}個測驗待更新`;
-            }
+                $_('test_dia_tango').innerHTML += `<br>有${missing_test_tango}個測驗待更新，敬請期待！`;
+            };
         };
         if(testKaiwaArr.length == 0){
             $_('test_kaiwa').disabled = true;
-            $_('test_dia_kaiwa').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+            if( missing_test_Kaiwa > 0){
+                $_('test_dia_kaiwa').innerHTML += `本區域有${missing_test_Kaiwa}個測驗待更新，<br>敬請期待！`;
+            }else{
+                $_('test_dia_kaiwa').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+            }
+            ;
         }else{
             $_('test_kaiwa').disabled = false;
             $_('test_label_kaiwa').className = 'test_tab_label';
             $_('test_dia_kaiwa').innerHTML = `目前本區域共開放${testKaiwaArr.length}個測驗。`;
             $_('test_pic_kaiwa').classList.remove('lock_filter');
-            $_('test_pic_tango').classList.remove('lock_filter');
             if( missing_test_Kaiwa > 0){
-                $_('test_dia_kaiwa').innerHTML.innerHTML += `<br>有${missing_test_Kaiwa}個測驗待更新`;
-            }
+                $_('test_dia_kaiwa').innerHTML += `<br>有${missing_test_Kaiwa}個測驗待更新，敬請期待！`;
+            };
         };
 
         //重新註冊按鈕
