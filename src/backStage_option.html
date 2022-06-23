@@ -334,7 +334,7 @@
                         console.log('結果空值');
                     }else{
                         this.search_arr = [];
-                        console.log(search);
+                        //這個寫法有問題，之後要改
                         for(let i = 0; i<this.temp_arr.length;i++){
                             if(this.temp_arr[i].lesson_name.indexOf(search) != -1){
                                 this.search_arr.push(this.temp_arr[i]);

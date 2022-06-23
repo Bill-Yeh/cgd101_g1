@@ -30,11 +30,11 @@
                                 <span>回收桶(0)</span>
                             </div> -->
                             <div class="input_filter">
-                                <input type="text" placeholder="以文章編號查詢">
+                                <input type="text" placeholder="以文章編號查詢"  v-model="search" @change="search_txt"/>
                                 <i class="bi bi-search"></i>
                             </div>
                             <div class="backStage_search">
-                                <button class="backStage_search_btn">
+                                <button class="backStage_search_btn" @click="search_txt">
                                     查詢
                                 </button>
                             </div>
@@ -67,6 +67,27 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- 表格底下的頁數 -->
+                <footer class="backStage_footer backStage_footer_qData">
+                    <ul class="footer_list">
+                        <li class="arrow double-left" :class="arrow_disable_l(current_page)">
+                            <i class="bi bi-chevron-double-left" :class="arrow_i_disable_l(current_page)" @click="toPage(1)"></i>
+                        </li>
+                        <li class="arrow arrow_left" :class="arrow_disable_l(current_page)">
+                            <i class="bi bi-chevron-left" :class="arrow_i_disable_l(current_page)" @click="toPage(current_page-1)"></i>
+                        </li>
+                        <li class="page_num" v-for="page in all_pages" @click="toPage(page)" :class="page_now(page)">
+                            {{page}}
+                        </li>
+                        <li class="arrow arrow_right" :class="arrow_disable_r(current_page)">
+                            <i class="bi bi-chevron-right" :class="arrow_i_disable_r(current_page)" @click="toPage(current_page+1)"></i>
+                        </li>
+                        <li class="arrow double-right" :class="arrow_disable_r(current_page)">
+                            <i class="bi bi-chevron-double-right" :class="arrow_i_disable_r(current_page)" @click="toPage(all_pages.length)"></i>
+                        </li>
+                    </ul>
+                </footer>
             </div>
             
             <!-- 檢視文章燈箱 -->
@@ -136,6 +157,7 @@
         let backStage_article = new Vue({
             el:'#backStageID',
             data:{
+                // 頁面渲染用
                 articleRows: [],
                 focusId: '',
                 popupItem: {
@@ -149,6 +171,14 @@
                     "message": 0,
                     "report": 0
                 },
+                // 分頁用
+                data_perPage:5,
+                all_pages:[],
+                current_page:1,
+                // 搜尋用
+                search_arr : [], //查詢的資料
+                temp_arr : [], //暫存所有資料
+                search:'',
             },
             computed: {
                 focusItem() {
@@ -170,6 +200,189 @@
                 view(id) {
                     document.querySelector('.backStage_lightBox').style.display = 'flex';
                     this.focusId = id;
+                },
+                page_now(page){
+                    if(page == this.current_page){
+                        return 'currentPage';
+                    }
+                },
+                arrow_disable_l(){
+                    if(this.current_page == 1){
+                        return 'arrow_disable';
+                    }
+                },
+                arrow_i_disable_l(){
+                    if(this.current_page == 1){
+                        return 'arrow_i_disable';
+                    }
+                },arrow_disable_r(){
+                    if(this.current_page == this.all_pages.length){
+                        return 'arrow_disable';
+                    }
+                },
+                arrow_i_disable_r(){
+                    if(this.current_page == this.all_pages.length){
+                        return 'arrow_i_disable';
+                    }
+                },
+                toPage(page){
+                    this.current_page = page;
+                    //改變表格內容
+                    if(this.search == ''){
+                            if(page != parseInt((this.temp_arr.length / this.data_perPage)+1)){
+                            this.articleRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(page*this.data_perPage-1);i++){
+                                this.articleRows.push(this.temp_arr[i]);
+                            }
+                        }else{
+                            this.articleRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(this.temp_arr.length-1);i++){
+                                this.articleRows.push(this.temp_arr[i]);
+                            }
+                        };
+                    }else{
+                        if(page != parseInt((this.search_arr.length / this.data_perPage)+1)){
+                            this.articleRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(page*this.data_perPage-1);i++){
+                                this.articleRows.push(this.search_arr[i]);
+                            }
+                        }else{
+                            this.articleRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(this.search_arr.length-1);i++){
+                                this.articleRows.push(this.search_arr[i]);
+                            }
+                        };
+                    }
+                },
+                change_dataPerPage(){
+                    if(this.data_perPage>5 || this.data_perPage<1){
+                        alert('請輸入1~5之間的整數');
+                        this.data_perPage=4;
+                    }else{
+                        if(!Number.isInteger(this.data_perPage)){
+                            this.data_perPage = parseInt(this.data_perPage);
+                        }
+                        this.articleRows = [];
+                        this.all_pages =[];
+                        //===== 表格分頁 =====//
+                        //產出頁數
+                        if(this.search == ''){
+                            if(this.temp_arr.length < this.data_perPage){
+                                this.all_pages.push(1);
+                            }else if(this.temp_arr.length % this.data_perPage == 0){
+                                for(let i=1;i<=(this.temp_arr.length / this.data_perPage);i++){
+                                    this.all_pages.push(i);
+                                    console.log(i);
+                                };
+                                
+                                console.log('2');
+                            }else{
+                                for(let i=1;i<=((this.temp_arr.length / this.data_perPage)+1);i++){
+                                    this.all_pages.push(i);
+                                    console.log(i);
+                                };
+                            };
+                            
+                            //寫入初始表格
+                            if(this.temp_arr.length < this.data_perPage){
+                                for(let i=0;i<this.temp_arr.length;i++){
+                                    this.articleRows.push(this.temp_arr[i]);
+                                };
+                            }else{
+                                for(let i=0;i<=this.data_perPage-1;i++){
+                                    this.articleRows.push(this.temp_arr[i]);
+                                };
+                            };
+                        }else{
+                            if(this.search_arr.length < this.data_perPage){
+                                this.all_pages.push(1);
+                            }else if(this.search_arr.length % this.data_perPage == 0){
+                                for(let i=1;i<=(this.search_arr.length / this.data_perPage);i++){
+                                    this.all_pages.push(i);
+                                    // console.log(i);
+                                };
+                            }else{
+                                for(let i=1;i<=((this.search_arr.length / this.data_perPage)+1);i++){
+                                    this.all_pages.push(i);
+                                    // console.log(i);
+                                };
+                            };
+                            //寫入初始表格
+                            if(this.search_arr.length < this.data_perPage){
+                                for(let i=0;i<this.search_arr.length;i++){
+                                    this.articleRows.push(this.search_arr[i]);
+                                };
+                            }else{
+                                for(let i=0;i<=this.data_perPage-1;i++){
+                                    this.articleRows.push(this.search_arr[i]);
+                                };
+                            }
+                        }
+                        
+                        this.current_page= 1;
+                    }
+                },
+                search_txt(){
+                    console.log('開始查詢');
+                    let search = this.search;
+                    this.search_arr = [];
+                    let reg=new RegExp(search);
+                    if(search == ''){
+                        this.search_arr = this.temp_arr;
+                        console.log('結果空值');
+                    }else{
+                        this.search_arr = [];
+                        for(let i = 0; i<this.temp_arr.length;i++){
+                            if(this.temp_arr[i].post_id == search){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }
+                            else if(this.temp_arr[i].member_name == search){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(reg.test(this.temp_arr[i].post_title) == true){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(reg.test(this.temp_arr[i].message) == true){
+                                this.search_arr.push(this.temp_arr[i]);
+                            };
+                        };
+                        
+                    };
+                    this.articleRows = this.search_arr;
+
+                    //===== 表格分頁 =====//
+                    this.all_pages = [];
+                    this.current_page = 1;
+                    //產出頁數
+                    if(this.articleRows.length < this.data_perPage){
+                        this.all_pages.push(1);
+                    }else if(this.articleRows.length % this.data_perPage == 0){
+                        for(let i=1;i<=(this.articleRows.length / this.data_perPage);i++){
+                            this.all_pages.push(i);
+                        };
+                    }else{
+                        for(let i=1;i<=((this.articleRows.length / this.data_perPage)+1);i++){
+                            this.all_pages.push(i);
+                        };
+                    };
+
+                    // //產出初始表格
+                    if(this.search_arr == []){
+                        if(this.temp_arr.length < this.data_perPage){
+                            for(let i=0;i<this.temp_arr.length;i++){
+                                this.articleRows.push(this.temp_arr[i]);
+                            };
+                        }else{
+                            for(let i=0;i<=this.data_perPage-1;i++){
+                                this.articleRows.push(this.temp_arr[i]);
+                            };
+                        };
+                    }else{
+                        if(this.all_pages.length>1){
+                            this.articleRows = [];
+                            for(let i=0;i<this.data_perPage;i++){
+                                this.articleRows.push(this.search_arr[i]);
+                            };
+                        };
+                    };
                 },
             },
             created(){
@@ -197,8 +410,33 @@
                         return {...item, ...messageItem, ...reportItem};
                     })
 
-                    this.articleRows = result;
-                    console.log(result);
+                    // this.articleRows = result;
+                    this.temp_arr = result;
+                    // console.log(result);
+
+                    //===== 表格分頁 =====//
+                    //產出頁數
+                    if(this.temp_arr.length < this.data_perPage){
+                        this.all_pages.push(1);
+                    }else if(this.temp_arr.length % this.data_perPage == 0){
+                        for(let i=1;i<=(this.temp_arr.length / this.data_perPage);i++){
+                            this.all_pages.push(i);
+                        };
+                    }else{
+                        for(let i=1;i<=((this.temp_arr.length / this.data_perPage)+1);i++){
+                            this.all_pages.push(i);
+                        };
+                    };
+                    //寫入初始表格
+                    if(this.temp_arr.length < this.data_perPage){
+                        for(let i=0;i<this.temp_arr.length;i++){
+                            this.articleRows.push(this.temp_arr[i]);
+                        };
+                    }else{
+                        for(let i=0;i<=this.data_perPage-1;i++){
+                            this.articleRows.push(this.temp_arr[i]);
+                        };
+                    };
                 }
                 xhr.open("get","back_article.php",true);
                 xhr.send(null);
