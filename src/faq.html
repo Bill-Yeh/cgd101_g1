@@ -154,7 +154,7 @@
                 </div>
                 <div class="faq_user_input">
                     <div class="user_npc">
-                        <img :src="user.role" alt="學員" :user="user">
+                        <img :src="getUerRoleImg()" alt="學員">
                     </div>
                     <form action="" method="post">
                         <input type="text" id="user_message" placeholder="我要留言" v-model="inputMessage">
@@ -178,7 +178,6 @@
 
 
     <script>
-        // let logOut = document.getElementById('logout');
         //Vue component 元件==>文章列表 - 共用元件 -->
         Vue.component('article-card',{
             props:{
@@ -302,10 +301,6 @@
                     localStorage.setItem('fav',JSON.stringify(fav));
                 },
             },
-            created(){
-                console.log('article-detail created')
-                console.log(this.focusArticle)
-            },
             computed:{
                 getFocusArticle(){
                     return this.focusArticle?.role
@@ -404,6 +399,11 @@
                     console.log('implFilterFocusArticlesList:'+ post_id)
                     this.targetPostKey = post_id
                 },
+                getUerRoleImg(){
+                    console.log('getUerRoleImg');
+                    console.log(this.user);
+                    return this.user?.role;
+                },
                 getPostType(postType){
                     let xhr = new XMLHttpRequest();
                     xhr.onload = () =>{
@@ -423,8 +423,7 @@
 
                         // 文章燈箱內容
                         this.focusArticles = numbers;
-                        // this.focusArticles = JSON.parse(xhr.responseText);
-                        this.user = JSON.parse(JSON.parse(xhr.responseText).messageText);
+                        // this.user = JSON.parse(JSON.parse(xhr.responseText).messageText);
                         // console.log(this.user);
                     }
                     xhr.open("post", "faq.php", true);
@@ -526,11 +525,19 @@
                     this.messages = JSON.parse(JSON.parse(xhr.responseText).comment);
                     // 文章燈箱po文內容
                     this.focusArticles = JSON.parse(JSON.parse(xhr.responseText).post);
-
-                    this.user = JSON.parse(JSON.parse(xhr.responseText).comment);
-                    console.log('aaa',this.user);
                 }
                 xhr.open("get", "faq_50.php", true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                xhr.send(null);
+            },
+            mounted() {
+                let xhr = new XMLHttpRequest();
+                xhr.onload = () =>{
+                    
+                    this.user = JSON.parse(xhr.responseText);
+                    console.log('user:',this.user);
+                }
+                xhr.open("get", "faq_userImg.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
                 xhr.send(null);
             },
