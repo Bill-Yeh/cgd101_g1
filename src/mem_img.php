@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 try{
 	//==========
     // $dbname = "tibamefe_cgd101g1";
@@ -16,22 +15,18 @@ try{
 
 
     //=========
-        $sql = "INSERT `tibamefe_cgd101g1`.`ask_log`"."(`ask_time`,`ask_content`, `member_id`,`ask_src`,`ans_backstage_id`)"."VALUES "."(NOW(),:ask,:mem_id,'1','3')"; 
-        
-        $products = $pdo->prepare($sql);
-        $products->bindValue("ask",$_POST["ask"]);
-        $products->bindValue("mem_id",$_SESSION["member_id"]);
+	$sql = "SELECT `map_img` FROM `tibamefe_cgd101g1`.`member`  WHERE `member_id` =:mem_id"; 
+    
+    
+	$products = $pdo->prepare($sql);
+	$products->bindValue("mem_id",$_SESSION["member_id"]);
+	$products->execute();
 
-        $products->execute();
-
-        echo json_encode("修改成功");
-
-
+	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
+	echo json_encode($prodRows);
 
 }catch(PDOException $e){
-	
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
-	
 }
 ?>

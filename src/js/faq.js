@@ -13,6 +13,14 @@ window.addEventListener('load', function() {
             }
         });
     };
+    // let message_send = document.getElementById('message_send');
+    // let logOut = document.getElementById('logout');
+    // message_send.addEventListener('click',function(){
+    //     if(logOut.style.display == 'none'){
+    //         alert('請登入帳號');
+    //         return;
+    //     }
+    // })
 
     // =============發文驗證===================
 

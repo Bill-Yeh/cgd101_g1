@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 try{
 	//==========
     // $dbname = "tibamefe_cgd101g1";
@@ -16,15 +15,17 @@ try{
 
 
     //=========
-        $sql = "INSERT `tibamefe_cgd101g1`.`ask_log`"."(`ask_time`,`ask_content`, `member_id`,`ask_src`,`ans_backstage_id`)"."VALUES "."(NOW(),:ask,:mem_id,'1','3')"; 
-        
-        $products = $pdo->prepare($sql);
-        $products->bindValue("ask",$_POST["ask"]);
-        $products->bindValue("mem_id",$_SESSION["member_id"]);
+	$sql = "SELECT *
+	FROM `tibamefe_cgd101g1`.`error`
+	order by `error`.`error_datetime` desc;"; 
 
-        $products->execute();
 
-        echo json_encode("修改成功");
+	$info = $pdo->prepare($sql);
+	$info->execute();
+
+	$ask_prodRows = $info->fetchAll(PDO::FETCH_ASSOC);
+
+	echo json_encode($ask_prodRows);
 
 
 

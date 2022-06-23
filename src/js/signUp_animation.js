@@ -107,3 +107,11 @@ function ZoomIn(){
 
 
 window.addEventListener('wheel',ZoomIn);
+window.addEventListener('touchmove',ZoomIn);
+document.addEventListener('keydown',function(e){
+    if(e.keyCode === 38 ){
+        ZoomIn();
+    }
+  });
+
+

@@ -16,7 +16,7 @@
             <!-- 後台左方選單 -->
             @@include('layout/backStage_nav.html')
 
-            <div class="backStage_right_part">
+            <div class="backStage_right_part" id="admin_app">
                 <div class="backStage_right_content">
                     <div class="backStage_right_title_part">
                         <div class="backStage_right_title">
@@ -38,42 +38,24 @@
                         </div>
                     </div>
                     <div class="backStage_right_table_part">
-                        <table class="account_table_title table_title">
+                        <table class="account_table_title table_title" >
                             <tr class="table_header_row">
                                 <th>會員編號</th>
                                 <th>會員名稱</th>
                                 <th>對話時間</th>
                             </tr>
-                            <tr class="table_data_row odd">
-                                <td>001</td>
-                                <td>周阿倫</td>
-                                <td>2022/05/31</td>
-                            </tr>
-                            <tr class="table_data_row even">
-                                <td>002</td>
-                                <td>陳小明</td>
-                                <td>2022/05/30</td>
-                            </tr>
-                            <tr class="table_data_row even">
-                                <td>003</td>
-                                <td>陳小華</td>
-                                <td>2022/05/30</td>
-                            </tr>
-                            <tr class="table_data_row even">
-                                <td>004</td>
-                                <td>王小明</td>
-                                <td>2022/05/30</td>
-                            </tr>
-                            <tr class="table_data_row even">
-                                <td>005</td>
-                                <td>陳小華</td>
-                                <td>2022/05/30</td>
-                            </tr>
+                            <template v-for="item in userInfo">
+                                <tr is="component-admin-back-chatList" v-bind="item"
+                                @click.native="dataImport"></tr>
+                            </template>
                         </table>
                         <div class="backStage_chat_part">
                             <div class="backStage_chat_content">
                                 <div class="backStage_student_block">
-                                    <div class="backStage_student_name">
+                                    <template>
+                                        <div is="component-admin-back-chat-thisUser" v-bind="chatRows"></div>
+                                    </template>
+                                    <!-- <div class="backStage_student_name">
                                         <div class="backStage_student_head">
                                             <img src="./images/studyMap_NPC_o.png" alt="">
                                         </div>
@@ -81,10 +63,13 @@
                                             <span>周阿倫</span>
                                             <span>初心者</span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="chat_message_block">
-                                    <div class="backStage_chat_student">
+                                <div class="chat_message_block" id="chatroom">
+                                    <template v-for="item in chatRows">
+                                        <div is="component-admin-back-chatroom" v-bind="item"></div>
+                                    </template>
+                                    <!-- <div class="backStage_chat_student">
                                         <div class="student_img">
                                             <img src="./images/studyMap_NPC_o.png" alt="">
                                         </div>
@@ -96,7 +81,7 @@
                                         <div class="teacher_chat">
                                             <p>您好，我是語實巨進的老師木村，很高興為您服務。</p>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="backStage_chat_input">
                                     <form action="" method="post">
@@ -164,7 +149,7 @@
         </div>
     </div>
 
-    <script src="./js/backStage.js"></script>
+    <script src="./js/backStage_ask.js"></script>
 
 </body>
 </html>

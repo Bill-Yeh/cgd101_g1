@@ -12,7 +12,7 @@
     @@include('layout/header.html')
     @@include('layout/login_register.html')
     
-    <!-- 傳資料去後端用的i -->
+    <!-- 傳資料去後端用的input -->
     <input type="text" name="test_input" id="test_input"/>
     <input type="text" name="test_score_input" id="test_score_input"/>
     <main class="test_wrap">
@@ -24,15 +24,19 @@
             <div class="test_cloud_1">
                 <img src="./images/cloud_1.png" alt="雲">
             </div>
-            <div class="test_pic">
-                <img src="images/test_NPC1.png" id="test_50_pic_s" alt="五十音測驗">
-                <img src="images/test_topic1.png" id="test_50_pic_l" alt="五十音測驗">
+            <div id="test_dialog">
+                <span id="test_memName">訪客</span> 您好，<br>
+                <span id="test_dia_test50"></span>
+            </div>
+            <div class="test_pic" id="test_pic_50">
+                <img src="images/test_NPC1.png" class="test_50_pic_s" alt="五十音測驗">
+                <img src="images/test_topic1.png" class="test_50_pic_l" alt="五十音測驗">
             </div>
 
             <div class="test_section_content">
                 <input type="checkbox" id="test_50">
                 <div class="test_tab">
-                    <label class="test_tab_label" for="test_50">
+                    <label class="test_tab_label" for="test_50" id="test_label_50">
                         <h3>五十音測驗</h3>
                     </label>
                     <div class="test_tab_content" id="test50_data">
@@ -51,15 +55,18 @@
             <div class="test_cloud_3">
                 <img src="./images/cloud_2.png" alt="雲">
             </div>
-            <div class="test_pic">
-                <img src="images/test_NPC2.png" id="test_50_pic_s" alt="單字測驗">
-                <img src="images/test_topic2.png" id="test_50_pic_l" alt="單字測驗">
+            <div id="test_dialog_2nd">
+                <span id="test_dia_tango"></span>
+            </div>
+            <div class="test_pic lock_filter" id="test_pic_tango">
+                <img src="images/test_NPC2.png" class="test_50_pic_s" alt="單字測驗">
+                <img src="images/test_topic2.png" class="test_50_pic_l" alt="單字測驗">
             </div>
 
             <div class="test_section_content">
-                <input type="checkbox" id="test_tango">
+                <input type="checkbox" id="test_tango" disabled>
                 <div class="test_tab">
-                    <label class="test_tab_label" for="test_tango">
+                    <label class="test_tab_label_lock" for="test_tango" id="test_label_tango">
                         <h3>單字測驗</h3>
                     </label>
                     <div class="test_tab_content" id="testTango_data">
@@ -74,15 +81,20 @@
             <div class="test_cloud_4">
                 <img src="./images/cloud_1.png" alt="雲">
             </div>
-            <div class="test_pic">
-                <img src="images/test_NPC3.png" id="test_50_pic_s" alt="會話測驗">
-                <img src="images/test_topic3.png" id="test_50_pic_l" alt="會話測驗">
+            <div id="test_dialog_3rd">
+                <span id="test_dia_kaiwa">
+                    
+                </span>
+            </div>
+            <div class="test_pic lock_filter" id="test_pic_kaiwa">
+                <img src="images/test_NPC3.png" class="test_50_pic_s" alt="會話測驗">
+                <img src="images/test_topic3.png" class="test_50_pic_l" alt="會話測驗">
             </div>
 
             <div class="test_section_content">
-                <input type="checkbox" id="test_kaiwa" >
+                <input type="checkbox" id="test_kaiwa" disabled>
                 <div class="test_tab">
-                    <label class="test_tab_label" for="test_kaiwa">
+                    <label class="test_tab_label_lock" for="test_kaiwa" id="test_label_kaiwa">
                         <h3>會話測驗</h3>
                     </label>
                     <div class="test_tab_content" id="testKaiwa_data">

@@ -1,13 +1,32 @@
 <section class="test_lightBox_bg">
     <div id="test_confirm_box">
+        <div class="test_lightBox_close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" id="post_close_id">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+        </div>
+
+
         <div class="test_confirm_title">
-            <p>您目前選擇的測驗為</p>
-            <div id="test_choose"></div>
-            <p>及格分數：60分</p>
+            <div class="test_confirm_title_toptxt">
+                <p>
+                    測驗自己的日文實力<br>
+                    除了能開放新地圖，也能賺到代幣喔！<br>
+                </p>
+            </div>
+            <div class="test_confirm_title_bomtxt">
+                <p>您目前選擇的測驗為</p>
+                <div id="test_choose"></div>
+                <p id="test_passScore">及格分數：<span>60</span>分</p>
+            </div>
+            <div class="test_confirm_description">
+                <!-- ※本測驗尚有<span id="test_playTime">1</span>次挑戰機會 -->
+                <div id="notMemTxt">※訪客成績不會記錄，也不會獲得代幣</div>
+            </div>
         </div>
         <div class="test_confirm">
+            <!-- <button class="test_btn" id="test_cancel">取消</button> -->
             <button class="test_btn" id="test_start">開始測驗！</button>
-            <button class="test_btn" id="test_cancel">取消</button>
         </div>
     </div>
 
@@ -35,7 +54,7 @@
             <div id="test_progress_bar">
                 <div id="test_progress_now"></div>
                 <div id="test_progress_chara">
-                    <img src="images/test_NPC1.png" alt="進度條_人物">
+                    <img id="test_memChara" src="images/test_NPC1.png" alt="進度條_人物">
                 </div>
             </div>
             
@@ -60,9 +79,15 @@
                     <div class="test_result_row" id="test_ifPass">通過</div>
                     <div class="test_result_row">測驗分數：<span id="test_score">100</span>分</div>
                     <div class="test_result_row" id="test_getCoin_line">獲得代幣：<span id="test_getCoin">100</span>元</div>
+                    <p id="notMemTxt_end">
+                        想挑戰更多測驗題目嗎？<br>
+                        歡迎註冊會員，和學伴一起語實巨進吧！
+                    </p>
                 </div>
-
-                <button id="test_result_save">儲存紀錄</button>
+                <div class="test_end_area">
+                    <button class="test_btn" id="test_result_save">儲存紀錄</button>
+                    <button class="test_btn" id="test_result_regi">會員註冊</button>
+                </div>
             </div>
 
             

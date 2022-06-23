@@ -187,7 +187,7 @@
             template:`
             <div class="faq_mem faq_mem_A" ref="post">
                 <div class="faq_mem_npc">
-                    <img src="./images/char_00_1.png" alt="學員A">
+                    <img :src="item.role" alt="學員A">
                 </div>
                 <div class="faq_article_content">
                     <span>{{item.member_name}}</span>
@@ -216,11 +216,6 @@
                 setHeart(e) {
                     //確認localStorage有沒有收藏清單
                     // 有收藏清單後，確認文章id是否在收藏清單內，有的話就抽出，沒有就push
-                    let memName = document.getElementById('memName');
-                    if(memName.innerText = ''){
-                        alert('請登入帳號');
-                        return;
-                    }
                     let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];  //
                     e.currentTarget.classList.toggle('show');
                     
@@ -247,11 +242,6 @@
                 }
             },
             mounted() { //初始化
-                let memName = document.getElementById('memName');
-                if(memName.innerText = ''){
-                    alert('請登入帳號');
-                    return;
-                }
                 let fav = localStorage.getItem('fav') ?  JSON.parse(localStorage.getItem('fav')) : [];
                 if(fav.indexOf(this.id) > -1){
                     this.$refs.heart.classList.add('show')
@@ -259,11 +249,11 @@
                     this.$refs.heart.classList.remove('show')
                 }
                 // 初始化愛心的狀態，判斷是否在list內
-                // if (fav.indexOf(this.id) > -1) {
-                //         this.$refs.heart.classList.add('show')
-                //     } else {
-                //         this.$refs.heart.classList.remove('show')
-                // }
+                if (fav.indexOf(this.id) > -1) {
+                        this.$refs.heart.classList.add('show')
+                    } else {
+                        this.$refs.heart.classList.remove('show')
+                }
             },
         })
 
@@ -277,7 +267,7 @@
             <div class="faq_message_article">
                 <div class="faq_student">
                     <div class="faq_npc">
-                        <img src="./images/char_00_1.png" alt="學員A">
+                        <img :src="getFocusArticle" alt="學員A">
                     </div>
                     <div class="name_time">
                         <span>{{getFocusName}}</span>
@@ -358,7 +348,7 @@
                 <div class="faq_student_message">
                     <div class="faq_student1 student">
                         <div class="faq_student_npc">
-                            <img src="./images/char_00_1.png" alt="學員1">
+                            <img :src="item.role" alt="學員1">
                         </div>
                         <div class="faq_student_text">
                             <span class="student_name">{{item.member_name}}</span>
@@ -451,8 +441,8 @@
                     this.inputMessage = '';
                 },
                 postShow(){ //show發文燈箱+阻擋沒燈帳號發文功能
-                    let logOut = document.getElementById('logout');
-                    if(logOut.style.display = 'block'){
+                    let memName = document.getElementById('memName');
+                    if(memName.innerText != ''){
                         document.getElementById('faq_post').style.display='flex';
                     }else{
                         alert('請登入帳號');
@@ -480,12 +470,17 @@
                         xhr.send(data_info);
                     }
                 },
-                sendMessage(){ //留言功能
-                    let logOut = document.getElementById('logout');
-                    if(logOut.style.display = 'none'){
-                        alert('請登入帳號');
-                    }else if(this.inputMessage == ''){
+                sendMessage(e){ //留言功能
+                    // let logOut = document.getElementById('logout');
+                    // if(logOut.style.display == 'none'){
+                    //     alert('請登入帳號');
+                    //     return;
+                    //     e.preventDefault();
+                    // }
+                    if(this.inputMessage == ''){
                         alert('欄位不可為空值');
+                        return;
+                        e.preventDefault();
                     }
                     let xhr = new XMLHttpRequest();
                     xhr.onload = function(){
