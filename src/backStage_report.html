@@ -23,7 +23,7 @@
                             <h1>異常通報</h1>
                         </div>
                         <div class="backStage_filter backStage_addAccount">
-                            <button class="lightBox_btn"><i class="bi bi-funnel-fill"></i>條件篩選</button>
+                            <button class="lightBox_btn"><i class="bi bi-funnel-fill" ></i>條件篩選</button>
                         </div>
                         <div class="backStage_input_filter">
                             <!-- <div class="on_stock">
@@ -76,46 +76,47 @@
             </div>
             
             <!-- 新增帳號燈箱 -->
-            <div class="backStage_lightBox">
+            <div class="backStage_lightBox" id="report-lightbox">
                 <div class="backStage_lightBox_container">
-                    <div class="backStage_lightBox_content">
+                    <div class="backStage_lightBox_content" >
+                        
                         <div class="backStage_lightBox_title">
                             <h3>檢視通報</h3>
                         </div>
-                        <div class="backStage_lightBox_close" @click="hide">
-                            <i class="bi bi-x-lg"></i>
+                        <div class="backStage_lightBox_close" id="btn">
+                            <i class="bi bi-x-lg" @click="hide"></i>
                         </div>
-                        <div class="backStage_lightBox_main_content">
-                            <form action="">
-                                <div class="course_sm_block item_sm_block article_sm_block report_sm_block">
-                                    <label for="report_sm">通報編號</label>
-                                    <input type="text" id="report_sm" value="01" readonly>
-                                </div>
-                                <div class="course_sm_block item_sm_block article_sm_block report_time_block">
-                                    <label for="report_time">通報時間</label>
-                                    <input type="text" id="report_time" value="2022/05/17 18:32:50" readonly>
-                                </div>
-                                <div class="course_img_block item_img_block member_sm_block">
-                                    <label for="member_sm">會員編號</label>
-                                    <input type="text" id="member_sm" value="01" readonly>
-                                </div>
-                                <div class="course_title_block item_title_block member_title_block report_content_block">
-                                    <label for="report_content">通報內容</label>
-                                    <input type="text" id="report_content" value="購買地圖無法解鎖" readonly>
-                                </div>
-                                <div class="course_price_block item_price_block article_type_block report_solve_block">
-                                    <label for="report_solve">處理進度</label>
-                                    <input type="text" id="report_solve" value="已處理" readonly>
-                                </div>
-                                <div class="errorImg">
-                                    <img src="" alt="">
+                        <template >
+                        <div class="backStage_lightBox_main_content" v-bind="thisInfo" is="component-back-reportInfo" >
+                                <!-- <form action="" >
+                                    <div class="course_sm_block item_sm_block article_sm_block report_sm_block" >
+                                        <label for="report_sm">通報編號</label>
+                                        <input type="text" id="report_sm" :value="error_id" readonly>
+                                    </div>
+                                    <div class="course_sm_block item_sm_block article_sm_block report_time_block">
+                                        <label for="report_time">通報時間</label>
+                                        <input type="text" id="report_time" :value="error_datetime" readonly>
+                                    </div>
+                                    <div class="course_img_block item_img_block member_sm_block">
+                                        <label for="member_sm">會員編號</label>
+                                        <input type="text" id="member_sm" :value="member_id" readonly>
+                                    </div>
+                                    <div class="course_title_block item_title_block member_title_block report_content_block">
+                                        <label for="report_content">通報內容</label>
+                                        <input type="text" id="report_content" :value="error_txt" readonly>
+                                    </div>
+                                    <div class="course_price_block item_price_block article_type_block report_solve_block">
+                                        <label for="report_solve">處理進度</label>
+                                        <input type="text" id="report_solve" :value='error_status=1 ? "已處理":"未處理" ' readonly>
+                                    </div>
+                                    <div class="errorImg">
+                                        <img src="" alt="">
 
-                                </div>
-                            </form>
+                                    </div>
+                                </form> -->
+                            
                         </div>
-                        <div class="backStage_lightBox_saveBtn">
-                            <button type="submit" class="data_save">儲存</button>
-                        </div>
+                        </template>
                     </div>
                 </div>
             </div>

@@ -33,6 +33,8 @@ try{
 
     $newImg ->execute();
 
+    
+
     echo json_encode("成功");
 
     
