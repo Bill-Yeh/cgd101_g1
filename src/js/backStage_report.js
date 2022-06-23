@@ -23,11 +23,12 @@ let report = new Vue({
         reporterInfo:[],
     },
     methods:{
-        show: function(e){
-            let id=this.id
-            console.log(id)
-            document.querySelector(".backStage_lightBox").style="block"
-        }
+        show(){
+            document.querySelector('.backStage_lightBox').style.display = 'flex';
+        },
+        hide(){
+            document.querySelector('.backStage_lightBox').style.display = 'none';
+        },
     },
     created() {
         let xhr = new XMLHttpRequest();

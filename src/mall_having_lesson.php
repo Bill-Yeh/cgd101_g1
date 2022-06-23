@@ -23,7 +23,7 @@ try{
 
     //1.sql指令
 
-	$sql = "select l.lesson_id,lr.lesson_id from lesson l join lesson_record lr on (l.lesson_id = lr.lesson_id) where member_id = :member_id";
+	$sql = "select l.lesson_id,lr.lesson_id from lesson l join lesson_record lr on (l.lesson_id = lr.lesson_id) where member_id = :member_id and l.lesson_id>15";
 
 
     //2.要資料庫準備接收指令

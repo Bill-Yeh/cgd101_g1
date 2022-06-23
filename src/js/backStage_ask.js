@@ -2,7 +2,7 @@ let admin_ask_user_com= Vue.component("component-admin-back-chatList", {
 
     props:['ask_src','member_name','member_id','read_or_not','role','ask_time'],
     template:
-    ` <tr class="table_data_row even 'member_id'">
+    ` <tr class="table_data_row even" :id=member_id>
         <td>{{member_id}}</td>
         <td>{{member_name}}</td>
         <td>{{ask_time}}</td>
@@ -53,7 +53,7 @@ let ask_admin = new Vue({
         dataImport: function(event){
             //取得點擊到的userId
             let _this=event.target;
-            let list=document.querySelectorAll('.table_data_row even')
+            let list=document.querySelectorAll('.table_data_row')
 
             for(i=0;i<list.length;i++){
                 list[i].style.backgroundColor='#fff'
@@ -62,8 +62,10 @@ let ask_admin = new Vue({
 
             while(_this.className != "table_data_row even"){
                 _this=_this.parentNode
+                // console.log(_this.className)
             }
             let thisUser=_this.id
+            console.log(thisUser)
 
             _this.style.backgroundColor='#FAE6B8'
 
@@ -81,10 +83,15 @@ let ask_admin = new Vue({
 
             setTimeout(()=>{
                 let bar=document.querySelector(".chat_message_block")
-                console.log(bar.scrollHeight)
                 bar.scrollTop=bar.scrollHeight
             },50)
 
+        },
+        show(){
+            document.querySelector('.backStage_lightBox').style.display = 'flex';
+        },
+        hide(){
+            document.querySelector('.backStage_lightBox').style.display = 'none';
         },
 
     },

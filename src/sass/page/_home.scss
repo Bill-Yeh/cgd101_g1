@@ -898,15 +898,6 @@
     left: 35%;
   }
 
-  .lesson_talk {
-    left: 30%;
-    top: 2%;
-    img {
-      width: 100px;
-      height: 60px;
-    }
-  }
-
   .home_mall_island_npc1 {
     left: 40%;
     top: 35%;
@@ -929,6 +920,16 @@
 
 /* 平板以上 */
 @include lg() {
+  /* 首頁各個島的大小 */
+  .lesson_island img,
+  .home_topic_island_pic img,
+  .home_mall_island_pic img,
+  .home_mall_island_2_pic img,
+  .home_decorate_island_pic img,
+  .home_decorate_island_2_pic img {
+    width: 500px;
+    height: 350px;
+  }
   .home_lesson_island_pic,
   .home_topic_island_pic,
   .home_mall_island_pic,
@@ -1063,17 +1064,6 @@
       width: 400px;
       height: 300px;
     }
-  }
-
-  /* 首頁各個島的大小 */
-  .home_lesson_island img,
-  .home_topic_island_pic img,
-  .home_mall_island_pic img,
-  .home_mall_island_2_pic img,
-  .home_decorate_island_pic img,
-  .home_decorate_island_2_pic img {
-    width: 500px;
-    height: 350px;
   }
 
   /* 首頁學習地圖內容靠左 */
@@ -1237,7 +1227,6 @@
 
   .home_mall_cloud_1 img {
     width: 20%;
-
     right: 0;
   }
   .home_mall_cloud_2 img {
@@ -1410,6 +1399,15 @@
       display: block;
     }
   }
+  .lesson_talk {
+    position: absolute;
+    left: 40%;
+    top: 5%;
+    img {
+      width: 180px;
+      height: 100px;
+    }
+  }
 }
 @keyframes talk {
   0% {
@@ -1435,22 +1433,21 @@
 }
 
 @include xl() {
-  /* 學習島NPC talk */
-  .lesson_talk {
-    position: absolute;
-    left: 30%;
-    top: 2%;
-    img {
-      width: 180px;
-      height: 100px;
-    }
-  }
-
   .home_first_island {
     height: 650px;
   }
 
   .home_first_info {
     bottom: 30%;
+  }
+  /* 學習島NPC talk */
+  .lesson_talk {
+    position: absolute;
+    left: 30%;
+    top: 3%;
+    img {
+      width: 180px;
+      height: 100px;
+    }
   }
 }
