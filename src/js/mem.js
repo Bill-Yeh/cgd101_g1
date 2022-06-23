@@ -12,6 +12,25 @@ new Vue({
 })
 
 
+
+let map=new Vue({
+    el:'.map_lightBox',
+    data:{
+        prodRows:[],
+    },
+    beforeCreate(){
+        let xhr = new XMLHttpRequest();
+
+		xhr.onload = function(){
+            map.prodRows = JSON.parse(xhr.responseText)
+            console.log(map.prodRows)
+        };
+		xhr.open("get", "mem_img.php",true);
+		xhr.send();	
+    }
+})
+
+
 //交易紀錄請求
 let buyListVue=
 new Vue({
@@ -69,11 +88,6 @@ new Vue({
 })
 
 
-
-
-
-
-
 //確定是否是首次註冊後進入會員專區
 function showChar(){
     let url=document.referrer;
@@ -83,8 +97,7 @@ function showChar(){
     if(frontUrl == 'signUp_animation.html'){
         //開啟燈箱
         let black=document.querySelector(".bg_00");
-        black.style.display='flex';
-
+        black.style.display='flex'; 
         setTimeout(()=>{
 
             let lightBoxInfo=document.querySelector(".getchar_lightBox");
@@ -112,6 +125,7 @@ function showChar(){
                 talkBox.style.width="100%"
             },3000)
         },1200)
+        // window.location.assign("mem.html");
     }
 }
 
@@ -119,6 +133,8 @@ function showChar(){
 //進入引導
 function pageTour(){
     let black=document.querySelector(".bg_00");
+    document.querySelector(".first_bg").style.display="none";
+    document.querySelector(".first_sky").style.display="none";
     black.style.backgroundColor='rgba(0, 0, 0, 0.8)';
     let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
     let talkInside = document.getElementById("firstSpeak");
@@ -191,6 +207,7 @@ function guideClose(){
     let black =document.querySelector(".bg_00");
     closeguide.style.display="none";
     black.style.display="none";
+    window.location.href="mem.html"
 };
 function guideAgain(){
     let hello = new Array("我是QQ","點選床可以修改會員密碼","地圖可以查看學習地圖開放狀況","書可以查詢學習紀錄","衣櫥可以讓學伴換裝","藏寶箱可以查看購買紀錄","點選訊息可以線上問老師問題，老師看到後會回覆","手機可以做異常回報，看到任何奇怪的都可以回報");
@@ -697,6 +714,46 @@ function convertCanvasToImage(){
 
     }),100)
 
+    setTimeout(()=>{
+        document.querySelector(".closet_char_eyes_inside").style.display="block"
+    },150)
+
+    setTimeout(()=>html2canvas(document.querySelector(".char_content"),{backgroundColor:null},{allowTaint: true}).then(function(e) {
+
+        let canvasArr=document.querySelectorAll("canvas")
+        
+        document.body.appendChild(e);
+        if(canvasArr.length>0){
+            document.querySelector("canvas").remove()
+        }
+
+        let canvas=document.querySelector("canvas")
+        let image = new Image();
+	    image.src = canvas.toDataURL();
+
+        // console.log(image.src)
+
+
+        setTimeout(()=>{
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                let ans= JSON.parse(xhr.responseText);
+                console.log(ans)
+            };
+
+            xhr.open("post", "mem_updateImg.php",true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                
+            let newImg= `img=${image.src}`
+            xhr.send(newImg);
+        },100)
+
+    }),200)
+
+    setTimeout(()=>{
+        document.querySelector(".closet_char_eyes_inside").style.display="none"
+    },300)
+
 }
 
 document.querySelector(".store").addEventListener("click",convertCanvasToImage)
@@ -829,7 +886,7 @@ let AskList=
             xhr.onload = function(){
                 AskList.sentence = JSON.parse(xhr.responseText)
                
-                if(AskList.sentence){ //如果學生已經發問過
+                if(AskList.sentence.length){ //如果學生已經發問過
                     let filter=AskList.sentence.filter(index => index.ask_src=="2" && index.read_or_not=="0")
 
                     if(filter.length!="0"){ //是否有未讀訊息
@@ -903,7 +960,6 @@ function openChetbox(){
 
 
     if(document.querySelector('.tr') == null){
-
         setTimeout(()=>{
             let wrapper = document.createElement('div');
             wrapper.setAttribute('class','tr');
@@ -1137,7 +1193,11 @@ function sentErrorInfo(){
     }
 
     xhr.open("post", "mem_error.php");
-    xhr.send(new FormData(document.getElementById("Form")));
+    
+    let Form=document.getElementById("Form")
+    // let newForm= new FormData(Form)
+    // console.log(newForm.get('upFile').tmp_name)
+    xhr.send(new FormData(Form));
 }
 
 

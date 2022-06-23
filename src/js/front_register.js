@@ -86,8 +86,47 @@ window.addEventListener('load', function(){
                 memberPassword.value = '';
                 confirmPassword.value = '';
                 loginRegister.style.display = 'none';
-                alert('註冊成功，請登入帳號即可開始學習!');
-                window.location.href = "mem.html";
+                // alert('註冊成功，請登入帳號即可開始學習!');
+                window.location.href = "signUp_animation.html";
+            }
+            if(window.innerWidth < 992){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function(){
+                    memberWeb = JSON.parse(xhr.responseText);
+                    if(memberWeb.account){
+                        isLogin = true;
+                        memName.innerText = memberWeb.member_name;
+                        // header上面的東西隱藏/顯示
+                        memIcon.style.display = 'none';
+                        logout.style.display = 'block';
+                        loginBox.style.width = '10%';
+                        moneyArea.style.margin = 'auto';
+                    } else {
+                        isLogin = false;
+                    }
+                }
+                xhr.open("get", "front_getMemberInfo.php", true);
+                xhr.send(null);
+            }else if(window.innerWidth > 992){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function(){
+                    memberWeb = JSON.parse(xhr.responseText);
+                    if(memberWeb.account){
+                        isLogin = true;
+                        memName.innerText = memberWeb.member_name;
+                        // header上面的東西隱藏/顯示
+                        memIcon.style.display = 'none';
+                        logout.style.display = 'block';
+                        memArea.style.display = 'block';
+                        loginBox.style.width = '25%';
+                        moneyArea.style.margin = '0';
+                    } else {
+                        isLogin = false;
+                    }
+                    location.reload()
+                }
+                xhr.open("get", "front_getMemberInfo.php", true);
+                xhr.send(null);
             }
         }
         xhr.open("post", "front_register.php", true);

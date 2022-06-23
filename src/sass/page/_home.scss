@@ -12,7 +12,6 @@
   width: 100%;
   margin: 50px 0 0 0;
   position: relative;
-  
 }
 
 .sun_pic {
@@ -372,14 +371,12 @@
 
 .home_first_info {
   position: absolute;
-  
+
   @include lg() {
     bottom: 15%;
     right: 20%;
   }
 }
-
-
 
 /* 首頁各島介紹框 */
 .home_first_info,
@@ -402,7 +399,7 @@
 .home_decorate_info_text {
   position: relative;
   display: flex;
-  width: 400px;
+  width: 300px;
   height: 80px;
   padding: 20px;
   background-color: #fae6b8;
@@ -1447,5 +1444,13 @@
       width: 180px;
       height: 100px;
     }
+  }
+
+  .home_first_island {
+    height: 650px;
+  }
+
+  .home_first_info {
+    bottom: 30%;
   }
 }

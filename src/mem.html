@@ -14,10 +14,9 @@
 
         <div class="getchar_lightBox">
             <div class="me_content_first">
-                <img class="eyes_first" src="./images/char_00_eye_open.png" alt="" >
+                <img class="eyes_first" src="./images/char_00_eye_open.png" alt="" ></img>
                 <img id="me_first" src="./images/char_00_0.png"  alt="char_00_1"></img>
             </div>
-            
         </div>
         <div class="talkBox">
             <div class="talkBox_inside">
@@ -26,6 +25,9 @@
                 <span class="goMem">會員專區</span>
             </div>
         </div>
+        <img class="first_bg" src="./images/home_lesson_island3.png"  alt="mem_first_bg"></img>
+        <img class="first_sky" src="./images/index2.png"  alt="mem_first_sky"></img>
+
 
     </div>
     <!-- 案內物品 -->
@@ -70,7 +72,8 @@
             
             <!-- 地圖 -->
             <div class="map_lightBox">
-                <img src="./images/studyMap_main_island.png" alt="">
+                <!-- <img src="./images/studyMap_main_island.png" alt=""> -->
+                <img :src="prodRows[0].map_img" alt="">
             </div>
 
 
@@ -80,6 +83,7 @@
                     <div class="store">保存</div>
                     <img class="closet_char_eyes" src="./images/char_00_eye_open.png"></img>
                     <div class="char_content">
+                        <img class="closet_char_eyes_inside" src="./images/char_00_eye_open.png"></img>
                         <img class="closet_char_img" src="./images/char_00_0.png" alt="">
                         <div class="hat">
                         </div>

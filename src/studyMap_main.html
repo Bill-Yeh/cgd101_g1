@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @@include('layout/meta.html', {
-        "title" : "學習大地圖"
+        "title" : "學習地圖"
     })
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
@@ -17,13 +17,10 @@
                 <div class="first-village" @click="nextTo50()">
                     <img src="./images/studyMap_firstvillage.png" class="firstVillage" id="firstVil">
                 </div>
-                <div class="second-village" @click="nextToFirst()"
-                id="village2">
+                <div class="second-village" @click="nextToFirst()" id="village2">
                     <img src="./images/studyMap_secondvillage.png" class="secondVillage" id="secondVil">
                 </div>
-                <div class="third-village" 
-                @click="nextToSecond()"
-                id="village3">
+                <div class="third-village" @click="nextToSecond()" id="village3">
                     <img src="./images/studyMap_thirdvillage.png" class="thirdVillage" id="thirdVil">
                 </div>
                 <div class="fourth-village" @click="nextToThird()" id="village4">
@@ -232,9 +229,26 @@ function createCanvas(){
     
     let image = new Image();
     image.src = canvas.toDataURL("image/jpeg",1);
-    let book = image.src;
+    // let book = image.src;
+    
+    //將圖片存入伺服器及dataBase
+    setTimeout(()=>{
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                let ans= JSON.parse(xhr.responseText);
+                console.log(ans)
+            };
+
+            xhr.open("post", "studyMap_canvas.php",true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                
+            let newImg= `img=${image.src}`
+            xhr.send(newImg);
+        },100)
+
+
     // console.log(book)
-    localStorage.settings = book;
+    // localStorage.settings = book;
     // console.log(localStorage);
     // console.log(localStorage.settings)
     })
