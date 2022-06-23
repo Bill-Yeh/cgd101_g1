@@ -596,6 +596,10 @@
                         align-items: center;
 
                         .faq_npc{
+                            width: 15%;
+                            @include md(){
+                                width: 10%;
+                            }
                             padding-right: 20px;
                             img{
                                 width: 100%;
@@ -673,6 +677,7 @@
         }
 
         .faq_student_npc{
+            width: 100px;
             img{
                 width: 70%;
             }
