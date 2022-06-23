@@ -4,7 +4,7 @@ try{
 	//=====連接資料庫=====//
     require_once("connect_cgd101g1.php");
 
-	$sql = "SELECT * FROM `q_data` WHERE lesson_id =:test;";  
+	$sql = "SELECT * FROM `q_data` WHERE lesson_id =:test and option_status=1;";
 	$get_qdata = $pdo->prepare($sql);
 	
 	$get_qdata->bindValue(":test", $_GET["test_input"]);

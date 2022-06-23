@@ -16,6 +16,9 @@ let testTangoArr = new Array();
 let testTangoArr_id = new Array();
 let testKaiwaArr = new Array();
 let testKaiwaArr_id = new Array();
+let missing_test_50 = 0;
+let missing_test_tango = 0;
+let missing_test_Kaiwa = 0;
 
 
 //亂數抽題
@@ -65,7 +68,7 @@ function testBtnAll(){
             }else if(area3>=0){
                 test_input.value = testKaiwaArr_id[area3];
             }
-            console.log(test_input.value);
+            // console.log(test_input.value);
 
             //從後端抓資料
             let xhr = new XMLHttpRequest();
@@ -186,22 +189,51 @@ function test_getMemberInfo(){
     xhr.onload = function(){
         let member = JSON.parse(xhr.responseText);
         if(member.member_name){
+            console.log('會員');
             //載入目前上課進度
             test_showTest();
+
+            //更改成會員頁面
+            let test_question = document.querySelector('.test_question');
+            test_question.style.paddingTop = '30px';
+            $_('test_memName').innerText = member.member_name;
+            $_('notMemTxt').style.display = 'none';
+            //拿掉會員註冊按鈕
+            $_('test_result_regi').style.display = 'none';
+            //進度條改成會員角色
+            $_('test_memChara').src = member.role;
 
             //顯示可以儲存紀錄的按鈕
             let test_result_save= document.getElementById('test_result_save');
             test_result_save.innerText = '儲存紀錄';
             document.getElementById('test_getCoin_line').style.display = 'block';
-            console.log(JSON.parse(xhr.responseText));
-            console.log('會員');
 
             //把分數存進去
             test_result_save.addEventListener('click',test_record);
         }else{
+            $_('test_dia_test50').innerHTML = `本區域提供一個測驗進行試玩！`;
+            $_('test_dia_tango').innerHTML = `目前本區域不開放測驗，<br>
+            加入語實巨進一起學習吧！`;
+            $_('test_dia_kaiwa').innerHTML = `目前本區域不開放測驗，<br>
+            加入語實巨進一起學習吧！`;
             document.getElementById('test_result_save').innerText = '關閉';
             document.getElementById('test_getCoin_line').style.display = 'none';
             console.log('訪客');
+
+            //跳出註冊視窗&關閉測驗視窗
+            $_('test_result_regi').addEventListener('click',function(){
+                let testing = document.querySelector('.test_lightBox_bg');
+                testing.style.display = 'none';
+                test_confirm_box.style.display = 'block';
+                test_lightBox.style.display = 'none';
+                test_lightBox_question.style.display = 'block';
+                test_lightBox_result.style.display = 'none';
+                score = 0;
+                test_question_num = 1;
+                if($_('userHead').style.display = 'block'){
+                    $_(('login_register')).style.display = 'flex';
+                }
+            });
         }
     }
     xhr.open("get", "./front_getMemberInfo.php", true);
@@ -217,6 +249,9 @@ function test_showTest(){
     test50.innerHTML = '';
     testTango.innerHTML = '';
     testKaiwa.innerHTML = '';
+    missing_test_50 = 0;
+    missing_test_tango = 0;
+    missing_test_Kaiwa = 0;
 
     //從後台撈出會員課程進度
     let xhr = new XMLHttpRequest();
@@ -225,14 +260,26 @@ function test_showTest(){
         console.log(JSON.parse(xhr.responseText));
         for(let i=0;i<show.length;i++){
             if(show[i].lesson_type_id == 1){
-                test50Arr.push(show[i].lesson_name);
-                test50Arr_id.push(show[i].lesson_id);
+                if(show[i].count>=10){
+                    test50Arr.push(show[i].lesson_name);
+                    test50Arr_id.push(show[i].lesson_id);
+                }else{
+                    missing_test_50 += 1;
+                }
             }else if(show[i].lesson_type_id == 2){
-                testTangoArr.push(show[i].lesson_name);
-                testTangoArr_id.push(show[i].lesson_id);
+                if(show[i].count>=10){
+                    testTangoArr.push(show[i].lesson_name);
+                    testTangoArr_id.push(show[i].lesson_id);
+                }else{
+                    missing_test_tango += 1;
+                }
             }else if(show[i].lesson_type_id == 3){
-                testKaiwaArr.push(show[i].lesson_name);
-                testKaiwaArr_id.push(show[i].lesson_id);
+                if(show[i].count>=10){
+                    testKaiwaArr.push(show[i].lesson_name);
+                    testKaiwaArr_id.push(show[i].lesson_id);
+                }else{
+                    missing_test_Kaiwa += 1;
+                }
             };
         };
         // console.log(test50Arr_id);
@@ -251,7 +298,44 @@ function test_showTest(){
         }
         
         //確認區域是否開啟
-        test_checkProgress();
+        //並更改頁面說明文字
+        if(test50Arr.length == 0){
+            $_('test_50').disabled = true;
+            $_('test_label_50').className = 'test_tab_label_lock';
+            $_('test_dia_test50').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+            $_('test_pic_test50').classList.add('lock_filter');
+        }else{
+            $_('test_label_50').disabled = false;
+            $_('test_dia_test50').innerHTML = `目前本區域共開放${test50Arr.length}個測驗。`;
+            if( missing_test_50 > 0){
+                $_('test_dia_test50').innerHTML += `<br>有${missing_test_50}個測驗待更新`;
+            }
+        };
+        if(testTangoArr.length == 0){
+            $_('test_tango').disabled = true;
+            $_('test_dia_tango').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+        }else{
+            $_('test_tango').disabled = false;
+            $_('test_label_tango').className = 'test_tab_label';
+            $_('test_dia_tango').innerHTML = `目前本區域共開放${testTangoArr.length}個測驗。`;
+            $_('test_pic_tango').classList.remove('lock_filter');
+            if( missing_test_tango > 0){
+                $_('test_dia_tango').innerHTML += `<br>有${missing_test_tango}個測驗待更新`;
+            }
+        };
+        if(testKaiwaArr.length == 0){
+            $_('test_kaiwa').disabled = true;
+            $_('test_dia_kaiwa').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+        }else{
+            $_('test_kaiwa').disabled = false;
+            $_('test_label_kaiwa').className = 'test_tab_label';
+            $_('test_dia_kaiwa').innerHTML = `目前本區域共開放${testKaiwaArr.length}個測驗。`;
+            $_('test_pic_kaiwa').classList.remove('lock_filter');
+            $_('test_pic_tango').classList.remove('lock_filter');
+            if( missing_test_Kaiwa > 0){
+                $_('test_dia_kaiwa').innerHTML.innerHTML += `<br>有${missing_test_Kaiwa}個測驗待更新`;
+            }
+        };
 
         //重新註冊按鈕
         // testBtnAll();
@@ -277,7 +361,7 @@ function test_showTest(){
                 }else if(area3>=0){
                     test_input.value = testKaiwaArr_id[area3];
                 }
-                console.log(test_input.value);
+                // console.log(test_input.value);
     
                 //從後端抓資料
                 let xhr = new XMLHttpRequest();
@@ -313,34 +397,13 @@ function test_record(){
     xhr.open("get", url, true);
     xhr.send(null);
     xhr.onload = function(){
-        // console.log(document.getElementById('test_score_input').value);
-        console.log(xhr.responseText);
-    };
-};
-
-// ========== 檢查測驗區域是否開放 ========= //
-function test_checkProgress(){
-
-    let checktango = $_('test_tango');
-    if(testTangoArr.length == 0){
-        checktango.disabled = true;
-    }else{
-        checktango.disabled = false;
-    };
-
-    let checkKaiwa = $_('test_kaiwa');
-    if(testKaiwaArr.length == 0){
-        checkKaiwa.disabled = true;
-    }else{
-        checkKaiwa.disabled = false;
+        location.reload();
     };
 };
 
 // ========= 基本設定 ========== //
 function init(){
     test_getMemberInfo();
-    // test_checkProgress();
-    // testBtnAll();
     //-----DOM-----//
     //選了哪個測驗
     let test_option = document.querySelectorAll('.test_option');
@@ -349,13 +412,13 @@ function init(){
     let test_confirm_box = document.getElementById('test_confirm_box');
     let test_choose_text = document.getElementById('test_choose');
     let test_start = document.getElementById('test_start');
-    let test_cancel = document.getElementById('test_cancel');
+    // let test_cancel = document.getElementById('test_cancel');
     //進行測驗(測驗燈箱)
     let test_lightBox = document.getElementById('test_lightBox');
     let test_score_now_wrap = document.getElementById('test_score_now_wrap');
     let test_question = document.getElementById('test_progress');
     //關閉燈箱
-    let test_lightBox_close = document.querySelector('.test_lightBox_close');
+    let test_lightBox_close = document.querySelectorAll('.test_lightBox_close');
     let testing = document.querySelector('.test_lightBox_bg');
     //測驗進度條與分數
     let test_progress_now =document.getElementById('test_progress_now');
@@ -413,21 +476,13 @@ function init(){
                     test_choose_arr[i][3] = test_data[i].option_content2;
                     test_choose_arr[i][4] = test_data[i].option_content3;
                 }
-                console.log(test_choose_arr);
+                console.log(test_data);
             };
         });
     };
 
     //確認是否進行測驗的燈箱
     test_start.addEventListener('click',test_conent_start);
-    test_cancel.addEventListener('click',function(){
-        testing.style.display = 'none';
-        test_lightBox_question.style.display = 'block';
-        test_lightBox_result.style.display = 'none';
-        score = 0;
-        test_question_num = 1;
-    });
-
 
     function test_conent_start(){
         test_confirm_box.style.display = 'none';
@@ -460,18 +515,21 @@ function init(){
     }
     
     // *------點叉叉關閉-----* //
-    test_lightBox_close.addEventListener('click',function(){
-        let ifClose = '是否需要中斷測驗？';
-        if (confirm(ifClose) == true) {
-            testing.style.display = 'none';
-            test_confirm_box.style.display = 'block';
-            test_lightBox.style.display = 'none';
-            test_lightBox_question.style.display = 'block';
-            test_lightBox_result.style.display = 'none';
-            score = 0;
-            test_question_num = 1;
-        }
-    });
+    for(let i = 0; i<test_lightBox_close.length;i++){
+        test_lightBox_close[i].addEventListener('click',function(){
+            let ifClose = '是否需要中斷測驗？';
+            if (confirm(ifClose) == true) {
+                testing.style.display = 'none';
+                test_confirm_box.style.display = 'block';
+                test_lightBox.style.display = 'none';
+                test_lightBox_question.style.display = 'block';
+                test_lightBox_result.style.display = 'none';
+                score = 0;
+                test_question_num = 1;
+            };
+        });
+    };
+    
 
     // *------點旁邊關閉-----* //
     testing.addEventListener('click',function(e){
