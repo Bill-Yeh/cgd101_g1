@@ -506,7 +506,7 @@
 }
 
 /*學習島NPC talk*/
-.lesson_talk {
+.home_lesson_talk {
   position: absolute;
   left: 40%;
   top: -1%;
@@ -1059,12 +1059,12 @@
     height: 90px;
     display: block;
   }
-  .home_lesson_island_pic {
-    img {
-      width: 400px;
-      height: 300px;
-    }
-  }
+  // .home_lesson_island_pic {
+  //   img {
+  //     width: 400px;
+  //     height: 300px;
+  //   }
+  // }
 
   /* 首頁學習地圖內容靠左 */
   .home_lesson_info {
@@ -1399,7 +1399,7 @@
       display: block;
     }
   }
-  .lesson_talk {
+  .home_lesson_talk {
     position: absolute;
     left: 40%;
     top: 5%;
@@ -1441,10 +1441,10 @@
     bottom: 30%;
   }
   /* 學習島NPC talk */
-  .lesson_talk {
+  .home_lesson_talk {
     position: absolute;
     left: 30%;
-    top: 3%;
+    top: 1%;
     img {
       width: 180px;
       height: 100px;
