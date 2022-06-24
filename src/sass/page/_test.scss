@@ -1,4 +1,4 @@
-#test_dia_50 a,#test_dia_tango a,#test_dia_kaiwa a{
+#test_dia_test50 a,#test_dia_tango a,#test_dia_kaiwa a{
     color: map-get($color, 'backstage_h');
 }
 
@@ -229,11 +229,11 @@
     }
 
     &:hover {
-        // background: map-get($color, 'backstage_h');
+        background: map-get($color, 'backstage_h');
     }
 
     &:hover::before {
-        // border-right: 30px solid map-get($color, 'backstage_h');
+        border-right: 30px solid map-get($color, 'backstage_h');
     }
     
     &>input{
@@ -848,7 +848,7 @@
     line-height: 25px;
 
     @include md{
-        top: calc(50% - 170px);
+        top: calc(50% - 200px);
         left: 23%;
     }
 

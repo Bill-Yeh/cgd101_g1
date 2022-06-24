@@ -210,17 +210,28 @@
                 search_arr : [], //查詢的資料
                 temp_arr : [], //暫存所有資料
                 search:'',
-                // 燈箱用
+                // 燈箱用(編輯刪除共用)
                 insert_lesson_type:'',
                 insert_data_txt:'',
                 insert_data_ans:'',
                 insert_data_content1:'',
                 insert_data_content2:'',
                 insert_data_content3:'',
-                // 刪除題目用
                 delete_data_id:'',
             },
             methods: {
+                show(){
+                    document.getElementById('backStage_insert_qData').style.display = 'flex';
+                },
+                hide(){
+                    document.getElementById('backStage_insert_qData').style.display = 'none';
+                    this.insert_lesson_type = '';
+                    this.insert_data_txt='';
+                    this.insert_data_ans='';
+                    this.insert_data_content1='';
+                    this.insert_data_content2='';
+                    this.insert_data_content3='';
+                },
                 page_now(page){
                     if(page == this.current_page){
                         return 'currentPage';
@@ -274,18 +285,6 @@
                         };
                     }
                     
-                },
-                show(){
-                    document.getElementById('backStage_insert_qData').style.display = 'flex';
-                },
-                hide(){
-                    document.getElementById('backStage_insert_qData').style.display = 'none';
-                    this.insert_lesson_type = '';
-                    this.insert_data_txt='';
-                    this.insert_data_ans='';
-                    this.insert_data_content1='';
-                    this.insert_data_content2='';
-                    this.insert_data_content3='';
                 },
                 change_dataPerPage(){
                     if(this.data_perPage>10 || this.data_perPage<5){
@@ -461,7 +460,7 @@
                         this.insert_data_content3='';
                         document.querySelector('.backStage_lightBox').style.display = 'none';
                     }
-                    },
+                },
                 delete_qData(e){
                     let ifDelete = '確定刪除？';
                     if (confirm(ifDelete) == true) {

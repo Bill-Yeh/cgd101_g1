@@ -162,10 +162,12 @@ function toNextQuestion(){
         if(score>=60){
             test_ifPass.innerText= "通過";
             test_getCoin.innerText= score;
+            $_('notMemTxt_end').innerHTML = '恭喜通過測驗！<br>休息一下，在繼續往下挑戰吧！';
         }else{
             test_ifPass.innerText= "未通過";
             test_ifPass.style.color="red";
             test_getCoin.innerText=0;
+            $_('notMemTxt_end').innerHTML = '加油，再多多複習！<br>下次一定就能通過了！';
         }
         test_score.innerText= score;
 
@@ -202,6 +204,8 @@ function test_getMemberInfo(){
             $_('test_result_regi').style.display = 'none';
             //進度條改成會員角色
             $_('test_memChara').src = member.role;
+            //最後的話改掉
+            $_('notMemTxt_end').innerHTML = '繼續挑戰測驗<br>，和學伴一起語實巨進吧！';
 
             //顯示可以儲存紀錄的按鈕
             let test_result_save= document.getElementById('test_result_save');
@@ -302,11 +306,11 @@ function test_showTest(){
         if(test50Arr.length == 0){
             $_('test_50').disabled = true;
             $_('test_label_50').className = 'test_tab_label_lock';
-            $_('test_pic_test50').classList.add('lock_filter');
+            $_('test_pic_50').classList.add('lock_filter');
             if( missing_test_50 > 0){
-                $_('test_dia_tango').innerHTML += `本區域有${missing_test_50}個測驗待更新，<br>敬請期待！`;
+                $_('test_dia_test50').innerHTML += `本區域有${missing_test_50}個測驗待更新，<br>敬請期待！`;
             }else{
-                $_('test_dia_test50').innerHTML = `本區域尚未開放，<br>先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
+                $_('test_dia_test50').innerHTML = `本區域尚未開放，先去<a href="studyMap_main.html">地圖</a>學習日文吧！`;
             };
         }else{
             $_('test_label_50').disabled = false;
@@ -544,20 +548,20 @@ function init(){
     
 
     // *------點旁邊關閉-----* //
-    testing.addEventListener('click',function(e){
-        if (e.target==this) {
-            let ifClose = '是否需要中斷測驗？';
-            if (confirm(ifClose) == true) {
-                testing.style.display = 'none';
-                test_confirm_box.style.display = 'block';
-                test_lightBox.style.display = 'none';  
-                test_lightBox_question.style.display = 'block';
-                test_lightBox_result.style.display = 'none';
-                score = 0;
-                test_question_num = 1;
-              }
-        } 
-    }, false);
+    // testing.addEventListener('click',function(e){
+    //     if (e.target==this) {
+    //         let ifClose = '是否需要中斷測驗？';
+    //         if (confirm(ifClose) == true) {
+    //             testing.style.display = 'none';
+    //             test_confirm_box.style.display = 'block';
+    //             test_lightBox.style.display = 'none';  
+    //             test_lightBox_question.style.display = 'block';
+    //             test_lightBox_result.style.display = 'none';
+    //             score = 0;
+    //             test_question_num = 1;
+    //           }
+    //     } 
+    // }, false);
 
     // *------測驗結束關閉燈箱----* //
     test_result_save.addEventListener('click',function(){
