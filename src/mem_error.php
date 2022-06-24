@@ -32,7 +32,7 @@ try {
 			$products = $pdo->prepare( $sql );
 			$products -> bindValue("error_h", $_POST["error_h"]);
 			$products -> bindValue("error_msg", $_POST["error_msg"]);
-            $products -> bindValue("fileName", $fileName);
+            $products -> bindValue("fileName", "./images/report/{$fileName}");
 			$products -> bindValue("mem_id", $_SESSION["member_id"]);
 			
 			$products -> execute();
