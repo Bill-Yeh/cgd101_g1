@@ -2,6 +2,9 @@ window.addEventListener('load', function(){
     // 會員變數
     let memberWeb;
 
+    // rwd會員專區
+    let rwdMem = document.getElementById('rwdMem');
+
     // header loginBox
     let loginBox = document.getElementById('loginBox');
 
@@ -104,13 +107,12 @@ window.addEventListener('load', function(){
 
     window.addEventListener('resize',function() {
         if(window.innerWidth < 992){
-            // memIcon.style.display = 'none';
             memArea.style.display = 'none';
+            // rwdMem.style.display = 'none';
         }else{
+            rwdMem.style.display = 'none';
             if (isLogin) memArea.style.display = 'block';
         }
-
-        console.log(isLogin)
     })
 
     
@@ -152,6 +154,7 @@ window.addEventListener('load', function(){
                     isLogin = true;
                     window.addEventListener('resize',function() {
                         memArea.style.display = 'none';
+                        rwdMem.style.display = 'block';
                         memIcon.style.display = 'none';
                         loginBox.style.width = '10%';
                     })
@@ -167,6 +170,7 @@ window.addEventListener('load', function(){
                 }else if(window.innerWidth > 992){
                     isLogin = true;
                     memName.innerText = memberWeb.member_name;
+                    rwdMem.style.display = 'none';
                     //將登入表單上的資料清空，並隱藏起來
                     loginAccount.value = '';
                     loginPassword.value = '';
@@ -206,8 +210,10 @@ window.addEventListener('load', function(){
                 logout.style.display = 'block';
                 loginBox.style.width = '10%';
                 moneyArea.style.margin = 'auto';
+                rwdMem.style.display = 'block';
             } else {
                 isLogin = false;
+                rwdMem.style.display = 'none';
             }
         }
         xhr.open("get", "front_getMemberInfo.php", true);
@@ -225,8 +231,10 @@ window.addEventListener('load', function(){
                 memArea.style.display = 'block';
                 loginBox.style.width = '25%';
                 moneyArea.style.margin = '0';
+                rwdMem.style.display = 'none';
             } else {
                 isLogin = false;
+                rwdMem.style.display = 'none';
             }
         }
         xhr.open("get", "front_getMemberInfo.php", true);
@@ -246,6 +254,7 @@ window.addEventListener('load', function(){
             loginBox.style.width = '0';
             moneyArea.style.margin = '0';
             window.location.href = "home.html";
+            rwdMem.style.display = 'none';
         }
         xhr.open("get", "front_logout.php", true);
         xhr.send(null);
@@ -254,16 +263,11 @@ window.addEventListener('load', function(){
     // window.addEventListener('resize',function(){
     // })
     
-    if(window.innerWidth < 992){
-        memName.addEventListener('click',function(){
+    if(window.innerWidth > 992){
+        memArea.addEventListener('click',function(){
             window.location.href = "mem.html";
         })
-    }else{
-        memArea.addEventListener('click',function(){
-        window.location.href = "mem.html";
-    })
     }
-    
 
     // 點叉叉關燈箱
     loginRegisterClose.addEventListener('click',function(){

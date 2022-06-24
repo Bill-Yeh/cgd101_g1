@@ -1,26 +1,19 @@
 window.addEventListener('load', function() {
     //faq 選單
-    let course = document.getElementsByTagName('h2'); 
-    
+    let course = document.getElementsByTagName('h2');
+
     course[0].style.color = '#fff';
+    course[0].style.backgroundColor = '#F37420';
     for(let i = 0; i<course.length; i++){
         course[i].addEventListener('click',function(){
-            course[i].style.color = '#fff';
+            course[i].style.backgroundColor = '#F37420';
             for(let j=0; j<course.length; j++){
                 if(i != j){
-                    course[j].style.color = '#F37420';
+                    course[j].style.backgroundColor = '#F9BB4D';
                 }
             }
         });
     };
-    // let message_send = document.getElementById('message_send');
-    // let logOut = document.getElementById('logout');
-    // message_send.addEventListener('click',function(){
-    //     if(logOut.style.display == 'none'){
-    //         alert('請登入帳號');
-    //         return;
-    //     }
-    // })
 
     // =============發文驗證===================
 
