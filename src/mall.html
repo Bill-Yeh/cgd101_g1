@@ -32,12 +32,12 @@
                                     <!-- 一之一 -->
                                     <div class="item_info">
                                         <div class="item_titlev lesson_title"></div>
-                                        <div class="item_pic n4_word lesson">
+                                        <div class="item_pic n4_word lesson" id="lesson_buy">
                                             <img src="" class="lesson_img">
                                             <div class="lesson_having"></div>
                                         </div>
                                         <div class="item_price ">
-                                            <div class="item_price_text lesson_price"></div>
+                                            <div class="item_price_text lesson_price" id="buy_price"></div>
                                         </div>
                                     </div>
                                     <!-- 一之二 -->
@@ -536,8 +536,8 @@
                         having[item_idx].style.display = "block";
                         tool_coin[item_idx].style.display = "none";
                         tool_coin_text[item_idx].innerText = "已擁有";
-
                     }
+
 
                 };
 
@@ -612,7 +612,23 @@
 
                 function yes_button() {
                     window.location.href = "./payment.html";
+                    let lesson_buy = document.getElementById("lesson_buy")
+                    if (Number(coin.innerText) >= 0) {
+                        let buy_lesson_id = 16;
+                        let xhr = new XMLHttpRequest();
+                        let url = `./mall_buy_lesson.php?lesson_id=${buy_lesson_id}`
+                        console.log(url);
+                        xhr.open("get", url, true);
+                        xhr.send(null);
+                        xhr.onload = function () {
+                            console.log("123")
+                            // let buy_item = JSON.parse(xhr.responseText);
+                            // mem_coin.innerText = now_coin;
+                            //location.reload()
+                        }
+                    }
                 }
+
 
 
                 //==========讓裝備無法重複購買==========
@@ -639,6 +655,7 @@
                             tool_no.style.display = "none";
                             no_coin.style.display = "block"
                         }
+
                         function tool_y_btn() {
                             show_tool.style.display = "none";
 
@@ -647,9 +664,10 @@
 
                                 //剩餘代幣 = 相減之後的數量
                                 now_coin = Number(coin.innerText) - Number(tool_coin_text[i].innerText)
-                                tool_coin_text[i].innerText = "已擁有"
+
                                 tool_coin[i].style.display = "none";
-                                //叫出PHP來處理代幣資料
+
+                                //利用ajax呼叫PHP來處理代幣資料
                                 let xhr = new XMLHttpRequest();
                                 let url = `./mall_coin.php?coin=${now_coin}`
                                 xhr.open("get", url, true);
@@ -657,19 +675,30 @@
                                 xhr.onload = function () {
                                     let having_coin = JSON.parse(xhr.responseText);
                                     mem_coin.innerText = now_coin;
-
+                                    //console.log(having_coin)
                                     //location.reload()
                                 };
                             }
-                        }
 
-                        function having() {
-                            for (let j; j < item.length; j++) {
-                                if (item.id == item[i].id) {
+                            if (Number(coin.innerText) - Number(tool_coin_text[i].innerText) >= 0) {
+                                let buy_item_id = i + 1;
+                                console.log(buy_item_id);
+                                let xhr = new XMLHttpRequest();
+                                let url = `./mall_buy_item.php?item_id=${buy_item_id}`
+                                console.log(url);
+                                xhr.open("get", url, true);
+                                xhr.send(null);
+                                xhr.onload = function () {
+                                    console.log(xhr.responseText)
+                                    // let buy_item = JSON.parse(xhr.responseText);
+                                    // mem_coin.innerText = now_coin;
 
+                                    location.reload()
                                 }
                             }
                         }
+
+
                     }
 
                     );
