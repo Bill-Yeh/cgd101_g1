@@ -254,7 +254,9 @@
         }
         function init() {
             getGuide();
-            createCanvas();
+            setTimeout(() => {
+                createCanvas();
+            }, 1000);
             bignpc.addEventListener('click', playVoice, false);
             unlock1.addEventListener('click', unLock1, false);
             unlock2.addEventListener('click', unLock1, false);
