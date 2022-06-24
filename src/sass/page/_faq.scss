@@ -113,15 +113,6 @@
     .row-cols-xl-6 > .col{ width: 16.666666%; }
 }
 
-
-
-
-#memName{
-    cursor: pointer;
-    @include lg(){
-        cursor: default;
-    }
-}
 // section
 .faq{
     margin-top: 25%;
@@ -176,23 +167,20 @@
                     }
                     .faq_jap{
                         margin: 20px 20px;
-                        padding: 10px 20px;
-                        border-radius: 30px;
-                        background-color: map-get($color , primary );
-                        color: #fff;
                         font-family: $fontCh;
                         cursor: pointer;
+                        h2{
+                            padding: 10px 20px;
+                            border-radius: 30px;
+                            background-color: map-get($color , primary );
+                            color: white;
+                        }
                         
                         @include md(){
                             margin: 50px 0;
                             padding: 0;
-                            background-color: #ffd895;
-                            color: map-get($color , backstage_h );
                             font-size: 1.2rem;
                             transition: .3s;
-                            &:hover{
-                                color: #fff;
-                            }
                         }
                         @include xl(){
                             font-size: 1.5rem;
@@ -228,7 +216,7 @@
                     .faq_desktop_writing{
                         @include md(){
                             position: absolute;
-                            top: -6%;
+                            top: -7%;
                             right: 3%;
                         }
                         button{
@@ -660,11 +648,13 @@
 
             // 學員留言
             .student{
+                width: 100%;
                 display: flex;
                 padding: 10px 0 30px 0;
                 border-bottom: 1px solid rgb(174, 174, 174);
 
                 .faq_student_text{
+                    width: 80%;
                     font-family: $fontCh;
                     line-height: 2;
 
@@ -677,7 +667,10 @@
         }
 
         .faq_student_npc{
-            width: 100px;
+            width: 17%;
+            @include md(){
+                width: 13%;
+            }
             img{
                 width: 70%;
             }
@@ -691,7 +684,7 @@
             display: flex;
             align-items: center;
             background-color: #fff;
-            padding: 3px;
+            padding: 8px 3px;
             @include xl(){
                 width: 79.5%;
             }
@@ -712,6 +705,7 @@
                     border: none;
                     outline: none;
                     width: 90%;
+                    font-size: initial;
                 }
             }
             // 送出btn
