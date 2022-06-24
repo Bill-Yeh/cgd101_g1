@@ -27,7 +27,7 @@ try{
     //1.sql指令
 	// $sql = "SELECT * FROM `quiz_record` where member_id = :member_id";
 	// $sql = "SELECT distinct quiz_pass FROM `quiz_record` where member_id = :member_id";
-	$sql = "SELECT  lesson_id FROM `lesson_record` where member_id = :member_id group by lesson_id having lesson_id > 11 ORDER BY lesson_id ASC";
+	$sql = "SELECT  lesson_id FROM `lesson_record` where member_id = :member_id and lesson_id > 15 ORDER BY lesson_id ASC";
     //2.要資料庫準備接收指令
 	$get_qdata = $pdo->prepare($sql);
 	//前台input傳來的變數(看是get還是post),可以用在sql指令中
