@@ -317,6 +317,7 @@
     border: none;
     border-radius: 5px;
     background-color: map-get($color , primary );
+    color: #fff;
     padding: 5px;
     font-size: 1rem;
     letter-spacing: 1px;
@@ -333,4 +334,8 @@
         color: #fff;
         background-color:red;
     }
+}
+
+.black_color{
+    color: #000;
 }

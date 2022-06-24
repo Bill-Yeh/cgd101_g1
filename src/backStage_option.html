@@ -50,7 +50,7 @@
                                 <th>題目</th>
                                 <th>正確解答</th>
                                 <th>其他選項</th>
-                                <!-- <th>操作</th> -->
+                                <th>題目狀態</th>
                             </tr>
                             <tr class="table_data_row odd" v-for="qDataRow in qDataRows">
                                 <td>{{qDataRow.option_id}}</td>
@@ -58,6 +58,12 @@
                                 <td>{{qDataRow.txt}}</td>
                                 <td>{{qDataRow.ans}}</td>
                                 <td>{{qDataRow.option_content1}}、{{qDataRow.option_content2}}、{{qDataRow.option_content3}}</td>
+                                <td>
+                                    <select v-model="qDataRow.option_status" @change="change_status">
+                                        <option value="1">上架</option>
+                                        <option value="2">下架</option>
+                                    </select>
+                                </td>
                                 <!-- <td>
                                     <button class="backStage_edit_btn" @click="edit_qData">
                                         編輯
@@ -477,6 +483,19 @@
                     let data_info = "option_id=" + this.delete_data_id;
                     xhr.send(data_info);
                     }
+                },
+                change_status(e){
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () =>{
+                        console.log(xhr.responseText);
+                    }
+                    xhr.open("post","back_qData_update_status.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    //送出資料
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    let data_info ="option_id=" + this.delete_data_id + "&option_status=" + e.target.value;
+                    console.log(data_info);
+                    xhr.send(data_info);
                 },
             },
             computed:{

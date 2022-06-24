@@ -50,8 +50,8 @@
                                 <th>裝備名稱</th>
                                 <th>裝備說明</th>
                                 <th>裝備價格</th>
-                                <th>狀態(0-下架、1-上架)</th>
-                                <th></th>
+                                <th>裝備狀態</th>
+                                <th>操作</th>
                             </tr>
                             <tr class="table_data_row odd" v-for="itemRow in itemRows">
                                 <td>{{itemRow.item_id}}</td>
@@ -59,8 +59,14 @@
                                 <td>{{itemRow.item_name}}</td>
                                 <td>{{itemRow.item_info}}</td>
                                 <td>{{itemRow.item_price}}</td>
-                                <td>{{itemRow.item_status}}</td>
-                                <td><button class="lightBox_btn edit_btn" @click="show">編輯裝備</button></td>
+                                <td>
+                                    <select v-model="itemRow.item_status" @change="change_status">
+                                        <option value="1">上架</option>
+                                        <option value="2">下架</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="lightBox_btn edit_btn" @click="show">編輯裝備</button></td>
                             </tr>
                         </table>
                     </div>
@@ -356,6 +362,19 @@
                             };
                         };
                     };
+                },
+                change_status(e){
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () =>{
+                        console.log(xhr.responseText);
+                    }
+                    xhr.open("post","back_item_update_status.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    //送出資料
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    let data_info ="item_id=" + this.delete_data_id + "&item_status=" + e.target.value;
+                    console.log(data_info);
+                    xhr.send(data_info);
                 },
             },
             created(){

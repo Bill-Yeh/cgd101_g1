@@ -44,7 +44,7 @@
                                 <th>帳號</th>
                                 <th>帳號名稱</th>
                                 <th>密碼</th>
-                                <th>狀態(1-管理員、2-教師)</th>
+                                <th>狀態</th>
                                 <th>操作</th>
                             </tr>
                             <tr class="table_data_row odd" v-for="accountRow in accountRows">
@@ -52,7 +52,13 @@
                                 <td>{{accountRow.backstage_account}}</td>
                                 <td>{{accountRow.backstage_name}}</td>
                                 <td>{{accountRow.backstage_password}}</td>
-                                <td>{{accountRow.backstage_status}}</td>
+                                <td>
+                                    <select v-model="accountRow.backstage_status" @change="change_status">
+                                        <option value="0">停用</option>
+                                        <option value="1">管理員</option>
+                                        <option value="2">教師</option>
+                                    </select>
+                                </td>
                                 <td>
                                     <button class="backStage_edit_btn" @click="edit_qData">
                                         編輯
@@ -167,14 +173,6 @@
                                 <div class="password phone_block">
                                     <label for="password">密碼</label>
                                     <input type="text" id="password" v-model="insert_backstage_password">
-                                </div>
-                                <div class="account_state_block">
-                                    <label for="account_state">帳號狀態</label>
-                                    <select name="" id="account_state" v-model="insert_backstage_status">
-                                        <option value="0">停用</option>
-                                        <option value="1">管理員</option>
-                                        <option value="2">教師</option>
-                                    </select>
                                 </div>
                                 <!-- <div class="user_block">
                                     <label for="user">使用者角色</label>
@@ -378,13 +376,11 @@
                     this.insert_backstage_name='';
                     this.insert_backstage_account='';
                     this.insert_backstage_password='';
-                    this.insert_backstage_status='1';
                 },
                 update_account(){
                     if(this.insert_backstage_name==''||
                     this.insert_backstage_account==''||
-                    this.insert_backstage_password==''||
-                    this.insert_backstage_status=='1'){
+                    this.insert_backstage_password==''){
                         alert('請填寫所有欄位')
                     }else{
                         let xhr = new XMLHttpRequest();
@@ -395,10 +391,10 @@
                         xhr.open("post","back_account_update.php",true);
                         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
                         //送出資料
-                        let data_info = "backstage_id=" + this.delete_data_id + "&backstage_name=" + this.insert_backstage_name + "&backstage_account=" + this.insert_backstage_account + "&backstage_password=" + this.insert_backstage_password + "&backstage_status=" + this.insert_backstage_status;
+                        let data_info = "backstage_id=" + this.delete_data_id + "&backstage_name=" + this.insert_backstage_name + "&backstage_account=" + this.insert_backstage_account + "&backstage_password=" + this.insert_backstage_password;
                         xhr.send(data_info);
 
-                        console.log(data_info);
+                        // console.log(data_info);
                         this.insert_backstage_name == '';
                         this.insert_backstage_account=='';
                         this.insert_backstage_password=='';
@@ -423,6 +419,18 @@
                     }else{
                         console.log('xxx');
                     }
+                },
+                change_status(e){
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () =>{
+                        console.log(xhr.responseText);
+                    }
+                    xhr.open("post","back_account_update_status.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    //送出資料
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    let data_info ="backstage_id=" + this.delete_data_id + "&backstage_status=" + e.target.value;
+                    xhr.send(data_info);
                 },
             },
             created(){

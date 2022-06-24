@@ -115,7 +115,16 @@
                         padding: 10px;
                         text-align: center;
                     }
+                }
 
+                select{
+                    background-color: #f9bb4d;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    outline: none;
+                    font-size: 1rem;
+                    font-family: Noto Sans TC,sans-serif;
                 }
             }
         }

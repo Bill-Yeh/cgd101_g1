@@ -44,18 +44,23 @@
                                 <th>會員名稱</th>
                                 <th>帳號</th>
                                 <th>密碼</th>
-                                <th>會員狀態</th>
                                 <th>會員稱號</th>
                                 <th>會員等級</th>
+                                <th>會員狀態</th>
                             </tr>
                             <tr class="table_data_row odd" v-for="memberRow in memberRows">
                                 <td>{{memberRow.member_id}}</td>
                                 <td>{{memberRow.member_name}}</td>
                                 <td>{{memberRow.account}}</td>
                                 <td>{{memberRow.password}}</td>
-                                <td>{{memberRow.member_status}}</td>
                                 <td>{{memberRow.title}}</td>
                                 <td>{{memberRow.level}}</td>
+                                <td>
+                                    <select v-model="memberRow.member_status" @change="change_status">
+                                        <option value="0">停用</option>
+                                        <option value="1">啟用</option>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -287,6 +292,18 @@
                             };
                         };
                     };
+                },
+                change_status(e){
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () =>{
+                        console.log(xhr.responseText);
+                    }
+                    xhr.open("post","back_member_update_status.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    //送出資料
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    let data_info ="member_id=" + this.delete_data_id + "&member_status=" + e.target.value;
+                    xhr.send(data_info);
                 },
             },
             created(){

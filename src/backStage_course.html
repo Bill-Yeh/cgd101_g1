@@ -59,7 +59,12 @@
                                 <td>{{lessonRow.lesson_name}}</td>
                                 <td>{{lessonRow.lesson_info}}</td>
                                 <td>{{lessonRow.lesson_price}}</td>
-                                <td>{{lessonRow.lesson_status}}</td>
+                                <td>
+                                    <select v-model="lessonRow.lesson_status" @change="change_status">
+                                        <option value="1">上架</option>
+                                        <option value="2">下架</option>
+                                    </select>
+                                </td>
                                 <td><button class="lightBox_btn edit_btn" @click="show">編輯課程</button></td>
                             </tr>
                         </table>
@@ -360,6 +365,19 @@
                             };
                         };
                     };
+                },
+                change_status(e){
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () =>{
+                        console.log(xhr.responseText);
+                    }
+                    xhr.open("post","back_course_update_status.php",true);
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                    //送出資料
+                    this.delete_data_id = e.path[2].cells[0].innerHTML;
+                    let data_info ="lesson_id=" + this.delete_data_id + "&lesson_status=" + e.target.value;
+                    console.log(data_info);
+                    xhr.send(data_info);
                 },
             },
             created(){
