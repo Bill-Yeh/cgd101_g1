@@ -42,7 +42,6 @@ try{
     //5.把資料傳回去js檔(變成js檔的xhr.responseText，可以放在onload用)
 	echo json_encode($q_data);
 
-
 }catch(PDOException $e){
 	echo "錯誤訊息 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
