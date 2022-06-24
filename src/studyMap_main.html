@@ -1,65 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @@include('layout/meta.html', {
-        "title" : "學習地圖"
+    "title" : "學習地圖"
     })
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
+
 <body class="studyMapMain">
     <!-- header -->
     @@include('layout/header.html')
     @@include('layout/login_register.html')
-<section class="bigMap"  id="capture">
-    <div class="scroller">  
-        <div class="study_big_map">
-            <div class="village">
-                <div class="first-village" @click="nextTo50()">
-                    <img src="./images/studyMap_firstvillage.png" class="firstVillage" id="firstVil">
+    <section class="bigMap" id="capture">
+        <div class="scroller">
+            <div class="study_big_map">
+                <div class="village">
+                    <div class="first-village" @click="nextTo50()">
+                        <img src="./images/studyMap_firstvillage.png" class="firstVillage" id="firstVil">
+                    </div>
+                    <div class="second-village" @click="nextToFirst()" id="village2">
+                        <img src="./images/studyMap_secondvillage.png" class="secondVillage" id="secondVil">
+                    </div>
+                    <div class="third-village" @click="nextToSecond()" id="village3">
+                        <img src="./images/studyMap_thirdvillage.png" class="thirdVillage" id="thirdVil">
+                    </div>
+                    <div class="fourth-village" @click="nextToThird()" id="village4">
+                        <img src="./images/studyMap_fourthvillage.png" class="fourthVillage" id="fourthVil">
+                    </div>
+                    <div class="fifth-village" id="village5">
+                        <img src="./images/studyMap_fifthvillage.png" class="fifthVillage" id="fifthVil">
+                    </div>
+                    <div class="sixth-village">
+                        <img src="./images/studyMap_sixthvillage.png" class="sixthVillage" id="sixthVil">
+                    </div>
+                    <div class="seventh-village">
+                        <img src="./images/studyMap_seventhvillage.png" class="seventhVillage" id="seventhVil">
+                    </div>
                 </div>
-                <div class="second-village" @click="nextToFirst()" id="village2">
-                    <img src="./images/studyMap_secondvillage.png" class="secondVillage" id="secondVil">
-                </div>
-                <div class="third-village" @click="nextToSecond()" id="village3">
-                    <img src="./images/studyMap_thirdvillage.png" class="thirdVillage" id="thirdVil">
-                </div>
-                <div class="fourth-village" @click="nextToThird()" id="village4">
-                    <img src="./images/studyMap_fourthvillage.png" class="fourthVillage" id="fourthVil">
-                </div>
-                <div class="fifth-village" id="village5">
-                    <img src="./images/studyMap_fifthvillage.png" class="fifthVillage" id="fifthVil">
-                </div>
-                <div class="sixth-village">
-                    <img src="./images/studyMap_sixthvillage.png" class="sixthVillage" id="sixthVil">
-                </div>
-                <div class="seventh-village">
-                    <img src="./images/studyMap_seventhvillage.png" class="seventhVillage" id="seventhVil">
-                </div>
-            </div>
-            <div class="cloud">
-                <div class="cloudBackground">
-                    <img src="./images/cloud_background.png" class="cloud_background" id="cloudBg">
-                </div>
-                <div class="cloud1" id="firstCloud">
-                    <img src="./images/cloud_1.png" class="cloud_1" id="cloudFirst">
-                </div>
-                <div class="cloud2" 
-                id="secondCloud">
-                    <img src="./images/cloud_2.png" class="cloud_2" id="cloudSecond">
-                </div>
-                <div class="cloud3"
-                id="thirdCloud">
-                    <img src="./images/cloud_3.png" class="cloud_3" id="cloudThird">
-                </div>
-                <div class="cloud4"
-                id="fourthCloud">
-                    <img src="./images/cloud_4.png" class="cloud_4" id="cloudFourth">
-                </div>
-                <div class="cloud5" id="fifthCloud">
-                    <img src="./images/cloud_5.png" class="cloud_5" id="cloudFifth">
-                </div>
-                <!-- v-for寫法 -->
-                <!-- <div class="village" >
+                <div class="cloud">
+                    <div class="cloudBackground">
+                        <img src="./images/cloud_background.png" class="cloud_background" id="cloudBg">
+                    </div>
+                    <div class="cloud1" id="firstCloud">
+                        <img src="./images/cloud_1.png" class="cloud_1" id="cloudFirst">
+                    </div>
+                    <div class="cloud2" id="secondCloud">
+                        <img src="./images/cloud_2.png" class="cloud_2" id="cloudSecond">
+                    </div>
+                    <div class="cloud3" id="thirdCloud">
+                        <img src="./images/cloud_3.png" class="cloud_3" id="cloudThird">
+                    </div>
+                    <div class="cloud4" id="fourthCloud">
+                        <img src="./images/cloud_4.png" class="cloud_4" id="cloudFourth">
+                    </div>
+                    <div class="cloud5" id="fifthCloud">
+                        <img src="./images/cloud_5.png" class="cloud_5" id="cloudFifth">
+                    </div>
+                    <!-- v-for寫法 -->
+                    <!-- <div class="village" >
                     <img v-for="(data,key) in img" :src="`./images/studyMap_${img[key]}.png`" :alt="img[key]" :class="img[key]">
                 </div>
                 <div class="cloud">
@@ -67,210 +66,210 @@
                         <img v-for="(data,key) in img" :src="`./images/cloud_${img[key]}.png`" :alt="img[key]" :class="`cloud_${img[key]} `" :id="`cloud${img[key]}`" @click="lock()">
                     </div>
                 </div> -->
-            </div>
-            <div class="big_npc" id="bigNpc">
-                <img src="./images/studyMap_NPC_main1.png">
-                <audio id="koei" ref="audio">
-                <source = src="" type="audio/mp3">
-                </audio>
-            </div>
-            <div class="big_npc_message" id="bigNpcMessage">
-                <img src="./images/studyMap_border_main.png">
+                </div>
+                <div class="big_npc" id="bigNpc">
+                    <img src="./images/studyMap_NPC_main1.png">
+                    <audio id="koei" ref="audio">
+                        <source=src="" type="audio/mp3">
+                    </audio>
+                </div>
+                <div class="big_npc_message" id="bigNpcMessage">
+                    <img src="./images/studyMap_border_main.png">
+                </div>
             </div>
         </div>
-    </div>
-    <!-- 導引 -->
-    <!-- 背景濾鏡 -->
-    <div class="main_filter" id="mainFilter"></div>
+        <!-- 導引 -->
+        <!-- 背景濾鏡 -->
+        <div class="main_filter" id="mainFilter"></div>
         <!-- 案內NPC -->
-    <div class="guide" id="guider">
-        <img src="./images/studyMap_NPC_main1.png">
-    </div>
-    <div class="guide_message" id="guiderMes">
-        <img src="./images/guide_message.png">
-    </div>
-    <div class="village_guide" id="vGuide">
-        <img src="./images/guide-village.jpg">
-    </div>
-    <div class="cloud_guide" id="cGuide">
-        <img src="./images/guide-cloud.jpg">
-    </div>
+        <div class="guide" id="guider">
+            <img src="./images/studyMap_NPC_main1.png">
+        </div>
+        <div class="guide_message" id="guiderMes">
+            <img src="./images/guide_message.png">
+        </div>
+        <div class="village_guide" id="vGuide">
+            <img src="./images/guide-village.jpg">
+        </div>
+        <div class="cloud_guide" id="cGuide">
+            <img src="./images/guide-cloud.jpg">
+        </div>
         <!-- 對話框 -->
-    <div class="studyMap_con" id="mapCon">
-        <p id="con"></p>
-        <div class="fix-item">
-            <div class="npc-pic">
-                <img id="pic" src="./images/studyMap_NPC_main1.png">
+        <div class="studyMap_con" id="mapCon">
+            <p id="con"></p>
+            <div class="fix-item">
+                <div class="npc-pic">
+                    <img id="pic" src="./images/studyMap_NPC_main1.png">
+                </div>
             </div>
         </div>
-    </div>
         <!--結束教學對話框 -->
-    <div class="go-to-test" id="toTest">
-        <div class="ask">
-            <p>結束教學</p>
+        <div class="go-to-test" id="toTest">
+            <div class="ask">
+                <p>結束教學</p>
+            </div>
+            <div class="yes" id="Yes">
+                <button>確認</button>
+            </div>
+            <div class="no" id="No">
+                <button>再一次</button>
+            </div>
         </div>
-        <div class="yes" id="Yes">
-            <button>確認</button>
-        </div>
-        <div class="no" id="No">
-            <button>再一次</button>
-        </div>
-    </div>
-    <canvas class="canvas" id="myCanvas"></canvas>
-</section>
+        <canvas class="canvas" id="myCanvas"></canvas>
+    </section>
     @@include('layout/footer.html')
-<script>
-let bignpc = document.getElementById('bigNpc');
-let bigMessage = document.getElementById('bigNpcMessage');
-let koei = document.getElementById('koei');
-let unlock1 = document.getElementById("firstCloud");
-let unlock2 = document.getElementById("secondCloud");
-let unlock3 = document.getElementById("thirdCloud");
-let unlock4 = document.getElementById("fourthCloud");
-let unlock5 = document.getElementById("fifthCloud");
-let filter = document.getElementById("mainFilter");
-let guideNpc = document.getElementById('guider');
-let guiderMes = document.getElementById('guiderMes');
-// let voice = document.getElementById('voice');
-let show = document.getElementById('mapCon');
-let con = document.getElementById('con');
-let vGuide = document.getElementById('vGuide');
-let hint = document.getElementById('toTest');
-let toMap = document.getElementById('Yes');
-let again = document.getElementById('No');
-let cGuide = document.getElementById('cGuide');
-let guideCon = new Array("你好，第一次來嗎？","讓我來帶你前往使用教學吧！","首先，點選地圖上有冒煙的村莊，即可進入學習單元","滑鼠移動到漂浮的雲時，會出現解鎖條件，達成解鎖條件即可進入新的學習單元");
-let npcVoice = new Array("./sound/wakuwaku.mp3","./sound/welcome.mp3","./sound/cannot.mp3");
+    <script>
+        let bignpc = document.getElementById('bigNpc');
+        let bigMessage = document.getElementById('bigNpcMessage');
+        let koei = document.getElementById('koei');
+        let unlock1 = document.getElementById("firstCloud");
+        let unlock2 = document.getElementById("secondCloud");
+        let unlock3 = document.getElementById("thirdCloud");
+        let unlock4 = document.getElementById("fourthCloud");
+        let unlock5 = document.getElementById("fifthCloud");
+        let filter = document.getElementById("mainFilter");
+        let guideNpc = document.getElementById('guider');
+        let guiderMes = document.getElementById('guiderMes');
+        // let voice = document.getElementById('voice');
+        let show = document.getElementById('mapCon');
+        let con = document.getElementById('con');
+        let vGuide = document.getElementById('vGuide');
+        let hint = document.getElementById('toTest');
+        let toMap = document.getElementById('Yes');
+        let again = document.getElementById('No');
+        let cGuide = document.getElementById('cGuide');
+        let guideCon = new Array("你好，第一次來嗎？", "讓我來帶你前往使用教學吧！", "首先，點選地圖上有冒煙的村莊，即可進入學習單元", "滑鼠移動到漂浮的雲時，會出現解鎖條件，達成解鎖條件即可進入新的學習單元");
+        let npcVoice = new Array("./sound/wakuwaku.mp3", "./sound/welcome.mp3", "./sound/cannot.mp3");
 
-function getGuide(){
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)mainMapGuide\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true"){
-    // alert("Do something here!");
-    document.cookie = "mainMapGuide=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
-    console.log(1);
-    filter.style.display="block";
-    console.log(2);
-    guideNpc.style.display="block";
-    console.log(3);
-    guiderMes.style.display="block";
-    }else{
-        bignpc.style.display = "block";
-        bigMessage.style.display = "block";
-    }
-};
-function startGuide(){
-    show.style.display='flex';
-    con.innerText = guideCon[0];
-    koei.src = npcVoice[1];
-    koei.play();
-    vGuide.style.display="none";
-    cGuide.style.display="none";
-};
-function guideContent(){
-    let temp = show.innerText.trim();
-    if(temp == guideCon[0]){
-        con.innerText= guideCon[1];
-    }else if(temp == guideCon[1]){
-        con.innerText= guideCon[2];
-        vGuide.style.display="block";
-        guideNpc.style.display="none";
-        guiderMes.style.display="none";
-    }else if(temp == guideCon[2]){
-        con.innerText= guideCon[3];
-        vGuide.style.display="none";
-        cGuide.style.display="block";
-    }else if(temp == guideCon[3]){
-        cGuide.style.display="none";
-        con.innerText = guideCon[4];
-        hint.style.display="flex";
-        show.style.display="none";
-        guideNpc.style.display="none";
-    }
-};
-function guideClose(){
-    filter.style.display = "none";
-    hint.style.display = "none";
-    bignpc.style.display = "block";
-    bigMessage.style.display = "block";
-};
-function guideAgain(){
-    show.style.display = "flex";
-    con.innerText = guideCon[0];
-    hint.style.display = "none";
-    guideNpc.style.display="block";
-};
-function playVoice(){
-    koei.src = npcVoice[0];
-    koei.play();
-};
-function unLock1(){
-    koei.src = npcVoice[2];
-    koei.play();
-    alert("請完成50音課程，並且測驗分數達到60分以上");
-};
-function unLock2(){
-    window.location.href="mall.html";
-};
-function test2(){
-   
-};
+        function getGuide() {
+            if (document.cookie.replace(/(?:(?:^|.*;\s*)mainMapGuide\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
+                // alert("Do something here!");
+                document.cookie = "mainMapGuide=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+                console.log(1);
+                filter.style.display = "block";
+                console.log(2);
+                guideNpc.style.display = "block";
+                console.log(3);
+                guiderMes.style.display = "block";
+            } else {
+                bignpc.style.display = "block";
+                bigMessage.style.display = "block";
+            }
+        };
+        function startGuide() {
+            show.style.display = 'flex';
+            con.innerText = guideCon[0];
+            koei.src = npcVoice[1];
+            koei.play();
+            vGuide.style.display = "none";
+            cGuide.style.display = "none";
+        };
+        function guideContent() {
+            let temp = show.innerText.trim();
+            if (temp == guideCon[0]) {
+                con.innerText = guideCon[1];
+            } else if (temp == guideCon[1]) {
+                con.innerText = guideCon[2];
+                vGuide.style.display = "block";
+                guideNpc.style.display = "none";
+                guiderMes.style.display = "none";
+            } else if (temp == guideCon[2]) {
+                con.innerText = guideCon[3];
+                vGuide.style.display = "none";
+                cGuide.style.display = "block";
+            } else if (temp == guideCon[3]) {
+                cGuide.style.display = "none";
+                con.innerText = guideCon[4];
+                hint.style.display = "flex";
+                show.style.display = "none";
+                guideNpc.style.display = "none";
+            }
+        };
+        function guideClose() {
+            filter.style.display = "none";
+            hint.style.display = "none";
+            bignpc.style.display = "block";
+            bigMessage.style.display = "block";
+        };
+        function guideAgain() {
+            show.style.display = "flex";
+            con.innerText = guideCon[0];
+            hint.style.display = "none";
+            guideNpc.style.display = "block";
+        };
+        function playVoice() {
+            koei.src = npcVoice[0];
+            koei.play();
+        };
+        function unLock1() {
+            koei.src = npcVoice[2];
+            koei.play();
+            alert("請完成50音課程，並且測驗分數達到60分以上");
+        };
+        function unLock2() {
+            window.location.href = "mall.html";
+        };
+        function test2() {
 
-
-   
-function createCanvas(){
-    html2canvas(document.querySelector("#capture")).then(canvas => {
-    // document.body.appendChild(canvas);
-    let myCanvas = document.getElementById("myCanvas");
-    // console.log(myCanvas)
-    let ctx = myCanvas.getContext("2d");
-    // myCanvas.width = 400; 
-    // myCanvas.height = 300;
-    // ctx.drawImage(canvas,0, 0,400, 300);
-    // console.log(canvas);
-    
-    let image = new Image();
-    image.src = canvas.toDataURL("image/jpeg",1);
-    // let book = image.src;
-    
-    //將圖片存入伺服器及dataBase
-    setTimeout(()=>{
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function(){
-                let ans= JSON.parse(xhr.responseText);
-                console.log(ans)
-            };
-
-            xhr.open("post", "studyMap_canvas.php",true);
-            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                
-            let newImg= `img=${image.src}`
-            xhr.send(newImg);
-        },100)
+        };
 
 
-    // console.log(book)
-    // localStorage.settings = book;
-    // console.log(localStorage);
-    // console.log(localStorage.settings)
-    })
-}
-function init(){
-    getGuide();
-    createCanvas();
-    bignpc.addEventListener('click',playVoice,false);
-    unlock1.addEventListener('click',unLock1,false);
-    unlock2.addEventListener('click',unLock1,false);
-    unlock3.addEventListener('click',unLock2,false);
-    unlock4.addEventListener('click',unLock2,false);
-    unlock5.addEventListener('click',unLock2,false);
-    guideNpc.addEventListener('click',startGuide,false);
-    show.addEventListener('click',guideContent,false);
-    toMap.addEventListener('click',guideClose,false);
-    again.addEventListener('click',guideAgain,false);
-};
-window.addEventListener('load',init,false);
-</script>
 
-<script src="js/studymap.js"></script>
+        function createCanvas() {
+            html2canvas(document.querySelector("#capture")).then(canvas => {
+                // document.body.appendChild(canvas);
+                let myCanvas = document.getElementById("myCanvas");
+                // console.log(myCanvas)
+                let ctx = myCanvas.getContext("2d");
+                // myCanvas.width = 400; 
+                // myCanvas.height = 300;
+                // ctx.drawImage(canvas,0, 0,400, 300);
+                // console.log(canvas);
+
+                let image = new Image();
+                image.src = canvas.toDataURL("image/jpeg", 1);
+                // let book = image.src;
+
+                //將圖片存入伺服器及dataBase
+                setTimeout(() => {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = function () {
+                        let ans = JSON.parse(xhr.responseText);
+                        console.log(ans)
+                    };
+
+                    xhr.open("post", "studyMap_canvas.php", true);
+                    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+                    let newImg = `img=${image.src}`
+                    xhr.send(newImg);
+                }, 100)
+
+
+                // console.log(book)
+                // localStorage.settings = book;
+                // console.log(localStorage);
+                // console.log(localStorage.settings)
+            })
+        }
+        function init() {
+            getGuide();
+            createCanvas();
+            bignpc.addEventListener('click', playVoice, false);
+            unlock1.addEventListener('click', unLock1, false);
+            unlock2.addEventListener('click', unLock1, false);
+            unlock3.addEventListener('click', unLock2, false);
+            unlock4.addEventListener('click', unLock2, false);
+            unlock5.addEventListener('click', unLock2, false);
+            guideNpc.addEventListener('click', startGuide, false);
+            show.addEventListener('click', guideContent, false);
+            toMap.addEventListener('click', guideClose, false);
+            again.addEventListener('click', guideAgain, false);
+        };
+        window.addEventListener('load', init, false);
+    </script>
+
+    <script src="js/studymap.js"></script>
 
 </body>
 
@@ -283,86 +282,85 @@ window.addEventListener('load',init,false);
     //1.新增一個XMLHttpRequest
     let memxhr = new XMLHttpRequest();
     // console.log(xhr)
-    
+
     //2.要打開哪個php檔(方法,"位置",)
     memxhr.open("get", "./studyMap.php", true);
-    
+
     //2.5.自己打變數的位置(問號後面是要查詢的東西)
     // var url = "./test_getquestion.php?test_input=" + test_input.value;
     // xhr.open("get", url, true);
-    
+
     //3.把資料送出去(get是null)
     memxhr.send(null);
 
     //4.收到資料之後要做的事情(這裡可以抓JSON.parse(xhr.responseText)) -- AJAX課本的20頁
-    memxhr.onload = function(){
+    memxhr.onload = function () {
         console.log(memxhr.responseText);
         let ticket = JSON.parse(memxhr.responseText);
         let cloud1 = document.getElementById('cloudFirst');
         let cloud2 = document.getElementById('cloudSecond');
         console.log(ticket);
-        if(ticket.length>=5){ //檢查是否通過50音的5個測驗
+        if (ticket.length >= 5) { //檢查是否通過50音的5個測驗
             let element = document.getElementById("village2");
             let elements = document.getElementById("village3");
             element.classList.add("v2");
             elements.classList.add("v3");
-            cloud1.style.display="none";
-            cloud2.style.display="none";
+            cloud1.style.display = "none";
+            cloud2.style.display = "none";
             // console.log("恭喜通過");
             // console.log("趕快進入下一個吧");
-	    }else{ 
+        } else {
             // console.log("還沒學完耶");
-	    }
-        
+        }
+
     };
 </script>
 
 <!-- 撈資料庫的購買課程資料 -->
 <script>
-    
+
     let lessonxhr = new XMLHttpRequest();
-    
+
     lessonxhr.open("get", "./studyMap_shop.php", true);
-    
+
     lessonxhr.send(null);
 
-    lessonxhr.onload = function(){
+    lessonxhr.onload = function () {
         console.log(lessonxhr.responseText);
         let lesson = JSON.parse(lessonxhr.responseText);
         let cloud3 = document.getElementById('cloudThird');
         let cloud4 = document.getElementById('cloudFourth');
-        console.log(lesson[0].lesson_id);
-        console.log(lesson[1].lesson_id);
-        if(lesson[0].lesson_id == 12){ //檢查是否有購買L4單字課程
+        console.log("已購買", lesson);
+        // console.log(lesson[1].lesson_id);
+        if (lesson[0].lesson_id == 16) { //檢查是否有購買L4單字課程
             var element = document.getElementById("village4");
             element.classList.add("v4");
-            cloud3.style.display="none";
-	    }else{ 
-            
-	    };
-        if(lesson[1].lesson_id == 13){ //檢查是否有購買L4會話課程
-            var element = document.getElementById("village5");
-            element.classList.add("v5");
-            cloud4.style.display="none";
-	    }else{ 
+            cloud3.style.display = "none";
+        } else {
 
         };
+        // if (lesson[1].lesson_id == 17) { //檢查是否有購買L4會話課程
+        //     var element = document.getElementById("village5");
+        //     element.classList.add("v5");
+        //     cloud4.style.display = "none";
+        // } else {
+
+        // };
         // if(lesson[2].lesson_id == 14){ //檢查是否有購買L4會話課程
-            
-           
-	    // }else{ 
+
+
+        // }else{ 
 
         // };
         // for迴圈寫法測試中
         // for(i=0;i>=lesson.length;i++){
-           
+
         //     if(lesson[i].lesson_id == (i+12)){
 
         //         `cloud${i+3}`.style.display="none";
 
         //     }
-            
+
         // }
     };
 </script>
-
