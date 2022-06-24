@@ -179,10 +179,10 @@
     };
     .desk{
         z-index: 3;
-        cursor: pointer;
-        &:hover{
-            transform: scale(1.1)
-        };
+        // cursor: pointer;
+        // &:hover{
+        //     transform: scale(1.1)
+        // };
         @include mem_item(170px,'',120px,90px,'');
         @include md{
             @include mem_item(170px,'',200px,80px,'');
