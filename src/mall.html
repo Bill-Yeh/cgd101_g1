@@ -469,7 +469,7 @@
 
                     //having_lesson儲存成新陣列,只顯示value
                     having_lesson = having_lesson.map((v) => v.lesson_id);
-                    console.log(having_lesson);
+                    //console.log(having_lesson);
 
                     for (i = 0; i < having_lesson.length; i++) {
                         let lesson_idx = having_lesson[i] - 1;
@@ -610,6 +610,7 @@
                     lesson_pay.style.display = "none";
                 }
 
+                //自己找,小彩蛋
                 function yes_button() {
                     window.location.href = "./payment.html";
                     let lesson_buy = document.getElementById("lesson_buy")
@@ -617,11 +618,11 @@
                         let buy_lesson_id = 16;
                         let xhr = new XMLHttpRequest();
                         let url = `./mall_buy_lesson.php?lesson_id=${buy_lesson_id}`
-                        console.log(url);
+                        //console.log(url);
                         xhr.open("get", url, true);
                         xhr.send(null);
                         xhr.onload = function () {
-                            console.log("123")
+                            //console.log("123")
                             // let buy_item = JSON.parse(xhr.responseText);
                             // mem_coin.innerText = now_coin;
                             //location.reload()
@@ -645,6 +646,7 @@
                             having_text.style.display = "block"
                             tool_choice.style.display = "none";
                             tool_no.style.display = "none";
+                            no_coin.style.display = "none"
                         }
                         else if (tool_coin_text[i].innerText != "已擁有") {
                             having_text.style.display = "none"
@@ -682,14 +684,14 @@
 
                             if (Number(coin.innerText) - Number(tool_coin_text[i].innerText) >= 0) {
                                 let buy_item_id = i + 1;
-                                console.log(buy_item_id);
+                                //console.log(buy_item_id);
                                 let xhr = new XMLHttpRequest();
                                 let url = `./mall_buy_item.php?item_id=${buy_item_id}`
-                                console.log(url);
+                                //console.log(url);
                                 xhr.open("get", url, true);
                                 xhr.send(null);
                                 xhr.onload = function () {
-                                    console.log(xhr.responseText)
+                                    //console.log(xhr.responseText)
                                     // let buy_item = JSON.parse(xhr.responseText);
                                     // mem_coin.innerText = now_coin;
 
