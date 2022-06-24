@@ -39,6 +39,9 @@ window.addEventListener('load', function(){
     // 登入後出現的會員名稱
     let memName = document.getElementById('memName');
 
+    // rwd會員專區
+    let rwdMem = document.getElementById('rwdMem');
+
 
     // =================註冊驗證==================
     registerBtn.addEventListener('click',function(e){
@@ -99,6 +102,7 @@ window.addEventListener('load', function(){
                         memName.innerText = memberWeb.member_name;
                         // header上面的東西隱藏/顯示
                         memIcon.style.display = 'none';
+                        rwdMem.style.display = 'block';
                         logout.style.display = 'block';
                         loginBox.style.width = '10%';
                         moneyArea.style.margin = 'auto';
@@ -117,6 +121,7 @@ window.addEventListener('load', function(){
                         memName.innerText = memberWeb.member_name;
                         // header上面的東西隱藏/顯示
                         memIcon.style.display = 'none';
+                        rwdMem.style.display = 'none';
                         logout.style.display = 'block';
                         memArea.style.display = 'block';
                         loginBox.style.width = '25%';

@@ -18,7 +18,7 @@
                         <div class="faq_jap faq_japan_50">
                             <h2 @click="showLesson('a',1)" ref="a">50音課程</h2>
                         </div>
-                        <div class="faq_jap faq_japan_vocabular y">
+                        <div class="faq_jap faq_japan_vocabulary">
                             <h2 @click="showLesson('b',2)" ref="b">單字課程</h2>
                         </div>
                         <div class="faq_jap faq_japan_conversation">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="faq_user_input">
                     <div class="user_npc">
-                        <img :src="getUerRoleImg()" alt="學員">
+                        <img :src="getUerRoleImg()">
                     </div>
                     <form action="" method="post">
                         <input type="text" id="user_message" placeholder="我要留言" v-model="inputMessage">
@@ -390,6 +390,17 @@
                 user:[]
             },
             methods: {
+                // inputKeyUp(e){
+                //     let timer;
+                //     e.target.style.position = 'static'
+                //     timer = setInterval(function(){
+                //         document.body.scrollTop = document.body.scrollHeight
+                //     },100)
+                // },
+                // inputBlur(e){
+                //     e.target.parentNode.style.position = 'fixed';
+                //     clearInterval(timer);
+                // },
                 showLesson(type, typeInt){
                     this.type = type;
                     articleList.getPostType(typeInt);
@@ -417,14 +428,10 @@
 
                         this.messages = messageText;
                        
-                        // console.log('messages:',messageText);
                         this.articleList = numbers;
-                        // console.log('articleList:',numbers);
 
                         // 文章燈箱內容
                         this.focusArticles = numbers;
-                        // this.user = JSON.parse(JSON.parse(xhr.responseText).messageText);
-                        // console.log(this.user);
                     }
                     xhr.open("post", "faq.php", true);
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -467,8 +474,6 @@
                         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                         let data_info = `post_title=${this.postTitle}&post_txt=${this.postText}&post_type=${this.postType}`;
-
-                        console.log('PO文資訊:',data_info);
                         xhr.send(data_info);
                     }
                 },
@@ -497,8 +502,6 @@
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                     let data_info = `message_txt=${this.inputMessage}&post_id=${this.targetPostKey}`;
-
-                    console.log('留言資訊:',data_info);
                     xhr.send(data_info);
                 },
                 postReport(){ //檢舉功能
@@ -511,8 +514,6 @@
                     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 
                     let data_info = `report_reason=${this.report}&post_id=${this.targetPostKey}`;
-
-                    console.log('檢舉資訊:',data_info);
                     xhr.send(data_info);
                 }
             },
@@ -533,9 +534,8 @@
             mounted() {
                 let xhr = new XMLHttpRequest();
                 xhr.onload = () =>{
-                    
+
                     this.user = JSON.parse(xhr.responseText);
-                    console.log('user:',this.user);
                 }
                 xhr.open("get", "faq_userImg.php", true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
