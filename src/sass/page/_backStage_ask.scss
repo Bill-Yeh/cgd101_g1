@@ -162,10 +162,18 @@
                             }
                         }
                     }
+                    .backStage_chat_content{
+                        height: 100%;
+                    }
 
                     // 學員老師聊天區
-                    .chat_message_block{
+                    .chatroom_wrapper{
                         overflow-y: auto;
+                        width: 100%;
+                        height: 68%;
+                    }
+                    .chat_message_block{
+                       
                     }
 
                     .backStage_chat_student{
