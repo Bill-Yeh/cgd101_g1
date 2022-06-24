@@ -82,7 +82,7 @@ let ask_admin = new Vue({
             
 
             setTimeout(()=>{
-                let bar=document.querySelector(".chat_message_block")
+                let bar=document.querySelector(".chatroom_wrapper")
                 bar.scrollTop=bar.scrollHeight
             },50)
 

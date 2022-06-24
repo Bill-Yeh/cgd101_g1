@@ -18,7 +18,7 @@ try{
   }
 
   else{
-  $sql = "INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`, `role`) VALUES (NULL, :member_name, :account, :password, '1', '0', '1', './images/char_00_0.png')";
+  $sql = "INSERT INTO `member` (`member_id`, `member_name`, `account`, `password`, `member_status`, `coin`, `level`, `role`) VALUES (NULL, :member_name, :account, :password, '1', '0', '1', './images/char_00_1.png')";
 
   $member = $pdo->prepare($sql);
   $member->bindValue(":member_name", $_POST["member_name"]);

@@ -80,6 +80,7 @@ window.addEventListener('load', function(){
 
             if(memberEnroll == '帳號已存在'){
                 alert(memberEnroll);
+                return;
             }else{
                 //將註冊表單上的資料清空，並隱藏起來
                 memberAccount.value = '';

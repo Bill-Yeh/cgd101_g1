@@ -7,7 +7,7 @@ new Vue({
 new Vue({
     el:'.floor',
     data:{
-        img: ['bed','box1','teacher','phone','mat','desk','chair','box2'] 
+        img: ['bed','box1','teacher','phone','mat','desk','chair'] 
     },
 })
 
@@ -317,7 +317,7 @@ document.querySelector("#lightBox").addEventListener("click", function(e){e.stop
 //設定可點選物件事件聆聽
 window.onload=function(){
     //可點物件聆聽
-    let items=new Array("desk","map","bed","closet","box1")
+    let items=new Array("map","bed","closet","box1")
     for(let i=0;i<items.length;i++){
         document.querySelector(`.${items[i]}`).addEventListener("click",openLightBox);
     }
