@@ -27,11 +27,11 @@
                         </div>
                         <div class="backStage_input_filter">
                             <div class="input_filter">
-                                <input type="text" placeholder="以管理員編號查詢">
+                                <input type="text" placeholder="以關鍵字查詢" v-model="search" @change="search_txt"/>
                                 <i class="bi bi-search"></i>
                             </div>
                             <div class="backStage_search">
-                                <button class="backStage_search_btn">
+                                <button class="backStage_search_btn" @click="search_txt">
                                     查詢
                                 </button>
                             </div>
@@ -44,7 +44,7 @@
                                 <th>帳號</th>
                                 <th>帳號名稱</th>
                                 <th>密碼</th>
-                                <th>帳號狀態</th>
+                                <th>狀態(1-管理員、2-教師)</th>
                             </tr>
                             <tr class="table_data_row odd" v-for="accountRow in accountRows">
                                 <td>{{accountRow.backstage_id}}</td>
@@ -56,6 +56,27 @@
                         </table>
                     </div>
                 </div>
+
+                <!-- 表格底下的頁數 -->
+                <footer class="backStage_footer backStage_footer_qData">
+                    <ul class="footer_list">
+                        <li class="arrow double-left" :class="arrow_disable_l(current_page)">
+                            <i class="bi bi-chevron-double-left" :class="arrow_i_disable_l(current_page)" @click="toPage(1)"></i>
+                        </li>
+                        <li class="arrow arrow_left" :class="arrow_disable_l(current_page)">
+                            <i class="bi bi-chevron-left" :class="arrow_i_disable_l(current_page)" @click="toPage(current_page-1)"></i>
+                        </li>
+                        <li class="page_num" v-for="page in all_pages" @click="toPage(page)" :class="page_now(page)">
+                            {{page}}
+                        </li>
+                        <li class="arrow arrow_right" :class="arrow_disable_r(current_page)">
+                            <i class="bi bi-chevron-right" :class="arrow_i_disable_r(current_page)" @click="toPage(current_page+1)"></i>
+                        </li>
+                        <li class="arrow double-right" :class="arrow_disable_r(current_page)">
+                            <i class="bi bi-chevron-double-right" :class="arrow_i_disable_r(current_page)" @click="toPage(all_pages.length)"></i>
+                        </li>
+                    </ul>
+                </footer>
             </div>
             
             <!-- 新增帳號燈箱 -->
@@ -70,40 +91,41 @@
                         </div>
                         <div class="backStage_lightBox_main_content">
                             <form action="">
-                                <div class="administrator_sm_block">
+                                <!-- <div class="administrator_sm_block">
                                     <label for="administrator_sm">管理員編號</label>
                                     <input type="text" id="administrator_sm">
+                                </div> -->
+                                <div class="account_title_block">
+                                    <label for="account_title">帳號名稱</label>
+                                    <input type="text" id="account_title"v-model="insert_backstage_name">
                                 </div>
                                 <div class="account_block">
                                     <label for="account">帳號</label>
-                                    <input type="text" id="account">
-                                </div>
-                                <div class="account_title_block">
-                                    <label for="account_title">帳號名稱</label>
-                                    <input type="text" id="account_title">
+                                    <input type="text" id="account" v-model="insert_backstage_account">
                                 </div>
                                 <div class="password phone_block">
                                     <label for="password">密碼</label>
-                                    <input type="password" id="password">
+                                    <input type="password" id="password" v-model="insert_backstage_password">
                                 </div>
                                 <div class="account_state_block">
                                     <label for="account_state">帳號狀態</label>
-                                    <select name="" id="account_state">
-                                        <option value="active">啟用</option>
-                                        <option value="stop">停用</option>
+                                    <select name="" id="account_state" v-model="insert_backstage_status">
+                                        <option value="0">停用</option>
+                                        <option value="1">管理員</option>
+                                        <option value="2">教師</option>
                                     </select>
                                 </div>
-                                <div class="user_block">
+                                <!-- <div class="user_block">
                                     <label for="user">使用者角色</label>
                                     <select name="" id="user">
                                         <option value="administrator">管理員</option>
                                         <option value="teacher">教師</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                         <div class="backStage_lightBox_saveBtn">
-                            <button type="submit" class="data_save">儲存</button>
+                            <button type="submit" class="data_save" @click="insert_account">儲存</button>
                         </div>
                     </div>
                 </div>
@@ -115,7 +137,21 @@
         let backStage_account = new Vue({
             el:'#backStageID',
             data:{
-                accountRows:[]
+                // 頁面渲染用
+                accountRows:[],
+                // 分頁用
+                data_perPage:5,
+                all_pages:[],
+                current_page:1,
+                // 搜尋用
+                search_arr : [], //查詢的資料
+                temp_arr : [], //暫存所有資料
+                search:'',
+                // 燈箱用
+                insert_backstage_name:'',
+                insert_backstage_account:'',
+                insert_backstage_password:'',
+                insert_backstage_status:'2',
             },
             methods: {
                 show(){
@@ -124,12 +160,177 @@
                 hide(){
                     document.querySelector('.backStage_lightBox').style.display = 'none';
                 },
+                page_now(page){
+                    if(page == this.current_page){
+                        return 'currentPage';
+                    }
+                },
+                arrow_disable_l(){
+                    if(this.current_page == 1){
+                        return 'arrow_disable';
+                    }
+                },
+                arrow_i_disable_l(){
+                    if(this.current_page == 1){
+                        return 'arrow_i_disable';
+                    }
+                },arrow_disable_r(){
+                    if(this.current_page == this.all_pages.length){
+                        return 'arrow_disable';
+                    }
+                },
+                arrow_i_disable_r(){
+                    if(this.current_page == this.all_pages.length){
+                        return 'arrow_i_disable';
+                    }
+                },
+                toPage(page){
+                    this.current_page = page;
+                    //改變表格內容
+                    if(this.search == ''){
+                            if(page != parseInt((this.temp_arr.length / this.data_perPage)+1)){
+                            this.accountRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(page*this.data_perPage-1);i++){
+                                this.accountRows.push(this.temp_arr[i]);
+                            }
+                        }else{
+                            this.accountRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(this.temp_arr.length-1);i++){
+                                this.accountRows.push(this.temp_arr[i]);
+                            }
+                        };
+                    }else{
+                        if(page != parseInt((this.search_arr.length / this.data_perPage)+1)){
+                            this.accountRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(page*this.data_perPage-1);i++){
+                                this.accountRows.push(this.search_arr[i]);
+                            }
+                        }else{
+                            this.accountRows = [];
+                            for(let i=((page-1)*this.data_perPage);i<=(this.search_arr.length-1);i++){
+                                this.accountRows.push(this.search_arr[i]);
+                            }
+                        };
+                    }
+                },
+                search_txt(){
+                    console.log('開始查詢');
+                    let search = this.search;
+                    this.search_arr = [];
+                    let reg=new RegExp(search);
+                    if(search == ''){
+                        this.search_arr = this.temp_arr;
+                        console.log('結果空值');
+                    }else{
+                        this.search_arr = [];
+                        for(let i = 0; i<this.temp_arr.length;i++){
+                            if(this.temp_arr[i].backstage_id == search){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }
+                            else if(this.temp_arr[i].backstage_account == search){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(this.temp_arr[i].backstage_name == search){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(reg.test(this.temp_arr[i].backstage_account) == true){
+                                this.search_arr.push(this.temp_arr[i]);
+                            }else if(reg.test(this.temp_arr[i].backstage_name) == true){
+                                this.search_arr.push(this.temp_arr[i]);
+                            };
+                        };
+                        
+                    };
+                    this.accountRows = this.search_arr;
+
+                    //===== 表格分頁 =====//
+                    this.all_pages = [];
+                    this.current_page = 1;
+                    //產出頁數
+                    if(this.accountRows.length < this.data_perPage){
+                        this.all_pages.push(1);
+                    }else if(this.accountRows.length % this.data_perPage == 0){
+                        for(let i=1;i<=(this.accountRows.length / this.data_perPage);i++){
+                            this.all_pages.push(i);
+                        };
+                    }else{
+                        for(let i=1;i<=((this.accountRows.length / this.data_perPage)+1);i++){
+                            this.all_pages.push(i);
+                        };
+                    };
+
+                    // //產出初始表格
+                    if(this.search_arr == []){
+                        if(this.temp_arr.length < this.data_perPage){
+                            for(let i=0;i<this.temp_arr.length;i++){
+                                this.accountRows.push(this.temp_arr[i]);
+                            };
+                        }else{
+                            for(let i=0;i<=this.data_perPage-1;i++){
+                                this.accountRows.push(this.temp_arr[i]);
+                            };
+                        };
+                    }else{
+                        if(this.all_pages.length>1){
+                            this.accountRows = [];
+                            for(let i=0;i<this.data_perPage;i++){
+                                this.accountRows.push(this.search_arr[i]);
+                            };
+                        };
+                    };
+                },
+                insert_account(){
+                    if(this.insert_backstage_name == '' ||
+                    this.insert_backstage_account=='' ||
+                    this.insert_backstage_password==''){
+                        alert('請填寫所有欄位')
+                    }else{
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = () =>{
+                            console.log(xhr.responseText);
+                            // location.reload();
+                        }
+                        xhr.open("post","back_account_insert.php",true);
+                        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                        //送出資料
+                        let data_info = "backstage_name=" + this.insert_backstage_name + "&backstage_account=" + this.insert_backstage_account + "&backstage_password=" + this.insert_backstage_password + "&backstage_status=" + this.insert_backstage_status;
+                        xhr.send(data_info);
+
+                        console.log(data_info);
+                        this.insert_backstage_name == '';
+                        this.insert_backstage_account=='';
+                        this.insert_backstage_password=='';
+                        document.querySelector('.backStage_lightBox').style.display = 'none';
+                    }
+                },
             },
             created(){
                 let xhr = new XMLHttpRequest();
                 xhr.onload = () =>{
-                    this.accountRows = JSON.parse(xhr.responseText);
-                    console.log(this.accountRows);
+                    // this.accountRows = JSON.parse(xhr.responseText);
+                    this.temp_arr = JSON.parse(xhr.responseText);
+
+                    //===== 表格分頁 =====//
+                    //產出頁數
+                    if(this.temp_arr.length < this.data_perPage){
+                        this.all_pages.push(1);
+                    }else if(this.temp_arr.length % this.data_perPage == 0){
+                        for(let i=1;i<=(this.temp_arr.length / this.data_perPage);i++){
+                            this.all_pages.push(i);
+                        };
+                    }else{
+                        for(let i=1;i<=((this.temp_arr.length / this.data_perPage)+1);i++){
+                            this.all_pages.push(i);
+                        };
+                    };
+                    //寫入初始表格
+                    if(this.temp_arr.length < this.data_perPage){
+                        for(let i=0;i<this.temp_arr.length;i++){
+                            this.accountRows.push(this.temp_arr[i]);
+                        };
+                    }else{
+                        for(let i=0;i<=this.data_perPage-1;i++){
+                            this.accountRows.push(this.temp_arr[i]);
+                        };
+                    };
                 }
                 xhr.open("get","back_account.php",true);
                 xhr.send(null);
