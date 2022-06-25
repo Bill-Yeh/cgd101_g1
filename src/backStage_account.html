@@ -55,8 +55,8 @@
                                 <td>
                                     <select v-model="accountRow.backstage_status" @change="change_status">
                                         <option value="0">停用</option>
-                                        <option value="1">管理員</option>
-                                        <option value="2">教師</option>
+                                        <option value="2">管理員</option>
+                                        <option value="1">教師</option>
                                     </select>
                                 </td>
                                 <td>
@@ -126,8 +126,8 @@
                                     <label for="account_state">帳號狀態</label>
                                     <select name="" id="account_state" v-model="insert_backstage_status">
                                         <option value="0">停用</option>
-                                        <option value="1">管理員</option>
-                                        <option value="2">教師</option>
+                                        <option value="2">管理員</option>
+                                        <option value="1">教師</option>
                                     </select>
                                 </div>
                                 <!-- <div class="user_block">
@@ -346,7 +346,7 @@
                         let xhr = new XMLHttpRequest();
                         xhr.onload = () =>{
                             console.log(xhr.responseText);
-                            location.reload();
+                            // location.reload();
                         }
                         xhr.open("post","back_account_insert.php",true);
                         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
