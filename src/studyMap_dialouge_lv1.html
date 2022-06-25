@@ -1289,49 +1289,7 @@
         console.log("現時",rightHour);
         //取今日天氣資料
         console.log("今日天氣:",todayWeather);
-        // if(todayWeather == "ts"){
-        //     if(rightHour <18 && rightHour >6){
-        //         console.log("強對流天氣");
-        //         console.log("白天");
-        //         sunFace.style.display="block";
-        //     }else if(rightHour <6 | rightHour >18){
-        //         console.log("晚上");
-        //         console.log("強對流天氣");
-        //         moon.style.display="block";
-        //         night.style.display="block";
-        //     }; 
-        // }else if(todayWeather == "clear"){
-        //     if(rightHour <18 && rightHour >6){
-        //         console.log("晴天無雲");
-        //         console.log("白天");
-        //         sunFace.style.display="block";
-
-        //     }else if(rightHour <6 | rightHour >18){
-        //         console.log("晚上");
-        //         console.log("晴天無雲");
-        //         moon.style.display="block";
-        //         night.style.display="block";
-        //     }; 
-        // }else if(todayWeather == "mcloudy"){
-        //     console.log("總雲量介於20%-80%間");
-        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_mcloudy.jpg')";
-        // }else if(todayWeather == "cloudy"){
-        //     console.log("總雲量超過80%");
-        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_cloudy.jpg')";
-        // }else if(todayWeather == "rain"|todayWeather == "lightrain"){
-        //     console.log("下雨");
-        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_rain.jpg')";
-        //     rainFogy.style.display="block";
-        // }else if(todayWeather == "snow"){
-        //     console.log("下雪");
-        // }else if(todayWeather == "tsrain"){
-        //     console.log("抬升指數小於-5且有雨");
-        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_tsrain.jpg')";
-        //     rainFogy.style.display="block";
-        // }
-        //測試用
-        let test = "ts";
-        if(test == "ts"){
+        if(todayWeather == "ts"){
             if(rightHour <18 && rightHour >6){
                 console.log("強對流天氣");
                 console.log("白天");
@@ -1342,7 +1300,7 @@
                 moon.style.display="block";
                 night.style.display="block";
             }; 
-        }else if(test == "clear"){
+        }else if(todayWeather == "clear"){
             if(rightHour <18 && rightHour >6){
                 console.log("晴天無雲");
                 console.log("白天");
@@ -1354,23 +1312,65 @@
                 moon.style.display="block";
                 night.style.display="block";
             }; 
-        }else if(test == "mcloudy"){
+        }else if(todayWeather == "mcloudy"){
             console.log("總雲量介於20%-80%間");
             backGI.style.backgroundImage="url('./images/studyMap_dialolv1_mcloudy.jpg')";
-        }else if(test == "cloudy"){
+        }else if(todayWeather == "cloudy"){
             console.log("總雲量超過80%");
             backGI.style.backgroundImage="url('./images/studyMap_dialolv1_cloudy.jpg')";
-        }else if(test == "rain"|test == "lightrain"){
+        }else if(todayWeather == "rain"|todayWeather == "lightrain"){
             console.log("下雨");
             backGI.style.backgroundImage="url('./images/studyMap_dialolv1_rain.jpg')";
             rainFogy.style.display="block";
-        }else if(test == "snow"){
+        }else if(todayWeather == "snow"){
             console.log("下雪");
-        }else if(test == "tsrain"){
+        }else if(todayWeather == "tsrain"){
             console.log("抬升指數小於-5且有雨");
             backGI.style.backgroundImage="url('./images/studyMap_dialolv1_tsrain.jpg')";
             rainFogy.style.display="block";
         }
+        //測試用
+        // let test = "ts";
+        // if(test == "ts"){
+        //     if(rightHour <18 && rightHour >6){
+        //         console.log("強對流天氣");
+        //         console.log("白天");
+        //         sunFace.style.display="block";
+        //     }else if(rightHour <6 | rightHour >18){
+        //         console.log("晚上");
+        //         console.log("強對流天氣");
+        //         moon.style.display="block";
+        //         night.style.display="block";
+        //     }; 
+        // }else if(test == "clear"){
+        //     if(rightHour <18 && rightHour >6){
+        //         console.log("晴天無雲");
+        //         console.log("白天");
+        //         sunFace.style.display="block";
+
+        //     }else if(rightHour <6 | rightHour >18){
+        //         console.log("晚上");
+        //         console.log("晴天無雲");
+        //         moon.style.display="block";
+        //         night.style.display="block";
+        //     }; 
+        // }else if(test == "mcloudy"){
+        //     console.log("總雲量介於20%-80%間");
+        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_mcloudy.jpg')";
+        // }else if(test == "cloudy"){
+        //     console.log("總雲量超過80%");
+        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_cloudy.jpg')";
+        // }else if(test == "rain"|test == "lightrain"){
+        //     console.log("下雨");
+        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_rain.jpg')";
+        //     rainFogy.style.display="block";
+        // }else if(test == "snow"){
+        //     console.log("下雪");
+        // }else if(test == "tsrain"){
+        //     console.log("抬升指數小於-5且有雨");
+        //     backGI.style.backgroundImage="url('./images/studyMap_dialolv1_tsrain.jpg')";
+        //     rainFogy.style.display="block";
+        // }
   	}else{
   		alert(xhr.status);
   	}
