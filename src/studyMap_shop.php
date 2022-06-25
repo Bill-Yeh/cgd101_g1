@@ -25,8 +25,6 @@ try{
     //=====要資料庫做的事情=====//
 
     //1.sql指令
-	// $sql = "SELECT * FROM `quiz_record` where member_id = :member_id";
-	// $sql = "SELECT distinct quiz_pass FROM `quiz_record` where member_id = :member_id";
 	$sql = "SELECT distinct lesson_id FROM `lesson_record` where member_id = :member_id and lesson_id > 15 ORDER BY lesson_id ASC";
     //2.要資料庫準備接收指令
 	$get_qdata = $pdo->prepare($sql);
