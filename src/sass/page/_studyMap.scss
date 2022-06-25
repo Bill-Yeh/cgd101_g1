@@ -1372,10 +1372,7 @@ content:url(../images/npc_border_hello.png);
       
     }
     @include lg() {
-      // width: 30px;
-      // height: 30px;
-      // bottom: -40%;
-      // left: 80%;
+      
     }
     @include xl() {
   
@@ -1604,8 +1601,8 @@ content:url(../images/npc_border_hello.png);
 }
 .fogy{
   position: absolute;
-  bottom: 15%;
-  left: 50%;
+  bottom: 30%;
+  left: 10%;
   z-index: 55;
   transform: scale(1.7);
   display: none;
