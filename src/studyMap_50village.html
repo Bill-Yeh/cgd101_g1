@@ -198,6 +198,10 @@
     let npcE = document.getElementById("sanE");
     let npcU = document.getElementById("sanU");
     let npcO = document.getElementById("sanO");
+    // let sunFace = document.getElementById("sunnyFace");
+    // let moon = document.getElementById("moonFace");
+    // let night = document.getElementById("nightFliter");
+    // let rainFogy = document.getElementById("foggy");
     
     function getGuide(){
         if (document.cookie.replace(/(?:(?:^|.*;\s*)village50Guide\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true"){
@@ -275,7 +279,7 @@
         bGuide.style.display="block";
     };
     function showLightBox(e){
-            //背景變暗
+        //背景變暗
         filter.style.display='block';
         show.style.display ='flex';
         closeBox.style.display='block';
@@ -284,6 +288,9 @@
         usan.style.display="none";
         esan.style.display="none";
         osan.style.display="none";
+        // sunFace.style.display="none";
+        // moon.style.display="none";
+        // rainFogy.style.display="none";
         console.log(npcA);
         npcA.classList.remove("mask");
         npcI.classList.remove("mask");
@@ -623,6 +630,9 @@
         usan.style.display="block";
         esan.style.display="block";
         osan.style.display="block";
+        // sunFace.style.display="block";
+        // moon.style.display="block";
+        // rainFogy.style.display="block";
         let lesson = JSON.parse(scorexhr.responseText);
         if(lesson.length == 5){
             //加1あ課程
@@ -831,6 +841,9 @@
         usan.style.display="block";
         esan.style.display="block";
         osan.style.display="block";
+        // sunFace.style.display="block";
+        // moon.style.display="block";
+        // rainFogy.style.display="block";
         let lesson = JSON.parse(scorexhr.responseText);
         if(lesson.length == 5){
             //加1あ課程
