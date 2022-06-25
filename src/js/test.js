@@ -162,12 +162,12 @@ function toNextQuestion(){
         if(score>=60){
             test_ifPass.innerText= "通過";
             test_getCoin.innerText= score;
-            $_('notMemTxt_end').innerHTML = '恭喜通過測驗！<br>休息一下，在繼續往下挑戰吧！';
+            $_('notMemTxt_end').innerHTML = '恭喜通過測驗！<br>休息一下，再繼續往下挑戰吧！';
         }else{
             test_ifPass.innerText= "未通過";
             test_ifPass.style.color="red";
             test_getCoin.innerText=0;
-            $_('notMemTxt_end').innerHTML = '加油，再多多複習！<br>下次一定就能通過了！';
+            $_('notMemTxt_end').innerHTML = '加油，再多多複習幾次，<br>下次一定就能通過了！';
         }
         test_score.innerText= score;
 
