@@ -152,6 +152,8 @@ window.addEventListener('load', function(){
                     return;
                 }else if(window.innerWidth < 992){
                     isLogin = true;
+                    memIcon.style.display = 'none';
+                    rwdMem.style.display = 'block';
                     window.addEventListener('resize',function() {
                         memArea.style.display = 'none';
                         rwdMem.style.display = 'block';
@@ -171,6 +173,10 @@ window.addEventListener('load', function(){
                     isLogin = true;
                     memName.innerText = memberWeb.member_name;
                     rwdMem.style.display = 'none';
+                    window.addEventListener('resize',function() {
+                        rwdMem.style.display = 'none';
+                        memArea.style.display = 'block';
+                    })
                     //將登入表單上的資料清空，並隱藏起來
                     loginAccount.value = '';
                     loginPassword.value = '';
@@ -184,7 +190,7 @@ window.addEventListener('load', function(){
                 }
 
                 //頁面重新整理(現在是全部都會重新整理)
-                //   ocation.reload();
+                  location.reload();
                 
                 
             }
