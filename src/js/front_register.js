@@ -102,10 +102,9 @@ window.addEventListener('load', function(){
                         memName.innerText = memberWeb.member_name;
                         // header上面的東西隱藏/顯示
                         memIcon.style.display = 'none';
-                        rwdMem.style.display = 'block';
                         logout.style.display = 'block';
-                        loginBox.style.width = '10%';
-                        moneyArea.style.margin = 'auto';
+                        loginBox.style.width = 'auto';
+                        rwdMem.style.display = 'block';
                     } else {
                         isLogin = false;
                     }
@@ -121,11 +120,9 @@ window.addEventListener('load', function(){
                         memName.innerText = memberWeb.member_name;
                         // header上面的東西隱藏/顯示
                         memIcon.style.display = 'none';
-                        rwdMem.style.display = 'none';
                         logout.style.display = 'block';
-                        memArea.style.display = 'block';
-                        loginBox.style.width = '25%';
-                        moneyArea.style.margin = '0';
+                        loginBox.style.width = '15%';
+                        rwdMem.style.display = 'block';
                     } else {
                         isLogin = false;
                     }

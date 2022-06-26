@@ -684,9 +684,9 @@
             display: flex;
             align-items: center;
             background-color: #fff;
-            padding: 8px 3px;
+            padding: 8px 0;
             @include xl(){
-                width: 79.5%;
+                width: 80%;
             }
 
             .user_npc{
@@ -717,8 +717,11 @@
                     background-color: #fff;
                     cursor: pointer;
                     i{
-                        font-size: 20px;
+                        font-size: 25px;
                         color: map-get($color , primary );
+                        @include lg(){
+                            font-size: 30px;
+                        }
                     }
                 }
             }

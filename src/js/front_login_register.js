@@ -2,6 +2,8 @@ window.addEventListener('load', function(){
     // 會員變數
     let memberWeb;
 
+    let navHeader = document.getElementById('main_nav');
+
     // rwd會員專區
     let rwdMem = document.getElementById('rwdMem');
 
@@ -13,9 +15,6 @@ window.addEventListener('load', function(){
 
     // header 會員專區icon
     let memIcon = document.getElementById('userHead');
-
-    // header 會員專區
-    let memArea = document.getElementById('memArea');
 
     // header 登出
     let logout = document.getElementById('logout');
@@ -100,21 +99,27 @@ window.addEventListener('load', function(){
         if(memIcon.style.display = 'block'){
             loginRegister.style.display = 'flex';
         }
-        // else{ //登出關燈箱
-
-        // }
     })
+
+    if(memName.innerText == ''){
+        rwdMem.style.display = 'none';
+    }else{
+        rwdMem.style.display = 'block';
+    }
 
     window.addEventListener('resize',function() {
+        if(memName.innerText != '' && window.innerWidth < 992){
+            loginBox.style.width = 'auto';
+        }else if(memName.innerText != '' && window.innerWidth > 992){
+            loginBox.style.width = '15%';
+        }
+
         if(window.innerWidth < 992){
-            memArea.style.display = 'none';
-            // rwdMem.style.display = 'none';
+            navHeader.style.setProperty("top", "60px");
         }else{
-            rwdMem.style.display = 'none';
-            if (isLogin) memArea.style.display = 'block';
+            navHeader.style.setProperty("top", "0px");
         }
     })
-
     
 
     // =================登入驗證==================
@@ -155,38 +160,30 @@ window.addEventListener('load', function(){
                     memIcon.style.display = 'none';
                     rwdMem.style.display = 'block';
                     window.addEventListener('resize',function() {
-                        memArea.style.display = 'none';
                         rwdMem.style.display = 'block';
                         memIcon.style.display = 'none';
-                        loginBox.style.width = '10%';
+                        loginBox.style.width = 'auto';
                     })
                     memName.innerText = memberWeb.member_name;
                     //將登入表單上的資料清空，並隱藏起來
                     loginAccount.value = '';
                     loginPassword.value = '';
                     loginRegister.style.display = 'none';
-                    
                     logout.style.display = 'block';
-                    // loginBox.style.width = '10%';
-                    moneyArea.style.margin = 'auto';
+                    loginBox.style.width = '0';
                 }else if(window.innerWidth > 992){
                     isLogin = true;
                     memName.innerText = memberWeb.member_name;
-                    rwdMem.style.display = 'none';
-                    window.addEventListener('resize',function() {
-                        rwdMem.style.display = 'none';
-                        memArea.style.display = 'block';
-                    })
+                    rwdMem.style.display = 'block';
                     //將登入表單上的資料清空，並隱藏起來
                     loginAccount.value = '';
                     loginPassword.value = '';
                     loginRegister.style.display = 'none';
                     
-                    memArea.style.display = 'block';
+                    // memArea.style.display = 'block';
                     memIcon.style.display = 'none';
                     logout.style.display = 'block';
-                    loginBox.style.width = '25%';
-                    moneyArea.style.margin = '0';
+                    loginBox.style.width = '15%';
                 }
 
                 //頁面重新整理(現在是全部都會重新整理)
@@ -212,12 +209,10 @@ window.addEventListener('load', function(){
                 // header上面的東西隱藏/顯示
                 memIcon.style.display = 'none';
                 logout.style.display = 'block';
-                loginBox.style.width = '10%';
-                moneyArea.style.margin = 'auto';
+                loginBox.style.width = 'auto';
                 rwdMem.style.display = 'block';
             } else {
                 isLogin = false;
-                rwdMem.style.display = 'none';
             }
         }
         xhr.open("get", "front_getMemberInfo.php", true);
@@ -232,14 +227,9 @@ window.addEventListener('load', function(){
                 // header上面的東西隱藏/顯示
                 memIcon.style.display = 'none';
                 logout.style.display = 'block';
-                memArea.style.display = 'block';
-                loginBox.style.width = '25%';
-                moneyArea.style.margin = '0';
-                rwdMem.style.display = 'none';
-            } else {
-                isLogin = false;
-                rwdMem.style.display = 'none';
-            }
+                loginBox.style.width = '15%';
+                rwdMem.style.display = 'block';
+            } 
         }
         xhr.open("get", "front_getMemberInfo.php", true);
         xhr.send(null);
@@ -254,9 +244,7 @@ window.addEventListener('load', function(){
             memName.style.display = 'none';
             memIcon.style.display = 'block';
             logout.style.display = 'none';
-            memArea.style.display = 'none';
             loginBox.style.width = '0';
-            moneyArea.style.margin = '0';
             window.location.href = "home.html";
             rwdMem.style.display = 'none';
         }
@@ -264,14 +252,6 @@ window.addEventListener('load', function(){
         xhr.send(null);
     })
     
-    // window.addEventListener('resize',function(){
-    // })
-    
-    if(window.innerWidth > 992){
-        memArea.addEventListener('click',function(){
-            window.location.href = "mem.html";
-        })
-    }
 
     // 點叉叉關燈箱
     loginRegisterClose.addEventListener('click',function(){
